@@ -16,11 +16,11 @@ const Branding = () => {
   return (
     <>
      <div className="titleContainer">
-     <h1 className='bSectionTitle'>Out Trusted Clints</h1>
+     <h1 className='bSectionTitle'>Our Trusted Clients</h1>
      <span></span>
      </div>
-    <section className='branding-section'>
-      <div className="branding-container">
+    <section className='container mx-auto branding-section'>
+      <div className="px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div className="brandingImg">
           <img src={bImgOne} alt="" />
         </div>
