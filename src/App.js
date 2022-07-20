@@ -2,7 +2,9 @@
 function App() {
   return (
     <>
-      <h2>App</h2>
+      <div>
+        <h2>Code Samurai</h2>
+      </div>
     </>
   );
 }
