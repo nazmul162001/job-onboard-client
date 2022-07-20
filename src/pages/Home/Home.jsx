@@ -7,7 +7,7 @@ import WhyUs from './WhyUs';
 
 const Home = () => {
   return (
-    <div>
+    <div className='pt-20'>
       <h2>This is home page branch checking & checking</h2>
       <Banner/>
       <Features/>
