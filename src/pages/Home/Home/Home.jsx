@@ -1,8 +1,8 @@
 import React from 'react';
 import Footer from '../../components/Shared/Footer';
-import Banner from './Banner';
-import Branding from './Branding';
-import Features from './Features';
+import Banner from './Banner/Banner';
+import Branding from './Branding/Branding';
+import Features from './Features/Features';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
