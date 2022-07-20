@@ -1,7 +1,7 @@
 import "./App.css";
-import Navbar from "./components/Shared/Navbar";
+import Navbar from "./components/Shared/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home/Home/Home";
 import Team from "./pages/Team/Team";
 import NotFound from "./components/Shared/NotFound/NotFound";
 import { useEffect, useState } from "react";
