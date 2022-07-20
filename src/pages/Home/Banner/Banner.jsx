@@ -5,8 +5,8 @@ import bannerImg from '../../../assets/images/banner-img.png'
 const Banner = () => {
   return (
     <section
-      className="bg-base-300 body-font py-40">
-      <div className="hero pb-80 md:pb-40 bg-base-300">
+      className="bg-base-100 body-font py-20 lg:py-40">
+      <div className="hero pb-80 md:pb-40 bg-base-100">
         <div className="hero-content flex-col justify-between lg:flex-row-reverse">
 
           <div className="w-full lg:w-1/2 rounded overflow-hidden lg:ml-6">

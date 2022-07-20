@@ -28,34 +28,32 @@ const Navbar = ({ handleThemeChange, theme }) => {
   const NavbarMenus = (
     <>
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/features">
+        <NavLink className="uppercase text-[90%] font-semibold" to="/features">
           Features
         </NavLink>
       </li>
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/pricing">
-          Pricing
-        </NavLink>
-      </li>
-      <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/blogs">
+        <NavLink className="uppercase text-[90%] font-semibold" to="/blogs">
           Blogs
         </NavLink>
       </li>
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/team">
+        <NavLink className="uppercase text-[90%] font-semibold" to="/team">
           Team
         </NavLink>
       </li>
 
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/contact">
+        <NavLink className="uppercase text-[90%] font-semibold" to="/contact">
           Contact
         </NavLink>
       </li>
       {user && (
         <li className="py-1 lg:py-0">
-          <Link className="uppercase bg-secondary text-white" to="/dashboard">
+          <Link
+            className="uppercase text-[90%] font-semibold bg-secondary text-white"
+            to="/dashboard"
+          >
             Dashboard
           </Link>
         </li>
@@ -75,7 +73,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
             : { display: "flex" }
         }
       >
-        <div className="navbar py-3 container mx-auto">
+        <div className="navbar py-3 container mx-auto lg:px-28">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -89,7 +87,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
               </ul>
             </div>
             <Link
-              className="btn btn-ghost normal-case text-xl flex gap-2 items-center"
+              className="btn btn-ghost normal-case text-xl lg:text-2xl flex gap-2 items-center"
               to="/"
             >
               Job Onboard
