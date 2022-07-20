@@ -8,8 +8,14 @@
 .branding-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  gap:2em;
 }
 .branding-section {
   background: #f3f3f3;
-  padding-bottom: 70px;
+  padding: 60px 0px;
+}
+.brandingImg img {
+    height: 100px;
+    object-fit: cover;
+    width: 100%;
 }
