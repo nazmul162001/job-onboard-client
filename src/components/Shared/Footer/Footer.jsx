@@ -43,7 +43,7 @@ const Footer = () => {
                     <p><Link to='/strategy' className="link link-hover hover:text-primary text-lg">User Strategy</Link></p>
                     <p><Link to='/trust-safety' className="link link-hover hover:text-primary text-lg">Trust and Safety </Link></p>
                 </div>
-                <div className="md:hidden">
+                <div className="md:hidden lg:block">
                     <div className='space-y-3 border-0 lg:border-2 rounded-lg mx-10 px-3 py-4'>
                         <h3 className='text-lg font-bold '>Apply on the go</h3>
                         <p>Get real time job update on our App</p>
@@ -54,7 +54,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between items-center flex-col lg:flex-row pt-10 lg:pt-20 px-10">
+            <div className="flex justify-between items-center flex-col lg:flex-row pt-10 lg:pt-16 px-10">
                 <div>
                     <span className='text-center py-5 mt-10'>Copyright © {currentYear} - All Rights Reserved </span>
                 </div>
