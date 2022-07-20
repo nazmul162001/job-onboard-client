@@ -20,7 +20,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
     signOut(auth);
     localStorage.removeItem("accessToken");
     toast.success(`Thank you, ${user.displayName} to stay with us!`, {
-      position: "bottom-center",
+      position: "top-center",
       autoClose: 5000,
     });
   };
