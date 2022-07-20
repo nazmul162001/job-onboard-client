@@ -1,3 +1,4 @@
+import "./App.css";
 import Navbar from "./components/Shared/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -10,8 +11,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/team" element={< Team/>} />
-        <Route path='*' element={<NotFound />}></Route>
+        <Route path="/team" element={<Team />} />
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </div>
   );
