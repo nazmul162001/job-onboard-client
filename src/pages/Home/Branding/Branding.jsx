@@ -5,10 +5,10 @@ import bImgThree from "../../../assets/images/branding-company-img/3.png";
 import bImgfour from "../../../assets/images/branding-company-img/4.png";
 import bImgfive from "../../../assets/images/branding-company-img/5.png";
 import bImgsix from "../../../assets/images/branding-company-img/6.png";
-
+import './Branding.css';
 const Branding = () => {
   return (
-    <>
+    <section className='branding-section'>
       <h1 className='bSectionTitle'>Out Trusted Clints</h1>
       <div className="branding-container">
         <div className="brandingImg">
@@ -31,7 +31,7 @@ const Branding = () => {
         </div>
        
       </div>
-    </>
+    </section>
   );
 };
 
