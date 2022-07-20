@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className='pt-20 pb-10  container mx-auto text-center'>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-customWith ">
-                <div>
+                <div className='lg:my-2'>
                     <h2 className='text-2xl font-bold'>Job OnBoard</h2>
                     <h4 className='pt-5 pb-2'>Contact with us </h4>
                     <div className='flex justify-center items-center pt-5 gap-5'>
@@ -25,25 +25,25 @@ const Footer = () => {
                         </a>
                     </div>
                 </div>
-                <div className='space-y-2'>
+                <div className='space-y-2 my-10 lg:my-2'>
                     <p><Link to='/carrer' className="link link-hover hover:text-primary text-lg">Carrer </Link></p>
                     <p><Link to='/team' className="link link-hover hover:text-primary text-lg">Our Team</Link></p>
                     <p><Link to='/hr-resources' className="link link-hover hover:text-primary text-lg">HR Resources</Link></p>
                     <p><Link to='/developer' className="link link-hover hover:text-primary text-lg">Developer</Link></p>
                 </div>
-                <div className='space-y-2'>
+                <div className='space-y-2 lg:my-2'>
                     <p><Link to='/pricing' className="link link-hover hover:text-primary text-lg">Our Pricing </Link></p>
                     <p><Link to='/partner' className="link link-hover hover:text-primary text-lg"> Partner Us</Link></p>
                     <p><Link to='/contact' className="link link-hover hover:text-primary text-lg">Contact Us</Link></p>
                     <p><Link to='/sitemap' className="link link-hover hover:text-primary text-lg">Site Map</Link></p>
                 </div>
-                <div className='space-y-2'>
+                <div className='space-y-2 my-10 lg:my-2'>
                     <p><Link to='/guide' className="link link-hover hover:text-primary text-lg">Guide Lines</Link></p>
                     <p><Link to='/success' className="link link-hover hover:text-primary text-lg">Our History</Link></p>
                     <p><Link to='/strategy' className="link link-hover hover:text-primary text-lg">User Strategy</Link></p>
                     <p><Link to='/trust-safety' className="link link-hover hover:text-primary text-lg">Trust and Safety </Link></p>
                 </div>
-                <div className="">
+                <div className="md:hidden">
                     <div className='space-y-3 border-0 lg:border-2 rounded-lg mx-10 px-3 py-4'>
                         <h3 className='text-lg font-bold '>Apply on the go</h3>
                         <p>Get real time job update on our App</p>
@@ -54,13 +54,13 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between items-center flex-col lg:flex-row pt-20 px-10">
+            <div className="flex justify-between items-center flex-col lg:flex-row pt-10 lg:pt-20 px-10">
                 <div>
                     <span className='text-center py-5 mt-10'>Copyright © {currentYear} - All Rights Reserved </span>
                 </div>
-                <div className='space-x-5'>
-                    <Link to='/terms' className="link link-hover hover:text-primary text-md">Terms of use</Link>
+                <div className='md:space-x-5 space-y-1 md:space-y-0 flex flex-col md:flex-row pt-5 lg:pt-0 justify-center items-center '>
                     <Link to='/policy' className="link link-hover hover:text-primary text-md">Privacy policy</Link>
+                    <Link to='/terms' className="link link-hover hover:text-primary text-md">Terms of use</Link>
                     <Link to='/cookie' className="link link-hover hover:text-primary text-md">Cookie policy</Link>
                 </div>
             </div>
