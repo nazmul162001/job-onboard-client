@@ -3,7 +3,7 @@ import Footer from '../../components/Shared/Footer';
 import Banner from './Banner';
 import Branding from './Branding';
 import Features from './Features';
-import WhyUs from './WhyUs';
+import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       <h2>This is home page branch checking & checking</h2>
       <Banner/>
       <Features/>
-      <WhyUs/>
+      <WhyChooseUs/>
       <Branding/>
       <Footer/>
     </div>
