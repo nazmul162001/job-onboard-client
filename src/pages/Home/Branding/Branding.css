@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 3rem;
 }
 
 .titleContainer span {
@@ -19,18 +19,12 @@
   margin: 0 auto;
   border-radius: 5px 20px;
 }
-.branding-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  row-gap: 4em;
-  column-gap: 2em;
+.brandingImg {
+  background: white;
+  border-radius: 10% 25%;
+  transition: all 0.2s;
 }
-.branding-section {
-  background: #f3f3f3;
-  padding: 80px 0px;
-}
-
-.brandingImg img:hover {
-  box-shadow: 0px 5px 6px 0px #262525;
-  margin-top: -10px;
+.brandingImg:hover {
+  box-shadow:-5px -5px 0px 0px #3abff8;
+  margin-top: -5px;
 }
