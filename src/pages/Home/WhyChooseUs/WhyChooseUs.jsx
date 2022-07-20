@@ -57,7 +57,7 @@ const WhyChooseUs = () => {
         </div> {/** END */}
       </div>
       <div className="feature_value">
-      <div className="value_added flex justify-center items-center mx-auto my-5">
+      <div className="value_added flex flex-col md:flex-row justify-center items-center mx-auto my-5">
         <div className="arrow-left">
           <img src={arrow} alt="" />
         </div>
