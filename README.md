@@ -1,7 +1,7 @@
 ## Quick Overview
 
 ```sh
-git clone Ctrl+v 
+git clone https://github.com/Team-Code-Samurai/Job-Onboard-Client.git 
 cd job-onboard-client
 yarn 
 code .
