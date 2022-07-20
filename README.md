@@ -2,17 +2,17 @@
 
 ```sh
 git clone https://github.com/Team-Code-Samurai/Job-Onboard-Client.git 
-cd job-onboard-client
+cd Job-Onboard-Client
 yarn 
 code .
-git checkout -b [your branch name ]  
-git pull origin development 
+git checkout -b [your branch name]  
+git pull origin Development 
 
-//Now you can write code 
+//Now you can write your code 
 
 git add .
-git commit -m "meaning full commit please " 
+git commit -m "[meaning full commit please]" 
 git push 
-git push --set-upstream origin [your barnch]
+git push --set-upstream origin [your branch name]
 
 ```
