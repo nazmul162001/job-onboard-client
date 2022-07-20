@@ -25,6 +25,6 @@
   transition: all 0.2s;
 }
 .brandingImg:hover {
-  box-shadow:-5px -5px 0px 0px #3abff8;
-  margin-top: -5px;
+    box-shadow: -4px -4px 0px 0px #895af6;
+    margin-top: -5px;
 }
