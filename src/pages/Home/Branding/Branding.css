@@ -1,11 +1,23 @@
 .bSectionTitle {
-  text-align: center;
   font-size: 3rem;
   font-weight: bold;
   color: #717171;
-  margin-bottom: 3rem;
+  display: inline-block;
+  margin: 0px;
+}
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
+.titleContainer span {
+  background: #4c3ccf;
+  width: 155px;
+  height: 3px;
+  margin: 0 auto;
+}
 .branding-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);

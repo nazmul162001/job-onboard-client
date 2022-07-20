@@ -15,7 +15,10 @@ import './Branding.css';
 const Branding = () => {
   return (
     <>
-      <h1 className='bSectionTitle'>Out Trusted Clints</h1>
+     <div className="titleContainer">
+     <h1 className='bSectionTitle'>Out Trusted Clints</h1>
+     <span></span>
+     </div>
     <section className='branding-section'>
       <div className="branding-container">
         <div className="brandingImg">
