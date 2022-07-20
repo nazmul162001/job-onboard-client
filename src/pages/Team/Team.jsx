@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Team = () => {
   return (
-    <div>
-      <h2>This is team member page</h2>
+    <div className="flex justify-center items-center h-screen">
+      <h2 className="font-semibold text-2xl">This is team member page</h2>
     </div>
   );
 };
