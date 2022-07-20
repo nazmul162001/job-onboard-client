@@ -3,6 +3,7 @@ import discover from '../../../assets/images/whyChooseUs/feature1.png'
 import recruit from '../../../assets/images/whyChooseUs/feature2.png'
 import prescreen from '../../../assets/images/whyChooseUs/feature3.png'
 import hire from '../../../assets/images/whyChooseUs/feature4.png'
+import arrow from '../../../assets/images/whyChooseUs/arrow.png'
 import './WhyChooseUs.css'
 
 const WhyChooseUs = () => {
@@ -54,6 +55,26 @@ const WhyChooseUs = () => {
             <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Constant Support & Communication</p>
           </div>
         </div> {/** END */}
+      </div>
+      <div className="feature_value">
+      <div className="value_added flex justify-center items-center mx-auto my-5">
+        <div className="arrow-left">
+          <img src={arrow} alt="" />
+        </div>
+        <div className="centered text-2xl md:text-4xl font-bold opacity-70">VALUE-ADDED</div>
+        <div className="arrow-right">
+          <img className='rotate-180' src={arrow} alt="" />
+        </div>
+      </div>
+      <div className="value_main flex justify-center flex-wrap">
+      <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Dedicated Account Manage</p>
+
+      <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Safety Committee Board</p>
+
+      <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Certified WBE</p>
+
+      <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Certified Small Business</p>
+      </div>
       </div>
     </div>
 
