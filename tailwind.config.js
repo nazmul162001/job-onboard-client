@@ -1,7 +1,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        customWith: "auto 200px 200px 200px auto",
+      },
+    },
   },
   daisyui: {
     themes: [
