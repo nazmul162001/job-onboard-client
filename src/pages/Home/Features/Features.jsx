@@ -3,13 +3,13 @@ import React from 'react';
 const Features = () => {
   return (
     <div>
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center items-center mb-10'>
         <div class="overflow-x-auto">
           <table class="table w-full">
             <thead >
               <tr>
-                <th className='text-3xl font-bold'> # </th>
-                <th className='text-3xl font-bold'>Features</th>
+                <th className='text-3xl font-bold  text-primary'> # </th>
+                <th className='text-3xl font-bold text-yellow-400'>Features</th>
                 {/* <th>Job</th>
                 <th>Favorite Color</th> */}
               </tr>
