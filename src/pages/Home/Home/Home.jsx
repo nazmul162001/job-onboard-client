@@ -7,7 +7,7 @@ import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
   return (
-    <div className='pt-20'>
+    <div>
       <Banner/>
       <Features/>
       <WhyChooseUs/>
