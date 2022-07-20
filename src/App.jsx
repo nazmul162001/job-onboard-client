@@ -19,7 +19,7 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-        <Navbar handleThemeChange={handleThemeChange} theme={theme} />
+      <Navbar handleThemeChange={handleThemeChange} theme={theme} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
