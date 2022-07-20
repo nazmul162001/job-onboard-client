@@ -92,15 +92,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
               className="btn btn-ghost normal-case text-xl flex gap-2 items-center"
               to="/"
             >
-              {!user ? (
-                <span className="ml-[-17px] md:ml-0 lg:ml-0">
-                  Job Onboard
-                </span>
-              ) : (
-                <span className="ml-[-17px] md:ml-0 lg:ml-0">
-                  Job Onboard
-                </span>
-              )}
+              Job Onboard
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
