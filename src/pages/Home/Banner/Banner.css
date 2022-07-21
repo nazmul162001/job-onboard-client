@@ -1,16 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:900i');
 
-.wrapper {
-    display: flex;
-    justify-content: center;
-}
-
 .cta {
     display: flex;
     padding: 5px 30px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    font-size: 40px;
+    font-size: 25px;
     color: white;
     background: #6225E6;
     transition: 1s;
