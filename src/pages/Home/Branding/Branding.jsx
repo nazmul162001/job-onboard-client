@@ -23,7 +23,7 @@ const Branding = () => {
       </div>
       <div className="brandingContainer px-4">
         <Swiper
-          slidesPerView={1}
+          Infinity={true}
           spaceBetween={10}
           pagination={{
             clickable: true,
