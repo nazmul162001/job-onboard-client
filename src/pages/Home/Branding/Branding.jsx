@@ -16,7 +16,7 @@ const Branding = () => {
     <>
       <div className="titleContainer flex flex-col text-center mb-12   text-5xl  ">
         <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70">
-          Branding Section
+          Our Partner
         </h1>
 
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
@@ -62,5 +62,3 @@ const Branding = () => {
 };
 
 export default Branding;
-
-  
