@@ -8,11 +8,11 @@ import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 const Home = () => {
   return (
     <div className='container mx-auto'>
-      <Banner/>
-      {/* <Features/> */}
-      <WhyChooseUs/>
-      <Branding/>
-      <Footer/>
+      <Banner />
+      <Features />
+      <WhyChooseUs />
+      <Branding />
+      <Footer />
     </div>
   );
 };
