@@ -14,13 +14,16 @@ const Branding = () => {
   }, []);
   return (
     <>
-      <div className="titleContainer">
-        <h1 className="bSectionTitle">Branding Section</h1>
-        <span></span>
+      <div className="titleContainer flex flex-col text-center mb-12 text-5xl  ">
+        <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70">
+          Branding Section
+        </h1>
+
+        <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
       </div>
-      <div className="brandingContainer">
+      <div className="brandingContainer px-4">
         <Swiper
-          slidesPerView={1}
+          Infinity={true}
           spaceBetween={10}
           pagination={{
             clickable: true,
@@ -45,7 +48,11 @@ const Branding = () => {
         >
           {sliderImg.map((singleImg) => (
             <SwiperSlide className="mb-8 py-8" key={singleImg._id}>
-              <img className="brandingImg" src={singleImg.picture} alt="" />
+              <img
+                className="brandingImg bg-white transition-[0.2s]"
+                src={singleImg.picture}
+                alt=""
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -55,3 +62,5 @@ const Branding = () => {
 };
 
 export default Branding;
+
+  
