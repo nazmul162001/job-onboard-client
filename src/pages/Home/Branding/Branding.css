@@ -1,35 +1,15 @@
-.bSectionTitle {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #717171;
-  display: inline-block;
-  margin: 0px;
-}
-.titleContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
 .titleContainer span {
-  background: #895af6;
-  width: 180px;
-  height: 6px;
-  margin: 0 auto;
   border-radius: 5px 20px;
 }
 .brandingImg {
-  background: white;
   border-radius: 10% 25%;
-  transition: all 0.2s;
 }
 .brandingImg:hover {
-    box-shadow: -4px -4px 0px 0px #895af6;
-    margin-top: -5px;
+  box-shadow: -4px -4px 0px 0px #895af6;
+  margin-top: -5px;
 }
 
-@media screen and (max-width: 490px) {
+/* @media screen and (max-width: 490px) {
   .brandingImg img {
     height: 150px;
   }
@@ -41,4 +21,4 @@
   .bSectionTitle {
     font-size: 2rem;
   }
-}
+} */
