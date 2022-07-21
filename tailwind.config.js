@@ -1,15 +1,23 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        customWith: "auto 200px 200px 200px auto",
+      },
+    },
   },
   daisyui: {
     themes: [
       {
-        samurai_theme: {
-          primary: "#FF5316",
-          secondary: "#192437",
-          error: "#C41919",
+        job_onboards_theme: {
+          primary: "#8b5cf6",
+          secondary: "#a855f7",
+          accent: "#FF4545",
+          neutral: "#3d4451",
+          success: "#22c55e",
+          warning: "#facc15",
+          error: "#ff3333",
           "base-100": "#ffffff",
           "base-200": "#FFF0F5",
           "base-300": "#f5f6fa",
