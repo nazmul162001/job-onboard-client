@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home/Home";
 import Team from "./pages/Team/Team";
 import NotFound from "./components/Shared/NotFound/NotFound";
 import { useEffect, useState } from "react";
+import ScrollButton from "./components/ScrollButton/ScrollButton";
 
 function App() {
   const [theme, setTheme] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
+      <ScrollButton />
     </div>
   );
 }

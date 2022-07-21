@@ -1,67 +1,66 @@
-import React from 'react';
-import bImgOne from "../../../assets/images/branding-company-img/1.jpg";
-import bImgten from "../../../assets/images/branding-company-img/10.png";
-import bImgeleven from "../../../assets/images/branding-company-img/11.png";
-import bImgetweleve from "../../../assets/images/branding-company-img/12.png";
-import bImgTwo from "../../../assets/images/branding-company-img/2.jpg";
-import bImgThree from "../../../assets/images/branding-company-img/3.png";
-import bImgfour from "../../../assets/images/branding-company-img/4.png";
-import bImgfive from "../../../assets/images/branding-company-img/5.png";
-import bImgsix from "../../../assets/images/branding-company-img/6.png";
-import bImgseven from "../../../assets/images/branding-company-img/7.png";
-import bImgeight from "../../../assets/images/branding-company-img/8.jpg";
-import bImgnine from "../../../assets/images/branding-company-img/9.jpg";
-import './Branding.css';
+import React, { useEffect, useState } from "react";
+import { Autoplay, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./Branding.css";
 const Branding = () => {
+  const [sliderImg, setSliderImg] = useState([]);
+  useEffect(() => {
+    fetch("brandingSection.json")
+      .then((res) => res.json())
+      .then((data) => setSliderImg(data));
+  }, []);
   return (
-    <div className='container mx-auto '>
-        {/* <div className="titleContainer">
-          <h1 className='text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70 pt-8 lg:pt-0 mb-2'>Out Trusted Clints</h1>
-          <span></span>
-        </div> */}
-      <section className='branding-section'>
-        <div className="branding-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-5 px-8">
-          <div className="brandingImg">
-            <img src={bImgOne} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgTwo} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgThree} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgfour} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgfive} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgsix} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgseven} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgeight} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgnine} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgten} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgeleven} alt="" />
-          </div>
-          <div className="brandingImg">
-            <img src={bImgetweleve} alt="" />
-          </div>
+    <>
+      <div className="titleContainer flex flex-col text-center mb-12 text-5xl  ">
+        <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70">
+          Branding Section
+        </h1>
 
-        </div>
-      </section>
-    </div>
+        <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
+      </div>
+      <div className="brandingContainer px-4">
+        <Swiper
+          Infinity={true}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{ delay: 1500, disableOnInteraction: false }}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination, Autoplay]}
+          className="mySwiper"
+        >
+          {sliderImg.map((singleImg) => (
+            <SwiperSlide className="mb-8 py-8" key={singleImg._id}>
+              <img
+                className="brandingImg bg-white transition-[0.2s]"
+                src={singleImg.picture}
+                alt=""
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </>
   );
 };
 
 export default Branding;
+
+  
