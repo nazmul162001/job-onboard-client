@@ -1,9 +1,11 @@
 .titleContainer span {
   border-radius: 5px 20px;
 }
+
 .brandingImg {
   border-radius: 10% 25%;
 }
+
 .brandingImg:hover {
   box-shadow: -4px -4px 0px 0px #895af6;
   margin-top: -5px;

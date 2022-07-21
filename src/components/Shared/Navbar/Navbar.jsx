@@ -73,7 +73,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
             : { display: "flex" }
         }
       >
-        <div className="navbar py-3 container mx-auto lg:px-28">
+        <div className="navbar py-3 container mx-auto lg:px-8">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden">
