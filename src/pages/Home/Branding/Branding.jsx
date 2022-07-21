@@ -14,53 +14,53 @@ import bImgnine from "../../../assets/images/branding-company-img/9.jpg";
 import './Branding.css';
 const Branding = () => {
   return (
-    <>
-     <div className="titleContainer">
-     <h1 className='bSectionTitle'>Out Trusted Clints</h1>
-     <span></span>
-     </div>
-    <section className='branding-section'>
-      <div className="branding-container">
-        <div className="brandingImg">
-          <img src={bImgOne} alt="" />
+    <div className='container mx-auto '>
+        {/* <div className="titleContainer">
+          <h1 className='text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70 pt-8 lg:pt-0 mb-2'>Out Trusted Clints</h1>
+          <span></span>
+        </div> */}
+      <section className='branding-section'>
+        <div className="branding-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-5 px-8">
+          <div className="brandingImg">
+            <img src={bImgOne} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgTwo} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgThree} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgfour} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgfive} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgsix} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgseven} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgeight} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgnine} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgten} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgeleven} alt="" />
+          </div>
+          <div className="brandingImg">
+            <img src={bImgetweleve} alt="" />
+          </div>
+
         </div>
-        <div className="brandingImg">
-          <img src={bImgTwo} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgThree} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgfour} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgfive} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgsix} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgseven} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgeight} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgnine} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgten} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgeleven} alt="" />
-        </div>
-        <div className="brandingImg">
-          <img src={bImgetweleve} alt="" />
-        </div>
-       
-      </div>
-    </section>
-    </>
+      </section>
+    </div>
   );
 };
 

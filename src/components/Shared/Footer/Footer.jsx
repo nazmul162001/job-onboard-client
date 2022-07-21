@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <footer className='pt-20 pb-10  container mx-auto text-center'>
+        <footer className='pt-20 pb-10 lg:px-8 container mx-auto text-center'>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-customWith ">
                 <div className='lg:my-2'>
                     <h2 className='text-2xl font-bold'>Job OnBoard</h2>
@@ -44,7 +44,7 @@ const Footer = () => {
                     <p><Link to='/trust-safety' className="link link-hover hover:text-primary text-lg">Trust and Safety </Link></p>
                 </div>
                 <div className="md:hidden lg:block">
-                    <div className='space-y-3 border-0 lg:border-2 rounded-lg mx-10 px-3 py-4'>
+                    <div className='space-y-3 border-0 lg:border-2 rounded-lg lg:ml-10 pl-0 lg:pl-3 py-4'>
                         <h3 className='text-lg font-bold '>Apply on the go</h3>
                         <p>Get real time job update on our App</p>
                         <div className="flex flex-col lg:flex-row justify-center items-center gap-4">

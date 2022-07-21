@@ -5,28 +5,23 @@ import bannerImg from '../../../assets/images/banner-img.png'
 const Banner = () => {
   return (
     <section
-      className="bg-base-100 body-font py-20 lg:py-40">
-      <div className="hero pb-80 md:pb-40 bg-base-100">
-        <div className="hero-content flex-col justify-between lg:flex-row-reverse">
-
-          <div className="w-full lg:w-1/2 rounded overflow-hidden lg:ml-6">
-            <div className="outline-none h-full">
+      className="bg-base-100 body-font pt-12 lg:px-10">
+      <div className="hero bg-base-100">
+        <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
+          <div className="w-full lg:w-1/2 rounded ">
+            <div className="outline-none ">
               <img
                 src={bannerImg}
                 className=" md:rounded-lg h-full w-full"
-                alt=""
+                alt="BannerImage"
               />
             </div>
           </div>
-
-
-          <div className="lg:w-1/2 pt-11 lg:pt-0 leading-loose">
-
+          <div className="lg:w-1/2 pt-11 lg:pt-0 leading-loose text-center lg:text-start px-5 lg:px-0">
             <span className="text-lg">
               We are{" "}
               <strong className="text-primary">Job Onboard</strong>.
             </span>
-
             <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-3">
               The smart platform for growing businesses.
             </h1>
@@ -36,8 +31,8 @@ const Banner = () => {
               And applicant can explore all the company's job circulation.
             </p>
 
-            <div className="wrapper">
-              <a class="cta" href="/">
+            <div className="flex justify-center lg:justify-start">
+              <a class="cta " href="/">
                 <span className="get-btn">Get Started</span>
                 <span className="get-btn">
                   <svg width="40px" height="35px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
@@ -50,7 +45,6 @@ const Banner = () => {
                 </span>
               </a>
             </div>
-
           </div>
         </div>
       </div>

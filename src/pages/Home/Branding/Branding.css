@@ -1,7 +1,7 @@
 .bSectionTitle {
   font-size: 3rem;
   font-weight: bold;
-  color: #717171;
+  color: #424141;
   display: inline-block;
   margin: 0px;
 }
@@ -18,18 +18,13 @@
   height: 3px;
   margin: 0 auto;
 }
-.branding-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  row-gap: 4em;
-  column-gap: 2em;
-}
+
 .branding-section {
   background: #f3f3f3;
   padding: 80px 0px;
 }
 .brandingImg img {
-  height: 100px;
+  height: 120px;
   object-fit: cover;
   width: 100%;
   border-radius: 5px;
@@ -37,6 +32,6 @@
   transition: all 0.2s;
 }
 .brandingImg img:hover {
-  box-shadow: 0px 5px 6px 0px #262525;
+  box-shadow: 0px 2px 4px 0px #262525;
   margin-top: -10px;
 }
