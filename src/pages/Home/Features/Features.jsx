@@ -3,10 +3,10 @@ import React from 'react';
 const Features = () => {
   return (
 
-    <div>
+    <div className='py-24 md:py-24 lg:py-20'>
       <h1 className='text-center text-5xl font-bold opacity-70'> What's Inside?</h1>
       <div className="line w-32 rounded-full opacity-70 h-1 mx-auto bg-black mt-2"></div>
-      <div className='grid grid-cols-on md:grid-cols-2 lg:grid-cols-3 gap-4 container mx-auto lg:px-8 pt-12 lg:pt-0'>
+      <div className='grid grid-cols-on md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-4 container mx-auto px-4 lg:px-8 pt-12'>
 
         <div class="card  bg-base-100 shadow-xl flex justify-center">
           <div class="card-body">
