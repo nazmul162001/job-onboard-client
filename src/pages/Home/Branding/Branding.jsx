@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CountUp from "react-countup";
 import { Autoplay, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -13,8 +14,8 @@ const Branding = () => {
       .then((data) => setSliderImg(data));
   }, []);
   return (
-    <>
-      <div className="titleContainer flex flex-col text-center mb-12   text-5xl  ">
+    <section className="brandingMainSection">
+      <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70">
           Our Partner
         </h1>
@@ -56,8 +57,34 @@ const Branding = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="brandingCounter ">
+          <div>
+            <CountUp end={12} />
+            <span>K+</span>
+            <br />
+            <p className="countInfo">Trusted Company</p>
+          </div>
+          <div>
+            <CountUp end={1.5} />
+            <span>M+</span>
+            <br />
+            <p className="countInfo">Users</p>
+          </div>
+          <div>
+            <CountUp end={25} />
+            <span>K+</span>
+            <br />
+            <p className="countInfo">Daily Posts</p>
+          </div>
+          <div>
+            <CountUp end={1} />
+            <span>K+</span>
+            <br />
+            <p className="countInfo">Employe</p>
+          </div>
+        </div>
       </div>
-    </>
+    </section>
   );
 };
 
