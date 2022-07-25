@@ -29,6 +29,8 @@
   transition: 0.2s;
 }
 .brandingCounter div:hover {
-  background: #d5c4ff;
-  color: #000e42;
+  background: #895af6;
+  color: white;
+  border-radius: 12% 8%;
+  transform: scale(1.06);
 }

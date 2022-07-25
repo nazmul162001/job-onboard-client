@@ -17,7 +17,7 @@ const Branding = () => {
     <section className="brandingMainSection">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-3xl md:text-3xl lg:text-4xl font-bold opacity-70">
-          JOb Onboard Is Growing Quickly
+          Job Onboard Is Growing Quickly
         </h1>
 
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
