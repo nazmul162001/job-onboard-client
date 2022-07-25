@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect, Fragment } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { BsGrid } from "react-icons/bs";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -7,7 +7,13 @@ import auth from "../../Firebase/Firebase.init";
 
 const Navbar = ({ handleThemeChange, theme }) => {
   const [user] = useAuthState(auth);
+  const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState();
+
+  useEffect(() => {
+    setScrollY(window.scrollY);
+  }, [scrollY]);
 
   let activeStyle = {
     position: "relative",
@@ -17,9 +23,17 @@ const Navbar = ({ handleThemeChange, theme }) => {
   };
 
   return (
-    <div>
-      <header className="fixed top-0 w-full z-50 bg-base-100 shadow-md">
-        <nav className="px-4 py-4 lg:py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
+    <div className="fixed top-0 w-full z-50">
+      <header className={`drawer-content flex flex-col backdrop-blur-[20px] bg-base-100 lg:bg-transparent ${
+          scrollY < 300 && "shadow-md"
+        }`}
+      style={
+        pathname.includes("dashboard")
+          ? { display: "none" }
+          : { display: "block" }
+      }
+      >
+        <nav className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
