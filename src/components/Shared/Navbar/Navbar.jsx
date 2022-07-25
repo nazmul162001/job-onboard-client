@@ -1,19 +1,23 @@
 import React, { useState, Fragment } from "react";
-import { Link } from "react-router-dom";
-import classes from "./Navbar.module.css";
+import { Link, NavLink } from "react-router-dom";
 import { BsGrid } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 
 const Navbar = ({ handleThemeChange, theme }) => {
   const [user] = useAuthState(auth);
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  let activeStyle = {
+    position: "relative",
+    color: "#8b5cf6",
+    fontWeight: 700,
+    borderBottom: "2px solid #8b5cf6",
+  };
 
   return (
     <div>
-      <header
-        className="fixed top-0 w-full z-50 bg-base-100 shadow-md"
-      >
+      <header className="fixed top-0 w-full z-50 bg-base-100 shadow-md">
         <nav className="px-4 py-4 lg:py-7 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
             <div className="flex items-center">
@@ -23,56 +27,44 @@ const Navbar = ({ handleThemeChange, theme }) => {
               </Link>
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
-                  <Link
+                  <NavLink
                     to="features"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                    activeClass={`${classes.active}`}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
                   >
                     Features
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="blogs"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                    activeClass={`${classes.active}`}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
                   >
                     Blogs
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="team"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                    activeClass={`${classes.active}`}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
                   >
                     Team
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="about"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                    activeClass={`${classes.active}`}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
                   >
                     About Us
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -80,28 +72,19 @@ const Navbar = ({ handleThemeChange, theme }) => {
             {user ? (
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
-                  <Link
+                  <NavLink
                     to="/dashboard"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
                   >
                     Dashboard
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
-                    to="/"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                  >
+                  <NavLink to="/" className="btn btn-primary">
                     Log Out
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
                   <button
@@ -131,26 +114,10 @@ const Navbar = ({ handleThemeChange, theme }) => {
             ) : (
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
-                  <Link
-                    to="/"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                  >
-                    Login
-                  </Link>
+                  <NavLink to="/">Login</NavLink>
                 </li>
                 <li>
-                  <Link
-                    to="/"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                  >
+                  <Link to="/" className="btn btn-primary">
                     Get Started
                   </Link>
                 </li>
@@ -196,15 +163,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                   <div className="p-5 bg-base-100 border rounded shadow-md">
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <Link
-                          to="/"
-                          spy={true}
-                          smooth={true}
-                          delay={100}
-                          offset={0}
-                          duration={500}
-                          className="inline-flex items-center"
-                        >
+                        <Link to="/">
                           <span className="text-xl font-bold">Job Onboard</span>
                         </Link>
                       </div>
@@ -222,84 +181,72 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <nav>
                       <ul className="space-y-4">
                         <li>
-                          <Link
+                          <NavLink
                             to="features"
-                            spy={true}
-                            smooth={true}
-                            delay={100}
-                            offset={0}
-                            duration={500}
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
                             className="nav-link-mobile"
                           >
                             Features
-                          </Link>
+                          </NavLink>
                         </li>
                         <li>
-                          <Link
+                          <NavLink
                             to="blogs"
-                            spy={true}
-                            smooth={true}
-                            delay={100}
-                            offset={0}
-                            duration={500}
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
                             className="nav-link-mobile"
                           >
                             Blogs
-                          </Link>
+                          </NavLink>
                         </li>
                         <li>
-                          <Link
+                          <NavLink
                             to="team"
-                            spy={true}
-                            smooth={true}
-                            delay={100}
-                            offset={0}
-                            duration={500}
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
                             className="nav-link-mobile"
                           >
                             Team
-                          </Link>
+                          </NavLink>
                         </li>
                         <li>
-                          <Link
+                          <NavLink
                             to="about"
-                            spy={true}
-                            smooth={true}
-                            delay={100}
-                            offset={0}
-                            duration={500}
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
                             className="nav-link-mobile"
                           >
                             About
-                          </Link>
+                          </NavLink>
                         </li>
                         {user ? (
                           <Fragment>
                             <li>
-                              <Link
+                              <NavLink
                                 to="/dashboard"
                                 className="join-button-mobile"
-                                spy={true}
-                                smooth={true}
-                                delay={100}
-                                offset={0}
-                                duration={500}
+                                style={({ isActive }) =>
+                                  isActive ? activeStyle : undefined
+                                }
                               >
                                 Dashboard
-                              </Link>
+                              </NavLink>
                             </li>
                             <li>
-                              <Link
+                              <NavLink
                                 to="/"
-                                spy={true}
-                                smooth={true}
-                                delay={100}
-                                offset={0}
-                                duration={500}
+                                style={({ isActive }) =>
+                                  isActive ? activeStyle : undefined
+                                }
                                 className="nav-link-mobile"
                               >
                                 Log Out
-                              </Link>
+                              </NavLink>
                             </li>
                             <li>
                               <button
@@ -329,30 +276,17 @@ const Navbar = ({ handleThemeChange, theme }) => {
                         ) : (
                           <Fragment>
                             <li>
-                              <Link
-                                to="/"
-                                spy={true}
-                                smooth={true}
-                                delay={100}
-                                offset={0}
-                                duration={500}
-                                className="nav-link-mobile"
-                              >
+                              <NavLink to="/" className="nav-link-mobile">
                                 Login
-                              </Link>
+                              </NavLink>
                             </li>
                             <li>
-                              <Link
+                              <NavLink
                                 to="/"
-                                className="join-button-mobile"
-                                spy={true}
-                                smooth={true}
-                                delay={100}
-                                offset={0}
-                                duration={500}
+                                className="join-button-mobile btn btn-primary"
                               >
                                 Get Started
-                              </Link>
+                              </NavLink>
                             </li>
                             <li>
                               <button
