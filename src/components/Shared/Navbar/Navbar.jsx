@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BsGrid } from "react-icons/bs";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 
@@ -18,7 +19,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
   return (
     <div>
       <header className="fixed top-0 w-full z-50 bg-base-100 shadow-md">
-        <nav className="px-4 py-4 lg:py-7 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
+        <nav className="px-4 py-4 lg:py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
@@ -118,7 +119,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                 </li>
                 <li>
                   <Link to="/" className="btn btn-primary">
-                    Get Started
+                    Get Started <MdOutlineKeyboardArrowRight className="text-2xl"/>
                   </Link>
                 </li>
                 <li>
