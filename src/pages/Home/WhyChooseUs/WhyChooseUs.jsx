@@ -4,7 +4,6 @@ import recruit from '../../../assets/images/whyChooseUs/feature22.png'
 import prescreen from '../../../assets/images/whyChooseUs/feature33.png'
 import hire from '../../../assets/images/whyChooseUs/feature44.png'
 import arrow from '../../../assets/images/whyChooseUs/arrow.png'
-import './WhyChooseUs.css'
 
 const WhyChooseUs = () => {
   return (

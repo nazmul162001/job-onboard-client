@@ -1,0 +1,17 @@
+.contact_title {
+  background: linear-gradient(
+      0deg,
+      rgba(34, 193, 195, 1) 0%,
+      rgba(34, 193, 195, 0.2542191876750701) 100%
+    ),
+    url('../../../assets/images/contact/contact.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title_heading{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
