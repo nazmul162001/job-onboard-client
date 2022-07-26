@@ -1,4 +1,5 @@
 import React from 'react';
+import 'remixicon/fonts/remixicon.css'
 import './ContactUs.css'
 
 const ContactUs = () => {
@@ -11,12 +12,18 @@ const ContactUs = () => {
             <p className='mt-2'>Want to get in touch? We'd love to hear you. Here's how you can reach us...</p>
           </div>
         </div>
-        <div className="contact_form grid grid-cols-1 md:grid-cols-2 justify-center">
-          <div className="call p-8">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, dolorum?</p>
+        <div className="contact_form grid grid-cols-1 md:grid-cols-2 justify-center mt-[-50px] relative z-10 mx-0 md:mx-16 gap-5">
+          <div className="call p-10 bg-white text-center">
+            <span><i class="ri-phone-fill text-5xl"></i> </span>
+            <p className="text-sm font-bold my-3">Call To Talk Now</p>
+            <p className='text-sm my-3'>Interested in Job Onboard Services? Just pick up the phone to chat with a member of our Job Onboard team.</p>
+            <p className='text-blue-400'>+880 1700 000000</p>
           </div>
-          <div className="connect p-8">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, vitae.</p>
+          <div className="connect p-10 bg-white text-center">
+          <span><i class="ri-discuss-line text-5xl"></i> </span>
+            <p className="text-sm font-bold my-3">Contact Customer Support</p>
+            <p className='text-sm my-3'>Sometimes you need a little help from your friends. Or a Job Onboard Support rep. Don't worry... we're here for you.</p>
+            <button className='p-5 bg-orange-500 my-5 rounded-lg text-white text-sm'>Contact Support</button>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 .contact_title {
   background: linear-gradient(
-      0deg,
-      rgba(34, 193, 195, 1) 0%,
-      rgba(34, 193, 195, 0.2542191876750701) 100%
+      45deg,
+      rgba(31, 76, 198, 0.826241322) 0%,
+      rgba(34, 193, 195, 0.7542191876750701) 100%
     ),
     url('../../../assets/images/contact/contact.png');
   background-position: center;
