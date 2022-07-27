@@ -13,9 +13,9 @@ const WhyJobOnboard = () => {
   ]
 
   return (
-    <div className="py-8 bg-violet-100 px-16">
+    <div className="py-8 bg-violet-100 px-16 rounded-t-[45px]">
       <h2 className='text-center text-3xl md:text-4xl font-bold pb-5'>Why Job Onboard ?</h2>
-      <div className="grid grid-cols-3">
+      <div className="hidden lg:grid lg:grid-cols-3 ">
         <div className=" space-y-4 flex flex-col justify-center">
           {buttonUrl.map(button => <button onClick={() => setImage(button.url)} className={button.url === image && 'active'}>
             {button.name}
