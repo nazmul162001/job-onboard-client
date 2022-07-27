@@ -26,7 +26,7 @@ function App() {
       <Navbar handleThemeChange={handleThemeChange} theme={theme} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Team />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
