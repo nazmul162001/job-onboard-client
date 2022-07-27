@@ -54,11 +54,11 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between items-center flex-col lg:flex-row pt-10 lg:pt-16 px-10">
+            <div className="flex  justify-between items-center flex-col-reverse lg:flex-row pt-10 lg:pt-16 px-10">
                 <div>
                     <span className='text-center py-5 mt-10'>Copyright © {currentYear} - All Rights Reserved </span>
                 </div>
-                <div className='md:space-x-5 space-y-1 md:space-y-0 flex flex-col md:flex-row pt-5 lg:pt-0 justify-center items-center '>
+                <div className='md:space-x-5 space-y-1 md:space-y-0 flex flex-col md:flex-row py-5 lg:pt-0 justify-center items-center '>
                     <Link to='/policy' className="link link-hover hover:text-primary text-md">Privacy policy</Link>
                     <Link to='/terms' className="link link-hover hover:text-primary text-md">Terms of use</Link>
                     <Link to='/cookie' className="link link-hover hover:text-primary text-md">Cookie policy</Link>
