@@ -1,10 +1,9 @@
 import React from 'react';
-import discover from '../../../assets/images/whyChooseUs/feature1.png'
-import recruit from '../../../assets/images/whyChooseUs/feature2.png'
-import prescreen from '../../../assets/images/whyChooseUs/feature3.png'
-import hire from '../../../assets/images/whyChooseUs/feature4.png'
+import discover from '../../../assets/images/whyChooseUs/feature11.png'
+import recruit from '../../../assets/images/whyChooseUs/feature22.png'
+import prescreen from '../../../assets/images/whyChooseUs/feature33.png'
+import hire from '../../../assets/images/whyChooseUs/feature44.png'
 import arrow from '../../../assets/images/whyChooseUs/arrow.png'
-import './WhyChooseUs.css'
 
 const WhyChooseUs = () => {
   return (
@@ -19,7 +18,7 @@ const WhyChooseUs = () => {
           {/* Feature-discover */}
           <div className="feature_discover">
             <div className=" flex flex-col items-center justify-center discover_image space-y-2">
-              <img src={discover} alt="" />
+              <img className='rounded-2xl' src={discover} alt="" />
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span> Your Hiring Needs </p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span> Your Employee Values </p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span> Our Recruiting Process </p>
@@ -29,7 +28,7 @@ const WhyChooseUs = () => {
           {/* Feature-recruit */}
           <div className="feature_recruit">
             <div className="recruit_image flex flex-col items-center justify-center space-y-2">
-              <img src={recruit} alt="" />
+              <img className='rounded-2xl' src={recruit} alt="" />
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span> Recruit Everyday of the Week</p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span> Extensive Referral Network</p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Use Of Modern Channel</p>
@@ -39,7 +38,7 @@ const WhyChooseUs = () => {
           {/* Feature-prescreen  */}
           <div className="feature_prescreen">
             <div className="prescreen_image flex flex-col items-center justify-center space-y-2">
-              <img src={prescreen} alt="prescreen_image" />
+              <img className='rounded-2xl' src={prescreen} alt="prescreen_image" />
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>100% Candidates Screened</p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Multiple Interview Types</p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Background & Drug Test</p>
@@ -49,7 +48,7 @@ const WhyChooseUs = () => {
           {/* Feature-hire  */}
           <div className="feature_hire">
             <div className="hire_image flex flex-col items-center justify-center space-y-2">
-              <img src={hire} alt="hiringImage" />
+              <img className='rounded-2xl' src={hire} alt="hiringImage" />
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Comprehensive Benefits Package</p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Motivating Performance Bonus</p>
               <p className='flex justify-center items-center'> <span className='mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs" /> </span>Constant Communication</p>
