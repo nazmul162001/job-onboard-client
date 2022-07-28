@@ -1,4 +1,5 @@
 import React from "react";
+import { GiArrowhead } from "react-icons/gi";
 import hunterImgOne from "../../../assets/images/JobHunter/1.png";
 import hunterImgTwo from "../../../assets/images/JobHunter/2.png";
 import hunterImgTtree from "../../../assets/images/JobHunter/3.png";
@@ -7,9 +8,13 @@ import "./JobHunter.css";
 const JobHunter = () => {
   return (
     <section>
-      <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70 pt-8 lg:pt-0 ">
-        For Job Hunter
-      </h2>
+      <div className="titleContainer flex flex-col text-center  text-5xl  ">
+        <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-4xl font-bold opacity-70">
+          For Job Seeker
+        </h1>
+
+        <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
+      </div>
       <div className="jobHunterContainer grid grid-cols-4 gap-8">
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
@@ -29,7 +34,8 @@ const JobHunter = () => {
             </p>
           </div>
           <p className="goBtn">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            {/* <i class="fa-solid fa-arrow-right-from-bracket"></i> */}
+            <GiArrowhead />
           </p>
         </div>
         <div className="jobHunterInfoContainer">

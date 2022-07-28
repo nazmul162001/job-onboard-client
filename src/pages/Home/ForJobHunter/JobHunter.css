@@ -23,9 +23,12 @@
   font-size: 25px;
   font-weight: bold;
 }
-.roundedCircle {
-  box-shadow: -2px -2px 0px 2px #ff1762;
-}
+
+
+    .roundedCircle {
+        box-shadow: -2px -2px 0px 1px #c1aeae40;
+    }
+
 .goBtn {
   position: absolute;
   bottom: 0;
