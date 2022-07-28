@@ -4,8 +4,6 @@
   box-shadow: 0px 2px 3px 0px #5c5959;
   padding: 15px;
   position: relative;
-  transition-duration: 5s;
-  transition-timing-function: ease-in-out;
 }
 .jobHunterContainer {
   margin-top: 10rem;
@@ -18,8 +16,6 @@
 }
 .hunterInfo {
   padding: 25px 0px;
-  overflow: hidden;
-  transition: 2s;
 }
 
 .hunterInfo h4 {
@@ -32,23 +28,31 @@
 }
 .goBtn {
   position: absolute;
-  bottom: -55px;
-  right: -55px;
+  bottom: 0;
+  right: 0;
   background: #895af6;
-  padding: 20px 0px;
-  width: 30%;
+  padding: 0px;
+  width: 0;
   border-radius: 70px 0px 5px 0px;
   color: white;
   visibility: hidden;
+  transition: 0.1s;
 }
 .jobHunterInfoContainer:hover .goBtn {
   visibility: visible;
   bottom: 0;
   right: 0;
+  width: 30%;
+  padding: 20px 0px;
+}
+.jobHunterInfoContainer:hover .goBtn i {
+  display: block;
+  margin-bottom: -5px;
+  transition-delay: 0.1s;
 }
 .goBtn i {
   font-size: 25px;
-  display: block;
-  margin-bottom: -5px;
+  display: none;
   margin-left: 10px;
+  transition: 0.2s;
 }

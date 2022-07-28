@@ -29,7 +29,7 @@ const JobHunter = () => {
             </p>
           </div>
           <p className="goBtn">
-            <i class="fa-solid fa-circle-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
           </p>
         </div>
         <div className="jobHunterInfoContainer">
@@ -49,6 +49,9 @@ const JobHunter = () => {
               your skill
             </p>
           </div>
+          <p className="goBtn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </p>
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
@@ -67,6 +70,9 @@ const JobHunter = () => {
               your skill
             </p>
           </div>
+          <p className="goBtn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </p>
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
@@ -79,12 +85,15 @@ const JobHunter = () => {
             </div>
           </div>
           <div className="hunterInfo">
-            <h4>Get Your Dreem Job</h4>
+            <h4>Get Your Dreem Job Successfully</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
               your skill
             </p>
           </div>
+          <p className="goBtn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </p>
         </div>
       </div>
     </section>
