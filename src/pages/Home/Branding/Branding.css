@@ -10,27 +10,3 @@
   box-shadow: -4px -4px 0px 0px #895af6;
   margin-top: -5px;
 }
-.brandingCounter {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: center;
-  gap: 35px;
-  margin-top: 50px;
-}
-
-.brandingCounter div {
-  background: #ffffff;
-  padding: 50px 0px;
-  border-radius: 5% 15%;
-  box-shadow: 2px 2px 4px 0px #021a5c;
-  font-weight: bold;
-  font-size: 20px;
-  color: black;
-  transition: 0.2s;
-}
-.brandingCounter div:hover {
-  background: #895af6;
-  color: white;
-  border-radius: 12% 8%;
-  transform: scale(1.06);
-}

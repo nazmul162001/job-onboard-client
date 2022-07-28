@@ -57,32 +57,7 @@ const Branding = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="brandingCounter ">
-          <div>
-            <CountUp end={12} />
-            <span>K+</span>
-            <br />
-            <p className="countInfo">Trusted Company</p>
-          </div>
-          <div>
-            <CountUp end={1.5} />
-            <span>M+</span>
-            <br />
-            <p className="countInfo">Users</p>
-          </div>
-          <div>
-            <CountUp end={25} />
-            <span>K+</span>
-            <br />
-            <p className="countInfo">Daily Posts</p>
-          </div>
-          <div>
-            <CountUp end={1} />
-            <span>K+</span>
-            <br />
-            <p className="countInfo">Employe</p>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
