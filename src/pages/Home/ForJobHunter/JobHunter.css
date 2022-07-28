@@ -1,14 +1,14 @@
 .jobHunterInfoContainer {
   text-align: center;
   border-radius: 10px;
-
   box-shadow: 0px 2px 3px 0px #5c5959;
+  padding: 15px;
 }
-.jobHunterContainer{
-    margin-top: 10rem;
+.jobHunterContainer {
+  margin-top: 10rem;
 }
 .hunterImg {
-  margin-top: -25%;
+  margin-top: -30%;
 }
 .hunterImg img {
   background: white;
@@ -22,7 +22,6 @@
   font-size: 25px;
   font-weight: bold;
 }
-.roundedCircle{
-box-shadow: -3px -2px 0px 2px #ff1762;
+.roundedCircle {
+  box-shadow: -2px -2px 0px 2px #ff1762;
 }
-    
