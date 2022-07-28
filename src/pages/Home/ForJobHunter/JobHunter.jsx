@@ -1,5 +1,8 @@
 import React from "react";
 import hunterImgOne from "../../../assets/images/JobHunter/1.png";
+import hunterImgTwo from "../../../assets/images/JobHunter/2.png";
+import hunterImgTtree from "../../../assets/images/JobHunter/3.png";
+import hunterImgFour from "../../../assets/images/JobHunter/4.png";
 import "./JobHunter.css";
 const JobHunter = () => {
   return (
@@ -10,7 +13,7 @@ const JobHunter = () => {
       <div className="jobHunterContainer grid grid-cols-4 gap-8">
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
               <img
                 className="max-w-full"
                 src={hunterImgOne}
@@ -28,10 +31,10 @@ const JobHunter = () => {
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgOne}
+                src={hunterImgTwo}
                 alt="Easy to Apply"
               />
             </div>
@@ -46,10 +49,10 @@ const JobHunter = () => {
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgOne}
+                src={hunterImgTtree}
                 alt="Easy to Apply"
               />
             </div>
@@ -64,10 +67,10 @@ const JobHunter = () => {
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgOne}
+                src={hunterImgFour}
                 alt="Easy to Apply"
               />
             </div>
