@@ -13,8 +13,8 @@ const Home = () => {
       <Banner />
       <Branding />
       <WhyJobOnboard />
-      <WhyChooseUs />
       <JobHunter />
+      <WhyChooseUs />
       <ContactUs />
       <Footer />
     </>
