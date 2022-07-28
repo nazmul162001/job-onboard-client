@@ -7,7 +7,7 @@ const ReviewInfo = ({review}) => {
   
   return (
     <div>
-      <h2>{reviewDetails} </h2>
+      <h2 className='border-2 border-opacity-30 h-60 border-orange-400 rounded p-5 '>{reviewDetails} </h2>
     </div>
   );
 };
