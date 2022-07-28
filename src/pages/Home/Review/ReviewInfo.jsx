@@ -2,12 +2,12 @@ import React from 'react';
 
 const ReviewInfo = ({review}) => {
 
-  const {name, location, img} = review;
+  const {name, reviewDetails, location, img} = review;
   
   
   return (
     <div>
-      <h2>{name} </h2>
+      <h2>{reviewDetails} </h2>
     </div>
   );
 };
