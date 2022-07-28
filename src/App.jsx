@@ -6,6 +6,9 @@ import Team from "./pages/Team/Team";
 import NotFound from "./components/Shared/NotFound/NotFound";
 import { useEffect, useState } from "react";
 import ScrollButton from "./components/ScrollButton/ScrollButton";
+import Login from "./pages/Login/Login/Login";
+import SignUp from "./pages/Login/SignUp/SignUp";
+import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
 
 function App() {
   const [theme, setTheme] = useState(false);
@@ -24,6 +27,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <ScrollButton />

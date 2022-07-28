@@ -1,0 +1,26 @@
+button {
+  margin: 0 28px;
+  border: 1px solid rgb(111, 108, 108);
+  padding: 18px;
+  font-weight: 500;
+  width: 100%;
+  text-align: start;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+button.active {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+/* responsive */
+@media only screen and (min-width:1440px) {
+  button {
+    padding: 28px;
+  }
+}
