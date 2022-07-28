@@ -9,7 +9,7 @@ import WhyJobOnboard from "../WhyJobOnboard/WhyJobOnboard";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="container mx-auto">
       <Banner />
       <Branding />
       <Features />
