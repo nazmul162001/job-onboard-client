@@ -13,14 +13,14 @@ const WhyJobOnboard = () => {
   ]
 
   return (
-    <div className="py-8 bg-violet-100 px-16 rounded-t-[45px]">
+    <div className="py-8 bg-violet-100 px-16 rounded-t-[40px] container mx-auto">
       <h2 className='text-center text-3xl md:text-4xl font-bold pb-5'>Why Job Onboard ?</h2>
       <div className="hidden lg:grid lg:grid-cols-3 ">
         <div className='py-5 col-span-2'>
           <img className="w-full rounded-lg " src={image} alt="why-jobOnboard-img" />
         </div>
         <div className=" space-y-4 flex flex-col justify-center ">
-          {buttonUrl.map(button => <button onClick={() => setImage(button.url)} className={button.url === image && 'active'}>
+          {buttonUrl.map(button => <button  onClick={() => setImage(button.url)} className={button.url === image && ' active'}>
             {button.name}
           </button>)}
         </div>

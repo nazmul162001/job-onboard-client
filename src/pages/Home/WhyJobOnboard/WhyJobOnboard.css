@@ -1,16 +1,14 @@
 button {
-  margin: 0 28px;
-  border: 1px solid rgb(111, 108, 108);
+  margin: 0 28px 0 0;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
   padding: 18px;
   font-weight: 500;
   text-align: start;
-  border-radius: 6px;
+  width: 70%;
+  border-radius: 0 6px 6px 0;
 }
-
-/* button:hover {
-  background-color: #8b5cf6;
-  color: white;
-} */
 
 button.active {
   background-color: #8b5cf6;
