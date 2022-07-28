@@ -13,9 +13,9 @@ const WhyJobOnboard = () => {
   ]
 
   return (
-    <div className="py-8 bg-violet-100 px-16 rounded-t-[40px] container mx-auto">
+    <div className="py-8 my-20 bg-violet-100 px-12 lg:px-0 rounded-t-[40px] container mx-auto">
       <h2 className='text-center text-2xl md:text-4xl font-bold pb-5 text-black'>Why Job Onboard ?</h2>
-      <div className="hidden lg:grid lg:grid-cols-3 ">
+      <div className="hidden lg:grid lg:grid-cols-3 lg:pl-20">
         <div className='py-5 col-span-2'>
           <img className="w-full rounded-lg " src={image} alt="why-jobOnboard-img" />
         </div>
