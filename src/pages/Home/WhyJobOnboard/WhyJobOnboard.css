@@ -1,8 +1,8 @@
-button {
+.onBoardBtn {
   margin: 0 28px 0 0;
-  border-top: 1px solid;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 1px 1px 0px;
   color: black;
   padding: 20px;
   font-weight: 500;
@@ -11,14 +11,14 @@ button {
   border-radius: 0 6px 6px 0;
 }
 
-button.active {
+.onBoardBtn.active {
   background-color: #8b5cf6;
   color: white;
 }
 
 /* responsive */
 @media only screen and (min-width:1440px) {
-  button {
+  .onBoardBtn {
     padding: 30px;
   }
 }

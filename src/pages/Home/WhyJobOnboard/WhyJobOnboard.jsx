@@ -20,7 +20,7 @@ const WhyJobOnboard = () => {
           <img className="w-full rounded-lg " src={image} alt="why-jobOnboard-img" />
         </div>
         <div className=" space-y-4 flex flex-col justify-center ">
-          {onBoardData.map(button => <button  onClick={() => setImage(button.url)} className={button.url === image && ' active'}>
+          {onBoardData.map(button => <button  onClick={() => setImage(button.url)} className={`onBoardBtn ${button.url === image && ' active'}`}>
             {button.name}
           </button>)}
         </div>
