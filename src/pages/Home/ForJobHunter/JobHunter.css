@@ -2,7 +2,7 @@
   text-align: center;
   border-radius: 10px;
   box-shadow: 0px 2px 3px 0px #5c5959;
-  padding: 15px;
+  padding: 10px;
   position: relative;
 }
 .jobHunterContainer {
@@ -15,7 +15,7 @@
   background: white;
 }
 .hunterInfo {
-  padding: 25px 0px;
+  margin-bottom: 30px;
 }
 
 .hunterInfo h4 {
@@ -24,10 +24,9 @@
   font-weight: bold;
 }
 
-
-    .roundedCircle {
-        box-shadow: -2px -2px 0px 1px #c1aeae40;
-    }
+.roundedCircle {
+  box-shadow: -2px -2px 0px 1px #c1aeae40;
+}
 
 .goBtn {
   position: absolute;
@@ -48,14 +47,14 @@
   width: 30%;
   padding: 20px 0px;
 }
-.jobHunterInfoContainer:hover .goBtn i {
+.jobHunterInfoContainer:hover .SeekerIcon {
   display: block;
   margin-bottom: -5px;
   transition-delay: 0.1s;
 }
-.goBtn i {
+.SeekerIcon {
   font-size: 25px;
   display: none;
-  margin-left: 10px;
+  margin-left: 40px;
   transition: 0.2s;
 }
