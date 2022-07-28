@@ -15,7 +15,7 @@ const JobHunter = () => {
 
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
       </div>
-      <div className="jobHunterContainer grid grid-cols-4 gap-8">
+      <div className="jobHunterContainer grid grid-cols-4 gap-8 mt-32">
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
             <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
