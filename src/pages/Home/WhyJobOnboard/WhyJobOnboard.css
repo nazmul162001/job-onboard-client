@@ -1,16 +1,14 @@
 button {
-  margin: 0 28px;
-  border: 1px solid rgb(111, 108, 108);
-  padding: 18px;
+  margin: 0 28px 0 0;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  color: black;
+  padding: 20px;
   font-weight: 500;
-  width: 100%;
   text-align: start;
-  border-radius: 6px;
-}
-
-button:hover {
-  background-color: #8b5cf6;
-  color: white;
+  width: 70%;
+  border-radius: 0 6px 6px 0;
 }
 
 button.active {
@@ -21,6 +19,6 @@ button.active {
 /* responsive */
 @media only screen and (min-width:1440px) {
   button {
-    padding: 28px;
+    padding: 30px;
   }
 }
