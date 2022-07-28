@@ -3,6 +3,7 @@
   border-radius: 10px;
   box-shadow: 0px 2px 3px 0px #5c5959;
   padding: 15px;
+  position: relative;
 }
 .jobHunterContainer {
   margin-top: 10rem;
@@ -15,6 +16,7 @@
 }
 .hunterInfo {
   padding: 25px 0px;
+  overflow: hidden;
 }
 
 .hunterInfo h4 {
@@ -24,4 +26,21 @@
 }
 .roundedCircle {
   box-shadow: -2px -2px 0px 2px #ff1762;
+}
+.goBtn {
+  position: absolute;
+  bottom: 0;
+  right: -1rem;
+  background: #895af6;
+  padding: 20px 0px;
+  width: 35%;
+  border-radius: 50px 0px 5px 0px;
+  color: white;
+  display: none;
+}
+.jobHunterInfoContainer:hover .goBtn {
+  display: block;
+}
+.goBtn i {
+  font-size: 25px;
 }

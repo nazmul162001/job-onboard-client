@@ -28,6 +28,9 @@ const JobHunter = () => {
               your skill
             </p>
           </div>
+          <p className="goBtn">
+            <i class="fa-solid fa-circle-arrow-right"></i>
+          </p>
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
