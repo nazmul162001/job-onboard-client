@@ -7,7 +7,7 @@ import hunterImgFour from "../../../assets/images/JobHunter/4.png";
 import "./JobHunter.css";
 const JobHunter = () => {
   return (
-    <section className="container mx-auto md:px-10">
+    <section className="container mx-auto px-10">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-4xl font-bold opacity-70">
           For Job Seeker
@@ -15,10 +15,10 @@ const JobHunter = () => {
 
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
       </div>
-      <div className="jobHunterContainer grid grid-cols-4 gap-8 mt-32">
+      <div className="jobHunterContainer grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-10 gap-y-32 mt-32  ">
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
+            <div class="w-48 rounded-full roundedCircle">
               <img
                 className="max-w-full"
                 src={hunterImgOne}
@@ -39,7 +39,7 @@ const JobHunter = () => {
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
+            <div class="w-48 rounded-full roundedCircle">
               <img
                 className="max-w-full"
                 src={hunterImgTwo}
@@ -60,7 +60,7 @@ const JobHunter = () => {
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
+            <div class="w-48  rounded-full roundedCircle">
               <img
                 className="max-w-full"
                 src={hunterImgTtree}
@@ -81,7 +81,7 @@ const JobHunter = () => {
         </div>
         <div className="jobHunterInfoContainer">
           <div class="avatar hunterImg">
-            <div class="lg:w-48 sm:w-full rounded-full roundedCircle">
+            <div class="w-48  rounded-full roundedCircle">
               <img
                 className="max-w-full"
                 src={hunterImgFour}
