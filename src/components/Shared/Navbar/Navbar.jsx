@@ -42,6 +42,9 @@ const Navbar = ({ handleThemeChange, theme }) => {
                 <span className="text-xl font-bold">Job Onboard</span>
                 <span className="hidden"></span>
               </Link>
+            </div>
+
+            {user ? (
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
                   <NavLink
@@ -65,21 +68,6 @@ const Navbar = ({ handleThemeChange, theme }) => {
                 </li>
                 <li>
                   <NavLink
-                    to="jobs"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                  >
-                    Jobs
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-
-            {user ? (
-              <ul className="items-center hidden space-x-8 lg:flex">
-                <li>
-                  <NavLink
                     to="/dashboard"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
@@ -97,7 +85,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     Log Out
                   </NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -120,17 +108,39 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       </svg>
                     )}
                   </button>
-                </li>
+                </li> */}
               </ul>
             ) : (
               <ul className="items-center hidden space-x-8 lg:flex">
+                <li>
+                  <NavLink
+                    to="jobs"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                  >
+                    Find Jobs
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="about"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                  >
+                    About Us
+                  </NavLink>
+                </li>
                 <li>
                   <Link to="/login" className="btn btn-primary">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -153,12 +163,12 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       </svg>
                     )}
                   </button>
-                </li>
+                </li> */}
               </ul>
             )}
 
             <div className="lg:hidden flex">
-              <button
+              {/* <button
                 onClick={handleThemeChange}
                 className="rounded-full font-bold mr-4"
               >
@@ -179,7 +189,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                   </svg>
                 )}
-              </button>
+              </button> */}
               <button
                 aria-label="Open Menu"
                 title="Open Menu"
@@ -190,10 +200,10 @@ const Navbar = ({ handleThemeChange, theme }) => {
               </button>
 
               {isMenuOpen && (
-                <div className="absolute top-0 left-0 w-full">
+                <div className={`absolute top-0 left-0 w-full `}>
                   <div
                     className={`p-5 ${
-                      theme ? "bg-black/70 border" : "bg-white/75"
+                      theme ? "bg-black/70 border" : "bg-base-100"
                     } rounded-2xl shadow-md`}
                   >
                     <div className="flex items-center justify-between mb-4">
@@ -217,24 +227,14 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       <ul className="space-y-4">
                         <li>
                           <NavLink
-                            to="features"
+                            to="jobs"
                             style={({ isActive }) =>
                               isActive ? activeStyle : undefined
                             }
+                            onClick={() => setIsMenuOpen(false)}
                             className="nav-link-mobile"
                           >
-                            Features
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="blogs"
-                            style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                            }
-                            className="nav-link-mobile"
-                          >
-                            Blogs
+                            Find Jobs
                           </NavLink>
                         </li>
                         <li>
@@ -243,6 +243,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                             style={({ isActive }) =>
                               isActive ? activeStyle : undefined
                             }
+                            onClick={() => setIsMenuOpen(false)}
                             className="nav-link-mobile"
                           >
                             About
