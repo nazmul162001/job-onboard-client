@@ -2,7 +2,7 @@ import React from 'react';
 
 const Jobs = () => {
   return (
-    <div>
+    <div className='my-28'>
       <h2>This is job page</h2>
     </div>
   );
