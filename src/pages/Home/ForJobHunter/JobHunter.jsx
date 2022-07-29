@@ -9,7 +9,7 @@ const JobHunter = () => {
   return (
     <section className="container mx-auto px-2 pt-16">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
-        <h1 className="bSectionTitle text-center text-4xl md:text-4xl lg:text-4xl font-bold opacity-70">
+        <h1 className="bSectionTitle text-center text-2xl md:text-4xl font-bold ">
           For Job Seeker
         </h1>
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
