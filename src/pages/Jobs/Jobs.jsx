@@ -14,11 +14,10 @@ const Jobs = () => {
       <div className="grid grid-cols-1 md:grid-cols-sidebarMdWidth gap-5 lg:grid-cols-sidebarWidth ">
         {/* Filter section  */}
         <div className='card pt-10'>
-          <div className='md:fixed border lg:min-h-[75vh]  lg:px-20 pt-5 space-y-3'>
-            <h2 className='text-center text-2xl md:3xl lg:5xl font-bold pt-5'>Fillter Your Job</h2>
-            <h3 >Categories</h3>
+          <div className='md:fixed rounded-lg border lg:min-h-[75vh]  lg:px-20 pt-12 space-y-3'>
+            <h2 className='text-center text-2xl md:3xl lg:5xl font-bold pt-5'>Filter Your Job</h2>
+            <h3 className='text-center'>Search by name</h3>
             <input className='border border-black' type="search" value="" />
-
           </div>
         </div>
 
