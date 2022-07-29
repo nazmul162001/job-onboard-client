@@ -7,12 +7,11 @@ import hunterImgFour from "../../../assets/images/JobHunter/4.png";
 import "./JobHunter.css";
 const JobHunter = () => {
   return (
-    <section className="container mx-auto px-2">
+    <section className="container mx-auto px-2 pt-16">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
-        <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-4xl font-bold opacity-70">
+        <h1 className="bSectionTitle text-center text-4xl md:text-4xl lg:text-4xl font-bold opacity-70">
           For Job Seeker
         </h1>
-
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
       </div>
       <div className="jobHunterContainer grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-32 mt-32  ">
