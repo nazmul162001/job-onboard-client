@@ -6,7 +6,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
         <footer className='pt-20 pb-10 lg:px-8 container mx-auto text-center'>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-customWith ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-customWidth ">
                 <div className='lg:my-2'>
                     <h2 className='text-2xl font-bold'>Job OnBoard</h2>
                     <h4 className='pt-5 pb-2'>Contact with us </h4>
@@ -29,7 +29,7 @@ const Footer = () => {
                     <p><Link to='/carrer' className="link link-hover hover:text-primary text-lg">Carrer </Link></p>
                     <p><Link to='/team' className="link link-hover hover:text-primary text-lg">Our Team</Link></p>
                     <p><Link to='/hr-resources' className="link link-hover hover:text-primary text-lg">HR Resources</Link></p>
-                    <p><Link to='/developer' className="link link-hover hover:text-primary text-lg">Developer</Link></p>
+                    <p><Link to='/about' className="link link-hover hover:text-primary text-lg">About Us</Link></p>
                 </div>
                 <div className='space-y-2 lg:my-2'>
                     <p><Link to='/pricing' className="link link-hover hover:text-primary text-lg">Our Pricing </Link></p>
