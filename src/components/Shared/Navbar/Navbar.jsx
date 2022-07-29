@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { BsGrid } from "react-icons/bs";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -10,11 +10,6 @@ const Navbar = ({ handleThemeChange, theme }) => {
   const [user] = useAuthState(auth);
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState();
-
-  useEffect(() => {
-    setScrollY(window.scrollY);
-  }, [scrollY]);
 
   let activeStyle = {
     position: "relative",
@@ -26,9 +21,8 @@ const Navbar = ({ handleThemeChange, theme }) => {
   return (
     <div className="fixed top-0 w-full z-50">
       <header
-        className={`drawer-content flex flex-col backdrop-blur-[20px] bg-transparent ${
-          scrollY < 300 && "shadow-md"
-        }`}
+        className='drawer-content flex flex-col bg-base-100
+          shadow-md'
         style={
           pathname.includes("dashboard")
             ? { display: "none" }
@@ -48,12 +42,13 @@ const Navbar = ({ handleThemeChange, theme }) => {
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
                   <NavLink
-                    to="blogs"
+                    to="jobs"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
-                    Blogs
+                    Find Jobs
                   </NavLink>
                 </li>
                 <li>
@@ -62,6 +57,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     About Us
                   </NavLink>
@@ -72,6 +68,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     Dashboard
                   </NavLink>
@@ -80,7 +77,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                   <NavLink
                     to="/"
                     onClick={() => signOut(auth)}
-                    className="btn btn-primary"
+                    className="btn btn-primary text-white"
                   >
                     Log Out
                   </NavLink>
@@ -118,7 +115,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     Find Jobs
                   </NavLink>
@@ -129,7 +126,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     About Us
                   </NavLink>
@@ -140,7 +137,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     Login
                   </NavLink>

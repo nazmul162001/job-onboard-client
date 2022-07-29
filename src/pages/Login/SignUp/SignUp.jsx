@@ -53,8 +53,8 @@ const SignUp = () => {
     toast.success(`Welcome ${data.name}! You are now registered.`);
   };
   return (
-    <div className="flex h-screen justify-center items-center px-4 lg:px-12">
-      <div className="card w-full max-w-md bg-base-100">
+    <div className="flex h-screen justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
+      <div className="card w-full max-w-md bg-base-100 shadow-lg">
         <div className="card-body">
           <h2 className="text-center text-2xl font-bold">Create an account</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
