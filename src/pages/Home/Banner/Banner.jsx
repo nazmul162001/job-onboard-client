@@ -36,7 +36,7 @@ const Banner = () => {
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <Link class="cta" to={user ? "/" : "/login"}>
+              <Link class="cta" to={user ? "/" : "/signUp"}>
                 <span className="get-btn">Get Started</span>
                 <span className="get-btn">
                   <svg width="40px" height="35px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
