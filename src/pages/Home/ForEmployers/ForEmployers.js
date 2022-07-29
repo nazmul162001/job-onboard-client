@@ -1,16 +1,16 @@
 import React from "react";
-import { BsArrowRightCircle } from "react-icons/bs";
-import hunterImgOne from "../../../assets/images/JobHunter/1.png";
-import hunterImgTwo from "../../../assets/images/JobHunter/2.png";
-import hunterImgTtree from "../../../assets/images/JobHunter/3.png";
-import hunterImgFour from "../../../assets/images/JobHunter/4.png";
-import "./JobHunter.css";
-const JobHunter = () => {
+
+import employeImageOne from "../../../assets/images/Employers/1.png";
+import employeImageTwo from "../../../assets/images/Employers/2.png";
+import employeImageThree from "../../../assets/images/Employers/3.png";
+import employeImageFour from "../../../assets/images/Employers/4.png";
+import "../ForJobHunter/JobHunter.css";
+const ForEmployers = () => {
   return (
-    <section className="container mx-auto px-2">
+    <section className="container mx-auto px-2 mt-32 py-16 bg-[#f3f3f340]">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-4xl font-bold opacity-70">
-          For Job Seeker
+          For Employers
         </h1>
 
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
@@ -21,90 +21,77 @@ const JobHunter = () => {
             <div class="w-48 rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgOne}
-                alt="Easy to Apply"
-              />
-            </div>
-          </div>
-          <div className="hunterInfo mb-7">
-            <h4 className="font-bold text-2xl">Easy To Apply Any Jobs</h4>
-            <p>
-              Easy apply any kind of jobs.Find your best jobs acording to to
-              your skill
-            </p>
-          </div>
-          <p className="goBtn">
-            <BsArrowRightCircle className="SeekerIcon" />
-          </p>
-        </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
-          <div class="avatar hunterImg -mt-24">
-            <div class="w-48 rounded-full roundedCircle">
-              <img
-                className="max-w-full"
-                src={hunterImgTwo}
-                alt="Easy to Apply"
-              />
-            </div>
-          </div>
-          <div className="hunterInfo mb-7">
-            <h4 className="font-bold text-2xl">Build Up Strong Network</h4>
-            <p>
-              Easy apply any kind of jobs.Find your best jobs acording to to
-              your skill
-            </p>
-          </div>
-          <p className="goBtn">
-            <BsArrowRightCircle className="SeekerIcon" />
-          </p>
-        </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
-          <div class="avatar hunterImg -mt-24">
-            <div class="w-48  rounded-full roundedCircle">
-              <img
-                className="max-w-full"
-                src={hunterImgTtree}
-                alt="Easy to Apply"
-              />
-            </div>
-          </div>
-          <div className="hunterInfo mb-7">
-            <h4 className="font-bold text-2xl">Easy Interview Process</h4>
-            <p>
-              Easy apply any kind of jobs.Find your best jobs acording to to
-              your skill
-            </p>
-          </div>
-          <p className="goBtn">
-            <BsArrowRightCircle className="SeekerIcon" />
-          </p>
-        </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
-          <div class="avatar hunterImg -mt-24">
-            <div class="w-48  rounded-full roundedCircle">
-              <img
-                className="max-w-full"
-                src={hunterImgFour}
+                src={employeImageOne}
                 alt="Easy to Apply"
               />
             </div>
           </div>
           <div className="hunterInfo mb-7">
             <h4 className="font-bold text-2xl">
-              Get Your Dreem Job Successfully
+              Post Job Your Company For Free
+            </h4>
+            <p>Any company can post jobs for their company for free.</p>
+          </div>
+        </div>
+        <div className="jobHunterInfoContainer p-2 relative text-center">
+          <div class="avatar hunterImg -mt-24">
+            <div class="w-48 rounded-full roundedCircle">
+              <img
+                className="max-w-full"
+                src={employeImageTwo}
+                alt="Easy to Apply"
+              />
+            </div>
+          </div>
+          <div className="hunterInfo mb-7">
+            <h4 className="font-bold text-2xl">Browse Service and PortFolio</h4>
+            <p>
+              Easy apply any kind of jobs.Find your best jobs acording to to
+              your skill
+            </p>
+          </div>
+        </div>
+        <div className="jobHunterInfoContainer p-2 relative text-center">
+          <div class="avatar hunterImg -mt-24">
+            <div class="w-48  rounded-full roundedCircle">
+              <img
+                className="max-w-full"
+                src={employeImageThree}
+                alt="Easy to Apply"
+              />
+            </div>
+          </div>
+          <div className="hunterInfo mb-7">
+            <h4 className="font-bold text-2xl">
+              Find Best Match For Your Company
             </h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
               your skill
             </p>
           </div>
-          <p className="goBtn">
-            <BsArrowRightCircle className="SeekerIcon" />
-          </p>
+        </div>
+        <div className="jobHunterInfoContainer p-2 relative text-center">
+          <div class="avatar hunterImg -mt-24">
+            <div class="w-48  rounded-full roundedCircle">
+              <img
+                className="max-w-full"
+                src={employeImageFour}
+                alt="Easy to Apply"
+              />
+            </div>
+          </div>
+          <div className="hunterInfo mb-7">
+            <h4 className="font-bold text-2xl">Strong Community BuildUp</h4>
+            <p>
+              Easy apply any kind of jobs.Find your best jobs acording to to
+              your skill
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default JobHunter;
+export default ForEmployers;
