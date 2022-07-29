@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
@@ -13,17 +13,11 @@ const Branding = () => {
       .then((data) => setSliderImg(data));
   }, []);
   return (
-    <>
-      <div className="titleContainer flex flex-col text-center mb-12   text-5xl  ">
-        <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70">
-          Our Partner
-        </h1>
-
-        <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
-      </div>
+    <section className="brandingMainSection container mx-auto mt-8">
+      <div className="titleContainer flex flex-col text-center  text-5xl  "></div>
       <div className="brandingContainer px-4">
         <Swiper
-          Infinity={true}
+          loop={true}
           spaceBetween={10}
           pagination={{
             clickable: true,
@@ -35,7 +29,7 @@ const Branding = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 40,
             },
             1024: {
@@ -43,21 +37,17 @@ const Branding = () => {
               spaceBetween: 50,
             },
           }}
-          modules={[Pagination, Autoplay]}
+          modules={[Autoplay]}
           className="mySwiper"
         >
           {sliderImg.map((singleImg) => (
-            <SwiperSlide className="mb-8 py-8" key={singleImg._id}>
-              <img
-                className="brandingImg bg-white transition-[0.2s]"
-                src={singleImg.picture}
-                alt=""
-              />
+            <SwiperSlide key={singleImg._id}>
+              <img className="brandingImg" src={singleImg.picture} alt="" />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-    </>
+    </section>
   );
 };
 

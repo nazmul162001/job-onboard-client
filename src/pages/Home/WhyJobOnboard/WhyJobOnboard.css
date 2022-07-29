@@ -1,0 +1,24 @@
+.onBoardBtn {
+  margin: 0 28px 0 0;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 1px 1px 0px;
+  color: black;
+  padding: 20px;
+  font-weight: 500;
+  text-align: start;
+  width: 70%;
+  border-radius: 0 6px 6px 0;
+}
+
+.onBoardBtn.active {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+/* responsive */
+@media only screen and (min-width:1440px) {
+  .onBoardBtn {
+    padding: 30px;
+  }
+}

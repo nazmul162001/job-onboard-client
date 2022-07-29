@@ -1,0 +1,40 @@
+.jobHunterInfoContainer {
+  border-radius: 10px;
+  box-shadow: 0px 2px 20px 0px #e7e7e7;
+}
+.roundedCircle {
+  box-shadow: -2px -2px 0px 1px #c1aeae40;
+}
+.hunterImg img {
+  object-fit: contain;
+}
+.goBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #895af6;
+  padding: 0px;
+  width: 0;
+  border-radius: 70px 0px 5px 0px;
+  color: white;
+  visibility: hidden;
+  transition: 0.1s;
+}
+.jobHunterInfoContainer:hover .goBtn {
+  visibility: visible;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  padding: 20px 0px;
+}
+.SeekerIcon {
+  font-size: 25px;
+  display: none;
+  margin-left: 40px;
+  transition: 0.2s;
+}
+.jobHunterInfoContainer:hover .SeekerIcon {
+  display: block;
+  margin-bottom: -5px;
+  transition-delay: 0.1s;
+}

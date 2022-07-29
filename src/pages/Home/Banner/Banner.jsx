@@ -1,11 +1,15 @@
 import React from 'react';
 import './Banner.css';
 import bannerImg from '../../../assets/images/banner-img.png'
+import { Link } from 'react-router-dom';
+import auth from '../../../components/Firebase/Firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Banner = () => {
+  const [user] = useAuthState(auth);
   return (
     <section
-      className="bg-base-100 body-font pt-12 lg:px-10">
+      className="container mx-auto bg-base-100 body-font pt-12 lg:px-10">
       <div className="hero bg-base-100">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-1/2 rounded ">
@@ -32,7 +36,7 @@ const Banner = () => {
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <a class="cta " href="/">
+              <Link class="cta" to={user ? "/" : "/signUp"}>
                 <span className="get-btn">Get Started</span>
                 <span className="get-btn">
                   <svg width="40px" height="35px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
@@ -43,7 +47,7 @@ const Banner = () => {
                     </g>
                   </svg>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
