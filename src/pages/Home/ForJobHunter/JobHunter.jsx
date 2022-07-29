@@ -27,13 +27,13 @@ const JobHunter = () => {
             </div>
           </div>
           <div className="hunterInfo mb-7">
-            <h4>Easy To Apply Any Jobs</h4>
+            <h4 className="font-bold text-2xl">Easy To Apply Any Jobs</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
               your skill
             </p>
           </div>
-          <p className="goBtn">
+          <p className="goBtn absolute bottom-0 right-0 bg-primary p-0 w-0 hidden transition-[0.1s]">
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
@@ -48,7 +48,7 @@ const JobHunter = () => {
             </div>
           </div>
           <div className="hunterInfo mb-7">
-            <h4>Build Up Strong Network</h4>
+            <h4 className="font-bold text-2xl">Build Up Strong Network</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
               your skill
@@ -69,7 +69,7 @@ const JobHunter = () => {
             </div>
           </div>
           <div className="hunterInfo mb-7">
-            <h4>Easy Interview Process</h4>
+            <h4 className="font-bold text-2xl">Easy Interview Process</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
               your skill
@@ -90,7 +90,9 @@ const JobHunter = () => {
             </div>
           </div>
           <div className="hunterInfo mb-7">
-            <h4>Get Your Dreem Job Successfully</h4>
+            <h4 className="font-bold text-2xl">
+              Get Your Dreem Job Successfully
+            </h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
               your skill
