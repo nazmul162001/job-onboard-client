@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CountUp from "react-countup";
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
@@ -15,16 +14,10 @@ const Branding = () => {
   }, []);
   return (
     <section className="brandingMainSection container mx-auto">
-      <div className="titleContainer flex flex-col text-center  text-5xl  ">
-        {/* <h1 className="bSectionTitle text-center text-3xl md:text-3xl lg:text-4xl font-bold opacity-70">
-          Job Onboard Is Growing Quickly quickly
-        </h1> */}
-
-        {/* <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span> */}
-      </div>
+      <div className="titleContainer flex flex-col text-center  text-5xl  "></div>
       <div className="brandingContainer px-4">
         <Swiper
-          Infinity={true}
+          loop={true}
           spaceBetween={10}
           pagination={{
             clickable: true,
@@ -44,20 +37,15 @@ const Branding = () => {
               spaceBetween: 50,
             },
           }}
-          modules={[Pagination, Autoplay]}
+          modules={[Autoplay]}
           className="mySwiper"
         >
           {sliderImg.map((singleImg) => (
-            <SwiperSlide className="mb-8 pb-8" key={singleImg._id}>
-              <img
-                className="brandingImg bg-white transition-[0.2s]"
-                src={singleImg.picture}
-                alt=""
-              />
+            <SwiperSlide className="mb-4 " key={singleImg._id}>
+              <img className="brandingImg" src={singleImg.picture} alt="" />
             </SwiperSlide>
           ))}
         </Swiper>
-        
       </div>
     </section>
   );
