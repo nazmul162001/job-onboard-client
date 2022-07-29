@@ -7,7 +7,7 @@ import arrow from '../../../assets/images/whyChooseUs/arrow.png'
 
 const WhyChooseUs = () => {
   return (
-    <section className='why_choose_us my-12 px-5 '>
+    <section className='why_choose_us my-12 px-5 container mx-auto '>
       {/* Feature title  */}
       <h2 className='text-center text-3xl md:text-4xl lg:text-5xl font-bold opacity-70 pt-8 lg:pt-0'>Why Choose Us</h2>
       <div className="line w-32 rounded-full opacity-70 h-1 mx-auto bg-black mt-2"></div>

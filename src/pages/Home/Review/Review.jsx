@@ -44,7 +44,7 @@ const Review = () => {
   ]
   
   return (
-    <div className='px-5 md:px-0'>
+    <div className='px-5 md:px-0 container mx-auto'>
       <Swiper
                 slidesPerView={3}
                 spaceBetween={30}

@@ -5,7 +5,7 @@ import './ContactUs.css'
 
 const ContactUs = () => {
   return (
-    <section className='contact_us my-24'>
+    <section className='contact_us my-24 container mx-auto'>
       <div className="contact_content">
         <div className="contact_title h-96 relative">
           <div className="absolute text-white title_heading text-center">
