@@ -4,6 +4,7 @@ import Banner from "../Banner/Banner";
 import Branding from "../Branding/Branding";
 import ContactUs from "../ContactUs/ContactUs";
 import JobHunter from "../ForJobHunter/JobHunter";
+import Review from "../Review/Review";
 import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 import WhyJobOnboard from "../WhyJobOnboard/WhyJobOnboard";
 
@@ -15,6 +16,7 @@ const Home = () => {
       <WhyJobOnboard />
       <JobHunter />
       <WhyChooseUs />
+      <Review />
       <ContactUs />
       <Footer />
     </>
