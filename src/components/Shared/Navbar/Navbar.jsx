@@ -135,7 +135,18 @@ const Navbar = ({ handleThemeChange, theme }) => {
                   </NavLink>
                 </li>
                 <li>
-                  <Link to="/login" className="btn btn-primary">
+                  <NavLink
+                    to="login"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <Link to="/signUp" className="btn btn-primary">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
                   </Link>
@@ -209,7 +220,12 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <Link to="/">
-                          <span className="text-xl font-bold">Job Onboard</span>
+                          <span
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-xl font-bold"
+                          >
+                            Job Onboard
+                          </span>
                         </Link>
                       </div>
                       <div>
@@ -249,11 +265,24 @@ const Navbar = ({ handleThemeChange, theme }) => {
                             About
                           </NavLink>
                         </li>
+                        <li>
+                          <NavLink
+                            to="login"
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            onClick={() => setIsMenuOpen(false)}
+                            className="nav-link-mobile"
+                          >
+                            Login
+                          </NavLink>
+                        </li>
                         {user ? (
                           <Fragment>
                             <li>
                               <NavLink
                                 to="/dashboard"
+                                onClick={() => setIsMenuOpen(false)}
                                 className="join-button-mobile"
                                 style={({ isActive }) =>
                                   isActive ? activeStyle : undefined
@@ -275,8 +304,9 @@ const Navbar = ({ handleThemeChange, theme }) => {
                           <Fragment>
                             <li>
                               <NavLink
-                                to="/login"
+                                to="/signUp"
                                 className="join-button-mobile btn btn-primary"
+                                onClick={() => setIsMenuOpen(false)}
                               >
                                 Get Started
                               </NavLink>
