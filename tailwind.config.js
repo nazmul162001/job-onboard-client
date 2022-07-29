@@ -5,6 +5,7 @@ module.exports = {
       gridTemplateColumns: {
         customWidth: "auto 200px 200px 200px auto",
         sidebarWidth: '400px auto',
+        sidebarMdWidth: '200px auto',
       },
     },
   },
