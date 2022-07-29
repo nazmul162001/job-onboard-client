@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import './Review.css'
-import { FreeMode, Pagination } from 'swiper';
+import { FreeMode } from 'swiper';
 import ReviewInfo from './ReviewInfo';
 
 const Review = () => {
@@ -17,42 +17,40 @@ const Review = () => {
         "_id": 1,
         "name": "Boundless Brilliance",
         "reviewDetails": "We use Job Onboard to reach out to the thousands of remote professionals. Thanks to the rich set of tools, the entire recruiting and work process  an be done in one place which is very convenient.",
-        "img": "https://imagizer.imageshack.com/img923/8565/KOTODH.jpg",
+        "img": "",
         "location": "Ft Lauderdale, FL, United State"
     },
     {
         "_id": 2,
         "name": "Volunteer Assistance to the Vulnerable",
         "reviewDetails": "Job Onboard has been a wonderful organization to work with; they are very clear with their communication, have a user friendly website and a great willingness to support our organization.",
-        "img": "https://imagizer.imageshack.com/img923/8565/KOTODH.jpg",
+        "img": "",
         "location": "Van Nuys, CA, United States"
     },
     {
         "_id": 3,
         "name": "Dance for all Bodies",
         "reviewDetails": "Job Onboard has connected Boundless Brilliance with volunteers acroll the world who share our passion of empowering students in STEM. The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.",
-        "img": "https://imagizer.imageshack.com/img923/8565/KOTODH.jpg",
+        "img": "",
         "location": "New York, NY, United States"
     },
     {
         "_id": 4,
         "name": "Job seekers",
         "reviewDetails": "Job Onboard has connected Boundless Brilliance with volunteers acroll the world who share our passion of empowering students in STEM. The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.",
-        "img": "https://imagizer.imageshack.com/img923/8565/KOTODH.jpg",
+        "img": "",
         "location": "London, NY, United States"
     }
   ]
   
   return (
-    <div>
+    <div className='px-5 md:px-0'>
       <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
                 loop={true}
-                freeMode={true}
-                pagination={{
-                  clickable: true,
-                }}
+                freeMode={false}
+
                 breakpoints={{
                   300: {
                     slidesPerView: 1,
@@ -71,7 +69,7 @@ const Review = () => {
                     spaceBetween: 50,
                   },
                 }}
-        modules={[FreeMode, Pagination]}
+        modules={[FreeMode]}
         className="mySwiper"
       >
         <div className="user_reviews">

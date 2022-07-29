@@ -14,7 +14,7 @@ const ReviewInfo = ({review}) => {
       <div className="profile flex items-center">
       <div class="avatar">
         <div class="w-12 rounded-full">
-          <img src="https://placeimg.com/192/192/people" alt=''/>
+          {img ? img : <img src="https://placeimg.com/192/192/people" alt=''/>}
         </div>
       </div>
         <div className="profile_name pl-2 text-left">
