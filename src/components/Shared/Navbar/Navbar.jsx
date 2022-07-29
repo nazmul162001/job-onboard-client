@@ -45,16 +45,6 @@ const Navbar = ({ handleThemeChange, theme }) => {
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
                   <NavLink
-                    to="features"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                  >
-                    Features
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to="blogs"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
@@ -71,6 +61,16 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     }
                   >
                     About Us
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="jobs"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                  >
+                    Jobs
                   </NavLink>
                 </li>
               </ul>
