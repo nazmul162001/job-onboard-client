@@ -18,6 +18,7 @@ const Home = () => {
       <WhyChooseUs />
       <JobHunter />
       <ForEmployers />
+      <Review />
       <ContactUs />
       <Footer />
     </>

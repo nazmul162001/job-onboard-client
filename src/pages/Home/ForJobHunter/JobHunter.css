@@ -5,7 +5,9 @@
 .roundedCircle {
   box-shadow: -2px -2px 0px 1px #c1aeae40;
 }
-
+.hunterImg img {
+  object-fit: contain;
+}
 .goBtn {
   position: absolute;
   bottom: 0;
