@@ -26,7 +26,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo">
+          <div className="hunterInfo mb-7">
             <h4>Easy To Apply Any Jobs</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
@@ -38,7 +38,7 @@ const JobHunter = () => {
           </p>
         </div>
         <div className="jobHunterInfoContainer p-2 relative text-center">
-          <div class="avatar hunterImg">
+          <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
               <img
                 className="max-w-full"
@@ -47,7 +47,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo">
+          <div className="hunterInfo mb-7">
             <h4>Build Up Strong Network</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
@@ -59,7 +59,7 @@ const JobHunter = () => {
           </p>
         </div>
         <div className="jobHunterInfoContainer p-2 relative text-center">
-          <div class="avatar hunterImg">
+          <div class="avatar hunterImg -mt-24">
             <div class="w-48  rounded-full roundedCircle">
               <img
                 className="max-w-full"
@@ -68,7 +68,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo">
+          <div className="hunterInfo mb-7">
             <h4>Easy Interview Process</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
@@ -80,7 +80,7 @@ const JobHunter = () => {
           </p>
         </div>
         <div className="jobHunterInfoContainer p-2 relative text-center">
-          <div class="avatar hunterImg">
+          <div class="avatar hunterImg -mt-24">
             <div class="w-48  rounded-full roundedCircle">
               <img
                 className="max-w-full"
@@ -89,7 +89,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo">
+          <div className="hunterInfo mb-7">
             <h4>Get Your Dreem Job Successfully</h4>
             <p>
               Easy apply any kind of jobs.Find your best jobs acording to to
