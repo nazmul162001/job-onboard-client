@@ -13,7 +13,7 @@ const Branding = () => {
       .then((data) => setSliderImg(data));
   }, []);
   return (
-    <section className="brandingMainSection container mx-auto">
+    <section className="brandingMainSection container mx-auto mt-8">
       <div className="titleContainer flex flex-col text-center  text-5xl  "></div>
       <div className="brandingContainer px-4">
         <Swiper
@@ -29,7 +29,7 @@ const Branding = () => {
               spaceBetween: 20,
             },
             768: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 40,
             },
             1024: {
@@ -41,7 +41,7 @@ const Branding = () => {
           className="mySwiper"
         >
           {sliderImg.map((singleImg) => (
-            <SwiperSlide className="mb-4 " key={singleImg._id}>
+            <SwiperSlide key={singleImg._id}>
               <img className="brandingImg" src={singleImg.picture} alt="" />
             </SwiperSlide>
           ))}
