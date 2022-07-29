@@ -41,7 +41,7 @@ const Branding = () => {
           className="mySwiper"
         >
           {sliderImg.map((singleImg) => (
-            <SwiperSlide className="mb-8 pb-8" key={singleImg._id}>
+            <SwiperSlide className="mb-4 " key={singleImg._id}>
               <img className="brandingImg" src={singleImg.picture} alt="" />
             </SwiperSlide>
           ))}
