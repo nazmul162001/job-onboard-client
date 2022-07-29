@@ -9,6 +9,8 @@ import ScrollButton from "./components/ScrollButton/ScrollButton";
 import Login from "./pages/Login/Login/Login";
 import SignUp from "./pages/Login/SignUp/SignUp";
 import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Jobs from "./pages/Jobs/Jobs";
 
 function App() {
   const [theme, setTheme] = useState(false);
@@ -26,6 +28,8 @@ function App() {
       <Navbar handleThemeChange={handleThemeChange} theme={theme} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />

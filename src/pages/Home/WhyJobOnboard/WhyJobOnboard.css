@@ -1,26 +1,24 @@
-button {
-  margin: 0 28px;
-  border: 1px solid rgb(111, 108, 108);
-  padding: 18px;
+.onBoardBtn {
+  margin: 0 28px 0 0;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 1px 1px 0px;
+  color: black;
+  padding: 20px;
   font-weight: 500;
-  width: 100%;
   text-align: start;
-  border-radius: 6px;
+  width: 70%;
+  border-radius: 0 6px 6px 0;
 }
 
-button:hover {
-  background-color: #8b5cf6;
-  color: white;
-}
-
-button.active {
+.onBoardBtn.active {
   background-color: #8b5cf6;
   color: white;
 }
 
 /* responsive */
 @media only screen and (min-width:1440px) {
-  button {
-    padding: 28px;
+  .onBoardBtn {
+    padding: 30px;
   }
 }
