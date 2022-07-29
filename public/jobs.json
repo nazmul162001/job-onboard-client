@@ -37,5 +37,97 @@
       "Solve complex performance problems and architectural challenges",
       "Develop and deploy new features to facilitate related procedures and tools if necessary"
     ]
+  },
+  {
+    "id" : 2 ,
+    "jobName" : "Angular.js Developer",
+    "companyName" : "Benepik" ,
+    "location" : "USA",
+    "category" : "Web Development",
+    "salary" : 600 ,
+    "hrName" : "Mr Karim " ,
+    "jobQuality" : "Intermediate" ,
+    "appliedApplicant" : 100 ,
+    "positionOpening" : 2 ,
+    "aboutCompany" : "Benepik provides rewards, loyalty, and payment infrastructure to organizations. Its unique solution helps businesses to drive employee and channel partner engagement. Its fintech offerings include gift cards, pre-paid cards, incentive disbursements, and B2B payments. Our mission is to help organizations achieve superior results through an engaged & motivated workforce and channel partners. You will get an opportunity to work with a high-performance team in a fast-paced environment.",
+    "companyActivity" : "" ,
+    "requiredSkills" : ["Angular 2.0" , "Angular 7.0" , "AngularJS" , "HTML" , "CSS" , "JavaScript" , "Lonic"],
+    "aboutTheJob" : [
+      "Write clean & well-designed code" , 
+      "Troubleshoot, test, and maintain the core product software and databases to ensure strong optimization and functionality" , 
+      "Contribute to all phases of the development lifecycle" , 
+      "Build efficient, testable, and reusable modules" ,
+      "Solve complex performance problems and architectural challenges",
+      "Develop and deploy new features to facilitate related procedures and tools if necessary"
+    ]
+  },
+  {
+    "id" : 2 ,
+    "jobName" : "Angular.js Developer",
+    "companyName" : "Benepik" ,
+    "location" : "USA",
+    "category" : "Web Development",
+    "salary" : 600 ,
+    "hrName" : "Mr Karim " ,
+    "jobQuality" : "Intermediate" ,
+    "appliedApplicant" : 100 ,
+    "positionOpening" : 2 ,
+    "aboutCompany" : "Benepik provides rewards, loyalty, and payment infrastructure to organizations. Its unique solution helps businesses to drive employee and channel partner engagement. Its fintech offerings include gift cards, pre-paid cards, incentive disbursements, and B2B payments. Our mission is to help organizations achieve superior results through an engaged & motivated workforce and channel partners. You will get an opportunity to work with a high-performance team in a fast-paced environment.",
+    "companyActivity" : "" ,
+    "requiredSkills" : ["Angular 2.0" , "Angular 7.0" , "AngularJS" , "HTML" , "CSS" , "JavaScript" , "Lonic"],
+    "aboutTheJob" : [
+      "Write clean & well-designed code" , 
+      "Troubleshoot, test, and maintain the core product software and databases to ensure strong optimization and functionality" , 
+      "Contribute to all phases of the development lifecycle" , 
+      "Build efficient, testable, and reusable modules" ,
+      "Solve complex performance problems and architectural challenges",
+      "Develop and deploy new features to facilitate related procedures and tools if necessary"
+    ]
+  },
+  {
+    "id" : 2 ,
+    "jobName" : "Angular.js Developer",
+    "companyName" : "Benepik" ,
+    "location" : "USA",
+    "category" : "Web Development",
+    "salary" : 600 ,
+    "hrName" : "Mr Karim " ,
+    "jobQuality" : "Intermediate" ,
+    "appliedApplicant" : 100 ,
+    "positionOpening" : 2 ,
+    "aboutCompany" : "Benepik provides rewards, loyalty, and payment infrastructure to organizations. Its unique solution helps businesses to drive employee and channel partner engagement. Its fintech offerings include gift cards, pre-paid cards, incentive disbursements, and B2B payments. Our mission is to help organizations achieve superior results through an engaged & motivated workforce and channel partners. You will get an opportunity to work with a high-performance team in a fast-paced environment.",
+    "companyActivity" : "" ,
+    "requiredSkills" : ["Angular 2.0" , "Angular 7.0" , "AngularJS" , "HTML" , "CSS" , "JavaScript" , "Lonic"],
+    "aboutTheJob" : [
+      "Write clean & well-designed code" , 
+      "Troubleshoot, test, and maintain the core product software and databases to ensure strong optimization and functionality" , 
+      "Contribute to all phases of the development lifecycle" , 
+      "Build efficient, testable, and reusable modules" ,
+      "Solve complex performance problems and architectural challenges",
+      "Develop and deploy new features to facilitate related procedures and tools if necessary"
+    ]
+  },
+  {
+    "id" : 2 ,
+    "jobName" : "Angular.js Developer",
+    "companyName" : "Benepik" ,
+    "location" : "USA",
+    "category" : "Web Development",
+    "salary" : 600 ,
+    "hrName" : "Mr Karim " ,
+    "jobQuality" : "Intermediate" ,
+    "appliedApplicant" : 100 ,
+    "positionOpening" : 2 ,
+    "aboutCompany" : "Benepik provides rewards, loyalty, and payment infrastructure to organizations. Its unique solution helps businesses to drive employee and channel partner engagement. Its fintech offerings include gift cards, pre-paid cards, incentive disbursements, and B2B payments. Our mission is to help organizations achieve superior results through an engaged & motivated workforce and channel partners. You will get an opportunity to work with a high-performance team in a fast-paced environment.",
+    "companyActivity" : "" ,
+    "requiredSkills" : ["Angular 2.0" , "Angular 7.0" , "AngularJS" , "HTML" , "CSS" , "JavaScript" , "Lonic"],
+    "aboutTheJob" : [
+      "Write clean & well-designed code" , 
+      "Troubleshoot, test, and maintain the core product software and databases to ensure strong optimization and functionality" , 
+      "Contribute to all phases of the development lifecycle" , 
+      "Build efficient, testable, and reusable modules" ,
+      "Solve complex performance problems and architectural challenges",
+      "Develop and deploy new features to facilitate related procedures and tools if necessary"
+    ]
   }
 ]
