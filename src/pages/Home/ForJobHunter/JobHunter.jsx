@@ -7,7 +7,7 @@ import hunterImgFour from "../../../assets/images/JobHunter/4.png";
 import "./JobHunter.css";
 const JobHunter = () => {
   return (
-    <section className="container mx-auto px-10">
+    <section className="container mx-auto px-2">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-3xl md:text-4xl lg:text-4xl font-bold opacity-70">
           For Job Seeker
@@ -33,7 +33,7 @@ const JobHunter = () => {
               your skill
             </p>
           </div>
-          <p className="goBtn absolute bottom-0 right-0 bg-primary p-0 w-0 hidden transition-[0.1s]">
+          <p className="goBtn">
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
