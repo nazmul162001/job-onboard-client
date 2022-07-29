@@ -3,7 +3,8 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        customWith: "auto 200px 200px 200px auto",
+        customWidth: "auto 200px 200px 200px auto",
+        sidebarWidth: '400px auto',
       },
     },
   },
