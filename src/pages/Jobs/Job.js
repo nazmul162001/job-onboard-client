@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { MdKeyboardArrowRight } from 'react-icons/md';
 
 const Job = ({ job }) => {
   const { id, jobName, companyName, location,salary,jobQuality } = job
@@ -15,10 +16,10 @@ const Job = ({ job }) => {
         <div>
           <span>Salary : ${salary}<small>/m</small></span>
         </div>
-        <div className=" pt-3 flex justify-between">
+        <div className=" pt-3 flex justify-between items-center">
           <span className='border rounded-xl px-4 py-1 bg-base-300'>{jobQuality}</span>
-          <Link to={'/jobs/' + id} className=''>
-            <p className='pr-3'> View Details</p>
+          <Link to={'/jobs/' + id} className='text-[#1a54ac]'>
+            <p className='flex justify-center items-center gap-1'> View Details <span className='text-2xl'><MdKeyboardArrowRight/></span></p>
           </Link>
         </div>
       </div>

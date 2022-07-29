@@ -10,7 +10,7 @@ const Jobs = () => {
   }, [])
 
   return (
-    <div className='my-28 container mx-auto px-12'>
+    <div className='my-28 container mx-auto px-5 lg:px-12'>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-sidebarWidth ">
         <div className=''>
           <h2 className='text-center text-2xl md:3xl lg:5xl font-bold pt-5'>Filter</h2>
