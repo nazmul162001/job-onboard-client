@@ -1,9 +1,9 @@
 import React from "react";
 
-import hunterImgOne from "../../../assets/images/JobHunter/1.png";
-import hunterImgTwo from "../../../assets/images/JobHunter/2.png";
-import hunterImgTtree from "../../../assets/images/JobHunter/3.png";
-import hunterImgFour from "../../../assets/images/JobHunter/4.png";
+import employeImageOne from "../../../assets/images/Employers/1.png";
+import employeImageTwo from "../../../assets/images/Employers/2.png";
+import employeImageThree from "../../../assets/images/Employers/3.png";
+import employeImageFour from "../../../assets/images/Employers/4.png";
 import "../ForJobHunter/JobHunter.css";
 const ForEmployers = () => {
   return (
@@ -21,7 +21,7 @@ const ForEmployers = () => {
             <div class="w-48 rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgOne}
+                src={employeImageOne}
                 alt="Easy to Apply"
               />
             </div>
@@ -39,7 +39,7 @@ const ForEmployers = () => {
             <div class="w-48 rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgTwo}
+                src={employeImageTwo}
                 alt="Easy to Apply"
               />
             </div>
@@ -57,7 +57,7 @@ const ForEmployers = () => {
             <div class="w-48  rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgTtree}
+                src={employeImageThree}
                 alt="Easy to Apply"
               />
             </div>
@@ -75,7 +75,7 @@ const ForEmployers = () => {
             <div class="w-48  rounded-full roundedCircle">
               <img
                 className="max-w-full"
-                src={hunterImgFour}
+                src={employeImageFour}
                 alt="Easy to Apply"
               />
             </div>
