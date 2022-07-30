@@ -7,7 +7,7 @@ import employeImageFour from "../../../assets/images/Employers/4.png";
 import "../ForJobHunter/JobHunter.css";
 const ForEmployers = () => {
   return (
-    <section className="container mx-auto px-2 mt-32 py-16 bg-[#f3f3f340]">
+    <section className="container mx-auto px-2 mt-16 md:mt-8  md:py-16 bg-[#f3f3f340]">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="text-center text-2xl md:text-4xl font-bold">
           For Employers
