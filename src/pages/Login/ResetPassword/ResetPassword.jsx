@@ -25,9 +25,9 @@ const ResetPassword = () => {
       });
   };
   return (
-    <div className="h-screen flex justify-center items-center px-0">
-      {sending && <Loading></Loading>}
-      <div className="py-12 px-10 rounded-2xl w-6/12 lg:w-3/12 shadow-2xl">
+    <div className="h-[85vh] flex justify-center items-center px-0">
+      {sending && <Loading/>}
+      <div className="py-12 px-10 rounded-2xl w-100 lg:w-3/12 shadow-2xl">
         <form
           className="grid grid-cols-1 gap-y-4"
           onSubmit={handleSubmit(onSubmit)}
