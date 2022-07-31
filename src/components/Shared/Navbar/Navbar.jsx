@@ -1,20 +1,27 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { BsGrid } from "react-icons/bs";
+import { CgMenuLeftAlt } from "react-icons/cg";
+import { toast } from "react-hot-toast";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
+import { InitializeContext } from "../../../App";
 
-const Navbar = ({ handleThemeChange, theme }) => {
+const Navbar = () => {
+  const { handleThemeChange, theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState();
 
-  useEffect(() => {
-    setScrollY(window.scrollY);
-  }, [scrollY]);
+  const handleLogOut = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+    toast.success(`Thank you, ${user.displayName} to stay with us!`, {
+      position: "bottom-left",
+      autoClose: 5000,
+    });
+  };
 
   let activeStyle = {
     position: "relative",
@@ -26,9 +33,8 @@ const Navbar = ({ handleThemeChange, theme }) => {
   return (
     <div className="fixed top-0 w-full z-50">
       <header
-        className={`drawer-content flex flex-col backdrop-blur-[20px] bg-transparent ${
-          scrollY < 300 && "shadow-md"
-        }`}
+        className="drawer-content flex flex-col bg-base-100
+          shadow-md"
         style={
           pathname.includes("dashboard")
             ? { display: "none" }
@@ -37,6 +43,14 @@ const Navbar = ({ handleThemeChange, theme }) => {
       >
         <nav className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
+            <button
+              aria-label="Open Menu"
+              title="Open Menu"
+              className="p-2 mr-1 transition duration-200 focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900 lg:hidden border rounded-lg"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <CgMenuLeftAlt className="text-3xl" />
+            </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
                 <span className="text-xl font-bold">Job Onboard</span>
@@ -48,12 +62,13 @@ const Navbar = ({ handleThemeChange, theme }) => {
               <ul className="items-center hidden space-x-8 lg:flex">
                 <li>
                   <NavLink
-                    to="blogs"
+                    to="jobs"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
-                    Blogs
+                    Find Jobs
                   </NavLink>
                 </li>
                 <li>
@@ -62,6 +77,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     About Us
                   </NavLink>
@@ -72,20 +88,40 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
+                    className="btn btn-primary text-white"
                   >
                     Dashboard
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/"
-                    onClick={() => signOut(auth)}
-                    className="btn btn-primary"
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-ghost btn-circle avatar"
                   >
-                    Log Out
-                  </NavLink>
-                </li>
-                {/* <li>
+                    <div
+                      style={{ display: "grid" }}
+                      className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                    >
+                      {auth?.currentUser?.photoURL ? (
+                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      ) : (
+                        <img
+                          src="https://placeimg.com/80/80/people"
+                          alt="profile"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
+                <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -108,7 +144,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       </svg>
                     )}
                   </button>
-                </li> */}
+                </li>
               </ul>
             ) : (
               <ul className="items-center hidden space-x-8 lg:flex">
@@ -118,7 +154,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     Find Jobs
                   </NavLink>
@@ -129,18 +165,29 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
                   >
                     About Us
                   </NavLink>
                 </li>
                 <li>
-                  <Link to="/login" className="btn btn-primary">
+                  <NavLink
+                    to="login"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <Link to="/signUp" className="btn btn-primary">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -163,12 +210,12 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       </svg>
                     )}
                   </button>
-                </li> */}
+                </li>
               </ul>
             )}
 
             <div className="lg:hidden flex">
-              {/* <button
+              <button
                 onClick={handleThemeChange}
                 className="rounded-full font-bold mr-4"
               >
@@ -189,15 +236,47 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                   </svg>
                 )}
-              </button> */}
-              <button
-                aria-label="Open Menu"
-                title="Open Menu"
-                className="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900"
-                onClick={() => setIsMenuOpen(true)}
-              >
-                <BsGrid className="text-3xl" />
               </button>
+              {user ? (
+                <div className="dropdown dropdown-end mr-3">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div
+                      style={{ display: "grid" }}
+                      className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                    >
+                      {auth?.currentUser?.photoURL ? (
+                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      ) : (
+                        <img
+                          src="https://placeimg.com/80/80/people"
+                          alt="profile"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link to='/dashboard'>Dashboard</Link>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="join-button-mobile btn btn-primary"
+                >
+                  Login
+                </Link>
+              )}
 
               {isMenuOpen && (
                 <div className={`absolute top-0 left-0 w-full `}>
@@ -209,7 +288,12 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <Link to="/">
-                          <span className="text-xl font-bold">Job Onboard</span>
+                          <span
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-xl font-bold"
+                          >
+                            Job Onboard
+                          </span>
                         </Link>
                       </div>
                       <div>
@@ -254,29 +338,20 @@ const Navbar = ({ handleThemeChange, theme }) => {
                             <li>
                               <NavLink
                                 to="/dashboard"
-                                className="join-button-mobile"
-                                style={({ isActive }) =>
-                                  isActive ? activeStyle : undefined
-                                }
+                                onClick={() => setIsMenuOpen(false)}
+                                className="join-button-mobile btn btn-primary text-white"
                               >
                                 Dashboard
                               </NavLink>
-                            </li>
-                            <li>
-                              <button
-                                onClick={() => signOut(auth)}
-                                className="nav-link-mobile btn btn-primary"
-                              >
-                                Log Out
-                              </button>
                             </li>
                           </Fragment>
                         ) : (
                           <Fragment>
                             <li>
                               <NavLink
-                                to="/login"
+                                to="/signUp"
                                 className="join-button-mobile btn btn-primary"
+                                onClick={() => setIsMenuOpen(false)}
                               >
                                 Get Started
                               </NavLink>

@@ -10,7 +10,7 @@ const Job = ({ job }) => {
       <div className="p-5 space-y-5">
         <div className="space-y-1">
           <h2 className="text-2xl ">{jobName}</h2>
-          <p className='text-lg'>{companyName}</p>
+          <p className='text-md'>{companyName}</p>
         </div>
         <p className='flex '> <span className='px-2 pt-1'><HiOutlineLocationMarker /></span> {location} </p>
         <div>

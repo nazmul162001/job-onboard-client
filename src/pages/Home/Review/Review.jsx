@@ -22,7 +22,7 @@ const Review = () => {
     },
     {
         "_id": 2,
-        "name": "Volunteer Assistance to the Vulnerable",
+        "name": "Volunteer Assistance ",
         "reviewDetails": "Job Onboard has been a wonderful organization to work with; they are very clear with their communication, have a user friendly website and a great willingness to support our organization.",
         "img": "",
         "location": "Van Nuys, CA, United States"
@@ -30,7 +30,7 @@ const Review = () => {
     {
         "_id": 3,
         "name": "Dance for all Bodies",
-        "reviewDetails": "Job Onboard has connected Boundless Brilliance with volunteers acroll the world who share our passion of empowering students in STEM. The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.",
+        "reviewDetails": "Job Onboard has connected Boundless Brilliance with volunteers acroll the world who share our passion of empowering students in STEM. The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.",
         "img": "",
         "location": "New York, NY, United States"
     },
@@ -44,7 +44,11 @@ const Review = () => {
   ]
   
   return (
-    <div className='px-5 md:px-0 container mx-auto'>
+    <div className='px-5 md:px-8 pt-5 pb-12 rounded-[40px] container mx-auto bg-base-300 '>
+      <div>
+        <h3 className='text-2xl md:text-3xl lg:text-4xl font-bold text-center pt-12 pb-3 md:py-5'>They love us. You will too</h3>
+        <h4 className='text-md md:text-lg lg:text-2xl text-center pb-8  lg:pb-12'>What our customers are saying</h4>
+      </div>
       <Swiper
                 slidesPerView={3}
                 spaceBetween={30}

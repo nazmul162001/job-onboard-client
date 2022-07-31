@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../../../components/Shared/Footer/Footer";
+import useTitle from "../../../hooks/useTitle";
 import Banner from "../Banner/Banner";
 import Branding from "../Branding/Branding";
 import ContactUs from "../ContactUs/ContactUs";
@@ -10,6 +11,7 @@ import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 import WhyJobOnboard from "../WhyJobOnboard/WhyJobOnboard";
 
 const Home = () => {
+  useTitle('Home')
   return (
     <>
       <Banner />
