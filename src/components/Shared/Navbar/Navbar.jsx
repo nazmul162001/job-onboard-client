@@ -1,15 +1,27 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { BsGrid } from "react-icons/bs";
+import { CgMenuLeft } from "react-icons/cg";
+import { toast } from "react-hot-toast";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
+import { InitializeContext } from "../../../App";
 
-const Navbar = ({ handleThemeChange, theme }) => {
+const Navbar = () => {
+  const { handleThemeChange, theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogOut = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+    toast.success(`Thank you, ${user.displayName} to stay with us!`, {
+      position: "bottom-left",
+      autoClose: 5000,
+    });
+  };
 
   let activeStyle = {
     position: "relative",
@@ -21,8 +33,8 @@ const Navbar = ({ handleThemeChange, theme }) => {
   return (
     <div className="fixed top-0 w-full z-50">
       <header
-        className='drawer-content flex flex-col bg-base-100
-          shadow-md'
+        className="drawer-content flex flex-col bg-base-100
+          shadow-md"
         style={
           pathname.includes("dashboard")
             ? { display: "none" }
@@ -76,13 +88,13 @@ const Navbar = ({ handleThemeChange, theme }) => {
                 <li>
                   <NavLink
                     to="/"
-                    onClick={() => signOut(auth)}
+                    onClick={handleLogOut}
                     className="btn btn-primary text-white"
                   >
                     Log Out
                   </NavLink>
                 </li>
-                {/* <li>
+                <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -105,7 +117,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       </svg>
                     )}
                   </button>
-                </li> */}
+                </li>
               </ul>
             ) : (
               <ul className="items-center hidden space-x-8 lg:flex">
@@ -148,7 +160,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -171,12 +183,12 @@ const Navbar = ({ handleThemeChange, theme }) => {
                       </svg>
                     )}
                   </button>
-                </li> */}
+                </li>
               </ul>
             )}
 
             <div className="lg:hidden flex">
-              {/* <button
+              <button
                 onClick={handleThemeChange}
                 className="rounded-full font-bold mr-4"
               >
@@ -197,14 +209,14 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                   </svg>
                 )}
-              </button> */}
+              </button>
               <button
                 aria-label="Open Menu"
                 title="Open Menu"
                 className="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900"
                 onClick={() => setIsMenuOpen(true)}
               >
-                <BsGrid className="text-3xl" />
+                <CgMenuLeft className="text-3xl" />
               </button>
 
               {isMenuOpen && (
@@ -262,18 +274,6 @@ const Navbar = ({ handleThemeChange, theme }) => {
                             About
                           </NavLink>
                         </li>
-                        <li>
-                          <NavLink
-                            to="login"
-                            style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                            }
-                            onClick={() => setIsMenuOpen(false)}
-                            className="nav-link-mobile"
-                          >
-                            Login
-                          </NavLink>
-                        </li>
                         {user ? (
                           <Fragment>
                             <li>
@@ -290,7 +290,7 @@ const Navbar = ({ handleThemeChange, theme }) => {
                             </li>
                             <li>
                               <button
-                                onClick={() => signOut(auth)}
+                                onClick={handleLogOut}
                                 className="nav-link-mobile btn btn-primary"
                               >
                                 Log Out
@@ -299,6 +299,18 @@ const Navbar = ({ handleThemeChange, theme }) => {
                           </Fragment>
                         ) : (
                           <Fragment>
+                            <li>
+                              <NavLink
+                                to="login"
+                                style={({ isActive }) =>
+                                  isActive ? activeStyle : undefined
+                                }
+                                onClick={() => setIsMenuOpen(false)}
+                                className="nav-link-mobile"
+                              >
+                                Login
+                              </NavLink>
+                            </li>
                             <li>
                               <NavLink
                                 to="/signUp"
