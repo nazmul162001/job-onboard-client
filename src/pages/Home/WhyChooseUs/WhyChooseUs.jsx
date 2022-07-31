@@ -55,7 +55,7 @@ const WhyChooseUs = () => {
             </div>
           </div> {/** END */}
         </div>
-        <div className="feature_value">
+        {/* <div className="feature_value">
           <div className="value_added flex flex-col md:flex-row justify-center items-center mx-auto my-8 pt-8">
             <div className="arrow-left">
               <img src={arrow} alt="leftArrow" />
@@ -74,7 +74,7 @@ const WhyChooseUs = () => {
 
             <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Certified Small Business</p>
           </div>
-        </div>
+        </div> */}
       </div>
 
     </section>
