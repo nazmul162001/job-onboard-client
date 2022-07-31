@@ -6,7 +6,7 @@ const Jobs = () => {
   const [getJobs, setgetJobs] = useState([])
   useEffect(() => {
     axios.get('jobs.json')
-      .then((response) => setgetJobs(response.data))
+      .then((response) => setgetJobs(response.data.reverse()))
   }, [])
 
   return (
