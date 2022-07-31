@@ -30,7 +30,7 @@ const Review = () => {
     {
         "_id": 3,
         "name": "Dance for all Bodies",
-        "reviewDetails": "Job Onboard has connected Boundless Brilliance with volunteers acroll the world who share our passion of empowering students in STEM. The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.",
+        "reviewDetails": "Job Onboard has connected Boundless Brilliance with volunteers acroll the world who share our passion of empowering students in STEM. The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.The Job Onboard team is a pleasure to work with and the platform is very convenient and easy to use.",
         "img": "",
         "location": "New York, NY, United States"
     },
