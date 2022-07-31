@@ -9,7 +9,7 @@ const Banner = () => {
   const [user] = useAuthState(auth);
   return (
     <section
-      className="container mx-auto bg-base-100 body-font pt-12 lg:px-10">
+    className="container mx-auto bg-base-100 lg:px-10">
       <div className="hero bg-base-100">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-1/2 rounded ">
