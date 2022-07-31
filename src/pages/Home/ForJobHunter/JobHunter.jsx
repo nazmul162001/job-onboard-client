@@ -15,7 +15,7 @@ const JobHunter = () => {
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
       </div>
       <div className="jobHunterContainer grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-32 mt-32  ">
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
               <img
@@ -36,7 +36,7 @@ const JobHunter = () => {
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
               <img
@@ -57,7 +57,7 @@ const JobHunter = () => {
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48  rounded-full roundedCircle">
               <img
@@ -78,7 +78,7 @@ const JobHunter = () => {
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48  rounded-full roundedCircle">
               <img
