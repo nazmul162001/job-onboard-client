@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { toast } from "react-hot-toast";
@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 w-full z-50">
+    <div className="sticky top-0 w-full z-50">
       <header
         className="drawer-content flex flex-col bg-base-100
           shadow-md"
@@ -82,17 +82,6 @@ const Navbar = () => {
                     About Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/dashboard"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="btn btn-primary text-white"
-                  >
-                    Dashboard
-                  </NavLink>
-                </li>
                 <div className="dropdown dropdown-end">
                   <label
                     tabIndex="0"
@@ -117,11 +106,14 @@ const Navbar = () => {
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
                     <li>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
                       <button onClick={handleLogOut}>Logout</button>
                     </li>
                   </ul>
                 </div>
-                <li>
+                {/* <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -144,7 +136,7 @@ const Navbar = () => {
                       </svg>
                     )}
                   </button>
-                </li>
+                </li> */}
               </ul>
             ) : (
               <ul className="items-center hidden space-x-8 lg:flex">
@@ -187,7 +179,7 @@ const Navbar = () => {
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -210,12 +202,12 @@ const Navbar = () => {
                       </svg>
                     )}
                   </button>
-                </li>
+                </li> */}
               </ul>
             )}
 
             <div className="lg:hidden flex">
-              <button
+              {/* <button
                 onClick={handleThemeChange}
                 className="rounded-full font-bold mr-4"
               >
@@ -236,9 +228,9 @@ const Navbar = () => {
                     <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                   </svg>
                 )}
-              </button>
+              </button> */}
               {user ? (
-                <div className="dropdown dropdown-end mr-3">
+                <div className="dropdown dropdown-end">
                   <label
                     tabIndex="0"
                     className="btn btn-ghost btn-circle avatar"
@@ -262,7 +254,7 @@ const Navbar = () => {
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
                     <li>
-                      <Link to='/dashboard'>Dashboard</Link>
+                      <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
                       <button onClick={handleLogOut}>Logout</button>
@@ -333,30 +325,18 @@ const Navbar = () => {
                             About
                           </NavLink>
                         </li>
-                        {user ? (
-                          <Fragment>
-                            <li>
-                              <NavLink
-                                to="/dashboard"
-                                onClick={() => setIsMenuOpen(false)}
-                                className="join-button-mobile btn btn-primary text-white"
-                              >
-                                Dashboard
-                              </NavLink>
-                            </li>
-                          </Fragment>
+                        {!user ? (
+                          <li>
+                            <NavLink
+                              to="/signUp"
+                              className="join-button-mobile btn btn-primary"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              Get Started
+                            </NavLink>
+                          </li>
                         ) : (
-                          <Fragment>
-                            <li>
-                              <NavLink
-                                to="/signUp"
-                                className="join-button-mobile btn btn-primary"
-                                onClick={() => setIsMenuOpen(false)}
-                              >
-                                Get Started
-                              </NavLink>
-                            </li>
-                          </Fragment>
+                          <></>
                         )}
                       </ul>
                     </nav>
