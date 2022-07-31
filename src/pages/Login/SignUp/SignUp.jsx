@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
+import Loading from "../../../components/Shared/Loading/Loading";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -26,11 +27,7 @@ const SignUp = () => {
   let signInError;
 
   if (loading || gLoading || updating) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <button class="btn btn-square loading"></button>
-      </div>
-    );
+    return <Loading></Loading>
   }
 
   if (error || gError || updateError) {
@@ -54,7 +51,7 @@ const SignUp = () => {
   };
   return (
     <div className="flex h-screen justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
-      <div className="card w-full max-w-md bg-base-100 shadow-lg">
+      <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
           <h2 className="text-center text-2xl font-bold">Create an account</h2>
           <form onSubmit={handleSubmit(onSubmit)}>

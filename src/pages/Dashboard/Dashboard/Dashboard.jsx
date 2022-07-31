@@ -75,11 +75,10 @@ const Dashboard = () => {
             >
               <div
                 style={{ display: "grid" }}
-                className="w-10 h-10  place-items-center rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
+                className="w-10 h-10 place-items-center rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
               >
                 {auth?.currentUser?.photoURL ? (
                   <img
-                    style={{ marginTop: "0.5rem" }}
                     src={auth?.currentUser?.photoURL}
                     alt={auth?.currentUser?.displayName}
                   />
@@ -95,12 +94,6 @@ const Dashboard = () => {
               tabIndex="0"
               className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link to="/dashboard/profile" className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </Link>
-              </li>
               <li>
                 <button onClick={handleLogOut}>Logout</button>
               </li>
