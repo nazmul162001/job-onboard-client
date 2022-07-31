@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { CgMenuLeft } from "react-icons/cg";
+import { CgMenuLeftAlt } from "react-icons/cg";
 import { toast } from "react-hot-toast";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -43,6 +43,14 @@ const Navbar = () => {
       >
         <nav className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
+            <button
+              aria-label="Open Menu"
+              title="Open Menu"
+              className="p-2 mr-1 transition duration-200 focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900 lg:hidden border rounded-lg"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <CgMenuLeftAlt className="text-3xl" />
+            </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
                 <span className="text-xl font-bold">Job Onboard</span>
@@ -229,14 +237,46 @@ const Navbar = () => {
                   </svg>
                 )}
               </button>
-              <button
-                aria-label="Open Menu"
-                title="Open Menu"
-                className="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900"
-                onClick={() => setIsMenuOpen(true)}
-              >
-                <CgMenuLeft className="text-3xl" />
-              </button>
+              {user ? (
+                <div className="dropdown dropdown-end mr-3">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div
+                      style={{ display: "grid" }}
+                      className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                    >
+                      {auth?.currentUser?.photoURL ? (
+                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      ) : (
+                        <img
+                          src="https://placeimg.com/80/80/people"
+                          alt="profile"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link to='/dashboard'>Dashboard</Link>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="join-button-mobile btn btn-primary"
+                >
+                  Login
+                </Link>
+              )}
 
               {isMenuOpen && (
                 <div className={`absolute top-0 left-0 w-full `}>
@@ -304,52 +344,9 @@ const Navbar = () => {
                                 Dashboard
                               </NavLink>
                             </li>
-                            <div className="dropdown dropdown-start">
-                              <label
-                                tabIndex="0"
-                                className="btn btn-ghost btn-circle avatar"
-                              >
-                                <div
-                                  style={{ display: "grid" }}
-                                  className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
-                                >
-                                  {auth?.currentUser?.photoURL ? (
-                                    <img
-                                      src={auth?.currentUser?.photoURL}
-                                      alt="avatar"
-                                    />
-                                  ) : (
-                                    <img
-                                      src="https://placeimg.com/80/80/people"
-                                      alt="profile"
-                                    />
-                                  )}
-                                </div>
-                              </label>
-                              <ul
-                                tabIndex="0"
-                                className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-                              >
-                                <li>
-                                  <button onClick={handleLogOut}>Logout</button>
-                                </li>
-                              </ul>
-                            </div>
                           </Fragment>
                         ) : (
                           <Fragment>
-                            <li>
-                              <NavLink
-                                to="login"
-                                style={({ isActive }) =>
-                                  isActive ? activeStyle : undefined
-                                }
-                                onClick={() => setIsMenuOpen(false)}
-                                className="nav-link-mobile"
-                              >
-                                Login
-                              </NavLink>
-                            </li>
                             <li>
                               <NavLink
                                 to="/signUp"
