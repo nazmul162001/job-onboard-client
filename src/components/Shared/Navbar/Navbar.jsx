@@ -80,20 +80,39 @@ const Navbar = () => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="btn btn-primary text-white"
                   >
                     Dashboard
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/"
-                    onClick={handleLogOut}
-                    className="btn btn-primary text-white"
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-ghost btn-circle avatar"
                   >
-                    Log Out
-                  </NavLink>
-                </li>
+                    <div
+                      style={{ display: "grid" }}
+                      className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                    >
+                      {auth?.currentUser?.photoURL ? (
+                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      ) : (
+                        <img
+                          src="https://placeimg.com/80/80/people"
+                          alt="profile"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
                 <li>
                   <button
                     onClick={handleThemeChange}
@@ -280,22 +299,42 @@ const Navbar = () => {
                               <NavLink
                                 to="/dashboard"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="join-button-mobile"
-                                style={({ isActive }) =>
-                                  isActive ? activeStyle : undefined
-                                }
+                                className="join-button-mobile btn btn-primary text-white"
                               >
                                 Dashboard
                               </NavLink>
                             </li>
-                            <li>
-                              <button
-                                onClick={handleLogOut}
-                                className="nav-link-mobile btn btn-primary"
+                            <div className="dropdown dropdown-start">
+                              <label
+                                tabIndex="0"
+                                className="btn btn-ghost btn-circle avatar"
                               >
-                                Log Out
-                              </button>
-                            </li>
+                                <div
+                                  style={{ display: "grid" }}
+                                  className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                                >
+                                  {auth?.currentUser?.photoURL ? (
+                                    <img
+                                      src={auth?.currentUser?.photoURL}
+                                      alt="avatar"
+                                    />
+                                  ) : (
+                                    <img
+                                      src="https://placeimg.com/80/80/people"
+                                      alt="profile"
+                                    />
+                                  )}
+                                </div>
+                              </label>
+                              <ul
+                                tabIndex="0"
+                                className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                              >
+                                <li>
+                                  <button onClick={handleLogOut}>Logout</button>
+                                </li>
+                              </ul>
+                            </div>
                           </Fragment>
                         ) : (
                           <Fragment>

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation } from "react-router-dom";
 import auth from "../../../components/Firebase/Firebase.init";
+import Loading from "../../../components/Shared/Loading/Loading";
 
 const ResetPassword = () => {
   const location = useLocation();
@@ -25,11 +26,7 @@ const ResetPassword = () => {
   };
   return (
     <div className="h-screen flex justify-center items-center px-0">
-      {sending && (
-        <div className="flex justify-center items-center h-screen">
-          <button class="btn btn-square loading"></button>
-        </div>
-      )}
+      {sending && <Loading></Loading>}
       <div className="py-12 px-10 rounded-2xl lg:w-6/12 shadow-lg">
         <form
           className="grid grid-cols-1 gap-y-4"
