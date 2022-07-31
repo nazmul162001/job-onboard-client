@@ -14,7 +14,8 @@ const WhyJobOnboard = () => {
 
   return (
     <div className="py-8 mb-12 lg:mb-0 lg:mt-5 bg-base-300 px-12 lg:px-0 rounded-[40px] container mx-auto">
-      <h2 className='text-center text-2xl md:text-4xl font-bold pb-5 text-black'>Why Job Onboard ?</h2>
+      <h2 className='text-center text-2xl md:text-4xl font-bold text-black pb-5'>Why Job Onboard </h2>
+      <div className="line w-28 md:w-40 rounded-full opacity-70 h-1 mx-auto bg-primary mb-4"></div>
       <div className="hidden lg:grid lg:grid-cols-3 lg:pl-20 ">
         <div className='py-5 col-span-2'>
           <img className="w-full rounded-lg " src={image} alt="why-jobOnboard-img" />
@@ -25,7 +26,7 @@ const WhyJobOnboard = () => {
           </button>)}
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-12 lg:hidden ">
+      <div className="grid grid-cols-1 gap-12 lg:hidden mt-10">
         {onBoardData.map(singleData => 
           <div className='text-center space-y-2 '>
             <h3 className='text-lg md:text-2xl font-bold '>{singleData.name}</h3>
