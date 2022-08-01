@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { toast } from "react-hot-toast";
-import { BsGrid } from "react-icons/bs";
-import { AiOutlineFire } from "react-icons/ai";
 import { signOut } from "firebase/auth";
+import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-hot-toast";
+import { AiOutlineFire } from "react-icons/ai";
+import { BsGrid } from "react-icons/bs";
+import { FaUsers } from "react-icons/fa";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import useTitle from "../../../hooks/useTitle";
-import auth from "../../../components/Firebase/Firebase.init";
 import { InitializeContext } from "../../../App";
-
+import auth from "../../../components/Firebase/Firebase.init";
+import useTitle from "../../../hooks/useTitle";
 const Dashboard = () => {
   useTitle("Dashboard");
   const { handleThemeChange, theme } = useContext(InitializeContext);
@@ -116,6 +116,9 @@ const Dashboard = () => {
           </div>
           <li className="py-2 mt-4">
             <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/dashboard/employers">
+              <FaUsers /> Employers
+            </NavLink>
           </li>
         </ul>
       </div>
