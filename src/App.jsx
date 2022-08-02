@@ -19,7 +19,10 @@ import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboar
 import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
 import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
 import Employers from "./pages/Dashboard/Employers/Employers";
-export const InitializeContext = createContext(null)
+import Profile from "./pages/Dashboard/Profile/Profile";
+import LoginForHr from "./pages/LoginForHr/LoginForHr/LoginForHr";
+import SignUpHr from "./pages/LoginForHr/SignUpHr/SignUpHr";
+export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
@@ -34,38 +37,41 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-      <InitializeContext.Provider value={{handleThemeChange, theme}}>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Job Route Start */}
+      <InitializeContext.Provider value={{ handleThemeChange, theme }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* Job Route Start */}
 
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/job/:jobId" element={<JobDescription />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/job/:jobId" element={<JobDescription />} />
 
-        {/* Job Route End  */}
+          {/* Job Route End  */}
 
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route
-          path="/dashboard"
-          element={
-            <RequireAuth>
-              <Dashboard/>
-            </RequireAuth>
-          }
-        >
-          <Route index element={<WelcomeDashboard />} />
-          <Route path="job/addNew" element={<AddNewJob />} />
-          <Route path="/dashboard/employers" element={<Employers/>}/>
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/login/candidate" element={<Login />} />
+          <Route path="/login/hr" element={<LoginForHr />} />
+          <Route path="/signUp/candidate" element={<SignUp />} />
+          <Route path="/signUp/hr" element={<SignUpHr />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          >
+            <Route index element={<WelcomeDashboard />} />
+            <Route path="job/addNew" element={<AddNewJob />} />
+            <Route path="/dashboard/profile" element={<Profile />} />
+            <Route path="/dashboard/employers" element={<Employers />} />
           </Route>
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
-      <ScrollButton />
-      <Toaster />
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+        <ScrollButton />
+        <Toaster />
       </InitializeContext.Provider>
     </div>
   );
