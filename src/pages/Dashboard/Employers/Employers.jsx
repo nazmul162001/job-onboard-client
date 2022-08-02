@@ -2,6 +2,45 @@ import React from "react";
 import { BsShieldPlus } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
 const Employers = () => {
+  const employees = [
+    {
+      id: 1,
+      name: "Arifin Khan",
+      email: "arifinkhan@gmail.com",
+      location: "Dhaka Bangladesh",
+    },
+    {
+      id: 2,
+      name: "Shawon Mondol Gopal ",
+      email: "shawon@gmail.com",
+      location: "Dhaka Bangladesh",
+    },
+    {
+      id: 3,
+      name: "Nazmul Hasan",
+      email: "nazmulhasan@gmail.com",
+      location: "Dhaka Bangladesh",
+    },
+    {
+      id: 4,
+      name: "Toufiq Hasan Kiron",
+      email: "kiron0@gmail.com",
+      location: "Dhaka Bangladesh",
+    },
+    {
+      id: 5,
+      name: "Sajal Howlader",
+      email: "sajal@gmail.com",
+      location: "Dhaka Bangladesh",
+    },
+    {
+      id: 6,
+      name: "Emtiaz Hossain Emaon",
+      email: "emtiazemaon@gmail.com",
+      location: "Dhaka Bangladesh",
+    },
+  ];
+
   return (
     <section>
       {/* Modal for add employeers */}
