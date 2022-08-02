@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { CgMenuLeftAlt } from "react-icons/cg";
+import { BiLogInCircle } from "react-icons/bi";
 import { toast } from "react-hot-toast";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -18,7 +19,7 @@ const Navbar = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
     toast.success(`Thank you, ${user.displayName} to stay with us!`, {
-      position: "bottom-left",
+      position: "top-center",
       autoClose: 5000,
     });
   };
@@ -46,7 +47,7 @@ const Navbar = () => {
             <button
               aria-label="Open Menu"
               title="Open Menu"
-              className="p-2 mr-1 transition duration-200 focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900 lg:hidden border rounded-lg"
+              className="p-2 mr-1 transition duration-200 focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900 lg:hidden rounded-lg"
               onClick={() => setIsMenuOpen(true)}
             >
               <CgMenuLeftAlt className="text-3xl" />
@@ -162,23 +163,50 @@ const Navbar = () => {
                     About Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="login"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                <div class="dropdown dropdown-end">
+                  <label
+                    tabindex="0"
+                    class="m-1 font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200 cursor-pointer"
                   >
                     Login
-                  </NavLink>
-                </li>
-                <li>
-                  <Link to="/signUp" className="btn btn-primary">
+                  </label>
+                  <ul
+                    tabindex="0"
+                    class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-64"
+                  >
+                    <li>
+                      <Link to="login/candidate" className="">
+                        As a Candidate
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="login/hr" className="">
+                        As a HR Manager
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div class="dropdown dropdown-end">
+                  <label tabindex="0" class="btn btn-primary m-1">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
-                  </Link>
-                </li>
+                  </label>
+                  <ul
+                    tabindex="0"
+                    class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-64"
+                  >
+                    <li>
+                      <Link to="signUp/candidate" className="">
+                        As a Candidate
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="signUp/candidate" className="">
+                        As a Hr Manager
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
                 {/* <li>
                   <button
                     onClick={handleThemeChange}
@@ -262,12 +290,23 @@ const Navbar = () => {
                   </ul>
                 </div>
               ) : (
-                <Link
-                  to="/login"
-                  className="join-button-mobile btn btn-primary"
-                >
-                  Login
-                </Link>
+                <div class="dropdown dropdown-end">
+                  <label tabindex="0" class="btn btn-primary text-white">
+                    <BiLogInCircle className="mr-1" />
+                    Login
+                  </label>
+                  <ul
+                    tabindex="0"
+                    class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link to="login/candidate">As a Candidate</Link>
+                    </li>
+                    <li>
+                      <Link to="login/hr">As a Hr Manager</Link>
+                    </li>
+                  </ul>
+                </div>
               )}
 
               {isMenuOpen && (
@@ -326,15 +365,35 @@ const Navbar = () => {
                           </NavLink>
                         </li>
                         {!user ? (
-                          <li>
-                            <NavLink
-                              to="/signUp"
-                              className="join-button-mobile btn btn-primary"
-                              onClick={() => setIsMenuOpen(false)}
+                          <div class="dropdown">
+                            <label
+                              tabindex="0"
+                              class="join-button-mobile btn btn-primary"
                             >
                               Get Started
-                            </NavLink>
-                          </li>
+                            </label>
+                            <ul
+                              tabindex="0"
+                              class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
+                            >
+                              <li>
+                                <Link
+                                  to="signUp/candidate"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  As a Candidate
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  to="signUp/hr"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  As a Hr Manager
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
                         ) : (
                           <></>
                         )}

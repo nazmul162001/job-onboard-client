@@ -31,7 +31,7 @@ const Login = () => {
       navigate(from, { replace: true });
       toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
         autoClose: 4000,
-        position: "bottom-left",
+        position: "top-center",
       });
     }
   }, [ navigate, from, user, gUser ]);
@@ -56,7 +56,7 @@ const Login = () => {
     <div className="flex h-[85vh] justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Login</h2>
+          <h2 className="text-center text-2xl font-bold">Login For Candidate</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-sm">
               <label className="label">
@@ -140,7 +140,7 @@ const Login = () => {
           <p className="text-center font-semibold">
             <small>
               Don't have an account?{" "}
-              <Link className="text-primary" to="/signUp">
+              <Link className="text-primary" to="/signUp/candidate">
                 Create New Account
               </Link>
             </small>
