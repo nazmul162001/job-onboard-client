@@ -7,7 +7,6 @@ p {
 
 .empoyeeContainer {
   position: relative;
-  transition: 5s;
 }
 
 .employeInfo {
@@ -16,16 +15,20 @@ p {
   bottom: 0;
   height: 90%;
   width: 88%;
-  display: none;
+  visibility: hidden;
   background: #ffffff;
   border-top-left-radius: 80px;
+  transition: 0.2s;
+  transform: scaleY(0.5);
+  transition-timing-function: ease-in-out;
 }
 .fontInfo {
   font-size: 12px;
   padding: 5px 0px;
 }
 .empoyeeContainer:hover .employeInfo {
-  display: block;
+  visibility: visible;
+  transform: scaleY(1);
 }
 .empoyeeContainer:hover .avaterInfo {
   background: transparent;
