@@ -1,0 +1,6 @@
+.main_dashboard{
+  background-color: rgb(235,239,243);
+  display: grid;
+  grid-template-columns: 70% auto;
+  gap: 10px;
+}
