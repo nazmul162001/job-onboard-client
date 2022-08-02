@@ -50,7 +50,7 @@ const WhyJobOnboard = () => {
             alt="why-jobOnboard-img"
           />
         </div>
-        <div className="gap-y-9 flex flex-col justify-center ">
+        <div className="gap-y-6 flex flex-col justify-center ">
           {onBoardData.map((button) => (
             <button
               onClick={() => setImage(button.url)}
