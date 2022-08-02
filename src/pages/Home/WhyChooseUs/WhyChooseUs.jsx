@@ -3,7 +3,6 @@ import discover from '../../../assets/images/whyChooseUs/feature11.png'
 import recruit from '../../../assets/images/whyChooseUs/feature22.png'
 import prescreen from '../../../assets/images/whyChooseUs/feature33.png'
 import hire from '../../../assets/images/whyChooseUs/feature44.png'
-import arrow from '../../../assets/images/whyChooseUs/arrow.png'
 
 const WhyChooseUs = () => {
   return (
@@ -55,26 +54,6 @@ const WhyChooseUs = () => {
             </div>
           </div> {/** END */}
         </div>
-        {/* <div className="feature_value">
-          <div className="value_added flex flex-col md:flex-row justify-center items-center mx-auto my-8 pt-8">
-            <div className="arrow-left">
-              <img src={arrow} alt="leftArrow" />
-            </div>
-            <div className="centered text-2xl md:text-4xl font-bold opacity-70">VALUE-ADDED</div>
-            <div className="arrow-right">
-              <img className='rotate-180' src={arrow} alt="rightArrow" />
-            </div>
-          </div>
-          <div className="value_main flex justify-center flex-wrap space-x-5">
-            <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Dedicated Account Manage</p>
-
-            <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Safety Committee Board</p>
-
-            <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Certified WBE</p>
-
-            <p className='flex justify-center items-center mr-2 mb-1'> <span className=' mr-2 inline-block'><input type="checkbox" checked="checked" class="checkbox checkbox-xs checkbox-primary" /> </span>Certified Small Business</p>
-          </div>
-        </div> */}
       </div>
 
     </section>
