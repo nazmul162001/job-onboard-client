@@ -1,0 +1,33 @@
+
+p {
+  color: #525289;
+}
+
+.empoyeeContainer {
+  position: relative;
+}
+
+.employeInfo {
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  height: 90%;
+  width: 88%;
+  visibility: hidden;
+  background: #ffffff;
+  border-top-left-radius: 80px;
+  transition: 0.2s;
+  transform: scaleY(0);
+  transition-timing-function: ease-in-out;
+}
+.fontInfo {
+  font-size: 12px;
+  padding: 5px 0px;
+}
+.empoyeeContainer:hover .employeInfo {
+  visibility: visible;
+  transform: scaleY(1);
+}
+.empoyeeContainer:hover .avaterInfo {
+  background: transparent;
+}

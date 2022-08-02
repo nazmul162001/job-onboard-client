@@ -7,6 +7,7 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
 import auth from "../../../components/Firebase/Firebase.init";
 import { AiOutlinePlus } from 'react-icons/ai';
+import { FaUsers } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -102,6 +103,9 @@ const Dashboard = () => {
           </div>
           <li className="py-2 mt-4">
             <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/dashboard/employers">
+              <FaUsers /> Employers
+            </NavLink>
           </li>
         </ul>
       </div>

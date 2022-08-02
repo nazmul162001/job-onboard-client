@@ -18,6 +18,7 @@ import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboard";
 import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
 import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
+import Employers from "./pages/Dashboard/Employers/Employers";
 export const InitializeContext = createContext(null)
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
         >
           <Route index element={<WelcomeDashboard />} />
           <Route path="job/addNew" element={<AddNewJob />} />
+          <Route path="/dashboard/employers" element={<Employers/>}/>
           </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
