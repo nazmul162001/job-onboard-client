@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
   return (
     <section className='why_choose_us my-12 px-5 container mx-auto '>
       {/* Feature title  */}
-      <h2 className='text-center text-2xl md:text-4xl font-bold text-black pt-8 lg:pt-0 pb-5'>Why Choose Us</h2>
+      <h2 className='text-center text-2xl md:text-4xl font-bold  pt-8 lg:pt-0 pb-5'>Why Choose Us</h2>
       <div className="line w-32 rounded-full opacity-70 h-1 mx-auto bg-primary mt-2"></div>
       <p className='text-center text-xl py-8'>User satisfaction is our main priority. There are many Great <br></br> reasons to trust in  Job On Board</p>
       {/* Feature card */}

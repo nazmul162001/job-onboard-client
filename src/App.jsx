@@ -1,21 +1,24 @@
-import { createContext, useEffect, useState } from "react";
-import { Toaster } from "react-hot-toast";
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ScrollButton from "./components/ScrollButton/ScrollButton";
+import { createContext } from "react";
+import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Shared/Navbar/Navbar";
-import NotFound from "./components/Shared/NotFound/NotFound";
-import AboutUs from "./pages/AboutUs/AboutUs";
-import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
-import Employers from "./pages/Dashboard/Employers/Employers";
-import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboard";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home/Home";
-import Jobs from "./pages/Jobs/Jobs";
-import Login from "./pages/Login/Login/Login";
-import RequireAuth from "./pages/Login/RequireAuth/RequireAuth";
-import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
-import SignUp from "./pages/Login/SignUp/SignUp";
 import Team from "./pages/Team/Team";
+import NotFound from "./components/Shared/NotFound/NotFound";
+import { useEffect, useState } from "react";
+import ScrollButton from "./components/ScrollButton/ScrollButton";
+import Login from "./pages/Login/Login/Login";
+import SignUp from "./pages/Login/SignUp/SignUp";
+import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Jobs from "./pages/Jobs/Jobs";
+import RequireAuth from "./pages/Login/RequireAuth/RequireAuth";
+import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboard";
+import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
+import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
+import Employers from "./pages/Dashboard/Employers/Employers";
 export const InitializeContext = createContext(null)
 
 function App() {
@@ -35,7 +38,13 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* Job Route Start */}
+
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/job/:jobId" element={<JobDescription />} />
+
+        {/* Job Route End  */}
+
         <Route path="/about" element={<AboutUs />} />
         <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
@@ -50,6 +59,7 @@ function App() {
           }
         >
           <Route index element={<WelcomeDashboard />} />
+          <Route path="job/addNew" element={<AddNewJob />} />
           <Route path="/dashboard/employers" element={<Employers/>}/>
           </Route>
         <Route path="*" element={<NotFound />}></Route>
