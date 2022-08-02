@@ -6,13 +6,13 @@ import auth from '../../../components/Firebase/Firebase.init';
 
 const AddNewJob = () => {
   const [user] = useAuthState(auth)
-  // console.log(user);
   const [value, setValue] = useState()
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const hrName = user?.displayName
 
   const addJob = async (data) => {
-    const getData = { ...data, value }
-    console.log(getData);
+    const getJobData = { ...data, value , hrName }
+    console.log(getJobData);
   }
   return (
     <div className='card container mx-auto border p-5 my-2'>
@@ -58,10 +58,10 @@ const AddNewJob = () => {
           </div>
 
           <div className='flex flex-col space-y-1 gap-y-1'>
-            <label className='text-sm pl-2'>Company Location <span className='text-red-500'>*</span></label>
+            <label className='text-sm pl-2'>Work Location <span className='text-red-500'>*</span></label>
             <input
               type="text"
-              placeholder='Company Location'
+              placeholder='Work Location'
               className='border py-1 rounded-lg pl-3 '
               {...register('location', {
                 required: {
@@ -74,7 +74,9 @@ const AddNewJob = () => {
           </div>
         </div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
+        <JobPostEditor value={value} setValue={setValue}  />
+
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 pt-20 md:pt-16'>
 
           <div className='flex flex-col gap-y-1'>
             <label htmlFor="category" className='text-sm pl-2'>Job Category <span className='text-red-500'>*</span></label>
@@ -164,10 +166,7 @@ const AddNewJob = () => {
             />
           </div>
 
-
         </div>
-
-        {/* <JobPostEditor value={value} setValue={setValue}  /> */}
 
         <div>
           <button className='px-5 py-3 border bg-primary rounded-lg text-white'>

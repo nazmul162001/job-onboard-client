@@ -7,20 +7,23 @@ const JobPostEditor = ({ value, setValue}) => {
 
   const modules = {
     toolbar: [
+      [{ 'size': ['small', false, 'large', 'huge'] }],
       [{ 'header': '1' }, { 'header': '2' },],
-      ['bold', 'italic', 'underline', 'blockquote'],
+      ['bold', 'italic', 'underline','strike', 'blockquote'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' },
       { 'indent': '-1' }, { 'indent': '+1' }],
       ['link', ],
+      [{ 'color': [] }, { 'background': [] }],
+      ['clean']
     ],
   };
 
   const placeholder = 'Write description ...';
 
-  const formats = ['header',
-    'bold', 'italic', 'underline', 'blockquote',
+  const formats = ['size', 'header', 
+    'bold', 'italic', 'underline','strike ', 'blockquote',
     'list', 'bullet', 'indent',
-    'link', ];
+    'link', 'color','background' , 'clean'];
 
   const { quill , quillRef } = useQuill({ modules, formats, placeholder });
 
@@ -35,12 +38,9 @@ const JobPostEditor = ({ value, setValue}) => {
   }, [quill, quillRef , setValue]); 
 
   return (
-    <div className='container mx-auto  flex '>
-      <div style={{  height: 200 }}>
+    <div className='container mx-auto flex '>
+      <div style={{ width:1440 , height:250 }} >
         <div ref={quillRef} />
-      </div>
-      <div dangerouslySetInnerHTML={{__html:value}}>
-
       </div>
     </div>
   );
