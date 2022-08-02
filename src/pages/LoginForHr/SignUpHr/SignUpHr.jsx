@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
 import Loading from "../../../components/Shared/Loading/Loading";
 
-const SignUp = () => {
+const SignUpHr = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -55,7 +55,7 @@ const SignUp = () => {
     <div className="flex h-[85vh] md:h-screen justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Sign Up For Candidate</h2>
+          <h2 className="text-center text-2xl font-bold">Sign Up For Hr Manager</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-sm">
               <label className="label">
@@ -156,7 +156,7 @@ const SignUp = () => {
           <p className="text-center font-semibold">
             <small>
               Already have an account?{" "}
-              <Link className="text-primary" to="/login/candidate">
+              <Link className="text-primary" to="/login/hr">
                 Login
               </Link>
             </small>
@@ -174,4 +174,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpHr;

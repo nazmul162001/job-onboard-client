@@ -1,92 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
-  useCreateUserWithEmailAndPassword,
+  useSignInWithEmailAndPassword,
   useSignInWithGoogle,
-  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import toast from "react-hot-toast";
+import Loading from "../../../components/Shared/Loading/Loading"
+import { toast } from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
-import Loading from "../../../components/Shared/Loading/Loading";
 
-const SignUp = () => {
+const LoginForHr = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
-  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-  const navigate = useNavigate();
 
   let signInError;
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
-  if (loading || gLoading || updating) {
+  useEffect(() => {
+    if (user || gUser) {
+      navigate(from, { replace: true });
+      toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
+        autoClose: 4000,
+        position: "top-center",
+      });
+    }
+  }, [ navigate, from, user, gUser ]);
+
+  if (loading || gLoading) {
     return <Loading></Loading>
   }
 
-  if (error || gError || updateError) {
+  if (error || gError) {
     signInError = (
       <p className="text-red-500">
-        <small>
-          {error?.message || gError?.message || updateError?.message}
-        </small>
+        <small>{error?.message || gError?.message}</small>
       </p>
     );
   }
 
-  if (user || gUser) {
-    navigate("/", { replace: true });
-  }
-
-  const onSubmit = async (data) => {
-    await createUserWithEmailAndPassword(data.email, data.password);
-    await updateProfile({ displayName: data.name });
-    toast.success(`Welcome ${data.name}! You are now registered.`,{
-      position: "top-center",
-    });
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
   };
+
   return (
-    <div className="flex h-[85vh] md:h-screen justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
+    <div className="flex h-[85vh] justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Sign Up For Candidate</h2>
+          <h2 className="text-center text-2xl font-bold">Login For Hr Manager</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-sm">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="input input-bordered w-full max-w-sm"
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "Name is Required",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.name.message}
-                  </span>
-                )}
-              </label>
-            </div>
-
             <div className="form-control w-full max-w-sm">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 className="input input-bordered w-full max-w-sm"
                 {...register("email", {
@@ -132,6 +110,12 @@ const SignUp = () => {
                   },
                 })}
               />
+              <Link
+                to="/resetPassword"
+                className="text-xs text-secondary py-2 hover:text-primary font-semibold"
+              >
+                Forget password ?
+              </Link>
               <label className="label">
                 {errors.password?.type === "required" && (
                   <span className="label-text-alt text-red-500">
@@ -148,16 +132,16 @@ const SignUp = () => {
 
             {signInError}
             <input
-              className="btn w-full max-w-sm text-white btn-primary"
+              className="btn btn-primary w-full max-w-sm text-white"
               type="submit"
-              value="Sign Up"
+              value="Login"
             />
           </form>
           <p className="text-center font-semibold">
             <small>
-              Already have an account?{" "}
-              <Link className="text-primary" to="/login/candidate">
-                Login
+              Don't have an account?{" "}
+              <Link className="text-primary" to="/signUp/hr">
+                Create New Account
               </Link>
             </small>
           </p>
@@ -166,7 +150,7 @@ const SignUp = () => {
             onClick={() => signInWithGoogle()}
             className="btn btn-outline border-primary flex items-center content-center rounded-full hover:btn-primary"
           >
-            <FcGoogle className="text-2xl mr-2"></FcGoogle>SignUp with Google
+            <FcGoogle className="text-2xl mr-2"></FcGoogle>Login with Google
           </button>
         </div>
       </div>
@@ -174,4 +158,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default LoginForHr;
