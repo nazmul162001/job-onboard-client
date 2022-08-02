@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import useTitle from "../../../hooks/useTitle";
 import auth from "../../../components/Firebase/Firebase.init";
 import './WelcomeDashboard.css'
+import DashboardReferrals from "../DashboardReferrals/DashboardReferrals";
 
 const WelcomeDashboard = () => {
   useTitle("Welcome Dashboard");
@@ -11,11 +12,16 @@ const WelcomeDashboard = () => {
     <div className="">
       {user && (
         <div className="">
-          <section className="h-screen main_dashboard static z-10 ">
+          <section className="h-full main_dashboard static z-10 ">
+            {/* main dashboard  */}
+            <div className="content_left">
             <div className="dashboard_route h-72 bg-white m-5">
               <h2 className="p-5 text-xl font-bold">Interview for me</h2>
             </div>
-            <aside className="bg-white">
+              <DashboardReferrals />
+            </div>
+            {/* aside bar  */}
+            <aside className="bg-white h-full">
               <h2 className="text-center p-5">My sidebar</h2>
             </aside>
           </section>
