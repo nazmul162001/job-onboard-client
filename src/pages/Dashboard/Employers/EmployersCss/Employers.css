@@ -19,7 +19,7 @@ p {
   background: #ffffff;
   border-top-left-radius: 80px;
   transition: 0.2s;
-  transform: scaleY(0.5);
+  transform: scaleY(0);
   transition-timing-function: ease-in-out;
 }
 .fontInfo {
