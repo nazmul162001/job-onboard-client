@@ -174,7 +174,7 @@ const Navbar = () => {
                     tabindex="0"
                     class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-64"
                   >
-                    <li>
+                    <li className="pb-2">
                       <Link to="login/candidate" className="">
                         As a Candidate
                       </Link>
@@ -195,13 +195,13 @@ const Navbar = () => {
                     tabindex="0"
                     class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-64"
                   >
-                    <li>
+                    <li className="pb-2">
                       <Link to="signUp/candidate" className="">
                         As a Candidate
                       </Link>
                     </li>
                     <li>
-                      <Link to="signUp/candidate" className="">
+                      <Link to="signUp/hr" className="">
                         As a Hr Manager
                       </Link>
                     </li>
@@ -299,7 +299,7 @@ const Navbar = () => {
                     tabindex="0"
                     class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
                   >
-                    <li>
+                    <li className="pb-1">
                       <Link to="login/candidate">As a Candidate</Link>
                     </li>
                     <li>
@@ -376,7 +376,7 @@ const Navbar = () => {
                               tabindex="0"
                               class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
                             >
-                              <li>
+                              <li className="pb-1">
                                 <Link
                                   to="signUp/candidate"
                                   onClick={() => setIsMenuOpen(false)}

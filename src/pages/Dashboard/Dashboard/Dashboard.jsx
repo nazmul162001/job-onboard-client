@@ -114,30 +114,34 @@ const Dashboard = () => {
             </Link>
           </div>
           <li className="py-2 mt-4 font-semibold">
-            <NavLink to="/dashboard" className='py-4 lg:text-lg'>Dashboard</NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/profile" className='py-4 lg:text-lg'>Profile</NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
-             Employers
+            <NavLink to="/dashboard" className="py-4 lg:text-lg">
+              Dashboard
             </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/Task" className='py-4 lg:text-lg'>
+            <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
+              Profile
+            </NavLink>
+          </li>
+          <li className="py-1 font-semibold">
+            <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
+              Employers
+            </NavLink>
+          </li>
+          <li className="py-1 font-semibold">
+            <NavLink to="/dashboard/Task" className="py-4 lg:text-lg">
               Task
             </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/hire" className='py-4 lg:text-lg'>
+            <NavLink to="/dashboard/hire" className="py-4 lg:text-lg">
               Hire
             </NavLink>
           </li>
           <li className={"lg:pt-80"}>
             <button
               onClick={handleLogOut}
-              className="bg-primary rounded-lg text-white"
+              className="bg-primary rounded-lg py-4 lg:text-lg text-white"
             >
               <FiLogOut /> Logout
             </button>
