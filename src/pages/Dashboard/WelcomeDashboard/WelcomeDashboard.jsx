@@ -4,6 +4,8 @@ import useTitle from "../../../hooks/useTitle";
 import auth from "../../../components/Firebase/Firebase.init";
 import './WelcomeDashboard.css'
 import DashboardReferrals from "../DashboardReferrals/DashboardReferrals";
+import DashboardCelebration from "../DashboardCelebration/DashboardCelebration";
+import DashboardNewJoinees from "../DashboardNewJoinees/DashboardNewJoinees";
 
 const WelcomeDashboard = () => {
   useTitle("Welcome Dashboard");
@@ -19,6 +21,8 @@ const WelcomeDashboard = () => {
               <h2 className="p-5 text-xl font-bold">Interview for me</h2>
             </div>
               <DashboardReferrals />
+              <DashboardCelebration />
+              <DashboardNewJoinees />
             </div>
             {/* aside bar  */}
             <aside className="bg-white h-full">
