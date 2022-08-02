@@ -1,4 +1,6 @@
 import React from "react";
+import { AiFillEdit, AiOutlineMail } from "react-icons/ai";
+import { MdLocationOn } from "react-icons/md";
 import "./EmployersCss/Employers.css";
 const AllEmployee = ({ employe }) => {
   const { id, name, location, email } = employe;
@@ -15,14 +17,20 @@ const AllEmployee = ({ employe }) => {
           </div>
           <p class=" text-indigo-600">{name}</p>
         </div>
-        <div className="employeInfo ml-4">
-          <input type="radio" name="" id="" />
+        <div className="employeInfo ml-2">
+          <AiFillEdit className="ml-40" />
           <div className="mt-24">
             <p>{name}</p>
             <p>{id}</p>
             <hr />
-            <p>{email}</p>
-            <p>{location}</p>
+            <p className="flex items-center">
+              <AiOutlineMail />
+              {email}
+            </p>
+            <p className="flex items-center">
+              <MdLocationOn />
+              {location}
+            </p>
           </div>
         </div>
       </div>
