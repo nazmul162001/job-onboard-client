@@ -20,6 +20,10 @@ p {
   background: #ffffff;
   border-top-left-radius: 80px;
 }
+.fontInfo {
+  font-size: 12px;
+  padding: 5px 0px;
+}
 .empoyeeContainer:hover .employeInfo {
   display: block;
 }

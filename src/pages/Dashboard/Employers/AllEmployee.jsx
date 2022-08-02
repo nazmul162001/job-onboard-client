@@ -23,12 +23,12 @@ const AllEmployee = ({ employe }) => {
             <p>{name}</p>
             <p>{id}</p>
             <hr />
-            <p className="flex items-center">
-              <AiOutlineMail />
+            <p className="fontInfo flex items-center text-xs">
+              <AiOutlineMail className="mr-3" />
               {email}
             </p>
-            <p className="flex items-center">
-              <MdLocationOn />
+            <p className="fontInfo flex items-center text-xs">
+              <MdLocationOn className="mr-3" />
               {location}
             </p>
           </div>
