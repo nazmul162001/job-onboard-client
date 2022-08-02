@@ -1,0 +1,28 @@
+.drawer-side {
+  width: 100px;
+}
+p {
+  color: #525289;
+}
+
+.empoyeeContainer {
+  position: relative;
+  transition: 5s;
+}
+
+.employeInfo {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  background: white;
+  height: 90%;
+  width: 88%;
+  display: none;
+  background: white;
+}
+.empoyeeContainer:hover .employeInfo {
+  display: block;
+}
+.empoyeeContainer:hover .avaterInfo {
+  background: transparent;
+}

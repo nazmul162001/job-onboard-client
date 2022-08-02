@@ -49,7 +49,7 @@ const Employers = () => {
   ];
 
   return (
-    <section>
+    <section className="">
       {/* Modal for add employeers */}
       <div>
         <input type="checkbox" id="emoployee-modal" class="modal-toggle" />
