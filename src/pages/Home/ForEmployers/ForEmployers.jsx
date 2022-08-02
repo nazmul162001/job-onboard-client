@@ -9,7 +9,7 @@ const ForEmployers = () => {
   return (
     <section className="container mx-auto px-2  mt-16 md:mt-8  md:py-16 bg-base-100">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
-        <h1 className="text-center text-2xl md:text-4xl font-bold text-black">
+        <h1 className="text-center text-2xl md:text-4xl font-bold ">
           For Employers
         </h1>
 

@@ -38,7 +38,7 @@ const WhyJobOnboard = () => {
 
   return (
     <div className="py-8 mb-12 lg:mb-0 lg:mt-5 bg-base-300 px-12 lg:px-0 rounded-[40px] container mx-auto">
-      <h2 className="text-center text-2xl md:text-4xl font-bold text-black pb-5">
+      <h2 className="text-center text-2xl md:text-4xl font-bold pb-5">
         Why Job Onboard{" "}
       </h2>
       <div className="line w-28 md:w-40 rounded-full opacity-70 h-1 mx-auto bg-primary mb-4"></div>
