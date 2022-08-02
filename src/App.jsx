@@ -1,21 +1,21 @@
-import "./App.css";
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import Navbar from "./components/Shared/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home/Home";
-import Team from "./pages/Team/Team";
-import NotFound from "./components/Shared/NotFound/NotFound";
-import { useEffect, useState } from "react";
+import "./App.css";
 import ScrollButton from "./components/ScrollButton/ScrollButton";
-import Login from "./pages/Login/Login/Login";
-import SignUp from "./pages/Login/SignUp/SignUp";
-import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
+import Navbar from "./components/Shared/Navbar/Navbar";
+import NotFound from "./components/Shared/NotFound/NotFound";
 import AboutUs from "./pages/AboutUs/AboutUs";
-import Jobs from "./pages/Jobs/Jobs";
-import RequireAuth from "./pages/Login/RequireAuth/RequireAuth";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import Employers from "./pages/Dashboard/Employers/Employers";
 import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboard";
+import Home from "./pages/Home/Home/Home";
+import Jobs from "./pages/Jobs/Jobs";
+import Login from "./pages/Login/Login/Login";
+import RequireAuth from "./pages/Login/RequireAuth/RequireAuth";
+import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
+import SignUp from "./pages/Login/SignUp/SignUp";
+import Team from "./pages/Team/Team";
 export const InitializeContext = createContext(null)
 
 function App() {
@@ -50,6 +50,7 @@ function App() {
           }
         >
           <Route index element={<WelcomeDashboard />} />
+          <Route path="/dashboard/employers" element={<Employers/>}/>
           </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
