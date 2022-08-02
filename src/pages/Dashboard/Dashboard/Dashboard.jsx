@@ -43,7 +43,7 @@ const Dashboard = () => {
           </Link>
           <div className="flex justify-center items-center gap-8">
             <div className="hidden md:block dropdown dropdown-end">
-              <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1"> <span><AiOutlinePlus /></span> Add New</button>
+              <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1"> <AiOutlinePlus /> Add New</button>
               <ul
                 tabIndex="0"
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
@@ -91,7 +91,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-full bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
@@ -101,7 +101,7 @@ const Dashboard = () => {
               Job Onboard
             </Link>
           </div>
-          <li className="py-2 mt-4">
+          <li className="py-2 my-4 space-y-1">
             <NavLink to="/dashboard">Dashboard</NavLink>
             <NavLink to="/dashboard/employers">
               <FaUsers /> Employers
