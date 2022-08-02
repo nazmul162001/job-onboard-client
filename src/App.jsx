@@ -17,6 +17,7 @@ import RequireAuth from "./pages/Login/RequireAuth/RequireAuth";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboard";
 import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
+import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
 export const InitializeContext = createContext(null)
 
 function App() {
@@ -41,8 +42,8 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/job/:jobId" element={<JobDescription />} />
 
-
         {/* Job Route End  */}
+
         <Route path="/about" element={<AboutUs />} />
         <Route path="/team" element={<Team />} />
         <Route path="/login" element={<Login />} />
@@ -57,6 +58,7 @@ function App() {
           }
         >
           <Route index element={<WelcomeDashboard />} />
+          <Route path="job/addNew" element={<AddNewJob />} />
           </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>

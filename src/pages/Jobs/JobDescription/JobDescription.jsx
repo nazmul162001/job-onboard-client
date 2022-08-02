@@ -10,7 +10,7 @@ const JobDescription = () => {
 
   return (
     <div>
-      <h2>Job description {jobId} {job?.jobName} </h2>
+      <h2>Job description  {job?.jobName} </h2> 
     </div>
   );
 };
