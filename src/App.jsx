@@ -1,4 +1,6 @@
 import "./App.css";
+import { createContext } from "react";
+import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Shared/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home/Home";
@@ -11,6 +13,10 @@ import SignUp from "./pages/Login/SignUp/SignUp";
 import ResetPassword from "./pages/Login/ResetPassword/ResetPassword";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Jobs from "./pages/Jobs/Jobs";
+import RequireAuth from "./pages/Login/RequireAuth/RequireAuth";
+import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import WelcomeDashboard from "./pages/Dashboard/WelcomeDashboard/WelcomeDashboard";
+export const InitializeContext = createContext(null)
 
 function App() {
   const [theme, setTheme] = useState(false);
@@ -25,7 +31,8 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-      <Navbar handleThemeChange={handleThemeChange} theme={theme} />
+      <InitializeContext.Provider value={{handleThemeChange, theme}}>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs" element={<Jobs />} />
@@ -34,9 +41,21 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard/>
+            </RequireAuth>
+          }
+        >
+          <Route index element={<WelcomeDashboard />} />
+          </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <ScrollButton />
+      <Toaster />
+      </InitializeContext.Provider>
     </div>
   );
 }

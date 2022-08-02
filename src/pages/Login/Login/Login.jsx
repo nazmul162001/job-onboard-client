@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import Loading from "../../../components/Shared/Loading/Loading"
 import { toast } from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
 
@@ -30,16 +31,13 @@ const Login = () => {
       navigate(from, { replace: true });
       toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
         autoClose: 4000,
+        position: "bottom-left",
       });
     }
   }, [ navigate, from, user, gUser ]);
 
   if (loading || gLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <button class="btn btn-square loading"></button>
-      </div>
-    );
+    return <Loading></Loading>
   }
 
   if (error || gError) {
@@ -55,8 +53,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
-      <div className="card w-full max-w-md bg-base-100 shadow-lg">
+    <div className="flex h-[85vh] justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
+      <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
           <h2 className="text-center text-2xl font-bold">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>

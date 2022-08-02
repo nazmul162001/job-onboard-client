@@ -1,15 +1,27 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { BsGrid } from "react-icons/bs";
+import { CgMenuLeftAlt } from "react-icons/cg";
+import { toast } from "react-hot-toast";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
+import { InitializeContext } from "../../../App";
 
-const Navbar = ({ handleThemeChange, theme }) => {
+const Navbar = () => {
+  const { handleThemeChange, theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogOut = () => {
+    signOut(auth);
+    localStorage.removeItem("accessToken");
+    toast.success(`Thank you, ${user.displayName} to stay with us!`, {
+      position: "bottom-left",
+      autoClose: 5000,
+    });
+  };
 
   let activeStyle = {
     position: "relative",
@@ -19,10 +31,10 @@ const Navbar = ({ handleThemeChange, theme }) => {
   };
 
   return (
-    <div className="fixed top-0 w-full z-50">
+    <div className="sticky top-0 w-full z-50">
       <header
-        className='drawer-content flex flex-col bg-base-100
-          shadow-md'
+        className="drawer-content flex flex-col bg-base-100
+          shadow-md"
         style={
           pathname.includes("dashboard")
             ? { display: "none" }
@@ -31,6 +43,14 @@ const Navbar = ({ handleThemeChange, theme }) => {
       >
         <nav className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
+            <button
+              aria-label="Open Menu"
+              title="Open Menu"
+              className="p-2 mr-1 transition duration-200 focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900 lg:hidden border rounded-lg"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <CgMenuLeftAlt className="text-3xl" />
+            </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
                 <span className="text-xl font-bold">Job Onboard</span>
@@ -62,26 +82,37 @@ const Navbar = ({ handleThemeChange, theme }) => {
                     About Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/dashboard"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-ghost btn-circle avatar"
                   >
-                    Dashboard
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/"
-                    onClick={() => signOut(auth)}
-                    className="btn btn-primary text-white"
+                    <div
+                      style={{ display: "grid" }}
+                      className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                    >
+                      {auth?.currentUser?.photoURL ? (
+                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      ) : (
+                        <img
+                          src="https://placeimg.com/80/80/people"
+                          alt="profile"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    Log Out
-                  </NavLink>
-                </li>
+                    <li>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
                 {/* <li>
                   <button
                     onClick={handleThemeChange}
@@ -198,14 +229,46 @@ const Navbar = ({ handleThemeChange, theme }) => {
                   </svg>
                 )}
               </button> */}
-              <button
-                aria-label="Open Menu"
-                title="Open Menu"
-                className="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900"
-                onClick={() => setIsMenuOpen(true)}
-              >
-                <BsGrid className="text-3xl" />
-              </button>
+              {user ? (
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex="0"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div
+                      style={{ display: "grid" }}
+                      className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
+                    >
+                      {auth?.currentUser?.photoURL ? (
+                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      ) : (
+                        <img
+                          src="https://placeimg.com/80/80/people"
+                          alt="profile"
+                        />
+                      )}
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex="0"
+                    className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="join-button-mobile btn btn-primary"
+                >
+                  Login
+                </Link>
+              )}
 
               {isMenuOpen && (
                 <div className={`absolute top-0 left-0 w-full `}>
@@ -262,53 +325,18 @@ const Navbar = ({ handleThemeChange, theme }) => {
                             About
                           </NavLink>
                         </li>
-                        <li>
-                          <NavLink
-                            to="login"
-                            style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                            }
-                            onClick={() => setIsMenuOpen(false)}
-                            className="nav-link-mobile"
-                          >
-                            Login
-                          </NavLink>
-                        </li>
-                        {user ? (
-                          <Fragment>
-                            <li>
-                              <NavLink
-                                to="/dashboard"
-                                onClick={() => setIsMenuOpen(false)}
-                                className="join-button-mobile"
-                                style={({ isActive }) =>
-                                  isActive ? activeStyle : undefined
-                                }
-                              >
-                                Dashboard
-                              </NavLink>
-                            </li>
-                            <li>
-                              <button
-                                onClick={() => signOut(auth)}
-                                className="nav-link-mobile btn btn-primary"
-                              >
-                                Log Out
-                              </button>
-                            </li>
-                          </Fragment>
+                        {!user ? (
+                          <li>
+                            <NavLink
+                              to="/signUp"
+                              className="join-button-mobile btn btn-primary"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              Get Started
+                            </NavLink>
+                          </li>
                         ) : (
-                          <Fragment>
-                            <li>
-                              <NavLink
-                                to="/signUp"
-                                className="join-button-mobile btn btn-primary"
-                                onClick={() => setIsMenuOpen(false)}
-                              >
-                                Get Started
-                              </NavLink>
-                            </li>
-                          </Fragment>
+                          <></>
                         )}
                       </ul>
                     </nav>
