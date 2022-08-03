@@ -1,16 +1,13 @@
-import React from "react";
-import { toast } from "react-hot-toast";
-import { AiOutlineFire } from "react-icons/ai";
-import { BsGrid } from "react-icons/bs";
-import { FiLogOut } from "react-icons/fi";
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-hot-toast";
+import { AiOutlineFire, AiOutlinePlus } from "react-icons/ai";
+import { BsGrid } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import useTitle from "../../../hooks/useTitle";
 import auth from "../../../components/Firebase/Firebase.init";
-import { AiOutlinePlus } from "react-icons/ai";
-import { FaUsers } from "react-icons/fa";
+import useTitle from "../../../hooks/useTitle";
 
 const Dashboard = () => {
   useTitle("Dashboard");

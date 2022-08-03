@@ -5,7 +5,13 @@ p {
 .empoyeeContainer {
   position: relative;
 }
-
+.editBtn {
+  margin-left: 90%;
+}
+.checkbox {
+  position: absolute;
+  z-index: 999;
+}
 .employeInfo {
   position: absolute;
   top: 10px;
