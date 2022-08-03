@@ -21,6 +21,7 @@ import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
 import Employers from "./pages/Dashboard/Employers/Employers";
 import Profile from "./pages/Dashboard/Profile/Profile";
 import SignUpHr from "./pages/LoginForHr/SignUpHr/SignUpHr";
+import Recruitment from "./pages/Dashboard/Recruitment/Recruitment";
 export const InitializeContext = createContext(null);
 
 function App() {
@@ -63,8 +64,9 @@ function App() {
           >
             <Route index element={<WelcomeDashboard />} />
             <Route path="job/addNew" element={<AddNewJob />} />
-            <Route path="/dashboard/profile" element={<Profile />} />
-            <Route path="/dashboard/employers" element={<Employers />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="employers" element={<Employers />} />
+            <Route path="recruitment" element={<Recruitment />} />
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
