@@ -20,7 +20,6 @@ import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
 import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
 import Employers from "./pages/Dashboard/Employers/Employers";
 import Profile from "./pages/Dashboard/Profile/Profile";
-import LoginForHr from "./pages/LoginForHr/LoginForHr/LoginForHr";
 import SignUpHr from "./pages/LoginForHr/SignUpHr/SignUpHr";
 export const InitializeContext = createContext(null);
 
@@ -50,8 +49,7 @@ function App() {
 
           <Route path="/about" element={<AboutUs />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/login/candidate" element={<Login />} />
-          <Route path="/login/hr" element={<LoginForHr />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signUp/candidate" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpHr />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
