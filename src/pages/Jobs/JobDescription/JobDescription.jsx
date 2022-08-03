@@ -34,11 +34,9 @@ const JobDescription = () => {
           </div>
         </div>
       </div>
-      <div className=' py-8 md:px-28 lg:px-12 space-y-5 container mx-auto'>
-        <h2 className='text-lg md:text-2xl lg:text-4xl'>Description : </h2>
-        <div>
-          {job?.value}
-        </div>
+      <div className=' py-8 px-5 md:px-28 lg:px-12 space-y-5 container mx-auto'>
+        <h2 className='text-2xl lg:text-4xl lg:pb-5 font-bold'>Job Description : </h2>
+        <div dangerouslySetInnerHTML={{ __html: job?.value }} className='prose max-w-full prose-h2:my-0 prose-h2:mb-2 prose-p:my-0 prose-p:text-[17px] prose-p:text-[#292828] md:prose-li:text-xl md:prose-ol:text-xl'></div>
       </div>
     </div>
   );

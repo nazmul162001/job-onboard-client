@@ -9,7 +9,7 @@ const JobPostEditor = ({ value, setValue }) => {
   const modules = {
     toolbar: [
       [{ 'size': ['small', false, 'large', 'huge'] }],
-      [{ 'header': '1' }, { 'header': '2' },],
+      [{ 'header': '1' }, { 'header': '2' }, { 'header': '3' },],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' },
       { 'indent': '-1' }, { 'indent': '+1' }],
