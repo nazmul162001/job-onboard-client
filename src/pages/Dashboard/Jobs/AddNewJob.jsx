@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import JobPostEditor from './JobPostEditor';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../components/Firebase/Firebase.init';
+import { BASE_API } from '../../../config';
+import Swal from 'sweetalert2';
 
 const AddNewJob = () => {
   const [user] = useAuthState(auth)
@@ -10,17 +12,47 @@ const AddNewJob = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const hrName = user?.displayName
 
-  const addJob = async (data) => {
-    const getJobData = { ...data, value , hrName }
-    console.log(getJobData);
-  }
+  const onSubmit = async (data) => {
+    const jobData = { ...data, value, hrName }
+    // console.log(jobData);
+    await fetch(`${BASE_API}/jobs`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(jobData),
+    }).then(res => res.json())
+      .then(data => {
+        // console.log('Success:', data);
+        if (data.insertedId) {
+          Swal.fire({
+            text: 'New job added successfully',
+            icon: 'success',
+            confirmButtonText: 'Okay'
+          })
+          reset()
+        }
+        else{
+          Swal.fire({
+            text: `Something is wrong`,
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+          })
+        }
+      })
+  };
+
+
+
+
+
   return (
     <div className='card container mx-auto border p-5 my-2'>
       <h2 className='text-center pt-5 pb-3 text-md md:text-2xl'>What's the job you're hiring for? </h2>
       <div className="line w-28 md:w-40 rounded-full opacity-70 h-1 mx-auto bg-primary mb-8"></div>
 
       <form
-        onSubmit={handleSubmit(addJob)}
+        onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col gap-5 space-y-1  md:px-8 lg:px-28'
       >
         <div className='grid grid-cols-1  gap-5'>
@@ -74,7 +106,7 @@ const AddNewJob = () => {
           </div>
         </div>
 
-        <JobPostEditor value={value} setValue={setValue}  />
+        <JobPostEditor value={value} setValue={setValue} />
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 pt-20 md:pt-16'>
 
@@ -126,7 +158,7 @@ const AddNewJob = () => {
               {...register('salary', {
                 required: {
                   value: true,
-                  min:300,
+                  min: 300,
                   message: 'Salary is required'
                 }
               })}
@@ -144,7 +176,7 @@ const AddNewJob = () => {
               {...register('employees', {
                 required: {
                   value: true,
-                  min:1,
+                  min: 1,
                   message: 'Employees is required'
                 }
               })}
