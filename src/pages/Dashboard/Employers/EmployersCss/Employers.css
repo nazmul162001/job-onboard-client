@@ -1,4 +1,3 @@
-
 p {
   color: #525289;
 }
@@ -15,7 +14,6 @@ p {
   width: 88%;
   visibility: hidden;
   background: #ffffff;
-  border-top-left-radius: 80px;
   transition: 0.2s;
   transform: scaleY(0);
   transition-timing-function: ease-in-out;

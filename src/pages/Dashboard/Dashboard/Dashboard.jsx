@@ -1,14 +1,12 @@
-import React from "react";
-import { toast } from "react-hot-toast";
-import { AiOutlineFire } from "react-icons/ai";
 import { signOut } from "firebase/auth";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import useTitle from "../../../hooks/useTitle";
-import auth from "../../../components/Firebase/Firebase.init";
-import { AiOutlinePlus } from 'react-icons/ai';
+import { toast } from "react-hot-toast";
+import { AiOutlineFire, AiOutlinePlus } from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
-
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import auth from "../../../components/Firebase/Firebase.init";
+import useTitle from "../../../hooks/useTitle";
 
 const Dashboard = () => {
   useTitle("Dashboard");
@@ -33,8 +31,7 @@ const Dashboard = () => {
           <label
             htmlFor="dashboard-sidebar"
             className="btn bg-base-300 text-black hover:text-white drawer-button lg:hidden "
-          >
-          </label>
+          ></label>
           <Link
             to="/"
             className="text-lg lg:text-2xl md:text-2xl font-semibold"
@@ -43,14 +40,24 @@ const Dashboard = () => {
           </Link>
           <div className="flex justify-center items-center gap-8">
             <div className="hidden md:block dropdown dropdown-end">
-              <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1"> <span><AiOutlinePlus /></span> Add New</button>
+              <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1">
+                {" "}
+                <span>
+                  <AiOutlinePlus />
+                </span>{" "}
+                Add New
+              </button>
               <ul
                 tabIndex="0"
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li className="space-y-1">
-                  <Link to='/dashboard/job/addNew' className='text-md'>Post Job</Link>
-                  <Link to='/dashboard/employee/addNew' className='text-md'>Employee</Link>
+                  <Link to="/dashboard/job/addNew" className="text-md">
+                    Post Job
+                  </Link>
+                  <Link to="/dashboard/employee/addNew" className="text-md">
+                    Employee
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -91,7 +98,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-100 bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"

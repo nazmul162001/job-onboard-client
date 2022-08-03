@@ -17,7 +17,7 @@ const AllEmployee = ({ employe }) => {
           </div>
           <p class=" text-indigo-600">{name}</p>
         </div>
-        <div className="employeInfo ml-2">
+        <div className="employeInfo ">
           <AiFillEdit className="ml-40" />
           <div className="mt-24">
             <p>{name}</p>
