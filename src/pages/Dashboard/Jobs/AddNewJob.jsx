@@ -11,13 +11,14 @@ const AddNewJob = () => {
   const [value, setValue] = useState()
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const hrName = user?.displayName
+  const hrEmail = user?.email
 
   var time = new Date().getTime(); 
   var date = new Date(time); 
   var createdDate = date.toString()
 
   const onSubmit = async (data) => {
-    const jobData = { ...data, value, hrName , createdDate}
+    const jobData = { ...data, value, hrName , hrEmail , createdDate}
     // console.log(jobData);
     await fetch(`${BASE_API}/jobs`, {
       method: "POST",
@@ -190,17 +191,21 @@ const AddNewJob = () => {
           </div>
 
           <div className='flex flex-col space-y-1 '>
-            <label className='text-sm pl-2'>Contact Email <span className='text-red-500'>*</span></label>
+            <label className='text-sm pl-2'>Position Opening <span className='text-red-500'>*</span></label>
             <input
-              type="text"
-              defaultValue={user?.email}
+              type="number"
+              placeholder='Vacancy'
+              min={1}
               className='border py-1 rounded-lg pl-3 '
-              {...register('contactEmail', {
+              {...register('openingPosition', {
                 required: {
                   value: true,
+                  min: 1,
+                  message: 'This field is required'
                 }
               })}
             />
+            <p className='text-[13px] text-red-500 pl-3'>{errors.openingPosition?.message}</p>
           </div>
 
         </div>
