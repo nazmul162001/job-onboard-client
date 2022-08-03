@@ -11,9 +11,14 @@ const AddNewJob = () => {
   const [value, setValue] = useState()
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const hrName = user?.displayName
+  const hrEmail = user?.email
+
+  var time = new Date().getTime(); 
+  var date = new Date(time); 
+  var createdDate = date.toString()
 
   const onSubmit = async (data) => {
-    const jobData = { ...data, value, hrName }
+    const jobData = { ...data, value, hrName , hrEmail , createdDate}
     // console.log(jobData);
     await fetch(`${BASE_API}/jobs`, {
       method: "POST",
@@ -31,8 +36,9 @@ const AddNewJob = () => {
             confirmButtonText: 'Okay'
           })
           reset()
+          setValue("")
         }
-        else{
+        else {
           Swal.fire({
             text: `Something is wrong`,
             icon: 'error',
@@ -119,11 +125,11 @@ const AddNewJob = () => {
                 required: true
               })}
             >
-              <option value="web-development">Web Developer</option>
-              <option value="front-end">Front End Dev</option>
-              <option value="backend">Backend Dev</option>
-              <option value="full-stack">Full Stack Dev</option>
-              <option value="wordPress">WordPress</option>
+              <option value="Web Development">Web Developer</option>
+              <option value="Front End">Front End Dev</option>
+              <option value="Backend Dev">Backend Dev</option>
+              <option value="Full Stack Dev">Full Stack Dev</option>
+              <option value="WordPress">WordPress</option>
             </select>
           </div>
 
@@ -136,12 +142,12 @@ const AddNewJob = () => {
                 required: true
               })}
             >
-              <option value="full-time"> Full Time </option>
-              <option value="part-time"> Part Time </option>
-              <option value="internship"> Internship </option>
-              <option value="contract"> Contract </option>
-              <option value="volunteer"> Volunteer </option>
-              <option value="other"> Other </option>
+              <option value="Full Time"> Full Time </option>
+              <option value="Part Time"> Part Time </option>
+              <option value="Internship"> Internship </option>
+              <option value="Contract"> Contract </option>
+              <option value="Volunteer"> Volunteer </option>
+              <option value="Other"> Other </option>
             </select>
           </div>
         </div>
@@ -185,17 +191,21 @@ const AddNewJob = () => {
           </div>
 
           <div className='flex flex-col space-y-1 '>
-            <label className='text-sm pl-2'>Contact Email <span className='text-red-500'>*</span></label>
+            <label className='text-sm pl-2'>Position Opening <span className='text-red-500'>*</span></label>
             <input
-              type="text"
-              defaultValue={user?.email}
+              type="number"
+              placeholder='Vacancy'
+              min={1}
               className='border py-1 rounded-lg pl-3 '
-              {...register('contactEmail', {
+              {...register('openingPosition', {
                 required: {
                   value: true,
+                  min: 1,
+                  message: 'This field is required'
                 }
               })}
             />
+            <p className='text-[13px] text-red-500 pl-3'>{errors.openingPosition?.message}</p>
           </div>
 
         </div>
