@@ -129,6 +129,16 @@ const AddNewJob = () => {
               <option value="Front End">Front End Dev</option>
               <option value="Backend Dev">Backend Dev</option>
               <option value="Full Stack Dev">Full Stack Dev</option>
+              <option value="Blockchain Development">Blockchain Development</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Cyber Security">Cyber Security</option>
+              <option value="Data Entry">Data Entry</option>
+              <option value="Flutter Development">Flutter Development</option>
+              <option value="Game Development">Game Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="PHP Development">PHP Development</option>
               <option value="WordPress">WordPress</option>
             </select>
           </div>
