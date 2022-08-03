@@ -1,13 +1,6 @@
-p {
-  color: #525289;
-}
 
-.empoyeeContainer {
-  position: relative;
-}
 .editBtn {
   margin-left: 90%;
-  margin-top: 10px;
 }
 .checkbox {
   position: absolute;
@@ -25,14 +18,11 @@ p {
   transform: scaleY(0);
   transition-timing-function: ease-in-out;
 }
-.fontInfo {
+/* .fontInfo {
   font-size: 12px;
   padding: 5px 0px;
-}
+} */
 .empoyeeContainer:hover .employeInfo {
   visibility: visible;
   transform: scaleY(1);
 }
-/* .empoyeeContainer:hover .avaterInfo {
-  background: transparent;
-} */

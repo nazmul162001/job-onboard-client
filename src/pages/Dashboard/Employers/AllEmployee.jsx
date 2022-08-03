@@ -1,5 +1,6 @@
 import React from "react";
-import { AiFillEdit, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
+import { FiEdit } from "react-icons/fi";
 import { MdLocationOn } from "react-icons/md";
 import "./EmployersCss/Employers.css";
 const AllEmployee = ({ employe }) => {
@@ -7,7 +8,7 @@ const AllEmployee = ({ employe }) => {
 
   return (
     <div>
-      <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2">
+      <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative">
         <input type="checkbox" className="checkbox" />
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
@@ -18,16 +19,16 @@ const AllEmployee = ({ employe }) => {
           <p class=" text-indigo-600">{name}</p>
         </div>
         <div className="employeInfo p-2">
-          <AiFillEdit className="editBtn" />
-          <div className="mt-16">
+          <FiEdit className="editBtn" />
+          <div className="mt-20">
             <p>{name}</p>
             <p>{id}</p>
             <hr />
-            <p className="fontInfo flex items-center text-xs">
+            <p className="fontInfo py-1 flex items-center text-xs">
               <AiOutlineMail className="mr-3" />
               {email}
             </p>
-            <p className="fontInfo flex items-center text-xs">
+            <p className="fontInfo py-1 flex items-center text-xs">
               <MdLocationOn className="mr-3" />
               {location}
             </p>
