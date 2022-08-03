@@ -17,9 +17,9 @@ const AllEmployee = ({ employe }) => {
           </div>
           <p class=" text-indigo-600">{name}</p>
         </div>
-        <div className="employeInfo ">
+        <div className="employeInfo p-2">
           <AiFillEdit className="editBtn" />
-          <div className="mt-24">
+          <div className="mt-16">
             <p>{name}</p>
             <p>{id}</p>
             <hr />
