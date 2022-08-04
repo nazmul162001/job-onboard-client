@@ -50,8 +50,8 @@ const AddNewJob = () => {
 
   return (
     <div className='card container mx-auto border p-5 my-2'>
-      <h2 className='text-center pt-5 pb-3 text-md md:text-2xl'>What's the job you're hiring for? </h2>
-      <div className="line w-28 md:w-40 rounded-full opacity-70 h-1 mx-auto bg-primary mb-8"></div>
+      <h2 className='text-center pt-5 pb-3 text-[17px] md:text-2xl'>What's the job you're hiring for? </h2>
+      <div className="line w-40 md:w-52 rounded-full  h-1 mx-auto bg-primary mb-8"></div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -216,7 +216,7 @@ const AddNewJob = () => {
 
         </div>
 
-        <div>
+        <div className='pb-8'>
           <button className='px-5 py-3 border bg-primary rounded-lg text-white'>
             Create Job
           </button>
