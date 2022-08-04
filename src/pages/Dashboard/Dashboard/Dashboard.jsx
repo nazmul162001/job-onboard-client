@@ -79,8 +79,19 @@ const Dashboard = () => {
               </label>
               <ul
                 tabIndex="0"
-                className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 p-2 gap-y-1 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
+                <li>
+                <button className="flex lg:hidden gap-1 border border-black rounded px-2 py-1">
+                    {" "}
+                    <span>
+                      <AiOutlinePlus />
+                    </span>{" "}
+                    <Link to="/dashboard/job/addNew" className="text-md">
+                      Add New Job
+                    </Link>
+                  </button>
+                </li>
                 <li>
                   <button onClick={handleLogOut}>Logout</button>
                 </li>
