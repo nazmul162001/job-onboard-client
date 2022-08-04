@@ -44,16 +44,27 @@ const Dashboard = () => {
             Code Samurai
           </Link>
           <div className="flex justify-center items-center gap-8">
-            <div className="hidden md:block ">
+            <div className="hidden md:block dropdown dropdown-end">
               <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1">
                 {" "}
                 <span>
                   <AiOutlinePlus />
                 </span>{" "}
-                <Link to="/dashboard/job/addNew" className="text-md">
-                  Add New Job
-                </Link>
+                Add New
               </button>
+              <ul
+                tabIndex="0"
+                className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li className="space-y-1">
+                  <Link to="/dashboard/job/addNew" className="text-md">
+                    Post Job
+                  </Link>
+                  <Link to="/dashboard/employee/addNew" className="text-md">
+                    Employee
+                  </Link>
+                </li>
+              </ul>
             </div>
             <div className="dropdown dropdown-end">
               <label
@@ -79,21 +90,13 @@ const Dashboard = () => {
               </label>
               <ul
                 tabIndex="0"
-                className="mt-3 p-2 gap-y-1 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                <button className="flex lg:hidden gap-1 border border-black rounded px-2 py-1">
-                    {" "}
-                    <span>
-                      <AiOutlinePlus />
-                    </span>{" "}
-                    <Link to="/dashboard/job/addNew" className="text-md">
-                      Add New Job
-                    </Link>
-                  </button>
+                  <Link to='/dashboard/profile' className="py-3 font-semibold">Profile</Link>
                 </li>
-                <li>
-                  <button onClick={handleLogOut}>Logout</button>
+                <li className="font-semibold">
+                  <button onClick={handleLogOut}><FiLogOut />Logout</button>
                 </li>
               </ul>
             </div>
@@ -103,7 +106,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 lg:w-full bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
@@ -117,7 +120,7 @@ const Dashboard = () => {
             <NavLink to="/dashboard" className='py-4 lg:text-lg'>Dashboard</NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/profile" className='py-4 lg:text-lg'>Profile</NavLink>
+            <NavLink to="/dashboard/inbox" className='py-4 lg:text-lg'>Inbox</NavLink>
           </li>
           <li className="py-1 font-semibold">
             <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
@@ -132,7 +135,7 @@ const Dashboard = () => {
           <li className={"lg:pt-80"}>
             <button
               onClick={handleLogOut}
-              className="bg-primary rounded-lg text-white"
+              className="bg-neutral rounded-lg py-4 lg:text-lg text-white"
             >
               <FiLogOut /> Logout
             </button>

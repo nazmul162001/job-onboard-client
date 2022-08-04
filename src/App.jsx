@@ -1,12 +1,12 @@
 import "./App.css";
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Shared/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home/Home";
 import Team from "./pages/Team/Team";
 import NotFound from "./components/Shared/NotFound/NotFound";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ScrollButton from "./components/ScrollButton/ScrollButton";
 import Login from "./pages/Login/Login/Login";
 import SignUp from "./pages/Login/SignUp/SignUp";
@@ -20,17 +20,16 @@ import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
 import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
 import Employers from "./pages/Dashboard/Employers/Employers";
 import Profile from "./pages/Dashboard/Profile/Profile";
-import LoginForHr from "./pages/LoginForHr/LoginForHr/LoginForHr";
-import SignUpHr from "./pages/LoginForHr/SignUpHr/SignUpHr";
 import Recruitment from "./pages/Dashboard/Recruitment/Recruitment";
+import Inbox from "./pages/Dashboard/Inbox/Inbox";
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
 
-  // useEffect(() => {
-  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  // }, []);
+  useEffect(() => {
+    setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);
@@ -51,10 +50,8 @@ function App() {
 
           <Route path="/about" element={<AboutUs />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/login/candidate" element={<Login />} />
-          <Route path="/login/hr" element={<LoginForHr />} />
-          <Route path="/signUp/candidate" element={<SignUp />} />
-          <Route path="/signUp/hr" element={<SignUpHr />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"
@@ -69,6 +66,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="employers" element={<Employers />} />
             <Route path="recruitment" element={<Recruitment />} />
+            <Route path="inbox" element={<Inbox />} />
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
