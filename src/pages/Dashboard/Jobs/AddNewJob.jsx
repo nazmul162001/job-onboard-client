@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../components/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewJob = () => {
   const [user] = useAuthState(auth)
@@ -16,6 +17,12 @@ const AddNewJob = () => {
   var time = new Date().getTime(); 
   var date = new Date(time); 
   var createdDate = date.toString()
+
+  const navigate = useNavigate();
+
+  const navigateToJobs = () => {
+    navigate('/jobs')
+  }
 
   const onSubmit = async (data) => {
     const jobData = { ...data, value, hrName , hrEmail , createdDate}
@@ -37,6 +44,7 @@ const AddNewJob = () => {
           })
           reset()
           setValue("")
+          navigateToJobs()
         }
         else {
           Swal.fire({
@@ -126,13 +134,14 @@ const AddNewJob = () => {
               <option value="Backend Dev">Backend Dev</option>
               <option value="Full Stack Dev">Full Stack Dev</option>
               <option value="Blockchain Development">Blockchain Development</option>
+              <option value="Animator">Animator</option>
               <option value="Cloud Computing">Cloud Computing</option>
               <option value="Cyber Security">Cyber Security</option>
               <option value="Data Entry">Data Entry</option>
               <option value="Flutter Development">Flutter Development</option>
               <option value="Game Development">Game Development</option>
               <option value="Graphic Design">Graphic Design</option>
-              <option value="Marketing">Marketing</option>
+              <option value="Social Media Marketing">Social Media Marketing</option>
               <option value="Mobile App Development">Mobile App Development</option>
               <option value="PHP Development">PHP Development</option>
               <option value="WordPress">WordPress</option>
@@ -161,7 +170,7 @@ const AddNewJob = () => {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
 
           <div className='flex flex-col space-y-1 '>
-            <label className='text-sm pl-2'>Salary <span className='text-red-500'>*</span></label>
+            <label className='text-sm pl-2'>Salary (USD )<span className='text-red-500'>*</span></label>
             <input
               type="number"
               placeholder='Salary'
