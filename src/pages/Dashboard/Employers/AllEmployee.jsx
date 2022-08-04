@@ -8,12 +8,10 @@ const AllEmployee = ({ employe }) => {
     alert("Click");
   };
   const { id, name, location, email } = employe;
-
   return (
     <div>
       <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative cursor-pointer">
         <input type="checkbox" className="checkbox " />
-       
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
             <div class=" bg-cyan-600 text-white font-bold rounded-full w-32 avaterInfo">
