@@ -1,8 +1,62 @@
 import React from "react";
 import { BsShieldPlus } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
+import Swal from "sweetalert2";
+import { BASE_API } from "../../../config";
 import AllEmployee from "./AllEmployee";
 const Employers = () => {
+  // fetch("https://jsonplaceholder.typicode.com/posts", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     title: "foo",
+  //     body: "bar",
+  //     userId: 1,
+  //   }),
+  //   headers: {
+  //     "Content-type": "application/json; charset=UTF-8",
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((json) => console.log(json));
+
+  const addEmployeData = (e) => {
+    e.preventDefault();
+
+    const firstName = e.target.lastName.value;
+    const lastName = e.target.lastName.value;
+    const emailAddress = e.target.emailAddress.value;
+
+    fetch(`${BASE_API}/employees`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        emailAddress,
+      }),
+      // const { id, name, location, email } = employe;
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            text: "Add Employee Successfully",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+          e.reset();
+        } else {
+          Swal.fire({
+            text: `Opps!`,
+            icon: "error",
+            confirmButtonText: "Plz Try Again",
+          });
+        }
+      });
+  };
+
   const employees = [
     {
       id: 1,
@@ -64,46 +118,53 @@ const Employers = () => {
               ✕
             </label>
             <div class="form-control">
-              <label class="input-group input-group-vertical mb-5">
-                <span>First Name</span>
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  class="input input-bordered"
-                />
-              </label>
-              <label class="input-group input-group-vertical mb-5">
-                <span>Last Name</span>
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  class="input input-bordered"
-                />
-              </label>
-              <label class="input-group input-group-vertical mb-5">
-                <span>Official Email</span>
-                <input
-                  type="text"
-                  placeholder="Official Email"
-                  class="input input-bordered"
-                />
-              </label>
-              <label class="input-group input-group-vertical  ">
-                <span>Formal Picture</span>
-                <input
-                  className="w-full"
-                  type="file"
-                  placeholder="Formal Picture"
-                  class="input input-bordered"
-                />
-              </label>
+              <form onSubmit={addEmployeData}>
+                <label class="input-group input-group-vertical mb-5">
+                  <span>First Name</span>
+                  <input
+                    name="firstName"
+                    type="text"
+                    placeholder="First Name"
+                    class="input input-bordered"
+                  />
+                </label>
+                <label class="input-group input-group-vertical mb-5">
+                  <span>Last Name</span>
+                  <input
+                    name="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                    class="input input-bordered"
+                  />
+                </label>
+                <label class="input-group input-group-vertical mb-5">
+                  <span>Official Email</span>
+                  <input
+                    name="emailAddress"
+                    type="email"
+                    placeholder="Official Email"
+                    class="input input-bordered"
+                  />
+                </label>
+                <label class="input-group input-group-vertical  ">
+                  <span>Formal Picture</span>
+                  <input
+                    name="fPicture"
+                    className="w-full"
+                    type="file"
+                    placeholder="Formal Picture"
+                    class="input input-bordered"
+                  />
+                </label>
+
+                <button
+                  type="submit"
+                  className=" w-full flex items-center justify-center mt-6 bg-primary py-2 px-8 rounded-2xl font-bold text-white cursor-pointer"
+                >
+                  <BsShieldPlus /> Add
+                </button>
+              </form>
             </div>
-            <label
-              for="emoployee-modal"
-              className="flex items-center justify-center mt-6 bg-primary py-2 px-8 rounded-2xl font-bold text-white cursor-pointer"
-            >
-              <BsShieldPlus /> Add
-            </label>
           </div>
         </div>
       </div>

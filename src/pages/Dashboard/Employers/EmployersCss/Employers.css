@@ -13,7 +13,7 @@
   width: 88%;
   visibility: hidden;
   background: #ffffff;
-  transition: 0.2s;
+  transition: 0.1s;
   transform: scaleY(0);
   transition-timing-function: ease-in-out;
 }
