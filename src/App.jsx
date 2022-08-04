@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home/Home";
 import Team from "./pages/Team/Team";
 import NotFound from "./components/Shared/NotFound/NotFound";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ScrollButton from "./components/ScrollButton/ScrollButton";
 import Login from "./pages/Login/Login/Login";
 import SignUp from "./pages/Login/SignUp/SignUp";
