@@ -9,7 +9,7 @@ const JobPostEditor = ({ value, setValue }) => {
   const modules = {
     toolbar: [
       [{ 'size': ['small', false, 'large', 'huge'] }],
-      [{ 'header': '1' }, { 'header': '2' },],
+      [{ 'header': '1' }, { 'header': '2' }, { 'header': '3' },],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' },
       { 'indent': '-1' }, { 'indent': '+1' }],
@@ -32,13 +32,14 @@ const JobPostEditor = ({ value, setValue }) => {
     if (quill) {
       quill.on('text-change', () => {
         console.log(quillRef.current.firstChild.innerHTML)
-        if (quill.getLength() === 0) {
-          toast.error('Description is empty', { position: "top-center" });
-          return false
-        }
-        else {
-          setValue(quillRef.current.firstChild.innerHTML)
-        }
+        setValue(quillRef.current.firstChild.innerHTML)
+        // if (quill.getLength() === 0) {
+        //   toast.error('Description is empty', { position: "top-center" });
+        //   return false
+        // }
+        // else {
+        //   setValue(quillRef.current.firstChild.innerHTML)
+        // }
       });
     }
   }, [quill, quillRef, setValue]);

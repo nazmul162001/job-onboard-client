@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./WhyJobOnboard.css";
 
 const WhyJobOnboard = () => {
-  const [image, setImage] = useState("https://i.ibb.co/wJYHwyH/1.png");
+  const [image, setImage] = useState("https://i.ibb.co/ZS3cfpR/new-Job-Post.png");
   const onBoardData = [
     {
       name: "Easy User Interface",
@@ -16,7 +16,7 @@ const WhyJobOnboard = () => {
     },
     {
       name: "Easy Hiring Process",
-      url: "https://i.ibb.co/wJYHwyH/1.png",
+      url: "https://i.ibb.co/ZS3cfpR/new-Job-Post.png",
       des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit.",
     },
     {

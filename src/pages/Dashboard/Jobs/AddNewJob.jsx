@@ -48,14 +48,10 @@ const AddNewJob = () => {
       })
   };
 
-
-
-
-
   return (
     <div className='card container mx-auto border p-5 my-2'>
-      <h2 className='text-center pt-5 pb-3 text-md md:text-2xl'>What's the job you're hiring for? </h2>
-      <div className="line w-28 md:w-40 rounded-full opacity-70 h-1 mx-auto bg-primary mb-8"></div>
+      <h2 className='text-center pt-5 pb-3 text-[17px] md:text-2xl'>What's the job you're hiring for? </h2>
+      <div className="line w-40 md:w-52 rounded-full  h-1 mx-auto bg-primary mb-8"></div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -129,6 +125,16 @@ const AddNewJob = () => {
               <option value="Front End">Front End Dev</option>
               <option value="Backend Dev">Backend Dev</option>
               <option value="Full Stack Dev">Full Stack Dev</option>
+              <option value="Blockchain Development">Blockchain Development</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Cyber Security">Cyber Security</option>
+              <option value="Data Entry">Data Entry</option>
+              <option value="Flutter Development">Flutter Development</option>
+              <option value="Game Development">Game Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="PHP Development">PHP Development</option>
               <option value="WordPress">WordPress</option>
             </select>
           </div>
@@ -210,7 +216,7 @@ const AddNewJob = () => {
 
         </div>
 
-        <div>
+        <div className='pb-8'>
           <button className='px-5 py-3 border bg-primary rounded-lg text-white'>
             Create Job
           </button>
