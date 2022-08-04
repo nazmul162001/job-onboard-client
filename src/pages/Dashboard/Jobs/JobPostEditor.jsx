@@ -32,13 +32,14 @@ const JobPostEditor = ({ value, setValue }) => {
     if (quill) {
       quill.on('text-change', () => {
         console.log(quillRef.current.firstChild.innerHTML)
-        if (quill.getLength() === 0) {
-          toast.error('Description is empty', { position: "top-center" });
-          return false
-        }
-        else {
-          setValue(quillRef.current.firstChild.innerHTML)
-        }
+        setValue(quillRef.current.firstChild.innerHTML)
+        // if (quill.getLength() === 0) {
+        //   toast.error('Description is empty', { position: "top-center" });
+        //   return false
+        // }
+        // else {
+        //   setValue(quillRef.current.firstChild.innerHTML)
+        // }
       });
     }
   }, [quill, quillRef, setValue]);

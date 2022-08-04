@@ -48,10 +48,6 @@ const AddNewJob = () => {
       })
   };
 
-
-
-
-
   return (
     <div className='card container mx-auto border p-5 my-2'>
       <h2 className='text-center pt-5 pb-3 text-md md:text-2xl'>What's the job you're hiring for? </h2>
