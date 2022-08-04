@@ -46,7 +46,7 @@ const JobPostEditor = ({ value, setValue }) => {
 
   return (
     <div className='container mx-auto flex '>
-      <div style={{ width: 1440, height: 250 }} >
+      <div style={{ width: 1440, height: 300  }} >
         <div ref={quillRef} />
       </div>
     </div>
