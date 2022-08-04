@@ -1,10 +1,9 @@
-
 .editBtn {
-  margin-left: 90%;
+  margin-left: 95%;
 }
 .checkbox {
   position: absolute;
-  z-index: 999;
+  z-index: 99;
 }
 .employeInfo {
   position: absolute;
@@ -18,10 +17,7 @@
   transform: scaleY(0);
   transition-timing-function: ease-in-out;
 }
-/* .fontInfo {
-  font-size: 12px;
-  padding: 5px 0px;
-} */
+
 .empoyeeContainer:hover .employeInfo {
   visibility: visible;
   transform: scaleY(1);

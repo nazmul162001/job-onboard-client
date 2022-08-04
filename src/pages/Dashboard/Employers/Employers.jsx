@@ -53,9 +53,16 @@ const Employers = () => {
       {/* Modal for add employeers */}
       <div>
         <input type="checkbox" id="emoployee-modal" class="modal-toggle" />
+
         <div class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
             <h3 class="font-bold text-lg mb-2 text-center">Add Employee</h3>
+            <label
+              for="emoployee-modal"
+              class="btn btn-sm btn-circle absolute right-2 top-2"
+            >
+              ✕
+            </label>
             <div class="form-control">
               <label class="input-group input-group-vertical mb-5">
                 <span>First Name</span>

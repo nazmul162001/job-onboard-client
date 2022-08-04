@@ -4,12 +4,16 @@ import { FiEdit } from "react-icons/fi";
 import { MdLocationOn } from "react-icons/md";
 import "./EmployersCss/Employers.css";
 const AllEmployee = ({ employe }) => {
+  const editDetails = () => {
+    alert("Click");
+  };
   const { id, name, location, email } = employe;
 
   return (
     <div>
-      <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative">
-        <input type="checkbox" className="checkbox" />
+      <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative cursor-pointer">
+        <input type="checkbox" className="checkbox " />
+       
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
             <div class=" bg-cyan-600 text-white font-bold rounded-full w-32 avaterInfo">
@@ -19,7 +23,7 @@ const AllEmployee = ({ employe }) => {
           <p class=" text-indigo-600">{name}</p>
         </div>
         <div className="employeInfo p-2">
-          <FiEdit className="editBtn" />
+          <FiEdit onClick={editDetails} className="editBtn" />
           <div className="mt-20">
             <p>{name}</p>
             <p>{id}</p>
