@@ -11,10 +11,6 @@ const JobDescription = () => {
   // console.log(job)
   // const {category,companyName,createdDate,employees,hrEmail,hrName,jobTitle,jobType,location,openingPosition,salary, value , _id} = job 
 
-  const [jobInfo, setJobInfo] = useState(null)
-
-
-
   return (
     <div className=''>
       {/* description top section  */}
@@ -36,10 +32,8 @@ const JobDescription = () => {
           <p className='text-white'>Salary  : ${job?.salary} <small>/ m</small></p>
           <div className='flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1'>
             <span className='lg:pt-4'>Work Type : {job?.jobType}</span>
-            {/* <button className='px-5 py-3 bg-primary rounded-lg text-xl text-white'>Apply Now</button> */}
             <label
               htmlFor="applicant-modal"
-              onClick={() => setJobInfo(job)}
               className='px-5 py-3 bg-primary rounded-lg text-xl text-white cursor-pointer' >Apply Now</label>
           </div>
         </div>
@@ -51,9 +45,8 @@ const JobDescription = () => {
       </div>
 
       {/* applicant modal  */}
-      {jobInfo && <ApplicantModal
-        jobInfo={jobInfo}
-        setJobInfo={setJobInfo}
+      {job && <ApplicantModal
+        job={job}
       ></ApplicantModal>}
 
     </div>

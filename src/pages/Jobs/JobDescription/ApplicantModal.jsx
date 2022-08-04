@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const ApplicantModal = ({ jobInfo, setJobInfo }) => {
+const ApplicantModal = ({ job}) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-  // console.log(jobInfo);
+  // console.log(job);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -16,9 +16,10 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
       <div className="modal ">
         <div className="modal-box w-11/12 max-w-5xl">
           <label htmlFor="applicant-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h2 className='text-xl md:text-2xl lg:text-4xl pt-8 pb-12'>Apply For {jobInfo?.jobTitle}</h2>
+          <h2 className='text-lg md:text-2xl lg:text-4xl pt-8 pb-12'>Apply For {job?.jobTitle}</h2>
           <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+              {/* name filed  */}
               <div className='grid grid-cols-1 md:grid-cols-2  gap-5'>
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <label className='text-lg pl-2'>First name <span className='text-red-500'>*</span></label>
@@ -51,12 +52,14 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
                   <p className='text-[13px] text-red-500 pl-3'>{errors.lastName?.message}</p>
                 </div>
               </div>
+              {/* name filed end */}
 
-              <div className='flex flex-col space-y-1 gap-y-1'>
+              <div className='flex flex-col space-y-1 gap-y-1 py-2'>
+                <label className='text-lg pl-2'>Your email <span className='text-red-500'>*</span></label>
                 <input
                   type="email"
                   placeholder='Enter your email'
-                  className='border-b  py-1 text-lg pl-3 '
+                  className='border rounded-lg py-2 text-lg pl-3 '
                   {...register('email', {
                     required: {
                       value: true,
@@ -67,11 +70,12 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
                 <p className='text-[13px] text-red-500 pl-3'>{errors.email?.message}</p>
               </div>
 
-              <div className='flex flex-col space-y-1 gap-y-1'>
+              <div className='flex flex-col space-y-1 gap-y-1 '>
+                <label className='text-lg pl-2'>Contact number <span className='text-red-500'>*</span></label>
                 <input
                   type="number"
-                  placeholder='Your contact number'
-                  className='border-b  py-1 text-lg pl-3 '
+                  placeholder='Phone number'
+                  className='border rounded-lg  py-1 text-lg pl-3 '
                   {...register('phoneNumber', {
                     required: {
                       value: true,
@@ -82,8 +86,8 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
                 <p className='text-[13px] text-red-500 pl-3'>{errors.phoneNumber?.message}</p>
               </div>
 
-              <div className='flex flex-col space-y-1 gap-y-1'>
-                <label className='text-[#575656] pl-2'>Your Resume/CV (provide google drive link) <span className='text-red-500'>*</span></label>
+              <div className='flex flex-col space-y-1 gap-y-1 py-2'>
+                <label className='md:text-lg pl-2'>Your Resume/CV (provide google drive link) <span className='text-red-500'>*</span></label>
                 <input
                   type="text"
                   placeholder='Hyperlink'
@@ -98,12 +102,10 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
                 <p className='text-[13px] text-red-500 pl-3'>{errors.resume?.message}</p>
               </div>
 
-
-
               {/* social link  */}
 
-              <h3 className='text-lg md:text-xl lg:text-2xl'>Social Links</h3>
-              <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+              <h3 className='text-lg md:text-xl lg:text-2xl pl-2'>Social Links</h3>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
@@ -124,24 +126,21 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
                     type="text"
                     placeholder='Linkedin'
                     className='border rounded-lg py-1 text-lg pl-3 '
-                    {...register('linkedin')}
+                    {...register('linkedin', {
+                      required: {
+                        value: true,
+                        message: 'This field is required'
+                      }
+                    })}
                   />
-                </div>
-
-                <div className='flex flex-col space-y-1 gap-y-1'>
-                  <input
-                    type="text"
-                    placeholder='GitHub'
-                    className='border rounded-lg py-1 text-lg pl-3 '
-                    {...register('github')}
-                  />
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedin?.message}</p>
                 </div>
               </div>
 
               {/* social link end */}
 
-              <div className='flex flex-col space-y-1 gap-y-1'>
-                <h4 className='pl-2 text-lg'>Why should you be hired for this role? <span className='text-red-500'>*</span></h4>
+              <div className='flex flex-col space-y-1 gap-y-1 py-5'>
+                <h4 className='pl-2 md:text-lg'>Why should you be hired for this role? <span className='text-red-500'>*</span></h4>
                 <textarea
                   type="text"
                   rows={4}
@@ -157,9 +156,11 @@ const ApplicantModal = ({ jobInfo, setJobInfo }) => {
                 <p className='text-[13px] text-red-500 pl-3'>{errors.coverLetter?.message}</p>
               </div>
 
-              <button className='px-5 py-3 border bg-primary rounded-lg text-lg  text-white'>
-                Submit Application
-              </button>
+              <div className="pb-5 text-center lg:text-start">
+                <button className='px-5 py-3  border bg-primary rounded-lg text-lg  text-white'>
+                  Submit Application
+                </button>
+              </div>
 
             </form>
           </div>
