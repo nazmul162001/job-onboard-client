@@ -5,8 +5,9 @@ import { BsStopwatch } from 'react-icons/bs';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 const Job = ({ job }) => {
-  console.log(job);
+  // console.log(job);
   const { _id, jobTitle, companyName, location, salary, jobType, createdDate } = job
+  
   return (
     <div className="border-2 rounded-md">
       <div className="p-5 space-y-5">
