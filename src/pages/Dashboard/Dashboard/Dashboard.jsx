@@ -27,7 +27,7 @@ const Dashboard = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content p-3 md:p-3">
+      <div className="drawer-content">
         <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 rounded">
           <label
             htmlFor="dashboard-sidebar"
@@ -39,7 +39,7 @@ const Dashboard = () => {
             to="/"
             className="text-lg lg:text-2xl md:text-2xl font-semibold"
           >
-            Job Onboard
+            Code Samurai
           </Link>
           <div className="flex justify-center items-center gap-8">
             <div className="hidden md:block dropdown dropdown-end">
@@ -101,7 +101,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-full bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 lg:w-full bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
@@ -119,17 +119,12 @@ const Dashboard = () => {
           </li>
           <li className="py-1 font-semibold">
             <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
-             Employers
+              Employers
             </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/Task" className='py-4 lg:text-lg'>
-              Task
-            </NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/hire" className='py-4 lg:text-lg'>
-              Hire
+            <NavLink to="/dashboard/recruitment" className='py-4 lg:text-lg'>
+              Recruitment
             </NavLink>
           </li>
           <li className={"lg:pt-80"}>
