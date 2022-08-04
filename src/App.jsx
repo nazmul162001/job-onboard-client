@@ -20,16 +20,15 @@ import JobDescription from "./pages/Jobs/JobDescription/JobDescription";
 import AddNewJob from "./pages/Dashboard/Jobs/AddNewJob";
 import Employers from "./pages/Dashboard/Employers/Employers";
 import Profile from "./pages/Dashboard/Profile/Profile";
-import SignUpHr from "./pages/LoginForHr/SignUpHr/SignUpHr";
 import Recruitment from "./pages/Dashboard/Recruitment/Recruitment";
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
 
-  // useEffect(() => {
-  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  // }, []);
+  useEffect(() => {
+    setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);
@@ -51,8 +50,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/team" element={<Team />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signUp/candidate" element={<SignUp />} />
-          <Route path="/signUp/hr" element={<SignUpHr />} />
+          <Route path="/signUp" element={<SignUp />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"

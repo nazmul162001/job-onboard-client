@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import Loading from "../../../components/Shared/Loading/Loading"
 import { toast } from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -25,16 +26,17 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
+  const [token] = useToken(user || gUser);
 
   useEffect(() => {
-    if (user || gUser) {
+    if (token) {
       navigate(from, { replace: true });
       toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
         autoClose: 4000,
         position: "top-center",
       });
     }
-  }, [ navigate, from, user, gUser ]);
+  }, [ navigate, from, token ]);
 
   if (loading || gLoading) {
     return <Loading></Loading>
@@ -140,7 +142,7 @@ const Login = () => {
           <p className="text-center font-semibold">
             <small>
               Don't have an account?{" "}
-              <Link className="text-primary" to="/signUp/candidate">
+              <Link className="text-primary" to="/signUp">
                 Create New Account
               </Link>
             </small>

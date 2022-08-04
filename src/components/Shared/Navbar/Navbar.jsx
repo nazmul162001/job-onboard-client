@@ -7,6 +7,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
+import logo from '../../../assets/logo/logo.png';
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -52,7 +53,8 @@ const Navbar = () => {
             </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
-                <span className="text-xl font-bold">Job Onboard</span>
+                <img src={logo} alt="" className="w-16"/>
+                <span className="text-xl font-bold hidden md:block">Job Onboard</span>
                 <span className="hidden"></span>
               </Link>
             </div>
@@ -148,27 +150,12 @@ const Navbar = () => {
                     Login
                   </NavLink>
                 </li>
-                <div class="dropdown dropdown-end">
-                  <label tabindex="0" class="btn btn-primary m-1">
+                <li>
+                  <Link to="signUp" className="btn btn-primary">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
-                  </label>
-                  <ul
-                    tabindex="0"
-                    class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-64"
-                  >
-                    <li className="pb-2">
-                      <Link to="signUp/candidate" className="">
-                        As a Candidate
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="signUp/hr" className="">
-                        As a Hr Manager
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
+                  </Link>
+                </li>
               </ul>
             )}
 
@@ -216,9 +203,7 @@ const Navbar = () => {
 
               {isMenuOpen && (
                 <div className={`absolute top-0 left-0 w-full `}>
-                  <div
-                    className={`p-5 bg-base-100 rounded-2xl shadow-md`}
-                  >
+                  <div className={`p-5 bg-base-100 rounded-2xl shadow-md`}>
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <Link to="/">
@@ -268,35 +253,15 @@ const Navbar = () => {
                           </NavLink>
                         </li>
                         {!user ? (
-                          <div class="dropdown">
-                            <label
-                              tabindex="0"
-                              class="join-button-mobile btn btn-primary"
+                          <li className="pb-1">
+                            <Link
+                              to="signUp"
+                              onClick={() => setIsMenuOpen(false)}
+                              className="btn btn-primary"
                             >
                               Get Started
-                            </label>
-                            <ul
-                              tabindex="0"
-                              class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-52"
-                            >
-                              <li className="pb-1">
-                                <Link
-                                  to="signUp/candidate"
-                                  onClick={() => setIsMenuOpen(false)}
-                                >
-                                  As a Candidate
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  to="signUp/hr"
-                                  onClick={() => setIsMenuOpen(false)}
-                                >
-                                  As a Hr Manager
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
+                            </Link>
+                          </li>
                         ) : (
                           <></>
                         )}

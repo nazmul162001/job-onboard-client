@@ -93,7 +93,10 @@ const Dashboard = () => {
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <button onClick={handleLogOut}>Logout</button>
+                  <Link to='/dashboard/profile' className="py-3 font-semibold">Profile</Link>
+                </li>
+                <li className="font-semibold">
+                  <button onClick={handleLogOut}><FiLogOut />Logout</button>
                 </li>
               </ul>
             </div>
@@ -103,7 +106,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 lg:w-full bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
@@ -115,9 +118,6 @@ const Dashboard = () => {
           </div>
           <li className="py-2 mt-4 font-semibold">
             <NavLink to="/dashboard" className='py-4 lg:text-lg'>Dashboard</NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/profile" className='py-4 lg:text-lg'>Profile</NavLink>
           </li>
           <li className="py-1 font-semibold">
             <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
@@ -132,7 +132,7 @@ const Dashboard = () => {
           <li className={"lg:pt-80"}>
             <button
               onClick={handleLogOut}
-              className="bg-primary rounded-lg py-4 lg:text-lg text-white"
+              className="bg-neutral rounded-lg py-4 lg:text-lg text-white"
             >
               <FiLogOut /> Logout
             </button>
