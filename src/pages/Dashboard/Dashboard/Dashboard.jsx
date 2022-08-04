@@ -120,6 +120,9 @@ const Dashboard = () => {
             <NavLink to="/dashboard" className='py-4 lg:text-lg'>Dashboard</NavLink>
           </li>
           <li className="py-1 font-semibold">
+            <NavLink to="/dashboard/inbox" className='py-4 lg:text-lg'>Inbox</NavLink>
+          </li>
+          <li className="py-1 font-semibold">
             <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
               Employers
             </NavLink>
