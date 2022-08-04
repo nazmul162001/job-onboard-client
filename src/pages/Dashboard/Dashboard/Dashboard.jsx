@@ -41,7 +41,7 @@ const Dashboard = () => {
             to="/"
             className="text-lg lg:text-2xl md:text-2xl font-semibold"
           >
-            Code Samurai 
+            Code Samurai
           </Link>
           <div className="flex justify-center items-center gap-8">
             <div className="hidden md:block dropdown dropdown-end">
@@ -121,17 +121,12 @@ const Dashboard = () => {
           </li>
           <li className="py-1 font-semibold">
             <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
-             Employers
+              Employers
             </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/Task" className='py-4 lg:text-lg'>
-              Task
-            </NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/hire" className='py-4 lg:text-lg'>
-              Hire
+            <NavLink to="/dashboard/recruitment" className='py-4 lg:text-lg'>
+              Recruitment
             </NavLink>
           </li>
           <li className={"lg:pt-80"}>
