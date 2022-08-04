@@ -5,9 +5,12 @@ const ApplicantModal = ({ job}) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
   // console.log(job);
+  const {category,companyName,hrEmail,hrName,jobTitle} = job 
+  const jobPostId = job?._id
 
   const onSubmit = async (data) => {
-    console.log(data);
+    const applicantData = {...data , category ,companyName,hrEmail,hrName,jobTitle, jobPostId}
+    console.log(applicantData);
   }
 
   return (
