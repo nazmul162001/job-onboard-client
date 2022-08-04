@@ -1,5 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import { BASE_API } from '../../../config';
 
 const ApplicantModal = ({ job}) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -10,7 +12,32 @@ const ApplicantModal = ({ job}) => {
 
   const onSubmit = async (data) => {
     const applicantData = {...data , category ,companyName,hrEmail,hrName,jobTitle, jobPostId}
-    console.log(applicantData);
+    // console.log(applicantData);
+    await fetch(`${BASE_API}/applicants`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(applicantData),
+    }).then(res => res.json())
+      .then(data => {
+        // console.log('Success:', data);
+        if (data.insertedId) {
+          Swal.fire({
+            text:'Your application has been submitted successfully. ',
+            icon: 'success',
+            confirmButtonText: 'Okay'
+          })
+          reset()
+        }
+        else {
+          Swal.fire({
+            text: `Something is wrong`,
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+          })
+        }
+      })
   }
 
   return (
@@ -159,7 +186,7 @@ const ApplicantModal = ({ job}) => {
                 <p className='text-[13px] text-red-500 pl-3'>{errors.coverLetter?.message}</p>
               </div>
 
-              <div className="pb-5 text-center lg:text-start">
+              <div className="pb-5 lg:pb-2 text-center lg:text-start">
                 <button className='px-5 py-3  border bg-primary rounded-lg text-lg  text-white'>
                   Submit Application
                 </button>

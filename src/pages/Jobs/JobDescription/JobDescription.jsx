@@ -19,10 +19,10 @@ const JobDescription = () => {
           <div className="space-y-2">
             <div className='flex flex-col lg:flex-row space-y-2 lg:space-y-1 justify-between'>
               <div className="flex gap-2">
-                <h2 className="text-xl md:text-3xl lg:text-3xl font-bold ">{job?.jobTitle}</h2>
-                <h2 className='text-xl md:text-lg md:mt-1 lg:mt-0 lg:text-3xl font-bold  hidden md:block'> | Vacancy : {job?.openingPosition}</h2>
+                <h2 className="text-xl md:text-2xl font-bold ">{job?.jobTitle}</h2>
+                <h2 className='text-xl md:text-lg md:mt-1 lg:mt-0 lg:text-2xl font-bold  hidden md:block'> | Vacancy : {job?.openingPosition}</h2>
               </div>
-              <p className='text-md md:text-xl lg:text-3xl md:font-bold text-white'>{job?.companyName}</p>
+              <p className='text-md md:text-xl lg:text-2xl md:font-bold text-white'>{job?.companyName}</p>
             </div>
             <div className='flex flex-col-reverse lg:flex-row space-y-2 gap-3 lg:gap-0  justify-between'>
               <p className='flex text-white '> <span className='px-1 pt-1'><HiOutlineLocationMarker /></span> {job?.location} </p>
