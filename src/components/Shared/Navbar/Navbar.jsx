@@ -53,7 +53,7 @@ const Navbar = () => {
             </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
-                <img src={logo} alt="" className="w-16"/>
+                <img src={logo} alt="" className="ml-10 w-16"/>
                 <span className="text-xl font-bold hidden md:block">Job Onboard</span>
                 <span className="hidden"></span>
               </Link>

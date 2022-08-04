@@ -1,6 +1,5 @@
 import React from "react";
 import { toast } from "react-hot-toast";
-import { AiOutlineFire } from "react-icons/ai";
 import { BsGrid } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { signOut } from "firebase/auth";
@@ -9,7 +8,7 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
 import auth from "../../../components/Firebase/Firebase.init";
 import { AiOutlinePlus } from "react-icons/ai";
-import { FaUsers } from "react-icons/fa";
+import logo from "../../../assets/logo/logo.png";
 
 const Dashboard = () => {
   useTitle("Dashboard");
@@ -30,7 +29,7 @@ const Dashboard = () => {
     <div className="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 rounded">
+        <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 m-3 rounded">
           <label
             htmlFor="dashboard-sidebar"
             className="btn bg-base-300 text-black hover:text-white drawer-button lg:hidden "
@@ -93,10 +92,15 @@ const Dashboard = () => {
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link to='/dashboard/profile' className="py-3 font-semibold">Profile</Link>
+                  <Link to="/dashboard/profile" className="py-3 font-semibold">
+                    Profile
+                  </Link>
                 </li>
                 <li className="font-semibold">
-                  <button onClick={handleLogOut}><FiLogOut />Logout</button>
+                  <button onClick={handleLogOut}>
+                    <FiLogOut />
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>
@@ -112,27 +116,31 @@ const Dashboard = () => {
               to="/"
               className="logo font-semibold text-center flex items-center flex-col gap-2"
             >
-              <AiOutlineFire className="text-3xl" />
+              <img src={logo} alt="" className="w-12" />
               Job Onboard
             </Link>
           </div>
           <li className="py-2 mt-4 font-semibold">
-            <NavLink to="/dashboard" className='py-4 lg:text-lg'>Dashboard</NavLink>
+            <NavLink to="/dashboard" className="py-4 lg:text-lg">
+              Dashboard
+            </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/inbox" className='py-4 lg:text-lg'>Inbox</NavLink>
+            <NavLink to="/dashboard/inbox" className="py-4 lg:text-lg">
+              Inbox
+            </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/employers" className='py-4 lg:text-lg'>
+            <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
               Employers
             </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/recruitment" className='py-4 lg:text-lg'>
+            <NavLink to="/dashboard/recruitment" className="py-4 lg:text-lg">
               Recruitment
             </NavLink>
           </li>
-          <li className={"lg:pt-80"}>
+          <li className={"lg:pt-96"}>
             <button
               onClick={handleLogOut}
               className="bg-neutral rounded-lg py-4 lg:text-lg text-white"
