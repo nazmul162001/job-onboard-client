@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../components/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddNewJob = () => {
   const [user] = useAuthState(auth)
@@ -16,6 +17,12 @@ const AddNewJob = () => {
   var time = new Date().getTime(); 
   var date = new Date(time); 
   var createdDate = date.toString()
+
+  const navigate = useNavigate();
+
+  const navigateToJobs = () => {
+    navigate('/jobs')
+  }
 
   const onSubmit = async (data) => {
     const jobData = { ...data, value, hrName , hrEmail , createdDate}
@@ -37,6 +44,7 @@ const AddNewJob = () => {
           })
           reset()
           setValue("")
+          navigateToJobs()
         }
         else {
           Swal.fire({
@@ -48,14 +56,10 @@ const AddNewJob = () => {
       })
   };
 
-
-
-
-
   return (
     <div className='card container mx-auto border p-5 my-2'>
-      <h2 className='text-center pt-5 pb-3 text-md md:text-2xl'>What's the job you're hiring for? </h2>
-      <div className="line w-28 md:w-40 rounded-full opacity-70 h-1 mx-auto bg-primary mb-8"></div>
+      <h2 className='text-center pt-5 pb-3 text-[17px] md:text-2xl'>What's the job you're hiring for? </h2>
+      <div className="line w-40 md:w-52 rounded-full  h-1 mx-auto bg-primary mb-8"></div>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -129,6 +133,17 @@ const AddNewJob = () => {
               <option value="Front End">Front End Dev</option>
               <option value="Backend Dev">Backend Dev</option>
               <option value="Full Stack Dev">Full Stack Dev</option>
+              <option value="Blockchain Development">Blockchain Development</option>
+              <option value="Animator">Animator</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Cyber Security">Cyber Security</option>
+              <option value="Data Entry">Data Entry</option>
+              <option value="Flutter Development">Flutter Development</option>
+              <option value="Game Development">Game Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Social Media Marketing">Social Media Marketing</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="PHP Development">PHP Development</option>
               <option value="WordPress">WordPress</option>
             </select>
           </div>
@@ -155,7 +170,7 @@ const AddNewJob = () => {
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
 
           <div className='flex flex-col space-y-1 '>
-            <label className='text-sm pl-2'>Salary <span className='text-red-500'>*</span></label>
+            <label className='text-sm pl-2'>Salary (USD )<span className='text-red-500'>*</span></label>
             <input
               type="number"
               placeholder='Salary'
@@ -210,7 +225,7 @@ const AddNewJob = () => {
 
         </div>
 
-        <div>
+        <div className='pb-8'>
           <button className='px-5 py-3 border bg-primary rounded-lg text-white'>
             Create Job
           </button>
