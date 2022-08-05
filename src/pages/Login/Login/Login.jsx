@@ -9,6 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import Loading from "../../../components/Shared/Loading/Loading"
 import { toast } from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
+import useToken from "../../../hooks/useToken";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -25,16 +26,17 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
+  const [token] = useToken(user || gUser);
 
   useEffect(() => {
-    if (user || gUser) {
+    if (token) {
       navigate(from, { replace: true });
       toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
         autoClose: 4000,
         position: "top-center",
       });
     }
-  }, [ navigate, from, user, gUser ]);
+  }, [ navigate, from, token ]);
 
   if (loading || gLoading) {
     return <Loading></Loading>
@@ -56,7 +58,7 @@ const Login = () => {
     <div className="flex h-[85vh] justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Login For Candidate</h2>
+          <h2 className="text-center text-2xl font-bold">Please Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-sm">
               <label className="label">
@@ -140,7 +142,7 @@ const Login = () => {
           <p className="text-center font-semibold">
             <small>
               Don't have an account?{" "}
-              <Link className="text-primary" to="/signUp/candidate">
+              <Link className="text-primary" to="/signUp">
                 Create New Account
               </Link>
             </small>

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
 import Loading from "../../../components/Shared/Loading/Loading";
+import useToken from "../../../hooks/useToken";
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -23,6 +24,16 @@ const SignUp = () => {
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  const [token] = useToken(user || gUser);
+
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, navigate, from]);
 
   let signInError;
 
@@ -55,7 +66,7 @@ const SignUp = () => {
     <div className="flex h-[85vh] md:h-screen justify-center items-center px-4 lg:px-12 md:my-24 lg:my-0">
       <div className="card w-full max-w-md bg-base-100 shadow-2xl">
         <div className="card-body">
-          <h2 className="text-center text-2xl font-bold">Sign Up For Candidate</h2>
+          <h2 className="text-center text-2xl font-bold">Please Sign Up</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-sm">
               <label className="label">
@@ -156,7 +167,7 @@ const SignUp = () => {
           <p className="text-center font-semibold">
             <small>
               Already have an account?{" "}
-              <Link className="text-primary" to="/login/candidate">
+              <Link className="text-primary" to="/login">
                 Login
               </Link>
             </small>
