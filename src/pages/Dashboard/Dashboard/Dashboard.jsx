@@ -28,8 +28,8 @@ const Dashboard = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 m-3 rounded">
+      <div className="drawer-content p-3 md:p-3">
+        <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 rounded-lg">
           <label
             htmlFor="dashboard-sidebar"
             className="btn bg-base-300 text-black hover:text-white drawer-button lg:hidden "
@@ -64,12 +64,12 @@ const Dashboard = () => {
                   {auth?.currentUser?.photoURL ? (
                     <img
                       src={auth?.currentUser?.photoURL}
-                      alt={auth?.currentUser?.displayName}
+                      alt={auth?.currentUser?.displayName?.slice(0, 1)}
                     />
                   ) : (
                     <img
-                      src="https://placeimg.com/80/80/people"
-                      alt={auth?.currentUser?.displayName}
+                      src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+                      alt={auth?.currentUser?.displayName?.slice(0, 1)}
                     />
                   )}
                 </div>

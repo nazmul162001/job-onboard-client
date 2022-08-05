@@ -53,7 +53,7 @@ const Navbar = () => {
             </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
-                <img src={logo} alt="" className="ml-10 lg:ml-0 w-16"/>
+                <img src={logo} alt="" className="ml-10 lg:ml-0 w-[3.5rem] lg:w-16"/>
                 <span className="text-xl font-bold hidden md:block">Job Onboard</span>
                 <span className="hidden"></span>
               </Link>
@@ -96,7 +96,7 @@ const Navbar = () => {
                         <img src={auth?.currentUser?.photoURL} alt="avatar" />
                       ) : (
                         <img
-                          src="https://placeimg.com/80/80/people"
+                          src="https://i.ibb.co/xY0rfV4/avatar.jpg"
                           alt="profile"
                         />
                       )}
@@ -151,7 +151,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <Link to="signUp" className="btn btn-primary">
+                  <Link to="signUp" className="btn btn-primary text-white">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
                   </Link>
