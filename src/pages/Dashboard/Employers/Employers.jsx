@@ -4,13 +4,15 @@ import { BsShieldPlus } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
+import useTitle from "../../../hooks/useTitle";
 import AllEmployee from "./AllEmployee";
 import ChangeData from "./ChangeData";
 
 const Employers = () => {
+  useTitle('Employers')
   const [employeeData, setEmployeeData] = useState([]);
   const [showEmployData, setShowEmployData] = useState(null);
-  console.log(showEmployData);
+  
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
@@ -88,6 +90,50 @@ const Employers = () => {
         }
       });
   };
+  const employees = [
+    {
+      id: 1,
+      name: "Arefin Khan",
+      email: "arefinkhan@gmail.com",
+      location: "Dhaka Bangladesh",
+      img: "",
+    },
+    {
+      id: 2,
+      name: "Shawon Mondol Gopal ",
+      email: "shawon@gmail.com",
+      location: "Dhaka Bangladesh",
+      img: "",
+    },
+    {
+      id: 3,
+      name: "Nazmul Hasan",
+      email: "nazmulhasan@gmail.com",
+      location: "Dhaka Bangladesh",
+      img: "",
+    },
+    {
+      id: 4,
+      name: "Toufiq Hasan Kiron",
+      email: "kiron0@gmail.com",
+      location: "Dhaka Bangladesh",
+      img: "",
+    },
+    {
+      id: 5,
+      name: "Sajal Howlader",
+      email: "sajal@gmail.com",
+      location: "Dhaka Bangladesh",
+      img: "",
+    },
+    {
+      id: 6,
+      name: "Emtiaz Hossain Emaon",
+      email: "emtiazemaon@gmail.com",
+      location: "Dhaka Bangladesh",
+      img: "",
+    },
+  ];
 
   return (
     <section className="">

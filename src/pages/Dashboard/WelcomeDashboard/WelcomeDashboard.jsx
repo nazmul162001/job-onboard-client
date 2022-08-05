@@ -8,7 +8,7 @@ import DashboardCelebration from "../DashboardCelebration/DashboardCelebration";
 import DashboardNewJoinees from "../DashboardNewJoinees/DashboardNewJoinees";
 
 const WelcomeDashboard = () => {
-  useTitle("Welcome Dashboard");
+  useTitle("Dashboard");
   const [user] = useAuthState(auth);
   return (
     <div className="">
@@ -25,7 +25,7 @@ const WelcomeDashboard = () => {
               <DashboardNewJoinees />
             </div>
             {/* aside bar  */}
-            <aside className="bg-white h-full">
+            <aside className="bg-white h-full sticky top-0">
               <h2 className="text-center p-5">My sidebar</h2>
             </aside>
           </section>

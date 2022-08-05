@@ -27,8 +27,8 @@ const Dashboard = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 m-3 rounded">
+      <div className="drawer-content p-3 md:p-3">
+        <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 rounded-lg">
           <label
             htmlFor="dashboard-sidebar"
             className="btn bg-base-300 text-black hover:text-white drawer-button lg:hidden "
@@ -37,33 +37,20 @@ const Dashboard = () => {
           </label>
           <Link
             to="/"
-            className="text-lg lg:text-2xl md:text-2xl font-semibold"
+            className="text-lg lg:text-2xl md:text-2xl font-semibold hidden md:block"
           >
             Code Samurai
           </Link>
           <div className="flex justify-center items-center gap-8">
-            <div className="hidden md:block dropdown dropdown-end">
+            <Link to="/dashboard/job/addNew" className="text-md">
               <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1">
                 {" "}
                 <span>
                   <AiOutlinePlus />
                 </span>{" "}
-                Add New
+                Post Job
               </button>
-              <ul
-                tabIndex="0"
-                className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-              >
-                <li className="space-y-1">
-                  <Link to="/dashboard/job/addNew" className="text-md">
-                    Post Job
-                  </Link>
-                  <Link to="/dashboard/employee/addNew" className="text-md">
-                    Employee
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            </Link>
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"
@@ -76,12 +63,12 @@ const Dashboard = () => {
                   {auth?.currentUser?.photoURL ? (
                     <img
                       src={auth?.currentUser?.photoURL}
-                      alt={auth?.currentUser?.displayName}
+                      alt={auth?.currentUser?.displayName?.slice(0, 1)}
                     />
                   ) : (
                     <img
-                      src="https://placeimg.com/80/80/people"
-                      alt={auth?.currentUser?.displayName}
+                      src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+                      alt={auth?.currentUser?.displayName?.slice(0, 1)}
                     />
                   )}
                 </div>
