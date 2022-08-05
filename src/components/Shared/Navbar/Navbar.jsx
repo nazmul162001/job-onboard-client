@@ -174,7 +174,7 @@ const Navbar = () => {
                         <img src={auth?.currentUser?.photoURL} alt="avatar" />
                       ) : (
                         <img
-                          src="https://placeimg.com/80/80/people"
+                          src="https://i.ibb.co/xY0rfV4/avatar.jpg"
                           alt="profile"
                         />
                       )}
