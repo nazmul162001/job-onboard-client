@@ -6,10 +6,10 @@ import useTitle from '../../../hooks/useTitle';
 
 const Recruitment = () => {
     useTitle('Recruitment')
-    const [getJobs, setgetJobs] = useState([])
+    const [getJobs, setGetJobs] = useState([])
     useEffect(() => {
         axios.get(`${BASE_API}/jobs`)
-            .then((response) => setgetJobs(response.data.reverse()))
+            .then((response) => setGetJobs(response.data.reverse()))
     }, [])
     return (
         <div>

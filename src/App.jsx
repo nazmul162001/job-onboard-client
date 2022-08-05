@@ -22,6 +22,8 @@ import Employers from "./pages/Dashboard/Employers/Employers";
 import Profile from "./pages/Dashboard/Profile/Profile";
 import Recruitment from "./pages/Dashboard/Recruitment/Recruitment";
 import Inbox from "./pages/Dashboard/Inbox/Inbox";
+import AllHr from "./pages/Dashboard/ManageHr/AllHr";
+import RequireAdmin from "./pages/Login/RequireAdmin/RequireAdmin";
 export const InitializeContext = createContext(null);
 
 function App() {
@@ -66,7 +68,15 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="employers" element={<Employers />} />
             <Route path="recruitment" element={<Recruitment />} />
-            <Route path="inbox" element={<Inbox />} />
+            <Route path="mails" element={<Inbox />} />
+            <Route
+              path="allHr"
+              element={
+                <RequireAdmin>
+                  <AllHr />
+                </RequireAdmin>
+              }
+            />
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>

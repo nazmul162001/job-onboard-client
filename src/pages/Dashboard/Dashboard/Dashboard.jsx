@@ -8,10 +8,12 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import auth from "../../../components/Firebase/Firebase.init";
 import { AiOutlinePlus } from "react-icons/ai";
 import logo from "../../../assets/logo/logo.png";
+import useAdmin from "../../../hooks/useAdmin";
+import Loader from "../../../components/Shared/Loader/Loader";
 
 const Dashboard = () => {
-
   const [user] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -23,6 +25,10 @@ const Dashboard = () => {
       });
     });
   };
+
+  if (adminLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="drawer drawer-mobile">
@@ -39,11 +45,11 @@ const Dashboard = () => {
             to="/"
             className="text-lg lg:text-2xl md:text-2xl font-semibold hidden md:block"
           >
-            Code Samurai
+            Job Onboard
           </Link>
           <div className="flex justify-center items-center gap-8">
             <Link to="/dashboard/job/addNew" className="text-md">
-              <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1">
+              <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
                 {" "}
                 <span>
                   <AiOutlinePlus />
@@ -92,7 +98,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <Outlet></Outlet>
+        <Outlet />
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
@@ -111,21 +117,39 @@ const Dashboard = () => {
               Dashboard
             </NavLink>
           </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/inbox" className="py-4 lg:text-lg">
-              Inbox
-            </NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
-              Employers
-            </NavLink>
-          </li>
-          <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/recruitment" className="py-4 lg:text-lg">
-              Recruitment
-            </NavLink>
-          </li>
+          {!admin && (
+            <>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/mails" className="py-4 lg:text-lg">
+                  Mails
+                </NavLink>
+              </li>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
+                  Employers
+                </NavLink>
+              </li>
+              <li className="py-1 font-semibold">
+                <NavLink
+                  to="/dashboard/recruitment"
+                  className="py-4 lg:text-lg"
+                >
+                  Recruitment
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {admin && (
+            <>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/allHr" className="py-4 lg:text-lg">
+                  Manage All Hr
+                </NavLink>
+              </li>
+            </>
+          )}
+
           <li className={"lg:pt-96"}>
             <button
               onClick={handleLogOut}

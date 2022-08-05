@@ -67,7 +67,7 @@ const Navbar = () => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                   >
                     Find Jobs
                   </NavLink>
@@ -78,7 +78,7 @@ const Navbar = () => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                   >
                     About Us
                   </NavLink>
@@ -145,7 +145,7 @@ const Navbar = () => {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                   >
                     Login
                   </NavLink>
@@ -174,7 +174,7 @@ const Navbar = () => {
                         <img src={auth?.currentUser?.photoURL} alt="avatar" />
                       ) : (
                         <img
-                          src="https://placeimg.com/80/80/people"
+                          src="https://i.ibb.co/xY0rfV4/avatar.jpg"
                           alt="profile"
                         />
                       )}
