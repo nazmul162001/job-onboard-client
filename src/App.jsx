@@ -66,7 +66,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="employers" element={<Employers />} />
             <Route path="recruitment" element={<Recruitment />} />
-            <Route path="inbox" element={<Inbox />} />
+            <Route path="mails" element={<Inbox />} />
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>

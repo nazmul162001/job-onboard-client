@@ -68,10 +68,10 @@ const Login = () => {
               <div className="flex flex-col justify-center items-center lg:px-12 md:my-24 lg:my-0">
                 <div className="pb-3 pt-2 md:pb-12 lg:pb-12 px-3 lg:px-0">
                   <h1 className="text-xl lg:text-3xl text-center font-bold pb-6">
-                    Get Discovered by Top Employer and Grab Your Dream Job.
+                    Get Discovered by Top Employers and Hire your need
                   </h1>
                   <p className="text-center">
-                    Find dream jobs through the best applicant tracking system
+                    Find experts, post & monitor your circulars through this applicant tracking system
                   </p>
                 </div>
                 <div className="card w-full max-w-lg lg:bg-base-300 shadow-xl">

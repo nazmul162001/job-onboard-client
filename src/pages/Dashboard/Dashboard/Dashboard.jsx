@@ -40,7 +40,7 @@ const Dashboard = () => {
             to="/"
             className="text-lg lg:text-2xl md:text-2xl font-semibold hidden md:block"
           >
-            Code Samurai
+            Job Onboard
           </Link>
           <div className="flex justify-center items-center gap-8">
             <Link to="/dashboard/job/addNew" className="text-md">
@@ -93,7 +93,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <Outlet></Outlet>
+        <Outlet />
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
@@ -113,8 +113,8 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li className="py-1 font-semibold">
-            <NavLink to="/dashboard/inbox" className="py-4 lg:text-lg">
-              Inbox
+            <NavLink to="/dashboard/mails" className="py-4 lg:text-lg">
+              Mails
             </NavLink>
           </li>
           <li className="py-1 font-semibold">

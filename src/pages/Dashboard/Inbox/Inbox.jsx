@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { BiLogInCircle } from "react-icons/bi";
 import useTitle from "../../../hooks/useTitle";
 const Inbox = () => {
-  useTitle('Inbox')
+  useTitle('Mails')
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -23,7 +23,7 @@ const Inbox = () => {
       .then(
         (result) => {
           toast.success(
-            `Email Sent to ${document.getElementById("name").value}`
+            `Email Sent to ${document.getElementById("email").value}`
           );
           document.getElementById("name").value = "";
           document.getElementById("email").value = "";
@@ -36,15 +36,14 @@ const Inbox = () => {
   };
 
   return (
-    <div className="p-5">
-      <h3 className="text-2xl font-semibold mb-2 px-5 lg:px-10">Inbox</h3>
+    <div className="px-5 py-16">
       <form
         ref={form}
         onSubmit={sendEmail}
-        className="shadow-lg rounded-2xl bg-base-100 p-5 md:p-10"
+        className="shadow-xl border-t-4 border-primary relative rounded-2xl bg-base-100 p-5 md:p-10"
       >
         <div className="my-2">
-          <label htmlFor="name" className="my-2">
+          <label htmlFor="name" className="my-2 font-semibold">
             Name
           </label>
           <input
@@ -52,11 +51,11 @@ const Inbox = () => {
             type="text"
             name="to_name"
             placeholder="Input your name"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full hover:border-primary duration-300"
           />
         </div>
         <div className="my-2">
-          <label htmlFor="name" className="my-2">
+          <label htmlFor="name" className="my-2 font-semibold">
             Email
           </label>
           <input
@@ -64,17 +63,17 @@ const Inbox = () => {
             name="from_name"
             type="email"
             placeholder="Input your email"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full hover:border-primary duration-300"
           />
         </div>
         <div className="my-2">
-          <label htmlFor="name" className="my-2">
+          <label htmlFor="name" className="my-2 font-semibold">
             Message
           </label>
           <textarea
             name="message"
             id="message"
-            className="textarea textarea-bordered w-full my-1 resize-none h-[12rem] md:h-[15rem] lg:h-[13rem]"
+            className="textarea textarea-bordered w-full my-1 resize-none h-[12rem] md:h-[15rem] lg:h-[13rem] hover:border-primary duration-300"
             cols="30"
             placeholder="Input your message"
             rows="2"
