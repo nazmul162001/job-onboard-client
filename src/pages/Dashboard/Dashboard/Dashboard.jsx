@@ -44,7 +44,7 @@ const Dashboard = () => {
           </Link>
           <div className="flex justify-center items-center gap-8">
             <Link to="/dashboard/job/addNew" className="text-md">
-              <button className="flex justify-center items-center gap-1 border border-black rounded px-2 py-1">
+              <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
                 {" "}
                 <span>
                   <AiOutlinePlus />
