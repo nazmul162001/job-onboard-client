@@ -1,13 +1,15 @@
 import React from "react";
 import { BsShieldPlus } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
+import useTitle from "../../../hooks/useTitle";
 import AllEmployee from "./AllEmployee";
 const Employers = () => {
+  useTitle('Employers')
   const employees = [
     {
       id: 1,
-      name: "Arifin Khan",
-      email: "arifinkhan@gmail.com",
+      name: "Arefin Khan",
+      email: "arefinkhan@gmail.com",
       location: "Dhaka Bangladesh",
       img: "",
     },

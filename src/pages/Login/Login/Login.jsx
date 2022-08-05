@@ -10,8 +10,10 @@ import Loading from "../../../components/Shared/Loading/Loading"
 import { toast } from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
 import useToken from "../../../hooks/useToken";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
+  useTitle('Login')
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -31,7 +33,7 @@ const Login = () => {
   useEffect(() => {
     if (token) {
       navigate(from, { replace: true });
-      toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
+      toast.success(`Welcome Back, ${auth?.currentUser?.displayName} to Job Onboard!`, {
         autoClose: 4000,
         position: "top-center",
       });

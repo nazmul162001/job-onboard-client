@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_API } from '../../../config';
+import useTitle from '../../../hooks/useTitle';
 
 
 const Recruitment = () => {
+    useTitle('Recruitment')
     const [getJobs, setgetJobs] = useState([])
     useEffect(() => {
         axios.get(`${BASE_API}/jobs`)
