@@ -5,9 +5,11 @@ import { HiUserAdd } from "react-icons/hi";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import AllEmployee from "./AllEmployee";
+import ChangeData from "./ChangeData";
 
 const Employers = () => {
   const [employeeData, setEmployeeData] = useState([]);
+  const [showEmployData, setShowEmployData] = useState(null);
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
@@ -144,9 +146,10 @@ const Employers = () => {
 
       <div className="allEmployes grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-7 px-4">
         {employeeData.map((singleData) => (
-          <AllEmployee key={singleData._id} employe={singleData} />
+          <AllEmployee key={singleData._id} employe={singleData} showEmployData={setShowEmployData}/>
         ))}
       </div>
+    {showEmployData && <ChangeData employeDetails={showEmployData}/>}
     </section>
   );
 };
