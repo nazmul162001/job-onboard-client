@@ -10,7 +10,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import logo from "../../../assets/logo/logo.png";
 
 const Dashboard = () => {
-  useTitle("Dashboard");
+
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 

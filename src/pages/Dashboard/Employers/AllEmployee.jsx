@@ -1,13 +1,15 @@
-import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { MdLocationOn } from "react-icons/md";
+
 import "./EmployersCss/Employers.css";
 const AllEmployee = ({ employe }) => {
   const checkbox = () => {
     alert("Click");
   };
-  const { id, name, location, email } = employe;
+  const { firstName, lastName, emailAddress, location } = employe;
+  console.log(employe);
+
   return (
     <div>
       {/* Employe details with open modal */}
@@ -25,7 +27,7 @@ const AllEmployee = ({ employe }) => {
               <span>Email</span>
               <input
                 type="text"
-                defaultValue={name}
+                // defaultValue={name}
                 class="input input-bordered"
               />
             </label>
@@ -35,14 +37,17 @@ const AllEmployee = ({ employe }) => {
       {/* Finished */}
       {/* Employe details container section start */}
       <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative cursor-pointer">
-        <input type="checkbox" className="checkbox " onClick={checkbox}/>
+        <input type="checkbox" className="checkbox " onClick={checkbox} />
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
             <div class=" bg-cyan-600 text-white font-bold rounded-full w-32 avaterInfo">
-              <span class="text-3xl">{name.slice(0, 1)}</span>
+              {/* <span class="text-3xl">{firstName.slice(0, 1)}</span> */}
             </div>
           </div>
-          <p class=" text-indigo-600">{name}</p>
+          <p class=" text-indigo-600">
+            {firstName}
+            {lastName}
+          </p>
         </div>
         <div className="employeInfo p-2">
           <label for="my-modal-3">
@@ -50,12 +55,15 @@ const AllEmployee = ({ employe }) => {
           </label>
 
           <div className="mt-20">
-            <p>{name}</p>
-            <p>{id}</p>
+            <p>
+              {firstName}
+              {lastName}
+            </p>
+
             <hr />
             <p className="fontInfo py-1 flex items-center text-xs">
               <AiOutlineMail className="mr-3" />
-              {email}
+              {emailAddress}
             </p>
             <p className="fontInfo py-1 flex items-center text-xs">
               <MdLocationOn className="mr-3" />

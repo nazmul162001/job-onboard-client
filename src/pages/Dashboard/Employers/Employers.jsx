@@ -1,32 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { BsShieldPlus } from "react-icons/bs";
 import { HiUserAdd } from "react-icons/hi";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import AllEmployee from "./AllEmployee";
+
 const Employers = () => {
-  // fetch("https://jsonplaceholder.typicode.com/posts", {
-  //   method: "POST",
-  //   body: JSON.stringify({
-  //     title: "foo",
-  //     body: "bar",
-  //     userId: 1,
-  //   }),
-  //   headers: {
-  //     "Content-type": "application/json; charset=UTF-8",
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((json) => console.log(json));
+  const [employeeData, setEmployeeData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${BASE_API}/getEmployees`)
+      .then((result) => setEmployeeData(result.data));
+  }, []);
 
   const addEmployeData = (e) => {
     e.preventDefault();
 
-    const firstName = e.target.lastName.value;
+    const firstName = e.target.firstName.value;
     const lastName = e.target.lastName.value;
     const emailAddress = e.target.emailAddress.value;
+    const location = e.target.location.value;
 
-    fetch(`${BASE_API}/employees`, {
+    fetch(`${BASE_API}/addEmployees`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -35,6 +31,7 @@ const Employers = () => {
         firstName,
         lastName,
         emailAddress,
+        location,
       }),
       // const { id, name, location, email } = employe;
     })
@@ -56,51 +53,6 @@ const Employers = () => {
         }
       });
   };
-
-  const employees = [
-    {
-      id: 1,
-      name: "Arifin Khan",
-      email: "arifinkhan@gmail.com",
-      location: "Dhaka Bangladesh",
-      img: "",
-    },
-    {
-      id: 2,
-      name: "Shawon Mondol Gopal ",
-      email: "shawon@gmail.com",
-      location: "Dhaka Bangladesh",
-      img: "",
-    },
-    {
-      id: 3,
-      name: "Nazmul Hasan",
-      email: "nazmulhasan@gmail.com",
-      location: "Dhaka Bangladesh",
-      img: "",
-    },
-    {
-      id: 4,
-      name: "Toufiq Hasan Kiron",
-      email: "kiron0@gmail.com",
-      location: "Dhaka Bangladesh",
-      img: "",
-    },
-    {
-      id: 5,
-      name: "Sajal Howlader",
-      email: "sajal@gmail.com",
-      location: "Dhaka Bangladesh",
-      img: "",
-    },
-    {
-      id: 6,
-      name: "Emtiaz Hossain Emaon",
-      email: "emtiazemaon@gmail.com",
-      location: "Dhaka Bangladesh",
-      img: "",
-    },
-  ];
 
   return (
     <section className="">
@@ -146,6 +98,15 @@ const Employers = () => {
                     class="input input-bordered"
                   />
                 </label>
+                <label class="input-group input-group-vertical mb-5">
+                  <span>Location</span>
+                  <input
+                    name="location"
+                    type="text"
+                    placeholder="Location"
+                    class="input input-bordered"
+                  />
+                </label>
                 <label class="input-group input-group-vertical  ">
                   <span>Formal Picture</span>
                   <input
@@ -181,9 +142,9 @@ const Employers = () => {
         </label>
       </div>
 
-      <div className="allEmployes grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-7">
-        {employees.map((employe) => (
-          <AllEmployee key={employe.id} employe={employe} />
+      <div className="allEmployes grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-7 px-4">
+        {employeeData.map((singleData) => (
+          <AllEmployee key={singleData._id} employe={singleData} />
         ))}
       </div>
     </section>
