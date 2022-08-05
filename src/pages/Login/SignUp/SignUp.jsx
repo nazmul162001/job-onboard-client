@@ -11,8 +11,10 @@ import toast from "react-hot-toast";
 import auth from "../../../components/Firebase/Firebase.init";
 import Loading from "../../../components/Shared/Loading/Loading";
 import useToken from "../../../hooks/useToken";
+import useTitle from "../../../hooks/useTitle";
 
 const SignUp = () => {
+  useTitle('Sign Up')
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,

@@ -8,7 +8,7 @@ import DashboardCelebration from "../DashboardCelebration/DashboardCelebration";
 import DashboardNewJoinees from "../DashboardNewJoinees/DashboardNewJoinees";
 
 const WelcomeDashboard = () => {
-  useTitle("Welcome Dashboard");
+  useTitle("Dashboard");
   const [user] = useAuthState(auth);
   return (
     <div className="">

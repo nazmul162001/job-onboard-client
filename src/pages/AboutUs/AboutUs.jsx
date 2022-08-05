@@ -3,8 +3,10 @@ import aboutImg from '../../assets/images/about-img.jpg'
 import { PhoneIcon, ArrowSmRightIcon, CheckIcon } from '@heroicons/react/outline';
 import { ChipIcon, SupportIcon } from '@heroicons/react/solid'
 import Footer from '../../components/Shared/Footer/Footer';
+import useTitle from '../../hooks/useTitle';
 
 const AboutUs = () => {
+    useTitle('About Us')
     return (
         <>
             <div name='support' className='w-full '>
