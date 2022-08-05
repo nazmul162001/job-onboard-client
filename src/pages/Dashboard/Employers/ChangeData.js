@@ -13,6 +13,7 @@ const ChangeData = ({ employeDetails }) => {
     const updateLastName = e.target.editLastName.value;
     const updateEmailAdderess = e.target.editEmailAddress.value;
     const updateLocation = e.target.editLocation.value;
+
     const updateData = {
       firstName: updateFirstName,
       lastName: updateLastName,
@@ -74,7 +75,7 @@ const ChangeData = ({ employeDetails }) => {
               <label class="input-group mb-4">
                 <span>lastName</span>
                 <input
-                  name="editLirstName"
+                  name="editLastName"
                   type="text"
                   defaultValue={lastName}
                   class="input input-bordered"

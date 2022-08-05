@@ -18,8 +18,7 @@ const AllEmployee = ({ employe, showEmployData }) => {
             </div>
           </div>
           <p class=" text-indigo-600">
-            {firstName}
-            {lastName}
+            <span>{firstName}</span> {lastName}
           </p>
         </div>
         <div className="employeInfo p-2">
@@ -29,8 +28,7 @@ const AllEmployee = ({ employe, showEmployData }) => {
 
           <div className="mt-20">
             <p>
-              {firstName}
-              {lastName}
+              <span>{firstName}</span> {lastName}
             </p>
 
             <hr />
