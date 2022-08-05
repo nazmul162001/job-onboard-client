@@ -10,6 +10,7 @@ import ChangeData from "./ChangeData";
 const Employers = () => {
   const [employeeData, setEmployeeData] = useState([]);
   const [showEmployData, setShowEmployData] = useState(null);
+  console.log(showEmployData);
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
@@ -146,10 +147,14 @@ const Employers = () => {
 
       <div className="allEmployes grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-7 px-4">
         {employeeData.map((singleData) => (
-          <AllEmployee key={singleData._id} employe={singleData} showEmployData={setShowEmployData}/>
+          <AllEmployee
+            key={singleData._id}
+            employe={singleData}
+            showEmployData={setShowEmployData}
+          />
         ))}
       </div>
-    {showEmployData && <ChangeData employeDetails={showEmployData}/>}
+      {showEmployData && <ChangeData employeDetails={showEmployData} />}
     </section>
   );
 };

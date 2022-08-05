@@ -4,16 +4,13 @@ import { FiEdit } from "react-icons/fi";
 import { MdLocationOn } from "react-icons/md";
 import "./EmployersCss/Employers.css";
 const AllEmployee = ({ employe, showEmployData }) => {
-  const checkbox = () => {
-    alert("Click");
-  };
   const { firstName, lastName, emailAddress, location } = employe;
 
   return (
     <div>
       {/* Employe details container section start */}
       <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative cursor-pointer">
-        <input type="checkbox" className="checkbox " onClick={checkbox} />
+        <input type="checkbox" className="checkbox " />
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
             <div class=" bg-cyan-600 text-white font-bold rounded-full w-32 avaterInfo">
