@@ -15,7 +15,7 @@ const ForEmployers = () => {
 
         <span className="bg-primary w-40 h-1 mx-auto mt-4"></span>
       </div>
-      <div className="jobHunterContainer  grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-32 mt-32  ">
+      <div className="jobHunterContainer grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-36 mt-32  ">
         <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
@@ -33,7 +33,7 @@ const ForEmployers = () => {
             <p>Any company can post jobs for their company for free.</p>
           </div>
         </div>
-        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
+        <div className="jobHunterInfoContainer rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
               <img

@@ -7,10 +7,10 @@ import "./Jobs.css";
 
 const Jobs = () => {
   useTitle('Find Jobs')
-  const [getJobs, setgetJobs] = useState([])
+  const [getJobs, setGetJobs] = useState([])
   useEffect(() => {
     axios.get(`${BASE_API}/jobs`)
-      .then((response) => setgetJobs(response.data.reverse()))
+      .then((response) => setGetJobs(response.data.reverse()))
   }, [])
 
   return (
