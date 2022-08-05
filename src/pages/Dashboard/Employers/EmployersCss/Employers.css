@@ -1,10 +1,12 @@
-.editBtn {
+/* .editBtn {
   margin-left: 95%;
-}
-.checkbox {
+} */
+/* .inputchcheckbox {
   position: absolute;
   z-index: 99;
-}
+  width: 10%;
+  height: 10%;
+} */
 .employeInfo {
   position: absolute;
   top: 0;

@@ -1,16 +1,16 @@
-import { AiOutlineMail } from "react-icons/ai";
-
+import { AiOutlineDelete, AiOutlineMail } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { MdLocationOn } from "react-icons/md";
 import "./EmployersCss/Employers.css";
-const AllEmployee = ({ employe, showEmployData }) => {
-  const { firstName, lastName, emailAddress, location } = employe;
+const AllEmployee = ({ employe, showEmployData, deleteDetails }) => {
+  const { _id, firstName, lastName, emailAddress, location } = employe;
 
   return (
     <div>
       {/* Employe details container section start */}
       <div class="empoyeeContainer h-60 bg-base-100 shadow-md rounded-md p-2 relative cursor-pointer">
-        <input type="checkbox" className="checkbox " />
+        {/* <input type="checkbox " className="checkbox " /> */}
+
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
             <div class=" bg-cyan-600 text-white font-bold rounded-full w-32 avaterInfo">
@@ -22,9 +22,18 @@ const AllEmployee = ({ employe, showEmployData }) => {
           </p>
         </div>
         <div className="employeInfo p-2">
-          <label for="my-modal-3" onClick={() => showEmployData(employe)}>
-            <FiEdit className="editBtn cursor-pointer" />
-          </label>
+          <div className="flex justify-between">
+            <AiOutlineDelete
+              onClick={() => deleteDetails(_id)}
+              className="editBtn cursor-pointer text-xl"
+            />
+            <label className="" for="my-modal-3">
+              <FiEdit
+                onClick={() => showEmployData(employe)}
+                className="editBtn cursor-pointer text-xl"
+              />
+            </label>
+          </div>
 
           <div className="mt-20">
             <p>
