@@ -1,9 +1,9 @@
 import React from "react";
 
-import employeImageOne from "../../../assets/images/Employers/1.png";
-import employeImageTwo from "../../../assets/images/Employers/2.png";
-import employeImageThree from "../../../assets/images/Employers/3.png";
-import employeImageFour from "../../../assets/images/Employers/4.png";
+import employeImageOne from "../../Assets/images/Employers/1.png";
+import employeImageTwo from "../../Assets/images/Employers/2.png";
+import employeImageThree from "../../Assets/images/Employers/3.png";
+import employeImageFour from "../../Assets/images/Employers/4.png";
 import "../ForJobHunter/JobHunter.css";
 const ForEmployers = () => {
   return (

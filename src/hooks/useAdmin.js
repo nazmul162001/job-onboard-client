@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import auth from "../components/Firebase/Firebase.init";
+import auth from "../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../config";
 
 const useAdmin = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import './Banner.css';
-import bannerImg from '../../../assets/images/banner-img.png'
+import bannerImg from '../../Assets/images/banner-img.png'
 import { Link } from 'react-router-dom';
-import auth from '../../../components/Firebase/Firebase.init';
+import auth from '../../../Auth/Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Banner = () => {

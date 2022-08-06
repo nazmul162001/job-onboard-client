@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { BASE_API } from '../../config';
-import useTitle from '../../hooks/useTitle';
+import useTitle from '../../Hooks/useTitle';
 import Job from './Job';
 import "./Jobs.css";
 

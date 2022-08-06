@@ -1,9 +1,9 @@
 import React from "react";
 import { BsArrowRightCircle } from "react-icons/bs";
-import hunterImgOne from "../../../assets/images/JobHunter/1.png";
-import hunterImgTwo from "../../../assets/images/JobHunter/2.png";
-import hunterImgTtree from "../../../assets/images/JobHunter/3.png";
-import hunterImgFour from "../../../assets/images/JobHunter/4.png";
+import hunterImgOne from "../../Assets/images/JobHunter/1.png";
+import hunterImgTwo from "../../Assets/images/JobHunter/2.png";
+import hunterImgTtree from "../../Assets/images/JobHunter/3.png";
+import hunterImgFour from "../../Assets/images/JobHunter/4.png";
 import "./JobHunter.css";
 const JobHunter = () => {
   return (
