@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import useJob from '../../../hooks/useJob';
+import useJob from '../../../Hooks/useJob';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { ImArrowLeft2 } from 'react-icons/im';
 import ApplicantModal from './ApplicantModal';
-import Footer from '../../../components/Shared/Footer/Footer';
+import Footer from '../../../Shared/Footer/Footer';
 
 const JobDescription = () => {
   const { jobId } = useParams()

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'remixicon/fonts/remixicon.css'
-import mail from '../../../assets/images/contact/mail.png'
+import mail from '../../Assets/images/contact/mail.png'
 import './ContactUs.css'
 
 const ContactUs = () => {
