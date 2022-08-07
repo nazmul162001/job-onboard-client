@@ -13,8 +13,7 @@ const Branding = () => {
       .then((data) => setSliderImg(data));
   }, []);
   return (
-    <section className="brandingMainSection container mx-auto mt-8">
-      <div className="titleContainer flex flex-col text-center  text-5xl  "></div>
+    <section className="brandingMainSection container mx-auto mt-5 md:mt-8 lg:mt-0">
       <div className="brandingContainer px-4">
         <Swiper
           loop={true}

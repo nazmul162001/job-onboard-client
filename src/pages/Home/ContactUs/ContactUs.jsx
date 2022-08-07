@@ -1,6 +1,6 @@
 import React from 'react';
 import 'remixicon/fonts/remixicon.css'
-import mail from '../../../assets/images/contact/mail.png'
+import mail from '../../Assets/images/contact/mail.png'
 import './ContactUs.css'
 
 const ContactUs = () => {
@@ -10,7 +10,7 @@ const ContactUs = () => {
         <div className="contact_title h-96 relative">
           <div className="absolute text-white title_heading text-center">
             <h2 className='text-3xl'>GET IN TOUCH</h2>
-            <p className='mt-2'>Want to get in touch? We'd love to hear you. Here's how you can reach us...</p>
+            <p className='mt-2 text-white'>Want to get in touch? We'd love to hear you. Here's how you can reach us...</p>
           </div>
         </div>
         <div className="contact_form grid grid-cols-1 md:grid-cols-2 justify-center md:mt-[-100px] relative z-10 mx-0 md:mx-16 gap-5 px-5 md:px-0">

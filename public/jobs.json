@@ -1,6 +1,5 @@
 [
   {
-    "id" : 1 ,
     "jobName" : "Relationship Manager",
     "companyName" : "Motilal Oswal Financial Services Limited" ,
     "location" : "Remote",
@@ -16,7 +15,6 @@
     "aboutTheJob" : ["Achieving revenue targets through cross-selling of subscription-based financial products to the clients like trading software, educational products, option trading advice, and various trading & investment products of equity, derivative, options, currency, and commodity market" , "Providing training to clients for building trading strategies, use of robotic trading software & API based auto trade execution" ,"Delivering webinars and seminars on various financial products" , "Keeping self-updated on stock market outlook and product knowledge"]
   },
   {
-    "id" : 2 ,
     "jobName" : "Angular.js Developer",
     "companyName" : "Benepik" ,
     "location" : "USA",
@@ -39,8 +37,7 @@
     ]
   },
   {
-    "id" : 2 ,
-    "jobName" : "Angular.js Developer",
+    "jobName" : "React Developer",
     "companyName" : "Benepik" ,
     "location" : "USA",
     "category" : "Web Development",
@@ -62,8 +59,7 @@
     ]
   },
   {
-    "id" : 2 ,
-    "jobName" : "Angular.js Developer",
+    "jobName" : "Backend Developer",
     "companyName" : "Benepik" ,
     "location" : "USA",
     "category" : "Web Development",
@@ -85,8 +81,7 @@
     ]
   },
   {
-    "id" : 2 ,
-    "jobName" : "Angular.js Developer",
+    "jobName" : "Front End Developer",
     "companyName" : "Benepik" ,
     "location" : "USA",
     "category" : "Web Development",
@@ -108,7 +103,6 @@
     ]
   },
   {
-    "id" : 2 ,
     "jobName" : "Angular.js Developer",
     "companyName" : "Benepik" ,
     "location" : "USA",

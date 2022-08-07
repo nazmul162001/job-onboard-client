@@ -1,13 +1,13 @@
 import React from "react";
 import { BsArrowRightCircle } from "react-icons/bs";
-import hunterImgOne from "../../../assets/images/JobHunter/1.png";
-import hunterImgTwo from "../../../assets/images/JobHunter/2.png";
-import hunterImgTtree from "../../../assets/images/JobHunter/3.png";
-import hunterImgFour from "../../../assets/images/JobHunter/4.png";
+import hunterImgOne from "../../Assets/images/JobHunter/1.png";
+import hunterImgTwo from "../../Assets/images/JobHunter/2.png";
+import hunterImgTtree from "../../Assets/images/JobHunter/3.png";
+import hunterImgFour from "../../Assets/images/JobHunter/4.png";
 import "./JobHunter.css";
 const JobHunter = () => {
   return (
-    <section className="container mx-auto px-2 pt-16">
+    <section className="container mx-auto px-8 rounded-[40px] py-12 bg-base-300">
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-2xl md:text-4xl font-bold ">
           For Job Seeker
@@ -15,7 +15,7 @@ const JobHunter = () => {
         <span className="bg-[#895af6] w-40 h-1 mx-auto mt-4"></span>
       </div>
       <div className="jobHunterContainer grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-32 mt-32  ">
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
               <img
@@ -36,7 +36,7 @@ const JobHunter = () => {
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48 rounded-full roundedCircle">
               <img
@@ -57,7 +57,7 @@ const JobHunter = () => {
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48  rounded-full roundedCircle">
               <img
@@ -78,7 +78,7 @@ const JobHunter = () => {
             <BsArrowRightCircle className="SeekerIcon" />
           </p>
         </div>
-        <div className="jobHunterInfoContainer p-2 relative text-center">
+        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
           <div class="avatar hunterImg -mt-24">
             <div class="w-48  rounded-full roundedCircle">
               <img

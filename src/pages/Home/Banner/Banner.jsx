@@ -1,15 +1,15 @@
 import React from 'react';
 import './Banner.css';
-import bannerImg from '../../../assets/images/banner-img.png'
+import bannerImg from '../../Assets/images/banner-img.png'
 import { Link } from 'react-router-dom';
-import auth from '../../../components/Firebase/Firebase.init';
+import auth from '../../../Auth/Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Banner = () => {
   const [user] = useAuthState(auth);
   return (
     <section
-      className="container mx-auto bg-base-100 body-font pt-12 lg:px-10">
+    className="container mx-auto bg-base-100 lg:px-10">
       <div className="hero bg-base-100">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-1/2 rounded ">
