@@ -27,9 +27,9 @@ export const InitializeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState(false);
 
-  useEffect(() => {
-    setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  }, []);
+  // useEffect(() => {
+  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  // }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);

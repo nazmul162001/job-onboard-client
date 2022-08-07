@@ -19,9 +19,9 @@ const Jobs = () => {
         {/* Filter section  */}
         <div className='card pt-10'>
           <div className='md:fixed rounded-lg border min-h-[30vh] md:min-h-[75vh] filterHeight lg:min-h-[75vh] lg:px-20 pt-12 space-y-3 '>
-            <h2 className='text-center text-2xl md:3xl font-bold pt-5'>Filter Your Job</h2>
-            <h3 className='text-center'>Search by name</h3>
-            <input className='border border-black flex mx-auto rounded' type="search" value="" />
+            <h2 className='text-center text-2xl md:3xl font-bold pt-5'>Filter Job Here</h2>
+            <h3 className='text-center'>Search by name </h3>
+            <input className='border border-black flex mx-auto rounded' type="search" value="" placeholder='search' />
           </div>
         </div>
 
