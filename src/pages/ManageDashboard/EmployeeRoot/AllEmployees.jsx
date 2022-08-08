@@ -9,7 +9,7 @@ const AllEmployees = ({ employee }) => {
   const { name, designation, mail, location } = employee;
   return (
     <div>
-      <div class="employeeContainer overflow-hidden border-2 border-primary p-2 text-center rounded-md relative">
+      <div class="employeeContainer overflow-hidden border-2 shadow-md border-l p-2 text-center rounded-md relative">
         <div class="avatar py-2 mx-auto">
           <div class="w-36 ring-4  rounded-full ">
             <img
@@ -29,7 +29,7 @@ const AllEmployees = ({ employee }) => {
           </span>
           <h2 className="text-lg font-bold">{name}</h2>
           <p className="py-2">{designation}</p>
-          <hr className=""/>
+          <hr className="" />
           <p className="flex items-center text-sm py-2">
             <HiOutlineMail className="text-green-400 mr-1" />
             {mail}
