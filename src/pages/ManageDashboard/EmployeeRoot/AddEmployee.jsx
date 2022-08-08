@@ -115,11 +115,14 @@ const AddEmployee = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="flex flex-col space-y-1 gap-y-1">
+                  <label className="text-lg pl-2">
+                    Date Of Birth<span className="text-red-500">*</span>
+                  </label>
                   <input
-                    type="text"
-                    placeholder="Portfolio"
+                    type="number"
+                    placeholder="Enter Date Of Birth"
                     className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("portfolio", {
+                    {...register("dateOfBirth", {
                       required: {
                         value: true,
                         message: "This field is required",
@@ -127,16 +130,19 @@ const AddEmployee = () => {
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.portfolio?.message}
+                    {errors.dateOfBirth?.message}
                   </p>
                 </div>
 
                 <div className="flex flex-col space-y-1 gap-y-1">
+                  <label className="text-lg pl-2">
+                    Blood Group<span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
-                    placeholder="Linkedin"
+                    placeholder="Enter Blood Group"
                     className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("linkedin", {
+                    {...register("bloodGroup", {
                       required: {
                         value: true,
                         message: "This field is required",
@@ -144,7 +150,7 @@ const AddEmployee = () => {
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.linkedin?.message}
+                    {errors.bloodGroup?.message}
                   </p>
                 </div>
               </div>
@@ -152,14 +158,11 @@ const AddEmployee = () => {
               {/* social link end */}
 
               <div className="flex flex-col space-y-1 gap-y-1 py-5">
-                <h4 className="pl-2 md:text-lg">
-                  Why should you be hired for this role?{" "}
-                  <span className="text-red-500">*</span>
-                </h4>
+                <h4 className="pl-2 md:text-lg">Additional Information</h4>
                 <textarea
                   type="text"
                   rows={4}
-                  placeholder="Add a cover letter"
+                  placeholder="Additional Information"
                   className="border rounded-lg py-1 text-xl pl-3 "
                   {...register("coverLetter", {
                     required: {
