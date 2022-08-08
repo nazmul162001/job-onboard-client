@@ -185,7 +185,7 @@ const Login = () => {
             <div className="w-full lg:w-1/2 rounded overflow-hidden lg:ml-6 hidden lg:block">
               <div className="outline-none h-full">
                 <img
-                  src="https://i.ibb.co/X5ygVKW/login.png"
+                  src="https://i.ibb.co/fn6rMQR/Repeat-Grid-3.png"
                   className=" md:rounded-lg h-full w-full"
                   alt=""
                 />
