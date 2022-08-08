@@ -8,14 +8,14 @@ const EmployeesRoot = () => {
       name: "Sajal Howlader",
       designation: "Front-End Developer",
       mail: "sajalHowlader08@gmail.com",
-      locatioin: "Savar Dhaka,Bangladesh",
+      location: "Savar Dhaka,Bangladesh",
     },
     {
       _id: 5582,
       name: "Sajal Howlader",
       designation: "Front-End Developer",
       mail: "sajalHowlader08@gmail.com",
-      locatioin: "Savar Dhaka,Bangladesh",
+      location: "Savar Dhaka,Bangladesh",
     },
   ];
 
