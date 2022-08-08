@@ -3,14 +3,17 @@
 }
 .basicInfo {
   background: #000000a3;
-
   visibility: hidden;
   transition: 0.2s;
+}
+hr {
+  border-style: dashed;
 }
 .employeeContainer:hover .basicInfo {
   visibility: visible;
   top: 0;
 }
+
 .employeeContainer:hover .nameTitle {
   visibility: hidden;
 }

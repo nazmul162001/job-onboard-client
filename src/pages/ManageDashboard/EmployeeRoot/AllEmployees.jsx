@@ -23,14 +23,13 @@ const AllEmployees = ({ employee }) => {
           <p>{designation}</p>
         </div>
         <div className="basicInfo absolute left-0 right-0 text-left text-white  -top-full font-medium h-full flex flex-col justify-center px-3">
-
           <span className="absolute right-3 top-3 flex">
             <RiDeleteBin2Line className="mr-2 text-xl cursor-pointer" />
             <BiEdit className="mr-2 text-xl cursor-pointer" />
           </span>
           <h2 className="text-lg font-bold">{name}</h2>
-          <p>{designation}</p>
-          <hr />
+          <p className="py-2">{designation}</p>
+          <hr className=""/>
           <p className="flex items-center text-sm py-2">
             <HiOutlineMail className="text-green-400 mr-1" />
             {mail}
