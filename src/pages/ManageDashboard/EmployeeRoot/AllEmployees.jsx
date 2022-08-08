@@ -7,6 +7,8 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 
 const AllEmployees = ({ employee }) => {
   const { name, designation, mail, location } = employee;
+
+  
   return (
     <div>
       <div class="employeeContainer overflow-hidden border-2 shadow-md border-l p-2 text-center rounded-md relative">

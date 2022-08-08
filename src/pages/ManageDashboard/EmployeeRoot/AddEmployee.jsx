@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { BsPersonPlusFill } from "react-icons/bs";
+import { BsPersonPlusFill, BsShieldPlus } from "react-icons/bs";
+import Swal from "sweetalert2";
+import { BASE_API } from "../../../config";
 const AddEmployee = () => {
   const {
     register,
@@ -8,6 +10,38 @@ const AddEmployee = () => {
     handleSubmit,
     reset,
   } = useForm();
+
+  const addEmployeDetails = (data) => {
+    const applicantData = {
+      ...data,
+    };
+    fetch(`${BASE_API}/addEmployees`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(applicantData),
+      // const { id, name, location, email } = employe;
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            text: "Add Employee Successfully",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+          reset();
+        } else {
+          Swal.fire({
+            text: `Opps!`,
+            icon: "error",
+            confirmButtonText: "Plz Try Again",
+          });
+        }
+      });
+  };
+
   return (
     <div>
       <input
@@ -16,16 +50,19 @@ const AddEmployee = () => {
         className="modal-toggle "
       />
       <div className="modal ">
-        <div className="modal-box lg:w-10/12 lg:max-w-2xl">
+        <div className="modal-box lg:w-10/12 lg:max-w-2xl modalContainer">
           <label
-            for="my-modal-3"
+            for="add-new-employee-modal"
             class="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
 
           <div>
-            <form className="space-y-2">
+            <form
+              className="space-y-2"
+              onSubmit={handleSubmit(addEmployeDetails)}
+            >
               {/* name filed  */}
               <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
                 <div className="flex flex-col space-y-1 gap-y-1">
@@ -39,7 +76,7 @@ const AddEmployee = () => {
                     {...register("fullName", {
                       required: {
                         value: true,
-                        message: "This field is required",
+                        message: "Add Full Name !",
                       },
                     })}
                   />
@@ -55,15 +92,15 @@ const AddEmployee = () => {
                     type="Number"
                     placeholder="Enter ID No"
                     className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("fullName", {
+                    {...register("employeId", {
                       required: {
                         value: true,
-                        message: "This field is required",
+                        message: "Add A ID !",
                       },
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.fullName?.message}
+                    {errors.employeId?.message}
                   </p>
                 </div>
               </div>
@@ -81,7 +118,7 @@ const AddEmployee = () => {
                     {...register("email", {
                       required: {
                         value: true,
-                        message: "This field is required",
+                        message: "Add Email !",
                       },
                     })}
                   />
@@ -101,7 +138,7 @@ const AddEmployee = () => {
                     {...register("phoneNumber", {
                       required: {
                         value: true,
-                        message: "This field is required",
+                        message: "Add Phone Number",
                       },
                     })}
                   />
@@ -125,7 +162,7 @@ const AddEmployee = () => {
                     {...register("dateOfBirth", {
                       required: {
                         value: true,
-                        message: "This field is required",
+                        message: "Add Date Of Birth !",
                       },
                     })}
                   />
@@ -145,7 +182,7 @@ const AddEmployee = () => {
                     {...register("bloodGroup", {
                       required: {
                         value: true,
-                        message: "This field is required",
+                        message: "Add Blood Group !",
                       },
                     })}
                   />
@@ -154,31 +191,41 @@ const AddEmployee = () => {
                   </p>
                 </div>
               </div>
-
-              {/* social link end */}
-
-              <div className="flex flex-col space-y-1 gap-y-1 py-5">
+              {/* Employees Photos */}
+              <div className="flex flex-col space-y-1 gap-y-1">
+                <label className="text-lg pl-2">
+                  Add Photos<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter Images Link"
+                  className="border rounded-lg py-1 text-lg pl-3 "
+                  {...register("photoLink", {
+                    required: {
+                      value: true,
+                      message: "Add Photo Link",
+                    },
+                  })}
+                />
+                <p className="text-[13px] text-red-500 pl-3">
+                  {errors.photoLink?.message}
+                </p>
+              </div>
+              {/* Additional Imformation */}
+              <div className="flex flex-col space-y-1 gap-y-1 py-2">
                 <h4 className="pl-2 md:text-lg">Additional Information</h4>
                 <textarea
                   type="text"
                   rows={4}
                   placeholder="Additional Information"
                   className="border rounded-lg py-1 text-xl pl-3 "
-                  {...register("coverLetter", {
-                    required: {
-                      value: true,
-                      message: "This field is required",
-                    },
-                  })}
+                  {...register("additionInfo")}
                 />
-                <p className="text-[13px] text-red-500 pl-3"></p>
               </div>
 
-              <div className="pb-5 lg:pb-2 text-center lg:text-start">
-                <button className="px-5 py-3  border bg-primary rounded-lg text-lg  text-white">
-                  Submit Application
-                </button>
-              </div>
+              <button className="rounded-lg text-lg py-1 font-bold  bg-primary w-full  flex items-center justify-center  text-white">
+                <BsShieldPlus /> Add
+              </button>
             </form>
           </div>
         </div>

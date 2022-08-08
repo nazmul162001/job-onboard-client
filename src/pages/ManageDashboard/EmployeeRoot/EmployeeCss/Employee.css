@@ -6,6 +6,11 @@
   visibility: hidden;
   transition: 0.2s;
 }
+.modalContainer input:focus,
+textarea:focus {
+  background-color: rgba(248, 243, 243, 0.671);
+  outline-style: dotted;
+}
 hr {
   border-style: dashed;
 }
