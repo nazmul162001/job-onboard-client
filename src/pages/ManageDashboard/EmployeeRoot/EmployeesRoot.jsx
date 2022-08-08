@@ -1,6 +1,6 @@
 import React from "react";
 import AllEmployees from "./AllEmployees";
-
+import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const employees = [
     {

@@ -1,0 +1,20 @@
+.nameTitle {
+  transition: 0.2s;
+}
+.basicInfo {
+  background: #000000a3;
+  color: #ffffff;
+  padding: 40% 4%;
+  visibility: hidden;
+  transition: 0.2s;
+  transition-timing-function: ease-in-out;
+  top: -100%;
+  font-weight: 500;
+}
+.employeeContainer:hover .basicInfo {
+  visibility: visible;
+  top: 0;
+}
+.employeeContainer:hover .nameTitle {
+  visibility: hidden;
+}
