@@ -41,7 +41,7 @@ const Navbar = () => {
             : { display: "block" }
         }
       >
-        <nav className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
+        <nav className="px-4 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
             <button
               aria-label="Open Menu"
@@ -53,9 +53,9 @@ const Navbar = () => {
             </button>
             <div className="flex items-center">
               <Link to="/" className="inline-flex items-center mr-8">
-                <img src={logo} alt="" className="ml-10 lg:ml-0 w-[3.5rem] lg:w-16"/>
-                <span className="text-xl font-bold hidden md:block">Job Onboard</span>
-                <span className="hidden"></span>
+                <img src={logo} alt="" className="ml-10 lg:ml-0 w-24 lg:w-32" />
+                {/* <span className="text-xl font-bold hidden md:block">Job Onboard</span>
+                <span className="hidden"></span> */}
               </Link>
             </div>
 
