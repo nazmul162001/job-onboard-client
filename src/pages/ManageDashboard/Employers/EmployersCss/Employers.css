@@ -1,0 +1,27 @@
+/* .editBtn {
+  margin-left: 95%;
+} */
+/* .inputchcheckbox {
+  position: absolute;
+  z-index: 99;
+  width: 10%;
+  height: 10%;
+} */
+
+.employeInfo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 90%;
+  width: 88%;
+  visibility: hidden;
+  background: #ffffff;
+  transition: 0.1s;
+  transform: scaleY(0);
+  transition-timing-function: ease-in-out;
+}
+
+.empoyeeContainer:hover .employeInfo {
+  visibility: visible;
+  transform: scaleY(1);
+}

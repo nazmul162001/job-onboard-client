@@ -1,8 +1,8 @@
 import React from 'react';
-import discover from '../../../assets/images/whyChooseUs/feature11.png'
-import recruit from '../../../assets/images/whyChooseUs/feature22.png'
-import prescreen from '../../../assets/images/whyChooseUs/feature33.png'
-import hire from '../../../assets/images/whyChooseUs/feature44.png'
+import discover from '../../Assets/images/whyChooseUs/feature11.png'
+import recruit from '../../Assets/images/whyChooseUs/feature22.png'
+import prescreen from '../../Assets/images/whyChooseUs/feature33.png'
+import hire from '../../Assets/images/whyChooseUs/feature44.png'
 
 const WhyChooseUs = () => {
   return (
