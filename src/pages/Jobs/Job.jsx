@@ -9,12 +9,12 @@ const Job = ({ job }) => {
   const { _id, jobTitle, companyName, location, salary, jobType, createdDate } = job
   
   return (
-    <div className="border-2 rounded-md">
+    <div className="border  rounded-md card shadow-lg">
       <div className="p-5 space-y-5">
         <div className="space-y-2">
           <div className='flex flex-col lg:flex-row space-y-1  justify-between'>
-            <h2 className="text-2xl ">{jobTitle}</h2>
-          <p className='text-lg md:text-xl lg:text-xl font-bold '>{companyName}</p>
+            <h2 className="text-2xl font-mono font-bold ">{jobTitle}</h2>
+          <p className='text-lg md:text-xl lg:text-xl font-semibold '>{companyName}</p>
           </div>
             <p className='flex items-center gap-2 '> <span><BsStopwatch/></span> {createdDate?.slice(3, 15)}</p>
         </div>
