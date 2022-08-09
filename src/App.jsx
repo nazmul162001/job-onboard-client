@@ -13,6 +13,7 @@ import Home from "./Pages/Home/Home/Home";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import Jobs from "./Pages/Jobs/Jobs";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
+import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
 import EmployeesRoot from "./Pages/ManageDashboard/EmployeeRoot/EmployeesRoot";
 import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
 import AddNewJob from "./Pages/ManageDashboard/Jobs/AddNewJob";
@@ -67,6 +68,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             {/* <Route path="employers" element={<Employers />} /> */}
             <Route path="employee" element={<EmployeesRoot />} />
+            <Route path="employee/:Id" element={<EmployeeDetails />} />
             <Route path="recruitment" element={<Recruitment />} />
             <Route path="mails" element={<Inbox />} />
             <Route

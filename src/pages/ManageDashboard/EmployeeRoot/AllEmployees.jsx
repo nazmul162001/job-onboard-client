@@ -4,6 +4,7 @@ import { BsArrowRightCircleFill } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { RiDeleteBin2Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const AllEmployees = ({
   singleDetails,
@@ -12,7 +13,10 @@ const AllEmployees = ({
 }) => {
   const { _id, fullName, email, photoLink, location, designation } =
     singleDetails;
-
+  const navigate = useNavigate();
+  const showRployeeDetail = (pId) => {
+    navigate(`${pId}`);
+  };
   return (
     <div>
       <div class="employeeContainer overflow-hidden border-l-2 border-primary shadow-md  p-2 text-center rounded-md relative">
@@ -50,7 +54,10 @@ const AllEmployees = ({
             <MdOutlineLocationOn className="text-green-400 mr-1" />
             {location}
           </p>
-          <BsArrowRightCircleFill className="absolute bottom-3 right-3 text-2xl cursor-pointer" />
+          <BsArrowRightCircleFill
+            onClick={() => showRployeeDetail(_id)}
+            className="absolute bottom-3 right-3 text-2xl cursor-pointer"
+          />
         </div>
       </div>
     </div>
