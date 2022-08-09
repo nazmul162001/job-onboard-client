@@ -26,7 +26,6 @@ const EditEmployeeModal = ({ editEmployeDetails }) => {
   const editDetails = (data) => {
     const updateData = { ...data };
     const id = _id;
-    console.log(id);
     if (id) {
       fetch(`${BASE_API}/editEployee/${id}`, {
         method: "PUT",

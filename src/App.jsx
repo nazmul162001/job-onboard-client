@@ -68,7 +68,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             {/* <Route path="employers" element={<Employers />} /> */}
             <Route path="employee" element={<EmployeesRoot />} />
-            <Route path="employee/:Id" element={<EmployeeDetails />} />
+            <Route path="employee/:detailsId" element={<EmployeeDetails />} />
             <Route path="recruitment" element={<Recruitment />} />
             <Route path="mails" element={<Inbox />} />
             <Route
