@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
@@ -13,6 +14,39 @@ const EmployeesRoot = () => {
       .get(`${BASE_API}/getEmployees`)
       .then((result) => setAllEmployeDetails(result.data));
   }, []);
+
+  const deleteEmployeeDetails = (employeId) => {
+    console.log(employeId);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `${BASE_API}/deleteEmployeDetails/${employeId}`;
+        fetch(url, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              Swal.fire("Deleted!", "Delete Successfully.", "success");
+              const remaining = allEmployeDetails.filter(
+                (data) => data._id !== employeId
+              );
+              setAllEmployeDetails(remaining);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <section>
@@ -29,13 +63,13 @@ const EmployeesRoot = () => {
             key={singleDetails._id}
             singleDetails={singleDetails}
             setEditEmployeDetails={setEditEmployeDetails}
-            allEmployeDetails={allEmployeDetails}
+            deleteEmployeeDetails={deleteEmployeeDetails}
           />
         ))}
       </div>
-      {
-        editEmployeDetails && <EditEmployeeModal editEmployeDetails={editEmployeDetails}/>
-      }
+      {editEmployeDetails && (
+        <EditEmployeeModal editEmployeDetails={editEmployeDetails} />
+      )}
     </section>
   );
 };

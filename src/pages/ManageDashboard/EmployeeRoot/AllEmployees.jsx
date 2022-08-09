@@ -3,10 +3,15 @@ import { BiEdit } from "react-icons/bi";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdOutlineLocationOn } from "react-icons/md";
-import DeleteEployee from "./DeleteEployee";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
-const AllEmployees = ({ singleDetails, setEditEmployeDetails,allEmployeDetails }) => {
-  const { fullName, email, photoLink, location, designation } = singleDetails;
+const AllEmployees = ({
+  singleDetails,
+  setEditEmployeDetails,
+  deleteEmployeeDetails,
+}) => {
+  const { _id, fullName, email, photoLink, location, designation } =
+    singleDetails;
 
   return (
     <div>
@@ -22,10 +27,14 @@ const AllEmployees = ({ singleDetails, setEditEmployeDetails,allEmployeDetails }
         </div>
         <div className="basicInfo absolute left-0 right-0 text-left text-white  -top-full font-medium h-full flex flex-col justify-center px-3">
           <span className="absolute right-3 top-3 flex">
-            <DeleteEployee deleteDetails={singleDetails} allEmployeDetails={allEmployeDetails}/>
+            <RiDeleteBin2Line
+              onClick={() => deleteEmployeeDetails(_id)}
+              className="mr-2 text-xl cursor-pointer"
+            />
+
             <label for="edit-employee-modal">
               <BiEdit
-                onClick={() => setEditEmployeDetails(setEditEmployeDetails)}
+                onClick={() => setEditEmployeDetails(singleDetails)}
                 className="mr-2 text-xl cursor-pointer"
               />
             </label>
