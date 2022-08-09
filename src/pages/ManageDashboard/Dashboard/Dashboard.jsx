@@ -136,6 +136,14 @@ const Dashboard = () => {
                   Recruitment
                 </NavLink>
               </li>
+              <li className="py-1 font-semibold">
+                <NavLink
+                  to="/dashboard/candidates"
+                  className="py-4 lg:text-lg"
+                >
+                  Candidates
+                </NavLink>
+              </li>
             </>
           )}
 
