@@ -1,33 +1,16 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { BASE_API } from "../../../config";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
-import axios from "axios";
 import "./EmployeeCss/Employee.css";
-import { BASE_API } from "../../../config";
 const EmployeesRoot = () => {
-  const [allEmployeDetails,setAllEmployeDetails] = useState([])
+  const [allEmployeDetails, setAllEmployeDetails] = useState([]);
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
       .then((result) => setAllEmployeDetails(result.data));
   }, []);
-  
-  const employees = [
-    {
-      _id: 5512,
-      name: "Sajal Howlader",
-      designation: "Front-End Developer",
-      mail: "sajalHowlader08@gmail.com",
-      location: "Savar Dhaka,Bangladesh",
-    },
-    {
-      _id: 5582,
-      name: "Sajal Howlader",
-      designation: "Front-End Developer",
-      mail: "sajalHowlader08@gmail.com",
-      location: "Savar Dhaka,Bangladesh",
-    },
-  ];
 
   return (
     <section>

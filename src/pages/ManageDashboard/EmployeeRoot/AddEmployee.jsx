@@ -12,7 +12,7 @@ const AddEmployee = () => {
   } = useForm();
 
   const addEmployeDetails = (data) => {
-    const applicantData = {
+    const employeeDetails = {
       ...data,
     };
     fetch(`${BASE_API}/addEmployees`, {
@@ -20,7 +20,7 @@ const AddEmployee = () => {
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(applicantData),
+      body: JSON.stringify(employeeDetails),
       // const { id, name, location, email } = employe;
     })
       .then((res) => res.json())
