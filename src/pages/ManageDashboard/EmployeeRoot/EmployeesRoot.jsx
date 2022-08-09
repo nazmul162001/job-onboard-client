@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
+import axios from "axios";
 import "./EmployeeCss/Employee.css";
+import { BASE_API } from "../../../config";
 const EmployeesRoot = () => {
+  const [allEmployeDetails,setAllEmployeDetails] = useState([])
+  useEffect(() => {
+    axios
+      .get(`${BASE_API}/getEmployees`)
+      .then((result) => setAllEmployeDetails(result.data));
+  }, []);
+  
   const employees = [
     {
       _id: 5512,
@@ -30,8 +39,8 @@ const EmployeesRoot = () => {
         <AddEmployee />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5">
-        {employees.map((employee) => (
-          <AllEmployees key={employee._id} employee={employee} />
+        {allEmployeDetails.map((singleDetails) => (
+          <AllEmployees key={singleDetails._id} singleDetails={singleDetails} />
         ))}
       </div>
     </section>

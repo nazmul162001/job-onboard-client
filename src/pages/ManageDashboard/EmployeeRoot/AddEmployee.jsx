@@ -231,12 +231,14 @@ const AddEmployee = () => {
         </div>
       </div>
 
-      <label
-        for="add-new-employee-modal"
-        className="mr-5 flex items-center bg-base-300 py-2 px-3 rounded-md font-bold cursor-pointer"
-      >
-        <BsPersonPlusFill /> Add New
-      </label>
+      <div className="modal-action">
+        <label
+          for="add-new-employee-modal"
+          className="mr-5 flex items-center bg-base-300 py-2 px-3 rounded-md font-bold cursor-pointer"
+        >
+          <BsPersonPlusFill /> Add New
+        </label>
+      </div>
     </div>
   );
 };
