@@ -106,10 +106,9 @@ const Dashboard = () => {
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
-              className="logo font-semibold text-center flex items-center flex-col gap-2"
+              className="logo font-semibold text-center flex items-center flex-col gap-2 pb-2"
             >
-              <img src={logo} alt="" className="w-12" />
-              Job Onboard
+              <img src={logo} alt="" className="w-40" />
             </Link>
           </div>
           <li className="py-2 mt-4 font-semibold">

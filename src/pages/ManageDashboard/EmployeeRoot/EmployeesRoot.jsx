@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import { BASE_API } from "../../../config";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
+import EditEmployeeModal from "./EditEmployeeModal";
 import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [allEmployeDetails, setAllEmployeDetails] = useState([]);
+  const [editEmployeDetails, setEditEmployeDetails] = useState(null);
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
@@ -23,9 +25,16 @@ const EmployeesRoot = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5">
         {allEmployeDetails.map((singleDetails) => (
-          <AllEmployees key={singleDetails._id} singleDetails={singleDetails} />
+          <AllEmployees
+            key={singleDetails._id}
+            singleDetails={singleDetails}
+            setEditEmployeDetails={setEditEmployeDetails}
+          />
         ))}
       </div>
+      {
+        editEmployeDetails && <EditEmployeeModal editEmployeDetails={editEmployeDetails}/>
+      }
     </section>
   );
 };

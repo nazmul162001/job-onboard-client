@@ -5,12 +5,12 @@ import { HiOutlineMail } from "react-icons/hi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { RiDeleteBin2Line } from "react-icons/ri";
 
-const AllEmployees = ({ singleDetails }) => {
+const AllEmployees = ({ singleDetails, setEditEmployeDetails }) => {
   const { fullName, email, photoLink, location, designation } = singleDetails;
 
   return (
     <div>
-      <div class="employeeContainer overflow-hidden border-2 shadow-md border-l p-2 text-center rounded-md relative">
+      <div class="employeeContainer overflow-hidden border-l-2 border-primary shadow-md  p-2 text-center rounded-md relative">
         <div class="avatar py-2 mx-auto">
           <div class="w-36 ring-4  rounded-full ">
             <img src={photoLink} alt="employees photos" />
@@ -23,7 +23,10 @@ const AllEmployees = ({ singleDetails }) => {
         <div className="basicInfo absolute left-0 right-0 text-left text-white  -top-full font-medium h-full flex flex-col justify-center px-3">
           <span className="absolute right-3 top-3 flex">
             <RiDeleteBin2Line className="mr-2 text-xl cursor-pointer" />
-            <BiEdit className="mr-2 text-xl cursor-pointer" />
+            <BiEdit
+              onClick={() => setEditEmployeDetails(singleDetails)}
+              className="mr-2 text-xl cursor-pointer"
+            />
           </span>
           <h2 className="text-lg font-bold">{fullName}</h2>
           <p className="py-2">{designation}</p>
