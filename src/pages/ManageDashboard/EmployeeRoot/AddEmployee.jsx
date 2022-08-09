@@ -129,21 +129,21 @@ const AddEmployee = () => {
 
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Contact number <span className="text-red-500">*</span>
+                    Designation <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Phone number"
                     className="border rounded-lg  py-1 text-lg pl-3 "
-                    {...register("phoneNumber", {
+                    {...register("designation", {
                       required: {
                         value: true,
-                        message: "Add Phone Number",
+                        message: "Add Designaton !",
                       },
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.phoneNumber?.message}
+                    {errors.designation?.message}
                   </p>
                 </div>
               </div>
@@ -188,6 +188,48 @@ const AddEmployee = () => {
                   />
                   <p className="text-[13px] text-red-500 pl-3">
                     {errors.bloodGroup?.message}
+                  </p>
+                </div>
+              </div>
+              {/* Location and contact details */}
+
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
+                <div className="flex flex-col space-y-1 gap-y-1">
+                  <label className="text-lg pl-2">
+                    Location<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter Location"
+                    className="border rounded-lg py-1 text-lg pl-3 "
+                    {...register("location", {
+                      required: {
+                        value: true,
+                        message: "Add A Locatioin !",
+                      },
+                    })}
+                  />
+                  <p className="text-[13px] text-red-500 pl-3">
+                    {errors.location?.message}
+                  </p>
+                </div>
+                <div className="flex flex-col space-y-1 gap-y-1">
+                  <label className="text-lg pl-2">
+                    Contact Number <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="Number"
+                    placeholder="Enter Contact Number"
+                    className="border rounded-lg py-1 text-lg pl-3 "
+                    {...register("phoneNumber", {
+                      required: {
+                        value: true,
+                        message: "Add Phone Number !",
+                      },
+                    })}
+                  />
+                  <p className="text-[13px] text-red-500 pl-3">
+                    {errors.phoneNumber?.message}
                   </p>
                 </div>
               </div>
