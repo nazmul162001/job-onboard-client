@@ -29,6 +29,7 @@ const EmployeesRoot = () => {
             key={singleDetails._id}
             singleDetails={singleDetails}
             setEditEmployeDetails={setEditEmployeDetails}
+            allEmployeDetails={allEmployeDetails}
           />
         ))}
       </div>
