@@ -14,7 +14,7 @@ const AllEmployee = ({ employe, showEmployData, deleteDetails }) => {
         <div class="text-center">
           <div class="avatar placeholder mx-auto mb-4 ">
             <div class=" bg-cyan-600 text-white font-bold rounded-full w-32 avaterInfo">
-              <span class="text-3xl">{firstName.slice(0, 1)}</span>
+              <span class="text-3xl">{firstName?.slice(0, 1)}</span>
             </div>
           </div>
           <p class=" text-indigo-600">
