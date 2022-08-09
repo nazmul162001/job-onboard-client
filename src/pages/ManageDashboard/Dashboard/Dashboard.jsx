@@ -103,13 +103,12 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
-          <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
+          <div className="flex flex-col items-center border-b">
             <Link
               to="/"
-              className="logo font-semibold text-center flex items-center flex-col gap-2"
+              className="logo font-semibold text-center flex items-center flex-col gap-2 pb-2"
             >
-              <img src={logo} alt="" className="w-12" />
-              Job Onboard
+              <img src={logo} alt="" className="w-40" />
             </Link>
           </div>
           <li className="py-2 mt-4 font-semibold">
