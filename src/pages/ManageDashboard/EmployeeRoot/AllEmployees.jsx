@@ -23,10 +23,13 @@ const AllEmployees = ({ singleDetails, setEditEmployeDetails }) => {
         <div className="basicInfo absolute left-0 right-0 text-left text-white  -top-full font-medium h-full flex flex-col justify-center px-3">
           <span className="absolute right-3 top-3 flex">
             <RiDeleteBin2Line className="mr-2 text-xl cursor-pointer" />
-            <BiEdit
-              onClick={() => setEditEmployeDetails(singleDetails)}
-              className="mr-2 text-xl cursor-pointer"
-            />
+
+            <label for="edit-employee-modal">
+              <BiEdit
+                onClick={() => setEditEmployeDetails(singleDetails)}
+                className="mr-2 text-xl cursor-pointer"
+              />
+            </label>
           </span>
           <h2 className="text-lg font-bold">{fullName}</h2>
           <p className="py-2">{designation}</p>
