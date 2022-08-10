@@ -15,6 +15,36 @@ const EmployeesRoot = () => {
       .then((result) => setAllEmployeDetails(result.data));
   }, []);
 
+  // const [user] = useAuthState(auth);
+  // console.log(user);
+  // if (user) {
+  //   fetch(`${BASE_API}/getEmployees?userEmail=${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }
+
+  // if (user) {
+  //       fetch(`http://localhost:5000/myItems?userEmail=${user.email}`, {
+  //         method: "GET",
+  //         headers: {
+  //           "content-type": "application/json",
+  //           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //         },
+  //       })
+  //         .then((res) => {
+  //           if (res.status === 401 || res.status === 403) {
+  //             signOut(auth);
+  //             localStorage.removeItem("accessToken");
+  //             navigate("/");
+  //           }
+  //           return res.json();
+  //         })
+  //         .then((data) => {
+  //           setBookings(data);
+  //         });
+  //     }
+  //   }, [user, navigate]);
+
   const deleteEmployeeDetails = (employeId) => {
     console.log(employeId);
     Swal.fire({

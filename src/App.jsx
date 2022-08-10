@@ -12,6 +12,7 @@ import SignUp from "./Pages/Authentication/SignUp/SignUp";
 import Home from "./Pages/Home/Home/Home";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import Jobs from "./Pages/Jobs/Jobs";
+import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
 import EmployeesRoot from "./Pages/ManageDashboard/EmployeeRoot/EmployeesRoot";
@@ -29,9 +30,9 @@ export const InitializeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState(false);
 
-  useEffect(() => {
-    setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  }, []);
+  // useEffect(() => {
+  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  // }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);
@@ -70,6 +71,7 @@ function App() {
             <Route path="employee" element={<EmployeesRoot />} />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
             <Route path="recruitment" element={<Recruitment />} />
+            <Route path="candidates" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />
             <Route
               path="allHr"
