@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Auth/Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
 import logo from "../../Pages/Assets/logo/logo.png";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -110,7 +111,10 @@ const Navbar = () => {
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
-                      <button onClick={handleLogOut}>Logout</button>
+                      <button onClick={handleLogOut}>
+                        <FiLogOut />
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 </div>
