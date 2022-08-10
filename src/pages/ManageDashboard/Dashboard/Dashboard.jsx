@@ -50,15 +50,17 @@ const Dashboard = () => {
             Job Onboard
           </Link>
           <div className="flex justify-center items-center gap-8">
-            <Link to="/dashboard/job/addNew" className="text-md">
-              <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
-                {" "}
-                <span>
-                  <AiOutlinePlus />
-                </span>{" "}
-                Post Job
-              </button>
-            </Link>
+            {!admin && hr && (
+              <Link to="/dashboard/job/addNew" className="text-md">
+                <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
+                  {" "}
+                  <span>
+                    <AiOutlinePlus />
+                  </span>{" "}
+                  Post Job
+                </button>
+              </Link>
+            )}
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"

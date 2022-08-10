@@ -68,7 +68,14 @@ function App() {
             }
           >
             <Route index element={<WelcomeDashboard />} />
-            <Route path="job/addNew" element={<AddNewJob />} />
+            <Route
+              path="job/addNew"
+              element={
+                <RequireHr>
+                  <AddNewJob />
+                </RequireHr>
+              }
+            />
             <Route path="profile" element={<Profile />} />
             <Route
               path="employers"
@@ -78,7 +85,14 @@ function App() {
                 </RequireHr>
               }
             />
-            <Route path="recruitment" element={<Recruitment />} />
+            <Route
+              path="recruitment"
+              element={
+                <RequireHr>
+                  <Recruitment />
+                </RequireHr>
+              }
+            />
             <Route path="candidates" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />
             <Route

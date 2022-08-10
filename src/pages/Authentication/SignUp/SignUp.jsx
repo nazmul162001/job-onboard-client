@@ -41,7 +41,7 @@ const SignUp = () => {
   let signInError;
 
   if (loading || gLoading || updating) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   if (error || gError || updateError) {
