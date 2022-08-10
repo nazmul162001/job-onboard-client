@@ -11,10 +11,10 @@ import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
-import useToken from "../../../Hooks/useToken";
+import useTokenForCandidates from "../../../Hooks/useTokenForCandidates";
 import useTitle from "../../../Hooks/useTitle";
 
-const SignUp = () => {
+const SignUpForCandidates = () => {
   useTitle("Sign Up");
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
@@ -30,7 +30,7 @@ const SignUp = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  const [token] = useToken(user || gUser);
+  const [token] = useTokenForCandidates(user || gUser);
 
   useEffect(() => {
     if (token) {
@@ -61,12 +61,9 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    toast.success(
-      `Welcome ${data.name}! You are now registered as a HR Manager.`,
-      {
-        position: "top-center",
-      }
-    );
+    toast.success(`Welcome ${data.name}! You are now registered as Candidate.`, {
+      position: "top-center",
+    });
   };
   return (
     <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-0">
@@ -88,7 +85,7 @@ const SignUp = () => {
                 <div className="card w-full max-w-lg lg:bg-base-300 shadow-xl">
                   <div className="card-body w-full">
                     <h2 className="text-center text-xl lg:text-2xl font-bold">
-                      Please Sign Up as a HR Manager
+                      Please Sign Up as a Candidate
                     </h2>
                     <p className="text-center font-semibold">
                       Already have an account?{" "}
@@ -224,4 +221,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpForCandidates;
