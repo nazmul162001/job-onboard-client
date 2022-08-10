@@ -10,10 +10,12 @@ import { AiOutlinePlus } from "react-icons/ai";
 import logo from "../../Assets/logo/logo.png";
 import useAdmin from "../../../Hooks/useAdmin";
 import Loader from "../../../Components/Loader/Loader";
+import useHrManager from "../../../Hooks/useHrManager";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
+  const [hr, hrLoading] = useHrManager(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -26,7 +28,7 @@ const Dashboard = () => {
     });
   };
 
-  if (adminLoading) {
+  if (adminLoading || hrLoading) {
     return <Loader />;
   }
 
@@ -116,7 +118,7 @@ const Dashboard = () => {
               Dashboard
             </NavLink>
           </li>
-          {!admin && (
+          {!admin && hr && (
             <>
               <li className="py-1 font-semibold">
                 <NavLink to="/dashboard/mails" className="py-4 lg:text-lg">
@@ -137,11 +139,18 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
-                <NavLink
-                  to="/dashboard/candidates"
-                  className="py-4 lg:text-lg"
-                >
+                <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
                   Candidates
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {!admin && !hr && (
+            <>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/applied" className="py-4 lg:text-lg">
+                  Applied Jobs
                 </NavLink>
               </li>
             </>
