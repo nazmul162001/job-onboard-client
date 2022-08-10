@@ -11,11 +11,11 @@ import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
-import useTokenForCandidates from "../../../Hooks/useTokenForCandidates";
 import useTitle from "../../../Hooks/useTitle";
+import useTokenForHrManager from "../../../Hooks/useTokenForHrManager";
 
-const SignUpForCandidates = () => {
-  useTitle("Sign Up");
+const SignUpForHrManager = () => {
+  useTitle("Sign Up as a HR Manager");
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -30,7 +30,7 @@ const SignUpForCandidates = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  const [token] = useTokenForCandidates(user || gUser);
+  const [token] = useTokenForHrManager(user || gUser);
 
   useEffect(() => {
     if (token) {
@@ -61,7 +61,7 @@ const SignUpForCandidates = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    toast.success(`Welcome ${data.name}! You are now registered as Candidate.`, {
+    toast.success(`Welcome ${data.name}! You are now registered as a Hr Manager.`, {
       position: "top-center",
     });
   };
@@ -85,7 +85,7 @@ const SignUpForCandidates = () => {
                 <div className="card w-full max-w-lg lg:bg-base-300 shadow-xl">
                   <div className="card-body w-full">
                     <h2 className="text-center text-xl lg:text-2xl font-bold">
-                      Please Sign Up as a Candidate
+                      Please Sign Up as a Manager
                     </h2>
                     <p className="text-center font-semibold">
                       Already have an account?{" "}
@@ -221,4 +221,4 @@ const SignUpForCandidates = () => {
   );
 };
 
-export default SignUpForCandidates;
+export default SignUpForHrManager;

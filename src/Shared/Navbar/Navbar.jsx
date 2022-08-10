@@ -161,7 +161,7 @@ const Navbar = () => {
                   >
                     <li className="py-2">
                       <Link
-                        to="signUp/candidate"
+                        to="signUp"
                         className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                       >
                         As a Candidate
@@ -169,7 +169,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="signUp"
+                        to="signUp/hr"
                         className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                       >
                         As a HR Manager
@@ -288,7 +288,7 @@ const Navbar = () => {
                             >
                               <li className="py-2">
                                 <Link
-                                  to="signUp/candidate"
+                                  to="signUp"
                                   className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                                   onClick={() => setIsMenuOpen(false)}
                                 >
@@ -297,7 +297,7 @@ const Navbar = () => {
                               </li>
                               <li>
                                 <Link
-                                  to="signUp"
+                                  to="signUp/hr"
                                   className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                                   onClick={() => setIsMenuOpen(false)}
                                 >

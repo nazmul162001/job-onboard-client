@@ -25,7 +25,8 @@ import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
 import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
-import SignUpForCandidates from "./Pages/Authentication/SignUpForCandidates/SignUpForCandidates";
+import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
+import RequireHr from "./Auth/RequireHr/RequireHr";
 export const InitializeContext = createContext(null);
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/signUp/candidate" element={<SignUpForCandidates />} />
+          <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"
@@ -69,7 +70,14 @@ function App() {
             <Route index element={<WelcomeDashboard />} />
             <Route path="job/addNew" element={<AddNewJob />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="employers" element={<Employers />} />
+            <Route
+              path="employers"
+              element={
+                <RequireHr>
+                  <Employers />
+                </RequireHr>
+              }
+            />
             <Route path="recruitment" element={<Recruitment />} />
             <Route path="candidates" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BASE_API } from "../config";
 
-const useToken = (user) => {
+const useTokenForHrManager = (user) => {
   const [token, setToken] = useState("");
   useEffect(() => {
     if (user) {
@@ -10,7 +10,7 @@ const useToken = (user) => {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            role: 'candidate',
+            role: 'hr',
             uid: user?.user?.uid,
             email: user?.user?.email,
             displayName: user?.user?.displayName,
@@ -27,4 +27,4 @@ const useToken = (user) => {
   return [token];
 };
 
-export default useToken;
+export default useTokenForHrManager;

@@ -15,7 +15,7 @@ import useToken from "../../../Hooks/useToken";
 import useTitle from "../../../Hooks/useTitle";
 
 const SignUp = () => {
-  useTitle("Sign Up");
+  useTitle("Sign Up as a Candidate");
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -62,7 +62,7 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     toast.success(
-      `Welcome ${data.name}! You are now registered as a HR Manager.`,
+      `Welcome ${data.name}! You are now registered as a Candidate.`,
       {
         position: "top-center",
       }
@@ -88,7 +88,7 @@ const SignUp = () => {
                 <div className="card w-full max-w-lg lg:bg-base-300 shadow-xl">
                   <div className="card-body w-full">
                     <h2 className="text-center text-xl lg:text-2xl font-bold">
-                      Please Sign Up as a HR Manager
+                      Please Sign Up as a Candidate
                     </h2>
                     <p className="text-center font-semibold">
                       Already have an account?{" "}

@@ -82,7 +82,10 @@ const Login = () => {
                     <p className="text-center font-semibold">
                       Don't have an account?{" "}
                       <Link className="text-primary" to="/signUp">
-                        Sign Up
+                        Candidate
+                      </Link> or {" "}
+                      <Link className="text-primary" to="/signUp/hr">
+                        HR Manager
                       </Link>
                     </p>
                     <div className="block lg:flex gap-2 py-2 lg:py-6 mx-auto">
