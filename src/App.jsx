@@ -1,5 +1,5 @@
 import "./App.css";
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import { Toaster } from "react-hot-toast";
 import Navbar from "./Shared/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -25,6 +25,7 @@ import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
 import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
+import SignUpForCandidates from "./Pages/Authentication/SignUpForCandidates/SignUpForCandidates";
 export const InitializeContext = createContext(null);
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/signUp/candidate" element={<SignUpForCandidates />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"
