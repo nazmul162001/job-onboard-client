@@ -106,7 +106,7 @@ const Navbar = () => {
                     tabIndex="0"
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li>
+                    <li className="py-2">
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
@@ -205,7 +205,7 @@ const Navbar = () => {
                     tabIndex="0"
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li>
+                    <li className="py-2">
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
