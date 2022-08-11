@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  jobTypeList, salaryList } from '../../../data';
+import { jobTypeList, salaryList } from '../../../data';
 import useJobData from '../../../Hooks/useJobData';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
   useTitle('Find Jobs')
-  const [jobData] = useJobData() 
+  const [jobData,setJobData] = useJobData()
   const [jobSearch, setJobSearch] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
   const [jobTypeLists, setJobTypeList] = useState(jobTypeList)
@@ -16,7 +16,9 @@ const AllJob = () => {
   const [ifCheckJobType, setIfCheckJobType] = useState(null)
   const [ifCheckSalary, setIfCheckSalary] = useState(null)
 
-  console.log(getJobs)
+  
+
+  // console.log(getJobs)
 
   // Handle Check Job Type 
   const handleCheckedJobType = (id) => {
@@ -43,9 +45,9 @@ const AllJob = () => {
 
   // Handle Filtering 
   const filtering = () => {
-    let updatedJob = jobData ;
+    let updatedJob = jobData;
     setGetJobs(jobData)
-    console.log(updatedJob)
+    // console.log(updatedJob)
 
     // Job Search Filter
     if (jobSearch) {
@@ -53,7 +55,6 @@ const AllJob = () => {
         (getJob) => getJob.jobTitle.toLowerCase().search(jobSearch.toLowerCase().trim()) !== -1
       );
       // console.log(updatedJob)
-      setGetJobs(updatedJob);
     }
 
 
@@ -63,7 +64,6 @@ const AllJob = () => {
         (getLocation) => getLocation.location.toLowerCase().search(locationSearch.toLowerCase().trim()) !== -1
       );
       // console.log(updatedJob)
-      setGetJobs(updatedJob);
     }
 
 
@@ -76,7 +76,6 @@ const AllJob = () => {
       updatedJob = updatedJob.filter((job) =>
         jobTypeFilter.includes(job.jobType)
       );
-      setGetJobs(updatedJob);
     }
     // console.log(jobTypeFilter)
 
@@ -94,15 +93,15 @@ const AllJob = () => {
       }
     })
     // console.log(salaryFilter)
-    salaryFilter?.length && setGetJobs(salaryFilter)
-    ifCheckSalary && setGetJobs(salaryFilter)
-    // setGetJobs(updatedJob)
+    salaryFilter?.length && setGetJobs(salaryFilter);
+    ifCheckSalary && setGetJobs(salaryFilter);
+    setGetJobs(updatedJob);
   }
 
 
   useEffect(() => {
     filtering();
-  }, [jobSearch, locationSearch, jobTypeLists, salaryLists , jobData]);
+  }, [jobSearch, locationSearch, jobTypeLists, salaryLists, jobData]);
 
 
   return (
@@ -122,7 +121,7 @@ const AllJob = () => {
           />
         </div>
         <div className="jobs flex-1 p-8 overflow-y-auto">
-          <Jobs getJobs={getJobs} />
+          <Jobs getJobs={getJobs} setGetJobs={setGetJobs}/>
         </div>
       </div>
     </div>

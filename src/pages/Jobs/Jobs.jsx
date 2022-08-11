@@ -1,16 +1,21 @@
 import React from 'react';
 import EmptyJob from '../../Components/EmptyJob/EmptyJob';
 import Job from './Job';
+import './Jobs.css';
+import Pagination from './Pagination';
 
-const Jobs = ({ getJobs }) => {
+const Jobs = ({ getJobs, setGetJob }) => {
+  
+  const pageCount = Math.ceil(getJobs.length / 5)
+  const page = 3
 
   return (
-    <div className='pb-12'>
+    <div className='pb-16'>
       <h2 className='text-lg lg:text-2xl font-bold'>Jobs {getJobs.length}</h2>
       {/* display products  */}
       {
         getJobs?.length ?
-          <div className='display-products'>
+          <div>
             {getJobs.map((job) => <Job
               key={job?.id}
               job={job}
@@ -21,6 +26,14 @@ const Jobs = ({ getJobs }) => {
             <EmptyJob />
           </div>
       }
+
+      {pageCount > 1 && (
+        [...new Array(pageCount)].map((_, index) => {
+          return <Pagination number={index + 1} key={index} active={page === index + 1} />
+        })
+      )}
+
+
     </div>
   );
 };

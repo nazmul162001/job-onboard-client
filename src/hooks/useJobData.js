@@ -13,7 +13,7 @@ const useJobData = () => {
         setLoading(false);
       })
   }, [])
-  return [jobData, loading];
+  return [jobData,setJobData, loading];
 }
 
 export default useJobData 
