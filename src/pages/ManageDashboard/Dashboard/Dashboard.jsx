@@ -87,11 +87,16 @@ const Dashboard = () => {
                 tabIndex="0"
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <Link to="/dashboard/profile" className="py-3 font-semibold">
-                    Profile
-                  </Link>
-                </li>
+                {!admin && !hr && (
+                  <li>
+                    <Link
+                      to="/dashboard/profile"
+                      className="py-3 font-semibold"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                )}
                 <li className="font-semibold">
                   <button onClick={handleLogOut}>
                     <FiLogOut />
