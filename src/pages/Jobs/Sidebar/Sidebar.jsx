@@ -3,7 +3,7 @@ import { RiEqualizerLine } from 'react-icons/ri';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FaSearchLocation } from "react-icons/fa";
 
-const Sidebar = () => {
+const Sidebar = ({ jobTypeLists, checkedJobType }) => {
   return (
     <div className='space-y-5'>
       {/* filter header  */}
@@ -43,7 +43,19 @@ const Sidebar = () => {
       {/* Search By Job Type  */}
       <div>
         <h4>Job Type </h4>
-        
+        {jobTypeLists.map((jobList) => {
+          return <div key={jobList.id}>
+            <input
+              className='mr-[5px] '
+              type="checkbox"
+              id={jobList.id}
+              checked={jobList?.checked}
+              onChange={() => checkedJobType(jobList.id)}
+
+            />
+            <label className='cursor-pointer' htmlFor={jobList.id}>{jobList?.label}</label>
+          </div>
+        })}
       </div>
 
 

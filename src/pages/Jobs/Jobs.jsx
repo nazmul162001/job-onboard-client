@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Jobs = () => {
+const Jobs = ({getJobs}) => {
+
   return (
     <div>
-      <h2>Jobs</h2>
+      <h2>Jobs {getJobs.length}</h2>
     </div>
   );
 };
