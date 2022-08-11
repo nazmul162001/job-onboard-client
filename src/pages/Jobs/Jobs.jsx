@@ -5,7 +5,7 @@ import Job from './Job';
 const Jobs = ({ getJobs }) => {
 
   return (
-    <div>
+    <div className='pb-12'>
       <h2 className='text-lg lg:text-2xl font-bold'>Jobs {getJobs.length}</h2>
       {/* display products  */}
       {

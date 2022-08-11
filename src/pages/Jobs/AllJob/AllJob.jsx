@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { dataList, jobTypeList, salaryList } from '../../../data';
+import {  jobTypeList, salaryList } from '../../../data';
+import useJobData from '../../../Hooks/useJobData';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
   useTitle('Find Jobs')
+  const [jobData] = useJobData() 
   const [jobSearch, setJobSearch] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
   const [jobTypeLists, setJobTypeList] = useState(jobTypeList)
   const [salaryLists, setSalaryLists] = useState(salaryList)
-  const [getJobs, setGetJobs] = useState(dataList)
+  const [getJobs, setGetJobs] = useState([])
   const [ifCheckJobType, setIfCheckJobType] = useState(null)
   const [ifCheckSalary, setIfCheckSalary] = useState(null)
 
-  // console.log(getJobs)
+  console.log(getJobs)
 
   // Handle Check Job Type 
   const handleCheckedJobType = (id) => {
@@ -41,12 +43,13 @@ const AllJob = () => {
 
   // Handle Filtering 
   const filtering = () => {
-    let updatedJob = dataList ;
-    setGetJobs(dataList)
+    let updatedJob = jobData ;
+    setGetJobs(jobData)
+    console.log(updatedJob)
 
     // Job Search Filter
     if (jobSearch) {
-      updatedJob = getJobs.filter(
+      updatedJob = updatedJob.filter(
         (getJob) => getJob.jobTitle.toLowerCase().search(jobSearch.toLowerCase().trim()) !== -1
       );
       // console.log(updatedJob)
@@ -56,7 +59,7 @@ const AllJob = () => {
 
     // Location Search Filter
     if (locationSearch) {
-      updatedJob = getJobs.filter(
+      updatedJob = updatedJob.filter(
         (getLocation) => getLocation.location.toLowerCase().search(locationSearch.toLowerCase().trim()) !== -1
       );
       // console.log(updatedJob)
@@ -75,9 +78,9 @@ const AllJob = () => {
       );
       setGetJobs(updatedJob);
     }
-    // console.log(brandFilter)
+    // console.log(jobTypeFilter)
 
-    
+
     // Salary Wise Filter
     const salaryFilter = updatedJob?.filter(salary => {
       const getPrice = salary?.salary;
@@ -93,11 +96,13 @@ const AllJob = () => {
     // console.log(salaryFilter)
     salaryFilter?.length && setGetJobs(salaryFilter)
     ifCheckSalary && setGetJobs(salaryFilter)
+    // setGetJobs(updatedJob)
   }
+
 
   useEffect(() => {
     filtering();
-  }, [jobSearch, locationSearch, jobTypeLists, salaryLists]);
+  }, [jobSearch, locationSearch, jobTypeLists, salaryLists , jobData]);
 
 
   return (
