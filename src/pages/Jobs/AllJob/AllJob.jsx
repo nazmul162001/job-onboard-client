@@ -1,22 +1,18 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BASE_API } from '../../../config';
-import { jobTypeList } from '../../../data';
+import { dataList, jobTypeList, salaryList } from '../../../data';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
   useTitle('Find Jobs')
+  const [jobSearch, setJobSearch] = useState('');
+  const [locationSearch, setLocationSearch] = useState('');
   const [jobTypeLists, setJobTypeList] = useState(jobTypeList)
+  const [salaryLists, setSalaryLists] = useState(salaryList)
+  const [getJobs, setGetJobs] = useState(dataList)
   const [ifCheckJobType, setIfCheckJobType] = useState(null)
-  const [getJobs, setGetJobs] = useState([])
-
-
-  useEffect(() => {
-    axios.get(`${BASE_API}/jobs`)
-      .then((response) => setGetJobs(response.data.reverse()))
-  }, [])
+  const [ifCheckSalary, setIfCheckSalary] = useState(null)
 
   // console.log(getJobs)
 
@@ -27,27 +23,101 @@ const AllJob = () => {
     );
     const findJobType = checkedJobType?.find(jobType => jobType?.checked)
     setIfCheckJobType(findJobType)
+    // console.log(checkedJobType);
     setJobTypeList(checkedJobType);
   };
 
+  //Handle Check Salary
+  const handleCheckedSalary = (id) => {
+    const checkedSalary = salaryLists.map((salaryList) =>
+      salaryList.id === id ? { ...salaryList, checked: !salaryList.checked } : salaryList
+    );
+    const checkSalary = checkedSalary?.find(check => check?.checked);
+    setIfCheckSalary(checkSalary)
+    // console.log(checkedSalary);
+    setSalaryLists(checkedSalary);
+  };
 
-  
+
+  // Handle Filtering 
+  const filtering = () => {
+    let updatedJob = dataList ;
+    setGetJobs(dataList)
+
+    // Job Search Filter
+    if (jobSearch) {
+      updatedJob = getJobs.filter(
+        (getJob) => getJob.jobTitle.toLowerCase().search(jobSearch.toLowerCase().trim()) !== -1
+      );
+      // console.log(updatedJob)
+      setGetJobs(updatedJob);
+    }
 
 
+    // Location Search Filter
+    if (locationSearch) {
+      updatedJob = getJobs.filter(
+        (getLocation) => getLocation.location.toLowerCase().search(locationSearch.toLowerCase().trim()) !== -1
+      );
+      // console.log(updatedJob)
+      setGetJobs(updatedJob);
+    }
+
+
+    // Job Type Wise Filter
+    const jobTypeFilter = jobTypeLists
+      .filter((jobType) => jobType.checked)
+      .map((jobType) => jobType.label.toLowerCase());
+
+    if (jobTypeFilter.length && ifCheckJobType) {
+      updatedJob = updatedJob.filter((job) =>
+        jobTypeFilter.includes(job.jobType)
+      );
+      setGetJobs(updatedJob);
+    }
+    // console.log(brandFilter)
+
+    
+    // Salary Wise Filter
+    const salaryFilter = updatedJob?.filter(salary => {
+      const getPrice = salary?.salary;
+      for (const check of salaryLists) {
+        if (check?.checked) {
+          const { low, high } = check;
+          if (getPrice >= low && getPrice <= high) {
+            return salary
+          }
+        }
+      }
+    })
+    // console.log(salaryFilter)
+    salaryFilter?.length && setGetJobs(salaryFilter)
+    ifCheckSalary && setGetJobs(salaryFilter)
+  }
+
+  useEffect(() => {
+    filtering();
+  }, [jobSearch, locationSearch, jobTypeLists, salaryLists]);
 
 
   return (
-    <div className='flex flex-col h-auto md:h-[100vh] bg-[#eeecec] py-6'>
-      <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row flex-1 ">
-        <div className="basis-72 md:h-[80vh] p-4 m-4 rounded-[10px] bg-[#fafafa] overflow-y-auto">
+    <div className='flex flex-col h-auto md:h-[100vh] bg-[#eeecec] '>
+      <div className="jobs-content flex flex-col overflow-y-auto md:flex-row flex-1 bg-[#f1efef] container mx-auto md:px-8">
+        <div className="sidebar basis-72 m-4 p-4 rounded-lg bg-[#fbf9f9] overflow-y-auto">
           <Sidebar
             jobTypeLists={jobTypeLists}
             checkedJobType={handleCheckedJobType}
+            valueJ={jobSearch}
+            valueL={locationSearch}
+            setJobSearch={(e) => setJobSearch(e.target.value)}
+            setLocationSearch={(e) => setLocationSearch(e.target.value)}
+            salaryLists={salaryLists}
+            handleCheckedSalary={handleCheckedSalary}
 
           />
         </div>
-        <div className="flex-1 p-8 overflow-y-auto">
-          <Jobs getJobs={getJobs}/>
+        <div className="jobs flex-1 p-8 overflow-y-auto">
+          <Jobs getJobs={getJobs} />
         </div>
       </div>
     </div>
