@@ -12,7 +12,6 @@ import Login from "./Pages/Authentication/Login/Login";
 import SignUp from "./Pages/Authentication/SignUp/SignUp";
 import ResetPassword from "./Pages/Authentication/ResetPassword/ResetPassword";
 import AboutUs from "./Pages/AboutUs/AboutUs";
-import Jobs from "./Pages/Jobs/Jobs";
 import RequireAuth from "./Auth/RequireAuth/RequireAuth";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
@@ -27,6 +26,7 @@ import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
 import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
 import RequireHr from "./Auth/RequireHr/RequireHr";
+import AllJob from "./Pages/Jobs/AllJob/AllJob";
 export const InitializeContext = createContext(null);
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* Job Route Start */}
 
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs" element={<AllJob />} />
           <Route path="/job/:jobId" element={<JobDescription />} />
 
           {/* Job Route End  */}
