@@ -11,7 +11,6 @@ import ResetPassword from "./Pages/Authentication/ResetPassword/ResetPassword";
 import SignUp from "./Pages/Authentication/SignUp/SignUp";
 import Home from "./Pages/Home/Home/Home";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
-import Jobs from "./Pages/Jobs/Jobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
@@ -27,6 +26,7 @@ import Navbar from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
 import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
 import RequireHr from "./Auth/RequireHr/RequireHr";
+import AllJob from "./Pages/Jobs/AllJob/AllJob";
 
 export const InitializeContext = createContext(null);
 
@@ -49,7 +49,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* Job Route Start */}
 
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs" element={<AllJob />} />
           <Route path="/job/:jobId" element={<JobDescription />} />
 
           {/* Job Route End  */}

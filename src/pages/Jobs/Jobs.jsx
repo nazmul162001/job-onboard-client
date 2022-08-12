@@ -1,41 +1,74 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import EmptyJob from '../../Components/EmptyJob/EmptyJob';
 import { BASE_API } from '../../config';
-import useTitle from '../../Hooks/useTitle';
+import useJobData from '../../Hooks/useJobData';
 import Job from './Job';
-import "./Jobs.css";
+import './Jobs.css';
 
-const Jobs = () => {
-  useTitle('Find Jobs')
-  const [getJobs, setGetJobs] = useState([])
+const Jobs = ({ getJobs}) => {
+
+  const [jobData, setJobData] = useJobData()
+  const [pageCount, setPageCount] = useState(0)
+  const [page, setPage] = useState(0)
+  const [pageJobs, setPageJobs] = useState(10)
+
+
   useEffect(() => {
-    axios.get(`${BASE_API}/jobs`)
-      .then((response) => setGetJobs(response.data.reverse()))
-  }, [])
+    fetch(`${BASE_API}/jobs?page=${page}&pageJobs=${pageJobs}`)
+      .then(res => res.json())
+      .then(data => setJobData(data.reverse()))
+  }, [page, pageJobs , setJobData])
+
+
+  useEffect(() => {
+    fetch(`${BASE_API}/jobs/jobCount`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data.count);
+        const count = data.count
+        const pages = Math.ceil(count / pageJobs)
+        setPageCount(pages)
+      })
+  }, [pageJobs])
+
+
 
   return (
-    <div className=' container mx-auto px-5 lg:px-12'>
-      <div className="grid grid-cols-1 md:grid-cols-sidebarMdWidth gap-5 lg:grid-cols-sidebarWidth ">
-        {/* Filter section  */}
-        <div className='card pt-10'>
-          <div className='md:fixed rounded-lg border min-h-[30vh] md:min-h-[75vh] filterHeight lg:min-h-[75vh] lg:px-20 pt-12 space-y-3 '>
-            <h2 className='text-center text-2xl md:3xl font-bold pt-5'>Filter Job Here</h2>
-            <h3 className='text-center'>Search by name </h3>
-            <input className='border border-black flex mx-auto rounded' type="search" value="" placeholder='search' />
-          </div>
-        </div>
-
-        {/* Jobs section  */}
-        <div>
-          <h2 className='text-center text-2xl md:text-3xl font-bold pt-8'>Total Jobs  {getJobs.length}</h2>
-          <div className="grid grid-cols-1  gap-8 my-12">
-            {getJobs.map((job, index) => <Job
-              key={index}
+    <div className='pb-16'>
+      <h2 className='text-lg lg:text-2xl font-bold'>Jobs {jobData.length}</h2>
+      {/* display products  */}
+      {
+        jobData?.length ?
+          <div>
+            {jobData.map((job) => <Job
+              key={job?.id}
               job={job}
             ></Job>)}
           </div>
-        </div>
+          :
+          <div >
+            <EmptyJob />
+          </div>
+      }
+
+      {/* pagination  */}
+      <div className='container mx-auto pagination-container'>
+        {
+          [...Array(pageCount).keys()]
+            .map(number =>
+              <button className={page === number ? 'selected' : ''}
+                onClick={() => setPage(number)}
+              > {number + 1} </button>)
+        }
+        <select className='py-1 px-2' name="" id="" onChange={e => setPageJobs(e.target.value)}>
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
       </div>
+
+
     </div>
   );
 };

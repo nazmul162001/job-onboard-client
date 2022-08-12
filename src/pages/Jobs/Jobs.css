@@ -1,6 +1,13 @@
-/* responsive */
-@media only screen and (min-width:1440px) {
-  .filterHeight {
-    min-height: 80vh;
-  }
+/* pagination  */ 
+.pagination-container button {
+  background-color: #fff;
+  border: 1px solid #9864D7;
+  margin-right: 15px;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.pagination-container button:hover , .pagination-container .selected {
+  background-color: #9864D7;
+  color: #fff;
 }

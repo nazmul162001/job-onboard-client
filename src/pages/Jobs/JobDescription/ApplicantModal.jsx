@@ -46,7 +46,7 @@ const ApplicantModal = ({ job}) => {
       <div className="modal ">
         <div className="modal-box w-11/12 max-w-5xl">
           <label htmlFor="applicant-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h2 className='text-lg md:text-2xl lg:text-4xl pt-8 pb-12'>Apply For {job?.jobTitle}</h2>
+          <h2 className='text-lg md:text-2xl lg:text-4xl pt-8 pb-12 font-mono'>Apply For {job?.jobTitle}</h2>
           <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
               {/* name filed  */}
@@ -56,7 +56,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='First Name'
-                    className='border rounded-lg py-1 text-lg pl-3 '
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('firstName', {
                       required: {
                         value: true,
@@ -71,7 +71,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='Last Name '
-                    className='border rounded-lg py-1 text-lg pl-3 '
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('lastName', {
                       required: {
                         value: true,
@@ -89,7 +89,7 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="email"
                   placeholder='Enter your email'
-                  className='border rounded-lg py-2 text-lg pl-3 '
+                  className='border rounded-lg py-2 text-lg pl-3 hover:border-primary duration-300'
                   {...register('email', {
                     required: {
                       value: true,
@@ -105,7 +105,7 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="number"
                   placeholder='Phone number'
-                  className='border rounded-lg  py-1 text-lg pl-3 '
+                  className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('phoneNumber', {
                     required: {
                       value: true,
@@ -121,7 +121,7 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="text"
                   placeholder='Hyperlink'
-                  className='border rounded-lg py-1 text-lg pl-3 '
+                  className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
                       value: true,
@@ -140,7 +140,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='Portfolio'
-                    className='border rounded-lg py-1 text-lg pl-3 '
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('portfolio', {
                       required: {
                         value: true,
@@ -155,7 +155,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='Linkedin'
-                    className='border rounded-lg py-1 text-lg pl-3 '
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('linkedin', {
                       required: {
                         value: true,
@@ -175,7 +175,7 @@ const ApplicantModal = ({ job}) => {
                   type="text"
                   rows={4}
                   placeholder='Add a cover letter'
-                  className='border rounded-lg py-1 text-xl pl-3 '
+                  className='border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
                   {...register('coverLetter', {
                     required: {
                       value: true,
@@ -187,7 +187,7 @@ const ApplicantModal = ({ job}) => {
               </div>
 
               <div className="pb-5 lg:pb-2 text-center lg:text-start">
-                <button className='px-5 py-3  border bg-primary rounded-lg text-lg  text-white'>
+                <button className='px-5 py-3  border bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-lg  text-white'>
                   Submit Application
                 </button>
               </div>
