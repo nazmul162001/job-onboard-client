@@ -2,6 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import useTitle from "../../../Hooks/useTitle";
 import auth from "../../../Auth/Firebase/Firebase.init";
+import RecentApplication from "../RecentApplicants/RecentApplicants";
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
@@ -51,6 +52,7 @@ const WelcomeDashboard = () => {
               </div>
             </div>
             {/* welcome dashbord */}
+            <RecentApplication />
             </div>
           </section>
         </div>
