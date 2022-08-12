@@ -46,7 +46,7 @@ const EmployeesRoot = () => {
   //   }, [user, navigate]);
 
   const deleteEmployeeDetails = (employeId) => {
-    console.log(employeId);
+    // console.log(employeId);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

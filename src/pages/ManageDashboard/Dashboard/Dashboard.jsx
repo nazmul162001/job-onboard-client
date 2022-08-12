@@ -11,11 +11,14 @@ import Loader from "../../../Components/Loader/Loader";
 import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
+import useUsers from "../../../Hooks/useUsers";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
+  const [users] = useUsers(user);
+  // console.log(users)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -46,9 +49,9 @@ const Dashboard = () => {
           <span className="font-semibold text-xl hidden md:block">
             Welcome back,{" "}
             <span className="text-primary">
-              {auth?.currentUser?.displayName} ({
-                admin.role ? 'Admin' : 'HR'
-              }) 🙂
+              {auth?.currentUser?.displayName} (
+              {/* {users?.map((user, index) => <div key={index}>{user.role}</div>)} */}
+              ) 🙂
             </span>
           </span>
           <Link
@@ -119,7 +122,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-100 bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
@@ -184,7 +187,7 @@ const Dashboard = () => {
             </>
           )}
 
-          <li className={"lg:pt-96"}>
+          <li className={"lg:pt-80"}>
             <button
               onClick={handleLogOut}
               className="bg-neutral rounded-lg py-4 lg:text-lg text-white"
