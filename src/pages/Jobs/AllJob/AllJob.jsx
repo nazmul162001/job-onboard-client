@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
   useTitle('Find Jobs')
-  const [jobData,setJobData] = useJobData()
+  const [jobData] = useJobData()
   const [jobSearch, setJobSearch] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
   const [jobTypeLists, setJobTypeList] = useState(jobTypeList)
@@ -121,7 +121,7 @@ const AllJob = () => {
           />
         </div>
         <div className="jobs flex-1 p-8 overflow-y-auto">
-          <Jobs getJobs={getJobs} setGetJobs={setGetJobs}/>
+          <Jobs getJobs={getJobs} />
         </div>
       </div>
     </div>
