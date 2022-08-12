@@ -42,7 +42,7 @@ const Navbar = () => {
             : { display: "block" }
         }
       >
-        <nav className="px-4 py-2 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
+        <nav className="px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8">
           <div className="relative flex items-center justify-between font-body">
             <button
               aria-label="Open Menu"
@@ -213,7 +213,10 @@ const Navbar = () => {
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
-                      <button onClick={handleLogOut}>Logout</button>
+                      <button onClick={handleLogOut}>
+                        <FiLogOut />
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 </div>

@@ -41,7 +41,7 @@ const SignUpForHrManager = () => {
   let signInError;
 
   if (loading || gLoading || updating) {
-    return <Loading/ >;
+    return <Loading />;
   }
 
   if (error || gError || updateError) {
@@ -61,12 +61,15 @@ const SignUpForHrManager = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    toast.success(`Welcome ${data.name}! You are now registered as a Hr Manager.`, {
-      position: "top-center",
-    });
+    toast.success(
+      `Welcome ${data.name}! You are now registered as a Hr Manager.`,
+      {
+        position: "top-center",
+      }
+    );
   };
   return (
-    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-0">
+    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-9">
       <div className="hero">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <Fade left distance="30px">

@@ -6,8 +6,10 @@ import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddNewJob = () => {
+  useTitle('Post Job')
   const [user] = useAuthState(auth)
   const [value, setValue] = useState()
   const { register, formState: { errors }, handleSubmit, reset } = useForm();

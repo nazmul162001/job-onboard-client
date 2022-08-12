@@ -11,11 +11,14 @@ import Loader from "../../../Components/Loader/Loader";
 import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
+import useUsers from "../../../Hooks/useUsers";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
+  const [users] = useUsers(user);
+  // console.log(users)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -43,11 +46,19 @@ const Dashboard = () => {
           >
             <BsGrid className="text-2xl" />
           </label>
+          <span className="font-semibold text-xl hidden md:block">
+            Welcome back,{" "}
+            <span className="text-primary">
+              {auth?.currentUser?.displayName} (
+              {/* {users?.map((user, index) => <div key={index}>{user.role}</div>)} */}
+              ) 🙂
+            </span>
+          </span>
           <Link
             to="/"
-            className="text-lg lg:text-2xl md:text-2xl font-semibold hidden md:block"
+            className="text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden"
           >
-            Job Onboard
+            <img src={logo} alt="" className="w-24" />
           </Link>
           <div className="flex justify-center items-center gap-8">
             {!admin && hr && (
@@ -87,11 +98,16 @@ const Dashboard = () => {
                 tabIndex="0"
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <Link to="/dashboard/profile" className="py-3 font-semibold">
-                    Profile
-                  </Link>
-                </li>
+                {!admin && !hr && (
+                  <li>
+                    <Link
+                      to="/dashboard/profile"
+                      className="py-3 font-semibold"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                )}
                 <li className="font-semibold">
                   <button onClick={handleLogOut}>
                     <FiLogOut />
@@ -106,7 +122,7 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-100 bg-base-300 text-base-content">
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
@@ -171,7 +187,7 @@ const Dashboard = () => {
             </>
           )}
 
-          <li className={"lg:pt-96"}>
+          <li className={"lg:pt-80"}>
             <button
               onClick={handleLogOut}
               className="bg-neutral rounded-lg py-4 lg:text-lg text-white"

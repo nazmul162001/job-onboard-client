@@ -69,7 +69,7 @@ const SignUp = () => {
     );
   };
   return (
-    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-0">
+    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-9">
       <div className="hero">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <Fade left distance="30px">

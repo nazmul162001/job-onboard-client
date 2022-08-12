@@ -1,9 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import "./App.css";
-import { createContext } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
 import RequireAuth from "./Auth/RequireAuth/RequireAuth";
 import ScrollButton from "./Components/ScrollButton/ScrollButton";
@@ -27,10 +25,6 @@ import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDa
 import Team from "./Pages/Team/Team";
 import Navbar from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
-import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
-import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
-import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
-import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
 import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
 import RequireHr from "./Auth/RequireHr/RequireHr";
 
@@ -84,19 +78,16 @@ function App() {
               }
             />
             <Route path="profile" element={<Profile />} />
-            {/* <Route path="employers" element={<Employers />} /> */}
-            <Route path="employee" element={<EmployeesRoot />} />
-            <Route path="employee/:detailsId" element={<EmployeeDetails />} />
-            <Route path="recruitment" element={<Recruitment />} />
-
             <Route
-              path="employers"
+              path="employee"
               element={
                 <RequireHr>
-                  <Employers />
+                  <EmployeesRoot />
                 </RequireHr>
               }
             />
+            <Route path="employee/:detailsId" element={<EmployeeDetails />} />
+            <Route path="recruitment" element={<Recruitment />} />
             <Route
               path="recruitment"
               element={
