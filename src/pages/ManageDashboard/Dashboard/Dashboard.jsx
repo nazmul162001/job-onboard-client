@@ -10,10 +10,12 @@ import auth from "../../../Auth/Firebase/Firebase.init";
 import Loader from "../../../Components/Loader/Loader";
 import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
+import useHrManager from "../../../Hooks/useHrManager";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
+  const [hr, hrLoading] = useHrManager(user);
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -26,7 +28,7 @@ const Dashboard = () => {
     });
   };
 
-  if (adminLoading) {
+  if (adminLoading || hrLoading) {
     return <Loader />;
   }
 
@@ -48,15 +50,17 @@ const Dashboard = () => {
             Job Onboard
           </Link>
           <div className="flex justify-center items-center gap-8">
-            <Link to="/dashboard/job/addNew" className="text-md">
-              <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
-                {" "}
-                <span>
-                  <AiOutlinePlus />
-                </span>{" "}
-                Post Job
-              </button>
-            </Link>
+            {!admin && hr && (
+              <Link to="/dashboard/job/addNew" className="text-md">
+                <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
+                  {" "}
+                  <span>
+                    <AiOutlinePlus />
+                  </span>{" "}
+                  Post Job
+                </button>
+              </Link>
+            )}
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"
@@ -116,7 +120,7 @@ const Dashboard = () => {
               Dashboard
             </NavLink>
           </li>
-          {!admin && (
+          {!admin && hr && (
             <>
               <li className="py-1 font-semibold">
                 <NavLink to="/dashboard/mails" className="py-4 lg:text-lg">
@@ -140,11 +144,18 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
-                <NavLink
-                  to="/dashboard/candidates"
-                  className="py-4 lg:text-lg"
-                >
+                <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
                   Candidates
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {!admin && !hr && (
+            <>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/applied" className="py-4 lg:text-lg">
+                  Applied Jobs
                 </NavLink>
               </li>
             </>

@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react";
+import "./App.css";
+import { createContext } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -25,6 +27,13 @@ import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDa
 import Team from "./Pages/Team/Team";
 import Navbar from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
+import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
+import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
+import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
+import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
+import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
+import RequireHr from "./Auth/RequireHr/RequireHr";
+
 export const InitializeContext = createContext(null);
 
 function App() {
@@ -55,6 +64,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"
@@ -65,12 +75,36 @@ function App() {
             }
           >
             <Route index element={<WelcomeDashboard />} />
-            <Route path="job/addNew" element={<AddNewJob />} />
+            <Route
+              path="job/addNew"
+              element={
+                <RequireHr>
+                  <AddNewJob />
+                </RequireHr>
+              }
+            />
             <Route path="profile" element={<Profile />} />
             {/* <Route path="employers" element={<Employers />} /> */}
             <Route path="employee" element={<EmployeesRoot />} />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
             <Route path="recruitment" element={<Recruitment />} />
+
+            <Route
+              path="employers"
+              element={
+                <RequireHr>
+                  <Employers />
+                </RequireHr>
+              }
+            />
+            <Route
+              path="recruitment"
+              element={
+                <RequireHr>
+                  <Recruitment />
+                </RequireHr>
+              }
+            />
             <Route path="candidates" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />
             <Route

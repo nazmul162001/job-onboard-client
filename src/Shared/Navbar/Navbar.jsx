@@ -7,7 +7,8 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Auth/Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
-import logo from '../../Pages/Assets/logo/logo.png';
+import logo from "../../Pages/Assets/logo/logo.png";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -106,11 +107,14 @@ const Navbar = () => {
                     tabIndex="0"
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li>
+                    <li className="py-2">
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
-                      <button onClick={handleLogOut}>Logout</button>
+                      <button onClick={handleLogOut}>
+                        <FiLogOut />
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -150,12 +154,33 @@ const Navbar = () => {
                     Login
                   </NavLink>
                 </li>
-                <li>
-                  <Link to="signUp" className="btn btn-primary text-white">
+                <div class="dropdown dropdown-end">
+                  <label tabindex="0" class="btn btn-primary text-white">
                     Get Started{" "}
                     <MdOutlineKeyboardArrowRight className="text-2xl" />
-                  </Link>
-                </li>
+                  </label>
+                  <ul
+                    tabindex="0"
+                    class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
+                  >
+                    <li className="py-2">
+                      <Link
+                        to="signUp"
+                        className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                      >
+                        As a Candidate
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="signUp/hr"
+                        className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                      >
+                        As a HR Manager
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </ul>
             )}
 
@@ -184,7 +209,7 @@ const Navbar = () => {
                     tabIndex="0"
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li>
+                    <li className="py-2">
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
@@ -253,15 +278,38 @@ const Navbar = () => {
                           </NavLink>
                         </li>
                         {!user ? (
-                          <li className="pb-1">
-                            <Link
-                              to="signUp"
-                              onClick={() => setIsMenuOpen(false)}
-                              className="btn btn-primary"
+                          <div class="dropdown">
+                            <label
+                              tabindex="0"
+                              class="btn btn-primary text-white"
                             >
-                              Get Started
-                            </Link>
-                          </li>
+                              Get Started{" "}
+                              <MdOutlineKeyboardArrowRight className="text-2xl" />
+                            </label>
+                            <ul
+                              tabindex="0"
+                              class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
+                            >
+                              <li className="py-2">
+                                <Link
+                                  to="signUp"
+                                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  As a Candidate
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  to="signUp/hr"
+                                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  As a HR Manager
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
                         ) : (
                           <></>
                         )}
