@@ -43,11 +43,19 @@ const Dashboard = () => {
           >
             <BsGrid className="text-2xl" />
           </label>
+          <span className="font-semibold text-xl hidden md:block">
+            Welcome back,{" "}
+            <span className="text-primary">
+              {auth?.currentUser?.displayName} ({
+                admin.role ? 'Admin' : 'HR'
+              }) 🙂
+            </span>
+          </span>
           <Link
             to="/"
-            className="text-lg lg:text-2xl md:text-2xl font-semibold hidden md:block"
+            className="text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden"
           >
-            Job Onboard
+            <img src={logo} alt="" className="w-24" />
           </Link>
           <div className="flex justify-center items-center gap-8">
             {!admin && hr && (

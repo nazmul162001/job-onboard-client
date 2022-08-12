@@ -213,7 +213,10 @@ const Navbar = () => {
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
-                      <button onClick={handleLogOut}>Logout</button>
+                      <button onClick={handleLogOut}>
+                        <FiLogOut />
+                        Logout
+                      </button>
                     </li>
                   </ul>
                 </div>
