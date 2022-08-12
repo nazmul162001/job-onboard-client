@@ -2,14 +2,14 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
+import { AiOutlinePlus } from "react-icons/ai";
 import { BsGrid } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
-import { AiOutlinePlus } from "react-icons/ai";
-import logo from "../../Assets/logo/logo.png";
-import useAdmin from "../../../Hooks/useAdmin";
 import Loader from "../../../Components/Loader/Loader";
+import useAdmin from "../../../Hooks/useAdmin";
+import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
 
 const Dashboard = () => {
@@ -119,8 +119,8 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
-          <div className="flex flex-col items-center border-b">
+        <ul className="menu p-4 overflow-y-auto w-100 bg-base-300 text-base-content">
+          <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
               className="logo font-semibold text-center flex items-center flex-col gap-2 pb-2"
@@ -141,8 +141,11 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
-                <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
+                {/* <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
                   Employers
+                </NavLink> */}
+                <NavLink to="/dashboard/employee" className="py-4 lg:text-lg">
+                  Employee
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
