@@ -2,6 +2,7 @@ import React from 'react';
 import { RiEqualizerLine } from 'react-icons/ri';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FaSearchLocation } from "react-icons/fa";
+import { jobTypeList, salaryList } from '../../../data';
 
 const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locationHandle, cat }) => {
 
@@ -26,9 +27,7 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
           />
         </div>
       </div>
-
-
-      {/* Search By Location  */}
+      {/* Search By Location */}
       <div>
         <h4 className='text-md font-semibold pb-2'>Location </h4>
         <div className='flex items-center '>
@@ -43,7 +42,8 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
         </div>
       </div>
 
-      {/* Category Handle  */}
+      {/* Search By Category */}
+
       <div className='flex flex-col '>
         <label htmlFor="category" className='text-sm pl-2'>Job Category <span className='text-red-500'>*</span></label>
         <select
@@ -76,39 +76,20 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
       {/* Search By Job Type  */}
       <div>
         <h4 className='text-md font-semibold pb-2'>Job Type </h4>
-        {jobTypeLists.map((jobList) => {
+        {jobTypeList?.map((jobList) => {
           return <div key={jobList.id}>
             <input
               className='mr-[5px] '
               type="checkbox"
               id={jobList.id}
-              checked={jobList?.checked}
-              onChange={() => checkedJobType(jobList.id)}
-
+              // checked={jobList?.checked}
+              onChange={(e) => jobTypeHandle(e)}
+              value={jobList?.label}
             />
             <label className='cursor-pointer' htmlFor={jobList.id}>{jobList?.label}</label>
           </div>
         })}
       </div>
-
-      <div className='flex flex-col '>
-        <h4 className='text-md font-semibold pb-2'>Salary</h4>
-        {salaryLists.map((salaryList, index) => {
-          return <div key={index} >
-            <input
-              className='mr-[5px] '
-              type="checkbox"
-              id={salaryList.id}
-              checked={salaryList?.checked}
-              onChange={() => handleCheckedSalary(salaryList.id)}
-            />
-            <label htmlFor={salaryList.id}>{salaryList?.label}</label>
-          </div>
-        })}
-      </div>
-
-
-
 
 
     </div>
