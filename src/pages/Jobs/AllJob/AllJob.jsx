@@ -1,11 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { jobTypeList, salaryList } from '../../../data';
-import Pagination from '../../../Hooks/Pagination';
-import useJobData from '../../../Hooks/useJobData';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
+import Pagination from '../Pagination/Pagination';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
@@ -70,6 +68,7 @@ const AllJob = () => {
   }
 
 
+  const lastPage = Math.ceil(eval(total / show));
 
 
   return (
@@ -90,6 +89,9 @@ const AllJob = () => {
 
         <div className="jobs flex-1 p-8 col-span-12 overflow-y-auto jobsSidBarHidden md:col-start-6 md:col-end-11">
           <Jobs getJobs={getJobs} />
+          <div>
+            <Pagination lastPage={lastPage} page={eval(page)} pageHandle={pageHandle} />
+          </div>
         </div>
       </div>
     </div>
