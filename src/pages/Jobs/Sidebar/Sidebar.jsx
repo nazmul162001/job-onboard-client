@@ -37,8 +37,8 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
             className='border border-slate-800 rounded-md py-1 pl-1'
             type='text'
             placeholder='e.g USA'
-            value={valueL}
-            onChange={setLocationSearch}
+
+            onChange={locationHandle}
           />
         </div>
       </div>
