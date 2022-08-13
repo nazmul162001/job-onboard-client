@@ -25,6 +25,10 @@ const AllJob = () => {
   const jobDataArr = data?.data?.jobs
   const total = data?.data?.total;
 
+  useEffect(() => {
+    setGetJobs(jobDataArr)
+  }, [page, show, cat, salary, jobType, location, search, jobDataArr])
+
   
 
 
