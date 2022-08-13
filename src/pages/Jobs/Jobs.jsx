@@ -4,6 +4,10 @@ import Job from './Job';
 import Pagination from './Pagination/Pagination';
 
 const Jobs = ({ getJobs, lastPage, page, pageHandle }) => {
+  // console.log(getJobs)
+  // const reverseJob = [...getJobs].reverse()
+  // console.log(reverseJob)
+
 
   return (
     <div>
