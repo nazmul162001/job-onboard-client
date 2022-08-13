@@ -43,6 +43,35 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
         </div>
       </div>
 
+      {/* Category Handle  */}
+      <div className='flex flex-col '>
+        <label htmlFor="category" className='text-sm pl-2'>Job Category <span className='text-red-500'>*</span></label>
+        <select
+          id='category'
+          className='border py-1 rounded-lg pl-3 hover:border-primary duration-300 w-fit'
+          onChange={categoryHandle}
+          value={cat}
+        >
+          <option value="">Default</option>
+          <option value="Web Development">Web Developer</option>
+          <option value="Front End">Front End Dev</option>
+          <option value="Backend Dev">Backend Dev</option>
+          <option value="Full Stack Dev">Full Stack Dev</option>
+          <option value="Blockchain Development">Blockchain Development</option>
+          <option value="Animator">Animator</option>
+          <option value="Cloud Computing">Cloud Computing</option>
+          <option value="Cyber Security">Cyber Security</option>
+          <option value="Data Entry">Data Entry</option>
+          <option value="Flutter Development">Flutter Development</option>
+          <option value="Game Development">Game Development</option>
+          <option value="Graphic Design">Graphic Design</option>
+          <option value="Social Media Marketing">Social Media Marketing</option>
+          <option value="Mobile App Development">Mobile App Development</option>
+          <option value="PHP Development">PHP Development</option>
+          <option value="WordPress">WordPress</option>
+        </select>
+      </div>
+
 
       {/* Search By Job Type  */}
       <div>
