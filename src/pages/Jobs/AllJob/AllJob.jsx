@@ -29,6 +29,39 @@ const AllJob = () => {
     setGetJobs(jobDataArr)
   }, [page, show, cat, salary, jobType, location, search, jobDataArr])
 
+  const showHandle = (page) => {
+
+  }
+
+  const categoryHandle = (e) => {
+    const query = e.target.value;
+    setCat(query)
+  }
+
+  const jobTypeHandle = (e) => {
+    const query = e.target.value;
+    const check = e.target.checked;
+
+  }
+
+  const searchHandle = (e) => {
+    const query = e.target.value;
+    if (query) {
+      setSearch(query)
+    }
+
+  }
+  const locationHandle = (e) => {
+    const query = e.target.value;
+    if (query) {
+      setLocation(query)
+    }
+  }
+
+  const pageHandle = (page) => {
+    setPage(page)
+  }
+
   
 
 
