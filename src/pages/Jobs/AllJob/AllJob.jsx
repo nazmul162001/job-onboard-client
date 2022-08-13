@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { jobTypeList, salaryList } from '../../../data';
+import Pagination from '../../../Hooks/Pagination';
+import useJobData from '../../../Hooks/useJobData';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
 import Sidebar from '../Sidebar/Sidebar';
@@ -14,6 +19,11 @@ const AllJob = () => {
   const [jobType, setJobType] = useState([])
   const [search, setSearch] = useState('');
   const [location, setLocation] = useState('');
+
+  const { data } = useQuery(['AllJobs', page, show, cat, salary, jobType, location, search], () => axios.get(`http://localhost:5000/jobs?search=${search}&page=${page}&show=${show}&location=${location}&cat=${cat}&salary=${salary}&type=${jobType}`))
+
+  const jobDataArr = data?.data?.jobs
+  const total = data?.data?.total;
 
   
 
