@@ -3,7 +3,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
-import Pagination from '../Pagination/Pagination';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
@@ -13,24 +12,21 @@ const AllJob = () => {
   const [page, setPage] = useState(1);
   const [show, setShow] = useState(10);
   const [cat, setCat] = useState('')
-  const [salary, setSalary] = useState([])
   const [jobType, setJobType] = useState([])
   const [search, setSearch] = useState('');
   const [location, setLocation] = useState('');
 
-  const { data } = useQuery(['AllJobs', page, show, cat, salary, jobType, location, search], () => axios.get(`http://localhost:5000/jobs?search=${search}&page=${page}&show=${show}&location=${location}&cat=${cat}&salary=${salary}&type=${jobType}`))
+  const { data } = useQuery(['AllJobs', page, show, cat,  jobType, location, search], () => axios.get(`http://localhost:5000/jobs?search=${search}&page=${page}&show=${show}&location=${location}&cat=${cat}&type=${jobType}`))
 
   const jobDataArr = data?.data?.jobs
   const total = data?.data?.total;
 
   useEffect(() => {
     setGetJobs(jobDataArr)
-  }, [page, show, cat, salary, jobType, location, search, jobDataArr])
+  }, [page, show, cat,  jobType, location, search, jobDataArr])
 
-  const showHandle = (page) => {
 
-  }
-
+  //Event Handle 
   const categoryHandle = (e) => {
     const query = e.target.value;
     setCat(query)
@@ -88,10 +84,7 @@ const AllJob = () => {
         </div>
 
         <div className="jobs flex-1 p-8 col-span-12 overflow-y-auto jobsSidBarHidden md:col-start-6 md:col-end-11">
-          <Jobs getJobs={getJobs} />
-          <div>
-            <Pagination lastPage={lastPage} page={eval(page)} pageHandle={pageHandle} />
-          </div>
+          <Jobs getJobs={getJobs} lastPage={lastPage} page={page} pageHandle={pageHandle}/>
         </div>
       </div>
     </div>
