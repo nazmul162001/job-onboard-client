@@ -42,6 +42,13 @@ const AllJob = () => {
     const query = e.target.value;
     const check = e.target.checked;
 
+    if (check && !jobType?.includes(query)) {
+      setJobType([...jobType, query]);
+    }
+    else {
+      const filterJobType = jobType?.filter(t => t !== query)
+      setJobType(filterJobType)
+    }
   }
 
   const searchHandle = (e) => {
@@ -62,16 +69,26 @@ const AllJob = () => {
     setPage(page)
   }
 
-  
+
 
 
   return (
-    <div className='flex flex-col h-auto md:h-[100vh] bg-[#eeecec] '>
-      <div className="jobs-content flex flex-col overflow-y-auto md:flex-row flex-1 bg-[#f1efef] container mx-auto md:px-8">
-        <div className="sidebar basis-72 m-4 p-4 rounded-lg bg-[#fbf9f9] overflow-y-auto">
-          <Sidebar/>
+    <div className='flex flex-col h-auto bg-base-300'>
+
+      <div className="bg-base-100 grid grid-cols-12">
+
+        <div className="sidebar basis-72 m-4 p-4 col-span-12 rounded-lg bg-base-100 overflow-y-auto md:col-start-3 md:col-end-6 md:shadow-md md:sticky md:top-[120px] md:h-[100vh]">
+          <Sidebar
+            jobType={jobType}
+            jobTypeHandle={jobTypeHandle}
+            locationHandle={locationHandle}
+            categoryHandle={categoryHandle}
+            searchHandle={searchHandle}
+            cat={cat}
+          />
         </div>
-        <div className="jobs flex-1 p-8 overflow-y-auto">
+
+        <div className="jobs flex-1 p-8 col-span-12 overflow-y-auto jobsSidBarHidden md:col-start-6 md:col-end-11">
           <Jobs getJobs={getJobs} />
         </div>
       </div>
