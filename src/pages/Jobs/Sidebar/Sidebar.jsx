@@ -3,7 +3,7 @@ import { RiEqualizerLine } from 'react-icons/ri';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FaSearchLocation } from "react-icons/fa";
 
-const Sidebar = ({ jobTypeLists, checkedJobType, valueJ, setJobSearch, valueL, setLocationSearch, salaryLists, handleCheckedSalary }) => {
+const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locationHandle, cat }) => {
 
   return (
     <div className='space-y-5'>
