@@ -22,8 +22,7 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
             className='border border-slate-800 rounded-md py-1 pl-1'
             type='text'
             placeholder='React developer'
-            value={valueJ}
-            onChange={setJobSearch}
+            onChange={searchHandle}
           />
         </div>
       </div>
