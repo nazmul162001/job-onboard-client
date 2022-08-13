@@ -9,9 +9,9 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
   return (
     <div className='space-y-5'>
       {/* filter header  */}
-      <div className='flex justify-between mb-2 text-2xl font-bold font-mono'>
+      <div className='flex justify-between mb-2 text-xl lg:text-2xl font-bold font-mono'>
         <h3>Filter Here</h3>
-        <span className='icon'><RiEqualizerLine /></span>
+        <span className='icon md:hidden lg:block'><RiEqualizerLine /></span>
       </div>
 
       {/* Search By Job Title  */}
@@ -20,7 +20,7 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
         <div className='flex items-center '>
           <BiSearchAlt2 className='text-xl mr-1' />
           <input
-            className='border border-slate-800 rounded-md py-1 pl-1'
+            className='border border-slate-800 rounded-md py-1 pl-1 hover:border-primary duration-300 '
             type='text'
             placeholder='React developer'
             onChange={searchHandle}
@@ -33,7 +33,7 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
         <div className='flex items-center '>
           <FaSearchLocation className='text-md mr-2' />
           <input
-            className='border border-slate-800 rounded-md py-1 pl-1'
+            className='border border-slate-800 rounded-md py-1 pl-1 hover:border-primary duration-300 '
             type='text'
             placeholder='e.g USA'
 
@@ -45,7 +45,7 @@ const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locatio
       {/* Search By Category */}
 
       <div className='flex flex-col '>
-        <label htmlFor="category" className='text-sm pl-2'>Job Category <span className='text-red-500'>*</span></label>
+        <h4 className='text-md font-semibold pb-2'>Category </h4>
         <select
           id='category'
           className='border py-1 rounded-lg pl-3 hover:border-primary duration-300 w-fit'

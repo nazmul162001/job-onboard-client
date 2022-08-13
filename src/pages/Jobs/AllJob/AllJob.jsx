@@ -70,9 +70,9 @@ const AllJob = () => {
   return (
     <div className='flex flex-col h-auto bg-base-300'>
 
-      <div className="bg-base-100 grid grid-cols-12">
+      <div className="container mx-auto py-5 bg-base-300 grid grid-cols-12">
 
-        <div className="sidebar basis-72 m-4 p-4 col-span-12 rounded-lg bg-base-100 overflow-y-auto md:col-start-3 md:col-end-6 md:shadow-md md:sticky md:top-[120px] md:h-[100vh]">
+        <div className="sidebar basis-64 m-4 p-4 col-span-12 rounded-lg bg-base-100 overflow-y-auto md:col-start-1 md:col-end-5 lg:col-start-2 lg:col-end-5 md:shadow-md md:sticky md:top-[120px] md:h-[90vh]">
           <Sidebar
             jobType={jobType}
             jobTypeHandle={jobTypeHandle}
@@ -83,7 +83,7 @@ const AllJob = () => {
           />
         </div>
 
-        <div className="jobs flex-1 p-8 col-span-12 overflow-y-auto jobsSidBarHidden md:col-start-6 md:col-end-11">
+        <div className="jobs flex-1 p-8 col-span-12 overflow-y-auto jobsSidBarHidden md:col-start-6 md:col-end-12 lg:col-start-5 lg:col-end-12 ">
           <Jobs getJobs={getJobs} lastPage={lastPage} page={page} pageHandle={pageHandle}/>
         </div>
       </div>

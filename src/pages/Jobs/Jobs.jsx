@@ -7,10 +7,10 @@ const Jobs = ({ getJobs ,lastPage,page,pageHandle}) => {
 
   return (
     <div>
-      {getJobs?.length ?
-        <h2 className='text-lg lg:text-2xl font-bold'>Jobs {getJobs?.length}</h2>
+      {/* {getJobs?.length ?
+        <h2 className='text-2xl text-center font-mono font-bold'>Job Found {getJobs?.length}</h2>
         :
-        <></>}
+        <></>} */}
 
       {/* Display Products  */}
       {
