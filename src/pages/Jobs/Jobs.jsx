@@ -3,14 +3,21 @@ import EmptyJob from '../../Components/EmptyJob/EmptyJob';
 import Job from './Job';
 import Pagination from './Pagination/Pagination';
 
-const Jobs = ({ getJobs ,lastPage,page,pageHandle}) => {
+const Jobs = ({ getJobs, lastPage, page, pageHandle }) => {
+  // console.log(getJobs)
+  // const reverseJob = [...getJobs].reverse()
+  // console.log(reverseJob)
+
 
   return (
     <div>
-      {/* {getJobs?.length ?
-        <h2 className='text-2xl text-center font-mono font-bold'>Job Found {getJobs?.length}</h2>
-        :
-        <></>} */}
+      <div className='flex justify-between items-center'>
+        <h2 className='text-xl md;text2xl text-center font-mono font-bold'>Most Popular Job</h2>
+
+        <div>
+          <Pagination lastPage={lastPage} page={eval(page)} pageHandle={pageHandle} />
+        </div>
+      </div>
 
       {/* Display Products  */}
       {
@@ -21,9 +28,6 @@ const Jobs = ({ getJobs ,lastPage,page,pageHandle}) => {
                 key={job?.id}
                 job={job}
               ></Job>)}
-            </div>
-            <div>
-              <Pagination lastPage={lastPage} page={eval(page)} pageHandle={pageHandle} />
             </div>
           </>
           :
