@@ -27,13 +27,16 @@ const Recruitment = () => {
       },
     }).then((res) => res.json())
   );
-  
+
 
   if (isLoading) {
     return <Loading />;
   }
 
+  console.log(getCount);
+
   return (
+
     <div>
       <h2 className="text-center text-md md:text-xl font-bold pt-5">
         Total Jobs {hrJobs?.length}
@@ -45,6 +48,7 @@ const Recruitment = () => {
             key={index}
             className="shadow-lg hover:shadow-2xl border-t-2 border-primary relative"
           >
+
             <label class="flex justify-center items-center btn-sm btn-circle bg-red-600 text-white absolute right-2 top-2">
               {getCount?.length}
             </label>
@@ -52,10 +56,10 @@ const Recruitment = () => {
             <div className="p-5 space-y-5">
               <div className="space-y-2">
                 <div className="">
-                  <h2 className="text-sm font-semibold">{job.jobTitle}</h2>
+                  <h2 className="text-sm font-semibold">{job.companyName}</h2>
                   <br />
                   <p className="text-lg md:text-xl lg:text-xl font-bold ">
-                    {job.companyName}
+                    {job.jobTitle}
                   </p>
                 </div>
               </div>
@@ -74,7 +78,9 @@ const Recruitment = () => {
             </div>
           </div>
         ))}
+
       </div>
+
     </div>
   );
 };
