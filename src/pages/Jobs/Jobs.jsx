@@ -1,41 +1,40 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { BASE_API } from '../../config';
-import useTitle from '../../Hooks/useTitle';
+import React from 'react';
+import EmptyJob from '../../Components/EmptyJob/EmptyJob';
 import Job from './Job';
-import "./Jobs.css";
+import Pagination from './Pagination/Pagination';
 
-const Jobs = () => {
-  useTitle('Find Jobs')
-  const [getJobs, setGetJobs] = useState([])
-  useEffect(() => {
-    axios.get(`${BASE_API}/jobs`)
-      .then((response) => setGetJobs(response.data.reverse()))
-  }, [])
+const Jobs = ({ getJobs, lastPage, page, pageHandle }) => {
+  // console.log(getJobs)
+  // const reverseJob = [...getJobs].reverse()
+  // console.log(reverseJob)
+
 
   return (
-    <div className=' container mx-auto px-5 lg:px-12'>
-      <div className="grid grid-cols-1 md:grid-cols-sidebarMdWidth gap-5 lg:grid-cols-sidebarWidth ">
-        {/* Filter section  */}
-        <div className='card pt-10'>
-          <div className='md:fixed rounded-lg border min-h-[30vh] md:min-h-[75vh] filterHeight lg:min-h-[75vh] lg:px-20 pt-12 space-y-3 '>
-            <h2 className='text-center text-2xl md:3xl font-bold pt-5'>Filter Your Job</h2>
-            <h3 className='text-center'>Search by name</h3>
-            <input className='border border-black flex mx-auto rounded' type="search" value="" />
-          </div>
-        </div>
+    <div>
+      <div className='flex justify-between items-center'>
+        <h2 className='text-xl md;text2xl text-center font-mono font-bold'>Most Popular Job</h2>
 
-        {/* Jobs section  */}
         <div>
-          <h2 className='text-center text-2xl md:text-3xl font-bold pt-8'>Total Jobs  {getJobs.length}</h2>
-          <div className="grid grid-cols-1  gap-8 my-12">
-            {getJobs.map((job, index) => <Job
-              key={index}
-              job={job}
-            ></Job>)}
-          </div>
+          <Pagination lastPage={lastPage} page={eval(page)} pageHandle={pageHandle} />
         </div>
       </div>
+
+      {/* Display Products  */}
+      {
+        getJobs?.length ?
+          <>
+            <div>
+              {getJobs?.map((job) => <Job
+                key={job?.id}
+                job={job}
+              ></Job>)}
+            </div>
+          </>
+          :
+          <div >
+            <EmptyJob />
+          </div>
+      }
     </div>
   );
 };

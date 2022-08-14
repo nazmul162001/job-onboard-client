@@ -2,18 +2,23 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
+import { AiOutlinePlus } from "react-icons/ai";
 import { BsGrid } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
-import { AiOutlinePlus } from "react-icons/ai";
-import logo from "../../Assets/logo/logo.png";
-import useAdmin from "../../../Hooks/useAdmin";
 import Loader from "../../../Components/Loader/Loader";
+import useAdmin from "../../../Hooks/useAdmin";
+import logo from "../../Assets/logo/logo.png";
+import useHrManager from "../../../Hooks/useHrManager";
+import useUsers from "../../../Hooks/useUsers";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
+  const [hr, hrLoading] = useHrManager(user);
+  const [users] = useUsers(user);
+  // console.log(users)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -26,7 +31,7 @@ const Dashboard = () => {
     });
   };
 
-  if (adminLoading) {
+  if (adminLoading || hrLoading) {
     return <Loader />;
   }
 
@@ -41,22 +46,32 @@ const Dashboard = () => {
           >
             <BsGrid className="text-2xl" />
           </label>
+          <span className="font-semibold text-xl hidden md:block">
+            Welcome back,{" "}
+            <span className="text-primary">
+              {auth?.currentUser?.displayName} (
+              {/* {users?.map((user, index) => <div key={index}>{user.role}</div>)} */}
+              ) 🙂
+            </span>
+          </span>
           <Link
             to="/"
-            className="text-lg lg:text-2xl md:text-2xl font-semibold hidden md:block"
+            className="text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden"
           >
-            Job Onboard
+            <img src={logo} alt="" className="w-24" />
           </Link>
           <div className="flex justify-center items-center gap-8">
-            <Link to="/dashboard/job/addNew" className="text-md">
-              <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
-                {" "}
-                <span>
-                  <AiOutlinePlus />
-                </span>{" "}
-                Post Job
-              </button>
-            </Link>
+            {!admin && hr && (
+              <Link to="/dashboard/job/addNew" className="text-md">
+                <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
+                  {" "}
+                  <span>
+                    <AiOutlinePlus />
+                  </span>{" "}
+                  Post Job
+                </button>
+              </Link>
+            )}
             <div className="dropdown dropdown-end">
               <label
                 tabIndex="0"
@@ -83,11 +98,16 @@ const Dashboard = () => {
                 tabIndex="0"
                 className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <Link to="/dashboard/profile" className="py-3 font-semibold">
-                    Profile
-                  </Link>
-                </li>
+                {!admin && !hr && (
+                  <li>
+                    <Link
+                      to="/dashboard/profile"
+                      className="py-3 font-semibold"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                )}
                 <li className="font-semibold">
                   <button onClick={handleLogOut}>
                     <FiLogOut />
@@ -106,10 +126,9 @@ const Dashboard = () => {
           <div className="flex flex-col items-center gap-3 text-2xl p-2 border-b pb-5">
             <Link
               to="/"
-              className="logo font-semibold text-center flex items-center flex-col gap-2"
+              className="logo font-semibold text-center flex items-center flex-col gap-2 pb-2"
             >
-              <img src={logo} alt="" className="w-12" />
-              Job Onboard
+              <img src={logo} alt="" className="w-40" />
             </Link>
           </div>
           <li className="py-2 mt-4 font-semibold">
@@ -117,7 +136,7 @@ const Dashboard = () => {
               Dashboard
             </NavLink>
           </li>
-          {!admin && (
+          {!admin && hr && (
             <>
               <li className="py-1 font-semibold">
                 <NavLink to="/dashboard/mails" className="py-4 lg:text-lg">
@@ -125,8 +144,11 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
-                <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
+                {/* <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
                   Employers
+                </NavLink> */}
+                <NavLink to="/dashboard/employee" className="py-4 lg:text-lg">
+                  Employee
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
@@ -135,6 +157,21 @@ const Dashboard = () => {
                   className="py-4 lg:text-lg"
                 >
                   Recruitment
+                </NavLink>
+              </li>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
+                  Candidates
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {!admin && !hr && (
+            <>
+              <li className="py-1 font-semibold">
+                <NavLink to="/dashboard/applied" className="py-4 lg:text-lg">
+                  Applied Jobs
                 </NavLink>
               </li>
             </>
@@ -150,7 +187,7 @@ const Dashboard = () => {
             </>
           )}
 
-          <li className={"lg:pt-96"}>
+          <li className={"lg:pt-80"}>
             <button
               onClick={handleLogOut}
               className="bg-neutral rounded-lg py-4 lg:text-lg text-white"

@@ -6,8 +6,10 @@ import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 const AddNewJob = () => {
+  useTitle('Post Job')
   const [user] = useAuthState(auth)
   const [value, setValue] = useState()
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -57,7 +59,7 @@ const AddNewJob = () => {
   };
 
   return (
-    <div className='card container mx-auto border p-5 my-2'>
+    <div className='card container mx-auto px-5 my-16 shadow-xl border-t-4 border-primary rounded-2xl'>
       <h2 className='text-center pt-5 pb-3 text-[17px] md:text-2xl'>What's the job you're hiring for? </h2>
       <div className="line w-40 md:w-52 rounded-full  h-1 mx-auto bg-primary mb-8"></div>
 
@@ -70,7 +72,7 @@ const AddNewJob = () => {
             <input
               type="text"
               placeholder='Enter Job Title Here'
-              className='border-b py-1 text-2xl pl-3 '
+              className='border-b py-1 text-2xl pl-3 hover:border-primary duration-300'
               {...register('jobTitle', {
                 required: {
                   value: true,
@@ -88,7 +90,7 @@ const AddNewJob = () => {
             <input
               type="text"
               placeholder='Enter Company Name'
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('companyName', {
                 required: {
                   value: true,
@@ -104,7 +106,7 @@ const AddNewJob = () => {
             <input
               type="text"
               placeholder='Work Location'
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('location', {
                 required: {
                   value: true,
@@ -124,7 +126,7 @@ const AddNewJob = () => {
             <label htmlFor="category" className='text-sm pl-2'>Job Category <span className='text-red-500'>*</span></label>
             <select
               id='category'
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('category', {
                 required: true
               })}
@@ -152,7 +154,7 @@ const AddNewJob = () => {
             <label htmlFor="jobType" className='text-sm pl-2'>Job Type <span className='text-red-500'>*</span></label>
             <select
               id='jobType'
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('jobType', {
                 required: true
               })}
@@ -175,7 +177,7 @@ const AddNewJob = () => {
               type="number"
               placeholder='Salary'
               min={300}
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('salary', {
                 required: {
                   value: true,
@@ -193,7 +195,7 @@ const AddNewJob = () => {
               type="number"
               placeholder='Company Employee'
               min={1}
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('employees', {
                 required: {
                   value: true,
@@ -211,7 +213,7 @@ const AddNewJob = () => {
               type="number"
               placeholder='Vacancy'
               min={1}
-              className='border py-1 rounded-lg pl-3 '
+              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
               {...register('openingPosition', {
                 required: {
                   value: true,
@@ -226,7 +228,7 @@ const AddNewJob = () => {
         </div>
 
         <div className='pb-8'>
-          <button className='px-5 py-3 border bg-primary rounded-lg text-white'>
+          <button className='px-5 py-3 border bg-primary duration-300 hover:bg-[#6746b3] rounded-lg text-white'>
             Create Job
           </button>
         </div>

@@ -1,37 +1,41 @@
+import { createContext, useState } from "react";
 import "./App.css";
-import { createContext, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import Navbar from "./Shared/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home/Home/Home";
-import Team from "./Pages/Team/Team";
-import NotFound from "./Shared/NotFound/NotFound";
-import { useState } from "react";
-import ScrollButton from "./Components/ScrollButton/ScrollButton";
-import Login from "./Pages/Authentication/Login/Login";
-import SignUp from "./Pages/Authentication/SignUp/SignUp";
-import ResetPassword from "./Pages/Authentication/ResetPassword/ResetPassword";
-import AboutUs from "./Pages/AboutUs/AboutUs";
-import Jobs from "./Pages/Jobs/Jobs";
+import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
 import RequireAuth from "./Auth/RequireAuth/RequireAuth";
-import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
-import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
+import ScrollButton from "./Components/ScrollButton/ScrollButton";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import Login from "./Pages/Authentication/Login/Login";
+import ResetPassword from "./Pages/Authentication/ResetPassword/ResetPassword";
+import SignUp from "./Pages/Authentication/SignUp/SignUp";
+import Home from "./Pages/Home/Home/Home";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
+import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
+import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
+import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
+import EmployeesRoot from "./Pages/ManageDashboard/EmployeeRoot/EmployeesRoot";
+import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
 import AddNewJob from "./Pages/ManageDashboard/Jobs/AddNewJob";
-import Employers from "./Pages/ManageDashboard/Employers/Employers";
+import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import Profile from "./Pages/ManageDashboard/Profile/Profile";
 import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
-import Inbox from "./Pages/ManageDashboard/Inbox/Inbox";
-import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
-import RequireAdmin from "./Auth/RequireAdmin/RequireAdmin";
+import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
+import Team from "./Pages/Team/Team";
+import Navbar from "./Shared/Navbar/Navbar";
+import NotFound from "./Shared/NotFound/NotFound";
+import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
+import RequireHr from "./Auth/RequireHr/RequireHr";
+import AllJob from "./Pages/Jobs/AllJob/AllJob";
+
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
 
-  useEffect(() => {
-    setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  }, []);
+  // useEffect(() => {
+  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  // }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);
@@ -45,7 +49,7 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* Job Route Start */}
 
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs" element={<AllJob />} />
           <Route path="/job/:jobId" element={<JobDescription />} />
 
           {/* Job Route End  */}
@@ -54,6 +58,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route
             path="/dashboard"
@@ -64,10 +69,34 @@ function App() {
             }
           >
             <Route index element={<WelcomeDashboard />} />
-            <Route path="job/addNew" element={<AddNewJob />} />
+            <Route
+              path="job/addNew"
+              element={
+                <RequireHr>
+                  <AddNewJob />
+                </RequireHr>
+              }
+            />
             <Route path="profile" element={<Profile />} />
-            <Route path="employers" element={<Employers />} />
+            <Route
+              path="employee"
+              element={
+                <RequireHr>
+                  <EmployeesRoot />
+                </RequireHr>
+              }
+            />
+            <Route path="employee/:detailsId" element={<EmployeeDetails />} />
             <Route path="recruitment" element={<Recruitment />} />
+            <Route
+              path="recruitment"
+              element={
+                <RequireHr>
+                  <Recruitment />
+                </RequireHr>
+              }
+            />
+            <Route path="candidates" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />
             <Route
               path="allHr"
