@@ -9,6 +9,7 @@ import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [allEmployeDetails, setAllEmployeDetails] = useState([]);
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
+
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)

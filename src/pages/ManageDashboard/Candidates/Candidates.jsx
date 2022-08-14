@@ -1,11 +1,11 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import { BASE_API } from "../../../config";
 import useTitle from "../../../Hooks/useTitle";
 import { FaRegAddressBook } from "react-icons/fa";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
+import CandidatesMailModal from "./CandidatesMailModal";
+import { useState } from "react";
 
 const Candidates = () => {
   useTitle("Candidates");
@@ -18,9 +18,11 @@ const Candidates = () => {
     }).then((res) => res.json())
   );
 
+  const [mail, setMail] = useState(null);
+
   if (isLoading) {
     return <Loading />;
-  }
+  };
 
   return (
     <div class="flex flex-col">
@@ -70,10 +72,19 @@ const Candidates = () => {
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <div>
                         <div class="font-normal">
-                          {applicant.firstName} ({applicant.lastName})
+                          {applicant.firstName} {applicant.lastName}
                         </div>
                         <div class="text-sm opacity-70 font-semibold">
-                          {applicant.email}
+
+
+                          <label
+                            htmlFor="candidate-modal"
+                            title="Click to send mail"
+                            onClick={() => setMail(applicant)}
+                            className='cursor-pointer' >{applicant.email}
+                          </label>
+
+
                         </div>
                       </div>
                     </td>
@@ -93,14 +104,9 @@ const Candidates = () => {
                     </td>
 
                     <td class="text-sm text-gray-900 font-light px-14 py-4 whitespace-nowrap">
-                      <Link
-                        to={applicant.resume}
-                        target="_blank"
-                        title="Resume/Link"
-                      >
-                        {" "}
-                        <FaRegAddressBook size={25} />{" "}
-                      </Link>
+
+                      <a title="Resume/Link" href={applicant.resume} target="_blank" rel='noreferrer'><FaRegAddressBook size={25} /></a>
+
                     </td>
                   </tr>
                 ))}
@@ -109,6 +115,9 @@ const Candidates = () => {
           </div>
         </div>
       </div>
+
+      {mail && <CandidatesMailModal mail={mail}></CandidatesMailModal>}
+
     </div>
   );
 };
