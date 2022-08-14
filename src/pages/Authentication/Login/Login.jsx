@@ -47,7 +47,7 @@ const Login = () => {
         }
       );
     }
-  }, [navigate, from, token]);
+  }, [navigate, from, token, search]);
 
   if (loading || gLoading) {
     return <Loading></Loading>;

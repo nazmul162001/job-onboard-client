@@ -39,7 +39,7 @@ const Recruitment = () => {
 
     <div>
       <h2 className="text-center text-md md:text-xl font-bold pt-5">
-        Total Jobs {hrJobs?.length}
+        Total Jobs ({hrJobs?.length})
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 px-5 gap-5 my-8">
