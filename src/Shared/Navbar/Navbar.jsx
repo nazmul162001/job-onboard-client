@@ -60,73 +60,74 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {user ? (
-              <ul className="items-center hidden space-x-8 lg:flex">
-                <li>
-                  <NavLink
-                    to="jobs"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    Find Jobs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="pricing"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    Pricing
-                  </NavLink>
-                </li>
-                <li>
-                  <div class="dropdown dropdown-hover">
-                    <label tabindex="0" class="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300 cursor-pointer flex justify-between items-center ">Features <span className="pl-1 text-xl"><FiChevronDown /></span></label>
-                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-60 space-y-1">
-                      <li> <NavLink to="job-posting">Job Posting </NavLink> </li>
-                      <li> <NavLink to="applicant-tracking"> Applicant Tracking </NavLink></li>
-                      <li> <NavLink to="employee-database" className="">Employee Database</NavLink></li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <NavLink
-                    to="blog"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    Blog
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="about"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    About Us
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="contact-us"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    Contact Us
-                  </NavLink>
-                </li>
+
+            <ul className="items-center hidden space-x-8 lg:flex">
+              <li>
+                <NavLink
+                  to="jobs"
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                >
+                  Find Jobs
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="pricing"
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                >
+                  Pricing
+                </NavLink>
+              </li>
+              <li>
+                <div class="dropdown dropdown-hover">
+                  <label tabindex="0" class="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300 cursor-pointer flex justify-between items-center ">Features <span className="pl-1 text-xl"><FiChevronDown /></span></label>
+                  <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-60 space-y-1">
+                    <li> <NavLink to="job-posting">Job Posting </NavLink> </li>
+                    <li> <NavLink to="applicant-tracking"> Applicant Tracking </NavLink></li>
+                    <li> <NavLink to="employee-database" className="">Employee Database</NavLink></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <NavLink
+                  to="blog"
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                >
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="about"
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                >
+                  About Us
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="contact-us"
+                  style={({ isActive }) =>
+                    isActive ? activeStyle : undefined
+                  }
+                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                >
+                  Contact Us
+                </NavLink>
+              </li>
+              {user ? (
                 <div className="dropdown dropdown-end">
                   <label
                     tabIndex="0"
@@ -161,71 +162,52 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </div>
-              </ul>
-            ) : (
-              <ul className="items-center hidden space-x-8 lg:flex">
-                <li>
-                  <NavLink
-                    to="jobs"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
-                  >
-                    Find Jobs
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="about"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out hover:duration-200"
-                  >
-                    About Us
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="login"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    Login
-                  </NavLink>
-                </li>
-                <div class="dropdown dropdown-end">
-                  <label tabindex="0" class="btn btn-primary text-white">
-                    Get Started{" "}
-                    <MdOutlineKeyboardArrowRight className="text-2xl" />
-                  </label>
-                  <ul
-                    tabindex="0"
-                    class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
-                  >
-                    <li className="py-2">
-                      <Link
-                        to="signUp"
-                        className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                      >
-                        As a Candidate
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="signUp/hr"
-                        className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                      >
-                        As a HR Manager
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </ul>
-            )}
+              ) : (
+                <>
+                  <li>
+                    <NavLink
+                      to="login"
+                      style={({ isActive }) =>
+                        isActive ? activeStyle : undefined
+                      }
+                      className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-primary text-white">
+                      Get Started{" "}
+                      <MdOutlineKeyboardArrowRight className="text-2xl" />
+                    </label>
+                    <ul
+                      tabindex="0"
+                      class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
+                    >
+                      <li className="py-2">
+                        <Link
+                          to="signUp"
+                          className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                        >
+                          As a Candidate
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="signUp/hr"
+                          className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                        >
+                          As a HR Manager
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </>
+
+              )}
+
+            </ul>
+
 
             <div className="lg:hidden flex">
               {user ? (
