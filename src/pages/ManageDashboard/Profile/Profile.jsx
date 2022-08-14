@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
@@ -13,7 +12,7 @@ const Profile = () => {
   const [isShow, setIsShow] = useState(false);
   const {
     register,
-    formState: { errors },
+    // formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
@@ -27,14 +26,14 @@ const Profile = () => {
 
   const saveProfileDataOnMongodb = async (data) => {
     const profileData = {
-      education: data?.education,
-      number: data?.number,
       address: data?.address,
-      facebook: data?.facebook,
-      linkedin: data?.linkedin,
+      number: data?.number,
+      gender: data?.gender,
+      dateOfBirth: data?.dateOfBirth,
+      bloodGroup: data?.bloodGroup,
       createdAt: new Date().toDateString(),
     };
-    await fetch(`${BASE_API}/users/all`, {
+    await fetch(`${BASE_API}/users/all?uid=${auth?.currentUser?.uid}`, {
       method: "PATCH",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -58,7 +57,7 @@ const Profile = () => {
     isLoading,
     refetch,
   } = useQuery(["profileData"], () =>
-    fetch(`${BASE_API}/users/all`, {
+    fetch(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -71,11 +70,10 @@ const Profile = () => {
       </div>
     );
 
-  const { role, address, education, number, linkedin, facebook } =
-    result;
+  const { role, address, gender, number, dateOfBirth, bloodGroup } = result?.result;
 
   return (
-    <div className="grid place-items-center py-36 lg:py-48 md:px-24 h-[80vh] bg-base-100">
+    <div className="grid place-items-center py-24 lg:py-48 md:px-24 h-[80vh] bg-base-100">
       <div className="profile-card w-[97%] md:w-2/3 lg:w-1/3 text-center shadow-xl rounded-3xl bg-base-100 p-7">
         <div className="avatar w-40 h-40 rounded-full border-8 text-7xl font-semibold overflow-hidden mt-[-5rem] z-10 grid place-items-center mx-auto ring ring-primary ring-offset-base-100 ring-offset-2">
           {auth?.currentUser?.photoURL ? (
@@ -84,7 +82,10 @@ const Profile = () => {
               alt={auth?.currentUser?.displayName.slice(0, 1)}
             />
           ) : (
-            <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt={auth?.currentUser?.displayName.slice(0, 1)} />
+            <img
+              src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+              alt={auth?.currentUser?.displayName.slice(0, 1)}
+            />
           )}
         </div>
         <div className="info my-2">
@@ -105,30 +106,24 @@ const Profile = () => {
         <hr />
         <div className="details py-5 bg-base-100">
           <ul className="flex flex-col gap-3 items-start justify-start">
-            <li className="flex justify-between w-full items-center">
-              Education -{" "}
-              <strong>{education ? education : "Not available"}</strong>
-            </li>
-            <li className="flex justify-between w-full items-center">
-              Phone - <strong>{number ? number : `Not available`}</strong>
-            </li>
             <li className="flex w-full justify-between items-center">
               Address - <strong>{address ? address : "Not available"}</strong>
             </li>
             <li className="flex justify-between w-full items-center">
-              Social Links -{" "}
-              {facebook || linkedin ? (
-                <div className="flex items-center gap-2">
-                  <a target={"_blank"} href={linkedin} rel="noreferrer">
-                    <FaLinkedin className="text-blue-500" />
-                  </a>
-                  <a target={"_blank"} href={facebook} rel="noreferrer">
-                    <FaFacebook className="text-blue-700" />
-                  </a>
-                </div>
-              ) : (
-                <strong>Not available</strong>
-              )}
+              Phone Number -{" "}
+              <strong>{number ? number : `Not available`}</strong>
+            </li>
+            <li className="flex justify-between w-full items-center">
+              Gender -{" "}
+              <strong>{gender ? gender : "Not available"}</strong>
+            </li>
+            <li className="flex w-full justify-between items-center">
+              Date of Birth -{" "}
+              <strong>{dateOfBirth ? dateOfBirth : "Not available"}</strong>
+            </li>
+            <li className="flex w-full justify-between items-center">
+              Blood Group -{" "}
+              <strong>{bloodGroup ? bloodGroup : "Not available"}</strong>
             </li>
           </ul>
           {isShow ? (
@@ -153,69 +148,88 @@ const Profile = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="another-info flex items-center justify-center flex-col gap-2 my-3"
             >
-              <input
-                type="text"
-                placeholder="Education"
-                className="input input-bordered w-full"
-                required
-                defaultValue={education}
-                {...register("education", { required: true })}
-              />
-              {errors.education?.type === "required" && (
-                <span className="text-error">Education is required</span>
-              )}
+              <div className="w-full">
+                <label class="label">
+                  <span class="label-text-alt">Address</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Address"
+                  className="input input-bordered w-full"
+                  required
+                  defaultValue={address}
+                  {...register("address", { required: true })}
+                />
+              </div>
 
               <div className="flex flex-col md:flex-row items-center gap-3 w-full">
                 <div className="my-2 w-full">
+                  <label class="label">
+                    <span class="label-text-alt">Phone Number</span>
+                  </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Phone Number"
                     defaultValue={number}
+                    required
                     className="input input-bordered w-full"
                     {...register("number", { required: true })}
                   />
-                  {errors.number?.type === "required" && (
-                    <span className="text-error">Phone Number is required</span>
-                  )}
                 </div>
                 <div className="w-full">
-                  <input
-                    type="text"
-                    placeholder="City/State"
-                    className="input input-bordered w-full"
+                  <label class="label">
+                    <span class="label-text-alt">Gender</span>
+                  </label>
+                  <select
+                    class="select select-bordered w-full max-w-xs"
                     required
-                    defaultValue={address}
-                    {...register("address", { required: true })}
-                  />
-                  {errors.address?.type === "required" && (
-                    <span className="text-error">Address is required</span>
-                  )}
+                    defaultValue={gender}
+                    {...register("gender", { required: true })}
+                  >
+                    <option disabled selected>
+                      Select one
+                    </option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
                 </div>
               </div>
               <div className="flex flex-col md:flex-row items-center gap-3 w-full">
                 <div className="w-full">
+                  <label class="label">
+                    <span class="label-text-alt">Date of Birth</span>
+                  </label>
                   <input
-                    type="text"
-                    placeholder="Facebook"
-                    defaultValue={facebook}
+                    type="date"
+                    placeholder="Date of Birth"
+                    defaultValue={dateOfBirth}
+                    required
                     className="input input-bordered w-full"
-                    {...register("facebook", { required: true })}
+                    {...register("dateOfBirth", { required: true })}
                   />
-                  {errors.facebook?.type === "required" && (
-                    <span className="text-error">Facebook is required</span>
-                  )}
                 </div>
                 <div className="w-full">
-                  <input
-                    type="text"
-                    placeholder="Linkedin"
-                    defaultValue={linkedin}
-                    className="input input-bordered w-full"
-                    {...register("linkedin", { required: true })}
-                  />
-                  {errors.linkedin?.type === "required" && (
-                    <span className="text-error">Github URL is required</span>
-                  )}
+                  <label class="label">
+                    <span class="label-text-alt">Blood Group</span>
+                  </label>
+                  <select
+                    class="select select-bordered w-full max-w-xs"
+                    required
+                    defaultValue={bloodGroup}
+                    {...register("bloodGroup", { required: true })}
+                  >
+                    <option disabled selected>
+                      Select one
+                    </option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>A-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                  </select>
                 </div>
               </div>
               <div className="text-center mt-3">
