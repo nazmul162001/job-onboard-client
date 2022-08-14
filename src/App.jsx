@@ -28,6 +28,12 @@ import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUp
 import RequireHr from "./Auth/RequireHr/RequireHr";
 import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
+import EmployeeDatabase from "./Pages/Features/EmployeeDatabase/EmployeeDatabase";
+import JobPosting from "./Pages/Features/JobPosting/JobPosting";
+import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
+import Blog from "./Pages/Blog/Blog";
+import Contact from "./Pages/ContactUs/Contact";
+import Pricing from "./Pages/Pricing/Pricing";
 
 export const InitializeContext = createContext(null);
 
@@ -54,6 +60,13 @@ function App() {
           <Route path="/job/:jobId" element={<JobDescription />} />
 
           {/* Job Route End  */}
+
+          <Route path="/pricing" element={<Pricing/>}></Route>
+          <Route path="/job-posting" element={<JobPosting/>}></Route>
+          <Route path="applicant-tracking" element={<ApplicantTracking/>}></Route>
+          <Route path="/employee-database" element={<EmployeeDatabase/>}></Route>
+          <Route path="/blog" element={<Blog/>}></Route>
+          <Route path="contact-us" element={<Contact/>}></Route>
 
           <Route path="/about" element={<AboutUs />} />
           <Route path="/team" element={<Team />} />

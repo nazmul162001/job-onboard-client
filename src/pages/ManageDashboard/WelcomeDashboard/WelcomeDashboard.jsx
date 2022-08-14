@@ -4,11 +4,12 @@ import useTitle from "../../../Hooks/useTitle";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import RecentApplication from "../RecentApplicants/RecentApplicants";
 import RecentJobs from "../RecentJobs/RecentJobs";
+import HrChart from "../HrChart/HrChart";
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
   return (
-    <div className="">
+    <div className="bg-base-300">
       {user && (
         <div className="">
           <section className="h-full main_dashboard static z-10 ">
@@ -55,6 +56,7 @@ const WelcomeDashboard = () => {
             {/* welcome dashbord */}
             <RecentApplication />
             <RecentJobs />
+            <HrChart />
             </div>
           </section>
         </div>

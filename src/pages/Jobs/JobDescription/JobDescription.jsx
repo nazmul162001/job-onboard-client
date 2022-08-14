@@ -66,7 +66,7 @@ const JobDescription = () => {
         <h2 className='text-2xl lg:text-2xl lg:pb-5 font-bold'>Job Description : </h2>
         <div dangerouslySetInnerHTML={{ __html: job?.value }} className='prose max-w-full prose-h2:my-0 prose-h2:mb-2 prose-p:my-0 prose-h1:text-2xl prose-p:text-md  prose-p:text-[#292828] md:prose-li:text-md md:prose-ol:text-md'></div>
 
-        <div className='text-center md:py-8 '>
+        <div className='flex justify-center items-center pt-5 md:mt-0 text-center md:py-8 '>
           {user ?
             <label
               htmlFor="applicant-modal"
