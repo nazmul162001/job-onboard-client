@@ -4,9 +4,7 @@ import { FaRegAddressBook } from "react-icons/fa";
 const Candidate = ({ applicant, setMail, index }) => {
   const { firstName, lastName, email } = applicant;
   return (
-    <tr
-      class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
-    >
+    <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
         {index + 1}
       </td>
@@ -16,11 +14,11 @@ const Candidate = ({ applicant, setMail, index }) => {
           <div class="font-normal">
             {firstName} {lastName}
           </div>
-          <div class="text-sm opacity-70 font-semibold">
+          <div class="text-sm font-semibold">
             <label
               htmlFor="candidate-modal"
               title="Click to send mail"
-              onClick={() => setMail({firstName, lastName, email})}
+              onClick={() => setMail({ firstName, lastName, email })}
               className="cursor-pointer"
             >
               {email}

@@ -27,6 +27,7 @@ import NotFound from "./Shared/NotFound/NotFound";
 import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
 import RequireHr from "./Auth/RequireHr/RequireHr";
 import AllJob from "./Pages/Jobs/AllJob/AllJob";
+import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import EmployeeDatabase from "./Pages/Features/EmployeeDatabase/EmployeeDatabase";
 import JobPosting from "./Pages/Features/JobPosting/JobPosting";
 import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
@@ -100,7 +101,7 @@ function App() {
               }
             />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
-            <Route path="recruitment" element={<Recruitment />} />
+            <Route path="appliedJobs" element={<AppliedJobs />} />
             <Route
               path="recruitment"
               element={
