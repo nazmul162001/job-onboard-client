@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Auth/Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
 import logo from "../../Pages/Assets/logo/logo.png";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiChevronDown } from "react-icons/fi";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -85,15 +85,14 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to="job-posting"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                  >
-                    Features
-                  </NavLink>
+                  <div class="dropdown dropdown-hover">
+                    <label tabindex="0" class="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300 cursor-pointer flex justify-between items-center ">Features <span className="pl-1 text-xl"><FiChevronDown /></span></label>
+                    <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-60 space-y-1">
+                      <li> <NavLink to="job-posting">Job Posting </NavLink> </li>
+                      <li> <NavLink to="applicant-tracking"> Applicant Tracking </NavLink></li>
+                      <li> <NavLink to="employee-database" className="">Employee Database</NavLink></li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <NavLink
@@ -325,16 +324,14 @@ const Navbar = () => {
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink
-                            to="job-posting"
-                            style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                            }
-                            onClick={() => setIsMenuOpen(false)}
-                            className="nav-link-mobile"
-                          >
-                            Features
-                          </NavLink>
+                          <div class="dropdown dropdown-hover">
+                            <label tabindex="0" class="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300 cursor-pointer flex justify-between items-center ">Features <span className="pl-1 text-xl"><FiChevronDown /></span></label>
+                            <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-60 space-y-1">
+                              <li> <NavLink to="job-posting">Job Posting </NavLink> </li>
+                              <li> <NavLink to="applicant-tracking"> Applicant Tracking </NavLink></li>
+                              <li> <NavLink to="employee-database" className="">Employee Database</NavLink></li>
+                            </ul>
+                          </div>
                         </li>
                         <li>
                           <NavLink
@@ -372,7 +369,7 @@ const Navbar = () => {
                             Contact Us
                           </NavLink>
                         </li>
-                        
+
                         {!user ? (
                           <div class="dropdown">
                             <label
