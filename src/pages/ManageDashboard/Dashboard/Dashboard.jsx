@@ -11,14 +11,11 @@ import Loader from "../../../Components/Loader/Loader";
 import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
-import useUsers from "../../../Hooks/useUsers";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
-  const [users] = useUsers(user);
-  // console.log(users)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -49,14 +46,12 @@ const Dashboard = () => {
           <span className="font-semibold text-xl hidden md:block">
             Welcome back,{" "}
             <span className="text-primary">
-              {auth?.currentUser?.displayName} (
-              {/* {users?.map((user, index) => <div key={index}>{user.role}</div>)} */}
-              ) 🙂
+              {auth?.currentUser?.displayName} 🙂
             </span>
           </span>
           <Link
             to="/"
-            className="text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden"
+            className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
           >
             <img src={logo} alt="" className="w-24" />
           </Link>
@@ -187,7 +182,7 @@ const Dashboard = () => {
             </>
           )}
 
-          <li className={"lg:pt-80"}>
+          <li className="py-1 font-semibold">
             <button
               onClick={handleLogOut}
               className="bg-neutral rounded-lg py-4 lg:text-lg text-white"
