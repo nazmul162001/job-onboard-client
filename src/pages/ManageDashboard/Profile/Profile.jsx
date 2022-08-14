@@ -6,9 +6,15 @@ import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 import useTitle from "../../../Hooks/useTitle";
+import { useAuthState } from "react-firebase-hooks/auth";
+import useAdmin from "../../../Hooks/useAdmin";
+import useHrManager from "../../../Hooks/useHrManager";
 
 const Profile = () => {
   useTitle("Profile");
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  const [hr] = useHrManager(user);
   const [isShow, setIsShow] = useState(false);
   const {
     register,
@@ -70,7 +76,7 @@ const Profile = () => {
       </div>
     );
 
-  const { role, address, gender, number, dateOfBirth, bloodGroup } = result?.result;
+  const { address, gender, number, dateOfBirth, bloodGroup } = result?.result;
 
   return (
     <div className="grid place-items-center py-24 lg:py-48 md:px-24 h-[80vh] bg-base-100">
@@ -92,13 +98,9 @@ const Profile = () => {
           <h3 className="text-lg font-semibold">
             {auth?.currentUser?.displayName}
             <small className="ml-2">
-              {role === "admin" ? (
-                <span className="badge bg-primary border-primary text-white">
-                  Admin
-                </span>
-              ) : (
-                <span className="badge text-white">User</span>
-              )}
+              <span className="badge text-white">
+                {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
+              </span>
             </small>
           </h3>
           <small>{auth?.currentUser?.email}</small>
@@ -114,8 +116,7 @@ const Profile = () => {
               <strong>{number ? number : `Not available`}</strong>
             </li>
             <li className="flex justify-between w-full items-center">
-              Gender -{" "}
-              <strong>{gender ? gender : "Not available"}</strong>
+              Gender - <strong>{gender ? gender : "Not available"}</strong>
             </li>
             <li className="flex w-full justify-between items-center">
               Date of Birth -{" "}

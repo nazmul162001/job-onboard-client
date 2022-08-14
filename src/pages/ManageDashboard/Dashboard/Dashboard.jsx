@@ -43,18 +43,23 @@ const Dashboard = () => {
           >
             <BsGrid className="text-2xl" />
           </label>
-          <span className="font-semibold text-xl hidden md:block">
+          <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
             Welcome back,{" "}
-            <span className="text-primary">
-              {auth?.currentUser?.displayName} 🙂
-            </span>
+            <div className="text-primary flex justify-center items-center">
+              <span className="mr-2">{auth?.currentUser?.displayName}</span>
+              <span className="badge bg-primary border-primary text-white">
+                {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
+              </span>
+            </div>
           </span>
-          <Link
-            to="/"
-            className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
-          >
-            <img src={logo} alt="" className="w-24" />
-          </Link>
+          {!hr && (
+            <Link
+              to="/"
+              className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
+            >
+              <img src={logo} alt="" className="w-24" />
+            </Link>
+          )}
           <div className="flex justify-center items-center gap-8">
             {!admin && hr && (
               <Link to="/dashboard/job/addNew" className="text-md">
@@ -139,9 +144,6 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="py-1 font-semibold">
-                {/* <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
-                  Employers
-                </NavLink> */}
                 <NavLink to="/dashboard/employee" className="py-4 lg:text-lg">
                   Employee
                 </NavLink>
@@ -165,7 +167,10 @@ const Dashboard = () => {
           {!admin && !hr && (
             <>
               <li className="py-1 font-semibold">
-                <NavLink to="/dashboard/applied" className="py-4 lg:text-lg">
+                <NavLink
+                  to="/dashboard/appliedJobs"
+                  className="py-4 lg:text-lg"
+                >
                   Applied Jobs
                 </NavLink>
               </li>
