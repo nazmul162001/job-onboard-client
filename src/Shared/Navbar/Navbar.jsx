@@ -75,6 +75,39 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
+                    to="pricing"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                  >
+                    Pricing
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="job-posting"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                  >
+                    Features
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="blog"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                  >
+                    Blog
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
                     to="about"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
@@ -82,6 +115,17 @@ const Navbar = () => {
                     className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                   >
                     About Us
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="contact-us"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
+                  >
+                    Contact Us
                   </NavLink>
                 </li>
                 <div className="dropdown dropdown-end">
@@ -270,6 +314,42 @@ const Navbar = () => {
                         </li>
                         <li>
                           <NavLink
+                            to="pricing"
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            onClick={() => setIsMenuOpen(false)}
+                            className="nav-link-mobile"
+                          >
+                            Pricing
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="job-posting"
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            onClick={() => setIsMenuOpen(false)}
+                            className="nav-link-mobile"
+                          >
+                            Features
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            to="blog"
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            onClick={() => setIsMenuOpen(false)}
+                            className="nav-link-mobile"
+                          >
+                            Blog
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
                             to="about"
                             style={({ isActive }) =>
                               isActive ? activeStyle : undefined
@@ -280,6 +360,19 @@ const Navbar = () => {
                             About
                           </NavLink>
                         </li>
+                        <li>
+                          <NavLink
+                            to="contact-us"
+                            style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                            }
+                            onClick={() => setIsMenuOpen(false)}
+                            className="nav-link-mobile"
+                          >
+                            Contact Us
+                          </NavLink>
+                        </li>
+                        
                         {!user ? (
                           <div class="dropdown">
                             <label
