@@ -9,7 +9,7 @@ const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
   return (
-    <div className="">
+    <div className="bg-base-300">
       {user && (
         <div className="">
           <section className="h-full main_dashboard static z-10 ">
