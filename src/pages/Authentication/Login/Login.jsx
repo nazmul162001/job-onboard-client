@@ -29,10 +29,16 @@ const Login = () => {
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const [token] = useToken(user || gUser);
+  const search = location.search?.split('=')?.[1]
 
   useEffect(() => {
     if (token) {
-      navigate(from, { replace: true });
+      if(!search){
+        navigate(from, { replace: true });
+      }
+      else{
+        navigate(search)
+      }
       toast.success(
         `Welcome Back, ${auth?.currentUser?.displayName} to Job Onboard!`,
         {

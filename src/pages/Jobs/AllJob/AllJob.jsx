@@ -1,127 +1,90 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { jobTypeList, salaryList } from '../../../data';
-import useJobData from '../../../Hooks/useJobData';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AllJob = () => {
   useTitle('Find Jobs')
-  const [jobData] = useJobData()
-  const [jobSearch, setJobSearch] = useState('');
-  const [locationSearch, setLocationSearch] = useState('');
-  const [jobTypeLists, setJobTypeList] = useState(jobTypeList)
-  const [salaryLists, setSalaryLists] = useState(salaryList)
+
   const [getJobs, setGetJobs] = useState([])
-  const [ifCheckJobType, setIfCheckJobType] = useState(null)
-  const [ifCheckSalary, setIfCheckSalary] = useState(null)
+  const [page, setPage] = useState(1);
+  const [show, setShow] = useState(10);
+  const [cat, setCat] = useState('')
+  const [jobType, setJobType] = useState([])
+  const [search, setSearch] = useState('');
+  const [location, setLocation] = useState('');
 
-  
+  const { data } = useQuery(['AllJobs', page, show, cat,  jobType, location, search], () => axios.get(`http://localhost:5000/jobs?search=${search}&page=${page}&show=${show}&location=${location}&cat=${cat}&type=${jobType}`))
 
-  // console.log(getJobs)
+  const jobDataArr = data?.data?.jobs
+  const total = data?.data?.total;
 
-  // Handle Check Job Type 
-  const handleCheckedJobType = (id) => {
-    const checkedJobType = jobTypeLists.map((jobType) =>
-      jobType.id === id ? { ...jobType, checked: !jobType.checked } : jobType
-    );
-    const findJobType = checkedJobType?.find(jobType => jobType?.checked)
-    setIfCheckJobType(findJobType)
-    // console.log(checkedJobType);
-    setJobTypeList(checkedJobType);
-  };
-
-  //Handle Check Salary
-  const handleCheckedSalary = (id) => {
-    const checkedSalary = salaryLists.map((salaryList) =>
-      salaryList.id === id ? { ...salaryList, checked: !salaryList.checked } : salaryList
-    );
-    const checkSalary = checkedSalary?.find(check => check?.checked);
-    setIfCheckSalary(checkSalary)
-    // console.log(checkedSalary);
-    setSalaryLists(checkedSalary);
-  };
+  useEffect(() => {
+    setGetJobs(jobDataArr)
+  }, [page, show, cat,  jobType, location, search, jobDataArr])
 
 
-  // Handle Filtering 
-  const filtering = () => {
-    let updatedJob = jobData;
-    setGetJobs(jobData)
-    // console.log(updatedJob)
+  //Event Handle 
+  const categoryHandle = (e) => {
+    const query = e.target.value;
+    setCat(query)
+  }
 
-    // Job Search Filter
-    if (jobSearch) {
-      updatedJob = updatedJob.filter(
-        (getJob) => getJob.jobTitle.toLowerCase().search(jobSearch.toLowerCase().trim()) !== -1
-      );
-      // console.log(updatedJob)
+  const jobTypeHandle = (e) => {
+    const query = e.target.value;
+    const check = e.target.checked;
+
+    if (check && !jobType?.includes(query)) {
+      setJobType([...jobType, query]);
+    }
+    else {
+      const filterJobType = jobType?.filter(t => t !== query)
+      setJobType(filterJobType)
+    }
+  }
+
+  const searchHandle = (e) => {
+    const query = e.target.value;
+    if (query) {
+      setSearch(query)
     }
 
-
-    // Location Search Filter
-    if (locationSearch) {
-      updatedJob = updatedJob.filter(
-        (getLocation) => getLocation.location.toLowerCase().search(locationSearch.toLowerCase().trim()) !== -1
-      );
-      // console.log(updatedJob)
+  }
+  const locationHandle = (e) => {
+    const query = e.target.value;
+    if (query) {
+      setLocation(query)
     }
+  }
 
-
-    // Job Type Wise Filter
-    const jobTypeFilter = jobTypeLists
-      .filter((jobType) => jobType.checked)
-      .map((jobType) => jobType.label.toLowerCase());
-
-    if (jobTypeFilter.length && ifCheckJobType) {
-      updatedJob = updatedJob.filter((job) =>
-        jobTypeFilter.includes(job.jobType)
-      );
-    }
-    // console.log(jobTypeFilter)
-
-
-    // Salary Wise Filter
-    const salaryFilter = updatedJob?.filter(salary => {
-      const getPrice = salary?.salary;
-      for (const check of salaryLists) {
-        if (check?.checked) {
-          const { low, high } = check;
-          if (getPrice >= low && getPrice <= high) {
-            return salary
-          }
-        }
-      }
-    })
-    // console.log(salaryFilter)
-    salaryFilter?.length && setGetJobs(salaryFilter);
-    ifCheckSalary && setGetJobs(salaryFilter);
-    setGetJobs(updatedJob);
+  const pageHandle = (page) => {
+    setPage(page)
   }
 
 
-  useEffect(() => {
-    filtering();
-  }, [jobSearch, locationSearch, jobTypeLists, salaryLists, jobData]);
+  const lastPage = Math.ceil(eval(total / show));
 
 
   return (
-    <div className='flex flex-col h-auto md:h-[100vh] bg-[#eeecec] '>
-      <div className="jobs-content flex flex-col overflow-y-auto md:flex-row flex-1 bg-[#f1efef] container mx-auto md:px-8">
-        <div className="sidebar basis-72 m-4 p-4 rounded-lg bg-[#fbf9f9] overflow-y-auto">
-          <Sidebar
-            jobTypeLists={jobTypeLists}
-            checkedJobType={handleCheckedJobType}
-            valueJ={jobSearch}
-            valueL={locationSearch}
-            setJobSearch={(e) => setJobSearch(e.target.value)}
-            setLocationSearch={(e) => setLocationSearch(e.target.value)}
-            salaryLists={salaryLists}
-            handleCheckedSalary={handleCheckedSalary}
+    <div className='flex flex-col h-auto bg-base-300'>
 
+      <div className="container mx-auto py-5 bg-base-300 grid grid-cols-12">
+
+        <div className="sidebar basis-64 m-4 p-4 col-span-12 rounded-lg bg-white overflow-y-auto md:col-start-1 md:col-end-5 lg:col-start-2 lg:col-end-5 md:shadow-md md:sticky md:top-[120px] md:h-[90vh]">
+          <Sidebar
+            jobType={jobType}
+            jobTypeHandle={jobTypeHandle}
+            locationHandle={locationHandle}
+            categoryHandle={categoryHandle}
+            searchHandle={searchHandle}
+            cat={cat}
           />
         </div>
-        <div className="jobs flex-1 p-8 overflow-y-auto">
-          <Jobs getJobs={getJobs} />
+
+        <div className="jobs flex-1 p-8 col-span-12 overflow-y-auto jobsSidBarHidden md:col-start-6 md:col-end-12 lg:col-start-5 lg:col-end-12 ">
+          <Jobs getJobs={getJobs} lastPage={lastPage} page={page} pageHandle={pageHandle}/>
         </div>
       </div>
     </div>
