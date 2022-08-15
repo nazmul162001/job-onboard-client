@@ -37,7 +37,13 @@ const EmployeeDetails = () => {
         </h2>
       </div>
 
-      <div className="employeeAllDetails mt-10">
+      {/* .employeeAllDetails {
+  display: grid;
+  grid-template-columns: 30% 60%;
+  gap: 1rem;
+} */}
+
+      <div className="employeeAllDetails my-10 ">
         <div className="text-center">
           <div class="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 ">
             <div class=" w-60 rounded-xl">
@@ -64,7 +70,7 @@ const EmployeeDetails = () => {
           <hr />
 
           <div className="flex justify-between items-center px-4 mb-4">
-            <span>Designation </span>
+            <span>Designation</span>
 
             <span>{designation}</span>
           </div>
