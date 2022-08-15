@@ -7,6 +7,12 @@ const HrChart = () => {
   const [employeeData, setEmployeeData] = useState([]);
   console.log(employeeData.filtering);
 
+  const others = employeeData.filtering?.others.length
+  const frontEnd = employeeData.filtering?.frontEnd.length
+  const backend = employeeData.filtering?.backend.length
+  const male = employeeData.filtering?.male.length
+  const female = employeeData.filtering?.female.length
+
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
@@ -15,8 +21,8 @@ const HrChart = () => {
 
   // charts 
   const options = {
-    series: [employeeData.filtering?.frontEnd.length, employeeData.filtering?.backend.length, employeeData.filtering?.others.length],
-    labels: ["Others", "Front-End Developer", "Backend-Developer"],
+    series: [others, frontEnd, backend],
+    labels: [`Others-${others}`, `Front-End Developer-${frontEnd}`, `Backend-Developer-${backend}`],
     plotOptions: {
       pie: {
         expandOnClick:false,
@@ -33,12 +39,13 @@ const HrChart = () => {
       }
     }
   }
-  const series = [employeeData.filtering?.frontEnd.length, employeeData.filtering?.backend.length, employeeData.filtering?.others.length];
+  const series = [others, frontEnd, backend];
 
   // Genders HR 
   const gender = {
-    genderSeries: [employeeData.filtering?.female.length, employeeData.filtering?.male.length],
+    genderSeries: [female, male],
     labels: ["Male", "Female"],
+    colors: ["#287872","#849028"],
     plotOptions: {
       pie: {
         expandOnClick:false,
@@ -56,7 +63,7 @@ const HrChart = () => {
     }
   }
   
-  const genderSeries = [employeeData.filtering?.female.length, employeeData.filtering?.male.length];
+  const genderSeries = [female, male];
 
   
   
@@ -80,7 +87,7 @@ const HrChart = () => {
             series={genderSeries}
             type="donut"
             width="100%"
-            height={255}
+            height={250}
           />
         </div>
       </div>
