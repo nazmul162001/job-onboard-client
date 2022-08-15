@@ -2,21 +2,20 @@ import React, { useEffect } from "react";
 import Fade from "react-reveal/Fade";
 import {
   useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import useTitle from "../../../Hooks/useTitle";
 import useTokenForHrManager from "../../../Hooks/useTokenForHrManager";
+import axios from "axios";
+import { BASE_API } from "../../../config";
 
 const SignUpForHrManager = () => {
   useTitle("Sign Up as a HR Manager");
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
@@ -30,7 +29,7 @@ const SignUpForHrManager = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  const [token] = useTokenForHrManager(user || gUser);
+  const [token] = useTokenForHrManager(user);
 
   useEffect(() => {
     if (token) {
@@ -40,36 +39,43 @@ const SignUpForHrManager = () => {
 
   let signInError;
 
-  if (loading || gLoading || updating) {
+  if (loading || updating) {
     return <Loading />;
   }
 
-  if (error || gError || updateError) {
+  if (error || updateError) {
     signInError = (
       <p className="text-red-500">
-        <small>
-          {error?.message || gError?.message || updateError?.message}
-        </small>
+        <small>{error?.message || updateError?.message}</small>
       </p>
     );
   }
 
-  if (user || gUser) {
+  if (user) {
     navigate("/", { replace: true });
   }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
-    await updateProfile({ displayName: data.name });
+    const hrData = {
+      role: "hr",
+      email: data.email,
+      companyName: data.companyName,
+      displayName: data.firstName + " " + data.lastName,
+      number: data.number,
+    };
+    axios.put(`${BASE_API}/login`, hrData);
+    await updateProfile({ displayName: hrData.displayName });
     toast.success(
-      `Welcome ${data.name}! You are now registered as a Hr Manager.`,
+      `Welcome ${hrData.displayName}! You are now registered as a Hr Manager.`,
       {
         position: "top-center",
       }
     );
   };
+
   return (
-    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-9">
+    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-6">
       <div className="hero">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <Fade left distance="30px">
@@ -88,7 +94,7 @@ const SignUpForHrManager = () => {
                 <div className="card w-full max-w-lg lg:bg-base-300 shadow-xl">
                   <div className="card-body w-full">
                     <h2 className="text-center text-xl lg:text-2xl font-bold">
-                      Please Sign Up as a Manager
+                      Please Sign Up as a HR Manager
                     </h2>
                     <p className="text-center font-semibold">
                       Already have an account?{" "}
@@ -96,52 +102,105 @@ const SignUpForHrManager = () => {
                         Login
                       </Link>
                     </p>
-                    <div className="block lg:flex justify-center items-center gap-2 py-2 lg:py-6 mx-auto">
-                      <button
-                        onClick={() => signInWithGoogle()}
-                        className="btn btn-outline border-primary flex items-center content-center rounded hover:btn-primary mb-2 lg:mb-0"
-                      >
-                        <FcGoogle className="text-2xl mr-2"></FcGoogle>Sign Up
-                        with Google
-                      </button>
-                    </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      <div className="form-control w-full max-w-md">
-                        <label className="label">
-                          <span className="label-text">Name</span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Your Name"
-                          className="input input-bordered w-full max-w-md"
-                          {...register("name", {
-                            required: {
-                              value: true,
-                              message: "Name is Required",
-                            },
-                          })}
-                        />
-                        <label className="label">
-                          {errors.name?.type === "required" && (
+                      <div className="flex flex-col md:flex-row items-center gap-3 w-full">
+                        <div className="form-control pt-2 w-full">
+                          <label htmlFor="firstName">First Name</label>
+                          <input
+                            type="text"
+                            placeholder="First Name"
+                            className="input input-bordered w-full"
+                            {...register("firstName", {
+                              required: {
+                                value: true,
+                                message: "First Name is Required",
+                              },
+                            })}
+                          />
+                          <label className="label">
+                            {errors.firstName?.type === "required" && (
+                              <span className="label-text-alt text-red-500">
+                                {errors.firstName.message}
+                              </span>
+                            )}
+                          </label>
+                        </div>
+                        <div className="form-control mb-2 w-full">
+                          <label htmlFor="lastName">Last Name</label>
+                          <input
+                            type="text"
+                            placeholder="Last Name"
+                            className="input input-bordered w-full"
+                            {...register("lastName", {
+                              required: {
+                                value: true,
+                                message: "Last Name is Required",
+                              },
+                            })}
+                          />
+                          {errors.lastName?.type === "required" && (
                             <span className="label-text-alt text-red-500">
-                              {errors.name.message}
+                              {errors.lastName.message}
                             </span>
                           )}
-                        </label>
+                        </div>
                       </div>
-
+                      <div className="flex flex-col md:flex-row items-center gap-3 w-full">
+                        <div className="form-control w-full max-w-md">
+                          <label className="label">
+                            <span className="label-text">Company Name</span>
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Company Name"
+                            className="input input-bordered w-full max-w-md"
+                            {...register("companyName", {
+                              required: {
+                                value: true,
+                                message: "Company Name is Required",
+                              },
+                            })}
+                          />
+                          <label className="label">
+                            {errors.companyName?.type === "required" && (
+                              <span className="label-text-alt text-red-500">
+                                {errors.companyName.message}
+                              </span>
+                            )}
+                          </label>
+                        </div>
+                        <div className="form-control mb-1 w-full">
+                          <label htmlFor="number">Phone Number</label>
+                          <input
+                            type="number"
+                            placeholder="Phone Number"
+                            className="input input-bordered w-full"
+                            {...register("number", {
+                              required: {
+                                value: true,
+                                message: "Phone Number is required",
+                              },
+                            })}
+                          />
+                          {errors.number?.type === "required" && (
+                            <span className="label-text-alt text-red-500">
+                              {errors.number.message}
+                            </span>
+                          )}
+                        </div>
+                      </div>
                       <div className="form-control w-full max-w-md">
                         <label className="label">
-                          <span className="label-text">Email</span>
+                          <span className="label-text">Business Email</span>
                         </label>
                         <input
                           type="email"
-                          placeholder="Your Email"
+                          placeholder="Business Email"
                           className="input input-bordered w-full max-w-md"
                           {...register("email", {
                             required: {
                               value: true,
-                              message: "Email is Required",
+                              message: "Business Email is Required",
                             },
                             pattern: {
                               value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,

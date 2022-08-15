@@ -11,14 +11,12 @@ import Loader from "../../../Components/Loader/Loader";
 import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
-import useUsers from "../../../Hooks/useUsers";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
-  const [users] = useUsers(user);
-  // console.log(users)
+  // console.log(admin, hr)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -46,20 +44,23 @@ const Dashboard = () => {
           >
             <BsGrid className="text-2xl" />
           </label>
-          <span className="font-semibold text-xl hidden md:block">
+          <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
             Welcome back,{" "}
-            <span className="text-primary">
-              {auth?.currentUser?.displayName} (
-              {/* {users?.map((user, index) => <div key={index}>{user.role}</div>)} */}
-              ) 🙂
-            </span>
+            <div className="text-primary flex justify-center items-center">
+              <span className="mr-2">{auth?.currentUser?.displayName}</span>
+              <span className="badge bg-primary border-primary text-white">
+                {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
+              </span>
+            </div>
           </span>
-          <Link
-            to="/"
-            className="text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden"
-          >
-            <img src={logo} alt="" className="w-24" />
-          </Link>
+          {!hr && (
+            <Link
+              to="/"
+              className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
+            >
+              <img src={logo} alt="" className="w-24" />
+            </Link>
+          )}
           <div className="flex justify-center items-center gap-8">
             {!admin && hr && (
               <Link to="/dashboard/job/addNew" className="text-md">
@@ -131,27 +132,24 @@ const Dashboard = () => {
               <img src={logo} alt="" className="w-40" />
             </Link>
           </div>
-          <li className="py-2 mt-4 font-semibold">
-            <NavLink to="/dashboard" className="py-4 lg:text-lg">
+          <li className="py-3 mt-4 font-semibold">
+            <NavLink to="/dashboard" className="py-4 lg:text-lg bg-secondary">
               Dashboard
             </NavLink>
           </li>
           {!admin && hr && (
             <>
-              <li className="py-1 font-semibold">
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/mails" className="py-4 lg:text-lg">
                   Mails
                 </NavLink>
               </li>
-              <li className="py-1 font-semibold">
-                {/* <NavLink to="/dashboard/employers" className="py-4 lg:text-lg">
-                  Employers
-                </NavLink> */}
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/employee" className="py-4 lg:text-lg">
                   Employee
                 </NavLink>
               </li>
-              <li className="py-1 font-semibold">
+              <li className="py-2 font-semibold">
                 <NavLink
                   to="/dashboard/recruitment"
                   className="py-4 lg:text-lg"
@@ -159,9 +157,14 @@ const Dashboard = () => {
                   Recruitment
                 </NavLink>
               </li>
-              <li className="py-1 font-semibold">
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
                   Candidates
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/company" className="py-4 lg:text-lg">
+                  Company Info
                 </NavLink>
               </li>
             </>
@@ -169,9 +172,22 @@ const Dashboard = () => {
 
           {!admin && !hr && (
             <>
-              <li className="py-1 font-semibold">
-                <NavLink to="/dashboard/applied" className="py-4 lg:text-lg">
-                  Applied Jobs
+              <li className="py-2 font-semibold">
+                <NavLink
+                  to="/dashboard/appliedJobs"
+                  className="py-4 lg:text-lg"
+                >
+                  Jobs
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
+                  Candidates
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/messages" className="py-4 lg:text-lg">
+                  Messages
                 </NavLink>
               </li>
             </>
@@ -179,7 +195,7 @@ const Dashboard = () => {
 
           {admin && (
             <>
-              <li className="py-1 font-semibold">
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/allHr" className="py-4 lg:text-lg">
                   Manage All Hr
                 </NavLink>
@@ -187,14 +203,16 @@ const Dashboard = () => {
             </>
           )}
 
-          <li className={"lg:pt-80"}>
-            <button
-              onClick={handleLogOut}
-              className="bg-neutral rounded-lg py-4 lg:text-lg text-white"
-            >
-              <FiLogOut /> Logout
-            </button>
-          </li>
+          <div className="flex justify-center">
+            <li className="py-1 font-semibold bottom-3 absolute">
+              <button
+                onClick={handleLogOut}
+                className="border-2 border-neutral rounded-lg py-3 lg:text-lg px-24 hover:bg-neutral hover:text-white duration-500"
+              >
+                <FiLogOut /> Logout
+              </button>
+            </li>
+          </div>
         </ul>
       </div>
     </div>

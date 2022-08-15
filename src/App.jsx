@@ -27,6 +27,14 @@ import NotFound from "./Shared/NotFound/NotFound";
 import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUpForHrManager";
 import RequireHr from "./Auth/RequireHr/RequireHr";
 import AllJob from "./Pages/Jobs/AllJob/AllJob";
+import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
+import EmployeeDatabase from "./Pages/Features/EmployeeDatabase/EmployeeDatabase";
+import JobPosting from "./Pages/Features/JobPosting/JobPosting";
+import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
+import Blog from "./Pages/Blog/Blog";
+import Contact from "./Pages/ContactUs/Contact";
+import Pricing from "./Pages/Pricing/Pricing";
+import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 
 export const InitializeContext = createContext(null);
 
@@ -53,6 +61,19 @@ function App() {
           <Route path="/job/:jobId" element={<JobDescription />} />
 
           {/* Job Route End  */}
+
+          <Route path="/pricing" element={<Pricing />}></Route>
+          <Route path="/job-posting" element={<JobPosting />}></Route>
+          <Route
+            path="applicant-tracking"
+            element={<ApplicantTracking />}
+          ></Route>
+          <Route
+            path="/employee-database"
+            element={<EmployeeDatabase />}
+          ></Route>
+          <Route path="/blog" element={<Blog />}></Route>
+          <Route path="contact-us" element={<Contact />}></Route>
 
           <Route path="/about" element={<AboutUs />} />
           <Route path="/team" element={<Team />} />
@@ -87,7 +108,7 @@ function App() {
               }
             />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
-            <Route path="recruitment" element={<Recruitment />} />
+            <Route path="appliedJobs" element={<AppliedJobs />} />
             <Route
               path="recruitment"
               element={
@@ -98,6 +119,7 @@ function App() {
             />
             <Route path="candidates" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />
+            <Route path="company" element={<CompanyDetails />} />
             <Route
               path="allHr"
               element={
