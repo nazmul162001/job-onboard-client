@@ -10,11 +10,14 @@ const EmployeesRoot = () => {
   const [allEmployeDetails, setAllEmployeDetails] = useState([]);
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
 
+  
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
       .then((result) => setAllEmployeDetails(result.data));
   }, []);
+
+  console.log(allEmployeDetails)
 
   // const [user] = useAuthState(auth);
   // console.log(user);
@@ -90,7 +93,7 @@ const EmployeesRoot = () => {
         <AddEmployee />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
-        {allEmployeDetails?.map((singleDetails) => (
+        {allEmployeDetails?.getAllEmployeDetails?.map((singleDetails) => (
           <AllEmployees
             key={singleDetails._id}
             singleDetails={singleDetails}
