@@ -164,7 +164,7 @@ const Dashboard = () => {
               </li>
               <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/company" className="py-4 lg:text-lg">
-                  Company
+                  Company Info
                 </NavLink>
               </li>
             </>
