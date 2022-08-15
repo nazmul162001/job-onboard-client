@@ -21,6 +21,8 @@ const EmployeeDetails = () => {
     bloodGroup,
     location,
     phoneNumber,
+    age,
+    gender,
     photoLink,
     additionInfo,
   } = singleDetails;
@@ -77,6 +79,18 @@ const EmployeeDetails = () => {
             <span>Contact Number</span>
 
             <span>{phoneNumber}</span>
+          </div>
+          <hr />
+          <div className="flex justify-between items-center px-4 mb-4">
+            <span>Age</span>
+
+            <span>{age}</span>
+          </div>
+          <hr />
+          <div className="flex justify-between items-center px-4 mb-4">
+            <span>Gender</span>
+
+            <span>{gender}</span>
           </div>
           <hr />
           <div className="flex justify-between items-center px-4 mb-4">

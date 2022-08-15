@@ -154,7 +154,51 @@ const AddEmployee = () => {
                 </div>
               </div>
 
-              {/* social link  */}
+              {/* Gender and Age */}
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
+                <div className="flex flex-col space-y-1 gap-y-1">
+                  <label className="text-lg pl-2">
+                    Gender<span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    {...register("gender", {
+                      required: {
+                        value: true,
+                        message: "Add Gender !",
+                      },
+                    })}
+                  >
+                    <option selected>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                  </select>
+                  <p className="text-[13px] text-red-500 pl-3">
+                    {errors.gender?.message}
+                  </p>
+                </div>
+                <div className="flex flex-col space-y-1 gap-y-1">
+                  <label className="text-lg pl-2">
+                    Age<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="Number"
+                    placeholder="Enter Age"
+                    className="border rounded-lg py-1 text-lg pl-3 "
+                    {...register("age", {
+                      required: {
+                        value: true,
+                        message: "Add Age !",
+                      },
+                    })}
+                  />
+                  <p className="text-[13px] text-red-500 pl-3">
+                    {errors.age?.message}
+                  </p>
+                </div>
+              </div>
+
+              {/* Date of birth */}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="flex flex-col space-y-1 gap-y-1">
@@ -162,7 +206,7 @@ const AddEmployee = () => {
                     Date Of Birth<span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Enter Date Of Birth"
                     className="border rounded-lg py-1 text-lg pl-3 "
                     {...register("dateOfBirth", {
@@ -239,6 +283,7 @@ const AddEmployee = () => {
                   </p>
                 </div>
               </div>
+
               {/* Employees Photos */}
               <div className="flex flex-col space-y-1 gap-y-1">
                 <label className="text-lg pl-2">
