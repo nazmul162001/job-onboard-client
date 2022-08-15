@@ -131,9 +131,7 @@ const AddEmployee = () => {
                   <label className="text-lg pl-2">
                     Designation <span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Phone number"
+                  <select
                     className="border rounded-lg  py-1 text-lg pl-3 "
                     {...register("designation", {
                       required: {
@@ -141,7 +139,15 @@ const AddEmployee = () => {
                         message: "Add Designaton !",
                       },
                     })}
-                  />
+                  >
+                    <option disabled selected>
+                      Front-End Developer
+                    </option>
+                    <option>Backend Developer</option>
+                    <option>Javascript Developer</option>
+                    <option>React Developer</option>
+                  </select>
+
                   <p className="text-[13px] text-red-500 pl-3">
                     {errors.designation?.message}
                   </p>
