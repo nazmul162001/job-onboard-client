@@ -46,8 +46,8 @@ const EmployeesRoot = () => {
   //     }
   //   }, [user, navigate]);
 
-  const deleteEmployeeDetails = (employeId) => {
-    // console.log(employeId);
+  const deleteEmployeeDetails = (id) => {
+    console.log(id, "id Id");
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -57,8 +57,9 @@ const EmployeesRoot = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
-      if (result.isConfirmed) {
-        const url = `${BASE_API}/deleteEmployeDetails/${employeId}`;
+      if (result.isConfirmed && id) {
+        const url = `${BASE_API}/deleteEmployeDetails/${id}`;
+
         fetch(url, {
           method: "DELETE",
           headers: {
@@ -70,7 +71,7 @@ const EmployeesRoot = () => {
             if (data) {
               Swal.fire("Deleted!", "Delete Successfully.", "success");
               const remaining = allEmployeDetails.filter(
-                (data) => data._id !== employeId
+                (data) => data._id !== id
               );
               setAllEmployeDetails(remaining);
             }
@@ -88,7 +89,7 @@ const EmployeesRoot = () => {
         </h2>
         <AddEmployee />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
         {allEmployeDetails.map((singleDetails) => (
           <AllEmployees
             key={singleDetails._id}

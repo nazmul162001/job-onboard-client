@@ -7,7 +7,8 @@
   transition: 0.2s;
 }
 .modalContainer input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   background-color: rgba(248, 243, 243, 0.671);
   outline-style: dotted;
 }
@@ -27,4 +28,11 @@ hr {
   display: grid;
   grid-template-columns: 30% 60%;
   gap: 1rem;
+}
+
+@media screen and (max-width: 992px) {
+  .employeeAllDetails {
+    grid-template-columns: 1fr;
+    column-gap: 3rem;
+  }
 }
