@@ -5,6 +5,13 @@ import Chart from "react-apexcharts";
 
 const HrChart = () => {
   const [employeeData, setEmployeeData] = useState([]);
+  console.log(employeeData.filtering);
+
+  const others = employeeData.filtering?.others.length
+  const frontEnd = employeeData.filtering?.frontEnd.length
+  const backend = employeeData.filtering?.backend.length
+  const male = employeeData.filtering?.male.length
+  const female = employeeData.filtering?.female.length
 
   useEffect(() => {
     axios
@@ -14,13 +21,13 @@ const HrChart = () => {
 
   // charts 
   const options = {
-    series: [4,6],
-    labels: ["Administration", "Human resources"],
+    series: [others, frontEnd, backend],
+    labels: [`Others-${others}`, `Front-End Developer-${frontEnd}`, `Backend-Developer-${backend}`],
     plotOptions: {
       pie: {
         expandOnClick:false,
         donut:{
-          size: "45px",
+          size: "75px",
           labels: {
             show: true,
             total: {
@@ -32,17 +39,18 @@ const HrChart = () => {
       }
     }
   }
-  const series = [4,6];
+  const series = [others, frontEnd, backend];
 
   // Genders HR 
   const gender = {
-    genderSeries: [4,6],
+    genderSeries: [female, male],
     labels: ["Male", "Female"],
+    colors: ["#287872","#849028"],
     plotOptions: {
       pie: {
         expandOnClick:false,
         donut:{
-          size: "45px",
+          size: "75px",
           labels: {
             show: true,
             total: {
@@ -55,13 +63,13 @@ const HrChart = () => {
     }
   }
   
-  const genderSeries = [4,6];
+  const genderSeries = [female, male];
 
   
   
   return (
     <section>
-      <div className="chart mx-3 my-10 grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
+      <div className="chart mx-3 my-10 grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 py-3">
         <div className=" bg-white px-3 rounded">
           <h2 className='text-xl font-medium my-3'>Headcount By Department</h2>
           <Chart 
@@ -79,7 +87,7 @@ const HrChart = () => {
             series={genderSeries}
             type="donut"
             width="100%"
-            height={300}
+            height={250}
           />
         </div>
       </div>
