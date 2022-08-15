@@ -11,6 +11,8 @@ import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import useTitle from "../../../Hooks/useTitle";
 import useTokenForHrManager from "../../../Hooks/useTokenForHrManager";
+import axios from "axios";
+import { BASE_API } from "../../../config";
 
 const SignUpForHrManager = () => {
   useTitle("Sign Up as a HR Manager");
@@ -54,23 +56,24 @@ const SignUpForHrManager = () => {
   }
 
   const onSubmit = async (data) => {
-    await createUserWithEmailAndPassword(
-      data.email,
-      data.password,
-      data.companyName,
-      data.firstName,
-      data.lastName,
-      data.number
-    );
-    await updateProfile({ displayName: data.firstName + " " + data.lastName });
+    await createUserWithEmailAndPassword(data.email, data.password);
+    const hrData = {
+      role: "hr",
+      email: data.email,
+      companyName: data.companyName,
+      displayName: data.firstName + " " + data.lastName,
+      number: data.number,
+    };
+    axios.put(`${BASE_API}/login`, hrData);
+    await updateProfile({ displayName: hrData.displayName });
     toast.success(
-      `Welcome ${data.displayName}! You are now registered as a Hr Manager.`,
+      `Welcome ${hrData.displayName}! You are now registered as a Hr Manager.`,
       {
         position: "top-center",
       }
     );
   };
-  
+
   return (
     <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-6">
       <div className="hero">

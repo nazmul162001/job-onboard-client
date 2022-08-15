@@ -11,7 +11,7 @@ const Candidates = () => {
   useTitle("Candidates");
   const [mail, setMail] = useState(null);
   const { data: getApplicants, isLoading } = useQuery(["getApplicants"], () =>
-    fetch(`${BASE_API}/applicants/count?email=${auth?.currentUser?.email}`, {
+    fetch(`${BASE_API}/applicants/show?email=${auth?.currentUser?.email}`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
