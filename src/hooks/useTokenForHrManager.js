@@ -10,7 +10,6 @@ const useTokenForHrManager = (user) => {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            role: "hr",
             uid: user?.user?.uid,
             email: user?.user?.email,
           }),
