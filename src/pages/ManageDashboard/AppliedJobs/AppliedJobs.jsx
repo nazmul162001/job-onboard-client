@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { BsFolderSymlink, BsLink45Deg } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
-import { FiEdit } from "react-icons/fi";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
@@ -29,11 +28,6 @@ const AppliedJobs = () => {
         <h3 className="text-2xl font-semibold">Manage Applied Jobs</h3>
         <span>You can manage all the jobs which are applied by you</span>
       </div>
-      {appliedJobs?.length > 0 && (
-        <h2 className="text-center text-md md:text-xl font-bold pt-5">
-          Total Applied Jobs ({appliedJobs?.length})
-        </h2>
-      )}
       {appliedJobs?.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 my-8">
           {appliedJobs?.map((job, index) => (
@@ -41,11 +35,6 @@ const AppliedJobs = () => {
               key={index}
               className="shadow-lg hover:shadow-2xl border-t-2 border-primary relative"
             >
-              <label
-                class="btn btn-sm btn-circle absolute right-2 top-2 text-white"
-              >
-                <FiEdit />
-              </label>
               <div className="p-5 space-y-5">
                 <div className="space-y-2">
                   <div className="">

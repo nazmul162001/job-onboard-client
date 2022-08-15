@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
+  // console.log(admin, hr)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -161,6 +162,11 @@ const Dashboard = () => {
                   Candidates
                 </NavLink>
               </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/company" className="py-4 lg:text-lg">
+                  Company
+                </NavLink>
+              </li>
             </>
           )}
 
@@ -171,7 +177,17 @@ const Dashboard = () => {
                   to="/dashboard/appliedJobs"
                   className="py-4 lg:text-lg"
                 >
-                  Applied Jobs
+                  Jobs
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
+                  Candidates
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/messages" className="py-4 lg:text-lg">
+                  Messages
                 </NavLink>
               </li>
             </>

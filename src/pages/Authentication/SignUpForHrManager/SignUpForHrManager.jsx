@@ -54,14 +54,10 @@ const SignUpForHrManager = () => {
   }
 
   const onSubmit = async (data) => {
-    await createUserWithEmailAndPassword(
-      data.email,
-      data.password,
-      data.companyName,
-      data.firstName,
-      data.lastName,
-      data.number
-    );
+    await createUserWithEmailAndPassword(data.email, data.password);
+    const hrData = {
+      ...data,
+    }
     await updateProfile({ displayName: data.firstName + " " + data.lastName });
     toast.success(
       `Welcome ${data.displayName}! You are now registered as a Hr Manager.`,
@@ -69,8 +65,9 @@ const SignUpForHrManager = () => {
         position: "top-center",
       }
     );
+    console.log(hrData);
   };
-  
+
   return (
     <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-6">
       <div className="hero">
