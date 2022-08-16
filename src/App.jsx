@@ -33,7 +33,6 @@ import JobPosting from "./Pages/Features/JobPosting/JobPosting";
 import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
-import Pricing from "./Pages/Pricing/Pricing";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 
 export const InitializeContext = createContext(null);
@@ -62,7 +61,6 @@ function App() {
 
           {/* Job Route End  */}
 
-          <Route path="/pricing" element={<Pricing />}></Route>
           <Route path="/job-posting" element={<JobPosting />}></Route>
           <Route
             path="applicant-tracking"
