@@ -7,6 +7,8 @@ import { contactData } from '../../data';
 
 const Contact = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const [contactInfo, setContactInfo] = useState(contactData)
+  console.log(contactInfo);
 
   const onSubmit = async (data) => {
     console.log(data)
@@ -108,7 +110,23 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
+      <div className='container mx-auto px-5 lg:px-8 py-8'>
+        <h2 className='text-2xl lg:text-4xl font-bold py-8 text-center font-mono'>Office locations</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {
+            contactInfo?.map(contactInfo => {
+              return <div key={contactInfo.id} className=''>
+                <div className="shadow-lg hover:shadow-xl border p-8 space-y-1 rounded-lg">
+                  <h3><span className='text-[18px] font-bold'>Location :</span> {contactInfo.location}</h3>
+                  <h4><span className='text-primary'>Street :</span> {contactInfo.street}</h4>
+                  <p className='font-semibold'>Contact Number : <span className='text-primary'>{contactInfo.contactNum}</span></p>
+                  <p><span className='text-[17px]'>Availability :</span> {contactInfo?.availability}</p>
+                </div>
+              </div>
+            })
+          }
+        </div>
+      </div>
       <Footer />
     </div>
 
