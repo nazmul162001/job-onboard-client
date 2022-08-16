@@ -2,10 +2,11 @@ import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import { useForm } from 'react-hook-form';
 import './Contact.css'
+import { useState } from 'react';
+import { contactData } from '../../data';
 
 const Contact = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
 
   const onSubmit = async (data) => {
     console.log(data)
@@ -17,7 +18,7 @@ const Contact = () => {
       <div className="contact-container">
         <div className="bg-img-overlay pb-12">
           <div className="text-center text-white py-8 space-y-2">
-            <h2 className='text-3xl font-bold font-mono'>Contact Our Team</h2>
+            <h2 className='text-3xl lg:text-4xl font-bold font-mono'>Contact Our Team</h2>
             <h3 className='text-lg'>Have any questions ? We'd love to hear from you .</h3>
           </div>
           <div className="flex flex-col justify-between lg:flex-row container mx-auto px-8 gap-6">
@@ -107,6 +108,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      
       <Footer />
     </div>
 
