@@ -75,13 +75,13 @@ const Navbar = () => {
               </li>
               <li>
                 <NavLink
-                  to="pricing"
+                  to="blog"
                   style={({ isActive }) =>
                     isActive ? activeStyle : undefined
                   }
                   className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
                 >
-                  Pricing
+                  Blog
                 </NavLink>
               </li>
               <li>
@@ -93,17 +93,6 @@ const Navbar = () => {
                     <li> <NavLink to="employee-database" className="">Employee Database</NavLink></li>
                   </ul>
                 </div>
-              </li>
-              <li>
-                <NavLink
-                  to="blog"
-                  style={({ isActive }) =>
-                    isActive ? activeStyle : undefined
-                  }
-                  className="font-semibold hover:text-primary hover:font-bold hover:ease-in-out duration-300"
-                >
-                  Blog
-                </NavLink>
               </li>
               <li>
                 <NavLink
@@ -295,14 +284,14 @@ const Navbar = () => {
                         </li>
                         <li>
                           <NavLink
-                            to="pricing"
+                            to="blog"
                             style={({ isActive }) =>
                               isActive ? activeStyle : undefined
                             }
                             onClick={() => setIsMenuOpen(false)}
                             className="nav-link-mobile"
                           >
-                            Pricing
+                            Blog
                           </NavLink>
                         </li>
                         <li>
@@ -314,18 +303,6 @@ const Navbar = () => {
                               <li> <NavLink to="employee-database" className="">Employee Database</NavLink></li>
                             </ul>
                           </div>
-                        </li>
-                        <li>
-                          <NavLink
-                            to="blog"
-                            style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                            }
-                            onClick={() => setIsMenuOpen(false)}
-                            className="nav-link-mobile"
-                          >
-                            Blog
-                          </NavLink>
                         </li>
                         <li>
                           <NavLink
