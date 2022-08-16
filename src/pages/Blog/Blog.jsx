@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { BiRightArrowCircle } from "react-icons/bi";
+import { RiArrowRightSLine } from "react-icons/ri";
 import blogOne from "../Assets/images/Blogs/blogTwo.png";
+import blogTow from "../Assets/images/Blogs//blogThree.png";
 import "./BlogCss/Blog.css";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -24,18 +27,20 @@ const Blog = () => {
       <div className="blogContainer">
         <div className="firstBlog">
           {blogs.slice(0, 1).map((blog) => (
-            <div class="card  bg-base-100 shadow-xl">
+            <div class="card card-compact bg-base-100 shadow-xl">
               <figure>
                 <img src={blogOne} alt="Shoes" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">{blog.title}</h2>
                 <p>{blog.about}</p>
+                <button className="go-btn flex justify-end text-xl text-blue-700">
+                  <BiRightArrowCircle />
+                </button>
               </div>
             </div>
           ))}
         </div>
-        <hr />
         {/* Second Blog Title and about */}
         <div className="secondBlog">
           {blogs.slice(0, 5).map((blog) => (
@@ -43,16 +48,31 @@ const Blog = () => {
               <h2 className="uppercase font-bold mb-1 text-cyan-600">
                 {blog.title}
               </h2>
-              <p>{blog.about.slice(0, 50) + "...."}</p>
+              <p className="flex">
+                {blog.about.slice(0, 50) + "...."}{" "}
+                <button className="go-btn flex justify-end text-xl text-indigo-800">
+                  <RiArrowRightSLine />
+                </button>
+              </p>
             </div>
           ))}
         </div>
         <div className="thirdBlog">
           {blogs.map((blog) => (
-            <>
-              <h2>title:{blog.title}</h2>
-              <p>about:{blog.about}</p>
-            </>
+            <div className="thirdInfo">
+              <div class="card card-compact bg-base-100 shadow-xl">
+                <figure>
+                  <img src={blogTow} alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                  <h2 class="card-title">{blog.title}</h2>
+                  <p>{blog.about.slice(0, 150)}</p>
+                  <button className="go-btn flex justify-end text-xl text-indigo-800">
+                    <BiRightArrowCircle />
+                  </button>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
