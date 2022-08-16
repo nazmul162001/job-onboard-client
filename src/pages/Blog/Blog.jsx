@@ -28,6 +28,7 @@ const Blog = () => {
         <div className="firstBlog">
           {blogs.slice(0, 1).map((blog) => (
             <div class="card card-compact bg-base-100 shadow-xl">
+              <span className="new absolute right-0 bg-indigo-900 px-4 py-1 text-white font-bold -top-1">new</span>
               <figure>
                 <img src={blogOne} alt="Shoes" />
               </figure>
@@ -76,6 +77,7 @@ const Blog = () => {
           ))}
         </div>
       </div>
+      
     </section>
   );
 };

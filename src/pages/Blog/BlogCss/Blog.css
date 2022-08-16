@@ -8,7 +8,7 @@
   grid-column: 1/-1;
   display: grid;
   row-gap: 2em;
-  column-gap: 1em;
+  column-gap: 2em;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -22,4 +22,7 @@
 .secondBlog {
   grid-column: 10/13;
   grid-row: 1/2;
+}
+.new {
+  border-radius: 10% 35%;
 }
