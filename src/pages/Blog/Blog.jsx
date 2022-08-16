@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
-import blogOne from "../Assets/images/Blogs/blogTwo.png";
-import blogTow from "../Assets/images/Blogs//blogThree.png";
 import "./BlogCss/Blog.css";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -28,13 +26,17 @@ const Blog = () => {
         <div className="firstBlog">
           {blogs.slice(0, 1).map((blog) => (
             <div class="card card-compact bg-base-100 shadow-xl">
-              <span className="new absolute right-0 bg-indigo-900 px-4 py-1 text-white font-bold -top-1">new</span>
+              <span className="new absolute right-0 bg-indigo-900 px-4 py-1 text-white font-bold -top-1">
+                new
+              </span>
               <figure>
-                <img src={blogOne} alt="Shoes" />
+                <img src={blog.image} alt="Shoes" />
               </figure>
               <div class="card-body">
                 <h2 class="card-title">{blog.title}</h2>
-                <p>{blog.about}</p>
+                <p className="text-[17px]">
+                  {blog.about.slice(0, 150) + " ...."}
+                </p>
                 <button className="go-btn flex justify-end text-xl text-blue-700">
                   <BiRightArrowCircle />
                 </button>
@@ -47,7 +49,7 @@ const Blog = () => {
           {blogs.slice(0, 5).map((blog) => (
             <div className="secondInfo py-2">
               <h2 className="uppercase font-bold mb-1 text-cyan-600">
-                {blog.title}
+                {blog.title.slice(0, 30)}
               </h2>
               <p className="flex">
                 {blog.about.slice(0, 50) + "...."}{" "}
@@ -58,17 +60,21 @@ const Blog = () => {
             </div>
           ))}
         </div>
-        <div className="thirdBlog">
-          {blogs.map((blog) => (
-            <div className="thirdInfo">
-              <div class="card card-compact bg-base-100 shadow-xl">
+        <div className="thirdBlog  px-10 my-10">
+          {blogs.slice(1, 20000).map((blog) => (
+            <div className="thirdInfo relative ">
+              <div class="shadow-xl rounded-md overflow-hidden h-full">
                 <figure>
-                  <img src={blogTow} alt="Shoes" />
+                  <img src={blog.image} alt="Shoes" />
                 </figure>
-                <div class="card-body">
-                  <h2 class="card-title">{blog.title}</h2>
-                  <p>{blog.about.slice(0, 150)}</p>
-                  <button className="go-btn flex justify-end text-xl text-indigo-800">
+                <div class="p-3">
+                  <h2 class="card-title text-sky-700">
+                    {blog.title.slice(0, 50)}
+                  </h2>
+                  <p className="text-[17px]">
+                    {blog.about.slice(0, 150) + "..."}
+                  </p>
+                  <button className="go-btn absolute bottom-2  right-3 text-xl text-indigo-800">
                     <BiRightArrowCircle />
                   </button>
                 </div>
@@ -77,7 +83,6 @@ const Blog = () => {
           ))}
         </div>
       </div>
-      
     </section>
   );
 };

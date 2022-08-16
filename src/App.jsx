@@ -35,6 +35,7 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
 import Pricing from "./Pages/Pricing/Pricing";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
+import BlogsDetail from "./Pages/Blog/BlogsDetail";
 
 export const InitializeContext = createContext(null);
 
@@ -73,6 +74,7 @@ function App() {
             element={<EmployeeDatabase />}
           ></Route>
           <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>
           <Route path="contact-us" element={<Contact />}></Route>
 
           <Route path="/about" element={<AboutUs />} />
