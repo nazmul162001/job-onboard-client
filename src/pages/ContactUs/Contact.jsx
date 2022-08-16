@@ -2,17 +2,41 @@ import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import { useForm } from 'react-hook-form';
 import './Contact.css'
-import { useState } from 'react';
 import { contactData } from '../../data';
+import { BASE_API } from '../../config';
+import Swal from 'sweetalert2';
 
 const Contact = () => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
-  const [contactInfo, setContactInfo] = useState(contactData)
-  console.log(contactInfo);
 
   const onSubmit = async (data) => {
-    console.log(data)
-  };
+    const guestData = {...data }
+    // console.log(guestData);
+    await fetch(`${BASE_API}/guestEmail`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(guestData),
+    }).then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          Swal.fire({
+            text:`Thank you. We will contact you very soon `,
+            icon: 'success',
+            confirmButtonText: 'Okay'
+          })
+          reset()
+        }
+        else {
+          Swal.fire({
+            text: `Something is wrong`,
+            icon: 'error',
+            confirmButtonText: 'Try Again'
+          })
+        }
+      })
+  }
 
 
   return (
@@ -114,7 +138,7 @@ const Contact = () => {
         <h2 className='text-2xl lg:text-4xl font-bold py-8 text-center font-mono'>Office locations</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {
-            contactInfo?.map(contactInfo => {
+            contactData?.map(contactInfo => {
               return <div key={contactInfo.id} className=''>
                 <div className="shadow-lg hover:shadow-xl border p-8 space-y-1 rounded-lg">
                   <h3><span className='text-[18px] font-bold'>Location :</span> {contactInfo.location}</h3>
