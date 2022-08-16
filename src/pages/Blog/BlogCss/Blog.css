@@ -1,0 +1,21 @@
+.blogContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5em;
+}
+
+.thirdBlog {
+  grid-column: 1/-1;
+}
+
+.firstBlog {
+  grid-column: 2/10;
+}
+.firstBlog img {
+  width: 100%;
+}
+
+.secondBlog {
+  grid-column: 10/13;
+  grid-row: 1/2;
+}
