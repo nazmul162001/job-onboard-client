@@ -32,3 +32,6 @@
   width: 100%;
   object-fit: cover;
 }
+.titleAndImg {
+  grid-template-columns: 55% 40%;
+}

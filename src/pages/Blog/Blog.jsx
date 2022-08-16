@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import { BASE_API } from "../../config";
 import "./BlogCss/Blog.css";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
-    const url = "blog.json";
+    const url = `${BASE_API}/allBlogs`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
 
+  const blogsDetails = (bdId) => {
+    navigate(`${bdId}`);
+  };
   return (
     <section className="container mx-auto">
       <div className="titleContainer flex flex-col text-center my-4">
@@ -37,7 +42,10 @@ const Blog = () => {
                 <p className="text-[17px]">
                   {blog.about.slice(0, 150) + " ...."}
                 </p>
-                <button className="go-btn flex justify-end text-xl text-blue-700">
+                <button
+                  onClick={() => blogsDetails(blog._id)}
+                  className="go-btn flex justify-end text-xl text-blue-700"
+                >
                   <BiRightArrowCircle />
                 </button>
               </div>
@@ -53,7 +61,10 @@ const Blog = () => {
               </h2>
               <p className="flex">
                 {blog.about.slice(0, 50) + "...."}{" "}
-                <button className="go-btn flex justify-end text-xl text-indigo-800">
+                <button
+                  onClick={() => blogsDetails(blog._id)}
+                  className="go-btn flex justify-end text-xl text-indigo-800"
+                >
                   <RiArrowRightSLine />
                 </button>
               </p>
@@ -74,7 +85,10 @@ const Blog = () => {
                   <p className="text-[17px]">
                     {blog.about.slice(0, 150) + "..."}
                   </p>
-                  <button className="go-btn absolute bottom-2  right-3 text-xl text-indigo-800">
+                  <button
+                    onClick={() => blogsDetails(blog._id)}
+                    className="go-btn absolute bottom-2  right-3 text-xl text-indigo-800"
+                  >
                     <BiRightArrowCircle />
                   </button>
                 </div>
