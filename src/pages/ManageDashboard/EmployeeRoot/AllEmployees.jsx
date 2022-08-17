@@ -13,7 +13,6 @@ const AllEmployees = ({
 }) => {
   const { _id, fullName, email, photoLink, location, designation } =
     singleDetails;
-  console.log(_id, "mongoDb Id");
   const navigate = useNavigate();
   const showRployeeDetail = (pId) => {
     navigate(`${pId}`);
