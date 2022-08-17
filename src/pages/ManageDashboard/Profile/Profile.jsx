@@ -38,7 +38,8 @@ const Profile = () => {
       gender: data?.gender,
       dateOfBirth: data?.dateOfBirth,
       bloodGroup: data?.bloodGroup,
-      createdAt: new Date().toDateString(),
+      createdAt:
+        new Date().toDateString() + " " + new Date().toLocaleTimeString(),
     };
     await fetch(`${BASE_API}/users/all?uid=${auth?.currentUser?.uid}`, {
       method: "PATCH",
