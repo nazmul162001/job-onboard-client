@@ -108,7 +108,7 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                to="/contact"
+                to="/contact-us"
                 className="link link-hover hover:text-primary text-lg"
               >
                 Contact Us
