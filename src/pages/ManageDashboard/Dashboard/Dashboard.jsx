@@ -46,7 +46,7 @@ const Dashboard = () => {
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
             Welcome back,{" "}
             <div className="text-primary flex justify-center items-center">
-              <span className="mr-2">{auth?.currentUser?.displayName}</span>
+              <span className="mr-2">{auth?.currentUser?.email}</span>
               <span className="badge bg-primary border-primary text-white">
                 {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
               </span>
