@@ -23,7 +23,7 @@ const CompanyDetails = () => {
   const { companyName, displayName, email, number, role } = result?.result;
 
   return (
-    <div className="py-6 w-96">
+    <div className="py-6 w-100">
       <div className="shadow-lg hover:shadow-2xl border-l-2 border-primary relative">
         <div className="p-5 space-y-5">
           <label
