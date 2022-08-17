@@ -23,6 +23,7 @@ module.exports = {
           "base-100": "#ffffff",
           "base-200": "#FFF0F5",
           "base-300": "#f5f6fa",
+          "base-400":"#fff8f89e"
         },
       },
       "night",

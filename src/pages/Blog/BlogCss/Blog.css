@@ -1,0 +1,42 @@
+.firstAndSecondContainer {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 7em;
+}
+
+.firstBlog img {
+  width: 100%;
+}
+
+.new {
+  border-radius: 10% 35%;
+}
+.thirdInfo img {
+  height: 12em;
+  width: 100%;
+  object-fit: cover;
+}
+.titleAndImg {
+  grid-template-columns: 55% 40%;
+}
+
+.firstBlog {
+  margin-left: 5em;
+}
+
+@media screen and (max-width: 668px) {
+  .firstAndSecondContainer {
+    grid-template-columns: 1fr;
+    gap: 4em;
+  }
+  .firstBlog {
+    margin-left: 0em;
+    padding: 0px 10px;
+  }
+  .titleAndImg {
+    grid-template-columns: 1fr;
+  }
+  .titleAndImg h2 {
+    order: 1;
+  }
+}
