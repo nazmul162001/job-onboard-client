@@ -268,7 +268,12 @@ const Navbar = () => {
                     tabIndex="0"
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li className="py-1">
+                    <li className="py-2 block lg:hidden">
+                      <Link to='/dashboard'>
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li className="pb-2">
                       <button onClick={handleLogOut}>
                         <FiLogOut />
                         Logout
