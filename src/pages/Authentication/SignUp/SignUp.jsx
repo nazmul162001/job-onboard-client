@@ -56,6 +56,12 @@ const SignUp = () => {
 
   if (user || gUser) {
     navigate("/", { replace: true });
+    toast.success(
+      `Welcome ${auth?.currentUser?.displayName}! You are now registered as a Candidate.`,
+      {
+        position: "top-center",
+      }
+    );
   }
 
   const onSubmit = async (data) => {
