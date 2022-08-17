@@ -35,6 +35,8 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
+import SupportAdmin from './Shared/Support/SupportAdmin';
+
 
 export const InitializeContext = createContext(null);
 
@@ -81,6 +83,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/support" element={<SupportAdmin />} />
           <Route
             path="/dashboard"
             element={
