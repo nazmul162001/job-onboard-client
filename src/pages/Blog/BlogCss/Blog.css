@@ -1,29 +1,13 @@
-.blogContainer {
+.firstAndSecondContainer {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  row-gap: 2em;
-  column-gap: 5em;
+  grid-template-columns: 4fr 1fr;
+  gap: 7em;
 }
 
-.thirdBlog {
-  grid-column: 1/-1;
-  display: grid;
-  row-gap: 2em;
-  column-gap: 2em;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.firstBlog {
-  grid-column: 2/10;
-}
 .firstBlog img {
   width: 100%;
 }
 
-.secondBlog {
-  grid-column: 10/13;
-  grid-row: 1/2;
-}
 .new {
   border-radius: 10% 35%;
 }
@@ -34,4 +18,25 @@
 }
 .titleAndImg {
   grid-template-columns: 55% 40%;
+}
+
+.firstBlog {
+  margin-left: 5em;
+}
+
+@media screen and (max-width: 668px) {
+  .firstAndSecondContainer {
+    grid-template-columns: 1fr;
+    gap: 4em;
+  }
+  .firstBlog {
+    margin-left: 0em;
+    padding: 0px 10px;
+  }
+  .titleAndImg {
+    grid-template-columns: 1fr;
+  }
+  .titleAndImg h2 {
+    order: 1;
+  }
 }
