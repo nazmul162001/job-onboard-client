@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
@@ -10,6 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
 import { FiEdit } from "react-icons/fi";
+import { BsFolderSymlink } from "react-icons/bs";
 
 const Profile = () => {
   useTitle("Profile");
@@ -19,7 +21,7 @@ const Profile = () => {
   const [editProfile, setEditProfile] = useState(null);
   const {
     register,
-    // formState: { errors },
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
@@ -34,8 +36,12 @@ const Profile = () => {
   const saveProfileDataOnMongodb = async (data) => {
     const profileData = {
       address: data?.address,
+      resume: data?.resume,
       number: data?.number,
       gender: data?.gender,
+      linkedinUrl: data?.linkedinUrl,
+      facebookUrl: data?.facebookUrl,
+      githubUrl: data?.githubUrl,
       dateOfBirth: data?.dateOfBirth,
       bloodGroup: data?.bloodGroup,
       createdAt:
@@ -78,7 +84,17 @@ const Profile = () => {
       </div>
     );
 
-  const { address, gender, number, dateOfBirth, bloodGroup } = result?.result;
+  const {
+    address,
+    resume,
+    gender,
+    facebookUrl,
+    linkedinUrl,
+    githubUrl,
+    number,
+    dateOfBirth,
+    bloodGroup,
+  } = result?.result;
 
   return (
     <div>
@@ -99,6 +115,10 @@ const Profile = () => {
                 dateOfBirth,
                 bloodGroup,
                 address,
+                resume,
+                githubUrl,
+                facebookUrl,
+                linkedinUrl,
               })
             }
           >
@@ -154,7 +174,40 @@ const Profile = () => {
 
             <span>{bloodGroup ? bloodGroup : "Not Available"}</span>
           </div>
+          <div className="flex justify-between items-center px-4 mb-4">
+            <span>Resume/CV</span>
+
+            <span>
+              {resume ? (
+                <a target="_blank" href={resume} rel="noreferrer">
+                  <BsFolderSymlink className="text-lg" />
+                </a>
+              ) : (
+                "Not Available"
+              )}
+            </span>
+          </div>
           <hr className="border-dashed" />
+          <div className="flex justify-center items-center py-4">
+            <span>Social Links</span>
+          </div>
+          <div className="flex justify-center items-center px-4">
+            {facebookUrl || linkedinUrl ? (
+              <div className="flex items-center gap-2">
+                <a target="_blank" href={linkedinUrl} rel="noreferrer">
+                  <FaLinkedin className="text-xl" />
+                </a>
+                <a target="_blank" href={facebookUrl} rel="noreferrer">
+                  <FaFacebook className="text-xl" />
+                </a>
+                <a target="_blank" href={githubUrl} rel="noreferrer">
+                  <FaGithub className="text-xl" />
+                </a>
+              </div>
+            ) : (
+              <span className="label-text-alt">Not available</span>
+            )}
+          </div>
         </div>
         <div className="text-center md:order-1">
           <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 shadow-xl">
@@ -201,6 +254,19 @@ const Profile = () => {
                     {...register("address", { required: true })}
                   />
                 </div>
+                <div className="w-full">
+                  <label className="label">
+                    <span className="label-text-alt">Resume/CV</span>
+                  </label>
+                  <input
+                    type="link"
+                    placeholder="Resume/CV"
+                    className="input input-bordered w-full"
+                    required
+                    defaultValue={resume}
+                    {...register("resume", { required: true })}
+                  />
+                </div>
 
                 <div className="flex flex-col md:flex-row items-center gap-3 w-full">
                   <div className="my-2 w-full">
@@ -221,7 +287,7 @@ const Profile = () => {
                       <span className="label-text-alt">Gender</span>
                     </label>
                     <select
-                      className="select select-bordered w-full max-w-xs"
+                      className="select select-bordered w-full"
                       required
                       defaultValue={gender}
                       {...register("gender", { required: true })}
@@ -232,6 +298,59 @@ const Profile = () => {
                       <option>Male</option>
                       <option>Female</option>
                     </select>
+                  </div>
+                </div>
+
+                <p className="mt-2 text-center">Social Media Links</p>
+                <div className="flex flex-col md:flex-row items-center gap-3 w-full">
+                  <div className="w-full">
+                    <label htmlFor="linkedin" className="my-2">
+                      <span className="label-text-alt">LinkedIn</span>
+                    </label>
+                    <input
+                      type="link"
+                      placeholder="LinkedIn Link"
+                      defaultValue={linkedinUrl}
+                      className="input input-bordered w-full"
+                      {...register("linkedinUrl", { required: true })}
+                    />
+                    {errors.linkedinUrl?.type === "required" && (
+                      <span className="text-error">
+                        LinkedIn URL is required
+                      </span>
+                    )}
+                  </div>
+                  <div className="my-2 w-full">
+                    <label htmlFor="facebook" className="my-2">
+                      <span className="label-text-alt">Facebook</span>
+                    </label>
+                    <input
+                      type="link"
+                      placeholder="Facebook Link"
+                      defaultValue={facebookUrl}
+                      className="input input-bordered w-full"
+                      {...register("facebookUrl", { required: true })}
+                    />
+                    {errors.facebookUrl?.type === "required" && (
+                      <span className="text-error">
+                        Facebook URL is required
+                      </span>
+                    )}
+                  </div>
+                  <div className="my-2 w-full">
+                    <label htmlFor="github" className="my-2">
+                      <span className="label-text-alt">GitHub</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Github Link"
+                      defaultValue={githubUrl}
+                      className="input input-bordered w-full"
+                      {...register("githubUrl", { required: true })}
+                    />
+                    {errors.githubUrl?.type === "required" && (
+                      <span className="text-error">Github URL is required</span>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center gap-3 w-full">
@@ -253,7 +372,7 @@ const Profile = () => {
                       <span className="label-text-alt">Blood Group</span>
                     </label>
                     <select
-                      className="select select-bordered w-full max-w-xs"
+                      className="select select-bordered w-full"
                       required
                       defaultValue={bloodGroup}
                       {...register("bloodGroup", { required: true })}
