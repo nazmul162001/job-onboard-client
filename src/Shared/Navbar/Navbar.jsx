@@ -9,10 +9,14 @@ import logo from "../../Pages/Assets/logo/logo.png";
 import { InitializeContext } from "../../App";
 import { FiChevronDown, FiLogOut } from "react-icons/fi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import useAdmin from "../../Hooks/useAdmin";
+import useHrManager from "../../Hooks/useHrManager";
 
 const Navbar = () => {
   const { handleThemeChange, theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  const [hr] = useHrManager(user);
   const { pathname } = useLocation();
   const [scrollY, setScrollY] = useState();
 
@@ -85,13 +89,13 @@ const Navbar = () => {
       </li>
 
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/about">
+        <NavLink className="uppercase" to="/team">
           Team
         </NavLink>
       </li>
 
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/contact">
+        <NavLink className="uppercase" to="/about">
           About
         </NavLink>
       </li>
@@ -269,11 +273,14 @@ const Navbar = () => {
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
                     <li className="py-2 block lg:hidden">
-                      <Link to='/dashboard'>
-                        Dashboard
-                      </Link>
+                      <Link to="/dashboard">Dashboard</Link>
                     </li>
-                    <li className="pb-2">
+                    {!admin && hr && (
+                      <li className="">
+                        <Link to="/support">Support</Link>
+                      </li>
+                    )}
+                    <li className="py-2">
                       <button onClick={handleLogOut}>
                         <FiLogOut />
                         Logout
