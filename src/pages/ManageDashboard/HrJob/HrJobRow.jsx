@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import { BASE_API } from '../../../config';
+import { Link } from 'react-router-dom';
 
 const HrJobRow = ({ job, index, refetch }) => {
   const { _id } = job
@@ -39,10 +40,6 @@ const HrJobRow = ({ job, index, refetch }) => {
 
   }
 
-  const handleUpdate = () => {
-    console.log('update')
-  }
-
 
   return (
     <tr className='text-center'>
@@ -52,8 +49,10 @@ const HrJobRow = ({ job, index, refetch }) => {
       <td>${job.salary} <small>/m</small></td>
       <td>{job?.location}</td>
       <td className='flex justify-evenly'>
-        <button onClick={handleUpdate} className='text-[22px]'><FiEdit/></button>
-        <button onClick={handleDelete} className='text-[24px] text-red-500'><AiOutlineDelete/></button>
+        <Link to={`/dashboard/hr-jobs/${job?._id}`} >
+          <button className='text-[22px]'><FiEdit /></button>
+        </Link>
+        <button onClick={handleDelete} className='text-[24px] text-red-500'><AiOutlineDelete /></button>
       </td>
     </tr>
   );

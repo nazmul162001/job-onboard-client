@@ -15,7 +15,7 @@ const HrJob = () => {
   }))
 
   const hrJob = data?.data
-  console.log(hrJob);
+  // console.log(hrJob);
 
   if (isLoading ) {
     return <Loading/>
