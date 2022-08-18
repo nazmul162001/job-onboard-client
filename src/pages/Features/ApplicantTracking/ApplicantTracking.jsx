@@ -1,5 +1,6 @@
 import React from 'react';
 import ManageOpeningJobs from './ManageOpeningJobs';
+import ResumeScreening from './ResumeScreening';
 import SmartCandidate from './SmartCandidate';
 
 const ApplicantTracking = () => {
@@ -14,6 +15,7 @@ const ApplicantTracking = () => {
     </section>
     <ManageOpeningJobs />
     <SmartCandidate />
+    <ResumeScreening />
     </>
   );
 };
