@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
@@ -33,17 +33,18 @@ import JobPosting from "./Pages/Features/JobPosting/JobPosting";
 import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
-import Pricing from "./Pages/Pricing/Pricing";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
+import BlogsDetail from "./Pages/Blog/BlogsDetail";
+import SupportAdmin from "./Shared/Support/SupportAdmin";
 
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
 
-  // useEffect(() => {
-  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  // }, []);
+  useEffect(() => {
+    setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);
@@ -62,7 +63,6 @@ function App() {
 
           {/* Job Route End  */}
 
-          <Route path="/pricing" element={<Pricing />}></Route>
           <Route path="/job-posting" element={<JobPosting />}></Route>
           <Route
             path="applicant-tracking"
@@ -73,6 +73,7 @@ function App() {
             element={<EmployeeDatabase />}
           ></Route>
           <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>
           <Route path="contact-us" element={<Contact />}></Route>
 
           <Route path="/about" element={<AboutUs />} />
@@ -81,6 +82,14 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route
+            path="/support"
+            element={
+              <RequireHr>
+                <SupportAdmin />
+              </RequireHr>
+            }
+          />
           <Route
             path="/dashboard"
             element={

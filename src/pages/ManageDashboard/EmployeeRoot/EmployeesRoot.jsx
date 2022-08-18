@@ -9,16 +9,13 @@ import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [allEmployeDetails, setAllEmployeDetails] = useState([]);
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
-
-  
+  const { getAllEmployeDetails } = allEmployeDetails;
   useEffect(() => {
     axios
       .get(`${BASE_API}/getEmployees`)
       .then((result) => setAllEmployeDetails(result.data));
   }, []);
-
-  console.log(allEmployeDetails)
-
+  console.log(allEmployeDetails);
   // const [user] = useAuthState(auth);
   // console.log(user);
   // if (user) {
@@ -50,7 +47,6 @@ const EmployeesRoot = () => {
   //   }, [user, navigate]);
 
   const deleteEmployeeDetails = (id) => {
-    console.log(id, "id Id");
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -73,7 +69,7 @@ const EmployeesRoot = () => {
           .then((data) => {
             if (data) {
               Swal.fire("Deleted!", "Delete Successfully.", "success");
-              const remaining = allEmployeDetails.filter(
+              const remaining = getAllEmployeDetails.filter(
                 (data) => data._id !== id
               );
               setAllEmployeDetails(remaining);
@@ -93,7 +89,7 @@ const EmployeesRoot = () => {
         <AddEmployee />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
-        {allEmployeDetails?.getAllEmployeDetails?.map((singleDetails) => (
+        {getAllEmployeDetails?.map((singleDetails) => (
           <AllEmployees
             key={singleDetails._id}
             singleDetails={singleDetails}

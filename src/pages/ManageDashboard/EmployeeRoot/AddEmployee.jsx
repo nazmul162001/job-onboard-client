@@ -143,7 +143,7 @@ const AddEmployee = () => {
                     <option disabled selected>
                       Front-End Developer
                     </option>
-                    <option>Backend Developer</option>
+                    <option>Back-End Developer</option>
                     <option>Javascript Developer</option>
                     <option>React Developer</option>
                   </select>
