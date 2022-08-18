@@ -42,6 +42,7 @@ const Profile = () => {
       linkedinUrl: data?.linkedinUrl,
       facebookUrl: data?.facebookUrl,
       githubUrl: data?.githubUrl,
+      profileUrl: data?.profileUrl,
       dateOfBirth: data?.dateOfBirth,
       bloodGroup: data?.bloodGroup,
       createdAt:
@@ -91,6 +92,7 @@ const Profile = () => {
     facebookUrl,
     linkedinUrl,
     githubUrl,
+    profileUrl,
     number,
     dateOfBirth,
     bloodGroup,
@@ -119,6 +121,7 @@ const Profile = () => {
                 githubUrl,
                 facebookUrl,
                 linkedinUrl,
+                profileUrl,
               })
             }
           >
@@ -215,7 +218,7 @@ const Profile = () => {
               {auth?.currentUser?.photoURL ? (
                 <img src={auth?.currentUser?.photoURL} alt="avatar" />
               ) : (
-                <img src="https://i.ibb.co/xY0rfV4/avatar.jpg" alt="profile" />
+                <img src={profileUrl} alt="profile" />
               )}
             </div>
           </div>
@@ -241,6 +244,19 @@ const Profile = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="another-info flex items-center justify-center flex-col gap-2 my-3"
               >
+                <div className="w-full">
+                  <label className="label">
+                    <span className="label-text-alt">Profile Image</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Profile Image Link"
+                    className="input input-bordered w-full"
+                    required
+                    defaultValue={profileUrl}
+                    {...register("profileUrl", { required: true })}
+                  />
+                </div>
                 <div className="w-full">
                   <label className="label">
                     <span className="label-text-alt">Address</span>

@@ -186,7 +186,7 @@ const Dashboard = () => {
                   to="/dashboard/appliedJobs"
                   className="py-4 lg:text-lg"
                 >
-                  Jobs
+                  Applied Jobs
                 </NavLink>
               </li>
               <li className="py-2 font-semibold">

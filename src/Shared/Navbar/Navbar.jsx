@@ -89,13 +89,13 @@ const Navbar = () => {
       </li>
 
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/about">
+        <NavLink className="uppercase" to="/team">
           Team
         </NavLink>
       </li>
 
       <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/contact">
+        <NavLink className="uppercase" to="/about">
           About
         </NavLink>
       </li>
