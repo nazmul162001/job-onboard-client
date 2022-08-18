@@ -38,11 +38,15 @@ import BlogsDetail from "./Pages/Blog/BlogsDetail";
 import SupportAdmin from "./Shared/Support/SupportAdmin";
 import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
 import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
+import useImage from "./Hooks/useImage";
 
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
+  const [image, loading] = useImage();
+
+  console.log(image)
 
   useEffect(() => {
     setTheme(JSON.parse(window.localStorage.getItem("theme")));
@@ -87,9 +91,8 @@ function App() {
           <Route
             path="/support"
             element={
-              <RequireHr>
+
                 <SupportAdmin />
-              </RequireHr>
             }
           />
           <Route
@@ -109,8 +112,22 @@ function App() {
                 </RequireHr>
               }
             />
-            <Route path="hr-jobs" element={ <RequireHr> <HrJob /> </RequireHr>}/>
-            <Route path="hr-jobs/:jobId" element={ <RequireHr> <EditJobInfo /> </RequireHr>}/>
+            <Route
+              path="hr-jobs"
+              element={
+                <RequireHr>
+                  <HrJob />
+                </RequireHr>
+              }
+            />
+            <Route
+              path="hr-jobs/:jobId"
+              element={
+                <RequireHr>
+                  <EditJobInfo />
+                </RequireHr>
+              }
+            />
 
             <Route path="profile" element={<Profile />} />
             <Route
