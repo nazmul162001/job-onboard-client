@@ -36,6 +36,8 @@ import Contact from "./Pages/ContactUs/Contact";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
 import SupportAdmin from "./Shared/Support/SupportAdmin";
+import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
+import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
 
 export const InitializeContext = createContext(null);
 
@@ -107,6 +109,9 @@ function App() {
                 </RequireHr>
               }
             />
+            <Route path="hr-jobs" element={ <RequireHr> <HrJob /> </RequireHr>}/>
+            <Route path="hr-jobs/:jobId" element={ <RequireHr> <EditJobInfo /> </RequireHr>}/>
+
             <Route path="profile" element={<Profile />} />
             <Route
               path="employee"
