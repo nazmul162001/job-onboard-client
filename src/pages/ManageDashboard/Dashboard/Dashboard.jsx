@@ -162,6 +162,11 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/hr-jobs" className="py-4 lg:text-lg">
+                  All Job
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/company" className="py-4 lg:text-lg">
                   Company Info
                 </NavLink>
