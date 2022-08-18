@@ -16,7 +16,6 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
-  // console.log(admin, hr)
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -47,7 +46,7 @@ const Dashboard = () => {
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
             Welcome back,{" "}
             <div className="text-primary flex justify-center items-center">
-              <span className="mr-2">{auth?.currentUser?.displayName}</span>
+              <span className="mr-2">{auth?.currentUser?.email}</span>
               <span className="badge bg-primary border-primary text-white">
                 {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
               </span>
@@ -173,16 +172,16 @@ const Dashboard = () => {
           {!admin && !hr && (
             <>
               <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
+                  Profile
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
                 <NavLink
                   to="/dashboard/appliedJobs"
                   className="py-4 lg:text-lg"
                 >
                   Jobs
-                </NavLink>
-              </li>
-              <li className="py-2 font-semibold">
-                <NavLink to="/dashboard/candidates" className="py-4 lg:text-lg">
-                  Candidates
                 </NavLink>
               </li>
               <li className="py-2 font-semibold">

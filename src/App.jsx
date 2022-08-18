@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import "./App.css";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
@@ -35,15 +35,17 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
+import SupportAdmin from './Shared/Support/SupportAdmin';
+
 
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
 
-  // useEffect(() => {
-  //   setTheme(JSON.parse(window.localStorage.getItem("theme")));
-  // }, []);
+  useEffect(() => {
+    setTheme(JSON.parse(window.localStorage.getItem("theme")));
+  }, []);
 
   const handleThemeChange = () => {
     setTheme(!theme);
@@ -81,6 +83,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route path="/support" element={<SupportAdmin />} />
           <Route
             path="/dashboard"
             element={

@@ -4,12 +4,13 @@ import bannerImg from '../../Assets/images/banner-img.png'
 import { Link } from 'react-router-dom';
 import auth from '../../../Auth/Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import SupportEngine from '../../../Shared/Support/SupportEngine'
 
 const Banner = () => {
   const [user] = useAuthState(auth);
   return (
     <section
-    className="container mx-auto bg-base-100 lg:px-10">
+      className="container mx-auto bg-base-100 lg:px-10">
       <div className="hero bg-base-100">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-1/2 rounded ">
@@ -51,6 +52,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
+        <SupportEngine />
       </div>
     </section>
   );
