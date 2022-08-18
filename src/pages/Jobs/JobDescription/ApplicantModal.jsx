@@ -1,17 +1,36 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
+import Loading from '../../../Components/Loading/Loading';
+import { useQuery } from "@tanstack/react-query";
+import axios from 'axios'
 
-const ApplicantModal = ({ job}) => {
+const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+  const { data, isLoading, refetch } = useQuery(['candidateInfo'], () => axios.get(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    }
+  }))
+
+  const userInfo = data?.data?.result
+
+  // console.log(userInfo);
+
+  if(isLoading){
+    return <Loading/>
+  }
+
+
   // console.log(job);
-  const {category,companyName,hrEmail,hrName,jobTitle} = job 
+  const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
 
   const onSubmit = async (data) => {
-    const applicantData = {...data , category ,companyName,hrEmail,hrName,jobTitle, jobPostId}
+    const applicantData = { ...data, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
     // console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
@@ -24,7 +43,7 @@ const ApplicantModal = ({ job}) => {
         // console.log('Success:', data);
         if (data.insertedId) {
           Swal.fire({
-            text:'Your application has been submitted successfully. ',
+            text: 'Your application has been submitted successfully. ',
             icon: 'success',
             confirmButtonText: 'Okay'
           })
@@ -55,6 +74,7 @@ const ApplicantModal = ({ job}) => {
                   <label className='text-lg pl-2'>First name <span className='text-red-500'>*</span></label>
                   <input
                     type="text"
+                    defaultValue={userInfo?.firstName}
                     placeholder='First Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('firstName', {
@@ -71,6 +91,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='Last Name '
+                    defaultValue={userInfo?.lastName}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('lastName', {
                       required: {
@@ -88,16 +109,13 @@ const ApplicantModal = ({ job}) => {
                 <label className='text-lg pl-2'>Your email <span className='text-red-500'>*</span></label>
                 <input
                   type="email"
+                  defaultValue={userInfo?.email}
+                  disabled
                   placeholder='Enter your email'
-                  className='border rounded-lg py-2 text-lg pl-3 hover:border-primary duration-300'
-                  {...register('email', {
-                    required: {
-                      value: true,
-                      message: 'This field is required'
-                    }
-                  })}
+                  className='border rounded-lg py-2 text-lg pl-3 '
+                  {...register('email')}
                 />
-                <p className='text-[13px] text-red-500 pl-3'>{errors.email?.message}</p>
+                {/* <p className='text-[13px] text-red-500 pl-3'>{errors.email?.message}</p> */}
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 '>
@@ -105,6 +123,7 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="number"
                   placeholder='Phone number'
+                  defaultValue={userInfo?.phoneNumber}
                   className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('phoneNumber', {
                     required: {
@@ -121,6 +140,7 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="text"
                   placeholder='Hyperlink'
+                  defaultValue={userInfo?.resume}
                   className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
@@ -140,6 +160,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='Portfolio'
+                    defaultValue={userInfo?.portfolio}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('portfolio', {
                       required: {
@@ -155,6 +176,7 @@ const ApplicantModal = ({ job}) => {
                   <input
                     type="text"
                     placeholder='Linkedin'
+                    defaultValue={userInfo?.linkedin}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('linkedin', {
                       required: {
