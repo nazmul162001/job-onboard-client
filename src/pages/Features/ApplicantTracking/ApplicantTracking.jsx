@@ -1,4 +1,5 @@
 import React from 'react';
+import ManageOpeningJobs from './ManageOpeningJobs';
 
 const ApplicantTracking = () => {
   return (
@@ -10,6 +11,7 @@ const ApplicantTracking = () => {
         <button className='my-4 px-3 py-2 bg-indigo-600 text-white font-bold rounded'>GET YOUR FREE ATS ACCOUNT</button>
       </div>
     </section>
+    <ManageOpeningJobs />
     </>
   );
 };
