@@ -16,7 +16,6 @@ const HrJob = () => {
   );
 
   const hrJob = data?.data;
-  // console.log(hrJob);
 
   if (isLoading) {
     return <Loading />;
@@ -35,7 +34,7 @@ const HrJob = () => {
             <table className="table w-full">
               <thead>
                 <tr className="text-center">
-                  <th>Index</th>
+                  <th>No</th>
                   <th>Title</th>
                   <th>Post Date</th>
                   <th>Salary</th>
@@ -50,6 +49,7 @@ const HrJob = () => {
                     job={job}
                     index={index}
                     refetch={refetch}
+                    isLoading={isLoading}
                   />
                 ))}
               </tbody>
