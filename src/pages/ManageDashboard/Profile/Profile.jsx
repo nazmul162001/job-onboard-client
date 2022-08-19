@@ -106,7 +106,7 @@ const Profile = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-y-12 my-10 px-1 md:px-10">
         <div className="shadow-xl border-l-4 border-primary rounded-lg relative p-4 order-1">
-          <h2 className="text-xl mb-4 font-bold">Your Information</h2>
+          <h2 className="text-xl mb-4 px-4 font-bold">Your Information</h2>
           <label
             for="editProfile"
             className="btn btn-sm btn-circle absolute right-2 top-2"
