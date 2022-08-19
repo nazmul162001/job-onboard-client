@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
+
 const AddNewJob = () => {
   useTitle('Post Job')
   const [user] = useAuthState(auth)
@@ -19,12 +20,12 @@ const AddNewJob = () => {
 
   var time = new Date().getTime(); 
   var date = new Date(time); 
-  var createdDate = date.toString()
+  var createdDate = date
 
   const navigate = useNavigate();
 
   const navigateToJobs = () => {
-    navigate('/jobs')
+    navigate('/dashboard/hr-jobs')
   }
 
   const {data} = useCandidateInfo()
@@ -35,6 +36,14 @@ const AddNewJob = () => {
   // console.log(info);
 
   const onSubmit = async (data) => {
+    console.log(value);
+    if(!value || value.length < 100){
+      return Swal.fire({
+        text: `Minimum 100 Caracter`,
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      })
+    }
     const jobData = { ...data, companyName, value, hrName , hrEmail , createdDate}
     // console.log(jobData);
     await fetch(`${BASE_API}/jobs`, {
@@ -99,7 +108,8 @@ const AddNewJob = () => {
               type="text"
               placeholder='Enter Company Name'
               defaultValue={info?.companyName}
-              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
+              disabled
+              className='border py-1 rounded-lg pl-3 '
             />
             {/* <p className='text-[13px] text-red-500 pl-3'>{errors.companyName?.message}</p> */}
           </div>
