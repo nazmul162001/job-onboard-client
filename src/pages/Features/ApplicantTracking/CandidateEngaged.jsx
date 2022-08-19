@@ -7,8 +7,8 @@ const CandidateEngaged = () => {
     <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black'>
       {/* openings  */}
       <div className="opening_main">
-        <h2 className='my-2 text-4xl font-bold'>Manage all job openings</h2>
-        <p className='my-3'>Create, manage, and publish job postings, from your applicant tracking system software.</p>
+        <h2 className='my-2 text-4xl font-bold'>Candidate engagement software</h2>
+        <p className='my-3'>Build relationships with candidates even as they progress through the hiring pipeline.</p>
         <a className='text-blue-600 flex items-center' href="#_">Read more <span><i class="ri-arrow-right-line ml-2"></i></span> </a>
       </div>
       {/* opening positions  */}
@@ -16,16 +16,16 @@ const CandidateEngaged = () => {
         <div className="img w-12 h-12">
           <img src={openings} alt="/opening positions images" />
         </div>
-          <span className='font-bold text-sm inline-block my-2'>List Open Positions</span>
-          <p className='my-3'>Build job postings that describe careers in your company to prospective applicants in minutes. Use the ATS to Choose where and how you want to publish them.</p>
+          <span className='font-bold text-sm inline-block my-2'>ntegrated Email Conversations</span>
+          <p className='my-3'>Sync your email with Freshteam to correspond with candidates, right from your ATS. You can view all candidate-hiring team correspondence from a candidate's profile.</p>
       </div>
       {/* job descriptions */}
       <div className="opening_positions">
         <div className="img w-12 h-12">
           <img src={openings} alt="/opening positions images" />
         </div>
-          <span className='font-bold text-sm inline-block my-2'>Use In-build Job Description</span>
-          <p className='my-3'>Choose from Job Onboard applicant tracking software's 100+ in-built job description templates or create your own. Either way, you'll be at least 10 times faster!</p>
+          <span className='font-bold text-sm inline-block my-2'>Notify Candidates</span>
+          <p className='my-3'>Keep all the hiring process stakeholders in the loop by automatically sending out notifications as soon as specific events occur.</p>
       </div>
       {/* tracing image */}
       <div className="opening_positions my-5">
@@ -38,16 +38,16 @@ const CandidateEngaged = () => {
         <div className="img w-12 h-12">
           <img src={openings} alt="/opening positions images" />
         </div>
-          <span className='font-bold text-sm inline-block my-2'>Pick Where You Source</span>
-          <p className='my-3'>Externally, on job boards or your career site, internally, from your career portal, or publish jobs privately and keep them visible just to you!</p>
+          <span className='font-bold text-sm inline-block my-2'>Use Canned Response</span>
+          <p className='my-3'>Save frequently used responses as canned responses so you can insert them into emails and spend that time more fruitfully.</p>
       </div>
       {/* tracing image */}
       <div className="opening_positions my-5">
         <div className="img w-12 h-12">
           <img src={openings} alt="/opening positions images" />
         </div>
-          <span className='font-bold text-sm inline-block my-2'>Set Up A Hiring Team</span>
-          <p className='my-3'>Every job posting can be mapped to the hiring team that is working on it. The hiring team is the hiring manager and associated panel members.</p>
+          <span className='font-bold text-sm inline-block my-2'>Decide when Email Got Out</span>
+          <p className='my-3'>Want to send out a particular email but just not right away? Schedule emails to go out, whenever you think it’s most appropriate.</p>
       </div>
       {/* information */}
       <div className="opening_positions my-5">
@@ -58,8 +58,8 @@ const CandidateEngaged = () => {
         <div className="img w-12 h-12">
           <img src={openings} alt="/opening positions images" />
         </div>
-          <span className='font-bold text-sm inline-block my-2'>Gathers Information Thant's Matters</span>
-          <p className='my-3'>Make the screening process easier and more efficient, with a custom application form. This way, it’ll be easier to separate the truly qualified from the aspirational.</p>
+          <span className='font-bold text-sm inline-block my-2'>Performs Action in Bulks</span>
+          <p className='my-3'>Send emails to, add tags for, reject, delete, share for feedback, and archive to the talent pool, multiple candidates with a single click.</p>
       </div>
       {/* information */}
       <div className="opening_positions my-5">

@@ -4,6 +4,7 @@ import JobOnBoardTrial from './JobOnBoardTrial';
 import ManageOpeningJobs from './ManageOpeningJobs';
 import ResumeScreening from './ResumeScreening';
 import SmartCandidate from './SmartCandidate';
+// import MakeOffers from './MakeOffers';
 
 const ApplicantTracking = () => {
   return (
@@ -20,6 +21,7 @@ const ApplicantTracking = () => {
     <ResumeScreening />
     <JobOnBoardTrial />
     <CandidateEngaged />
+    {/* <MakeOffers /> */}
     </>
   );
 };
