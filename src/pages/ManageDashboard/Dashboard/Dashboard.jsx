@@ -268,13 +268,18 @@ const Dashboard = () => {
           {admin && (
             <>
               <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
+                  Profile
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/allHr" className="py-4 lg:text-lg">
                   Manage All Hr
                 </NavLink>
               </li>
               <li className="py-2 font-semibold">
-                <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
-                  Profile
+                <NavLink to="/dashboard/jobs" className="py-4 lg:text-lg">
+                  Manage All Jobs
                 </NavLink>
               </li>
             </>

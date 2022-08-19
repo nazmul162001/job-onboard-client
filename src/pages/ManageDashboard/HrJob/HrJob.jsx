@@ -4,9 +4,11 @@ import React from "react";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
+import useTitle from "../../../Hooks/useTitle";
 import HrJobRow from "./HrJobRow";
 
 const HrJob = () => {
+  useTitle("Posted Job")
   const { data, isLoading, refetch } = useQuery(["AllJob"], () =>
     axios.get(`${BASE_API}/jobs/hrJobs?email=${auth?.currentUser?.email}`, {
       headers: {

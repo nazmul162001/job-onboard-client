@@ -37,8 +37,8 @@ import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetail
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
 import SupportAdmin from "./Shared/Support/SupportAdmin";
 import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
-import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
 import useImage from "./Hooks/useImage";
+import ManageAllJobs from "./Pages/ManageDashboard/ManageAllJobs/ManageAllJobs";
 
 export const InitializeContext = createContext(null);
 
@@ -112,14 +112,6 @@ function App() {
                 </RequireHr>
               }
             />
-            <Route
-              path="hr-jobs/:jobId"
-              element={
-                <RequireHr>
-                  <EditJobInfo />
-                </RequireHr>
-              }
-            />
 
             <Route path="profile" element={<Profile />} />
             <Route
@@ -132,6 +124,7 @@ function App() {
             />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
             <Route path="appliedJobs" element={<AppliedJobs />} />
+            <Route path="jobs" element={<ManageAllJobs />} />
             <Route
               path="recruitment"
               element={
