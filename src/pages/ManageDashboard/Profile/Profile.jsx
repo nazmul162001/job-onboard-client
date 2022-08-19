@@ -12,6 +12,7 @@ import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
 import { FiEdit } from "react-icons/fi";
 import { BsFolderSymlink, BsLink45Deg } from "react-icons/bs";
+import useCandidateInfo from "../../../Hooks/useCandidateInfo";
 
 const Profile = () => {
   useTitle("Profile");
@@ -67,17 +68,8 @@ const Profile = () => {
       });
   };
 
-  const {
-    data: result,
-    isLoading,
-    refetch,
-  } = useQuery(["profileData"], () =>
-    fetch(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
+  const {data,isLoading,refetch} = useCandidateInfo()
+  // console.log(data?.data?.result);
   if (isLoading)
     return (
       <div className="md:p-80">
@@ -96,7 +88,7 @@ const Profile = () => {
     number,
     dateOfBirth,
     bloodGroup,
-  } = result?.result;
+  } = data?.data?.result;
 
   return (
     <div>
@@ -338,7 +330,7 @@ const Profile = () => {
                   </div>
                   <div className="my-2 w-full">
                     <label htmlFor="facebook" className="my-2">
-                      <span className="label-text-alt">Facebook</span>
+                      <span className="label-text-alt">Portfolio</span>
                     </label>
                     <input
                       type="link"
