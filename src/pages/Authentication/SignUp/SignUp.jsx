@@ -15,7 +15,7 @@ import useToken from "../../../Hooks/useToken";
 import useTitle from "../../../Hooks/useTitle";
 
 const SignUp = () => {
-  useTitle("Sign Up");
+  useTitle("Sign Up as a Candidate");
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -41,7 +41,7 @@ const SignUp = () => {
   let signInError;
 
   if (loading || gLoading || updating) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   if (error || gError || updateError) {
@@ -56,17 +56,26 @@ const SignUp = () => {
 
   if (user || gUser) {
     navigate("/", { replace: true });
+    toast.success(
+      `Welcome ${auth?.currentUser?.displayName}! You are now registered as a Candidate.`,
+      {
+        position: "top-center",
+      }
+    );
   }
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    toast.success(`Welcome ${data.name}! You are now registered.`, {
-      position: "top-center",
-    });
+    toast.success(
+      `Welcome ${data.name}! You are now registered as a Candidate.`,
+      {
+        position: "top-center",
+      }
+    );
   };
   return (
-    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-0">
+    <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-9">
       <div className="hero">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <Fade left distance="30px">
@@ -85,7 +94,7 @@ const SignUp = () => {
                 <div className="card w-full max-w-lg lg:bg-base-300 shadow-xl">
                   <div className="card-body w-full">
                     <h2 className="text-center text-xl lg:text-2xl font-bold">
-                      Please Sign Up
+                      Please Sign Up as a Candidate
                     </h2>
                     <p className="text-center font-semibold">
                       Already have an account?{" "}

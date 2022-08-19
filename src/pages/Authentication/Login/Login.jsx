@@ -29,10 +29,16 @@ const Login = () => {
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const [token] = useToken(user || gUser);
+  const search = location.search?.split('=')?.[1]
 
   useEffect(() => {
     if (token) {
-      navigate(from, { replace: true });
+      if(!search){
+        navigate(from, { replace: true });
+      }
+      else{
+        navigate(search)
+      }
       toast.success(
         `Welcome Back, ${auth?.currentUser?.displayName} to Job Onboard!`,
         {
@@ -41,7 +47,7 @@ const Login = () => {
         }
       );
     }
-  }, [navigate, from, token]);
+  }, [navigate, from, token, search]);
 
   if (loading || gLoading) {
     return <Loading></Loading>;
@@ -82,7 +88,10 @@ const Login = () => {
                     <p className="text-center font-semibold">
                       Don't have an account?{" "}
                       <Link className="text-primary" to="/signUp">
-                        Sign Up
+                        Candidate
+                      </Link> or {" "}
+                      <Link className="text-primary" to="/signUp/hr">
+                        HR Manager
                       </Link>
                     </p>
                     <div className="block lg:flex gap-2 py-2 lg:py-6 mx-auto">

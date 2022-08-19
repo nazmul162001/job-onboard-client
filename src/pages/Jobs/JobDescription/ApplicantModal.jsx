@@ -1,18 +1,36 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
+import Loading from '../../../Components/Loading/Loading';
+import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
-const ApplicantModal = ({ job}) => {
+const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+  
+  const {data,isLoading,refetch} = useCandidateInfo()
+
+  const userInfo = data?.data?.result
+
+  // console.log(userInfo);
+
+  if(isLoading){
+    return <Loading/>
+  }
+
+  const displayName = auth?.currentUser?.displayName 
+  // console.log(displayName);
+  const email = auth?.currentUser?.email
+
   // console.log(job);
-  const {category,companyName,hrEmail,hrName,jobTitle} = job 
+  const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
 
   const onSubmit = async (data) => {
-    const applicantData = {...data , category ,companyName,hrEmail,hrName,jobTitle, jobPostId}
-    // console.log(applicantData);
+    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
+    console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
       headers: {
@@ -24,7 +42,7 @@ const ApplicantModal = ({ job}) => {
         // console.log('Success:', data);
         if (data.insertedId) {
           Swal.fire({
-            text:'Your application has been submitted successfully. ',
+            text: 'Your application has been submitted successfully. ',
             icon: 'success',
             confirmButtonText: 'Okay'
           })
@@ -46,40 +64,20 @@ const ApplicantModal = ({ job}) => {
       <div className="modal ">
         <div className="modal-box w-11/12 max-w-5xl">
           <label htmlFor="applicant-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h2 className='text-lg md:text-2xl lg:text-4xl pt-8 pb-12'>Apply For {job?.jobTitle}</h2>
+          <h2 className='text-lg md:text-2xl lg:text-4xl pt-8 pb-12 font-mono'>Apply For {job?.jobTitle}</h2>
           <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
               {/* name filed  */}
-              <div className='grid grid-cols-1 md:grid-cols-2  gap-5'>
+              <div className='grid grid-cols-1 '>
                 <div className='flex flex-col space-y-1 gap-y-1'>
-                  <label className='text-lg pl-2'>First name <span className='text-red-500'>*</span></label>
+                  <label className='text-lg pl-2'>Full Name <span className='text-red-500'>*</span></label>
                   <input
                     type="text"
-                    placeholder='First Name'
-                    className='border rounded-lg py-1 text-lg pl-3 '
-                    {...register('firstName', {
-                      required: {
-                        value: true,
-                        message: 'This field is required'
-                      }
-                    })}
+                    defaultValue={auth?.currentUser?.displayName}
+                    readOnly
+                    placeholder='Full Name'
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.firstName?.message}</p>
-                </div>
-                <div className='flex flex-col space-y-1 gap-y-1'>
-                  <label className='text-lg pl-2'>Last name <span className='text-red-500'>*</span></label>
-                  <input
-                    type="text"
-                    placeholder='Last Name '
-                    className='border rounded-lg py-1 text-lg pl-3 '
-                    {...register('lastName', {
-                      required: {
-                        value: true,
-                        message: 'This field is required'
-                      }
-                    })}
-                  />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.lastName?.message}</p>
                 </div>
               </div>
               {/* name filed end */}
@@ -88,16 +86,11 @@ const ApplicantModal = ({ job}) => {
                 <label className='text-lg pl-2'>Your email <span className='text-red-500'>*</span></label>
                 <input
                   type="email"
-                  placeholder='Enter your email'
+                  defaultValue={auth?.currentUser?.email}
+                  readOnly
+                  disabled
                   className='border rounded-lg py-2 text-lg pl-3 '
-                  {...register('email', {
-                    required: {
-                      value: true,
-                      message: 'This field is required'
-                    }
-                  })}
                 />
-                <p className='text-[13px] text-red-500 pl-3'>{errors.email?.message}</p>
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 '>
@@ -105,15 +98,16 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="number"
                   placeholder='Phone number'
-                  className='border rounded-lg  py-1 text-lg pl-3 '
-                  {...register('phoneNumber', {
+                  defaultValue={userInfo?.number}
+                  className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
+                  {...register('number', {
                     required: {
                       value: true,
                       message: 'This field is required'
                     }
                   })}
                 />
-                <p className='text-[13px] text-red-500 pl-3'>{errors.phoneNumber?.message}</p>
+                <p className='text-[13px] text-red-500 pl-3'>{errors.number?.message}</p>
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 py-2'>
@@ -121,7 +115,8 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="text"
                   placeholder='Hyperlink'
-                  className='border rounded-lg py-1 text-lg pl-3 '
+                  defaultValue={userInfo?.resume}
+                  className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
                       value: true,
@@ -139,31 +134,33 @@ const ApplicantModal = ({ job}) => {
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
-                    placeholder='Portfolio'
-                    className='border rounded-lg py-1 text-lg pl-3 '
-                    {...register('portfolio', {
+                    placeholder='portfolioUrl'
+                    defaultValue={userInfo?.portfolioUrl}
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    {...register('portfolioUrl', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.portfolio?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.portfolioUrl?.message}</p>
                 </div>
 
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
                     placeholder='Linkedin'
-                    className='border rounded-lg py-1 text-lg pl-3 '
-                    {...register('linkedin', {
+                    defaultValue={userInfo?.linkedinUrl}
+                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    {...register('linkedinUrl', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedin?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedinUrl?.message}</p>
                 </div>
               </div>
 
@@ -175,7 +172,7 @@ const ApplicantModal = ({ job}) => {
                   type="text"
                   rows={4}
                   placeholder='Add a cover letter'
-                  className='border rounded-lg py-1 text-xl pl-3 '
+                  className='border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
                   {...register('coverLetter', {
                     required: {
                       value: true,
@@ -187,7 +184,7 @@ const ApplicantModal = ({ job}) => {
               </div>
 
               <div className="pb-5 lg:pb-2 text-center lg:text-start">
-                <button className='px-5 py-3  border bg-primary rounded-lg text-lg  text-white'>
+                <button className='px-5 py-3  border bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-lg  text-white'>
                   Submit Application
                 </button>
               </div>

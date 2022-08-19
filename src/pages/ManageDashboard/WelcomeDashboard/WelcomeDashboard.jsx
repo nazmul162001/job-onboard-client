@@ -2,32 +2,62 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import useTitle from "../../../Hooks/useTitle";
 import auth from "../../../Auth/Firebase/Firebase.init";
-import './WelcomeDashboard.css'
-import DashboardReferrals from "../DashboardReferrals/DashboardReferrals";
-import DashboardCelebration from "../DashboardCelebration/DashboardCelebration";
-import DashboardNewJoinees from "../DashboardNewJoinees/DashboardNewJoinees";
-
+import RecentApplication from "../RecentApplicants/RecentApplicants";
+import RecentJobs from "../RecentJobs/RecentJobs";
+import HrChart from "../HrChart/HrChart";
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
   return (
-    <div className="">
+    <div className="bg-base-300">
       {user && (
         <div className="">
           <section className="h-full main_dashboard static z-10 ">
             {/* main dashboard  */}
-            <div className="content_left">
-            <div className="dashboard_route h-72 bg-white m-5">
-              <h2 className="p-5 text-xl">Interview for me</h2>
+            <div className="">
+            <div className="dashboard_route bg-white grid grid-cols-2 md:grid-cols-4 items-center justify-center gap-3">
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+                <div className="icon p-5">
+                    <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
+                </div>
+                <div className="card_details">
+                  <h2 className="font-bold text-xl">0</h2>
+                  <p className="text-[14px]">Active Candidate</p>
+                </div>
+              </div>
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+                <div className="icon p-5">
+                    <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
+                </div>
+                <div className="card_details">
+                  <h2 className="font-bold text-xl">0</h2>
+                  <p className="text-[14px]">Active Jobs</p>
+                </div>
+              </div>
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+                <div className="icon p-5">
+                    <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
+                </div>
+                <div className="card_details">
+                  <h2 className="font-bold text-xl">0</h2>
+                  <p className="text-[14px]">Draft Jobs</p>
+                </div>
+              </div>
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+                <div className="icon p-5">
+                    <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
+                </div>
+                <div className="card_details">
+                  <h2 className="font-bold text-xl">0</h2>
+                  <p className="text-[14px]">Team Members</p>
+                </div>
+              </div>
             </div>
-              <DashboardReferrals />
-              <DashboardCelebration />
-              <DashboardNewJoinees />
+            {/* welcome dashbord */}
+            <RecentApplication />
+            <RecentJobs />
+            <HrChart />
             </div>
-            {/* aside bar  */}
-            <aside className="bg-white h-full sticky top-0">
-              <h2 className="text-center p-5">My sidebar</h2>
-            </aside>
           </section>
         </div>
       )}

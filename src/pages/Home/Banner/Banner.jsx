@@ -9,7 +9,7 @@ const Banner = () => {
   const [user] = useAuthState(auth);
   return (
     <section
-    className="container mx-auto bg-base-100 lg:px-10">
+      className="container mx-auto bg-base-100 lg:px-10">
       <div className="hero bg-base-100">
         <div className="flex justify-between items-center flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-1/2 rounded ">
@@ -36,7 +36,7 @@ const Banner = () => {
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <Link class="cta" to={user ? "/" : "/signUp"}>
+              <Link class="cta" to={user ? "/" : "/login"}>
                 <span className="get-btn">Get Started</span>
                 <span className="get-btn">
                   <svg width="40px" height="35px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
@@ -51,6 +51,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
