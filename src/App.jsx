@@ -46,7 +46,7 @@ function App() {
   const [theme, setTheme] = useState(false);
   const [image, loading] = useImage();
 
-  console.log(image)
+  // console.log(image)
 
   useEffect(() => {
     setTheme(JSON.parse(window.localStorage.getItem("theme")));

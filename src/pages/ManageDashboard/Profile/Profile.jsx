@@ -11,7 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
 import { FiEdit } from "react-icons/fi";
-import { BsFolderSymlink } from "react-icons/bs";
+import { BsFolderSymlink, BsLink45Deg } from "react-icons/bs";
 
 const Profile = () => {
   useTitle("Profile");
@@ -40,7 +40,7 @@ const Profile = () => {
       number: data?.number,
       gender: data?.gender,
       linkedinUrl: data?.linkedinUrl,
-      facebookUrl: data?.facebookUrl,
+      portfolioUrl: data?.portfolioUrl,
       githubUrl: data?.githubUrl,
       profileUrl: data?.profileUrl,
       dateOfBirth: data?.dateOfBirth,
@@ -89,7 +89,7 @@ const Profile = () => {
     address,
     resume,
     gender,
-    facebookUrl,
+    portfolioUrl,
     linkedinUrl,
     githubUrl,
     profileUrl,
@@ -119,7 +119,7 @@ const Profile = () => {
                 address,
                 resume,
                 githubUrl,
-                facebookUrl,
+                portfolioUrl,
                 linkedinUrl,
                 profileUrl,
               })
@@ -195,13 +195,13 @@ const Profile = () => {
             <span>Social Links</span>
           </div>
           <div className="flex justify-center items-center px-4">
-            {facebookUrl || linkedinUrl ? (
+            {portfolioUrl || linkedinUrl ? (
               <div className="flex items-center gap-2">
                 <a target="_blank" href={linkedinUrl} rel="noreferrer">
                   <FaLinkedin className="text-xl" />
                 </a>
-                <a target="_blank" href={facebookUrl} rel="noreferrer">
-                  <FaFacebook className="text-xl" />
+                <a target="_blank" href={portfolioUrl} rel="noreferrer">
+                  <BsLink45Deg className="text-xl" />
                 </a>
                 <a target="_blank" href={githubUrl} rel="noreferrer">
                   <FaGithub className="text-xl" />
@@ -342,14 +342,14 @@ const Profile = () => {
                     </label>
                     <input
                       type="link"
-                      placeholder="Facebook Link"
-                      defaultValue={facebookUrl}
+                      placeholder="Portfolio Link"
+                      defaultValue={portfolioUrl}
                       className="input input-bordered w-full"
-                      {...register("facebookUrl", { required: true })}
+                      {...register("portfolioUrl", { required: true })}
                     />
-                    {errors.facebookUrl?.type === "required" && (
+                    {errors.portfolioUrl?.type === "required" && (
                       <span className="text-error">
-                        Facebook URL is required
+                        Portfolio URL is required
                       </span>
                     )}
                   </div>

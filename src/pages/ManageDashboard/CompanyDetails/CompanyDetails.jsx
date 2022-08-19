@@ -126,20 +126,6 @@ const CompanyDetails = () => {
           </div>
           <hr className="border-dashed" />
           <div className="flex justify-between items-center px-4 mb-4">
-            <span>Name</span>
-
-            <span>{auth?.currentUser?.displayName}</span>
-          </div>
-          <hr className="border-dashed" />
-
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Designation</span>
-            <span className="badge bg-primary border-primary text-white">
-              {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
-            </span>
-          </div>
-          <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
             <span>Email</span>
 
             <span>{auth?.currentUser?.email}</span>
