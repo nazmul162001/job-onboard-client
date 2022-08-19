@@ -20,7 +20,6 @@ const EmployeesRoot = () => {
     })
       .then((res) => res.json())
       .then((data) => setAllEmployeeDetails(data));
-    console.log(allEmployeDetails);
   });
 
   if (isLoading) {
