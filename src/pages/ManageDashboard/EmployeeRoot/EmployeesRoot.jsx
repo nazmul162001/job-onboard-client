@@ -38,7 +38,6 @@ const EmployeesRoot = () => {
     }).then((result) => {
       if (result.isConfirmed && id) {
         const url = `${BASE_API}/deleteEmployeDetails/${id}`;
-
         fetch(url, {
           method: "DELETE",
           headers: {
