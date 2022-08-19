@@ -54,7 +54,7 @@ const AppliedJobs = () => {
                 </div>
                 <div className=" pt-3 flex justify-between items-center">
                   <span className="border rounded-xl px-4 py-1 bg-base-300">
-                    {job.phoneNumber}
+                    {job.number}
                   </span>
                   <span className="flex gap-1">
                     <a href={job?.resume} target="_blank" rel="noreferrer">

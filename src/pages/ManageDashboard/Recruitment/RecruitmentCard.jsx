@@ -15,7 +15,6 @@ const RecruitmentCard = ({ job, index }) => {
       },
     }))
 
-  console.log(data);
   const countData = data?.data
 
   if (isLoading) {
