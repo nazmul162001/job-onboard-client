@@ -1,26 +1,18 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { BASE_API } from "../config";
 import axios from "axios";
 import auth from "../Auth/Firebase/Firebase.init";
 
 const useJob = () => {
-  const [loading, setLoading] = useState(true);
-  const [image, setImage] = useState([]);
+  const { data: image, isLoading } = useQuery(["imageUrl"], () =>
+    axios.get(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
 
-  useEffect(() => {
-    axios
-      .get(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((res) => {
-        setImage(res.data);
-        setLoading(false);
-      });
-  }, []);
-
-  return [image, loading];
+  return [image?.data?.result?.profileUrl, isLoading];
 };
 
 export default useJob;

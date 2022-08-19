@@ -1,9 +1,14 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { BsPersonPlusFill, BsShieldPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
+import auth from "../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../config";
-const AddEmployee = () => {
+
+const AddEmployee = ({ refetch }) => {
+  const [user] = useAuthState(auth);
+  const hrUserEmail = user?.email;
   const {
     register,
     formState: { errors },
@@ -14,11 +19,13 @@ const AddEmployee = () => {
   const addEmployeDetails = (data) => {
     const employeeDetails = {
       ...data,
+      hrUserEmail
     };
     fetch(`${BASE_API}/addEmployees`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(employeeDetails),
       // const { id, name, location, email } = employe;
@@ -31,6 +38,7 @@ const AddEmployee = () => {
             icon: "success",
             confirmButtonText: "Okay",
           });
+          refetch();
           reset();
         } else {
           Swal.fire({
@@ -115,7 +123,7 @@ const AddEmployee = () => {
                     type="email"
                     placeholder="Enter your email"
                     className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("email", {
+                    {...register("employeEmail", {
                       required: {
                         value: true,
                         message: "Add Email !",
@@ -123,7 +131,7 @@ const AddEmployee = () => {
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.email?.message}
+                    {errors.employeEmail?.message}
                   </p>
                 </div>
 
@@ -144,6 +152,7 @@ const AddEmployee = () => {
                       Front-End Developer
                     </option>
                     <option>Back-End Developer</option>
+                    <option>Full-Stack Developer</option>
                     <option>Javascript Developer</option>
                     <option>React Developer</option>
                   </select>
@@ -225,17 +234,26 @@ const AddEmployee = () => {
                   <label className="text-lg pl-2">
                     Blood Group<span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Enter Blood Group"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                  <select
+                    className="border rounded-lg  py-1 text-lg pl-3 "
                     {...register("bloodGroup", {
                       required: {
                         value: true,
                         message: "Add Blood Group !",
                       },
                     })}
-                  />
+                  >
+                    <option disabled selected>
+                      O+
+                    </option>
+                    <option>O-</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                  </select>
                   <p className="text-[13px] text-red-500 pl-3">
                     {errors.bloodGroup?.message}
                   </p>
