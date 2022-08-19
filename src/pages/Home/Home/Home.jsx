@@ -9,8 +9,7 @@ import JobHunter from "../ForJobHunter/JobHunter";
 import Review from "../Review/Review";
 import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 import WhyJobOnboard from "../WhyJobOnboard/WhyJobOnboard";
-
-
+import SupportEngine from "../../../Shared/Support/SupportEngine";
 
 const Home = () => {
   useTitle('Home')
@@ -25,6 +24,7 @@ const Home = () => {
       <Review />
       <ContactUs />
       <Footer />
+      <SupportEngine />
     </>
   );
 };
