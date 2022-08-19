@@ -12,12 +12,24 @@ import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
 import { InitializeContext } from "../../../App";
+import { BASE_API } from "../../../config";
+import { useQuery } from "@tanstack/react-query";
 
 const Dashboard = () => {
   const { handleThemeChange, theme, image } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
+
+  const { data, isLoading } = useQuery(["companyInfo"], () =>
+    fetch(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
@@ -30,7 +42,7 @@ const Dashboard = () => {
     });
   };
 
-  if (adminLoading || hrLoading) {
+  if (adminLoading || hrLoading || isLoading) {
     return <Loader />;
   }
 
@@ -46,9 +58,20 @@ const Dashboard = () => {
             <BsGrid className="text-2xl" />
           </label>
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
-            Welcome back,{" "}
+            Welcome,{" "}
             <div className="text-primary flex justify-center items-center">
-              <span className="mr-2">{auth?.currentUser?.email}</span>
+              {!admin && hr ? (
+                <span className="mr-2">
+                  {data?.result?.companyName
+                    ? data?.result?.companyName
+                    : "Job Onboard"}{" "}
+                  Talent Center
+                </span>
+              ) : admin && !hr ? (
+                <span className="mr-2">{auth?.currentUser?.displayName}</span>
+              ) : (
+                <span className="mr-2">{auth?.currentUser?.displayName}</span>
+              )}
               <span className="badge bg-primary border-primary text-white">
                 {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
               </span>
@@ -247,6 +270,11 @@ const Dashboard = () => {
               <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/allHr" className="py-4 lg:text-lg">
                   Manage All Hr
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
+                  Profile
                 </NavLink>
               </li>
             </>

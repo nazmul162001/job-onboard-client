@@ -67,7 +67,7 @@ const Profile = () => {
       });
   };
 
-  const {data,isLoading,refetch} = useCandidateInfo()
+  const { data, isLoading, refetch } = useCandidateInfo();
   // console.log(data?.data?.result);
   if (isLoading)
     return (

@@ -24,7 +24,7 @@ const EmployeesRoot = () => {
   // console.log(allEmployeDetails);
 
   useEffect(() => {
-    fetch(`${BASE_API}/hrEmployees?email=${auth?.currentUser?.email}`, {
+    fetch(`${BASE_API}/userEmployees?email=${auth?.currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
