@@ -7,8 +7,8 @@ const MakeOffers = () => {
     <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black'>
     {/* openings  */}
     <div className="opening_main">
-      <h2 className='my-2 text-4xl font-bold'>Candidate engagement software</h2>
-      <p className='my-3'>Build relationships with candidates even as they progress through the hiring pipeline.</p>
+      <h2 className='my-2 text-4xl font-bold'>Access And Make Offer</h2>
+      <p className='my-3'>Schedule interviews, collect feedback from the hiring team, and make offers to promising candidates.</p>
       <a className='text-blue-600 flex items-center' href="#_">Read more <span><i class="ri-arrow-right-line ml-2"></i></span> </a>
     </div>
     {/* opening positions  */}
@@ -16,8 +16,8 @@ const MakeOffers = () => {
       <div className="img w-12 h-12">
         <img src={openings} alt="/opening positions images" />
       </div>
-        <span className='font-bold text-sm inline-block my-2'>ntegrated Email Conversations</span>
-        <p className='my-3'>Sync your email with Freshteam to correspond with candidates, right from your ATS. You can view all candidate-hiring team correspondence from a candidate's profile.</p>
+        <span className='font-bold text-sm inline-block my-2'>Conduct Interviewers</span>
+        <p className='my-3'>Found an interesting application? Schedule an interview with a panel member and notify the candidate, in the same click.</p>
     </div>
     {/* job descriptions */}
     <div className="opening_positions">
@@ -38,16 +38,16 @@ const MakeOffers = () => {
       <div className="img w-12 h-12">
         <img src={openings} alt="/opening positions images" />
       </div>
-        <span className='font-bold text-sm inline-block my-2'>Use Canned Response</span>
-        <p className='my-3'>Save frequently used responses as canned responses so you can insert them into emails and spend that time more fruitfully.</p>
+        <span className='font-bold text-sm inline-block my-2'>Check Availability</span>
+        <p className='my-3'>View interviewer availability while scheduling interviews with Google Calendar and Office 365 Calendar integration and pick a time that works for everyone.</p>
     </div>
     {/* tracing image */}
     <div className="opening_positions my-5">
       <div className="img w-12 h-12">
         <img src={openings} alt="/opening positions images" />
       </div>
-        <span className='font-bold text-sm inline-block my-2'>Decide when Email Got Out</span>
-        <p className='my-3'>Want to send out a particular email but just not right away? Schedule emails to go out, whenever you think it’s most appropriate.</p>
+        <span className='font-bold text-sm inline-block my-2'>Collect Structured Feedback</span>
+        <p className='my-3'>Don’t make decisions based on anyone’s gut feelings; use interview scorecards to rate candidates against established criteria.</p>
     </div>
     {/* information */}
     <div className="opening_positions my-5">
@@ -58,16 +58,16 @@ const MakeOffers = () => {
       <div className="img w-12 h-12">
         <img src={openings} alt="/opening positions images" />
       </div>
-        <span className='font-bold text-sm inline-block my-2'>Performs Action in Bulks</span>
-        <p className='my-3'>Send emails to, add tags for, reject, delete, share for feedback, and archive to the talent pool, multiple candidates with a single click.</p>
+        <span className='font-bold text-sm inline-block my-2'>Make Offers</span>
+        <p className='my-3'>Make and manage offers, from your recruiting software. You can configure offer fields, generate offer letters and even record candidate decisions.</p>
     </div>
     {/* information */}
     <div className="opening_positions my-5">
       <div className="img w-12 h-12">
         <img src={openings} alt="/opening positions images" />
       </div>
-        <span className='font-bold text-sm inline-block my-2'>Configure your hiring process</span>
-        <p className='my-3'>Create custom workflow stages for every job posting in your applicant tracking software and accurately depict how candidates move across stages.</p>
+        <span className='font-bold text-sm inline-block my-2'>Configure Offers Field</span>
+        <p className='my-3'>Choose what kind of offer information you’d like to keep on hand, through custom offer fields.</p>
     </div>
   </section>
   );
