@@ -31,7 +31,7 @@ export const styles = {
     supportWindow: {
         // Position
         position: 'fixed',
-        bottom: '116px',
+        bottom: '190px',
         right: '24px',
         // Size
         width: '420px',

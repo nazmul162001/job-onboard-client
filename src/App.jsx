@@ -35,7 +35,10 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
+
 import SupportAdmin from "./Shared/Support/SupportAdmin";
+import SupportEngine from "./Shared/Support/SupportEngine";
+
 import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
 import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
 import useImage from "./Hooks/useImage";
@@ -92,7 +95,7 @@ function App() {
             path="/support"
             element={
 
-                <SupportAdmin />
+              <SupportAdmin />
             }
           />
           <Route
@@ -162,6 +165,7 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
+        <SupportEngine />
         <ScrollButton />
         <Toaster />
       </InitializeContext.Provider>

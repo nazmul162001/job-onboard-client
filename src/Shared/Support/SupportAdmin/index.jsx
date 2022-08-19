@@ -5,8 +5,8 @@ const SupportAdmin = () => {
     return (
         <ChatEngine
             projectID={process.env.REACT_APP_CE_PROJECT_ID}
-            userName='test 401'
-            userSecret='test401'
+            userName='Code Samurai'
+            userSecret='code123'
             height='calc(100vh - 20px'
         ></ChatEngine>
     );
