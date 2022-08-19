@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import auth from "../../../Auth/Firebase/Firebase.init";
+import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
@@ -10,20 +12,7 @@ const EmployeesRoot = () => {
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
   const [allEmployeDetails, setAllEmployeeDetails] = useState([]);
 
-  // const { data: allEmployeDetails, isLoading } = useQuery(
-  //   ["hrEmployees", auth?.currentUser?.email],
-  //   () => {
-  //     fetch(`${BASE_API}/hrEmployees?email=${auth?.currentUser?.email}`, {
-  //       headers: {
-  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     }).then((res) => res.json());
-  //   }
-  // );
-
-  // console.log(allEmployeDetails);
-
-  useEffect(() => {
+  const { isLoading, refetch } = useQuery(["hrEmployees"], () => {
     fetch(`${BASE_API}/userEmployees?email=${auth?.currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -31,11 +20,12 @@ const EmployeesRoot = () => {
     })
       .then((res) => res.json())
       .then((data) => setAllEmployeeDetails(data));
-  }, []);
+    console.log(allEmployeDetails);
+  });
 
-  // if (isLoading) {
-  //   <Loading />;
-  // }
+  if (isLoading) {
+    <Loading />;
+  }
 
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
@@ -63,7 +53,7 @@ const EmployeesRoot = () => {
               const remaining = allEmployeDetails.filter(
                 (data) => data._id !== id
               );
-
+              refetch();
               allEmployeDetails(remaining);
             }
           });
@@ -78,8 +68,7 @@ const EmployeesRoot = () => {
         <h2 className="text-center text-2xl font-bold ">
           <span className="text-5xl font-serif text-primary">E</span>mployees
         </h2>
-        {/* <AddEmployee refetch={refetch} /> */}
-        <AddEmployee />
+        <AddEmployee refetch={refetch} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
         {allEmployeDetails?.map((singleDetails) => (
@@ -96,7 +85,7 @@ const EmployeesRoot = () => {
         <EditEmployeeModal
           editEmployeDetails={editEmployeDetails}
           setEditEmployeDetails={setEditEmployeDetails}
-          // refetch={refetch}
+          refetch={refetch}
         />
       )}
     </section>
