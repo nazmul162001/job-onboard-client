@@ -26,7 +26,7 @@ const EmailForm = props => {
         axios.put(
             'https://api.chatengine.io/chats/',
             {
-                usernames: ['test 401', email],
+                usernames: ['Code Samurai', email],
                 is_direct_chat: true
 
             },

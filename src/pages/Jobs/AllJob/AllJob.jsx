@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { BASE_API } from '../../../config';
 import useTitle from '../../../Hooks/useTitle';
 import Jobs from '../Jobs';
 import Sidebar from '../Sidebar/Sidebar';
@@ -16,7 +17,7 @@ const AllJob = () => {
   const [search, setSearch] = useState('');
   const [location, setLocation] = useState('');
 
-  const { data } = useQuery(['AllJobs', page, show, cat,  jobType, location, search], () => axios.get(`http://localhost:5000/jobs?search=${search}&page=${page}&show=${show}&location=${location}&cat=${cat}&type=${jobType}`))
+  const { data } = useQuery(['AllJobs', page, show, cat,  jobType, location, search], () => axios.get(`${BASE_API}/jobs?search=${search}&page=${page}&show=${show}&location=${location}&cat=${cat}&type=${jobType}`))
 
   const jobDataArr = data?.data?.jobs
   const total = data?.data?.total;

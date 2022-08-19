@@ -206,7 +206,7 @@ const AddEmployee = () => {
                     Date Of Birth<span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     placeholder="Enter Date Of Birth"
                     className="border rounded-lg py-1 text-lg pl-3 "
                     {...register("dateOfBirth", {

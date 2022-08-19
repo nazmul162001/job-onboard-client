@@ -4,7 +4,6 @@ import bannerImg from '../../Assets/images/banner-img.png'
 import { Link } from 'react-router-dom';
 import auth from '../../../Auth/Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import SupportEngine from '../../../Shared/Support/SupportEngine'
 
 const Banner = () => {
   const [user] = useAuthState(auth);
@@ -52,7 +51,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <SupportEngine />
+
       </div>
     </section>
   );

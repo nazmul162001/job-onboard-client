@@ -1,18 +1,36 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
+import Loading from '../../../Components/Loading/Loading';
+import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
-const ApplicantModal = ({ job}) => {
+const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+  
+  const {data,isLoading,refetch} = useCandidateInfo()
+
+  const userInfo = data?.data?.result
+
+  // console.log(userInfo);
+
+  if(isLoading){
+    return <Loading/>
+  }
+
+  const displayName = auth?.currentUser?.displayName 
+  // console.log(displayName);
+  const email = auth?.currentUser?.email
+
   // console.log(job);
-  const {category,companyName,hrEmail,hrName,jobTitle} = job 
+  const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
 
   const onSubmit = async (data) => {
-    const applicantData = {...data , category ,companyName,hrEmail,hrName,jobTitle, jobPostId}
-    // console.log(applicantData);
+    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
+    console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
       headers: {
@@ -24,7 +42,7 @@ const ApplicantModal = ({ job}) => {
         // console.log('Success:', data);
         if (data.insertedId) {
           Swal.fire({
-            text:'Your application has been submitted successfully. ',
+            text: 'Your application has been submitted successfully. ',
             icon: 'success',
             confirmButtonText: 'Okay'
           })
@@ -50,36 +68,16 @@ const ApplicantModal = ({ job}) => {
           <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
               {/* name filed  */}
-              <div className='grid grid-cols-1 md:grid-cols-2  gap-5'>
+              <div className='grid grid-cols-1 '>
                 <div className='flex flex-col space-y-1 gap-y-1'>
-                  <label className='text-lg pl-2'>First name <span className='text-red-500'>*</span></label>
+                  <label className='text-lg pl-2'>Full Name <span className='text-red-500'>*</span></label>
                   <input
                     type="text"
-                    placeholder='First Name'
+                    defaultValue={auth?.currentUser?.displayName}
+                    readOnly
+                    placeholder='Full Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('firstName', {
-                      required: {
-                        value: true,
-                        message: 'This field is required'
-                      }
-                    })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.firstName?.message}</p>
-                </div>
-                <div className='flex flex-col space-y-1 gap-y-1'>
-                  <label className='text-lg pl-2'>Last name <span className='text-red-500'>*</span></label>
-                  <input
-                    type="text"
-                    placeholder='Last Name '
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('lastName', {
-                      required: {
-                        value: true,
-                        message: 'This field is required'
-                      }
-                    })}
-                  />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.lastName?.message}</p>
                 </div>
               </div>
               {/* name filed end */}
@@ -88,16 +86,11 @@ const ApplicantModal = ({ job}) => {
                 <label className='text-lg pl-2'>Your email <span className='text-red-500'>*</span></label>
                 <input
                   type="email"
-                  placeholder='Enter your email'
-                  className='border rounded-lg py-2 text-lg pl-3 hover:border-primary duration-300'
-                  {...register('email', {
-                    required: {
-                      value: true,
-                      message: 'This field is required'
-                    }
-                  })}
+                  defaultValue={auth?.currentUser?.email}
+                  readOnly
+                  disabled
+                  className='border rounded-lg py-2 text-lg pl-3 '
                 />
-                <p className='text-[13px] text-red-500 pl-3'>{errors.email?.message}</p>
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 '>
@@ -105,15 +98,16 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="number"
                   placeholder='Phone number'
+                  defaultValue={userInfo?.number}
                   className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
-                  {...register('phoneNumber', {
+                  {...register('number', {
                     required: {
                       value: true,
                       message: 'This field is required'
                     }
                   })}
                 />
-                <p className='text-[13px] text-red-500 pl-3'>{errors.phoneNumber?.message}</p>
+                <p className='text-[13px] text-red-500 pl-3'>{errors.number?.message}</p>
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 py-2'>
@@ -121,6 +115,7 @@ const ApplicantModal = ({ job}) => {
                 <input
                   type="text"
                   placeholder='Hyperlink'
+                  defaultValue={userInfo?.resume}
                   className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
@@ -139,31 +134,33 @@ const ApplicantModal = ({ job}) => {
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
-                    placeholder='Portfolio'
+                    placeholder='portfolioUrl'
+                    defaultValue={userInfo?.portfolioUrl}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('portfolio', {
+                    {...register('portfolioUrl', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.portfolio?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.portfolioUrl?.message}</p>
                 </div>
 
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
                     placeholder='Linkedin'
+                    defaultValue={userInfo?.linkedinUrl}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('linkedin', {
+                    {...register('linkedinUrl', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedin?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedinUrl?.message}</p>
                 </div>
               </div>
 

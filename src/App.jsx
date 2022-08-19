@@ -35,12 +35,21 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
+
 import SupportAdmin from "./Shared/Support/SupportAdmin";
+import SupportEngine from "./Shared/Support/SupportEngine";
+
+import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
+import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
+import useImage from "./Hooks/useImage";
 
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
+  const [image, loading] = useImage();
+
+  // console.log(image)
 
   useEffect(() => {
     setTheme(JSON.parse(window.localStorage.getItem("theme")));
@@ -85,9 +94,8 @@ function App() {
           <Route
             path="/support"
             element={
-              <RequireHr>
-                <SupportAdmin />
-              </RequireHr>
+
+              <SupportAdmin />
             }
           />
           <Route
@@ -107,6 +115,23 @@ function App() {
                 </RequireHr>
               }
             />
+            <Route
+              path="hr-jobs"
+              element={
+                <RequireHr>
+                  <HrJob />
+                </RequireHr>
+              }
+            />
+            <Route
+              path="hr-jobs/:jobId"
+              element={
+                <RequireHr>
+                  <EditJobInfo />
+                </RequireHr>
+              }
+            />
+
             <Route path="profile" element={<Profile />} />
             <Route
               path="employee"
@@ -140,6 +165,7 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
+        <SupportEngine />
         <ScrollButton />
         <Toaster />
       </InitializeContext.Provider>

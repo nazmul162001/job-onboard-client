@@ -43,8 +43,8 @@ const HrChart = () => {
 
   // Genders HR 
   const gender = {
-    genderSeries: [female, male],
-    labels: ["Male", "Female"],
+    genderSeries: [male, female],
+    labels: [`Male-${male}`, `Female-${female}`],
     colors: ["#287872","#849028"],
     plotOptions: {
       pie: {
@@ -63,7 +63,7 @@ const HrChart = () => {
     }
   }
   
-  const genderSeries = [female, male];
+  const genderSeries = [male, female];
 
   
   
