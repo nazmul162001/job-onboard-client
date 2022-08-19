@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
+
 const AddNewJob = () => {
   useTitle('Post Job')
   const [user] = useAuthState(auth)
@@ -35,6 +36,14 @@ const AddNewJob = () => {
   // console.log(info);
 
   const onSubmit = async (data) => {
+    console.log(value);
+    if(!value || value.length < 100){
+      return Swal.fire({
+        text: `Minimum 100 Caracter`,
+        icon: 'error',
+        confirmButtonText: 'Try Again'
+      })
+    }
     const jobData = { ...data, companyName, value, hrName , hrEmail , createdDate}
     // console.log(jobData);
     await fetch(`${BASE_API}/jobs`, {

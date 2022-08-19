@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { BsStopwatch } from 'react-icons/bs';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import moment from 'moment';
 
 const Job = ({ job }) => {
   // console.log(job);
@@ -16,7 +17,7 @@ const Job = ({ job }) => {
             <h2 className="text-2xl font-mono font-bold ">{jobTitle}</h2>
           <p className='text-lg md:text-xl lg:text-xl font-semibold '>{companyName}</p>
           </div>
-            <p className='flex items-center gap-2 '> <span><BsStopwatch/></span> {createdDate?.slice(3, 15)}</p>
+            <p className='flex items-center gap-2 '> <span><BsStopwatch/></span> {moment(createdDate).format("MMMM DD, YYYY")}</p>
         </div>
         <p className='flex '> <span className='px-2 pt-1'><HiOutlineLocationMarker /></span> {location} </p>
         <div className='flex flex-col  space-y-1'>
