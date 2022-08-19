@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -11,8 +11,10 @@ import Loader from "../../../Components/Loader/Loader";
 import useAdmin from "../../../Hooks/useAdmin";
 import logo from "../../Assets/logo/logo.png";
 import useHrManager from "../../../Hooks/useHrManager";
+import { InitializeContext } from "../../../App";
 
 const Dashboard = () => {
+  const { handleThemeChange, theme, image } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
@@ -88,7 +90,7 @@ const Dashboard = () => {
                     />
                   ) : (
                     <img
-                      src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+                      src={image}
                       alt={auth?.currentUser?.displayName?.slice(0, 1)}
                     />
                   )}

@@ -13,7 +13,7 @@ import useAdmin from "../../Hooks/useAdmin";
 import useHrManager from "../../Hooks/useHrManager";
 
 const Navbar = () => {
-  const { handleThemeChange, theme } = useContext(InitializeContext);
+  const { handleThemeChange, theme, image } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const [hr] = useHrManager(user);
@@ -262,7 +262,7 @@ const Navbar = () => {
                         <img src={auth?.currentUser?.photoURL} alt="avatar" />
                       ) : (
                         <img
-                          src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+                          src={image}
                           alt="profile"
                         />
                       )}

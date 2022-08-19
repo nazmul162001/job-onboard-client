@@ -35,10 +35,7 @@ import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
-
 import SupportAdmin from "./Shared/Support/SupportAdmin";
-import SupportEngine from "./Shared/Support/SupportEngine";
-
 import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
 import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
 import useImage from "./Hooks/useImage";
@@ -47,9 +44,7 @@ export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
-  const [image, loading] = useImage();
-
-  // console.log(image)
+  const [image] = useImage();
 
   useEffect(() => {
     setTheme(JSON.parse(window.localStorage.getItem("theme")));
@@ -61,7 +56,7 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-      <InitializeContext.Provider value={{ handleThemeChange, theme }}>
+      <InitializeContext.Provider value={{ handleThemeChange, theme, image }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -91,13 +86,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpForHrManager />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
-          <Route
-            path="/support"
-            element={
-
-              <SupportAdmin />
-            }
-          />
+          <Route path="/support" element={<SupportAdmin />} />
           <Route
             path="/dashboard"
             element={
@@ -165,7 +154,6 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
-        {/* <SupportEngine /> */}
         <ScrollButton />
         <Toaster />
       </InitializeContext.Provider>

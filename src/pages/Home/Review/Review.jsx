@@ -47,7 +47,7 @@ const Review = () => {
   ];
 
   return (
-    <div className="px-5 md:px-8 pt-5 pb-12 rounded-[40px] container mx-auto bg-base-300 ">
+    <div className="px-5 md:px-8 pt-5 pb-12 rounded-[40px] container mx-auto bg-base-300 z-0 relative">
       <div>
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center pt-12 pb-3 md:py-5">
           They love us. You will too
