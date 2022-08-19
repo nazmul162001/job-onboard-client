@@ -7,8 +7,6 @@ import { BASE_API } from '../../../config';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
 const AddNewJob = () => {

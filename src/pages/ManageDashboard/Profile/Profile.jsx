@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useQuery } from "@tanstack/react-query";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";

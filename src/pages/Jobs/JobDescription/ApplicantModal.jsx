@@ -4,8 +4,6 @@ import Swal from 'sweetalert2';
 import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Loading from '../../../Components/Loading/Loading';
-import { useQuery } from "@tanstack/react-query";
-import axios from 'axios'
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
 const ApplicantModal = ({ job }) => {
