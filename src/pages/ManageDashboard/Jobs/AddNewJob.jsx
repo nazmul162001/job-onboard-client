@@ -7,6 +7,7 @@ import { BASE_API } from '../../../config';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
+import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
 const AddNewJob = () => {
   useTitle('Post Job')
@@ -26,8 +27,15 @@ const AddNewJob = () => {
     navigate('/jobs')
   }
 
+  const {data} = useCandidateInfo()
+
+  const info = data?.data?.result
+  const companyName = info?.companyName
+
+  // console.log(info);
+
   const onSubmit = async (data) => {
-    const jobData = { ...data, value, hrName , hrEmail , createdDate}
+    const jobData = { ...data, companyName, value, hrName , hrEmail , createdDate}
     // console.log(jobData);
     await fetch(`${BASE_API}/jobs`, {
       method: "POST",
@@ -90,15 +98,10 @@ const AddNewJob = () => {
             <input
               type="text"
               placeholder='Enter Company Name'
+              defaultValue={info?.companyName}
               className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
-              {...register('companyName', {
-                required: {
-                  value: true,
-                  message: 'Company Name is required'
-                }
-              })}
             />
-            <p className='text-[13px] text-red-500 pl-3'>{errors.companyName?.message}</p>
+            {/* <p className='text-[13px] text-red-500 pl-3'>{errors.companyName?.message}</p> */}
           </div>
 
           <div className='flex flex-col space-y-1 gap-y-1'>

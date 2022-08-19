@@ -4,17 +4,13 @@ import Swal from 'sweetalert2';
 import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Loading from '../../../Components/Loading/Loading';
-import { useQuery } from "@tanstack/react-query";
-import axios from 'axios'
+import useCandidateInfo from '../../../Hooks/useCandidateInfo';
 
 const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-  const { data, isLoading, refetch } = useQuery(['candidateInfo'], () => axios.get(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
-    headers: {
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    }
-  }))
+  
+  const {data,isLoading,refetch} = useCandidateInfo()
 
   const userInfo = data?.data?.result
 
@@ -24,14 +20,17 @@ const ApplicantModal = ({ job }) => {
     return <Loading/>
   }
 
+  const displayName = auth?.currentUser?.displayName 
+  // console.log(displayName);
+  const email = auth?.currentUser?.email
 
   // console.log(job);
   const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
-    // console.log(applicantData);
+    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
+    console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
       headers: {
@@ -74,17 +73,11 @@ const ApplicantModal = ({ job }) => {
                   <label className='text-lg pl-2'>Full Name <span className='text-red-500'>*</span></label>
                   <input
                     type="text"
-                    defaultValue={userInfo?.displayName}
-                    placeholder='First Name'
+                    defaultValue={auth?.currentUser?.displayName}
+                    readOnly
+                    placeholder='Full Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('displayName', {
-                      required: {
-                        value: true,
-                        message: 'This field is required'
-                      }
-                    })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.displayName?.message}</p>
                 </div>
               </div>
               {/* name filed end */}
@@ -93,13 +86,11 @@ const ApplicantModal = ({ job }) => {
                 <label className='text-lg pl-2'>Your email <span className='text-red-500'>*</span></label>
                 <input
                   type="email"
-                  defaultValue={userInfo?.email}
+                  defaultValue={auth?.currentUser?.email}
+                  readOnly
                   disabled
-                  placeholder='Enter your email'
                   className='border rounded-lg py-2 text-lg pl-3 '
-                  {...register('email')}
                 />
-                {/* <p className='text-[13px] text-red-500 pl-3'>{errors.email?.message}</p> */}
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 '>

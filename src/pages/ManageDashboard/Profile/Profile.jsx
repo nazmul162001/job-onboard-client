@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
-import { useQuery } from "@tanstack/react-query";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
@@ -11,7 +10,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
 import { FiEdit } from "react-icons/fi";
-import { BsFolderSymlink } from "react-icons/bs";
+import { BsFolderSymlink, BsLink45Deg } from "react-icons/bs";
+import useCandidateInfo from "../../../Hooks/useCandidateInfo";
 
 const Profile = () => {
   useTitle("Profile");
@@ -40,7 +40,7 @@ const Profile = () => {
       number: data?.number,
       gender: data?.gender,
       linkedinUrl: data?.linkedinUrl,
-      facebookUrl: data?.facebookUrl,
+      portfolioUrl: data?.portfolioUrl,
       githubUrl: data?.githubUrl,
       profileUrl: data?.profileUrl,
       dateOfBirth: data?.dateOfBirth,
@@ -67,17 +67,8 @@ const Profile = () => {
       });
   };
 
-  const {
-    data: result,
-    isLoading,
-    refetch,
-  } = useQuery(["profileData"], () =>
-    fetch(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
+  const {data,isLoading,refetch} = useCandidateInfo()
+  // console.log(data?.data?.result);
   if (isLoading)
     return (
       <div className="md:p-80">
@@ -89,14 +80,14 @@ const Profile = () => {
     address,
     resume,
     gender,
-    facebookUrl,
+    portfolioUrl,
     linkedinUrl,
     githubUrl,
     profileUrl,
     number,
     dateOfBirth,
     bloodGroup,
-  } = result?.result;
+  } = data?.data?.result;
 
   return (
     <div>
@@ -119,7 +110,7 @@ const Profile = () => {
                 address,
                 resume,
                 githubUrl,
-                facebookUrl,
+                portfolioUrl,
                 linkedinUrl,
                 profileUrl,
               })
@@ -195,13 +186,13 @@ const Profile = () => {
             <span>Social Links</span>
           </div>
           <div className="flex justify-center items-center px-4">
-            {facebookUrl || linkedinUrl ? (
+            {portfolioUrl || linkedinUrl ? (
               <div className="flex items-center gap-2">
                 <a target="_blank" href={linkedinUrl} rel="noreferrer">
                   <FaLinkedin className="text-xl" />
                 </a>
-                <a target="_blank" href={facebookUrl} rel="noreferrer">
-                  <FaFacebook className="text-xl" />
+                <a target="_blank" href={portfolioUrl} rel="noreferrer">
+                  <BsLink45Deg className="text-xl" />
                 </a>
                 <a target="_blank" href={githubUrl} rel="noreferrer">
                   <FaGithub className="text-xl" />
@@ -338,18 +329,18 @@ const Profile = () => {
                   </div>
                   <div className="my-2 w-full">
                     <label htmlFor="facebook" className="my-2">
-                      <span className="label-text-alt">Facebook</span>
+                      <span className="label-text-alt">Portfolio</span>
                     </label>
                     <input
                       type="link"
-                      placeholder="Facebook Link"
-                      defaultValue={facebookUrl}
+                      placeholder="Portfolio Link"
+                      defaultValue={portfolioUrl}
                       className="input input-bordered w-full"
-                      {...register("facebookUrl", { required: true })}
+                      {...register("portfolioUrl", { required: true })}
                     />
-                    {errors.facebookUrl?.type === "required" && (
+                    {errors.portfolioUrl?.type === "required" && (
                       <span className="text-error">
-                        Facebook URL is required
+                        Portfolio URL is required
                       </span>
                     )}
                   </div>
