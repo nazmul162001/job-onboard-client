@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
@@ -7,17 +8,15 @@ import { BASE_API } from "../../../config";
 const RecruitmentCard = ({ job, index }) => {
   const { companyName, jobTitle, location, salary, jobType } = job;
 
-  const { data: getCount, isLoading } = useQuery(["count"], () =>
-    fetch(
-      `${BASE_API}/applicants/count?email=${auth?.currentUser?.email}`,
-      {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => res.json())
-  );
+  const { data, isLoading } = useQuery(["count", auth, job?.jobTitle], () => axios.get(`${BASE_API}/applicants/appliedCandidate?email=${auth?.currentUser?.email}&jobTitle=${job?.jobTitle}`,
+    {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }))
+
+  console.log(data);
+  const countData = data?.data
 
   if (isLoading) {
     return <Loading />;
@@ -28,7 +27,7 @@ const RecruitmentCard = ({ job, index }) => {
       className="shadow-lg hover:shadow-2xl border-t-2 border-primary relative"
     >
       <label class="flex justify-center items-center btn-sm btn-circle bg-red-600 text-white absolute right-2 top-2">
-        {getCount?.length}
+        {countData?.length}
       </label>
 
       <div className="p-5 space-y-5">

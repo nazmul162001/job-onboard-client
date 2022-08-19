@@ -69,38 +69,22 @@ const ApplicantModal = ({ job }) => {
           <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
               {/* name filed  */}
-              <div className='grid grid-cols-1 md:grid-cols-2  gap-5'>
+              <div className='grid grid-cols-1 '>
                 <div className='flex flex-col space-y-1 gap-y-1'>
-                  <label className='text-lg pl-2'>First name <span className='text-red-500'>*</span></label>
+                  <label className='text-lg pl-2'>Full Name <span className='text-red-500'>*</span></label>
                   <input
                     type="text"
-                    defaultValue={userInfo?.firstName}
+                    defaultValue={userInfo?.displayName}
                     placeholder='First Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('firstName', {
+                    {...register('displayName', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.firstName?.message}</p>
-                </div>
-                <div className='flex flex-col space-y-1 gap-y-1'>
-                  <label className='text-lg pl-2'>Last name <span className='text-red-500'>*</span></label>
-                  <input
-                    type="text"
-                    placeholder='Last Name '
-                    defaultValue={userInfo?.lastName}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('lastName', {
-                      required: {
-                        value: true,
-                        message: 'This field is required'
-                      }
-                    })}
-                  />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.lastName?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.displayName?.message}</p>
                 </div>
               </div>
               {/* name filed end */}
@@ -123,16 +107,16 @@ const ApplicantModal = ({ job }) => {
                 <input
                   type="number"
                   placeholder='Phone number'
-                  defaultValue={userInfo?.phoneNumber}
+                  defaultValue={userInfo?.number}
                   className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
-                  {...register('phoneNumber', {
+                  {...register('number', {
                     required: {
                       value: true,
                       message: 'This field is required'
                     }
                   })}
                 />
-                <p className='text-[13px] text-red-500 pl-3'>{errors.phoneNumber?.message}</p>
+                <p className='text-[13px] text-red-500 pl-3'>{errors.number?.message}</p>
               </div>
 
               <div className='flex flex-col space-y-1 gap-y-1 py-2'>
@@ -159,33 +143,33 @@ const ApplicantModal = ({ job }) => {
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
-                    placeholder='Portfolio'
-                    defaultValue={userInfo?.portfolio}
+                    placeholder='portfolioUrl'
+                    defaultValue={userInfo?.portfolioUrl}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('portfolio', {
+                    {...register('portfolioUrl', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.portfolio?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.portfolioUrl?.message}</p>
                 </div>
 
                 <div className='flex flex-col space-y-1 gap-y-1'>
                   <input
                     type="text"
                     placeholder='Linkedin'
-                    defaultValue={userInfo?.linkedin}
+                    defaultValue={userInfo?.linkedinUrl}
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
-                    {...register('linkedin', {
+                    {...register('linkedinUrl', {
                       required: {
                         value: true,
                         message: 'This field is required'
                       }
                     })}
                   />
-                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedin?.message}</p>
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.linkedinUrl?.message}</p>
                 </div>
               </div>
 
