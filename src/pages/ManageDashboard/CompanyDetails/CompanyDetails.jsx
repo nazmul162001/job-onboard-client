@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -8,15 +7,10 @@ import { FiEdit } from "react-icons/fi";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
-import useAdmin from "../../../Hooks/useAdmin";
-import useHrManager from "../../../Hooks/useHrManager";
 import useTitle from "../../../Hooks/useTitle";
 
 const CompanyDetails = () => {
   useTitle("Company Info");
-  const [user] = useAuthState(auth);
-  const [admin] = useAdmin(user);
-  const [hr] = useHrManager(user);
   const [editCompanyInfo, setEditCompanyInfo] = useState(null);
   const {
     register,

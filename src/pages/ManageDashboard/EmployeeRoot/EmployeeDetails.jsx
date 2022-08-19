@@ -15,7 +15,7 @@ const EmployeeDetails = () => {
   const {
     fullName,
     employeId,
-    email,
+    employeEmail,
     designation,
     dateOfBirth,
     bloodGroup,
@@ -78,7 +78,7 @@ const EmployeeDetails = () => {
           <div className="flex justify-between items-center px-4 mb-4">
             <span>Email</span>
 
-            <span>{email}</span>
+            <span>{employeEmail}</span>
           </div>
           <hr />
           <div className="flex justify-between items-center px-4 mb-4">

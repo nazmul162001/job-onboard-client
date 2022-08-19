@@ -8,10 +8,10 @@ export const styles = {
         backgroundImage: `url(https://i.ibb.co/PwXZQHB/pngfind-com-customer-support-icon-png-4151771.png)`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundSize: '84px',
+        backgroundSize: '64px',
         // Size
-        width: '84px',
-        height: '84px',
+        width: '64px',
+        height: '64px',
     },
     avatarHello: {
         // Position
@@ -31,7 +31,7 @@ export const styles = {
     supportWindow: {
         // Position
         position: 'fixed',
-        bottom: '116px',
+        bottom: '190px',
         right: '24px',
         // Size
         width: '420px',
