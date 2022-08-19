@@ -19,12 +19,12 @@ const AddNewJob = () => {
 
   var time = new Date().getTime(); 
   var date = new Date(time); 
-  var createdDate = date.toString()
+  var createdDate = date
 
   const navigate = useNavigate();
 
   const navigateToJobs = () => {
-    navigate('/jobs')
+    navigate('/dashboard/hr-jobs')
   }
 
   const {data} = useCandidateInfo()
@@ -99,7 +99,8 @@ const AddNewJob = () => {
               type="text"
               placeholder='Enter Company Name'
               defaultValue={info?.companyName}
-              className='border py-1 rounded-lg pl-3 hover:border-primary duration-300'
+              disabled
+              className='border py-1 rounded-lg pl-3 '
             />
             {/* <p className='text-[13px] text-red-500 pl-3'>{errors.companyName?.message}</p> */}
           </div>
