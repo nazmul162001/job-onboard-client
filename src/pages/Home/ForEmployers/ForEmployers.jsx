@@ -21,14 +21,20 @@ const ForEmployers = () => {
         <div
           className={
             theme
-              ? "bg-[#292d46b3] text-white rounded-[10px] shadow-lg p-2 relative text-center"
+              ? "bg-[#04071a47] text-white rounded-[10px] shadow-lg p-2 relative text-center"
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
-        >
+         >
           <div class="avatar hunterImg -mt-24">
-            <div class="w-48 rounded-full roundedCircle">
+            <div
+              class={
+                theme
+                  ? "darkRoundedCircle w-48  rounded-full"
+                  : "w-48  rounded-full roundedCircle"
+              }
+            >
               <img
-                className="max-w-full"
+                className={theme ? "bg-[#0c1325] max-w-full " : "max-w-full"}
                 src={employeImageOne}
                 alt="Easy to Apply"
               />
@@ -44,14 +50,20 @@ const ForEmployers = () => {
         <div
           className={
             theme
-              ? "bg-[#292d46b3] text-white"
+              ? "bg-[#04071a47] text-white rounded-[10px] shadow-lg p-2 relative text-center"
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
         >
           <div class="avatar hunterImg -mt-24">
-            <div class="w-48 rounded-full roundedCircle">
+            <div
+              class={
+                theme
+                  ? "darkRoundedCircle w-48  rounded-full"
+                  : "w-48  rounded-full roundedCircle"
+              }
+            >
               <img
-                className="max-w-full"
+                className={theme ? "bg-[#0c1325] max-w-full " : "max-w-full"}
                 src={employeImageTwo}
                 alt="Easy to Apply"
               />
@@ -65,11 +77,23 @@ const ForEmployers = () => {
             </p>
           </div>
         </div>
-        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
+        <div
+          className={
+            theme
+              ? "bg-[#04071a47] text-white rounded-[10px] shadow-lg p-2 relative text-center"
+              : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
+          }
+        >
           <div class="avatar hunterImg -mt-24">
-            <div class="w-48  rounded-full roundedCircle">
+            <div
+              class={
+                theme
+                  ? "darkRoundedCircle w-48  rounded-full"
+                  : "w-48  rounded-full roundedCircle"
+              }
+            >
               <img
-                className="max-w-full"
+                className={theme ? "bg-[#0c1325] max-w-full " : "max-w-full"}
                 src={employeImageThree}
                 alt="Easy to Apply"
               />
@@ -85,11 +109,23 @@ const ForEmployers = () => {
             </p>
           </div>
         </div>
-        <div className="jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center">
+        <div
+          className={
+            theme
+              ? "bg-[#04071a47] text-white rounded-[10px] shadow-lg p-2 relative text-center"
+              : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
+          }
+        >
           <div class="avatar hunterImg -mt-24">
-            <div class="w-48  rounded-full roundedCircle">
+            <div
+              class={
+                theme
+                  ? "darkRoundedCircle w-48  rounded-full"
+                  : "w-48  rounded-full roundedCircle"
+              }
+            >
               <img
-                className="max-w-full"
+                className={theme ? "bg-[#0c1325] max-w-full " : "max-w-full"}
                 src={employeImageFour}
                 alt="Easy to Apply"
               />
