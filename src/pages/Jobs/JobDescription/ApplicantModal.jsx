@@ -27,9 +27,10 @@ const ApplicantModal = ({ job }) => {
   // console.log(job);
   const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
+  const createdDate = job?.createdDate
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
+    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId,createdDate }
     console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
