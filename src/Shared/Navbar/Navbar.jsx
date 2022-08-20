@@ -47,59 +47,16 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="py-1 lg:py-0">
-        <div class="dropdown dropdown-right dropdown-hover">
-          <label
-            tabindex="0"
-            className="uppercase flex items-center cursor-pointer"
-          >
-            Feature{" "}
-            <span className="pl-1 text-xl">
-              <FiChevronDown />
-            </span>
-          </label>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-[12rem] lg:w-52"
-          >
-            <li className="py-2">
-              <NavLink
-                to="job-posting"
-                className="font-semibold hover:font-bold hover:ease-in-out duration-300"
-              >
-                Job Posting
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="applicant-tracking"
-                className="font-semibold hover:font-bold hover:ease-in-out duration-300"
-              >
-                Applicant Tracking
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="employee-database"
-                className="font-semibold hover:font-bold hover:ease-in-out duration-300"
-              >
-                Employee Database
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-      </li>
-
-      <li className="py-1 lg:py-0">
-        <NavLink className="uppercase" to="/team">
-          Team
+        <NavLink className="uppercase" to="/applicant-tracking">
+        Tracking System
         </NavLink>
       </li>
-
       <li className="py-1 lg:py-0">
         <NavLink className="uppercase" to="/about">
           About
         </NavLink>
       </li>
+
       <li className="py-1 lg:py-0">
         <NavLink className="uppercase" to="/contact-us">
           Contact Us
@@ -125,9 +82,8 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 w-full z-50">
       <div
-        className={`drawer-content flex flex-col backdrop-blur-[18px] bg-base-100 ${
-          scrollY < 300 && "bg-transparent shadow-md"
-        }`}
+        className={`drawer-content flex flex-col backdrop-blur-[18px] bg-base-100 ${scrollY < 300 && "bg-transparent shadow-md"
+          }`}
         style={
           pathname.includes("dashboard")
             ? { display: "none" }

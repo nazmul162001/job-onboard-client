@@ -6,11 +6,18 @@ import RecentApplication from "../RecentApplicants/RecentApplicants";
 import RecentJobs from "../RecentJobs/RecentJobs";
 import HrChart from "../HrChart/HrChart";
 import useHrJob from "../../../Hooks/useHrJob";
+import useCandidate from "../../../Hooks/useCandidate";
+import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
 
+  const { data } = useEmployeeInfo()
+  const allEmployeDetails = data?.data
+
   const [hrJobs] = useHrJob()
+  
+  const { getApplicants } = useCandidate()
   
 
 
@@ -27,7 +34,7 @@ const WelcomeDashboard = () => {
                     <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                 </div>
                 <div className="card_details">
-                  <h2 className="font-bold text-xl">0</h2>
+                  <h2 className="font-bold text-xl">{getApplicants?.length}</h2>
                   <p className="text-[14px]">Active Candidate</p>
                 </div>
               </div>
@@ -54,7 +61,7 @@ const WelcomeDashboard = () => {
                     <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
                 </div>
                 <div className="card_details">
-                  <h2 className="font-bold text-xl">0</h2>
+                  <h2 className="font-bold text-xl">{allEmployeDetails?.length}</h2>
                   <p className="text-[14px]">Team Members</p>
                 </div>
               </div>

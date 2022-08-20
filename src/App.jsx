@@ -28,8 +28,6 @@ import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUp
 import RequireHr from "./Auth/RequireHr/RequireHr";
 import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
-import EmployeeDatabase from "./Pages/Features/EmployeeDatabase/EmployeeDatabase";
-import JobPosting from "./Pages/Features/JobPosting/JobPosting";
 import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
@@ -67,14 +65,9 @@ function App() {
 
           {/* Job Route End  */}
 
-          <Route path="/job-posting" element={<JobPosting />}></Route>
           <Route
             path="applicant-tracking"
             element={<ApplicantTracking />}
-          ></Route>
-          <Route
-            path="/employee-database"
-            element={<EmployeeDatabase />}
           ></Route>
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>

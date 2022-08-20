@@ -12,15 +12,15 @@ const Job = ({ job }) => {
   return (
     <div className="border bg-white rounded-md my-5 shadow-lg">
       <div className="p-5 space-y-5">
-        <div className="space-y-2">
+        <div className="space-y-2 text-black">
           <div className='flex flex-col lg:flex-row space-y-1  justify-between'>
             <h2 className="text-2xl font-mono font-bold ">{jobTitle}</h2>
           <p className='text-lg md:text-xl lg:text-xl font-semibold '>{companyName}</p>
           </div>
             <p className='flex items-center gap-2 '> <span><BsStopwatch/></span> {moment(createdDate).format("MMMM DD, YYYY")}</p>
         </div>
-        <p className='flex '> <span className='px-2 pt-1'><HiOutlineLocationMarker /></span> {location} </p>
-        <div className='flex flex-col  space-y-1'>
+        <p className='flex text-black'> <span className='px-2 pt-1 '><HiOutlineLocationMarker /></span> {location} </p>
+        <div className='flex flex-col text-black space-y-1'>
           <span>Salary : ${salary}<small>/m</small></span>
         </div>
         <div className=" pt-3 flex justify-between items-center">
