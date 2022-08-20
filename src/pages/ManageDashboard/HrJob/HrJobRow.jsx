@@ -4,6 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { BASE_API } from "../../../config";
 import Loading from "../../../Components/Loading/Loading";
+import moment from 'moment';
 
 const HrJobRow = ({ job, index, refetch, isLoading }) => {
   const [editJobs, setEditJobs] = useState(null);
@@ -83,7 +84,7 @@ const HrJobRow = ({ job, index, refetch, isLoading }) => {
       <tr className="text-center">
         <th>{index + 1}.</th>
         <td>{job.jobTitle}</td>
-        <td>{job.createdDate?.slice(3, 15)}</td>
+        <td>{moment(job?.createdDate).format("MMMM DD, YYYY")}</td>
         <td>
           ${job.salary} <small>/m</small>
         </td>

@@ -7,15 +7,16 @@ import { BASE_API } from "../../../config";
 
 const RecruitmentCard = ({ job, index }) => {
   const { companyName, jobTitle, location, salary, jobType } = job;
+  // console.log(job)
 
-  const { data, isLoading } = useQuery(["count", auth, job?.jobTitle], () => axios.get(`${BASE_API}/applicants/appliedCandidate?email=${auth?.currentUser?.email}&jobTitle=${job?.jobTitle}`,
+  const { data, isLoading } = useQuery(["count", auth, job?.createdDate], () => axios.get(`${BASE_API}/applicants/appliedCandidate?email=${auth?.currentUser?.email}&createdDate=${job?.createdDate}`,
     {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     }))
 
-  console.log(data);
+  // console.log(data);
   const countData = data?.data
 
   if (isLoading) {
