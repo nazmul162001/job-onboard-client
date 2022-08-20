@@ -10,6 +10,7 @@ import EditEmployeeModal from "./EditEmployeeModal";
 import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
+  const [addEmployeeDetaiils, setAddEmployeeDetails] = useState(null);
   const [allEmployeDetails, setAllEmployeeDetails] = useState([]);
 
   const { isLoading, refetch } = useQuery(["hrEmployees"], () => {
@@ -21,9 +22,8 @@ const EmployeesRoot = () => {
       .then((res) => res.json())
       .then((data) => setAllEmployeeDetails(data));
   });
-
   if (isLoading) {
-    <Loading />;
+    return <Loading />;
   }
 
   const deleteEmployeeDetails = (id) => {
@@ -66,22 +66,49 @@ const EmployeesRoot = () => {
         <h2 className="text-center text-2xl font-bold ">
           <span className="text-5xl font-serif text-primary">E</span>mployees
         </h2>
-        <AddEmployee refetch={refetch} />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
-        {allEmployeDetails?.map((singleDetails) => (
-          <AllEmployees
-            key={singleDetails._id}
-            singleDetails={singleDetails}
-            setEditEmployeDetails={setEditEmployeDetails}
-            deleteEmployeeDetails={deleteEmployeeDetails}
+        {addEmployeeDetaiils ? (
+          ""
+        ) : (
+          <AddEmployee
+            refetch={refetch}
+            addEmployeeDetaiils={addEmployeeDetaiils}
+            setAddEmployeeDetails={setAddEmployeeDetails}
           />
-        ))}
+        )}
+        {/* <AddEmployee refetch={refetch} /> */}
       </div>
+
+      {allEmployeDetails.length === 0 ? (
+        <>
+          <div className="grid place-items-center py-10">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyS0g4KI9aJhPYuJLsGMoKRd603nvd0Ia9YxxJ8kKw93PUkrhNx6LuIIQXM05YKdIL7Zc&usqp=CAU"
+              alt="order-not-found"
+            />
+            <h2 className="text-2xl py-3 font-semibold text-center">
+             No Employee Found
+            </h2>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
+            {allEmployeDetails?.map((singleDetails) => (
+              <AllEmployees
+                key={singleDetails._id}
+                singleDetails={singleDetails}
+                setEditEmployeDetails={setEditEmployeDetails}
+                deleteEmployeeDetails={deleteEmployeeDetails}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
       {editEmployeDetails && (
         <EditEmployeeModal
           editEmployeDetails={editEmployeDetails}
+          allEmployeDetails={allEmployeDetails}
           setEditEmployeDetails={setEditEmployeDetails}
           refetch={refetch}
         />

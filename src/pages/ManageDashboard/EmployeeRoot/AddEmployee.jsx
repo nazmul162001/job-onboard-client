@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../config";
 
-const AddEmployee = ({ refetch }) => {
+const AddEmployee = ({ refetch, setAddEmployeeDetails }) => {
   const [user] = useAuthState(auth);
   const hrUserEmail = user?.email;
   const {
@@ -19,7 +19,7 @@ const AddEmployee = ({ refetch }) => {
   const addEmployeDetails = (data) => {
     const employeeDetails = {
       ...data,
-      hrUserEmail
+      hrUserEmail,
     };
     fetch(`${BASE_API}/addEmployees`, {
       method: "POST",
@@ -40,6 +40,7 @@ const AddEmployee = ({ refetch }) => {
           });
           refetch();
           reset();
+          setAddEmployeeDetails(null);
         } else {
           Swal.fire({
             text: `Opps!`,
@@ -57,8 +58,8 @@ const AddEmployee = ({ refetch }) => {
         id="add-new-employee-modal"
         className="modal-toggle "
       />
-      <div className="modal ">
-        <div className="modal-box lg:w-10/12 lg:max-w-2xl modalContainer">
+      <div className="modal cursor-pointer ">
+        <div className="modal-box lg:w-10/12 lg:max-w-2xl modalContainer relative" for="">
           <label
             for="add-new-employee-modal"
             class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -151,6 +152,7 @@ const AddEmployee = ({ refetch }) => {
                     <option disabled selected>
                       Front-End Developer
                     </option>
+                    <option>Front-End Developer</option>
                     <option>Back-End Developer</option>
                     <option>Full-Stack Developer</option>
                     <option>Javascript Developer</option>
