@@ -61,9 +61,9 @@ const EmployeesRoot = () => {
 
   return (
     <section>
-      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-3">
+      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-2">
         <span></span>
-        <h2 className="text-center text-2xl font-bold ">
+        <h2 className="text-center text-xl font-bold ">
           <span className="text-5xl font-serif text-primary">E</span>mployees
         </h2>
         {addEmployeeDetaiils ? (
@@ -86,7 +86,7 @@ const EmployeesRoot = () => {
               alt="order-not-found"
             />
             <h2 className="text-2xl py-3 font-semibold text-center">
-             No Employee Found
+              No Employee Found
             </h2>
           </div>
         </>

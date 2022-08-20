@@ -1,0 +1,7 @@
+.dark {
+  border-radius: 10% 25%;
+  background: #eaeeef !important;
+}
+.noDark {
+  background: white;
+}
