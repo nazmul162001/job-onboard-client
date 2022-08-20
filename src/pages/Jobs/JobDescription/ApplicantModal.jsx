@@ -79,7 +79,7 @@ const ApplicantModal = ({ job }) => {
                   <input
                     type="text"
                     defaultValue={auth?.currentUser?.displayName}
-                    readOnly
+                    disabled
                     placeholder='Full Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   />
@@ -92,7 +92,6 @@ const ApplicantModal = ({ job }) => {
                 <input
                   type="email"
                   defaultValue={auth?.currentUser?.email}
-                  readOnly
                   disabled
                   className='border rounded-lg py-2 text-lg pl-3 '
                 />
@@ -104,7 +103,7 @@ const ApplicantModal = ({ job }) => {
                   type="number"
                   placeholder='Phone number'
                   defaultValue={userInfo?.number}
-                  className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
+                  className='border rounded-lg text-black py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('number', {
                     required: {
                       value: true,
@@ -121,7 +120,7 @@ const ApplicantModal = ({ job }) => {
                   type="text"
                   placeholder='Hyperlink'
                   defaultValue={userInfo?.resume}
-                  className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                  className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
                       value: true,
@@ -141,7 +140,7 @@ const ApplicantModal = ({ job }) => {
                     type="text"
                     placeholder='portfolioUrl'
                     defaultValue={userInfo?.portfolioUrl}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('portfolioUrl', {
                       required: {
                         value: true,
@@ -157,7 +156,7 @@ const ApplicantModal = ({ job }) => {
                     type="text"
                     placeholder='Linkedin'
                     defaultValue={userInfo?.linkedinUrl}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    className='text-[#4e4c4c] border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('linkedinUrl', {
                       required: {
                         value: true,
@@ -177,7 +176,7 @@ const ApplicantModal = ({ job }) => {
                   type="text"
                   rows={4}
                   placeholder='Add a cover letter'
-                  className='border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
+                  className='text-black border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
                   {...register('coverLetter', {
                     required: {
                       value: true,

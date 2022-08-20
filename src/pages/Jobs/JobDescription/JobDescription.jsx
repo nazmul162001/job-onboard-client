@@ -10,9 +10,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 const JobDescription = () => {
   const { jobId } = useParams()
-  const [job, loading] = useJob(jobId);
+  const [job] = useJob(jobId);
   const navigate = useNavigate();
-  const [user, userLoading] = useAuthState(auth)
+  const [user] = useAuthState(auth)
   const location = useLocation()
 
   // console.log(job)
