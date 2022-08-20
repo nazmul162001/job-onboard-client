@@ -6,18 +6,12 @@ import Loading from "../../../Components/Loading/Loading";
 import CandidatesMailModal from "./CandidatesMailModal";
 import { useState } from "react";
 import Candidate from "./Candidate";
+import useCandidate from "../../../Hooks/useCandidate";
 
 const Candidates = () => {
   useTitle("Candidates");
   const [mail, setMail] = useState(null);
-  const { data: getApplicants, isLoading } = useQuery(["getApplicants"], () =>
-    fetch(`${BASE_API}/applicants/show?email=${auth?.currentUser?.email}`, {
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
+  const { getApplicants, isLoading } = useCandidate()
 
   if (isLoading) {
     return <Loading />;
@@ -91,7 +85,7 @@ const Candidates = () => {
               alt="order-not-found"
             />
             <h2 className="text-2xl py-3 font-semibold text-center">
-              Not Posted Jobs yet.
+              Not Candidates yet.
             </h2>
           </div>
         </>

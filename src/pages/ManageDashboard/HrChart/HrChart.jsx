@@ -1,28 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import axios from "axios";
 import { BASE_API } from '../../../config';
 import Chart from "react-apexcharts";
+import { useQuery } from '@tanstack/react-query';
+import auth from '../../../Auth/Firebase/Firebase.init';
 
 const HrChart = () => {
   const [employeeData, setEmployeeData] = useState([]);
-  console.log(employeeData.filtering);
 
-  const others = employeeData.filtering?.others.length
-  const frontEnd = employeeData.filtering?.frontEnd.length
-  const backend = employeeData.filtering?.backend.length
-  const male = employeeData.filtering?.male.length
-  const female = employeeData.filtering?.female.length
+  const { isLoading, refetch } = useQuery(["hrEmployees"], () => {
+    fetch(`${BASE_API}/userEmployees?email=${auth?.currentUser?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setEmployeeData(data));
+  });
 
-  useEffect(() => {
-    axios
-      .get(`${BASE_API}/getEmployees`)
-      .then((result) => setEmployeeData(result.data));
-  }, []);
+  const frontEnds = employeeData.filter(d => d.designation === "Front-End Developer")
+  
+  const backends = employeeData.filter(d => d.designation === "Back-End Developer")
+
+  const gendersM = employeeData.filter(d => d.gender === "Male")
+  const gendersF = employeeData.filter(d => d.gender === "Female")
+
+  const other = employeeData.filter(d => d.designation !== "Front-End Developer" && d.designation !== "Back-End Developer")
+
+  // console.log(other);
+
+  // console.log(other);
 
   // charts 
   const options = {
-    series: [others, frontEnd, backend],
-    labels: [`Others-${others}`, `Front-End Developer-${frontEnd}`, `Backend-Developer-${backend}`],
+    series: [other.length, frontEnds.length, backends.length],
+    labels: [`Others-${other.length}`, `Front-End Developer-${frontEnds.length}`, `Backend-Developer-${backends.length}`],
     plotOptions: {
       pie: {
         expandOnClick:false,
@@ -39,12 +50,12 @@ const HrChart = () => {
       }
     }
   }
-  const series = [others, frontEnd, backend];
+  const series = [other.length, frontEnds.length, backends.length];
 
   // Genders HR 
   const gender = {
-    genderSeries: [male, female],
-    labels: [`Male-${male}`, `Female-${female}`],
+    genderSeries: [gendersM.length, gendersF.length],
+    labels: [`Male-${gendersM.length}`, `Female-${gendersF.length}`],
     colors: ["#287872","#849028"],
     plotOptions: {
       pie: {
@@ -63,7 +74,7 @@ const HrChart = () => {
     }
   }
   
-  const genderSeries = [male, female];
+  const genderSeries = [gendersM.length, gendersF.length];
 
   
   

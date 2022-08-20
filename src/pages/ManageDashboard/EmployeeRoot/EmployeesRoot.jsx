@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
+import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
 import EditEmployeeModal from "./EditEmployeeModal";
@@ -11,20 +10,12 @@ import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
   const [addEmployeeDetaiils, setAddEmployeeDetails] = useState(null);
-  const [allEmployeDetails, setAllEmployeeDetails] = useState([]);
-
-  const { isLoading, refetch } = useQuery(["hrEmployees"], () => {
-    fetch(`${BASE_API}/userEmployees?email=${auth?.currentUser?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setAllEmployeeDetails(data));
-  });
+  const { data, isLoading, refetch } = useEmployeeInfo();
   if (isLoading) {
     return <Loading />;
   }
+  const allEmployeDetails = data?.data;
+  // console.log(allEmployeDetails);
 
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
