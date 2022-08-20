@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import 'remixicon/fonts/remixicon.css'
 import mail from '../../Assets/images/contact/mail.png'
 import './ContactUs.css'
@@ -21,10 +22,12 @@ const ContactUs = () => {
             <p className='text-blue-400'>+880 1700 000000</p>
           </div>
           <div className="connect p-10 bg-base-100 shadow-2xl rounded text-center">
-          <div className='flex justify-center'> <img className='w-12 h-12' src={mail} alt="" /> </div>
+            <div className='flex justify-center'> <img className='w-12 h-12' src={mail} alt="" /> </div>
             <p className="text-sm font-bold my-3">Contact Customer Support</p>
             <p className='text-sm my-3'>Sometimes you need a little help from your friends. Or a Job Onboard Support rep. Don't worry... we're here for you.</p>
-            <button className='p-5 bg-orange-500 my-5 rounded-lg text-white text-sm'>Contact Support</button>
+            <Link to='/contact-us'>
+              <button className='p-5 bg-orange-500 my-5 rounded-lg text-white text-sm'>Contact Support</button>
+            </Link>
           </div>
         </div>
       </div>
