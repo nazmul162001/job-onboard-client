@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import auth from "../../Auth/Firebase/Firebase.init";
 import logo from "../../Pages/Assets/logo/logo.png";
 import { InitializeContext } from "../../App";
-import { FiChevronDown, FiLogOut } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import useAdmin from "../../Hooks/useAdmin";
 import useHrManager from "../../Hooks/useHrManager";
