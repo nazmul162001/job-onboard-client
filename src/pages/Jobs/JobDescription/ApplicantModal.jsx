@@ -5,12 +5,15 @@ import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Loading from '../../../Components/Loading/Loading';
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
   
   const {data,isLoading,refetch} = useCandidateInfo()
+  const navigate = useNavigate();
+  
 
   const userInfo = data?.data?.result
 
@@ -48,6 +51,7 @@ const ApplicantModal = ({ job }) => {
             confirmButtonText: 'Okay'
           })
           reset()
+          navigate('/dashboard/appliedJobs')
         }
         else {
           Swal.fire({
