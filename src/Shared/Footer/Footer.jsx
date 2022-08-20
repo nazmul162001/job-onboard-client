@@ -65,7 +65,7 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                to="/team"
+                to="/contact-us#team"
                 className="link link-hover hover:text-primary text-lg"
               >
                 Our Team
@@ -116,10 +116,10 @@ const Footer = () => {
             </p>
             <p>
               <Link
-                to="/sitemap"
+                to="/applicant-tracking"
                 className="link link-hover hover:text-primary text-lg"
               >
-                Site Map
+                Tracking System
               </Link>
             </p>
           </div>

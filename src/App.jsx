@@ -28,8 +28,6 @@ import SignUpForHrManager from "./Pages/Authentication/SignUpForHrManager/SignUp
 import RequireHr from "./Auth/RequireHr/RequireHr";
 import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
-import EmployeeDatabase from "./Pages/Features/EmployeeDatabase/EmployeeDatabase";
-import JobPosting from "./Pages/Features/JobPosting/JobPosting";
 import ApplicantTracking from "./Pages/Features/ApplicantTracking/ApplicantTracking";
 import Blog from "./Pages/Blog/Blog";
 import Contact from "./Pages/ContactUs/Contact";
@@ -37,14 +35,14 @@ import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetail
 import BlogsDetail from "./Pages/Blog/BlogsDetail";
 import SupportAdmin from "./Shared/Support/SupportAdmin";
 import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
-import EditJobInfo from "./Pages/ManageDashboard/HrJob/EditJobInfo";
 import useImage from "./Hooks/useImage";
+import ManageAllJobs from "./Pages/ManageDashboard/ManageAllJobs/ManageAllJobs";
 
 export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
-  const [image] = useImage();
+  const [profileUrl] = useImage();
 
   useEffect(() => {
     setTheme(JSON.parse(window.localStorage.getItem("theme")));
@@ -56,7 +54,7 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-      <InitializeContext.Provider value={{ handleThemeChange, theme, image }}>
+      <InitializeContext.Provider value={{ handleThemeChange, theme, profileUrl }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -67,14 +65,9 @@ function App() {
 
           {/* Job Route End  */}
 
-          <Route path="/job-posting" element={<JobPosting />}></Route>
           <Route
             path="applicant-tracking"
             element={<ApplicantTracking />}
-          ></Route>
-          <Route
-            path="/employee-database"
-            element={<EmployeeDatabase />}
           ></Route>
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>
@@ -112,14 +105,6 @@ function App() {
                 </RequireHr>
               }
             />
-            <Route
-              path="hr-jobs/:jobId"
-              element={
-                <RequireHr>
-                  <EditJobInfo />
-                </RequireHr>
-              }
-            />
 
             <Route path="profile" element={<Profile />} />
             <Route
@@ -132,6 +117,7 @@ function App() {
             />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
             <Route path="appliedJobs" element={<AppliedJobs />} />
+            <Route path="jobs" element={<ManageAllJobs />} />
             <Route
               path="recruitment"
               element={

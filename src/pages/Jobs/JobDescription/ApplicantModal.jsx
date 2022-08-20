@@ -5,12 +5,15 @@ import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Loading from '../../../Components/Loading/Loading';
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
   
   const {data,isLoading,refetch} = useCandidateInfo()
+  const navigate = useNavigate();
+  
 
   const userInfo = data?.data?.result
 
@@ -27,9 +30,10 @@ const ApplicantModal = ({ job }) => {
   // console.log(job);
   const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
+  const createdDate = job?.createdDate
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
+    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId,createdDate }
     console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
@@ -47,6 +51,7 @@ const ApplicantModal = ({ job }) => {
             confirmButtonText: 'Okay'
           })
           reset()
+          navigate('/dashboard/appliedJobs')
         }
         else {
           Swal.fire({
@@ -74,7 +79,7 @@ const ApplicantModal = ({ job }) => {
                   <input
                     type="text"
                     defaultValue={auth?.currentUser?.displayName}
-                    readOnly
+                    disabled
                     placeholder='Full Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   />
@@ -87,7 +92,6 @@ const ApplicantModal = ({ job }) => {
                 <input
                   type="email"
                   defaultValue={auth?.currentUser?.email}
-                  readOnly
                   disabled
                   className='border rounded-lg py-2 text-lg pl-3 '
                 />
@@ -99,7 +103,7 @@ const ApplicantModal = ({ job }) => {
                   type="number"
                   placeholder='Phone number'
                   defaultValue={userInfo?.number}
-                  className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
+                  className='border rounded-lg text-black py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('number', {
                     required: {
                       value: true,
@@ -116,7 +120,7 @@ const ApplicantModal = ({ job }) => {
                   type="text"
                   placeholder='Hyperlink'
                   defaultValue={userInfo?.resume}
-                  className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                  className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
                       value: true,
@@ -136,7 +140,7 @@ const ApplicantModal = ({ job }) => {
                     type="text"
                     placeholder='portfolioUrl'
                     defaultValue={userInfo?.portfolioUrl}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('portfolioUrl', {
                       required: {
                         value: true,
@@ -152,7 +156,7 @@ const ApplicantModal = ({ job }) => {
                     type="text"
                     placeholder='Linkedin'
                     defaultValue={userInfo?.linkedinUrl}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    className='text-[#4e4c4c] border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('linkedinUrl', {
                       required: {
                         value: true,
@@ -172,7 +176,7 @@ const ApplicantModal = ({ job }) => {
                   type="text"
                   rows={4}
                   placeholder='Add a cover letter'
-                  className='border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
+                  className='text-black border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
                   {...register('coverLetter', {
                     required: {
                       value: true,

@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 
 const CandidatesMailModal = ({ mail }) => {
-  const { firstName, lastName, email } = mail;
+  const { displayName, email } = mail;
 
   useTitle("Mails");
   const form = useRef();
@@ -56,7 +56,7 @@ const CandidatesMailModal = ({ mail }) => {
                   type="text"
                   name="to_name"
                   placeholder="Input your name"
-                  value={firstName + " " + lastName}
+                  value={displayName}
                   readOnly
                   className="input input-bordered w-full hover:border-primary duration-300"
                 />

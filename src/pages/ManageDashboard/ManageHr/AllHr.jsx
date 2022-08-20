@@ -23,7 +23,7 @@ const AllHr = () => {
   }
   
   return (
-    <div className="lg:px-10 py-10 bg-base-100 h-screen rounded-md">
+    <div className="lg:px-10 py-10 bg-base-100 rounded-md">
       <div className="overflow-x-auto shadow-lg border-l-4 border-primary rounded-2xl">
         <table className="table w-full">
           <thead className="bg-base-300">

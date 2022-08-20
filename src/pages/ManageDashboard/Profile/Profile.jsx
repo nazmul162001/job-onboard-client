@@ -35,6 +35,7 @@ const Profile = () => {
 
   const saveProfileDataOnMongodb = async (data) => {
     const profileData = {
+      displayName: data?.displayName,
       address: data?.address,
       resume: data?.resume,
       number: data?.number,
@@ -68,7 +69,6 @@ const Profile = () => {
   };
 
   const { data, isLoading, refetch } = useCandidateInfo();
-  // console.log(data?.data?.result);
   if (isLoading)
     return (
       <div className="md:p-80">
@@ -77,6 +77,7 @@ const Profile = () => {
     );
 
   const {
+    displayName,
     address,
     resume,
     gender,
@@ -103,6 +104,7 @@ const Profile = () => {
             className="btn btn-sm btn-circle absolute right-2 top-2"
             onClick={() =>
               setEditProfile({
+                displayName,
                 gender,
                 number,
                 dateOfBirth,
@@ -121,7 +123,7 @@ const Profile = () => {
           <div className="flex justify-between items-center px-4 mb-4">
             <span>Name</span>
 
-            <span>{auth?.currentUser?.displayName}</span>
+            <span>{displayName ? displayName : auth?.currentUser?.displayName}</span>
           </div>
           <hr className="border-dashed" />
 
@@ -206,10 +208,12 @@ const Profile = () => {
         <div className="text-center md:order-1">
           <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 shadow-xl">
             <div className=" w-60 rounded-xl">
-              {auth?.currentUser?.photoURL ? (
-                <img src={auth?.currentUser?.photoURL} alt="avatar" />
-              ) : (
+              {auth?.currentUser?.photoURL && !profileUrl ? (
+                <img src={auth?.currentUser?.photoURL} alt="profile" />
+              ) : !auth?.currentUser?.photoURL && profileUrl ? (
                 <img src={profileUrl} alt="profile" />
+              ) : (
+                <img src="https://i.ibb.co/xY0rfV4/avatar.jpg" alt="profile" />
               )}
             </div>
           </div>
@@ -235,6 +239,19 @@ const Profile = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="another-info flex items-center justify-center flex-col gap-2 my-3"
               >
+                <div className="w-full">
+                  <label className="label">
+                    <span className="label-text-alt">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="input input-bordered w-full"
+                    required
+                    defaultValue={displayName || auth?.currentUser?.displayName}
+                    {...register("displayName", { required: true })}
+                  />
+                </div>
                 <div className="w-full">
                   <label className="label">
                     <span className="label-text-alt">Profile Image</span>

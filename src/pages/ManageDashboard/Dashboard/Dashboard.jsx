@@ -16,7 +16,8 @@ import { BASE_API } from "../../../config";
 import { useQuery } from "@tanstack/react-query";
 
 const Dashboard = () => {
-  const { handleThemeChange, theme, image } = useContext(InitializeContext);
+  const { handleThemeChange, theme, profileUrl } =
+    useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
@@ -130,15 +131,14 @@ const Dashboard = () => {
                   style={{ display: "grid" }}
                   className="w-10 h-10 place-items-center rounded-full ring ring-primary ring-offset-base-100 ring-offset-2"
                 >
-                  {auth?.currentUser?.photoURL ? (
-                    <img
-                      src={auth?.currentUser?.photoURL}
-                      alt={auth?.currentUser?.displayName?.slice(0, 1)}
-                    />
+                  {auth?.currentUser?.photoURL && !profileUrl ? (
+                    <img src={auth?.currentUser?.photoURL} alt="profile" />
+                  ) : !auth?.currentUser?.photoURL && profileUrl ? (
+                    <img src={profileUrl} alt="profile" />
                   ) : (
                     <img
-                      src={image}
-                      alt={auth?.currentUser?.displayName?.slice(0, 1)}
+                      src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+                      alt="profile"
                     />
                   )}
                 </div>
@@ -236,7 +236,7 @@ const Dashboard = () => {
               </li>
               <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/hr-jobs" className="py-4 lg:text-lg">
-                  Posted Job
+                  Manage Jobs
                 </NavLink>
               </li>
               <li className="py-2 font-semibold">
@@ -268,13 +268,18 @@ const Dashboard = () => {
           {admin && (
             <>
               <li className="py-2 font-semibold">
+                <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
+                  Profile
+                </NavLink>
+              </li>
+              <li className="py-2 font-semibold">
                 <NavLink to="/dashboard/allHr" className="py-4 lg:text-lg">
                   Manage All Hr
                 </NavLink>
               </li>
               <li className="py-2 font-semibold">
-                <NavLink to="/dashboard/profile" className="py-4 lg:text-lg">
-                  Profile
+                <NavLink to="/dashboard/jobs" className="py-4 lg:text-lg">
+                  Manage All Jobs
                 </NavLink>
               </li>
             </>
