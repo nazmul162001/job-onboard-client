@@ -158,7 +158,7 @@ const Contact = () => {
       </div>
 
       {/* Meet Our Team  */}
-      <div className="container mx-auto px-5 lg:px-8 py-8" id='team'>
+      <div className="container mx-auto px-5 lg:px-8 py-8 mb-5" id='team'>
         <h2 className='text-center text-xl md:text-4xl font-mono font-bold pt-5 '>Meet Our Team </h2>
         <div className="line w-32 md:w-48 rounded-full opacity-70 h-1 mx-auto bg-primary mt-3 mb-8"></div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
