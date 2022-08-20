@@ -2,14 +2,14 @@ import React from 'react';
 import { RiEqualizerLine } from 'react-icons/ri';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FaSearchLocation } from "react-icons/fa";
-import { jobTypeList, salaryList } from '../../../data';
+import { jobTypeList } from '../../../data';
 
-const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locationHandle, cat }) => {
+const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, locationHandle, cat }) => {
 
   return (
-    <div className='space-y-5'>
+    <div className='space-y-5 text-black'>
       {/* filter header  */}
-      <div className='flex justify-between mb-2 text-xl lg:text-2xl font-bold font-mono'>
+      <div className='flex justify-between mb-2 text-black text-xl lg:text-2xl font-bold font-mono'>
         <h3>Filter Here</h3>
         <span className='icon md:hidden lg:block'><RiEqualizerLine /></span>
       </div>
