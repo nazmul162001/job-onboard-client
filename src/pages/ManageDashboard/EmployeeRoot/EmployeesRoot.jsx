@@ -26,6 +26,8 @@ const EmployeesRoot = () => {
     <Loading />;
   }
 
+  console.log(allEmployeDetails);
+
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
       title: "Are you sure?",
