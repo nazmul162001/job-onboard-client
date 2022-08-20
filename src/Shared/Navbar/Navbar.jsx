@@ -13,7 +13,8 @@ import useAdmin from "../../Hooks/useAdmin";
 import useHrManager from "../../Hooks/useHrManager";
 
 const Navbar = () => {
-  const { handleThemeChange, theme, image } = useContext(InitializeContext);
+  const { handleThemeChange, theme, profileUrl } =
+    useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const [hr] = useHrManager(user);
@@ -258,11 +259,13 @@ const Navbar = () => {
                       style={{ display: "grid" }}
                       className="w-10 h-10 rounded-full border bg-base-300 grid place-items-center ring ring-primary ring-offset-base-100 ring-offset-2"
                     >
-                      {auth?.currentUser?.photoURL ? (
-                        <img src={auth?.currentUser?.photoURL} alt="avatar" />
+                      {auth?.currentUser?.photoURL && !profileUrl ? (
+                        <img src={auth?.currentUser?.photoURL} alt="profile" />
+                      ) : !auth?.currentUser?.photoURL && profileUrl ? (
+                        <img src={profileUrl} alt="profile" />
                       ) : (
                         <img
-                          src={image}
+                          src="https://i.ibb.co/xY0rfV4/avatar.jpg"
                           alt="profile"
                         />
                       )}

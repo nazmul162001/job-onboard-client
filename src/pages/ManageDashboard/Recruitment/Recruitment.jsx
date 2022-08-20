@@ -21,7 +21,7 @@ const Recruitment = () => {
   return (
     <div className="p-5">
       <div className="title my-2 mb-6">
-        <h3 className="text-2xl font-semibold">Manage Posted Jobs</h3>
+        <h3 className="text-2xl font-semibold">Manage Recruitment Jobs</h3>
         <span>You can manage all the jobs which are posted by you</span>
       </div>
       {hrJobs?.length > 0 ? (
@@ -38,7 +38,7 @@ const Recruitment = () => {
               alt="order-not-found"
             />
             <h2 className="text-2xl py-3 font-semibold text-center">
-              Not Posted Jobs yet.
+              Not Recruitment Jobs yet.
             </h2>
           </div>
         </>

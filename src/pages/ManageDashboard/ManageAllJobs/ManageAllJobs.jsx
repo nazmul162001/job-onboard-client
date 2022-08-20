@@ -18,7 +18,7 @@ const ManageAllJobs = () => {
 
   const hrJobs = data?.data?.result;
 
-  if (isLoading) {
+  if (isLoading || !hrJobs || !hrJobs.length) {
     return <Loading />;
   }
 
