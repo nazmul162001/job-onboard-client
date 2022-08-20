@@ -91,7 +91,7 @@ const Candidates = () => {
               alt="order-not-found"
             />
             <h2 className="text-2xl py-3 font-semibold text-center">
-              Not Posted Jobs yet.
+              Not Candidates yet.
             </h2>
           </div>
         </>

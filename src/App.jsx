@@ -44,7 +44,7 @@ export const InitializeContext = createContext(null);
 
 function App() {
   const [theme, setTheme] = useState(false);
-  const [image] = useImage();
+  const [profileUrl] = useImage();
 
   useEffect(() => {
     setTheme(JSON.parse(window.localStorage.getItem("theme")));
@@ -56,7 +56,7 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-      <InitializeContext.Provider value={{ handleThemeChange, theme, image }}>
+      <InitializeContext.Provider value={{ handleThemeChange, theme, profileUrl }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

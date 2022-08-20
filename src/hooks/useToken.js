@@ -12,7 +12,6 @@ const useToken = (user) => {
           body: JSON.stringify({
             uid: user?.user?.uid,
             email: user?.user?.email,
-            displayName: user?.user?.displayName,
           }),
         })
           .then((res) => res.json())
