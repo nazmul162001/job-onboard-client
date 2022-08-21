@@ -1,7 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
