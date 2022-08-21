@@ -111,9 +111,15 @@ const WelcomeDashboard = () => {
                               </th>
                               <th
                                 scope="col"
-                                class="text-sm font-medium text-white px-6 py-4 "
+                                class="text-sm text-left font-medium text-white px-6 py-4 "
                               >
                                 Applicants
+                              </th>
+                              <th
+                                scope="col"
+                                class="text-sm  font-medium text-white px-6 py-4 "
+                              >
+                                Action
                               </th>
                             </tr>
                           </thead>
