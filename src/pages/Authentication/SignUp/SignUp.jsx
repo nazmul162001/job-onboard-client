@@ -13,6 +13,8 @@ import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import useToken from "../../../Hooks/useToken";
 import useTitle from "../../../Hooks/useTitle";
+import axios from "axios";
+import { BASE_API } from "../../../config";
 
 const SignUp = () => {
   useTitle("Sign Up as a Candidate");
@@ -66,9 +68,13 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
-    await updateProfile({ displayName: data.name });
+    const userData = {
+      displayName: data.displayName,
+    };
+    axios.put(`${BASE_API}/login`, userData);
+    await updateProfile({ displayName: userData.displayName });
     toast.success(
-      `Welcome ${data.name}! You are now registered as a Candidate.`,
+      `Welcome ${userData.displayName}! You are now registered as a Candidate.`,
       {
         position: "top-center",
       }
@@ -120,7 +126,7 @@ const SignUp = () => {
                           type="text"
                           placeholder="Your Name"
                           className="input input-bordered w-full max-w-md"
-                          {...register("name", {
+                          {...register("displayName", {
                             required: {
                               value: true,
                               message: "Name is Required",
@@ -128,9 +134,9 @@ const SignUp = () => {
                           })}
                         />
                         <label className="label">
-                          {errors.name?.type === "required" && (
+                          {errors.displayName?.type === "required" && (
                             <span className="label-text-alt text-red-500">
-                              {errors.name.message}
+                              {errors.displayName.message}
                             </span>
                           )}
                         </label>

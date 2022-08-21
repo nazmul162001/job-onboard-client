@@ -26,14 +26,13 @@ const HrJob = () => {
   return (
     <div className="p-5">
       <div className="title my-2 mb-6">
-        <h3 className="text-2xl font-mono">
-          Manage Company Jobs ({hrJob?.length})
-        </h3>
+        <h3 className="text-2xl font-semibold">Manage Company Jobs</h3>
+        <span>You can update & delete the jobs which are posted by you</span>
       </div>
       {hrJob?.length > 0 ? (
         <div className="md:p-4">
           <div className="overflow-x-auto">
-            <table className="table w-full">
+            <table className="table table-zebra  w-full">
               <thead>
                 <tr className="text-center">
                   <th>No</th>

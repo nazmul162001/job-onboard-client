@@ -161,10 +161,10 @@ const CompanyDetails = () => {
         <div className="text-center md:order-1">
           <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 shadow-xl">
             <div className=" w-60 rounded-xl">
-              {auth?.currentUser?.photoURL ? (
-                <img src={auth?.currentUser?.photoURL} alt="avatar" />
+              {profileUrl ? (
+                <img src={profileUrl} alt="avatar" />
               ) : (
-                <img src={profileUrl} alt="profile" />
+                <img src="https://i.ibb.co/xY0rfV4/avatar.jpg" alt="profile" />
               )}
             </div>
           </div>
