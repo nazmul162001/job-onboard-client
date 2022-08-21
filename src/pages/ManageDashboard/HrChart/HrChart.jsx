@@ -20,11 +20,13 @@ const HrChart = () => {
   const frontEnds = employeeData.filter(d => d.designation === "Front-End Developer")
   
   const backends = employeeData.filter(d => d.designation === "Back-End Developer")
+  const fullStack = employeeData.filter(d => d.designation === "Full-Stack Developer")
 
   const gendersM = employeeData.filter(d => d.gender === "Male")
   const gendersF = employeeData.filter(d => d.gender === "Female")
+  const gendersO = employeeData.filter(d => d.gender === "Others")
 
-  const other = employeeData.filter(d => d.designation !== "Front-End Developer" && d.designation !== "Back-End Developer")
+  const other = employeeData.filter(d => d.designation !== "Front-End Developer" && d.designation !== "Back-End Developer" && d.designation !== "Full-Stack Developer")
 
   // console.log(other);
 
@@ -32,13 +34,13 @@ const HrChart = () => {
 
   // charts 
   const options = {
-    series: [other.length, frontEnds.length, backends.length],
-    labels: [`Others-${other.length}`, `Front-End Developer-${frontEnds.length}`, `Backend-Developer-${backends.length}`],
+    series: [other.length, frontEnds.length, backends.length, fullStack.length],
+    labels: [`Others-${other.length}`, `Front-End Developer-${frontEnds.length}`, `Backend-Developer-${backends.length}`, `Full-Stack Developer-${fullStack.length}`],
     plotOptions: {
       pie: {
         expandOnClick:false,
         donut:{
-          size: "75px",
+          size: "70px",
           labels: {
             show: true,
             total: {
@@ -50,18 +52,18 @@ const HrChart = () => {
       }
     }
   }
-  const series = [other.length, frontEnds.length, backends.length];
+  const series = [other.length, frontEnds.length, backends.length, fullStack.length];
 
   // Genders HR 
   const gender = {
-    genderSeries: [gendersM.length, gendersF.length],
-    labels: [`Male-${gendersM.length}`, `Female-${gendersF.length}`],
+    genderSeries: [gendersM.length, gendersF.length, gendersO.length],
+    labels: [`Male-${gendersM.length}`, `Female-${gendersF.length}`, `Others-${gendersO.length}`],
     colors: ["#287872","#849028"],
     plotOptions: {
       pie: {
         expandOnClick:false,
         donut:{
-          size: "75px",
+          size: "70px",
           labels: {
             show: true,
             total: {
@@ -74,7 +76,7 @@ const HrChart = () => {
     }
   }
   
-  const genderSeries = [gendersM.length, gendersF.length];
+  const genderSeries = [gendersM.length, gendersF.length, gendersO.length];
 
   
   
