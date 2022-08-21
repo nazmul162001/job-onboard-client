@@ -376,9 +376,9 @@ const Dashboard = () => {
           {!admin && !hr &&  MenusCandidate.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={`flex linkk rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-2" : "mt-2"} ${
-                    index === 0 && "bg-[rgba(255,255,255,0.17)]"
+                    index === 0 && ""
                   } `}
                 >
                   {/* for mobile devicea */}

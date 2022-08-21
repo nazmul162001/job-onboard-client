@@ -4,8 +4,8 @@
   transition: all 0.5s;
 }
 .linkk:hover{
-  background:lightskyblue;
-  color: #000;
+  background:rgba(255,255,255,0.17);
+  color: white;
   transition: all 0.5s;
 }
 /* .active{
