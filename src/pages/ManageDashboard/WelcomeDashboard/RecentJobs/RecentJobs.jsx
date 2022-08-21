@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import { useQuery } from "@tanstack/react-query";
-import auth from '../../../Auth/Firebase/Firebase.init';
+import auth from '../../../../Auth/Firebase/Firebase.init';
 import axios from 'axios';
-import { BASE_API } from '../../../config';
+import { BASE_API } from '../../../../config';
 import { useNavigate } from 'react-router-dom';
+import demoImg from './demoImg.png'
 
 const RecentJobs = ({ myJob, index }) => {
 
@@ -39,12 +40,12 @@ const RecentJobs = ({ myJob, index }) => {
         <div class="avatar-group -space-x-8 container ">
           <div class="avatar">
             <div class="w-12">
-              <img src="https://placeimg.com/192/192/people" />
+              <img src={demoImg} alt='Candidate'/>
             </div>
           </div>
           <div class="avatar">
             <div class="w-12">
-              <img src="https://placeimg.com/192/192/people" />
+              <img src={demoImg} alt='Candidate'/>
             </div>
           </div>
           <div class="avatar placeholder">
