@@ -82,7 +82,9 @@ const WelcomeDashboard = () => {
                         <table class="min-w-full">
                           <thead class="border-b bg-primary ">
                             <tr className="text-center">
-                              <th scope="col"></th>
+                              <th 
+                              class="text-sm font-medium text-white px-6 py-4 "
+                              scope="col">No</th>
                               <th
                                 scope="col"
                                 class="text-sm font-medium text-white px-6 py-4 "
@@ -109,9 +111,15 @@ const WelcomeDashboard = () => {
                               </th>
                               <th
                                 scope="col"
-                                class="text-sm font-medium text-white px-6 py-4 "
+                                class="text-sm text-left font-medium text-white px-6 py-4 "
                               >
                                 Applicants
+                              </th>
+                              <th
+                                scope="col"
+                                class="text-sm  font-medium text-white px-6 py-4 "
+                              >
+                                Action
                               </th>
                             </tr>
                           </thead>
