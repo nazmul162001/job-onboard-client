@@ -5,8 +5,7 @@ import { BsPersonPlusFill, BsShieldPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../config";
-
-const AddEmployee = ({ refetch, setAddEmployeeDetails }) => {
+const AddEmployee = ({ refetch }) => {
   const [user] = useAuthState(auth);
   const hrUserEmail = user?.email;
   const {
@@ -40,7 +39,6 @@ const AddEmployee = ({ refetch, setAddEmployeeDetails }) => {
           });
           refetch();
           reset();
-          setAddEmployeeDetails(null);
         } else {
           Swal.fire({
             text: `Opps!`,
@@ -53,20 +51,18 @@ const AddEmployee = ({ refetch, setAddEmployeeDetails }) => {
 
   return (
     <div>
-      <input
-        type="checkbox"
-        id="add-new-employee-modal"
-        className="modal-toggle "
-      />
-      <div className="modal cursor-pointer ">
-        <div className="modal-box lg:w-10/12 lg:max-w-2xl modalContainer relative" for="">
+      <input type="checkbox" id="add-new-employee-modal" class="modal-toggle" />
+      <label for="add-new-employee-modal" class="modal cursor-pointer">
+        <label
+          class="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
+          for=""
+        >
           <label
             for="add-new-employee-modal"
             class="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-
           <div>
             <form
               className="space-y-2"
@@ -341,8 +337,8 @@ const AddEmployee = ({ refetch, setAddEmployeeDetails }) => {
               </button>
             </form>
           </div>
-        </div>
-      </div>
+        </label>
+      </label>
 
       <div className="modal-action">
         <label

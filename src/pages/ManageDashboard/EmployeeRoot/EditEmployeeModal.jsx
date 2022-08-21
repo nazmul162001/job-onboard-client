@@ -7,9 +7,9 @@ const EditEmployeeModal = ({
   editEmployeDetails,
   setEditEmployeDetails,
   refetch,
-  allEmployeDetails,
+ 
 }) => {
-  console.log(editEmployeDetails);
+  
   const {
     _id,
     fullName,

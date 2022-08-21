@@ -9,14 +9,14 @@ import EditEmployeeModal from "./EditEmployeeModal";
 import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
-  const [addEmployeeDetaiils, setAddEmployeeDetails] = useState(null);
+  const [removeModal, setRemoveModal] = useState(null);
+  const [addModal, setAddModal] = useState(true);
   const { data, isLoading, refetch } = useEmployeeInfo();
   if (isLoading) {
     return <Loading />;
   }
   const allEmployeDetails = data?.data;
-  // console.log(allEmployeDetails);
-
+  console.log(addModal);
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -49,6 +49,9 @@ const EmployeesRoot = () => {
       }
     });
   };
+  // const forModal =()=>{
+  //   if(removeModal){}
+  // }
 
   return (
     <section>
@@ -57,16 +60,7 @@ const EmployeesRoot = () => {
         <h2 className="text-center text-xl font-bold ">
           <span className="text-5xl font-serif text-primary">E</span>mployees
         </h2>
-        {addEmployeeDetaiils ? (
-          ""
-        ) : (
-          <AddEmployee
-            refetch={refetch}
-            addEmployeeDetaiils={addEmployeeDetaiils}
-            setAddEmployeeDetails={setAddEmployeeDetails}
-          />
-        )}
-        {/* <AddEmployee refetch={refetch} /> */}
+       <AddEmployee refetch={refetch}/>
       </div>
 
       {allEmployeDetails.length === 0 ? (

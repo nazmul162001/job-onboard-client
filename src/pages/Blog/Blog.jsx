@@ -4,6 +4,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { BASE_API } from "../../config";
 import Footer from "../../Shared/Footer/Footer";
+import AddBlog from "./AddBlog";
 import "./BlogCss/Blog.css";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -20,19 +21,27 @@ const Blog = () => {
   };
   return (
     <section className="container mx-auto">
-      <div className="titleContainer flex flex-col text-center my-4">
+      <div
+        className="flex justify-between items-center border-b-2 border-cyan-600 
+      h-20 mb-5"
+      >
+        <span></span>
         <h2 className="text-center text-2xl font-bold ">
-          <span className="text-4xl font-serif text-primary">W</span>elcome To
+          <span className="text-5xl font-serif text-primary">W</span>elcome To
           Our Blog
         </h2>
-        <span className="bg-primary w-48 h-1 mx-auto mt-2"></span>
+        <AddBlog />
+        {/* <AddEmployee setAddModal={setAddModal} /> */}
       </div>
 
       <div className="blogContainer">
         <div className="firstAndSecondContainer">
           <div className="firstBlog">
             {blogs.slice(0, 1).map((blog) => (
-              <div onClick={() => blogsDetails(blog._id)} class="card card-compact bg-base-100 shadow-xl cursor-pointer">
+              <div
+                onClick={() => blogsDetails(blog._id)}
+                class="card card-compact bg-base-100 shadow-xl cursor-pointer"
+              >
                 <span className="new absolute right-0 bg-indigo-900 px-4 py-1 text-white font-bold -top-1">
                   new
                 </span>
@@ -76,7 +85,10 @@ const Blog = () => {
         </div>
         <div className="thirdBlog px-3 lg:px-10 my-10 gap-8 grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
           {blogs.slice(1, 20000).map((blog) => (
-            <div onClick={() => blogsDetails(blog._id)} className="thirdInfo relative cursor-pointer">
+            <div
+              onClick={() => blogsDetails(blog._id)}
+              className="thirdInfo relative cursor-pointer"
+            >
               <div class="shadow-xl rounded-md overflow-hidden h-full">
                 <figure>
                   <img className="max-w-full" src={blog.image} alt="Shoes" />

@@ -9,7 +9,13 @@ import "./JobHunter.css";
 const JobHunter = () => {
   const { theme } = useContext(InitializeContext);
   return (
-    <section className="container mx-auto px-8 rounded-[40px] py-12 bg-base-300">
+    <section
+      className={
+        theme
+          ? "container mx-auto px-8 rounded-[40px] py-12 bg-[#0e0e0e30]"
+          : "container mx-auto px-8 rounded-[40px] py-12 bg-[#efefef30]"
+      }
+    >
       <div className="titleContainer flex flex-col text-center  text-5xl  ">
         <h1 className="bSectionTitle text-center text-2xl md:text-4xl font-bold ">
           For Job Seeker
