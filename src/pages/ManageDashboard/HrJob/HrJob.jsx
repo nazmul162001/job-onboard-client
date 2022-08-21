@@ -32,7 +32,7 @@ const HrJob = () => {
       {hrJob?.length > 0 ? (
         <div className="md:p-4">
           <div className="overflow-x-auto">
-            <table className="table w-full">
+            <table className="table table-zebra  w-full">
               <thead>
                 <tr className="text-center">
                   <th>No</th>

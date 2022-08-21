@@ -18,6 +18,10 @@ const WelcomeDashboard = () => {
   const allEmployeDetails = data?.data
 
   const [hrJobs] = useHrJob()
+  let revMyJob = [].concat(hrJobs).reverse().slice(0, 3);
+  // console.log(revMyJob);
+
+
   const { getApplicants } = useCandidate()
 
   return (
@@ -67,7 +71,70 @@ const WelcomeDashboard = () => {
               </div>
               {/* welcome dashbord */}
               <RecentApplication />
-              <RecentJobs />
+
+              {/* Recent Jobs  */}
+              <h2 className="my-3 font-bold">Recent Jobs</h2>
+              {revMyJob?.length > 0 ? (
+                <div class="flex flex-col">
+                  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                      <div class="overflow-hidden">
+                        <table class="min-w-full">
+                          <thead class="border-b bg-primary ">
+                            <tr className="text-center">
+                              <th scope="col"></th>
+                              <th
+                                scope="col"
+                                class="text-sm font-medium text-white px-6 py-4 "
+                              >
+                                Job Title
+                              </th>
+                              <th
+                                scope="col"
+                                class="text-sm font-medium text-white px-6 py-4 "
+                              >
+                                Posted Date
+                              </th>
+                              <th
+                                scope="col"
+                                class="text-sm font-medium text-white px-6 py-4 "
+                              >
+                                Salary
+                              </th>
+                              <th
+                                scope="col"
+                                class="text-sm font-medium text-white px-6 py-4 "
+                              >
+                                Location
+                              </th>
+                              <th
+                                scope="col"
+                                class="text-sm font-medium text-white px-6 py-4 "
+                              >
+                                Applicants
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {revMyJob?.map((myJob, index) => (
+                              <RecentJobs
+                                key={index}
+                                myJob={myJob}
+                                index={index}
+                              />
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="recent-application p-4 bg-orange-100 bg-opacity-40 rounded ">
+                  <p className='text-red-500'>No Jobs Found</p>
+                </div>
+              )}
+
               <HrChart />
             </div>
           </section>
