@@ -9,14 +9,10 @@ import { useNavigate } from 'react-router-dom';
 
 const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
-  
-  const {data,isLoading,refetch} = useCandidateInfo()
+  const {data,isLoading} = useCandidateInfo()
   const navigate = useNavigate();
   
-
   const userInfo = data?.data?.result
-
   // console.log(userInfo);
 
   if(isLoading){
@@ -31,9 +27,12 @@ const ApplicantModal = ({ job }) => {
   const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
   const createdDate = job?.createdDate
+  var time = new Date().getTime(); 
+  var date = new Date(time); 
+  var appliedDate = date
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId,createdDate }
+    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId,createdDate , appliedDate }
     console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",

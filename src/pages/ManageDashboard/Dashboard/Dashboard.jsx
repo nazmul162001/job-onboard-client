@@ -56,7 +56,7 @@ const Dashboard = () => {
             htmlFor="dashboard-sidebar"
             className="btn bg-base-300 text-black hover:text-white drawer-button lg:hidden "
           >
-            <BsGrid className="text-2xl" />
+            <BsGrid className={theme ? "text-2xl text-white" : "text-2xl"} />
           </label>
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
             Welcome,{" "}
