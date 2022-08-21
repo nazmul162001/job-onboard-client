@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsGrid } from "react-icons/bs";
-import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loader from "../../../Components/Loader/Loader";
@@ -14,6 +13,7 @@ import useHrManager from "../../../Hooks/useHrManager";
 import { InitializeContext } from "../../../App";
 import { BASE_API } from "../../../config";
 import { useQuery } from "@tanstack/react-query";
+import './Dashboard.css'
 
 const Dashboard = () => {
   const { handleThemeChange, theme, profileUrl } =
@@ -349,7 +349,7 @@ const Dashboard = () => {
           {!admin && hr &&  Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={`linkk flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-2" : ""} ${
                     index === 0 && "bg-light-white"
                   } `}
@@ -358,7 +358,7 @@ const Dashboard = () => {
                   <NavLink to= {`/dashboard${Menu.path}`} >
                   <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
                       
-                  </NavLink>
+                  </NavLink> 
                   {/* for large devicea */}
                   <span className={`${!open && "hidden"} origin-left duration-200`}>
                     <NavLink to= {`/dashboard${Menu.path}`} >
