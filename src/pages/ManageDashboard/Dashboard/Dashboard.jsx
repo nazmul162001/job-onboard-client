@@ -35,7 +35,7 @@ const Dashboard = () => {
     { title: "Company Info ", src: "Folder", path: "/company", gap: false },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "Chart_fill", path: "" },
+    { title: "Dashboard", src: "Chart_fill", path: "/" },
     { title: "Profile", src: "Setting", path: "/profile" },
     { title: "Applied Jobs", src: "Setting", path: "/appliedJobs", gap: false },
   ];
@@ -96,14 +96,14 @@ const Dashboard = () => {
               </span>
             </div>
           </span>
-          {/* {!hr && (
+          {!hr && (
             <Link
               to="/"
               className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
             >
               <img src={logo} alt="" className="w-24" />
             </Link>
-          )} */}
+          )}
           <div className="flex justify-center items-center gap-8">
             <li className="list-none hidden md:flex">
               <button
@@ -357,33 +357,21 @@ const Dashboard = () => {
               Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`rounded-md p-2 cursor-pointer text-gray-300 text-sm gap-x-4 
+                  className={`  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-2" : ""} ${
                     index === 0 && "bg-light-white"
                   } `}
                 >
                   {/* for mobile devicea */}
-<<<<<<< HEAD
-                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`} to= {`/dashboard${Menu.path}`} >
-                  <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                      
-                  <span className={`${!open && "hidden"} origin-left duration-200`}>
-                    <NavLink className="block p-0" to= {`/dashboard${Menu.path}`} >
-=======
-                  <NavLink to={`/dashboard${Menu.path}`}>
-                    <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                  </NavLink>
-                  {/* for large devicea */}
-                  <span
-                    className={`${!open && "hidden"} origin-left duration-200`}
-                  >
-                    <NavLink to={`/dashboard${Menu.path}`}>
->>>>>>> dc358a8822b239784417d7b68e4197fdbd756c8e
-                      {Menu.title}
-                    </NavLink>
-                  </span>
-                  </NavLink> 
-                  {/* for large device */}
+                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+               <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                   
+               <span className={`${!open && "hidden"} origin-left duration-200`}>
+                 <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                   {Menu.title}
+                 </NavLink>
+               </span>
+               </NavLink> 
                 </li>
               ))}
             <div
@@ -393,32 +381,6 @@ const Dashboard = () => {
               }`}
             >
               <i class="ri-arrow-go-back-line mr-3"></i>
-<<<<<<< HEAD
-                <button className={`${!open && "hidden"}`}>Log Out</button>
-              </div>
-        </ul>
-        <ul className="pt-6">
-          {!admin && !hr &&  MenusCandidate.map((Menu, index) => (
-               <li
-               key={index}
-               className={`flex rounded-md p-2 cursor-pointer text-gray-300 text-sm items-center gap-x-4 
-               ${Menu.gap ? "mt-2" : ""} ${
-                 index === 0 && "bg-light-white"
-               } `}
-             >
-               {/* for mobile devicea */}
-               <NavLink className={({ isActive }) => (isActive ? 'active-linkk flex items-center' : 'linkk flex items-center')} to= {`/dashboard${Menu.path}`} >
-               <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                   
-               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                 <NavLink className="block" to= {`/dashboard${Menu.path}`} >
-                   {Menu.title}
-                 </NavLink>
-               </span>
-               </NavLink> 
-               {/* for large devicea */}
-             </li>
-=======
               <button className={`${!open && "hidden"}`}>Log Out</button>
             </div>
           </ul>
@@ -427,24 +389,23 @@ const Dashboard = () => {
               !hr &&
               MenusCandidate.map((Menu, index) => (
                 <li
-                  key={index}
-                  className={`flex linkk rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                  ${Menu.gap ? "mt-2" : "mt-2"} ${index === 0 && ""} `}
-                >
-                  {/* for mobile devicea */}
-                  <NavLink to={`/dashboard${Menu.path}`}>
-                    <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                  </NavLink>
-                  {/* for large devicea */}
-                  <span
-                    className={`${!open && "hidden"} origin-left duration-200`}
-                  >
-                    <NavLink to={`/dashboard${Menu.path}`}>
-                      {Menu.title}
-                    </NavLink>
-                  </span>
-                </li>
->>>>>>> dc358a8822b239784417d7b68e4197fdbd756c8e
+                key={index}
+                className={`  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                ${Menu.gap ? "mt-2" : ""} ${
+                  index === 0 && "bg-light-white"
+                } `}
+              >
+                {/* for mobile devicea */}
+                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+             <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                 
+             <span className={`${!open && "hidden"} origin-left duration-200`}>
+               <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                 {Menu.title}
+               </NavLink>
+             </span>
+             </NavLink> 
+              </li>
               ))}
           </ul>
         </div>
