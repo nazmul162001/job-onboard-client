@@ -77,11 +77,10 @@ const WelcomeDashboard = () => {
               {/* Recent Applicants */}
               <h2 className="my-3 font-bold">Recent Applicants</h2>
               {revGetApplicants?.length > 0 ? (
-                <div>
-                  {revGetApplicants.map((revApplicant,index) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {revGetApplicants.map((revApplicant) => (
                     <RecentApplication 
-                    index={index}
-                    key={index}
+                    key={revApplicant?._id}
                     revApplicant={revApplicant}
                     />
                   ))}
