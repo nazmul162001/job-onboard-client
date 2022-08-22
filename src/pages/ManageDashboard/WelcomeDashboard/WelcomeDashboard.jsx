@@ -23,6 +23,8 @@ const WelcomeDashboard = () => {
 
 
   const { getApplicants } = useCandidate()
+  const revGetApplicants = [].concat(getApplicants).reverse().slice(0, 4)
+  // console.log(revGetApplicants);
 
   return (
     <div className="bg-base-300">
@@ -70,7 +72,27 @@ const WelcomeDashboard = () => {
                 </div>
               </div>
               {/* welcome dashbord */}
-              <RecentApplication />
+
+
+              {/* Recent Applicants */}
+              <h2 className="my-3 font-bold">Recent Applicants</h2>
+              {revGetApplicants?.length > 0 ? (
+                <div>
+                  {revGetApplicants.map((revApplicant,index) => (
+                    <RecentApplication 
+                    index={index}
+                    key={index}
+                    revApplicant={revApplicant}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="recent-application p-4 bg-orange-100 bg-opacity-40 rounded ">
+                  <p className='text-red-500'>No Applicants Found</p>
+                </div>
+              )}
+
+
 
               {/* Recent Jobs  */}
               <h2 className="my-3 font-bold">Recent Jobs</h2>
@@ -82,9 +104,9 @@ const WelcomeDashboard = () => {
                         <table class="min-w-full">
                           <thead class="border-b bg-primary ">
                             <tr className="text-center">
-                              <th 
-                              class="text-sm font-medium text-white px-6 py-4 "
-                              scope="col">No</th>
+                              <th
+                                class="text-sm font-medium text-white px-6 py-4 "
+                                scope="col">No</th>
                               <th
                                 scope="col"
                                 class="text-sm font-medium text-white px-6 py-4 "

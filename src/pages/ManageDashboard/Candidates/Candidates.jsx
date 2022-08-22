@@ -1,7 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import { BASE_API } from "../../../config";
 import useTitle from "../../../Hooks/useTitle";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import CandidatesMailModal from "./CandidatesMailModal";
 import { useState } from "react";
