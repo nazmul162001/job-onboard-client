@@ -90,7 +90,6 @@ const EmployeesRoot = () => {
       {editEmployeDetails && (
         <EditEmployeeModal
           editEmployeDetails={editEmployeDetails}
-          allEmployeDetails={allEmployeDetails}
           setEditEmployeDetails={setEditEmployeDetails}
           refetch={refetch}
         />

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
 import { BASE_API } from "../../config";
 import Footer from "../../Shared/Footer/Footer";
+import EditBlog from "./EditBlog";
 const BlogsDetail = () => {
   const [singleBlogs, setSingleBlog] = useState([]);
   const { blogId } = useParams();
@@ -28,6 +30,7 @@ const BlogsDetail = () => {
         </div>
 
         <div className="singleBlogDetails py-10">
+          <EditBlog singleBlogs={singleBlogs} />
           <div className="titleAndImg grid items-center gap-5 ">
             <h2 className="text-4xl font-bold leading-[3rem] ">{title}</h2>
             <img

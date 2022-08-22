@@ -1,80 +1,45 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { BsPersonPlusFill, BsShieldPlus } from "react-icons/bs";
-import Swal from "sweetalert2";
+import { BiEdit } from "react-icons/bi";
+import { BsShieldPlus } from "react-icons/bs";
 import { InitializeContext } from "../../App";
-import { BASE_API } from "../../config";
-import "./BlogCss/Blog.css";
-const AddBlog = () => {
+const EditBlog = ({ singleBlogs }) => {
+  const { image, title, about } = singleBlogs;
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
-
   const { theme } = useContext(InitializeContext);
-
-  const addBlog = (data) => {
-    const blogDetails = {
-      ...data,
-    };
-    fetch(`${BASE_API}/addBlogs`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(blogDetails),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            text: "Add Blog Successfully",
-            icon: "success",
-            confirmButtonText: "Okay",
-          });
-          // refetch();
-          reset();
-        } else {
-          Swal.fire({
-            text: `Opps!`,
-            icon: "error",
-            confirmButtonText: "Plz Try Again",
-          });
-        }
-      });
-  };
 
   return (
     <div>
       <div className="">
         <label
-          for="add-blog-modal"
-          className="mr-5 flex items-center bg-base-300 py-2 px-3 rounded-md font-bold cursor-pointer"
+          for="edit-blog-modal"
+          className="font-bold text-2xl text-blue-500 cursor-pointer"
         >
-          <BsPersonPlusFill />
-          Add Blog
+          <BiEdit />
         </label>
       </div>
-
-      <input type="checkbox" id="add-blog-modal" class="modal-toggle" />
-      <label for="add-blog-modal" class="modal cursor-pointer modalContainer">
-        <label class="modal-box relative " for="">
+      <input type="checkbox" id="edit-blog-modal" class="modal-toggle" />
+      <label for="edit-blog-modal" class="modal cursor-pointer modalContainer">
+        <label class="modal-box relative lg:w-10/12 lg:max-w-2xl " for="">
           <label
-            for="add-blog-modal"
+            for="edit-blog-modal"
             class="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <form action="" onSubmit={handleSubmit(addBlog)}>
+          <form action="" onSubmit={handleSubmit()}>
             <div className="flex flex-col mb-2">
               <label className="text-lg pl-2 mb-2">
                 Blog Image<span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
+                defaultValue={image}
                 placeholder="Add Blog Image"
                 className={
                   theme
@@ -98,6 +63,7 @@ const AddBlog = () => {
               </label>
               <input
                 type="text"
+                defaultValue={title}
                 placeholder="Add Blog Title"
                 className={
                   theme
@@ -117,11 +83,12 @@ const AddBlog = () => {
             </div>
             <div className="flex flex-col mb-10">
               <label className="text-lg pl-2 mb-2">
-                Blog Details<span className="text-red-500">*</span>
+                Blog Dtails<span className="text-red-500">*</span>
               </label>
               <textarea
                 type="text"
                 placeholder="Add Blog Details"
+                defaultValue={about}
                 className={
                   theme
                     ? "border rounded-lg py-1 text-lg pl-3 h-28 bg-black"
@@ -140,7 +107,7 @@ const AddBlog = () => {
             </div>
 
             <button className="rounded-lg text-lg py-1 font-bold  bg-primary w-full  flex items-center justify-center  text-white">
-              <BsShieldPlus /> Add
+              <BsShieldPlus /> Update
             </button>
           </form>
         </label>
@@ -149,4 +116,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;
