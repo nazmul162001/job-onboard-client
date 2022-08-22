@@ -5,7 +5,6 @@ import auth from '../../../../Auth/Firebase/Firebase.init';
 import axios from 'axios';
 import { BASE_API } from '../../../../config';
 import { useNavigate } from 'react-router-dom';
-import demoImg from './demoImg.png'
 
 const RecentJobs = ({ myJob, index }) => {
 
@@ -29,7 +28,7 @@ const RecentJobs = ({ myJob, index }) => {
   }
 
   return (
-    <tr class="bg-white text-center border-b transition duration-300 ease-in-out hover:bg-gray-100 py-5">
+    <tr class="bg-white text-black text-center border-b transition duration-300 ease-in-out hover:bg-gray-100 py-5">
       <th className='py-3'>{index + 1}.</th>
       <td className='py-3'>{myJob.jobTitle}</td>
       <td className='py-3'>{moment(myJob?.createdDate).format("MMMM DD, YYYY")}</td>
@@ -65,7 +64,7 @@ const RecentJobs = ({ myJob, index }) => {
         </div>
       </td>
       <td>
-        <button onClick={navigateToJob} className='btn btn-sm'>View</button>
+        <button onClick={navigateToJob} className='btn btn-sm btn-outline text-[12px] text-secondary '>View</button>
       </td>
     </tr>
   );

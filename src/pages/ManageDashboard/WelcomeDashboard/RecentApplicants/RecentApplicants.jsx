@@ -7,7 +7,7 @@ const RecentApplicants = ({ revApplicant }) => {
     <div className='shadow-lg hover:shadow-2xl p-5 text-center space-y-4 border rounded-lg '>
 
       <div class="avatar py-2 mx-auto relative">
-        <label class="absolute left-[-70px] top-2 text[-11px] border px-2  rounded-xl">Applied </label>
+        <label class="absolute left-[-60px] top-2 text-[12px] border px-2  rounded-xl">Applied </label>
         <div class="w-16 ring-2 rounded-full ">
           {profileUrl ? (
             <img src={profileUrl} alt="candidate" />
