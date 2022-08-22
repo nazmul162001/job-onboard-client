@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import { useQuery } from "@tanstack/react-query";
-import auth from '../../../Auth/Firebase/Firebase.init';
+import auth from '../../../../Auth/Firebase/Firebase.init';
 import axios from 'axios';
-import { BASE_API } from '../../../config';
+import { BASE_API } from '../../../../config';
 import { useNavigate } from 'react-router-dom';
+import demoImg from './demoImg.png'
 
 const RecentJobs = ({ myJob, index }) => {
 
@@ -17,7 +18,8 @@ const RecentJobs = ({ myJob, index }) => {
 
   // console.log(data);
   const countApplicant = data?.data
-  // console.log(countApplicant);
+  const revApplicant = [].concat(countApplicant).reverse()
+  // console.log(revApplicant[0]?.profileUrl);
   // console.log(myJob?._id)
 
   const navigate = useNavigate();
@@ -39,12 +41,20 @@ const RecentJobs = ({ myJob, index }) => {
         <div class="avatar-group -space-x-8 container ">
           <div class="avatar">
             <div class="w-12">
-              <img src="https://placeimg.com/192/192/people" />
+              {revApplicant[1]?.profileUrl ? (
+                <img src={revApplicant[1]?.profileUrl} alt="candidate" />
+              ) : (
+                <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt="demoCandidateImg" />
+              )}
             </div>
           </div>
           <div class="avatar">
             <div class="w-12">
-              <img src="https://placeimg.com/192/192/people" />
+              {revApplicant[0]?.profileUrl ? (
+                <img src={revApplicant[0]?.profileUrl} alt="candidate" />
+              ) : (
+                <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt="demoCandidateImg" />
+              )}
             </div>
           </div>
           <div class="avatar placeholder">
