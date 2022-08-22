@@ -116,6 +116,7 @@ function App() {
               }
             />
             <Route path="employee/:detailsId" element={<EmployeeDetails />} />
+            
             <Route path="appliedJobs" element={<AppliedJobs />} />
             <Route path="jobs" element={<ManageAllJobs />} />
             <Route

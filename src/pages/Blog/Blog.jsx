@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import auth from "../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../config";
+import useAdmin from "../../Hooks/useAdmin";
 import Footer from "../../Shared/Footer/Footer";
 import AddBlog from "./AddBlog";
 import "./BlogCss/Blog.css";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   const navigate = useNavigate();
   useEffect(() => {
     const url = `${BASE_API}/allBlogs`;
@@ -30,7 +35,7 @@ const Blog = () => {
           <span className="text-5xl font-serif text-primary">W</span>elcome To
           Our Blog
         </h2>
-        <AddBlog />
+        <div>{admin && <AddBlog />}</div>
         {/* <AddEmployee setAddModal={setAddModal} /> */}
       </div>
 
