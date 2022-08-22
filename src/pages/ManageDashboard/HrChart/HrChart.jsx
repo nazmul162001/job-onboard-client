@@ -84,7 +84,7 @@ const HrChart = () => {
     <section>
       <div className="chart mx-3 my-10 grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 py-3">
         <div className=" bg-white px-3 rounded">
-          <h2 className='text-xl font-medium my-3'>Headcount By Department</h2>
+          <h2 className='text-xl font-medium my-3 text-black'>Headcount By Department</h2>
           <Chart 
             options={options}
             series={series}
@@ -94,7 +94,7 @@ const HrChart = () => {
           />
         </div>
         <div className=" bg-white px-3 rounded">
-        <h2 className='text-xl font-medium my-3'>Gender Demographics</h2>
+        <h2 className='text-xl font-medium my-3 text-black'>Gender Demographics</h2>
           <Chart 
             options={gender}
             series={genderSeries}

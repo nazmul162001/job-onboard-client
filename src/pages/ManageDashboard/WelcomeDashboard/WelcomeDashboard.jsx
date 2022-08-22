@@ -27,7 +27,7 @@ const WelcomeDashboard = () => {
   // console.log(revGetApplicants);
 
   return (
-    <div className="bg-base-300">
+    <div className="bg-base-300 ">
       {user && (
         <div className="">
           <section className="h-full main_dashboard static z-10 ">
@@ -38,8 +38,8 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                   </div>
-                  <div className="card_details">
-                    <h2 className="font-bold text-xl">{getApplicants ? getApplicants?.length : 0}</h2>
+                  <div className="card_details text-black">
+                    <h2 className="font-bold text-xl ">{getApplicants ? getApplicants?.length : 0}</h2>
                     <p className="text-[14px]">Active Candidate</p>
                   </div>
                 </div>
@@ -47,7 +47,7 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
                   </div>
-                  <div className="card_details">
+                  <div className="card_details text-black">
                     <h2 className="font-bold text-xl">{hrJobs ? hrJobs?.length : 0}</h2>
                     <p className="text-[14px]">Active Jobs</p>
                   </div>
@@ -56,7 +56,7 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
                   </div>
-                  <div className="card_details">
+                  <div className="card_details text-black">
                     <h2 className="font-bold text-xl">0</h2>
                     <p className="text-[14px]">Draft Jobs</p>
                   </div>
@@ -65,7 +65,7 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
                   </div>
-                  <div className="card_details">
+                  <div className="card_details text-black">
                     <h2 className="font-bold text-xl">{allEmployeDetails ? allEmployeDetails?.length : 0}</h2>
                     <p className="text-[14px]">Team Members</p>
                   </div>
@@ -75,12 +75,12 @@ const WelcomeDashboard = () => {
 
 
               {/* Recent Applicants */}
-              <h2 className="my-3 font-bold">Recent Applicants</h2>
+              <h2 className="mt-5 mb-3 font-bold">Recent Applicants</h2>
               {revGetApplicants?.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                  {revGetApplicants.map((revApplicant) => (
+                  {revGetApplicants.map((revApplicant,index) => (
                     <RecentApplication 
-                    key={revApplicant?._id}
+                    key={index}
                     revApplicant={revApplicant}
                     />
                   ))}
@@ -94,7 +94,7 @@ const WelcomeDashboard = () => {
 
 
               {/* Recent Jobs  */}
-              <h2 className="my-3 font-bold">Recent Jobs</h2>
+              <h2 className="mt-5 mb-3 font-bold">Recent Jobs</h2>
               {revMyJob?.length > 0 ? (
                 <div class="flex flex-col">
                   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
