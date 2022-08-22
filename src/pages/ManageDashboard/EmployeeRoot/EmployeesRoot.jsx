@@ -9,14 +9,11 @@ import EditEmployeeModal from "./EditEmployeeModal";
 import "./EmployeeCss/Employee.css";
 const EmployeesRoot = () => {
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
-  const { data, isLoading, refetch } = useEmployeeInfo()
-
+  const { data, isLoading, refetch } = useEmployeeInfo();
   if (isLoading) {
-    <Loading />;
+    return <Loading />;
   }
-  const allEmployeDetails = data?.data
-  // console.log(allEmployeDetails);
-
+  const allEmployeDetails = data?.data;
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -49,26 +46,46 @@ const EmployeesRoot = () => {
       }
     });
   };
+  // const forModal =()=>{
+  //   if(removeModal){}
+  // }
 
   return (
     <section>
-      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-3">
+      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-2">
         <span></span>
-        <h2 className="text-center text-2xl font-bold ">
+        <h2 className="text-center text-xl font-bold ">
           <span className="text-5xl font-serif text-primary">E</span>mployees
         </h2>
         <AddEmployee refetch={refetch} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
-        {allEmployeDetails?.map((singleDetails) => (
-          <AllEmployees
-            key={singleDetails._id}
-            singleDetails={singleDetails}
-            setEditEmployeDetails={setEditEmployeDetails}
-            deleteEmployeeDetails={deleteEmployeeDetails}
-          />
-        ))}
-      </div>
+
+      {allEmployeDetails.length === 0 ? (
+        <>
+          <div className="grid place-items-center py-10">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyS0g4KI9aJhPYuJLsGMoKRd603nvd0Ia9YxxJ8kKw93PUkrhNx6LuIIQXM05YKdIL7Zc&usqp=CAU"
+              alt="order-not-found"
+            />
+            <h2 className="text-2xl py-3 font-semibold text-center">
+              No Employee Found
+            </h2>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5">
+            {allEmployeDetails?.map((singleDetails) => (
+              <AllEmployees
+                key={singleDetails._id}
+                singleDetails={singleDetails}
+                setEditEmployeDetails={setEditEmployeDetails}
+                deleteEmployeeDetails={deleteEmployeeDetails}
+              />
+            ))}
+          </div>
+        </>
+      )}
 
       {editEmployeDetails && (
         <EditEmployeeModal

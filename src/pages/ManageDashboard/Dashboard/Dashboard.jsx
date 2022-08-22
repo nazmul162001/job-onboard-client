@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { signOut } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -5,15 +6,14 @@ import { toast } from "react-hot-toast";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsGrid } from "react-icons/bs";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { InitializeContext } from "../../../App";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loader from "../../../Components/Loader/Loader";
-import useAdmin from "../../../Hooks/useAdmin";
-import logo from "../../Assets/logo/logo.png";
-import useHrManager from "../../../Hooks/useHrManager";
-import { InitializeContext } from "../../../App";
 import { BASE_API } from "../../../config";
-import { useQuery } from "@tanstack/react-query";
-import './Dashboard.css'
+import useAdmin from "../../../Hooks/useAdmin";
+import useHrManager from "../../../Hooks/useHrManager";
+import logo from "../../Assets/logo/logo.png";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const { handleThemeChange, theme, profileUrl } =
@@ -22,23 +22,24 @@ const Dashboard = () => {
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
 
-  // my dashboard sidebar 
+  // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "Chart_fill", path: "/" },
     { title: "Mails", src: "Chat", path: "/mails" },
-    { title: "Employee", src: "User", path: "/employee"},
-    { title: "Recruitment ", src: "Calendar" , path: "/recruitment"},
-    { title: "Candidates", src: "Search", path: "/candidates"},
-    { title: "Manage Jobs", src: "Chart" , path: "/hr-jobs"},
-    { title: "Company Info ", src: "Folder", path: "/company", gap: false},
+    { title: "Inbox", src: "Chat", path: "/CandidateMail" },
+    { title: "Employee", src: "User", path: "/employee" },
+    { title: "Recruitment ", src: "Calendar", path: "/recruitment" },
+    { title: "Candidates", src: "Search", path: "/candidates" },
+    { title: "Manage Jobs", src: "Chart", path: "/hr-jobs" },
+    { title: "Company Info ", src: "Folder", path: "/company", gap: false },
   ];
   const MenusCandidate = [
     { title: "Dashboard", src: "Chart_fill", path: "" },
-    { title: "Profile", src: "Setting" , path: "/profile"},
-    { title: "Applied Jobs", src: "Setting" , path: "/appliedJobs",  gap: false},
+    { title: "Profile", src: "Setting", path: "/profile" },
+    { title: "Applied Jobs", src: "Setting", path: "/appliedJobs", gap: false },
   ];
-  
+
   const { data, isLoading } = useQuery(["companyInfo"], () =>
     fetch(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
       headers: {
@@ -317,36 +318,43 @@ const Dashboard = () => {
       </div> */}
 
       {/* My Dashboard Sidebar  */}
-      
+
       <div className="flex">
-      <div
-        className={` ${
-          open ? "w-72" : "w-20 "
-        } bg-[#081A51] h-screen p-5  pt-8 relative duration-300`}
-      >
-        <img
-          src="./sidebar/control.png"  alt="control"
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51]
-           border-2 rounded-full  ${!open && "rotate-180"}`}
-          onClick={() => setOpen(!open)}
-        />
-        <div className="flex gap-x-4 items-center" onClick={()=> navigate("/")}>
+        <div
+          className={` ${
+            open ? "w-72" : "w-20 "
+          } bg-[#081A51] h-screen p-5  pt-8 relative duration-300`}
+        >
           <img
-            src="./sidebar/logo.png" alt=""
-            className={`cursor-pointer duration-500 ${
-              open && "rotate-[360deg]"
-            }`}
+            src="./sidebar/control.png"
+            alt="control"
+            className={`absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51]
+           border-2 rounded-full  ${!open && "rotate-180"}`}
+            onClick={() => setOpen(!open)}
           />
-          <h1
-            className={`text-white origin-left font-medium text-xl duration-200 ${
-              !open && "scale-0"
-            }`}
+          <div
+            className="flex gap-x-4 items-center"
+            onClick={() => navigate("/")}
           >
-            OnBoard
-          </h1>
-        </div>
-        <ul className="pt-6">
-          {!admin && hr &&  Menus.map((Menu, index) => (
+            <img
+              src="./sidebar/logo.png"
+              alt=""
+              className={`cursor-pointer duration-500 ${
+                open && "rotate-[360deg]"
+              }`}
+            />
+            <h1
+              className={`text-white origin-left font-medium text-xl duration-200 ${
+                !open && "scale-0"
+              }`}
+            >
+              OnBoard
+            </h1>
+          </div>
+          <ul className="pt-6">
+            {!admin &&
+              hr &&
+              Menus.map((Menu, index) => (
                 <li
                   key={index}
                   className={`rounded-md p-2 cursor-pointer text-gray-300 text-sm gap-x-4 
@@ -355,11 +363,22 @@ const Dashboard = () => {
                   } `}
                 >
                   {/* for mobile devicea */}
+<<<<<<< HEAD
                   <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`} to= {`/dashboard${Menu.path}`} >
                   <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
                       
                   <span className={`${!open && "hidden"} origin-left duration-200`}>
                     <NavLink className="block p-0" to= {`/dashboard${Menu.path}`} >
+=======
+                  <NavLink to={`/dashboard${Menu.path}`}>
+                    <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                  </NavLink>
+                  {/* for large devicea */}
+                  <span
+                    className={`${!open && "hidden"} origin-left duration-200`}
+                  >
+                    <NavLink to={`/dashboard${Menu.path}`}>
+>>>>>>> dc358a8822b239784417d7b68e4197fdbd756c8e
                       {Menu.title}
                     </NavLink>
                   </span>
@@ -367,8 +386,14 @@ const Dashboard = () => {
                   {/* for large device */}
                 </li>
               ))}
-              <div onClick={handleLogOut} className={`flex cursor-pointer text-white items-center absolute bottom-5 ${open && "border-2 px-6 py-1 transition-all"}`}>
+            <div
+              onClick={handleLogOut}
+              className={`flex cursor-pointer text-white items-center absolute bottom-5 ${
+                open && "border-2 px-6 py-1 transition-all"
+              }`}
+            >
               <i class="ri-arrow-go-back-line mr-3"></i>
+<<<<<<< HEAD
                 <button className={`${!open && "hidden"}`}>Log Out</button>
               </div>
         </ul>
@@ -393,13 +418,39 @@ const Dashboard = () => {
                </NavLink> 
                {/* for large devicea */}
              </li>
+=======
+              <button className={`${!open && "hidden"}`}>Log Out</button>
+            </div>
+          </ul>
+          <ul className="pt-6">
+            {!admin &&
+              !hr &&
+              MenusCandidate.map((Menu, index) => (
+                <li
+                  key={index}
+                  className={`flex linkk rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  ${Menu.gap ? "mt-2" : "mt-2"} ${index === 0 && ""} `}
+                >
+                  {/* for mobile devicea */}
+                  <NavLink to={`/dashboard${Menu.path}`}>
+                    <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                  </NavLink>
+                  {/* for large devicea */}
+                  <span
+                    className={`${!open && "hidden"} origin-left duration-200`}
+                  >
+                    <NavLink to={`/dashboard${Menu.path}`}>
+                      {Menu.title}
+                    </NavLink>
+                  </span>
+                </li>
+>>>>>>> dc358a8822b239784417d7b68e4197fdbd756c8e
               ))}
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
-      
+
       {/* END My Dashboard Sidebar  */}
-      
     </div>
   );
 };

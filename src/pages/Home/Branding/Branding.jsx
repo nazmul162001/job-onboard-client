@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { InitializeContext } from "../../../App";
 import "./Branding.css";
 const Branding = () => {
+  const { theme } = useContext(InitializeContext);
   const [sliderImg, setSliderImg] = useState([]);
   useEffect(() => {
     fetch("brandingSection.json")
@@ -13,8 +15,8 @@ const Branding = () => {
       .then((data) => setSliderImg(data));
   }, []);
   return (
-    <section className="brandingMainSection container mx-auto mt-5 md:mt-8 lg:mt-0 z-0 relative">
-      <div className="brandingContainer px-4">
+    <section className="brandingMainSection container mx-auto z-0 relative">
+      <div className="brandingContainer px-4 mb-20">
         <Swiper
           loop={true}
           spaceBetween={10}
@@ -40,8 +42,11 @@ const Branding = () => {
           className="mySwiper"
         >
           {sliderImg.map((singleImg) => (
-            <SwiperSlide key={singleImg._id}>
-              <img className="brandingImg" src={singleImg.picture} alt="" />
+            <SwiperSlide
+              key={singleImg._id}
+              className={theme ? "dark" : "noDark"}
+            >
+              <img src={singleImg.picture} alt="" />
             </SwiperSlide>
           ))}
         </Swiper>
