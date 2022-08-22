@@ -18,7 +18,8 @@ const RecentJobs = ({ myJob, index }) => {
 
   // console.log(data);
   const countApplicant = data?.data
-  // console.log(countApplicant);
+  const revApplicant = [].concat(countApplicant).reverse()
+  // console.log(revApplicant[0]?.profileUrl);
   // console.log(myJob?._id)
 
   const navigate = useNavigate();
@@ -40,12 +41,20 @@ const RecentJobs = ({ myJob, index }) => {
         <div class="avatar-group -space-x-8 container ">
           <div class="avatar">
             <div class="w-12">
-              <img src={demoImg} alt='Candidate'/>
+              {revApplicant[1]?.profileUrl ? (
+                <img src={revApplicant[1]?.profileUrl} alt="candidate" />
+              ) : (
+                <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt="demoCandidateImg" />
+              )}
             </div>
           </div>
           <div class="avatar">
             <div class="w-12">
-              <img src={demoImg} alt='Candidate'/>
+              {revApplicant[0]?.profileUrl ? (
+                <img src={revApplicant[0]?.profileUrl} alt="candidate" />
+              ) : (
+                <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt="demoCandidateImg" />
+              )}
             </div>
           </div>
           <div class="avatar placeholder">
