@@ -7,7 +7,9 @@ const EditEmployeeModal = ({
   editEmployeDetails,
   setEditEmployeDetails,
   refetch,
+ 
 }) => {
+  
   const {
     _id,
     fullName,
@@ -89,7 +91,8 @@ const EditEmployeeModal = ({
                   </label>
                   <input
                     type="text"
-                    defaultValue={fullName}
+                    value={fullName}
+                    onChange={() => fullName}
                     placeholder="Enter Full Name"
                     className="border rounded-lg py-1 text-lg pl-3 "
                     {...register("fullName", {
@@ -136,7 +139,7 @@ const EditEmployeeModal = ({
                     defaultValue={employeEmail}
                     placeholder="Enter your email"
                     className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("email", {
+                    {...register("employeEmail", {
                       required: {
                         value: true,
                         message: "Add Email !",
@@ -192,6 +195,7 @@ const EditEmployeeModal = ({
                     })}
                   >
                     <option selected>{gender}</option>
+                    <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
                   </select>
