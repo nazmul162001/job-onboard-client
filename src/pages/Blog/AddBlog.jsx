@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { InitializeContext } from "../../App";
 import { BASE_API } from "../../config";
 import "./BlogCss/Blog.css";
-const AddBlog = () => {
+const AddBlog = ({ refetch }) => {
   const {
     register,
     formState: { errors },
@@ -35,7 +35,7 @@ const AddBlog = () => {
             icon: "success",
             confirmButtonText: "Okay",
           });
-          // refetch();
+          refetch();
           reset();
         } else {
           Swal.fire({

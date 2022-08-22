@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
@@ -16,12 +17,16 @@ const Blog = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const navigate = useNavigate();
-  useEffect(() => {
-    const url = `${BASE_API}/allBlogs`;
-    fetch(url)
+
+  const { refetch } = useQuery(["allBlogs"], () =>
+    fetch(`${BASE_API}/allBlogs`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
-      .then((data) => setBlogs(data));
-  }, []);
+      .then((data) => setBlogs(data))
+  );
 
   const blogsDetails = (bdId) => {
     navigate(`${bdId}`);
@@ -37,9 +42,7 @@ const Blog = () => {
           <span className="text-5xl font-serif text-primary">W</span>elcome To
           Our Blog
         </h2>
-        {/* <div>{admin && <AddBlog />}</div> */}
-        <div>{<AddBlog />}</div>
-        {/* <AddEmployee setAddModal={setAddModal} /> */}
+        <div>{admin && <AddBlog refetch={refetch} />}</div>
       </div>
 
       {blogs.length === 0 ? (

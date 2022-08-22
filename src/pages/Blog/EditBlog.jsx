@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BiEdit } from "react-icons/bi";
 import { BsShieldPlus } from "react-icons/bs";
+import Swal from "sweetalert2";
 import { InitializeContext } from "../../App";
-const EditBlog = ({ singleBlogs }) => {
-  const { image, title, about } = singleBlogs;
+import { BASE_API } from "../../config";
+const EditBlog = ({ singleBlogs, refetch }) => {
+  const { image, title, about, _id } = singleBlogs;
   const {
     register,
     formState: { errors },
@@ -13,6 +15,38 @@ const EditBlog = ({ singleBlogs }) => {
   } = useForm();
   const { theme } = useContext(InitializeContext);
 
+  const editBlog = (data) => {
+    const editBlogData = { ...data };
+    const id = _id;
+    if (id) {
+      fetch(`${BASE_API}/editBlogs/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(editBlogData),
+        // const { id, name, location, email } = employe;
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            Swal.fire({
+              text: "Edit Successfully",
+              icon: "success",
+              confirmButtonText: "Okay",
+            });
+            refetch();
+            reset();
+          } else {
+            Swal.fire({
+              text: `Opps!`,
+              icon: "error",
+              confirmButtonText: "Plz Try Again",
+            });
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="">
@@ -32,7 +66,7 @@ const EditBlog = ({ singleBlogs }) => {
           >
             ✕
           </label>
-          <form action="" onSubmit={handleSubmit()}>
+          <form action="" onSubmit={handleSubmit(editBlog)}>
             <div className="flex flex-col mb-2">
               <label className="text-lg pl-2 mb-2">
                 Blog Image<span className="text-red-500">*</span>

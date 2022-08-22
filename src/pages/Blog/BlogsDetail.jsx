@@ -1,22 +1,42 @@
-import React, { useEffect, useState } from "react";
-
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import auth from "../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../config";
+import useAdmin from "../../Hooks/useAdmin";
 import Footer from "../../Shared/Footer/Footer";
 import EditBlog from "./EditBlog";
 const BlogsDetail = () => {
   const [singleBlogs, setSingleBlog] = useState([]);
   const { blogId } = useParams();
-  useEffect(() => {
-    const url = `${BASE_API}/allBlogs/${blogId}`;
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  // useEffect(() => {
+  //   const url = `${BASE_API}/allBlogs/${blogId}`;
 
-    fetch(url)
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => setSingleBlog(data));
+  // }, [blogId]);
+
+  const { refetch } = useQuery(["singleId"], () =>
+    fetch(`${BASE_API}/allBlogs/${blogId}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
-      .then((data) => setSingleBlog(data));
-  }, [blogId]);
+      .then((data) => setSingleBlog(data))
+  );
+  // const { data, refetch, isLoading } = useQueries(
+  //   () => `${BASE_API}/allBlogs/${blogId}`,
+  //   (res) => res.json()
+  // );
 
   const { title, image, about } = singleBlogs;
 
+  // `${BASE_API}/allBlogs/${blogId}`
   return (
     <section className="bg-base-400">
       <div className="container mx-auto px-3 lg:px-10">
@@ -30,7 +50,13 @@ const BlogsDetail = () => {
         </div>
 
         <div className="singleBlogDetails py-10">
-          <EditBlog singleBlogs={singleBlogs} />
+          {admin && (
+            <EditBlog
+              singleBlogs={singleBlogs}
+              setSingleBlog={setSingleBlog}
+              refetch={refetch}
+            />
+          )}
           <div className="titleAndImg grid items-center gap-5 ">
             <h2 className="text-4xl font-bold leading-[3rem] ">{title}</h2>
             <img
