@@ -1,0 +1,14 @@
+.linkk{
+  color: #fff;
+  gap: 15px;
+  transition: all 0.5s;
+}
+.linkk:hover{
+  background:rgba(255,255,255,0.17);
+  color: white;
+  transition: all 0.5s;
+}
+/* .active{
+  background: lightskyblue;
+  color: #000;
+} */
