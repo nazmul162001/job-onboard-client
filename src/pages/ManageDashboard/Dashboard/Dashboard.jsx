@@ -349,22 +349,22 @@ const Dashboard = () => {
           {!admin && hr &&  Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`linkk flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={`flex rounded-md p-2 cursor-pointer text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-2" : ""} ${
                     index === 0 && "bg-light-white"
                   } `}
                 >
                   {/* for mobile devicea */}
-                  <NavLink to= {`/dashboard${Menu.path}`} >
-                  <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                  <NavLink className={({ isActive }) => (isActive ? 'active-linkk flex items-center' : 'linkk flex items-center')} to= {`/dashboard${Menu.path}`} >
+                  <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
                       
-                  </NavLink> 
-                  {/* for large devicea */}
                   <span className={`${!open && "hidden"} origin-left duration-200`}>
-                    <NavLink to= {`/dashboard${Menu.path}`} >
+                    <NavLink className="block" to= {`/dashboard${Menu.path}`} >
                       {Menu.title}
                     </NavLink>
                   </span>
+                  </NavLink> 
+                  {/* for large devicea */}
                 </li>
               ))}
               <div onClick={handleLogOut} className={`flex cursor-pointer text-white items-center absolute bottom-5 ${open && "border-2 px-6 py-1 transition-all"}`}>
@@ -374,25 +374,25 @@ const Dashboard = () => {
         </ul>
         <ul className="pt-6">
           {!admin && !hr &&  MenusCandidate.map((Menu, index) => (
-                <li
-                  key={index}
-                  className={`flex linkk rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                  ${Menu.gap ? "mt-2" : "mt-2"} ${
-                    index === 0 && ""
-                  } `}
-                >
-                  {/* for mobile devicea */}
-                  <NavLink to= {`/dashboard${Menu.path}`} >
-                  <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                      
-                  </NavLink>
-                  {/* for large devicea */}
-                  <span className={`${!open && "hidden"} origin-left duration-200`}>
-                    <NavLink to= {`/dashboard${Menu.path}`} >
-                      {Menu.title}
-                    </NavLink>
-                  </span>
-                </li>
+               <li
+               key={index}
+               className={`flex rounded-md p-2 cursor-pointer text-gray-300 text-sm items-center gap-x-4 
+               ${Menu.gap ? "mt-2" : ""} ${
+                 index === 0 && "bg-light-white"
+               } `}
+             >
+               {/* for mobile devicea */}
+               <NavLink className={({ isActive }) => (isActive ? 'active-linkk flex items-center' : 'linkk flex items-center')} to= {`/dashboard${Menu.path}`} >
+               <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                   
+               <span className={`${!open && "hidden"} origin-left duration-200`}>
+                 <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                   {Menu.title}
+                 </NavLink>
+               </span>
+               </NavLink> 
+               {/* for large devicea */}
+             </li>
               ))}
         </ul>
       </div>
