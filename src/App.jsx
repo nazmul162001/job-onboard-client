@@ -37,6 +37,7 @@ import SupportAdmin from "./Shared/Support/SupportAdmin";
 import HrJob from "./Pages/ManageDashboard/HrJob/HrJob";
 import useImage from "./Hooks/useImage";
 import ManageAllJobs from "./Pages/ManageDashboard/ManageAllJobs/ManageAllJobs";
+import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
 
 export const InitializeContext = createContext(null);
 
@@ -54,7 +55,9 @@ function App() {
   };
   return (
     <div data-theme={theme && "night"}>
-      <InitializeContext.Provider value={{ handleThemeChange, theme, profileUrl }}>
+      <InitializeContext.Provider
+        value={{ handleThemeChange, theme, profileUrl }}
+      >
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -123,6 +126,14 @@ function App() {
               element={
                 <RequireHr>
                   <Recruitment />
+                </RequireHr>
+              }
+            />
+            <Route
+              path="recruitment/:candidatesID"
+              element={
+                <RequireHr>
+                  <SendMailCandidates />
                 </RequireHr>
               }
             />
