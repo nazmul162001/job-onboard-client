@@ -25,7 +25,7 @@ const Dashboard = () => {
   // my dashboard sidebar 
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "Chart_fill", path: "" },
+    { title: "Dashboard", src: "Chart_fill", path: "/" },
     { title: "Mails", src: "Chat", path: "/mails" },
     { title: "Employee", src: "User", path: "/employee"},
     { title: "Recruitment ", src: "Calendar" , path: "/recruitment"},
@@ -95,14 +95,14 @@ const Dashboard = () => {
               </span>
             </div>
           </span>
-          {!hr && (
+          {/* {!hr && (
             <Link
               to="/"
               className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
             >
               <img src={logo} alt="" className="w-24" />
             </Link>
-          )}
+          )} */}
           <div className="flex justify-center items-center gap-8">
             <li className="list-none hidden md:flex">
               <button
@@ -349,22 +349,22 @@ const Dashboard = () => {
           {!admin && hr &&  Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`flex rounded-md p-2 cursor-pointer text-gray-300 text-sm items-center gap-x-4 
+                  className={`rounded-md p-2 cursor-pointer text-gray-300 text-sm gap-x-4 
                   ${Menu.gap ? "mt-2" : ""} ${
                     index === 0 && "bg-light-white"
                   } `}
                 >
                   {/* for mobile devicea */}
-                  <NavLink className={({ isActive }) => (isActive ? 'active-linkk flex items-center' : 'linkk flex items-center')} to= {`/dashboard${Menu.path}`} >
+                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`} to= {`/dashboard${Menu.path}`} >
                   <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
                       
                   <span className={`${!open && "hidden"} origin-left duration-200`}>
-                    <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                    <NavLink className="block p-0" to= {`/dashboard${Menu.path}`} >
                       {Menu.title}
                     </NavLink>
                   </span>
                   </NavLink> 
-                  {/* for large devicea */}
+                  {/* for large device */}
                 </li>
               ))}
               <div onClick={handleLogOut} className={`flex cursor-pointer text-white items-center absolute bottom-5 ${open && "border-2 px-6 py-1 transition-all"}`}>

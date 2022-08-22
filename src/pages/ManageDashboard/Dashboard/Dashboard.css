@@ -1,33 +1,8 @@
-/* .linkk {
-  font-size: 16px;
-  color: white;
-  transition: color ease-in-out 300ms;
-  background-color: transparent;
-  display: block;
-  padding: 5px 15px;
-  display: flex;
-}
-
-.linkk:hover {
-  color: #ffbb00;
-  padding: 5px 15px;
-  background-color: gray;
-}
-.active-linkk {
-  text-decoration: none;
-  font-size: 16px;
-  transition: color ease-in-out 300ms;
-  color: #ffbb00;
-  background-color: transparent;
-  padding: 5px 15px;
-  background-color: gray;
-} */
-
-
 .linkk{
-  display: flex;
+  width: 100%;
+  display: inline-flex;
   color: #fff;
-  padding: 5px 15px;
+  /* padding: 8px 15px; */
   gap: 5px;
   transition: all 0.5s;
   border-radius: 5px;
@@ -40,7 +15,9 @@
 .active-linkk{
   background: rgba(255,255,255,0.17);
   color: white;
-  padding: 5px 15px;
+  /* padding: 8px 15px; */
   gap: 5px;
   border-radius: 5px;
+  width: 100%;
+  display: inline-flex;
 }
