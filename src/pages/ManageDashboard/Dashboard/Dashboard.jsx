@@ -25,7 +25,7 @@ const Dashboard = () => {
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "Chart_fill", path: "" },
+    { title: "Dashboard", src: "Chart_fill", path: "/" },
     { title: "Mails", src: "Chat", path: "/mails" },
     { title: "Inbox", src: "Chat", path: "/CandidateMail" },
     { title: "Employee", src: "User", path: "/employee" },
@@ -35,7 +35,7 @@ const Dashboard = () => {
     { title: "Company Info ", src: "Folder", path: "/company", gap: false },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "Chart_fill", path: "" },
+    { title: "Dashboard", src: "Chart_fill", path: "/" },
     { title: "Profile", src: "Setting", path: "/profile" },
     { title: "Applied Jobs", src: "Setting", path: "/appliedJobs", gap: false },
   ];
@@ -357,23 +357,21 @@ const Dashboard = () => {
               Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`linkk flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={`  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "mt-2" : ""} ${
                     index === 0 && "bg-light-white"
                   } `}
                 >
                   {/* for mobile devicea */}
-                  <NavLink to={`/dashboard${Menu.path}`}>
-                    <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                  </NavLink>
-                  {/* for large devicea */}
-                  <span
-                    className={`${!open && "hidden"} origin-left duration-200`}
-                  >
-                    <NavLink to={`/dashboard${Menu.path}`}>
-                      {Menu.title}
-                    </NavLink>
-                  </span>
+                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+               <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                   
+               <span className={`${!open && "hidden"} origin-left duration-200`}>
+                 <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                   {Menu.title}
+                 </NavLink>
+               </span>
+               </NavLink> 
                 </li>
               ))}
             <div
@@ -391,23 +389,23 @@ const Dashboard = () => {
               !hr &&
               MenusCandidate.map((Menu, index) => (
                 <li
-                  key={index}
-                  className={`flex linkk rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                  ${Menu.gap ? "mt-2" : "mt-2"} ${index === 0 && ""} `}
-                >
-                  {/* for mobile devicea */}
-                  <NavLink to={`/dashboard${Menu.path}`}>
-                    <img src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                  </NavLink>
-                  {/* for large devicea */}
-                  <span
-                    className={`${!open && "hidden"} origin-left duration-200`}
-                  >
-                    <NavLink to={`/dashboard${Menu.path}`}>
-                      {Menu.title}
-                    </NavLink>
-                  </span>
-                </li>
+                key={index}
+                className={`  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                ${Menu.gap ? "mt-2" : ""} ${
+                  index === 0 && "bg-light-white"
+                } `}
+              >
+                {/* for mobile devicea */}
+                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+             <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                 
+             <span className={`${!open && "hidden"} origin-left duration-200`}>
+               <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                 {Menu.title}
+               </NavLink>
+             </span>
+             </NavLink> 
+              </li>
               ))}
           </ul>
         </div>
