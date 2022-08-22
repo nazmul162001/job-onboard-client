@@ -4,11 +4,19 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { BASE_API } from "../../../config";
 import Loading from "../../../Components/Loading/Loading";
-import moment from 'moment';
+import moment from "moment";
 
 const HrJobRow = ({ job, index, refetch, isLoading }) => {
   const [editJobs, setEditJobs] = useState(null);
-  const { _id, jobTitle, jobType, salary, location, employees, openingPosition } = job;
+  const {
+    _id,
+    jobTitle,
+    jobType,
+    salary,
+    location,
+    employees,
+    openingPosition,
+  } = job;
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -37,7 +45,7 @@ const HrJobRow = ({ job, index, refetch, isLoading }) => {
           confirmButtonText: "Thank you.",
         });
         refetch();
-        setEditJobs(false)
+        setEditJobs(false);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -45,7 +53,7 @@ const HrJobRow = ({ job, index, refetch, isLoading }) => {
   };
 
   const handleDelete = () => {
-    const url = `${BASE_API}/jobs/${_id}`;
+    const url = `${BASE_API}/jobs/all/${_id}`;
     Swal.fire({
       text: `Are you sure delete this job ?`,
       icon: "warning",
@@ -60,17 +68,18 @@ const HrJobRow = ({ job, index, refetch, isLoading }) => {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-        }).then((data) => {
-          // console.log(data);
-          if (data.status) {
-            Swal.fire({
-              text: `Successfully Delete `,
-              icon: "success",
-              confirmButtonText: "Okay",
-            });
-            refetch();
-          }
-        });
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.deletedCount) {
+              Swal.fire({
+                text: `${jobTitle} Successfully Deleted`,
+                icon: "success",
+                confirmButtonText: "Okay",
+              });
+              refetch();
+            }
+          });
       }
     });
   };

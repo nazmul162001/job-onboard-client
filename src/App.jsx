@@ -33,6 +33,7 @@ import ManageAllJobs from "./Pages/ManageDashboard/ManageAllJobs/ManageAllJobs";
 import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import Profile from "./Pages/ManageDashboard/Profile/Profile";
 import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
+import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
 import Team from "./Pages/Team/Team";
 import Navbar from "./Shared/Navbar/Navbar";
@@ -137,6 +138,14 @@ function App() {
               element={
                 <RequireHr>
                   <Recruitment />
+                </RequireHr>
+              }
+            />
+            <Route
+              path="recruitment/:candidatesID"
+              element={
+                <RequireHr>
+                  <SendMailCandidates />
                 </RequireHr>
               }
             />
