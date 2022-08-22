@@ -78,9 +78,9 @@ const WelcomeDashboard = () => {
               <h2 className="mt-5 mb-3 font-bold">Recent Applicants</h2>
               {revGetApplicants?.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                  {revGetApplicants.map((revApplicant) => (
+                  {revGetApplicants.map((revApplicant,index) => (
                     <RecentApplication 
-                    key={revApplicant?._id}
+                    key={index}
                     revApplicant={revApplicant}
                     />
                   ))}
