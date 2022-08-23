@@ -91,113 +91,53 @@ const RecruitmentCard = ({ job }) => {
               >
                 ✕
               </label>
-              <div class="flex flex-col">
-                <div class="overflow-x-auto">
-                  <div class="py-2 inline-block min-w-full">
-                    <div class="overflow-hidden">
-                      <table class="min-w-full">
-                        <thead class="border-b bg-primary">
-                          <tr>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              No
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Candidates
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Applied For
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Phone
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Resume/Link
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Send Mail
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {countData?.map((applicant, index) => (
-                            <tr class="bg-base-100 border-b">
-                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                {index + 1}
-                              </td>
-
-                              <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                <div>
-                                  <div class="font-normal">
-                                    {applicant.displayName}
-                                  </div>
-                                  <div class="text-sm font-semibold">
-                                    {applicant.email}
-                                  </div>
-                                </div>
-                              </td>
-
-                              <td class="text-sm font-normal px-6 py-4 whitespace-nowrap">
-                                {applicant.jobTitle}
-                                <br />
-                                <span class="badge badge-ghost ">
-                                  {applicant.category}
-                                </span>
-                              </td>
-
-                              <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm opacity-70 font-semibold">
-                                  {applicant.number}
-                                </div>
-                              </td>
-
-                              <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
-                                <a
-                                  title="Resume/Link"
-                                  href={applicant.resume}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                >
-                                  <FaRegAddressBook size={25} />
-                                </a>
-                              </td>
-                              <td>
-                                <label
-                                  htmlFor="candidate-modal"
-                                  title="Click to send mail"
-                                  onClick={() =>
-                                    singleCandidates(applicant._id)
-                                  }
-                                  className="btn btn-sm text-white"
-                                >
-                                  Send
-                                </label>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+              {countData?.map((applicant) => (
+                <div
+                  className="shadow-lg hover:shadow-2xl relative"
+                  key={applicant._id}
+                >
+                  <div className="p-5 space-y-5">
+                    <div className="space-y-2">
+                      <div className="">
+                        <h2 className="text-xl font-semibold">
+                          {applicant.displayName}
+                        </h2>
+                        <br />
+                        <p className="text-lg md:text-xl lg:text-xl font-bold ">
+                          {applicant.email}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="flex font-semibold badge text-white">
+                      {applicant.category}{" "}
+                    </p>
+                    <p className="flex">
+                      {applicant.number}
+                    </p>
+                    <div className=" pt-3 flex justify-between items-center">
+                      <span className="flex gap-2">
+                        Resume: 
+                      <a
+                        title="Resume/Link"
+                        href={applicant.resume}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <FaRegAddressBook size={25} />
+                      </a>
+                      </span>
+                      <label
+                        htmlFor="candidate-modal"
+                        title="Click to send mail"
+                        onClick={() => singleCandidates(applicant._id)}
+                        className="btn btn-sm text-white"
+                      >
+                        Send Mail
+                      </label>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </>
