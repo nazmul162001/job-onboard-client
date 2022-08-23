@@ -460,7 +460,7 @@ const Dashboard = ({ children }) => {
         <ReactTooltip
           place="right"
           // effect = "solid"
-          backgroundColor="#ee04fb"
+          backgroundColor="#8b5cf6"
           textColor="white"
           border={true}
         />
