@@ -35,7 +35,7 @@ const HrChart = () => {
   // charts 
   const options = {
     series: [other.length, frontEnds.length, backends.length, fullStack.length],
-    labels: [`Others-${other.length}`, `Front-End Developer-${frontEnds.length}`, `Backend-Developer-${backends.length}`, `Full-Stack Developer-${fullStack.length}`],
+    labels: [`Others-${other.length}`, `FrontEnd-${frontEnds.length}`, `Backend-${backends.length}`, `Full-Stac-${fullStack.length}`],
     plotOptions: {
       pie: {
         expandOnClick:false,
