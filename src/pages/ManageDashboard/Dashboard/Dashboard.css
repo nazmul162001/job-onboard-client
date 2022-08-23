@@ -1,20 +1,20 @@
-.linkk{
+.link{
   width: 100%;
   display: inline-flex;
   color: #fff;
+  text-decoration: none;
   /* padding: 8px 15px; */
   /* gap: 5px; */
   transition: all 0.5s;
   border-radius: 5px;
 }
-.linkk:hover{
+.link:hover{
   background:rgba(255,255,255,0.17);
   color: white;
   transition: all 0.5s;
 }
-.active-linkk{
-  /* background: rgba(255,255,255,0.17); */
-  background: #017EFA;
+.active-link{
+  background: rgba(255,255,255,0.17);
   color: white;
   /* padding: 8px 15px; */
   /* gap: 5px; */
