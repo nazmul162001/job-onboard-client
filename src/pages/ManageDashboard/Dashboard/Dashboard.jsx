@@ -301,7 +301,7 @@ const Dashboard = ({children}) => {
       <main> {children} </main>
       {tooltip && <ReactTooltip 
       place = "right"
-      effect = "solid"
+      // effect = "solid"
       backgroundColor = "#ee04fb"
       textColor = "white"
       border = {true}
