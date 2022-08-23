@@ -13,6 +13,7 @@ import { BASE_API } from "../../../config";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
 import logo from "../../Assets/logo/logo.png";
+import ReactTooltip from 'react-tooltip';
 import "./Dashboard.css";
 
 const Dashboard = ({children}) => {
@@ -21,23 +22,29 @@ const Dashboard = ({children}) => {
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
+  const [tooltip, showTooltip] = useState(true);
 
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "Chart_fill", path: "/" },
+    { title: "Dashboard", src: "Chart_fill", tooltip: "Dashboard" , path: "/" },
     // { title: "Mails", src: "Chat", path: "/mails" },
-    { title: "Inbox", src: "Chat", path: "/CandidateMail" },
-    { title: "Employee", src: "User", path: "/employee" },
-    { title: "Recruitment ", src: "Calendar", path: "/recruitment" },
-    { title: "Candidates", src: "Search", path: "/candidates" },
-    { title: "Manage Jobs", src: "Chart", path: "/hr-jobs" },
-    { title: "Company Info ", src: "Folder", path: "/company", gap: false },
+    { title: "Inbox", src: "Chat", tooltip: "Inbox" , path: "/CandidateMail" },
+    { title: "Employee", src: "User", tooltip: "Employee" , path: "/employee" },
+    { title: "Recruitment ", src: "Calendar", tooltip: "Recruitment" , path: "/recruitment" },
+    { title: "Candidates", src: "Search", tooltip: "Candidates" , path: "/candidates" },
+    { title: "Manage Jobs", src: "Chart", tooltip: "Manage Jobs" , path: "/hr-jobs" },
+    { title: "Company Info ", src: "Folder", tooltip: "Company Info" , path: "/company", gap: false },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "Chart_fill", path: "/" },
-    { title: "Profile", src: "Setting", path: "/profile" },
-    { title: "Applied Jobs", src: "Setting", path: "/appliedJobs", gap: false },
+    { title: "Dashboard", src: "Chart_fill",tooltip: "Dashboard" , path: "/" },
+    { title: "Profile", src: "Setting", tooltip: "Profile" , path: "/profile" },
+    { title: "Applied Jobs", src: "Setting", tooltip: "Applied Jobs" , path: "/appliedJobs", gap: false },
+  ];
+  const MenusAdmin = [
+    { title: "Profile", src: "Setting", tooltip: "Profile" , path: "/profile" },
+    { title: "Manage All HR", src: "Setting", tooltip: "Manage All HR" , path: "/allHr" },
+    { title: "Manage All Jobs", src: "Setting", tooltip: "Manage All Jobs" , path: "/jobs" },
   ];
 
   const { data, isLoading } = useQuery(["companyInfo"], () =>
@@ -198,6 +205,37 @@ const Dashboard = ({children}) => {
               OnBoard
             </h1>
           </div>
+
+          {/* Admin Dashboard  */}
+          <ul className="pt-6">
+            {admin && MenusAdmin.map((Menu, index) => (
+                <li
+                key={index}
+                className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                ${Menu.gap ? "" : ""} ${
+                  index === 0 && "bg-light-white"
+                } `}
+              >
+                {/* for mobile devicea */}
+                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+            {open ? <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" /> : <img className="p-2" data-tip={Menu.tooltip} onMouseEnter={() =>   showTooltip(true)}
+            onMouseLeave={() => {
+            showTooltip(false);
+            setTimeout(() => showTooltip(true), 10);
+          }} src={`./sidebar/${Menu.src}.png`} alt="Side" />}
+                 
+             <span className={`${!open && "hidden"} origin-left duration-200`}>
+               <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                 {Menu.title}
+               </NavLink>
+             </span>
+             </NavLink> 
+              </li>
+              ))}
+          </ul>
+          
+          
+          {/* HR Dashboard  */}
           <ul className="pt-6">
             {!admin &&
               hr &&
@@ -211,7 +249,11 @@ const Dashboard = ({children}) => {
                 >
                   {/* for mobile devicea */}
                   <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
-               <img className={open ? "mr-2" : "p-2"} src={`./sidebar/${Menu.src}.png`} alt="Side" />
+              {open ? <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" /> : <img className="p-2" data-tip={Menu.tooltip} onMouseEnter={() =>   showTooltip(true)}
+              onMouseLeave={() => {
+              showTooltip(false);
+              setTimeout(() => showTooltip(true), 10);
+            }} src={`./sidebar/${Menu.src}.png`} alt="Side" />}
                    
                <span className={`${!open && "hidden"} origin-left duration-200`}>
                  <NavLink className="block" to= {`/dashboard${Menu.path}`} >
@@ -231,28 +273,33 @@ const Dashboard = ({children}) => {
               <button className={`${!open && "hidden"}`}>Log Out</button>
             </div>
           </ul>
+          {/* Candidate Dashboard  */}
           <ul className="pt-6">
             {!admin &&
               !hr &&
               MenusCandidate.map((Menu, index) => (
                 <li
-                key={index}
-                className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                ${Menu.gap ? "" : ""} ${
-                  index === 0 && "bg-light-white"
-                } `}
-              >
-                {/* for mobile devicea */}
-                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
-             <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                 
-             <span className={`${!open && "hidden"} origin-left duration-200`}>
-               <NavLink className="block" to= {`/dashboard${Menu.path}`} >
-                 {Menu.title}
-               </NavLink>
-             </span>
-             </NavLink> 
-              </li>
+                  key={index}
+                  className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  ${Menu.gap ? "" : ""} ${
+                    index === 0 && "bg-light-white"
+                  } `}
+                >
+                  {/* for mobile devicea */}
+                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+              {open ? <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" /> : <img className="p-2" data-tip={Menu.tooltip} onMouseEnter={() =>   showTooltip(true)}
+              onMouseLeave={() => {
+              showTooltip(false);
+              setTimeout(() => showTooltip(true), 10);
+            }} src={`./sidebar/${Menu.src}.png`} alt="Side" />}
+                   
+               <span className={`${!open && "hidden"} origin-left duration-200`}>
+                 <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                   {Menu.title}
+                 </NavLink>
+               </span>
+               </NavLink> 
+                </li>
               ))}
           </ul>
         </div>
@@ -260,6 +307,13 @@ const Dashboard = ({children}) => {
 
       {/* END My Dashboard Sidebar  */}
       <main> {children} </main>
+      {tooltip && <ReactTooltip 
+      place = "right"
+      // effect = "solid"
+      backgroundColor = "#ee04fb"
+      textColor = "white"
+      border = {true}
+      />}
     </div>
   );
 };
