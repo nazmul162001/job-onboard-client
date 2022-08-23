@@ -13,7 +13,8 @@
   transition: all 0.5s;
 }
 .active-linkk{
-  background: rgba(255,255,255,0.17);
+  /* background: rgba(255,255,255,0.17); */
+  background: #017EFA;
   color: white;
   /* padding: 8px 15px; */
   /* gap: 5px; */

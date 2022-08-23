@@ -27,24 +27,24 @@ const Dashboard = ({children}) => {
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "Chart_fill", tooltip: "Dashboard" , path: "/" },
+    { title: "Dashboard", src: "Dashboard", tooltip: "Dashboard" , path: "/" },
     // { title: "Mails", src: "Chat", path: "/mails" },
-    { title: "Inbox", src: "Chat", tooltip: "Inbox" , path: "/CandidateMail" },
+    { title: "Inbox", src: "Inbox", tooltip: "Inbox" , path: "/CandidateMail" },
     { title: "Employee", src: "User", tooltip: "Employee" , path: "/employee" },
-    { title: "Recruitment ", src: "Calendar", tooltip: "Recruitment" , path: "/recruitment" },
-    { title: "Candidates", src: "Search", tooltip: "Candidates" , path: "/candidates" },
-    { title: "Manage Jobs", src: "Chart", tooltip: "Manage Jobs" , path: "/hr-jobs" },
-    { title: "Company Info ", src: "Folder", tooltip: "Company Info" , path: "/company", gap: false },
+    { title: "Recruitment ", src: "Recruitment", tooltip: "Recruitment" , path: "/recruitment" },
+    { title: "Candidates", src: "Candidates", tooltip: "Candidates" , path: "/candidates" },
+    { title: "Manage Jobs", src: "ManageJob", tooltip: "Manage Jobs" , path: "/hr-jobs" },
+    { title: "Company Info ", src: "CompanyInfo", tooltip: "Company Info" , path: "/company", gap: false },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "Chart_fill",tooltip: "Dashboard" , path: "/" },
-    { title: "Profile", src: "Setting", tooltip: "Profile" , path: "/profile" },
-    { title: "Applied Jobs", src: "Setting", tooltip: "Applied Jobs" , path: "/appliedJobs", gap: false },
+    { title: "Dashboard", src: "Dashboard",tooltip: "Dashboard" , path: "/" },
+    { title: "Profile", src: "User", tooltip: "Profile" , path: "/profile" },
+    { title: "Applied Jobs", src: "Applied", tooltip: "Applied Jobs" , path: "/appliedJobs", gap: false },
   ];
   const MenusAdmin = [
-    { title: "Profile", src: "Setting", tooltip: "Profile" , path: "/profile" },
-    { title: "Manage All HR", src: "Setting", tooltip: "Manage All HR" , path: "/allHr" },
-    { title: "Manage All Jobs", src: "Setting", tooltip: "Manage All Jobs" , path: "/jobs" },
+    { title: "Profile", src: "User", tooltip: "Profile" , path: "/profile" },
+    { title: "Manage All HR", src: "ManageHr", tooltip: "Manage All HR" , path: "/allHr" },
+    { title: "Manage All Jobs", src: "ManageJobs", tooltip: "Manage All Jobs" , path: "/jobs" },
   ];
 
   const { data, isLoading } = useQuery(["companyInfo"], () =>
@@ -211,9 +211,9 @@ const Dashboard = ({children}) => {
             {admin && MenusAdmin.map((Menu, index) => (
                 <li
                 key={index}
-                className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                className={`  rounded-md cursor-pointer text-gray-300 text-sm items-center gap-x-4 
                 ${Menu.gap ? "" : ""} ${
-                  index === 0 && "bg-light-white"
+                  index === 0 && ""
                 } `}
               >
                 {/* for mobile devicea */}
@@ -242,9 +242,9 @@ const Dashboard = ({children}) => {
               Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={`  rounded-md cursor-pointer text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "" : ""} ${
-                    index === 0 && "bg-light-white"
+                    index === 0 && ""
                   } `}
                 >
                   {/* for mobile devicea */}
@@ -280,9 +280,9 @@ const Dashboard = ({children}) => {
               MenusCandidate.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={`  rounded-md cursor-pointer text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "" : ""} ${
-                    index === 0 && "bg-light-white"
+                    index === 0 && ""
                   } `}
                 >
                   {/* for mobile devicea */}
