@@ -5,3 +5,7 @@
 .jobsSidBarHidden::-webkit-scrollbar {
   display: none;
 }
+
+body{
+  overflow-x: hidden;
+}

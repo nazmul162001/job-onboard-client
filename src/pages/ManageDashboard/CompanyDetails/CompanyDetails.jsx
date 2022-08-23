@@ -86,7 +86,7 @@ const CompanyDetails = () => {
   } = result?.result;
 
   return (
-    <div>
+    <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
         <h2 className="text-center text-xl md:text-2xl font-semibold ">
           Company Information
@@ -173,6 +173,12 @@ const CompanyDetails = () => {
             {auth?.currentUser?.displayName}
           </h2>
           <small className="mt-4 font-bold">{auth?.currentUser?.email}</small>
+
+          <div className="mt-3">
+            <button className="btn btn-primary text-white">
+              Change Profile
+            </button>
+          </div>
         </div>
       </div>
       {editCompanyInfo && (

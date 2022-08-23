@@ -1,29 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { BsFolderSymlink, BsLink45Deg } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
-import { BASE_API } from "../../../config";
+import useAppliedJobs from "../../../Hooks/useAppliedJobs";
 import useTitle from "../../../Hooks/useTitle";
 
 const AppliedJobs = () => {
   useTitle("Applied Jobs");
-  const { data: appliedJobs, isLoading } = useQuery(["appliedJobs"], () =>
-    fetch(`${BASE_API}/applicants/applied?email=${auth?.currentUser?.email}`, {
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
-
+  const {appliedJobs , isLoading} = useAppliedJobs()
+  console.log(appliedJobs)
 
   if (isLoading) {
     return <Loading />;
   }
+  
   return (
-    <div className="p-5">
+    <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
         <h3 className="text-2xl font-semibold">Manage Applied Jobs</h3>
         <span>You can manage all the jobs which are applied by you</span>
