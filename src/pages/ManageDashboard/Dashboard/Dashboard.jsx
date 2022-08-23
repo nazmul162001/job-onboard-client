@@ -391,8 +391,8 @@ const Dashboard = ({ children }) => {
               ))}
             <div
               onClick={handleLogOut}
-              className={`flex cursor-pointer text-white items-center absolute bottom-5 ${
-                open && "border-2 px-20 py-1 transition-all"
+              className={`flex justify-center cursor-pointer text-white items-center absolute bottom-5 ${
+                open && "border-2 px-[5.8rem] py-1 transition-all hover:bg-white hover:text-black"
               }`}
             >
               <i class="ri-arrow-go-back-line mr-3"></i>
