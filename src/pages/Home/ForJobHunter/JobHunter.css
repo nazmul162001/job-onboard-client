@@ -1,10 +1,14 @@
-
 .roundedCircle {
   box-shadow: -2px -2px 0px 1px #c1aeae40;
+}
+.darkRoundedCircle {
+  box-shadow: -2px -2px 0px 1px #828df833;
 }
 .hunterImg img {
   object-fit: contain;
 }
+/* #7c707061 */
+
 .goBtn {
   position: absolute;
   bottom: 0;

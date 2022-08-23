@@ -23,6 +23,12 @@
 .firstBlog {
   margin-left: 5em;
 }
+.modalContainer input:focus,
+textarea:focus,
+select:focus {
+  background-color: rgba(248, 243, 243, 0.671);
+  outline-style: dotted;
+}
 
 @media screen and (max-width: 668px) {
   .firstAndSecondContainer {

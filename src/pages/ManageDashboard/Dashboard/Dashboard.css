@@ -1,14 +1,23 @@
 .linkk{
+  width: 100%;
+  display: inline-flex;
   color: #fff;
-  gap: 15px;
+  /* padding: 8px 15px; */
+  /* gap: 5px; */
   transition: all 0.5s;
+  border-radius: 5px;
 }
 .linkk:hover{
   background:rgba(255,255,255,0.17);
   color: white;
   transition: all 0.5s;
 }
-/* .active{
-  background: lightskyblue;
-  color: #000;
-} */
+.active-linkk{
+  background: rgba(255,255,255,0.17);
+  color: white;
+  /* padding: 8px 15px; */
+  /* gap: 5px; */
+  border-radius: 5px;
+  width: 100%;
+  display: inline-flex;
+}

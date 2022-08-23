@@ -8,11 +8,19 @@ import HrChart from "../HrChart/HrChart";
 import useHrJob from "../../../Hooks/useHrJob";
 import useCandidate from "../../../Hooks/useCandidate";
 import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
+import useHrManager from "../../../Hooks/useHrManager";
+import useAdmin from "../../../Hooks/useAdmin";
+import CandidateDashboard from "./CandidateDashboard/CandidateDashboard";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
+import Loading from "../../../Components/Loading/Loading";
 
 
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
+  const [hr, hrLoading] = useHrManager(user);
+  // console.log(hr);
 
   const { data } = useEmployeeInfo()
   const allEmployeDetails = data?.data
@@ -26,14 +34,19 @@ const WelcomeDashboard = () => {
   const revGetApplicants = [].concat(getApplicants).reverse().slice(0, 4)
   // console.log(revGetApplicants);
 
+  if(adminLoading || hrLoading){
+    return <Loading/>
+  }
+
   return (
     <div className="bg-base-300 ">
-      {user && (
+      {/* Hr Dashboard  */}
+      {hr && (
         <div className="">
           <section className="h-full main_dashboard static z-10 ">
             {/* main dashboard  */}
             <div className="">
-              <div className="dashboard_route bg-white grid grid-cols-2 md:grid-cols-4 items-center justify-center gap-3">
+              <div className="dashboard_route bg-white grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center justify-center gap-3">
                 <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
                   <div className="icon p-5">
                     <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
@@ -75,7 +88,7 @@ const WelcomeDashboard = () => {
 
 
               {/* Recent Applicants */}
-              <h2 className="mt-5 mb-3 font-bold">Recent Applicants</h2>
+              <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
               {revGetApplicants?.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                   {revGetApplicants.map((revApplicant,index) => (
@@ -86,15 +99,13 @@ const WelcomeDashboard = () => {
                   ))}
                 </div>
               ) : (
-                <div className="recent-application p-4 bg-orange-100 bg-opacity-40 rounded ">
+                <div className="recent-application p-4 bg-base-200 shadow rounded ">
                   <p className='text-red-500'>No Applicants Found</p>
                 </div>
               )}
 
-
-
               {/* Recent Jobs  */}
-              <h2 className="mt-5 mb-3 font-bold">Recent Jobs</h2>
+              <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Jobs</h2>
               {revMyJob?.length > 0 ? (
                 <div class="flex flex-col">
                   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -159,7 +170,7 @@ const WelcomeDashboard = () => {
                   </div>
                 </div>
               ) : (
-                <div className="recent-application p-4 bg-orange-100 bg-opacity-40 rounded ">
+                <div className="recent-application p-4 bg-base-200 shadow  rounded ">
                   <p className='text-red-500'>No Jobs Found</p>
                 </div>
               )}
@@ -169,6 +180,19 @@ const WelcomeDashboard = () => {
           </section>
         </div>
       )}
+
+
+
+      {/* Candidate Dashboard  */}
+      {!admin && !hr && user && (
+        <CandidateDashboard/>
+      )}
+
+      {/* Admin Dashboard  */}
+      {admin && (
+        <AdminDashboard/>
+      )}
+
     </div>
   );
 };
