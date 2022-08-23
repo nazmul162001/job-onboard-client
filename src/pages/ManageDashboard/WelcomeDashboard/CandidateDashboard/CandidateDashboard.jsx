@@ -87,7 +87,6 @@ const CandidateDashboard = () => {
               <p className='text-red-500'>No Task Found</p>
             </div>
 
-
           </div>
         </section>
       </div>

@@ -91,7 +91,7 @@ const Profile = () => {
   } = data?.data?.result;
 
   return (
-    <div>
+    <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
         <h2 className="text-center text-2xl font-semibold ">Profile</h2>
       </div>
@@ -123,7 +123,9 @@ const Profile = () => {
           <div className="flex justify-between items-center px-4 mb-4">
             <span>Name</span>
 
-            <span>{displayName ? displayName : auth?.currentUser?.displayName}</span>
+            <span>
+              {displayName ? displayName : auth?.currentUser?.displayName}
+            </span>
           </div>
           <hr className="border-dashed" />
 
@@ -205,6 +207,7 @@ const Profile = () => {
             )}
           </div>
         </div>
+
         <div className="text-center md:order-1">
           <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 shadow-xl">
             <div className=" w-60 rounded-xl">
@@ -218,10 +221,16 @@ const Profile = () => {
             </div>
           </div>
 
-          <h2 className="mt-4 font-bold text-xl">
+          {/* <h2 className="mt-4 font-bold text-xl">
             {auth?.currentUser?.displayName}
           </h2>
-          <small className="mt-4 font-bold">{auth?.currentUser?.email}</small>
+          <small className="mt-4 font-bold">{auth?.currentUser?.email}</small> */}
+
+          <div className="mt-3">
+            <button className="btn btn-primary text-white">
+              Change Profile
+            </button>
+          </div>
         </div>
       </div>
       {editProfile && (
