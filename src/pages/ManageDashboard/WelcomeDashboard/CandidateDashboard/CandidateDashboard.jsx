@@ -1,11 +1,26 @@
+import moment from 'moment';
 import React from 'react';
+import Loading from '../../../../Components/Loading/Loading';
+import useAppliedJobs from '../../../../Hooks/useAppliedJobs';
+import useTitle from '../../../../Hooks/useTitle';
 
 const CandidateDashboard = () => {
+  useTitle("Candidate Dashboard");
+  const { appliedJobs, isLoading } = useAppliedJobs()
+
+  const revAppliedJobs = [].concat(appliedJobs).reverse().slice(0, 4)
+  console.log(revAppliedJobs);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+
   return (
     <div>
       <div className="">
         <section className="h-full main_dashboard static z-10 ">
-        
+
           <div className="">
             <div className="dashboard_route bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3">
               <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
@@ -13,7 +28,7 @@ const CandidateDashboard = () => {
                   <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                 </div>
                 <div className="card_details text-black">
-                  {/* <h2 className="font-bold text-xl ">{getApplicants ? getApplicants?.length : 0}</h2> */}
+                  <h2 className="font-bold text-xl ">{appliedJobs ? appliedJobs?.length : 0}</h2>
                   <p className="text-[14px]">Applied Job</p>
                 </div>
               </div>
@@ -23,7 +38,7 @@ const CandidateDashboard = () => {
                 </div>
                 <div className="card_details text-black">
                   <h2 className="font-bold text-xl">0</h2>
-                  <p className="text-[14px]">Unfinish Job</p>
+                  <p className="text-[14px]">Unfinish Task</p>
                 </div>
               </div>
               <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
@@ -32,22 +47,26 @@ const CandidateDashboard = () => {
                 </div>
                 <div className="card_details text-black">
                   <h2 className="font-bold text-xl">0</h2>
-                  <p className="text-[14px]">New message</p>
+                  <p className="text-[14px]">New Task</p>
                 </div>
               </div>
             </div>
-            
+
 
             {/* Recent Applied Job */}
             <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applied Job</h2>
-            {/* {revGetApplicants?.length > 0 ? (
+            {revAppliedJobs?.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                {revGetApplicants.map((revApplicant, index) => (
-                  <RecentApplication
-                    key={index}
-                    revApplicant={revApplicant}
-                  />
-                ))}
+                {revAppliedJobs.map((revApplicant, index) => {
+                  return <div key={index} className="shadow-lg hover:shadow-2xl p-5  space-y-4 border rounded-lg relative">
+                    <label class="absolute right-2 top-2 text-[11px] border px-2  rounded-xl"> {revApplicant?.createdDate.slice(11,16)} , {moment(revApplicant?.createdDate).format("MMMM DD")} </label>
+                    <h2>{revApplicant?.jobTitle}</h2>
+                    <h2>{revApplicant?.companyName}</h2>
+                    <h2>{revApplicant?.category}</h2>
+                    <h2>{revApplicant?.hrName}</h2>
+                    <button className='btn btn-sm btn-outline text-[12px] text-secondary '>View Details</button>
+                  </div>
+                })}
               </div>
             ) : (
               <div className="recent-application p-4 bg-base-200 shadow rounded ">
@@ -126,7 +145,7 @@ const CandidateDashboard = () => {
               </div>
             )}  */}
 
-            
+
           </div>
         </section>
       </div>
