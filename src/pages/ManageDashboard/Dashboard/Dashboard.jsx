@@ -15,7 +15,7 @@ import useHrManager from "../../../Hooks/useHrManager";
 import logo from "../../Assets/logo/logo.png";
 import "./Dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = ({children}) => {
   const { handleThemeChange, theme, profileUrl } =
     useContext(InitializeContext);
   const [user] = useAuthState(auth);
@@ -26,7 +26,7 @@ const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "Chart_fill", path: "/" },
-    { title: "Mails", src: "Chat", path: "/mails" },
+    // { title: "Mails", src: "Chat", path: "/mails" },
     { title: "Inbox", src: "Chat", path: "/CandidateMail" },
     { title: "Employee", src: "User", path: "/employee" },
     { title: "Recruitment ", src: "Calendar", path: "/recruitment" },
@@ -66,9 +66,9 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="drawer drawer-mobile">
+    <div className="container">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content p-3 md:p-3">
+      <div className={`drawer-content p-3 md:p-3 ${open ? 'ml-72' : 'ml-24'}`}>
         <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 rounded-lg">
           <label
             htmlFor="dashboard-sidebar"
@@ -319,7 +319,7 @@ const Dashboard = () => {
 
       {/* My Dashboard Sidebar  */}
 
-      <div className="flex">
+      <div className="flex fixed top-0 h-screen left-0 z-50">
         <div
           className={` ${
             open ? "w-72" : "w-20 "
@@ -357,14 +357,14 @@ const Dashboard = () => {
               Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                  ${Menu.gap ? "mt-2" : ""} ${
+                  className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  ${Menu.gap ? "" : ""} ${
                     index === 0 && "bg-light-white"
                   } `}
                 >
                   {/* for mobile devicea */}
-                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`}  to= {`/dashboard${Menu.path}`} >
-               <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
+                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+               <img className={open ? "mr-2" : "p-2"} src={`./sidebar/${Menu.src}.png`} alt="Side" />
                    
                <span className={`${!open && "hidden"} origin-left duration-200`}>
                  <NavLink className="block" to= {`/dashboard${Menu.path}`} >
@@ -390,13 +390,13 @@ const Dashboard = () => {
               MenusCandidate.map((Menu, index) => (
                 <li
                 key={index}
-                className={`  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                ${Menu.gap ? "mt-2" : ""} ${
+                className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                ${Menu.gap ? "" : ""} ${
                   index === 0 && "bg-light-white"
                 } `}
               >
                 {/* for mobile devicea */}
-                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-2 px-5"}` : `linkk ${ open && "py-2 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
              <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" />
                  
              <span className={`${!open && "hidden"} origin-left duration-200`}>
@@ -412,6 +412,7 @@ const Dashboard = () => {
       </div>
 
       {/* END My Dashboard Sidebar  */}
+      <main> {children} </main>
     </div>
   );
 };

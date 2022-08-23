@@ -3,7 +3,7 @@
   display: inline-flex;
   color: #fff;
   /* padding: 8px 15px; */
-  gap: 5px;
+  /* gap: 5px; */
   transition: all 0.5s;
   border-radius: 5px;
 }
@@ -16,7 +16,7 @@
   background: rgba(255,255,255,0.17);
   color: white;
   /* padding: 8px 15px; */
-  gap: 5px;
+  /* gap: 5px; */
   border-radius: 5px;
   width: 100%;
   display: inline-flex;
