@@ -23,7 +23,7 @@ const AppliedJobs = () => {
     return <Loading />;
   }
   return (
-    <div className="p-5">
+    <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
         <h3 className="text-2xl font-semibold">Manage Applied Jobs</h3>
         <span>You can manage all the jobs which are applied by you</span>

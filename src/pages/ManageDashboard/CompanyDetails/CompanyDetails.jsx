@@ -173,6 +173,12 @@ const CompanyDetails = () => {
             {auth?.currentUser?.displayName}
           </h2>
           <small className="mt-4 font-bold">{auth?.currentUser?.email}</small>
+
+          <div className="mt-3">
+            <button className="btn btn-primary text-white">
+              Change Profile
+            </button>
+          </div>
         </div>
       </div>
       {editCompanyInfo && (
