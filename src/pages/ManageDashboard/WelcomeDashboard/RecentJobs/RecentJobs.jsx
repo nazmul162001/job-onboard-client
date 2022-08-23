@@ -23,10 +23,6 @@ const RecentJobs = ({ myJob, index }) => {
 
   const navigate = useNavigate();
 
-  const navigateToJob = () => {
-    navigate(`/job/${myJob?._id}`)
-  }
-
   return (
     <tr class="bg-white text-black text-center border-b transition duration-300 ease-in-out hover:bg-gray-100 py-5">
       <th className='py-3'>{index + 1}.</th>
@@ -64,7 +60,7 @@ const RecentJobs = ({ myJob, index }) => {
         </div>
       </td>
       <td>
-        <button onClick={navigateToJob} className='btn btn-sm btn-outline text-[12px] text-secondary '>View</button>
+        <button onClick={() => navigate(`/job/${myJob?._id}`)} className='btn btn-sm btn-outline text-[12px] text-secondary '>View</button>
       </td>
     </tr>
   );
