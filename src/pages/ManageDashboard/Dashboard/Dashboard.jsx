@@ -73,7 +73,7 @@ const Dashboard = ({children}) => {
   }
 
   return (
-    <div className="container">
+    <div className="my_dashboard">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
       <div className={`drawer-content p-3 md:p-3 ${open ? 'ml-72' : 'ml-24'}`}>
         <div className="header z-50 sticky top-0 flex justify-between items-center bg-base-300 p-4 rounded-lg">
