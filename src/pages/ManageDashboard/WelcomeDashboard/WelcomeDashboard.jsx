@@ -75,7 +75,7 @@ const WelcomeDashboard = () => {
 
 
               {/* Recent Applicants */}
-              <h2 className="mt-5 mb-3 font-bold">Recent Applicants</h2>
+              <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
               {revGetApplicants?.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                   {revGetApplicants.map((revApplicant,index) => (
@@ -86,7 +86,7 @@ const WelcomeDashboard = () => {
                   ))}
                 </div>
               ) : (
-                <div className="recent-application p-4 bg-orange-100 bg-opacity-40 rounded ">
+                <div className="recent-application p-4 bg-base-200 shadow rounded ">
                   <p className='text-red-500'>No Applicants Found</p>
                 </div>
               )}
@@ -94,7 +94,7 @@ const WelcomeDashboard = () => {
 
 
               {/* Recent Jobs  */}
-              <h2 className="mt-5 mb-3 font-bold">Recent Jobs</h2>
+              <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Jobs</h2>
               {revMyJob?.length > 0 ? (
                 <div class="flex flex-col">
                   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -159,7 +159,7 @@ const WelcomeDashboard = () => {
                   </div>
                 </div>
               ) : (
-                <div className="recent-application p-4 bg-orange-100 bg-opacity-40 rounded ">
+                <div className="recent-application p-4 bg-base-200 shadow  rounded ">
                   <p className='text-red-500'>No Jobs Found</p>
                 </div>
               )}
