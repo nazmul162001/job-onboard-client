@@ -37,14 +37,14 @@ const Dashboard = ({children}) => {
     { title: "Company Info ", src: "Folder", tooltip: "Company Info" , path: "/company", gap: false },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "Chart_fill", path: "/" },
-    { title: "Profile", src: "Setting", path: "/profile" },
-    { title: "Applied Jobs", src: "Setting", path: "/appliedJobs", gap: false },
+    { title: "Dashboard", src: "Chart_fill",tooltip: "Dashboard" , path: "/" },
+    { title: "Profile", src: "Setting", tooltip: "Profile" , path: "/profile" },
+    { title: "Applied Jobs", src: "Setting", tooltip: "Applied Jobs" , path: "/appliedJobs", gap: false },
   ];
   const MenusAdmin = [
-    { title: "Profile", src: "Setting", path: "/profile" },
-    { title: "Manage All HR", src: "Setting", path: "/allHr" },
-    { title: "Manage All Jobs", src: "Setting", path: "/jobs" },
+    { title: "Profile", src: "Setting", tooltip: "Profile" , path: "/profile" },
+    { title: "Manage All HR", src: "Setting", tooltip: "Manage All HR" , path: "/allHr" },
+    { title: "Manage All Jobs", src: "Setting", tooltip: "Manage All Jobs" , path: "/jobs" },
   ];
 
   const { data, isLoading } = useQuery(["companyInfo"], () =>
@@ -218,7 +218,11 @@ const Dashboard = ({children}) => {
               >
                 {/* for mobile devicea */}
                 <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
-             <img className={open ? "mr-2" : "p-2"} src={`./sidebar/${Menu.src}.png`} alt="Side" />
+            {open ? <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" /> : <img className="p-2" data-tip={Menu.tooltip} onMouseEnter={() =>   showTooltip(true)}
+            onMouseLeave={() => {
+            showTooltip(false);
+            setTimeout(() => showTooltip(true), 10);
+          }} src={`./sidebar/${Menu.src}.png`} alt="Side" />}
                  
              <span className={`${!open && "hidden"} origin-left duration-200`}>
                <NavLink className="block" to= {`/dashboard${Menu.path}`} >
@@ -275,23 +279,27 @@ const Dashboard = ({children}) => {
               !hr &&
               MenusCandidate.map((Menu, index) => (
                 <li
-                key={index}
-                className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-                ${Menu.gap ? "" : ""} ${
-                  index === 0 && "bg-light-white"
-                } `}
-              >
-                {/* for mobile devicea */}
-                <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
-             <img className={open ? "mr-2" : "p-2"} src={`./sidebar/${Menu.src}.png`} alt="Side" />
-                 
-             <span className={`${!open && "hidden"} origin-left duration-200`}>
-               <NavLink className="block" to= {`/dashboard${Menu.path}`} >
-                 {Menu.title}
-               </NavLink>
-             </span>
-             </NavLink> 
-              </li>
+                  key={index}
+                  className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  ${Menu.gap ? "" : ""} ${
+                    index === 0 && "bg-light-white"
+                  } `}
+                >
+                  {/* for mobile devicea */}
+                  <NavLink className={({ isActive }) => isActive ? `active-linkk ${ open && "py-3 my-1 px-5"}` : `linkk ${ open && "py-3 my-1 px-5"}`}  to= {`/dashboard${Menu.path}`} >
+              {open ? <img className="mr-2" src={`./sidebar/${Menu.src}.png`} alt="Side" /> : <img className="p-2" data-tip={Menu.tooltip} onMouseEnter={() =>   showTooltip(true)}
+              onMouseLeave={() => {
+              showTooltip(false);
+              setTimeout(() => showTooltip(true), 10);
+            }} src={`./sidebar/${Menu.src}.png`} alt="Side" />}
+                   
+               <span className={`${!open && "hidden"} origin-left duration-200`}>
+                 <NavLink className="block" to= {`/dashboard${Menu.path}`} >
+                   {Menu.title}
+                 </NavLink>
+               </span>
+               </NavLink> 
+                </li>
               ))}
           </ul>
         </div>
