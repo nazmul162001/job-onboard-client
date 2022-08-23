@@ -8,11 +8,19 @@ import HrChart from "../HrChart/HrChart";
 import useHrJob from "../../../Hooks/useHrJob";
 import useCandidate from "../../../Hooks/useCandidate";
 import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
+import useHrManager from "../../../Hooks/useHrManager";
+import useAdmin from "../../../Hooks/useAdmin";
+import CandidateDashboard from "./CandidateDashboard/CandidateDashboard";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
+import Loading from "../../../Components/Loading/Loading";
 
 
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
+  const [hr, hrLoading] = useHrManager(user);
+  // console.log(hr);
 
   const { data } = useEmployeeInfo()
   const allEmployeDetails = data?.data
@@ -26,9 +34,14 @@ const WelcomeDashboard = () => {
   const revGetApplicants = [].concat(getApplicants).reverse().slice(0, 4)
   // console.log(revGetApplicants);
 
+  if(adminLoading || hrLoading){
+    return <Loading/>
+  }
+
   return (
     <div className="bg-base-300 ">
-      {user && (
+      {/* Hr Dashboard  */}
+      {hr && (
         <div className="">
           <section className="h-full main_dashboard static z-10 ">
             {/* main dashboard  */}
@@ -90,8 +103,6 @@ const WelcomeDashboard = () => {
                   <p className='text-red-500'>No Applicants Found</p>
                 </div>
               )}
-
-
 
               {/* Recent Jobs  */}
               <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Jobs</h2>
@@ -169,6 +180,19 @@ const WelcomeDashboard = () => {
           </section>
         </div>
       )}
+
+
+
+      {/* Candidate Dashboard  */}
+      {!admin && !hr && user && (
+        <CandidateDashboard/>
+      )}
+
+      {/* Admin Dashboard  */}
+      {admin && (
+        <AdminDashboard/>
+      )}
+
     </div>
   );
 };
