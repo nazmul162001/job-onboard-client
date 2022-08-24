@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const CandidatesInbox = () => {
   return (
-    <div></div>
-  )
-}
+    <div>
+      <NavLink to="/dashboard/CandidateMail/incomeing">Incoming</NavLink>
+    </div>
+  );
+};
 
-export default CandidatesInbox
+export default CandidatesInbox;

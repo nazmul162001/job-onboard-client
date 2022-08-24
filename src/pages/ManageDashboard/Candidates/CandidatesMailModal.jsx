@@ -1,12 +1,14 @@
-import React, { useRef } from "react";
-import { BiLogInCircle } from "react-icons/bi";
-import useTitle from "../../../Hooks/useTitle";
 import emailjs from "@emailjs/browser";
+import React, { useRef } from "react";
 import toast from "react-hot-toast";
+import { BiLogInCircle } from "react-icons/bi";
+import auth from "../../../Auth/Firebase/Firebase.init";
+import { BASE_API } from "../../../config";
+import useTitle from "../../../Hooks/useTitle";
 
 const CandidatesMailModal = ({ mail }) => {
   const { displayName, email } = mail;
-
+  const hrEmail = auth.currentUser.email;
   useTitle("Mails");
   const form = useRef();
 
@@ -34,6 +36,36 @@ const CandidatesMailModal = ({ mail }) => {
           console.log(error.text);
         }
       );
+
+    const candidateName = e.target.to_name.value;
+    const candidateMail = e.target.from_name.value;
+    const mailSubject = e.target.subject.value;
+    const mailMessage = e.target.message.value;
+
+    const candidateInfo = {
+      candidateName: candidateName,
+      candidateMail: candidateMail,
+      mailSubject: mailSubject,
+      mailMessage: mailMessage,
+      hrEmail: hrEmail,
+    };
+    fetch(`${BASE_API}/addCandidateInfo`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+
+      body: JSON.stringify(candidateInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Done");
+        } else {
+          toast.error("Something Wrong");
+        }
+      });
   };
   return (
     <div>

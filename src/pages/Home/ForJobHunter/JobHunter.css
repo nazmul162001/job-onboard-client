@@ -25,13 +25,13 @@
   visibility: visible;
   bottom: 0;
   right: 0;
-  width: 30%;
-  padding: 20px 0px;
+  width: 20%;
+  padding: 14px 0px;
 }
 .SeekerIcon {
   font-size: 25px;
   display: none;
-  margin-left: 40px;
+  margin-left: 20px;
   transition: 0.2s;
 }
 .jobHunterInfoContainer:hover .SeekerIcon {
