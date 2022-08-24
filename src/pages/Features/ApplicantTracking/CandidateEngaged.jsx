@@ -4,7 +4,7 @@ import engaged from '../../Assets/images/applicants-tracking/engaged.svg'
 
 const CandidateEngaged = () => {
   return (
-    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black'>
+    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20'>
       {/* openings  */}
       <div className="opening_main">
         <h2 className='my-2 text-4xl font-bold'>Candidate engagement software</h2>

@@ -103,7 +103,7 @@ const Navbar = () => {
                 className="menu menu-compact dropdown-content mt-4 p-2 shadow-xl bg-base-100 rounded-box w-72 border"
               >
                 {NavbarMenus}
-                {!user ? (
+                {!user && (
                   <li className="list-none md:hidden flex justify-start items-start text-start">
                     <button
                       onClick={handleThemeChange}
@@ -128,8 +128,6 @@ const Navbar = () => {
                       )}
                     </button>
                   </li>
-                ) : (
-                  <></>
                 )}
               </ul>
             </div>
@@ -148,16 +146,14 @@ const Navbar = () => {
                     className="ml-[4.5rem] md:ml-64 lg:ml-0 w-24 lg:w-32"
                   />
                 )}
-                {/* <span className="text-xl font-bold hidden md:block">Job Onboard</span>
-                <span className="hidden"></span> */}
               </Link>
             </div>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0 gap-3">{NavbarMenus}</ul>
           </div>
-          <div className="navbar-end gap-3">
-            <div className="hidden md:block">
+          <div className="navbar-end gap-4">
+            <div className={`${user ? "block" : "hidden md:block"}`}>
               <button
                 onClick={handleThemeChange}
                 className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
