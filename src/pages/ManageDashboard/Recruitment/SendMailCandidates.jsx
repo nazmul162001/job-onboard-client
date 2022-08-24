@@ -57,7 +57,7 @@ const SendMailCandidates = () => {
   return (
     <div className="p-5">
     <div className="title my-2 mb-6 text-center">
-      <span>Sending Mail to : <strong>{candidate.email}</strong></span>
+      <span>Sending Mail to : <strong>{candidate?.email}</strong></span>
     </div>
       <form
         ref={form}
@@ -77,7 +77,7 @@ const SendMailCandidates = () => {
             id="name"
             type="text"
             name="to_name"
-            value={candidate.displayName}
+            value={candidate?.displayName}
             placeholder="Input your name"
             className="input input-bordered w-full hover:border-primary duration-300"
           />
@@ -90,7 +90,7 @@ const SendMailCandidates = () => {
             id="email"
             name="from_name"
             type="email"
-            value={candidate.email}
+            value={candidate?.email}
             placeholder="Input your email"
             className="input input-bordered w-full hover:border-primary duration-300"
           />
