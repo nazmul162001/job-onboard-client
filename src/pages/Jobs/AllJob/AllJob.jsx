@@ -73,7 +73,7 @@ const AllJob = () => {
 
       <div className="container mx-auto py-5 bg-base-300 grid grid-cols-12">
 
-        <div className="sidebar basis-64 m-4 p-4 col-span-12 rounded-lg bg-white overflow-y-auto md:col-start-1 md:col-end-5 lg:col-start-2 lg:col-end-5 md:shadow-md md:sticky md:top-[120px] md:h-[90vh]">
+        <div className="sidebar basis-64 m-4 p-4 col-span-12 rounded-lg bg-base-100 overflow-y-auto md:col-start-1 md:col-end-5 lg:col-start-2 lg:col-end-5 md:shadow-md md:sticky md:top-[120px] md:h-[90vh]">
           <Sidebar
             jobType={jobType}
             jobTypeHandle={jobTypeHandle}
