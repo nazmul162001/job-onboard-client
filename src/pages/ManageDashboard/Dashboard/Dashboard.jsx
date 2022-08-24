@@ -57,11 +57,11 @@ const Dashboard = ({ children }) => {
     },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "Dashboard", tooltip: "Dashboard", path: "/" },
-    { title: "Profile", src: "User", tooltip: "Profile", path: "/profile" },
+    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Applied Jobs",
-      src: "Applied",
+      src: "ri-calendar-check-fill",
       tooltip: "Applied Jobs",
       path: "/appliedJobs",
       gap: false,
@@ -400,40 +400,47 @@ const Dashboard = ({ children }) => {
               MenusCandidate.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                  className={` flex rounded-md cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
                   ${Menu.gap ? "" : ""} ${index === 0 && "bg-light-white"} `}
                 >
                   {/* for mobile devicea */}
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link ${open && "py-3 my-1 px-5"}`
-                        : `link ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        : `flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <img
-                        className="mr-2"
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      // <img
+                      //   className="mr-2"
+                      //   src={`./sidebar/${Menu.src}.png`}
+                      //   alt="Side"
+                      // />
+                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <img
-                        className="p-2"
-                        data-tip={Menu.tooltip}
-                        onMouseEnter={() => showTooltip(true)}
-                        onMouseLeave={() => {
-                          showTooltip(false);
-                          setTimeout(() => showTooltip(true), 10);
-                        }}
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      // <img
+                      //   className="p-2"
+                      //   data-tip={Menu.tooltip}
+                      //   onMouseEnter={() => showTooltip(true)}
+                      //   onMouseLeave={() => {
+                      //     showTooltip(false);
+                      //     setTimeout(() => showTooltip(true), 10);
+                      //   }}
+                      //   src={`./sidebar/${Menu.src}.png`}
+                      //   alt="Side"
+                      // />
+                      <i class={`p-2 text-xl ${Menu.src}`}                         data-tip={Menu.tooltip}
+                      onMouseEnter={() => showTooltip(true)}
+                      onMouseLeave={() => {
+                        showTooltip(false);
+                        setTimeout(() => showTooltip(true), 10);
+                      }} ></i>
                     )}
 
                     <span
-                      className={`${
+                      className={` ${
                         !open && "hidden"
                       } origin-left duration-200`}
                     >
