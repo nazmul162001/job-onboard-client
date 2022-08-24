@@ -7,7 +7,8 @@ import { BASE_API } from "../../../config";
 import useTitle from "../../../Hooks/useTitle";
 
 const CandidatesMailModal = ({ mail }) => {
-  const { displayName, email } = mail;
+  console.log(mail)
+  const { displayName, email, } = mail;
   const hrEmail = auth.currentUser.email;
   useTitle("Mails");
   const form = useRef();
@@ -47,6 +48,7 @@ const CandidatesMailModal = ({ mail }) => {
       candidateMail: candidateMail,
       mailSubject: mailSubject,
       mailMessage: mailMessage,
+
       hrEmail: hrEmail,
     };
     fetch(`${BASE_API}/addCandidateInfo`, {

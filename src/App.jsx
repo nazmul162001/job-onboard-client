@@ -103,7 +103,7 @@ function App() {
                 </RequireAuth>
               }
             >
-              <Route path="Sent" element={<SendMail />} />
+              <Route path="Send" element={<SendMail />} />
               <Route path="Incoming" element={<IncomingMail />} />
             </Route>
 

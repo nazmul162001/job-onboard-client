@@ -10,3 +10,7 @@
       box-shadow: inset 0px 3px 7px #d6d6e7;
       transform: translateY(2px);
   }
+  .hrAllCandidatesContainer {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
