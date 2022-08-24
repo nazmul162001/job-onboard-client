@@ -22,6 +22,9 @@ import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
 import CandidatesInbox from "./Pages/ManageDashboard/CandidatesInbox/CandidatesInbox";
+import IncomingMail from "./Pages/ManageDashboard/CandidatesInbox/IncomingMail";
+
+import { SendMail } from "./Pages/ManageDashboard/CandidatesInbox/SendMail";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
@@ -99,7 +102,10 @@ function App() {
                   <CandidatesInbox />
                 </RequireAuth>
               }
-            />
+            >
+              <Route path="Sent" element={<SendMail />} />
+              <Route path="Incoming" element={<IncomingMail />} />
+            </Route>
 
             <Route index element={<WelcomeDashboard />} />
             <Route
