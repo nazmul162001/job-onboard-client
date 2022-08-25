@@ -22,6 +22,9 @@ import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
 import CandidatesInbox from "./Pages/ManageDashboard/CandidatesInbox/CandidatesInbox";
+import GetHrCandidateMail from "./Pages/ManageDashboard/CandidatesInbox/GetHrCandidateMail";
+import IncomeingCandidateMessage from "./Pages/ManageDashboard/CandidatesInbox/IncomeingCandidateMessage";
+
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
@@ -76,7 +79,6 @@ function App() {
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>
           <Route path="contact-us" element={<Contact />}></Route>
-
           <Route path="/about" element={<AboutUs />} />
           <Route path="/team" element={<Team />} />
           <Route path="/login" element={<Login />} />
@@ -92,6 +94,18 @@ function App() {
               </RequireAuth>
             }
           >
+            <Route
+              path="CandidateMail"
+              element={
+                <RequireAuth>
+                  <CandidatesInbox />
+                </RequireAuth>
+              }
+            >
+              <Route path="Send" element={<GetHrCandidateMail />} />
+              <Route path="Incoming" element={<IncomeingCandidateMessage />} />
+            </Route>
+
             <Route index element={<WelcomeDashboard />} />
             <Route
               path="job/addNew"

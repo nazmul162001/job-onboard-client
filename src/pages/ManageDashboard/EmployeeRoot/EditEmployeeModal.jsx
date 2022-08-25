@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillCheckCircle } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { InitializeContext } from "../../../App";
 import { BASE_API } from "../../../config";
 const EditEmployeeModal = ({
   editEmployeDetails,
   setEditEmployeDetails,
   refetch,
- 
 }) => {
-  
+  const { theme } = useContext(InitializeContext);
   const {
     _id,
     fullName,
     employeId,
     employeEmail,
     designation,
-    dateOfBirth,
+    joiningDate,
     bloodGroup,
     location,
     phoneNumber,
@@ -94,7 +94,11 @@ const EditEmployeeModal = ({
                     value={fullName}
                     onChange={() => fullName}
                     placeholder="Enter Full Name"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("fullName", {
                       required: {
                         value: true,
@@ -114,7 +118,11 @@ const EditEmployeeModal = ({
                     type="Number"
                     defaultValue={employeId}
                     placeholder="Enter ID No"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("employeId", {
                       required: {
                         value: true,
@@ -138,7 +146,11 @@ const EditEmployeeModal = ({
                     type="email"
                     defaultValue={employeEmail}
                     placeholder="Enter your email"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("employeEmail", {
                       required: {
                         value: true,
@@ -156,7 +168,11 @@ const EditEmployeeModal = ({
                     Designation <span className="text-red-500">*</span>
                   </label>
                   <select
-                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("designation", {
                       required: {
                         value: true,
@@ -186,7 +202,11 @@ const EditEmployeeModal = ({
                     Gender<span className="text-red-500">*</span>
                   </label>
                   <select
-                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("gender", {
                       required: {
                         value: true,
@@ -211,7 +231,11 @@ const EditEmployeeModal = ({
                     type="Number"
                     defaultValue={age}
                     placeholder="Enter Age"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("age", {
                       required: {
                         value: true,
@@ -228,22 +252,26 @@ const EditEmployeeModal = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Date Of Birth<span className="text-red-500">*</span>
+                    Joining Date <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="date"
-                    defaultValue={dateOfBirth}
+                    defaultValue={joiningDate}
                     placeholder="Enter Date Of Birth"
-                    className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("dateOfBirth", {
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
+                    {...register("joiningDate", {
                       required: {
                         value: true,
-                        message: "Add Date Of Birth !",
+                        message: "Add Joining Date !",
                       },
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.dateOfBirth?.message}
+                    {errors.joiningDate?.message}
                   </p>
                 </div>
 
@@ -252,7 +280,11 @@ const EditEmployeeModal = ({
                     Blood Group<span className="text-red-500">*</span>
                   </label>
                   <select
-                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("bloodGroup", {
                       required: {
                         value: true,
@@ -287,7 +319,11 @@ const EditEmployeeModal = ({
                     type="text"
                     defaultValue={location}
                     placeholder="Enter Location"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("location", {
                       required: {
                         value: true,
@@ -307,7 +343,11 @@ const EditEmployeeModal = ({
                     type="Number"
                     defaultValue={phoneNumber}
                     placeholder="Enter Contact Number"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("phoneNumber", {
                       required: {
                         value: true,
@@ -329,7 +369,11 @@ const EditEmployeeModal = ({
                   type="text"
                   defaultValue={photoLink}
                   placeholder="Enter Images Link"
-                  className="border rounded-lg py-1 text-lg pl-3 "
+                  className={
+                    theme
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                      : "border rounded-lg py-1 text-lg pl-3 "
+                  }
                   {...register("photoLink", {
                     required: {
                       value: true,
@@ -349,13 +393,17 @@ const EditEmployeeModal = ({
                   defaultValue={additionInfo}
                   rows={4}
                   placeholder="Additional Information"
-                  className="border rounded-lg py-1 text-xl pl-3 "
+                  className={
+                    theme
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                      : "border rounded-lg py-1 text-lg pl-3 "
+                  }
                   {...register("additionInfo")}
                 />
               </div>
 
               <button className="rounded-lg text-lg py-1 font-bold  bg-primary w-full  flex items-center justify-center  text-white">
-                <AiFillCheckCircle /> Add
+                <AiFillCheckCircle /> Update
               </button>
             </form>
           </div>

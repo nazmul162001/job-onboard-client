@@ -14,8 +14,11 @@ const ForEmployers = () => {
         <h1 className="text-center text-2xl md:text-4xl font-bold ">
           For Employers
         </h1>
-
-        <span className="bg-primary w-40 h-1 mx-auto mt-4"></span>
+        <span className="bg-[#895af6] w-40 h-1 mx-auto my-2"></span>
+        <p className="text-center text-xl mb-6">
+          Find the best talent for your full-time, part-time, contract,{" "}
+          <br></br> internship, or freelance jobs in any location.
+        </p>
       </div>
       <div className="jobHunterContainer grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-x-8 gap-y-36 mt-32  ">
         <div
@@ -24,7 +27,7 @@ const ForEmployers = () => {
               ? "bg-[#04071a47] text-white rounded-[10px] shadow-lg p-2 relative text-center"
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
-         >
+        >
           <div class="avatar hunterImg -mt-24">
             <div
               class={
@@ -44,7 +47,7 @@ const ForEmployers = () => {
             <h4 className="font-bold text-2xl">
               Post Job Your Company For Free
             </h4>
-            <p>Any company can post jobs for their company for free.</p>
+            <p>Company can post there valuable job here for free</p>
           </div>
         </div>
         <div
@@ -71,10 +74,7 @@ const ForEmployers = () => {
           </div>
           <div className="hunterInfo mb-2">
             <h4 className="font-bold text-2xl">Browse Service and PortFolio</h4>
-            <p>
-              Easy apply any kind of jobs.Find your best jobs acording to to
-              your skill
-            </p>
+            <p>Choose people by their creativity and previous projects.</p>
           </div>
         </div>
         <div
@@ -103,10 +103,7 @@ const ForEmployers = () => {
             <h4 className="font-bold text-2xl">
               Find Best Match For Your Company
             </h4>
-            <p>
-              Easy apply any kind of jobs.Find your best jobs acording to to
-              your skill
-            </p>
+            <p>Select the best candidate form among the applied candidates.</p>
           </div>
         </div>
         <div
@@ -133,10 +130,7 @@ const ForEmployers = () => {
           </div>
           <div className="hunterInfo mb-2">
             <h4 className="font-bold text-2xl">Strong Community BuildUp</h4>
-            <p>
-              Easy apply any kind of jobs.Find your best jobs acording to to
-              your skill
-            </p>
+            <p>Building strong rellationships with another companies.</p>
           </div>
         </div>
       </div>

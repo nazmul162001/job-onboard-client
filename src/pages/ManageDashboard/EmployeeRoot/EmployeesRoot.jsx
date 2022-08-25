@@ -51,7 +51,7 @@ const EmployeesRoot = () => {
   // }
 
   return (
-    <section>
+    <section className="h-[85vh]">
       <div className="flex justify-between items-center border-b-2 border-cyan-600 py-2">
         <span></span>
         <h2 className="text-center text-xl font-bold ">
