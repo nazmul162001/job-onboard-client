@@ -120,13 +120,10 @@ const EmployeeDetails = () => {
           <hr />
 
           <div className=" ">
-            <span className="font-bold text-center mb-4">
-              Additional Information
-            </span>
+            <p className="font-bold text-center mb-4">Additional Information</p>
 
             <p>{additionInfo}</p>
           </div>
-         
         </div>
       </div>
     </div>

@@ -391,7 +391,7 @@ const AddEmployee = ({ refetch }) => {
         </label>
       </label>
 
-      <div className="modal-action">
+      <div className="">
         <label
           for="add-new-employee-modal"
           className="mr-5 flex items-center bg-base-300 py-2 px-3 rounded-md font-bold cursor-pointer"
