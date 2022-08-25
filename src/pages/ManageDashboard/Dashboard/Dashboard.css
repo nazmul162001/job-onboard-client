@@ -1,4 +1,4 @@
-.link{
+.linkk{
   width: 100%;
   display: inline-flex;
   color: #fff;
@@ -8,7 +8,7 @@
   transition: all 0.5s;
   border-radius: 5px;
 }
-.link:hover{
+.linkk:hover{
   background:rgba(255,255,255,0.17);
   color: white;
   transition: all 0.5s;
