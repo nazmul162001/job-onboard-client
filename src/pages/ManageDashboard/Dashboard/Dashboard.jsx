@@ -27,12 +27,12 @@ const Dashboard = ({ children }) => {
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
     { title: "Inbox", src: "ri-mail-unread-line", tooltip: "Inbox", path: "/CandidateMail" },
     { title: "Employee", src: "ri-user-line", tooltip: "Employee", path: "/employee" },
     {
       title: "Recruitment ",
-      src: "ri-bar-chart-box-line",
+      src: "ri-briefcase-2-line",
       tooltip: "Recruitment",
       path: "/recruitment",
     },
@@ -44,20 +44,20 @@ const Dashboard = ({ children }) => {
     },
     {
       title: "Manage Jobs",
-      src: "ri-line-chart-line",
+      src: "ri-bar-chart-box-line",
       tooltip: "Manage Jobs",
       path: "/hr-jobs",
     },
     {
       title: "Company Info ",
-      src: "ri-seedling-fill",
+      src: "ri-information-line",
       tooltip: "Company Info",
       path: "/company",
       gap: false,
     },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
     { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Applied Jobs",
@@ -68,7 +68,7 @@ const Dashboard = ({ children }) => {
     },
   ];
   const MenusAdmin = [
-    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
     { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Manage All HR",
@@ -258,13 +258,15 @@ const Dashboard = ({ children }) => {
             open ? "w-80" : "w-20"
           } bg-[#081A51] h-screen p-5  pt-8 relative duration-500`}
         >
-          <img
+          {/* <img
             src="./sidebar/control.png"
             alt="control"
             className={`absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
            border-2 rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
-          />
+          /> */}
+          <i class={`bg-white flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
+           border-2 rounded-full  ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></i>
           <div
             className="flex items-center justify-center"
             onClick={() => navigate("/")}
