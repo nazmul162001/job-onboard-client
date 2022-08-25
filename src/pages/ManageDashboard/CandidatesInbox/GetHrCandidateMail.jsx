@@ -4,9 +4,8 @@ import React from "react";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
-import HrAllCandidates from "./HrAllCandidates";
-
-export const SendMail = () => {
+import ShowAllHrCandidateMail from "./ShowAllHrCandidateMail";
+const GetHrCandidateMail = () => {
   const { data, isLoading, refetch } = useQuery(["hrCanditates"], () =>
     axios.get(`${BASE_API}/hrCanditates?email=${auth?.currentUser?.email}`, {
       headers: {
@@ -18,15 +17,14 @@ export const SendMail = () => {
     return <Loading />;
   }
   const candidates = data?.data;
-  
 
   return (
     <div>
-     {
-      candidates?.map((candidate)=>(
-        <HrAllCandidates key={candidate._id} candidate={candidate}/>
-      ))
-     }
+      {candidates?.map((candidate) => (
+        <ShowAllHrCandidateMail key={candidate._id} candidate={candidate} />
+      ))}
     </div>
   );
 };
+
+export default GetHrCandidateMail;

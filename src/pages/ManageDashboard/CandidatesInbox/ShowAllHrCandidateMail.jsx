@@ -1,6 +1,6 @@
 import React from "react";
 
-const HrAllCandidates = ({ candidate }) => {
+const ShowAllHrCandidateMail = ({ candidate }) => {
   const { candidateName, candidateMail, mailSubject, mailMessage } = candidate;
 
   return (
@@ -18,11 +18,11 @@ const HrAllCandidates = ({ candidate }) => {
         </div>
 
         <div className="hrAllCandidateInfo">
-
+          <p>{mailSubject}</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default HrAllCandidates;
+export default ShowAllHrCandidateMail;
