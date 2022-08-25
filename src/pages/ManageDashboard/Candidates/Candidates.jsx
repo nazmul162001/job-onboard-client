@@ -1,14 +1,14 @@
-import useTitle from "../../../Hooks/useTitle";
-import Loading from "../../../Components/Loading/Loading";
-import CandidatesMailModal from "./CandidatesMailModal";
 import { useState } from "react";
-import Candidate from "./Candidate";
+import Loading from "../../../Components/Loading/Loading";
 import useCandidate from "../../../Hooks/useCandidate";
-
+import useTitle from "../../../Hooks/useTitle";
+import Candidate from "./Candidate";
+import './CandidateCss/Candidate.css'
+import CandidatesMailModal from "./CandidatesMailModal";
 const Candidates = () => {
   useTitle("Candidates");
   const [mail, setMail] = useState(null);
-  const { getApplicants, isLoading } = useCandidate()
+  const { getApplicants, isLoading } = useCandidate();
 
   if (isLoading) {
     return <Loading />;
@@ -54,6 +54,12 @@ const Candidates = () => {
                         class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Resume/Link
+                      </th>
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                      >
+                        Task
                       </th>
                     </tr>
                   </thead>
