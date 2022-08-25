@@ -27,12 +27,12 @@ const Dashboard = ({ children }) => {
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
     { title: "Inbox", src: "ri-mail-unread-line", tooltip: "Inbox", path: "/CandidateMail" },
     { title: "Employee", src: "ri-user-line", tooltip: "Employee", path: "/employee" },
     {
       title: "Recruitment ",
-      src: "ri-bar-chart-box-line",
+      src: "ri-briefcase-2-line",
       tooltip: "Recruitment",
       path: "/recruitment",
     },
@@ -44,20 +44,20 @@ const Dashboard = ({ children }) => {
     },
     {
       title: "Manage Jobs",
-      src: "ri-line-chart-line",
+      src: "ri-bar-chart-box-line",
       tooltip: "Manage Jobs",
       path: "/hr-jobs",
     },
     {
       title: "Company Info ",
-      src: "ri-seedling-fill",
+      src: "ri-information-line",
       tooltip: "Company Info",
       path: "/company",
       gap: false,
     },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
     { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Applied Jobs",
@@ -68,7 +68,7 @@ const Dashboard = ({ children }) => {
     },
   ];
   const MenusAdmin = [
-    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
     { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Manage All HR",
