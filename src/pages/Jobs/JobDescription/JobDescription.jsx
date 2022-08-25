@@ -72,7 +72,7 @@ const JobDescription = () => {
             <span className='lg:pt-4'>Work Type : {job?.jobType}</span>
             {alreadyApplied === true
               ? (
-                <button>Already Applied</button>
+                <button className='btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white'>Already Applied</button>
               ) : (
                 <>
                   {user ?
@@ -96,14 +96,21 @@ const JobDescription = () => {
 
         {/* Modal  */}
         <div className='flex justify-center items-center pt-5 md:mt-0 text-center md:py-8 '>
-          {user ?
-            <label
-              htmlFor="applicant-modal"
-              className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' >Apply Now</label>
-            :
-            <label
-              className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' onClick={guestNavigate} >Apply Now</label>
-          }
+          {alreadyApplied === true
+            ? (
+              <button className='btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white'>Already Applied</button>
+            ) : (
+              <>
+                {user ?
+                  <label
+                    htmlFor="applicant-modal"
+                    className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' >Apply Now</label>
+                  :
+                  <label
+                    className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' onClick={guestNavigate} >Apply Now</label>
+                }
+              </>
+            )}
         </div>
       </div>
 
