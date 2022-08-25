@@ -81,7 +81,7 @@ const AddEmployee = ({ refetch }) => {
                     placeholder="Enter Full Name"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("fullName", {
@@ -104,7 +104,7 @@ const AddEmployee = ({ refetch }) => {
                     placeholder="Enter ID No"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("employeId", {
@@ -131,7 +131,7 @@ const AddEmployee = ({ refetch }) => {
                     placeholder="Enter your email"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("employeEmail", {
@@ -153,7 +153,7 @@ const AddEmployee = ({ refetch }) => {
                   <select
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("designation", {
@@ -188,7 +188,7 @@ const AddEmployee = ({ refetch }) => {
                   <select
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("gender", {
@@ -199,6 +199,7 @@ const AddEmployee = ({ refetch }) => {
                     })}
                   >
                     <option selected>Male</option>
+                    <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
                   </select>
@@ -215,7 +216,7 @@ const AddEmployee = ({ refetch }) => {
                     placeholder="Enter Age"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("age", {
@@ -231,30 +232,30 @@ const AddEmployee = ({ refetch }) => {
                 </div>
               </div>
 
-              {/* Date of birth */}
+              {/* Joining Date */}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Date Of Birth<span className="text-red-500">*</span>
+                    Joining Date<span className="text-red-500">*</span>
                   </label>
                   <input
                     type="date"
-                    placeholder="Enter Date Of Birth"
+                    placeholder="Enter Joining Date"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("dateOfBirth", {
+                    {...register("joiningDate", {
                       required: {
                         value: true,
-                        message: "Add Date Of Birth !",
+                        message: "Add Joining Date !",
                       },
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.dateOfBirth?.message}
+                    {errors.joiningDate?.message}
                   </p>
                 </div>
 
@@ -265,7 +266,7 @@ const AddEmployee = ({ refetch }) => {
                   <select
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("bloodGroup", {
@@ -303,7 +304,7 @@ const AddEmployee = ({ refetch }) => {
                     placeholder="Enter Location"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("location", {
@@ -326,7 +327,7 @@ const AddEmployee = ({ refetch }) => {
                     placeholder="Enter Contact Number"
                     className={
                       theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
                     {...register("phoneNumber", {
@@ -352,7 +353,7 @@ const AddEmployee = ({ refetch }) => {
                   placeholder="Enter Images Link"
                   className={
                     theme
-                      ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                       : "border rounded-lg py-1 text-lg pl-3 "
                   }
                   {...register("photoLink", {
@@ -375,7 +376,7 @@ const AddEmployee = ({ refetch }) => {
                   placeholder="Additional Information"
                   className={
                     theme
-                      ? "border rounded-lg py-1 text-lg pl-3 bg-black"
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                       : "border rounded-lg py-1 text-lg pl-3 "
                   }
                   {...register("additionInfo")}

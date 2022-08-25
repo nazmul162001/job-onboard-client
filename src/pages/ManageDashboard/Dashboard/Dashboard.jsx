@@ -4,7 +4,9 @@ import React, { useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
 import { AiOutlinePlus } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 import { InitializeContext } from "../../../App";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loader from "../../../Components/Loader/Loader";
@@ -12,9 +14,7 @@ import { BASE_API } from "../../../config";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
 import Logo from "../../Assets/logo/logo.png";
-import ReactTooltip from "react-tooltip";
 import "./Dashboard.css";
-import { FiLogOut } from "react-icons/fi";
 
 const Dashboard = ({ children }) => {
   const { handleThemeChange, theme, profileUrl } =
@@ -54,9 +54,27 @@ const Dashboard = ({ children }) => {
       path: "/company",
       gap: false,
     },
+    {
+      title: "Feedback",
+      src: "CompanyInfo",
+      tooltip: "Feedback",
+      path: "/feedback",
+      gap: false,
+    },
   ];
   const MenusCandidate = [
-    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
+    {
+      title: "Dashboard",
+      src: "ri-bar-chart-box-fill",
+      tooltip: "Dashboard",
+      path: "/",
+    },
+    {
+      title: "Profile",
+      src: "ri-user-line",
+      tooltip: "Profile",
+      path: "/profile",
+    },
     { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Applied Jobs",
@@ -390,7 +408,9 @@ const Dashboard = ({ children }) => {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${
+                            open && "py-3 my-1 px-5"
+                          }`
                         : `flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
@@ -398,12 +418,27 @@ const Dashboard = ({ children }) => {
                     {open ? (
                       <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
-                      onMouseEnter={() => showTooltip(true)}
-                      onMouseLeave={() => {
-                        showTooltip(false);
-                        setTimeout(() => showTooltip(true), 10);
-                      }} ></i>
+                      // <img
+                      //   className="p-2"
+                      //   data-tip={Menu.tooltip}
+                      //   onMouseEnter={() => showTooltip(true)}
+                      //   onMouseLeave={() => {
+                      //     showTooltip(false);
+                      //     setTimeout(() => showTooltip(true), 10);
+                      //   }}
+                      //   src={`./sidebar/${Menu.src}.png`}
+                      //   alt="Side"
+                      // />
+                      <i
+                        class={`p-2 text-xl ${Menu.src}`}
+                        data-tip={Menu.tooltip}
+                        onMouseEnter={() => showTooltip(true)}
+                        onMouseLeave={() => {
+                          showTooltip(false);
+                          setTimeout(() => showTooltip(true), 10);
+                        }}
+                      ></i>
+
                     )}
 
                     <span
