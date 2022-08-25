@@ -43,11 +43,12 @@ const Contact = () => {
 
   return (
     <div>
-      <div className="contact-container">
-        <div className="bg-img-overlay pb-12">
-          <div className="text-center text-white py-8 space-y-2">
-            <h2 className='text-3xl lg:text-4xl font-bold font-mono'>Contact Our Team</h2>
-            <h3 className='text-lg'>Have any questions ? We'd love to hear from you .</h3>
+      <div className="contact-container ">
+        <div className="bg-img-overlay pt-12 pb-20">
+          <div className="text-center text-white py-12 space-y-2 ">
+            <h2 className='text-3xl lg:text-4xl font-bold font-mono '>Contact Our Team</h2>
+            <h3 className=''>Have any questions ? <br className='lg:hidden'/>
+            We'd love to hear from you .</h3>
           </div>
           <div className="flex flex-col justify-between lg:flex-row container mx-auto px-8 gap-6">
             <form onSubmit={handleSubmit(onSubmit)} className="lg:w-1/2 space-y-2 p-5 bg-base-100 rounded-lg">
@@ -121,8 +122,8 @@ const Contact = () => {
             <div className='lg:w-1/2 text-white space-y-3 text-center'>
               <div className="text-center space-y-2 py-4">
                 <h2 className='text-3xl md:text-4xl font-bold'>For Enquiries</h2>
-                <p className='text-lg'>Interested  our service? Talk to our experts today .</p>
-                <p className='text-lg'>Get in touch with our support</p>
+                <p className='lg:text-lg'>Interested  our service? Talk to our experts today .</p>
+                <p className='lg:text-lg'>Get in touch with our support</p>
               </div>
               <div className='space-y-2  md:text-xl'>
                 <p>Nazmul : +8801778992817 </p>

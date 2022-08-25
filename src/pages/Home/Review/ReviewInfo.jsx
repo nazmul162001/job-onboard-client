@@ -5,7 +5,7 @@ const ReviewInfo = ({ review }) => {
   const [expand, setExpand] = useState(false);
 
   return (
-    <div className='border-2 border-opacity-30 border-primary text-black rounded-md p-5'>
+    <div className='border-2 border-opacity-30 border-primary rounded-md p-5'>
       {/* <p className='w-10 h-10 mb-3 opacity-30'> <img src={quote} alt="" /> </p> */}
       <p className='text-left'><i class="ri-double-quotes-l text-5xl opacity-30"></i> </p>
       <p className='pb-5 text-left'>

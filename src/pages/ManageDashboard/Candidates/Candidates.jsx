@@ -1,7 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import { BASE_API } from "../../../config";
 import useTitle from "../../../Hooks/useTitle";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import CandidatesMailModal from "./CandidatesMailModal";
 import { useState } from "react";
@@ -18,7 +15,7 @@ const Candidates = () => {
   }
 
   return (
-    <div className="p-5">
+    <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
         <h3 className="text-2xl font-semibold">Manage Candidates</h3>
         <span>
