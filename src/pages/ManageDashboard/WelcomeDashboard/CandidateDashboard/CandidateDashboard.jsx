@@ -19,7 +19,7 @@ const CandidateDashboard = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="h-screen">
         <section className="h-full main_dashboard static z-10 ">
           {/* Dashboard Top  */}
           <div>
