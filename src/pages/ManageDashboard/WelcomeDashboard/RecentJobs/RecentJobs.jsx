@@ -24,7 +24,7 @@ const RecentJobs = ({ myJob, index }) => {
   const navigate = useNavigate();
 
   return (
-    <tr class="bg-white text-black text-center border-b transition duration-300 ease-in-out hover:bg-gray-100 py-5">
+    <tr class="bg-base-100 text-center border-b py-5">
       <th className='py-3'>{index + 1}.</th>
       <td className='py-3'>{myJob.jobTitle}</td>
       <td className='py-3'>{moment(myJob?.createdDate).format("MMMM DD, YYYY")}</td>
