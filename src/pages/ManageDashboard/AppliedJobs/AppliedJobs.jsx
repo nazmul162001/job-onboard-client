@@ -4,16 +4,19 @@ import { FaLinkedinIn } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
 import useAppliedJobs from "../../../Hooks/useAppliedJobs";
 import useTitle from "../../../Hooks/useTitle";
+import moment from 'moment';
+import { useNavigate } from "react-router-dom";
 
 const AppliedJobs = () => {
   useTitle("Applied Jobs");
-  const {appliedJobs , isLoading} = useAppliedJobs()
-  console.log(appliedJobs)
+  const { appliedJobs, isLoading } = useAppliedJobs()
+  const navigate = useNavigate();
+  // console.log(appliedJobs)
 
   if (isLoading) {
     return <Loading />;
   }
-  
+
   return (
     <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
@@ -27,7 +30,7 @@ const AppliedJobs = () => {
               key={index}
               className="shadow-lg hover:shadow-2xl border-t-2 border-primary relative"
             >
-              <div className="p-5 space-y-5">
+              <div className="p-5 space-y-4">
                 <div className="space-y-2">
                   <div className="">
                     <h2 className="text-sm font-semibold">{job.companyName}</h2>
@@ -37,31 +40,28 @@ const AppliedJobs = () => {
                     </p>
                   </div>
                 </div>
-                <p className="flex ">{job.location} </p>
-                <div className="flex flex-col  space-y-1">
-                  <span>
-                    CV : {job.coverLetter.slice(0, 50)}
-                    <small>/m</small>
-                  </span>
+                <div className="font-mono space-y-1">
+                  <p className="flex "> Vacancy : {job?.job?.openingPosition} </p>
+                  <p className="flex "> Applied : {moment(job?.appliedDate).format("MMMM DD")}</p>
                 </div>
-                <div className=" pt-3 flex justify-between items-center">
-                  <span className="border rounded-xl px-4 py-1 bg-base-300">
-                    {job.number}
-                  </span>
+                <div className="gap-2 md:gap-0 pt-3 flex justify-between items-center">
+                  <button className="btn btn-sm btn-outline capitalize rounded-xl px-4 py-1 " onClick={() => navigate(`/job/${job?.jobPostId}`)}>
+                    See Job Details
+                  </button>
                   <span className="flex gap-1">
                     <a href={job?.resume} target="_blank" rel="noreferrer">
                       <button className="btn btn-square btn-sm text-white">
-                        <BsFolderSymlink className="text-lg" />
+                        <BsFolderSymlink className="text-lg text-center" />
                       </button>
                     </a>
-                    <a href={job?.linkedin} target="_blank" rel="noreferrer">
-                      <button className="btn btn-square btn-sm text-white">
-                        <FaLinkedinIn />
+                    <a href={job?.linkedinUrl} target="_blank" rel="noreferrer">
+                      <button className="btn btn-square btn-sm text-white hidden lg:block">
+                        <FaLinkedinIn className="text-xl pl-2" />
                       </button>
                     </a>
-                    <a href={job?.portfolio} target="_blank" rel="noreferrer">
-                      <button className="btn btn-square btn-sm text-white">
-                        <BsLink45Deg className="text-xl" />
+                    <a href={job?.portfolioUrl} target="_blank" rel="noreferrer">
+                      <button className="btn btn-square btn-sm text-white  hidden md:block">
+                        <BsLink45Deg className="text-2xl pl-1" />
                       </button>
                     </a>
                   </span>
