@@ -24,7 +24,7 @@ const ApplicantModal = ({ job }) => {
     }
   }, [userInfo?.profileUrl])
 
-  console.log(profileUrl);
+  // console.log(profileUrl);
   if (isLoading) {
     return <Loading />
   }
