@@ -54,12 +54,12 @@ const AppliedJobs = () => {
                         <BsFolderSymlink className="text-lg" />
                       </button>
                     </a>
-                    <a href={job?.linkedin} target="_blank" rel="noreferrer">
+                    <a href={job?.linkedinUrl} target="_blank" rel="noreferrer">
                       <button className="btn btn-square btn-sm text-white">
                         <FaLinkedinIn />
                       </button>
                     </a>
-                    <a href={job?.portfolio} target="_blank" rel="noreferrer">
+                    <a href={job?.portfolioUrl} target="_blank" rel="noreferrer">
                       <button className="btn btn-square btn-sm text-white">
                         <BsLink45Deg className="text-xl" />
                       </button>
