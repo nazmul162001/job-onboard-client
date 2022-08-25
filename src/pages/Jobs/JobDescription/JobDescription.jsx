@@ -70,14 +70,21 @@ const JobDescription = () => {
           <p className='text-white'>Salary  : ${job?.salary} <small>/ m</small></p>
           <div className='flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1'>
             <span className='lg:pt-4'>Work Type : {job?.jobType}</span>
-            {user ?
-              <label
-                htmlFor="applicant-modal"
-                className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' >Apply Now</label>
-              :
-              <label
-                className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' onClick={guestNavigate} >Apply Now</label>
-            }
+            {alreadyApplied === true
+              ? (
+                <button>Already Applied</button>
+              ) : (
+                <>
+                  {user ?
+                    <label
+                      htmlFor="applicant-modal"
+                      className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' >Apply Now</label>
+                    :
+                    <label
+                      className='flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]' onClick={guestNavigate} >Apply Now</label>
+                  }
+                </>
+              )}
           </div>
         </div>
       </div>
