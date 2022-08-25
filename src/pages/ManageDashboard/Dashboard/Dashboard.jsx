@@ -27,8 +27,18 @@ const Dashboard = ({ children }) => {
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
-    { title: "Employee", src: "ri-user-line", tooltip: "Employee", path: "/employee" },
+    {
+      title: "Dashboard",
+      src: "ri-dashboard-line",
+      tooltip: "Dashboard",
+      path: "/",
+    },
+    {
+      title: "Employees",
+      src: "ri-user-line",
+      tooltip: "Employee",
+      path: "/employee",
+    },
     {
       title: "Recruitment ",
       src: "ri-briefcase-2-line",
@@ -75,7 +85,12 @@ const Dashboard = ({ children }) => {
       tooltip: "Profile",
       path: "/profile",
     },
-    { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
+    {
+      title: "Profile",
+      src: "ri-user-line",
+      tooltip: "Profile",
+      path: "/profile",
+    },
     {
       title: "Applied Jobs",
       src: "ri-calendar-check-fill",
@@ -85,8 +100,18 @@ const Dashboard = ({ children }) => {
     },
   ];
   const MenusAdmin = [
-    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
-    { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
+    {
+      title: "Dashboard",
+      src: "ri-dashboard-line",
+      tooltip: "Dashboard",
+      path: "/",
+    },
+    {
+      title: "Profile",
+      src: "ri-user-line",
+      tooltip: "Profile",
+      path: "/profile",
+    },
     {
       title: "Manage All HR",
       src: "ri-equalizer-line",
@@ -282,8 +307,11 @@ const Dashboard = ({ children }) => {
            border-2 rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
           /> */}
-          <i class={`bg-white flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
-           border-2 rounded-full  ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></i>
+          <i
+            class={`bg-white flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
+           border-2 rounded-full  ${!open && "rotate-180"}`}
+            onClick={() => setOpen(!open)}
+          ></i>
           <div
             className="flex items-center justify-center"
             onClick={() => navigate("/")}
@@ -311,7 +339,9 @@ const Dashboard = ({ children }) => {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${
+                            open && "py-3 my-1 px-5"
+                          }`
                         : `linkk flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
@@ -319,12 +349,15 @@ const Dashboard = ({ children }) => {
                     {open ? (
                       <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
-                      onMouseEnter={() => showTooltip(true)}
-                      onMouseLeave={() => {
-                        showTooltip(false);
-                        setTimeout(() => showTooltip(true), 10);
-                      }} ></i>
+                      <i
+                        class={`p-2 text-xl ${Menu.src}`}
+                        data-tip={Menu.tooltip}
+                        onMouseEnter={() => showTooltip(true)}
+                        onMouseLeave={() => {
+                          showTooltip(false);
+                          setTimeout(() => showTooltip(true), 10);
+                        }}
+                      ></i>
                     )}
 
                     <span
@@ -355,7 +388,9 @@ const Dashboard = ({ children }) => {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${
+                            open && "py-3 my-1 px-5"
+                          }`
                         : `linkk flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
@@ -363,12 +398,15 @@ const Dashboard = ({ children }) => {
                     {open ? (
                       <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
-                      onMouseEnter={() => showTooltip(true)}
-                      onMouseLeave={() => {
-                        showTooltip(false);
-                        setTimeout(() => showTooltip(true), 10);
-                      }} ></i>
+                      <i
+                        class={`p-2 text-xl ${Menu.src}`}
+                        data-tip={Menu.tooltip}
+                        onMouseEnter={() => showTooltip(true)}
+                        onMouseLeave={() => {
+                          showTooltip(false);
+                          setTimeout(() => showTooltip(true), 10);
+                        }}
+                      ></i>
                     )}
 
                     <span
@@ -438,7 +476,6 @@ const Dashboard = ({ children }) => {
                           setTimeout(() => showTooltip(true), 10);
                         }}
                       ></i>
-
                     )}
 
                     <span
