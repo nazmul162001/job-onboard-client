@@ -199,6 +199,7 @@ const AddEmployee = ({ refetch }) => {
                     })}
                   >
                     <option selected>Male</option>
+                    <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
                   </select>
