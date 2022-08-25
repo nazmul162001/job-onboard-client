@@ -7,6 +7,9 @@ import ApplicantModal from './ApplicantModal';
 import Footer from '../../../Shared/Footer/Footer';
 import auth from '../../../Auth/Firebase/Firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import useAppliedJobs from '../../../Hooks/useAppliedJobs';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const JobDescription = () => {
   const { jobId } = useParams()
@@ -14,6 +17,23 @@ const JobDescription = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth)
   const location = useLocation()
+  const { appliedJobs, isLoading } = useAppliedJobs()
+  // console.log(appliedJobs)
+
+  //Handle Modal Disable When Job Already Applied
+  const [alreadyApplied, setAlreadyApplied] = useState(false)
+  const applied = appliedJobs?.map((appliedJ) => appliedJ?.jobPostId)
+  const exists = applied?.find(j => j === jobId)
+  // console.log(exists)
+  useEffect(() => {
+    if (exists) {
+      setAlreadyApplied(true)
+    }
+    else {
+      setAlreadyApplied(false)
+    }
+  }, [exists])
+  console.log(alreadyApplied);
 
   // console.log(job)
   // const {category,companyName,createdDate,employees,hrEmail,hrName,jobTitle,jobType,location,openingPosition,salary, value , _id} = job 
