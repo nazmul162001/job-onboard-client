@@ -113,26 +113,26 @@ const CompanyDetails = () => {
           >
             <FiEdit className="text-white" />
           </label>
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Company Name</span>
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
+            <strong>Company Name</strong>
 
             <span>{companyName ? companyName : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Email</span>
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
+            <strong>Email</strong>
 
             <span>{auth?.currentUser?.email}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Contact Number</span>
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
+            <strong>Contact Number</strong>
 
             <span>{number ? number : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center gap-24 px-4 mb-4">
-            <span>Additional Info</span>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-24 px-4 mb-4">
+            <strong>Additional Info</strong>
 
             <span>{additionalInfo ? additionalInfo : "Not Available"}</span>
           </div>
