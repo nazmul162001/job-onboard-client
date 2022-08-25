@@ -188,8 +188,8 @@ const CompanyDetails = () => {
             id="editCompanyInfo"
             className="modal-toggle "
           />
-          <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box relative">
+          <div className="modal">
+            <div className="modal-box relative w-10/12 max-w-3xl">
               <label
                 for="editCompanyInfo"
                 className="btn btn-sm btn-circle absolute right-2 top-2"

@@ -24,7 +24,7 @@ const ApplicantModal = ({ job }) => {
     }
   }, [userInfo?.profileUrl])
 
-  console.log(profileUrl);
+  // console.log(profileUrl);
   if (isLoading) {
     return <Loading />
   }
@@ -42,7 +42,7 @@ const ApplicantModal = ({ job }) => {
   var appliedDate = date
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, displayName, email, category, companyName, hrEmail, hrName, jobTitle, jobPostId, createdDate, appliedDate , profileUrl }
+    const applicantData = { ...data, displayName, email, category, companyName, hrEmail, hrName, jobTitle, jobPostId, createdDate, appliedDate , profileUrl , job }
     // console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",

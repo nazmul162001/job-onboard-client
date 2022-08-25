@@ -27,30 +27,30 @@ const Dashboard = ({ children }) => {
   // my dashboard sidebar
   const [open, setOpen] = useState(true);
   const Menus = [
-    { title: "Dashboard", src: "Dashboard", tooltip: "Dashboard", path: "/" },
-    { title: "Inbox", src: "Inbox", tooltip: "Inbox", path: "/CandidateMail" },
-    { title: "Employee", src: "User", tooltip: "Employee", path: "/employee" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
+    { title: "Inbox", src: "ri-mail-unread-line", tooltip: "Inbox", path: "/CandidateMail" },
+    { title: "Employee", src: "ri-user-line", tooltip: "Employee", path: "/employee" },
     {
       title: "Recruitment ",
-      src: "Recruitment",
+      src: "ri-briefcase-2-line",
       tooltip: "Recruitment",
       path: "/recruitment",
     },
     {
       title: "Candidates",
-      src: "Candidates",
+      src: "ri-team-line",
       tooltip: "Candidates",
       path: "/candidates",
     },
     {
       title: "Manage Jobs",
-      src: "ManageJob",
+      src: "ri-bar-chart-box-line",
       tooltip: "Manage Jobs",
       path: "/hr-jobs",
     },
     {
       title: "Company Info ",
-      src: "CompanyInfo",
+      src: "ri-information-line",
       tooltip: "Company Info",
       path: "/company",
       gap: false,
@@ -76,6 +76,7 @@ const Dashboard = ({ children }) => {
       tooltip: "Profile",
       path: "/profile",
     },
+    { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Applied Jobs",
       src: "ri-calendar-check-fill",
@@ -85,17 +86,17 @@ const Dashboard = ({ children }) => {
     },
   ];
   const MenusAdmin = [
-    { title: "Dashboard", src: "Dashboard", tooltip: "Dashboard", path: "/" },
-    { title: "Profile", src: "User", tooltip: "Profile", path: "/profile" },
+    { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
+    { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Manage All HR",
-      src: "ManageHr",
+      src: "ri-equalizer-line",
       tooltip: "Manage All HR",
       path: "/allHr",
     },
     {
       title: "Manage All Jobs",
-      src: "ManageJobs",
+      src: "ri-list-settings-line",
       tooltip: "Manage All Jobs",
       path: "/jobs",
     },
@@ -275,13 +276,15 @@ const Dashboard = ({ children }) => {
             open ? "w-80" : "w-20"
           } bg-[#081A51] h-screen p-5  pt-8 relative duration-500`}
         >
-          <img
+          {/* <img
             src="./sidebar/control.png"
             alt="control"
             className={`absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
            border-2 rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
-          />
+          /> */}
+          <i class={`bg-white flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
+           border-2 rounded-full  ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></i>
           <div
             className="flex items-center justify-center"
             onClick={() => navigate("/")}
@@ -302,36 +305,27 @@ const Dashboard = ({ children }) => {
               MenusAdmin.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4 
+                  className={`flex rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4 
                 ${Menu.gap ? "" : ""} ${index === 0 && "bg-light-white"} `}
                 >
                   {/* for mobile devicea */}
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link ${open && "py-3 my-1 px-5"}`
-                        : `linkk ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        : `linkk flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <img
-                        className="mr-2"
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <img
-                        className="p-2"
-                        data-tip={Menu.tooltip}
-                        onMouseEnter={() => showTooltip(true)}
-                        onMouseLeave={() => {
-                          showTooltip(false);
-                          setTimeout(() => showTooltip(true), 10);
-                        }}
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
+                      onMouseEnter={() => showTooltip(true)}
+                      onMouseLeave={() => {
+                        showTooltip(false);
+                        setTimeout(() => showTooltip(true), 10);
+                      }} ></i>
                     )}
 
                     <span
@@ -355,36 +349,27 @@ const Dashboard = ({ children }) => {
               Menus.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4 
+                  className={`flex  rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4 
                   ${Menu.gap ? "" : ""} ${index === 0 && "bg-light-white"} `}
                 >
                   {/* for mobile devicea */}
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link ${open && "py-3 my-1 px-5"}`
-                        : `linkk ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        : `linkk flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <img
-                        className="mr-2"
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <img
-                        className="p-2"
-                        data-tip={Menu.tooltip}
-                        onMouseEnter={() => showTooltip(true)}
-                        onMouseLeave={() => {
-                          showTooltip(false);
-                          setTimeout(() => showTooltip(true), 10);
-                        }}
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
+                      onMouseEnter={() => showTooltip(true)}
+                      onMouseLeave={() => {
+                        showTooltip(false);
+                        setTimeout(() => showTooltip(true), 10);
+                      }} ></i>
                     )}
 
                     <span
@@ -432,11 +417,6 @@ const Dashboard = ({ children }) => {
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      // <img
-                      //   className="mr-2"
-                      //   src={`./sidebar/${Menu.src}.png`}
-                      //   alt="Side"
-                      // />
                       <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
                       // <img
@@ -459,6 +439,7 @@ const Dashboard = ({ children }) => {
                           setTimeout(() => showTooltip(true), 10);
                         }}
                       ></i>
+
                     )}
 
                     <span

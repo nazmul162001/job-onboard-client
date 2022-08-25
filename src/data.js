@@ -127,7 +127,7 @@ export const teamMemberData = [
     photoUrl: 'https://i.ibb.co/pjjtpQW/Kiron.jpg',
     linkedinUrl: 'https://www.linkedin.com/in/toufiq-hasan-kiron/',
     githuburl: 'https://github.com/kiron0',
-    portfolioUrl: 'https://toufiqhasankiron.me'
+    portfolioUrl: 'https://toufiqhasan.me'
   },
   {
     id: 1114,

@@ -73,7 +73,7 @@ const CandidatesMailModal = ({ mail }) => {
     <div>
       <input type="checkbox" id="candidate-modal" className="modal-toggle " />
       <div className="modal ">
-        <div className="modal-box w-11/12 max-w-5xl">
+        <div className="modal-box w-7/12 max-w-3xl">
           <label
             htmlFor="candidate-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
