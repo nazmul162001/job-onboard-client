@@ -116,6 +116,14 @@ function App() {
               }
             />
             <Route
+              path="CandidateMail"
+              element={
+                <RequireAuth>
+                  <CandidatesInbox />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="hr-jobs"
               element={
                 <RequireHr>

@@ -8,7 +8,7 @@ import useTitle from "../../../Hooks/useTitle";
 import HrJobRow from "./HrJobRow";
 
 const HrJob = () => {
-  useTitle("Posted Job")
+  useTitle("Posted Job");
   const { data, isLoading, refetch } = useQuery(["AllJob"], () =>
     axios.get(`${BASE_API}/jobs/hrJobs?email=${auth?.currentUser?.email}`, {
       headers: {
@@ -32,7 +32,7 @@ const HrJob = () => {
       {hrJob?.length > 0 ? (
         <div className="md:p-4">
           <div className="overflow-x-auto">
-            <table className="table table-zebra  w-full">
+            <table className="table w-full">
               <thead>
                 <tr className="text-center">
                   <th>No</th>
