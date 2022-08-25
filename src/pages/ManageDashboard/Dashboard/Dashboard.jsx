@@ -293,7 +293,7 @@ const Dashboard = ({ children }) => {
                     className={({ isActive }) =>
                       isActive
                         ? `active-link ${open && "py-3 my-1 px-5"}`
-                        : `link ${open && "py-3 my-1 px-5"}`
+                        : `linkk ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
                   >
@@ -346,7 +346,7 @@ const Dashboard = ({ children }) => {
                     className={({ isActive }) =>
                       isActive
                         ? `active-link ${open && "py-3 my-1 px-5"}`
-                        : `link ${open && "py-3 my-1 px-5"}`
+                        : `linkk ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
                   >
