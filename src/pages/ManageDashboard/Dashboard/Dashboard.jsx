@@ -68,17 +68,17 @@ const Dashboard = ({ children }) => {
     },
   ];
   const MenusAdmin = [
-    { title: "Dashboard", src: "Dashboard", tooltip: "Dashboard", path: "/" },
-    { title: "Profile", src: "User", tooltip: "Profile", path: "/profile" },
+    { title: "Dashboard", src: "ri-bar-chart-box-fill", tooltip: "Dashboard", path: "/" },
+    { title: "Profile", src: "ri-user-line", tooltip: "Profile", path: "/profile" },
     {
       title: "Manage All HR",
-      src: "ManageHr",
+      src: "ri-equalizer-line",
       tooltip: "Manage All HR",
       path: "/allHr",
     },
     {
       title: "Manage All Jobs",
-      src: "ManageJobs",
+      src: "ri-list-settings-line",
       tooltip: "Manage All Jobs",
       path: "/jobs",
     },
@@ -285,36 +285,27 @@ const Dashboard = ({ children }) => {
               MenusAdmin.map((Menu, index) => (
                 <li
                   key={index}
-                  className={`  rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4 
+                  className={`flex rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4 
                 ${Menu.gap ? "" : ""} ${index === 0 && "bg-light-white"} `}
                 >
                   {/* for mobile devicea */}
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? `active-link ${open && "py-3 my-1 px-5"}`
-                        : `linkk ${open && "py-3 my-1 px-5"}`
+                        ? `active-link flex items-center ${open && "py-3 my-1 px-5"}`
+                        : `linkk flex items-center ${open && "py-3 my-1 px-5"}`
                     }
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <img
-                        className="mr-2"
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      <img
-                        className="p-2"
-                        data-tip={Menu.tooltip}
-                        onMouseEnter={() => showTooltip(true)}
-                        onMouseLeave={() => {
-                          showTooltip(false);
-                          setTimeout(() => showTooltip(true), 10);
-                        }}
-                        src={`./sidebar/${Menu.src}.png`}
-                        alt="Side"
-                      />
+                      <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
+                      onMouseEnter={() => showTooltip(true)}
+                      onMouseLeave={() => {
+                        showTooltip(false);
+                        setTimeout(() => showTooltip(true), 10);
+                      }} ></i>
                     )}
 
                     <span
@@ -350,7 +341,7 @@ const Dashboard = ({ children }) => {
                     }
                     to={`/dashboard${Menu.path}`}
                   >
-                                        {open ? (
+                    {open ? (
                       <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
                       <i class={`p-2 text-xl ${Menu.src}`} data-tip={Menu.tooltip}
