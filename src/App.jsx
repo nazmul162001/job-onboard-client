@@ -21,7 +21,6 @@ import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
-import CandidatesInbox from "./Pages/ManageDashboard/CandidatesInbox/CandidatesInbox";
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
@@ -101,14 +100,7 @@ function App() {
                 </RequireHr>
               }
             />
-            <Route
-              path="CandidateMail"
-              element={
-                <RequireAuth>
-                  <CandidatesInbox />
-                </RequireAuth>
-              }
-            />
+
             <Route
               path="hr-jobs"
               element={
