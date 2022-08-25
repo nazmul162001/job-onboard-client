@@ -21,6 +21,7 @@ const AllHr = () => {
   if (isLoading || !allHr || !allHr.length) {
     return <Loading />;
   }
+  
   return (
     <div className="lg:px-10 py-10 bg-base-100 rounded-md">
       <div className="overflow-x-auto shadow-lg border-l-4 border-primary rounded-2xl">

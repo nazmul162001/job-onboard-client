@@ -28,7 +28,6 @@ const Dashboard = ({ children }) => {
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "ri-dashboard-line", tooltip: "Dashboard", path: "/" },
-    { title: "Inbox", src: "ri-mail-unread-line", tooltip: "Inbox", path: "/CandidateMail" },
     { title: "Employee", src: "ri-user-line", tooltip: "Employee", path: "/employee" },
     {
       title: "Recruitment ",
