@@ -28,7 +28,7 @@ const CandidateDashboard = () => {
                 <div className="icon p-5">
                   <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                 </div>
-                <div className="card_details text-black">
+                <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/appliedJobs`)}>
                   <h2 className="font-bold text-xl ">{appliedJobs ? appliedJobs?.length : 0}</h2>
                   <p className="text-[14px]">Applied Job</p>
                 </div>
