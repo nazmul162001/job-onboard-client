@@ -52,11 +52,11 @@ const EmployeesRoot = () => {
 
   return (
     <section className="h-[85vh]">
-      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-2">
-        <span></span>
-        <h2 className="text-center text-xl font-bold ">
-          <span className="text-5xl font-serif text-primary">E</span>mployees
-        </h2>
+      <div className="flex justify-between items-center border-b-2 border-cyan-600 ">
+        <div className="">
+          <h3 className="text-2xl font-semibold">Manage Recruitment Jobs</h3>
+          <span>You can manage all the jobs which are posted by you</span>
+        </div>
         <AddEmployee refetch={refetch} />
       </div>
 
