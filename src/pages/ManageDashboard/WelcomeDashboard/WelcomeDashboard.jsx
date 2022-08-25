@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import useAdmin from "../../../Hooks/useAdmin";
@@ -16,10 +17,12 @@ import RecentJobs from "./RecentJobs/RecentJobs";
 
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
+  const navigate = useNavigate();
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
   // console.log(hr);
+
 
   const { data } = useEmployeeInfo();
   const allEmployeDetails = data?.data;
@@ -49,7 +52,7 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                   </div>
-                  <div className="card_details text-black">
+                  <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/candidates`)}>
                     <h2 className="font-bold text-xl ">
                       {getApplicants ? getApplicants?.length : 0}
                     </h2>
@@ -60,7 +63,7 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
                   </div>
-                  <div className="card_details text-black">
+                  <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/hr-jobs`)}>
                     <h2 className="font-bold text-xl">
                       {hrJobs ? hrJobs?.length : 0}
                     </h2>
@@ -80,7 +83,7 @@ const WelcomeDashboard = () => {
                   <div className="icon p-5">
                     <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
                   </div>
-                  <div className="card_details text-black">
+                  <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/employee`)}>
                     {/* <h2 className="font-bold text-xl">{allEmployeDetails ? allEmployeDetails?.length : 0}</h2>
                     { */}
 
