@@ -92,15 +92,6 @@ function App() {
               </RequireAuth>
             }
           >
-            <Route
-              path="CandidateMail"
-              element={
-                <RequireAuth>
-                  <CandidatesInbox />
-                </RequireAuth>
-              }
-            />
-
             <Route index element={<WelcomeDashboard />} />
             <Route
               path="job/addNew"
@@ -108,6 +99,14 @@ function App() {
                 <RequireHr>
                   <AddNewJob />
                 </RequireHr>
+              }
+            />
+            <Route
+              path="CandidateMail"
+              element={
+                <RequireAuth>
+                  <CandidatesInbox />
+                </RequireAuth>
               }
             />
             <Route
