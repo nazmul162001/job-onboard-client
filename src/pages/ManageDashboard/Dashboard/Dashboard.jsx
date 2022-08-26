@@ -64,13 +64,6 @@ const Dashboard = ({ children }) => {
       path: "/company",
       gap: false,
     },
-    {
-      title: "Feedback",
-      src: "CompanyInfo",
-      tooltip: "Feedback",
-      path: "/feedback",
-      gap: false,
-    },
   ];
   const MenusCandidate = [
     {
@@ -87,13 +80,13 @@ const Dashboard = ({ children }) => {
     },
     {
       title: "Task",
-      src: "ri-user-line",
+      src: "ri-task-line",
       tooltip: "Task",
       path: "/task",
     },
     {
       title: "Applied Jobs",
-      src: "ri-calendar-check-fill",
+      src: "ri-briefcase-4-line",
       tooltip: "Applied Jobs",
       path: "/appliedJobs",
       gap: false,

@@ -2,7 +2,7 @@ import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const Candidate = ({ applicant, index, setApplicantData }) => {
+const Candidate = ({ applicant, index, setApplicantData, status }) => {
   const navigate = useNavigate();
   const { _id, displayName, email } = applicant;
 
@@ -43,7 +43,7 @@ const Candidate = ({ applicant, index, setApplicantData }) => {
         <label
           onClick={() => setApplicantData(applicant)}
           for="task-modal"
-          className="taskBtn cursor-pointer"
+          className={`${status ? "hidden" : "taskBtn cursor-pointer"}`}
         >
           Task
         </label>
