@@ -43,7 +43,6 @@ const JobDescription = () => {
   // console.log(alreadyApplied);
 
   // console.log(job)
-  // const {category,companyName,createdDate,employees,hrEmail,hrName,jobTitle,jobType,location,openingPosition,salary, value , _id} = job
 
   const guestNavigate = () => {
     navigate("/login?return=" + location.pathname);
