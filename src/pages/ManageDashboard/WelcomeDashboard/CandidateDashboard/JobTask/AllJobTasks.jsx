@@ -18,7 +18,7 @@ const AllJobTasks = ({ task, index }) => {
       <td>{taskDate}</td>
       <td>{taskTime}</td>
       <td>
-        <button>View Detais</button>
+        <button>View Details</button>
       </td>
     </tr>
   );

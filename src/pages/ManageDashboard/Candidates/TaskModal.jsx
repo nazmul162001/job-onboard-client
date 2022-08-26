@@ -9,7 +9,8 @@ import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 const TaskModal = ({ applicantData, setApplicantData }) => {
-  const { displayName, email, hrEmail, companyName } = applicantData;
+  const { displayName, email, hrEmail, companyName, jobTitle } = applicantData;
+
   const { theme } = useContext(InitializeContext);
   let today = new Date();
   let todaysTime = today.getHours() + ":" + today.getMinutes();
@@ -24,7 +25,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
       ...data,
       hrEmail,
       companyName,
-      done: "done",
+      status: true,
     };
 
     fetch(`${BASE_API}/candidateTask`, {
@@ -34,7 +35,6 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(candidateInfo),
-      // const { id, name, location, email } = employe;
     })
       .then((res) => res.json())
       .then((data) => {
@@ -46,12 +46,6 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
           });
           reset();
           setApplicantData(null);
-        } else {
-          Swal.fire({
-            text: `Opps!`,
-            icon: "error",
-            confirmButtonText: "Plz Try Again",
-          });
         }
       });
   };
@@ -116,6 +110,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
                 <input
                   type="text"
                   placeholder="Enter Task Name"
+                  value={jobTitle}
                   className={
                     theme
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "

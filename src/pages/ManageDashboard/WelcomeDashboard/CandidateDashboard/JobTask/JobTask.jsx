@@ -7,18 +7,20 @@ import { BASE_API } from "../../../../../config";
 import AllJobTasks from "./AllJobTasks";
 
 const JobTask = () => {
-  const { data, isLoading, refetch } = useQuery(["getHrTask"], () =>
+  const { data, isLoading } = useQuery(["getHrTask"], () =>
     axios.get(`${BASE_API}/getHrTask?email=${auth?.currentUser?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
   );
+
+  const allTasks = data?.data;
+
   if (isLoading) {
     return <Loading />;
   }
-  const allTasks = data?.data;
-  
+
   return (
     <div>
       <div className="titleContainer flex flex-col text-center  py-5">
@@ -42,7 +44,7 @@ const JobTask = () => {
             </tr>
           </thead>
           <tbody>
-            {allTasks.map((task, index) => (
+            {allTasks?.map((task, index) => (
               <AllJobTasks task={task} index={index} key={task._id} />
             ))}
           </tbody>

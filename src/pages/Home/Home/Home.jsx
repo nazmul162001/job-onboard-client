@@ -12,7 +12,7 @@ import WhyJobOnboard from "../WhyJobOnboard/WhyJobOnboard";
 import SupportEngine from "../../../Shared/Support/SupportEngine";
 
 const Home = () => {
-  useTitle('Home')
+  useTitle("Home");
   return (
     <>
       <Banner />
@@ -24,7 +24,9 @@ const Home = () => {
       <Review />
       <ContactUs />
       <Footer />
-      <SupportEngine />
+      <div className="hidden md:block">
+        <SupportEngine />
+      </div>
     </>
   );
 };

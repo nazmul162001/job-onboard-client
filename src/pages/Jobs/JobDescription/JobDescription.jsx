@@ -11,32 +11,38 @@ import useAppliedJobs from "../../../Hooks/useAppliedJobs";
 import { useState } from "react";
 import { useEffect } from "react";
 import Loading from "../../../Components/Loading/Loading";
+import useAdmin from "../../../Hooks/useAdmin";
+import useHrManager from "../../../Hooks/useHrManager";
 
 const JobDescription = () => {
   const { jobId } = useParams();
   const [job] = useJob(jobId);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
+  const [hr, hrLoading] = useHrManager(user);
   const location = useLocation();
   const { appliedJobs, isLoading } = useAppliedJobs();
   // console.log(appliedJobs)
 
   //Handle Modal Disable When Job Already Applied
   const [alreadyApplied, setAlreadyApplied] = useState(false);
-  const applied = appliedJobs?.map((appliedJ) => appliedJ?.jobPostId);
-  const exists = applied?.find((j) => j === jobId);
+  
   // console.log(exists)
   useEffect(() => {
-    if (exists) {
-      setAlreadyApplied(true);
-    } else {
-      setAlreadyApplied(false);
+    if (user) {
+      const applied = appliedJobs?.map((appliedJ) => appliedJ?.jobPostId);
+      const exists = applied?.find((j) => j === jobId);
+      if (exists) {
+        setAlreadyApplied(true);
+      } else {
+        setAlreadyApplied(false);
+      }
     }
-  }, [exists]);
-  console.log(alreadyApplied);
+  }, [appliedJobs,jobId,user]);
+  // console.log(alreadyApplied);
 
   // console.log(job)
-  // const {category,companyName,createdDate,employees,hrEmail,hrName,jobTitle,jobType,location,openingPosition,salary, value , _id} = job
 
   const guestNavigate = () => {
     navigate("/login?return=" + location.pathname);
@@ -96,19 +102,25 @@ const JobDescription = () => {
           </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
             <span className="lg:pt-4">Work Type : {job?.jobType}</span>
-            {alreadyApplied === true ? (
-              <button className="btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white">
-                Already Applied
-              </button>
+            {hr || admin ? (
+              <></>
             ) : (
               <>
                 {user ? (
-                  <label
-                    htmlFor="applicant-modal"
-                    className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
-                  >
-                    Apply Now
-                  </label>
+                  <>
+                    {alreadyApplied  ? (
+                      <button className="btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white">
+                        Already Applied
+                      </button>
+                    ) : (
+                      <label
+                        htmlFor="applicant-modal"
+                        className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
+                      >
+                        Apply Now
+                      </label>
+                    )}
+                  </>
                 ) : (
                   <label
                     className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
@@ -134,19 +146,25 @@ const JobDescription = () => {
 
         {/* Modal  */}
         <div className="flex justify-center items-center pt-5 md:mt-0 text-center md:py-8 ">
-          {alreadyApplied === true ? (
-            <button className="btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white">
-              Already Applied
-            </button>
+          {hr || admin ? (
+            <></>
           ) : (
             <>
               {user ? (
-                <label
-                  htmlFor="applicant-modal"
-                  className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
-                >
-                  Apply Now
-                </label>
+                <>
+                  {alreadyApplied === true ? (
+                    <button className="btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white">
+                      Already Applied
+                    </button>
+                  ) : (
+                    <label
+                      htmlFor="applicant-modal"
+                      className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
+                    >
+                      Apply Now
+                    </label>
+                  )}
+                </>
               ) : (
                 <label
                   className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"

@@ -10,7 +10,6 @@ import Candidate from "./Candidate";
 import "./CandidateCss/Candidate.css";
 import TaskModal from "./TaskModal";
 
-
 const Candidates = () => {
   useTitle("Candidates");
   const { getApplicants, isLoading, refetch } = useCandidate();
@@ -23,12 +22,14 @@ const Candidates = () => {
       },
     })
   );
+
+  const allreadyGiven = data?.data;
+
+  // console.log(allreadyGiven)
+
   if (isLoading) {
     return <Loading />;
   }
-  const allreadyGiven = data?.data;
-
-  
 
   return (
     <div className="p-5 h-screen">
@@ -115,7 +116,12 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && <TaskModal applicantData={applicantData}  setApplicantData={setApplicantData}/>}
+      {applicantData && (
+        <TaskModal
+          applicantData={applicantData}
+          setApplicantData={setApplicantData}
+        />
+      )}
     </div>
   );
 };
