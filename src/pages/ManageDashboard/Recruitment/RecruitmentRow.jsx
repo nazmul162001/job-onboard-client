@@ -16,7 +16,7 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
       bloodGroup: "",
       location: "",
       phoneNumber: applicant?.number,
-      photoLink: "",
+      photoLink: applicant?.profileUrl,
       additionInfo: "",
       hrUserEmail: applicant?.hrEmail,
     };
