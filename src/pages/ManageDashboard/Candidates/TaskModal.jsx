@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
 import { BASE_API } from "../../../config";
 const TaskModal = ({ applicantData, setApplicantData }) => {
-  const { displayName, email, hrEmail } = applicantData;
-
+  const { displayName, email, hrEmail, companyName } = applicantData;
+  console.log(applicantData);
   const { theme } = useContext(InitializeContext);
   let today = new Date();
   let todaysTime = today.getHours() + ":" + today.getMinutes();
@@ -20,6 +20,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
     const candidateInfo = {
       ...data,
       hrEmail,
+      companyName,
     };
 
     fetch(`${BASE_API}/candidateTask`, {

@@ -86,6 +86,18 @@ const Dashboard = ({ children }) => {
       path: "/profile",
     },
     {
+      title: "Profile",
+      src: "ri-user-line",
+      tooltip: "Profile",
+      path: "/profile",
+    },
+    {
+      title: "Task",
+      src: "ri-user-line",
+      tooltip: "Task",
+      path: "/task",
+    },
+    {
       title: "Applied Jobs",
       src: "ri-calendar-check-fill",
       tooltip: "Applied Jobs",
