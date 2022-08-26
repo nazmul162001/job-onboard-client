@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsShieldPlus } from "react-icons/bs";
+import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
-const TaskModal = () => {
-  const { theme } = useContext(InitializeContext);
+import { BASE_API } from "../../../config";
+const TaskModal = ({ applicantData, refetch,setApplicantData }) => {
+  const { displayName, email, hrEmail } = applicantData;
 
+  const { theme } = useContext(InitializeContext);
+  let today = new Date();
+  let todaysTime = today.getHours() + ":" + today.getMinutes();
   const {
     register,
     formState: { errors },
@@ -12,7 +17,39 @@ const TaskModal = () => {
     reset,
   } = useForm();
   const taskInfo = (data) => {
-    console.log(data);
+    const candidateInfo = {
+      ...data,
+      hrEmail,
+    };
+
+    fetch(`${BASE_API}/candidateTask`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(candidateInfo),
+      // const { id, name, location, email } = employe;
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            text: "Done",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+          refetch();
+          reset();
+          setApplicantData(null)
+        } else {
+          Swal.fire({
+            text: `Opps!`,
+            icon: "error",
+            confirmButtonText: "Plz Try Again",
+          });
+        }
+      });
   };
   return (
     <div>
@@ -30,6 +67,41 @@ const TaskModal = () => {
           </label>
           <div>
             <form onSubmit={handleSubmit(taskInfo)} className="space-y-2">
+              <div className="flex flex-col space-y-1 gap-y-1">
+                <label className="text-lg pl-2">
+                  Candidate Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={displayName}
+                  readOnly
+                  className={
+                    theme
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                      : "border rounded-lg py-1 text-lg pl-3 "
+                  }
+                  {...register("CandidateName")}
+                />
+              </div>
+              <div className="flex flex-col space-y-1 gap-y-1">
+                <label className="text-lg pl-2">
+                  Candidate email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  readOnly
+                  className={
+                    theme
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                      : "border rounded-lg py-1 text-lg pl-3 "
+                  }
+                  {...register("candidateEmail")}
+                />
+                <p className="text-[13px] text-red-500 pl-3">
+                  {errors.taskName?.message}
+                </p>
+              </div>
               <div className="flex flex-col space-y-1 gap-y-1">
                 <label className="text-lg pl-2">
                   Task Name <span className="text-red-500">*</span>
@@ -59,7 +131,7 @@ const TaskModal = () => {
                 <textarea
                   type="text"
                   rows={4}
-                  placeholder="Add Task Discription !"
+                  placeholder="Add Task Discription"
                   className={
                     theme
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
@@ -77,104 +149,94 @@ const TaskModal = () => {
                 </p>
               </div>
 
-              <div className="grid">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Designation <span className="text-red-500">*</span>
+                    Task Date <span className="text-red-500">*</span>
                   </label>
-                  <select
+                  <input
+                    type="date"
                     className={
                       theme
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("designation", {
+                    {...register("taskDate", {
                       required: {
                         value: true,
-                        message: "Add Designaton !",
+                        message: "Add Task Date !",
                       },
                     })}
-                  >
-                    <option disabled selected>
-                      Front-End Developer
-                    </option>
-                    <option>Front-End Developer</option>
-                    <option>Back-End Developer</option>
-                    <option>Full-Stack Developer</option>
-                    <option>Javascript Developer</option>
-                    <option>React Developer</option>
-                  </select>
+                  />
 
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.designation?.message}
+                    {errors.taskDate?.message}
                   </p>
                 </div>
 
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Gender<span className="text-red-500">*</span>
+                    Task Time<span className="text-red-500">*</span>
                   </label>
-                  <select
+                  <input
+                    type="time"
+                    defaultValue={todaysTime}
                     className={
                       theme
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("gender", {
+                    {...register("taskTime", {
                       required: {
                         value: true,
-                        message: "Add Gender !",
+                        message: "Add Task Time !",
                       },
                     })}
-                  >
-                    <option selected>Male</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Others</option>
-                  </select>
+                  />
                   <p className="text-[13px] text-red-500 pl-3">
                     {errors.gender?.message}
                   </p>
                 </div>
 
-                <div className="flex flex-col space-y-1 gap-y-1">
+                <div className="flex flex-col space-y-1 gap-y-1 mb-8">
                   <label className="text-lg pl-2">
-                    Joining Date<span className="text-red-500">*</span>
+                    Time Duration<span className="text-red-500">*</span>
                   </label>
-                  <input
-                    type="date"
-                    placeholder="Enter Joining Date"
+                  <select
                     className={
                       theme
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("joiningDate", {
+                    {...register("timeDuration", {
                       required: {
                         value: true,
-                        message: "Add Joining Date !",
+                        message: "Add Time Duration!",
                       },
                     })}
-                  />
-                  <p className="text-[13px] text-red-500 pl-3">
-                    {errors.joiningDate?.message}
-                  </p>
+                  >
+                    <option disabled selected>
+                      An Hour
+                    </option>
+                    <option>An Hours</option>
+                    <option>30 Minutes</option>
+                    <option>2 Hours</option>
+                    <option>3 Hours</option>
+                    <option>4 Hours</option>
+                    <option>5 Hours</option>
+                    <option>1 Days</option>
+                    <option>2 Days</option>
+                  </select>
                 </div>
               </div>
 
-              <button className="rounded-lg text-lg py-1 font-bold  bg-primary w-full  flex items-center justify-center  text-white">
-                <BsShieldPlus /> Add
+              <button className="rounded-lg text-lg py-1  font-bold  bg-primary w-full  flex items-center justify-center  text-white">
+                <BsShieldPlus /> Send
               </button>
             </form>
           </div>
         </label>
       </label>
-
-      <div className="">
-        <label for="task-modal" className="taskBtn cursor-pointer">
-          Task
-        </label>
-      </div>
     </div>
   );
 };
