@@ -1,13 +1,12 @@
 .taskBtn {
-  background: #323272;
-  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
-    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-  font-size: 18px;
+  background: #10105a;
+  box-shadow: -1px 2px 0px 1px #57b7fb;
+  font-size: 12px;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
-  padding: 10px 14px;
+  padding: 6px 14px;
   font-weight: 500;
   color: #fff;
-  border-radius: 10% 60% 60% 10%;
+  border-radius: 10% 61% 60% 10%;
   text-align: center;
 }
 

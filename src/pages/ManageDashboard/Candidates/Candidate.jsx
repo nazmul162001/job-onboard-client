@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import TaskModal from "./TaskModal";
 
 const Candidate = ({ applicant, setMail, index }) => {
   const { displayName, email } = applicant;
@@ -46,7 +47,7 @@ const Candidate = ({ applicant, setMail, index }) => {
         </a>
       </td>
       <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
-        <button className="taskBtn">task</button>
+        <TaskModal applicant={applicant} />
       </td>
     </tr>
   );
