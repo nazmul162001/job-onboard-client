@@ -10,7 +10,7 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
       fullName: applicant?.displayName,
       employeId: "",
       employeEmail: applicant?.email,
-      designation: "",
+      designation: applicant?.job?.category,
       gender: "",
       age: "",
       joiningDate: "",
