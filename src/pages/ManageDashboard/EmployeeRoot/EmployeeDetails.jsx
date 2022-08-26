@@ -26,6 +26,7 @@ const EmployeeDetails = () => {
     photoLink,
     additionInfo,
   } = singleDetails;
+
   return (
     <div>
       <div className=" border-b-2 border-cyan-600 py-3">
