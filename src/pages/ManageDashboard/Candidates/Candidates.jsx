@@ -1,5 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { useState } from "react";
+import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
+import { BASE_API } from "../../../config";
 import useCandidate from "../../../Hooks/useCandidate";
 import useTitle from "../../../Hooks/useTitle";
 import Candidate from "./Candidate";
@@ -11,9 +15,20 @@ const Candidates = () => {
   const [mail, setMail] = useState(null);
   const { getApplicants, isLoading } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
+
+  const { data } = useQuery(["AllredyGiven"], () =>
+    axios.get(`${BASE_API}/AllredyGiven?email=${auth?.currentUser?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
   if (isLoading) {
     return <Loading />;
   }
+  const allreadyGiven = data?.data;
+
+  
 
   return (
     <div className="p-5 h-screen">
@@ -72,6 +87,7 @@ const Candidates = () => {
                         key={applicant._id}
                         setMail={setMail}
                         setApplicantData={setApplicantData}
+                        allreadyGiven={allreadyGiven}
                       />
                     ))}
                   </tbody>
@@ -96,7 +112,13 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && <TaskModal applicantData={applicantData}  setApplicantData={setApplicantData}/>}
+      {applicantData && (
+        <TaskModal
+          applicantData={applicantData}
+          setApplicantData={setApplicantData}
+          
+        />
+      )}
     </div>
   );
 };

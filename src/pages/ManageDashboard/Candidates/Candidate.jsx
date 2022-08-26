@@ -1,7 +1,14 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
 
-const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
+const Candidate = ({
+  applicant,
+  setMail,
+  index,
+  setApplicantData,
+  allreadyGiven,
+}) => {
+  console.log(allreadyGiven);
   const { displayName, email } = applicant;
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
@@ -46,13 +53,17 @@ const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
         </a>
       </td>
       <td>
-        <label
-          onClick={() => setApplicantData(applicant)}
-          for="task-modal"
-          className="taskBtn cursor-pointer"
-        >
-          Task
-        </label>
+        {allreadyGiven.done ? (
+          <p>done</p>
+        ) : (
+          <label
+            onClick={() => setApplicantData(applicant)}
+            for="task-modal"
+            className="taskBtn cursor-pointer"
+          >
+            Task
+          </label>
+        )}
       </td>
     </tr>
   );
