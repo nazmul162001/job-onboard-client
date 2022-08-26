@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import TaskModal from "./TaskModal";
 
 const Candidate = ({ applicant, setMail, index }) => {
   const { displayName, email } = applicant;
@@ -11,9 +12,7 @@ const Candidate = ({ applicant, setMail, index }) => {
 
       <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
         <div>
-          <div class="font-normal">
-            {displayName}
-          </div>
+          <div class="font-normal">{displayName}</div>
           <div class="text-sm font-semibold">
             <label
               htmlFor="candidate-modal"
@@ -34,9 +33,7 @@ const Candidate = ({ applicant, setMail, index }) => {
       </td>
 
       <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div class="text-sm font-semibold">
-          {applicant.number}
-        </div>
+        <div class="text-sm font-semibold">{applicant.number}</div>
       </td>
 
       <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
@@ -48,6 +45,9 @@ const Candidate = ({ applicant, setMail, index }) => {
         >
           <FaRegAddressBook size={25} />
         </a>
+      </td>
+      <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
+        <TaskModal applicant={applicant} />
       </td>
     </tr>
   );

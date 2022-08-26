@@ -52,10 +52,10 @@ const EmployeesRoot = () => {
 
   return (
     <section className="h-[85vh]">
-      <div className="flex justify-between items-center border-b-2 border-cyan-600 ">
+      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-3 mb-3">
         <div className="">
-          <h3 className="text-2xl font-semibold">Manage Recruitment Jobs</h3>
-          <span>You can manage all the jobs which are posted by you</span>
+          <h3 className="text-2xl font-semibold">Manage All Employees</h3>
+          <span>You can manage all the employees and see there details.</span>
         </div>
         <AddEmployee refetch={refetch} />
       </div>
