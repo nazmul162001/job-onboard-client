@@ -1,8 +1,11 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { Navigate } from "react-router-dom";
 
-const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
+const Candidate = ({ applicant, index, setApplicantData }) => {
+
   const { displayName, email } = applicant;
+
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -13,14 +16,14 @@ const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
         <div>
           <div class="font-normal">{displayName}</div>
           <div class="text-sm font-semibold">
+
             <label
-              htmlFor="candidate-modal"
-              title="Click to send mail"
-              onClick={() => setMail({ displayName, email })}
+              onClick={() => Navigate()}
               className="cursor-pointer"
             >
               {email}
             </label>
+
           </div>
         </div>
       </td>

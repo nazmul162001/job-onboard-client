@@ -4,12 +4,12 @@ import useCandidate from "../../../Hooks/useCandidate";
 import useTitle from "../../../Hooks/useTitle";
 import Candidate from "./Candidate";
 import "./CandidateCss/Candidate.css";
-import CandidatesMailModal from "./CandidatesMailModal";
 import TaskModal from "./TaskModal";
+
+
 const Candidates = () => {
   useTitle("Candidates");
-  const [mail, setMail] = useState(null);
-  const { getApplicants, isLoading,refetch } = useCandidate();
+  const { getApplicants, isLoading, refetch } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
   if (isLoading) {
     return <Loading />;
@@ -70,7 +70,6 @@ const Candidates = () => {
                         applicant={applicant}
                         index={index}
                         key={applicant._id}
-                        setMail={setMail}
                         setApplicantData={setApplicantData}
                       />
                     ))}
@@ -79,8 +78,6 @@ const Candidates = () => {
               </div>
             </div>
           </div>
-
-          {mail && <CandidatesMailModal mail={mail}></CandidatesMailModal>}
         </div>
       ) : (
         <>
@@ -96,7 +93,7 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && <TaskModal applicantData={applicantData} refetch={refetch} setApplicantData={setApplicantData}/>}
+      {applicantData && <TaskModal applicantData={applicantData} refetch={refetch} setApplicantData={setApplicantData} />}
     </div>
   );
 };
