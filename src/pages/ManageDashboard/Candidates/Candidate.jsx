@@ -15,14 +15,7 @@ const Candidate = ({ applicant, index, setApplicantData }) => {
       <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
         <div>
           <div class="font-normal">{displayName}</div>
-          <div class="text-sm font-semibold">
-            <span
-              onClick={() => navigate(`${_id}`)}
-              className="cursor-pointer"
-            >
-              {email}
-            </span>
-          </div>
+          <div class="text-sm font-semibold">{email}</div>
         </div>
       </td>
 
@@ -54,6 +47,11 @@ const Candidate = ({ applicant, index, setApplicantData }) => {
         >
           Task
         </label>
+      </td>
+      <td className="flex justify-center items-center mt-5">
+        <span onClick={() => navigate(`${_id}`)} className="cursor-pointer">
+          <button className="btn btn-sm text-white">See Details</button>
+        </span>
       </td>
     </tr>
   );
