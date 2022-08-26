@@ -107,10 +107,10 @@ const Dashboard = ({ children }) => {
       path: "/profile",
     },
     {
-      title: "Manage All HR",
+      title: "Manage All Users",
       src: "ri-equalizer-line",
-      tooltip: "Manage All HR",
-      path: "/allHr",
+      tooltip: "Manage All Users",
+      path: "/allUsers",
     },
     {
       title: "Manage All Jobs",

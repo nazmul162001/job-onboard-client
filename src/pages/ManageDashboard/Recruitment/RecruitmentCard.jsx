@@ -11,7 +11,7 @@ import RecruitmentRow from "./RecruitmentRow";
 const RecruitmentCard = ({ job }) => {
   const navigate = useNavigate();
   const [candidates, setCandidates] = useState(null);
-  const { companyName, jobTitle, location, salary, jobType } = job;
+  const { companyName, jobTitle, location, salary, jobType, jobPostId } = job;
   // const hrUserEmail = auth?.currentUser?.email;
 
   const { data, isLoading, refetch } = useQuery(
@@ -50,17 +50,23 @@ const RecruitmentCard = ({ job }) => {
             </p>
           </div>
         </div>
-        <p className="flex ">{location} </p>
+        <p className="flex ">Location : {location} </p>
         <div className="flex flex-col  space-y-1">
           <span>
             Salary : ${salary}
             <small>/m</small>
           </span>
         </div>
+        <div className="flex flex-col  space-y-1">
+          <span>Job Type : {jobType}</span>
+        </div>
         <div className=" pt-3 flex justify-between items-center">
-          <span className="border rounded-xl px-4 py-1 bg-base-300">
-            {jobType}
-          </span>
+          <button
+            className="btn btn-sm btn-outline capitalize rounded-lg px-4 py-1 "
+            onClick={() => navigate(`/job/${jobPostId}`)}
+          >
+            See Details
+          </button>
         </div>
       </div>
       {countData?.length > 0 && (
