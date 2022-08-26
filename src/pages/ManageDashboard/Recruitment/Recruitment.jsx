@@ -10,7 +10,7 @@ const Recruitment = () => {
   return (
     <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
-        <h3 className="text-2xl font-semibold">Manage Recruitment Jobs</h3>
+        <h3 className="text-lg md:text-2xl font-semibold">Manage Recruitment Jobs</h3>
         <span>You can manage all the jobs which are posted by you</span>
       </div>
       {hrJobs?.length > 0 ? (
