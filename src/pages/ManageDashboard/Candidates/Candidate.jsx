@@ -8,7 +8,7 @@ const Candidate = ({
   setApplicantData,
   allreadyGiven,
 }) => {
-  console.log(allreadyGiven);
+  
   const { displayName, email } = applicant;
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
