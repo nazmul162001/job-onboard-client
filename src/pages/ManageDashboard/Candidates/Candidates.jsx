@@ -9,7 +9,7 @@ import TaskModal from "./TaskModal";
 const Candidates = () => {
   useTitle("Candidates");
   const [mail, setMail] = useState(null);
-  const { getApplicants, isLoading,refetch } = useCandidate();
+  const { getApplicants, isLoading } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
   if (isLoading) {
     return <Loading />;
@@ -96,7 +96,7 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && <TaskModal applicantData={applicantData} refetch={refetch} setApplicantData={setApplicantData}/>}
+      {applicantData && <TaskModal applicantData={applicantData}  setApplicantData={setApplicantData}/>}
     </div>
   );
 };
