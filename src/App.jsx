@@ -146,7 +146,7 @@ function App() {
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />
             <Route
-              path="allHr"
+              path="allUsers"
               element={
                 <RequireAdmin>
                   <AllHr />

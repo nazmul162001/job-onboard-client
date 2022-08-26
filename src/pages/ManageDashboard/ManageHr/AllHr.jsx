@@ -29,7 +29,9 @@ const AllHr = () => {
           <thead className="bg-base-300">
             <tr>
               <th>No</th>
+              <th>Image</th>
               <th>Uid</th>
+              <th>Name</th>
               <th>Email</th>
               <th>Make Admin</th>
               <th>Remove Admin</th>
@@ -38,11 +40,11 @@ const AllHr = () => {
             </tr>
           </thead>
           <tbody>
-            {allHr?.map((hr, index) => (
+            {allHr?.map((hrData, index) => (
               <HrRow
                 index={index}
-                key={hr._id}
-                hr={hr}
+                key={hrData._id}
+                hrData={hrData}
                 refetch={refetch}
               ></HrRow>
             ))}
