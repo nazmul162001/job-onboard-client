@@ -1,10 +1,11 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 
 const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
-  console.log(applicant);
+  const navigate = useNavigate();
   const handleUpdateStatus = async (id) => {
     const candidates = {
       fullName: applicant?.displayName,
@@ -61,11 +62,9 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
                       confirmButtonText: "Okay",
                     });
                     refetch();
+                    navigate("/dashboard/employee");
                   }
                 });
-              // refetch();
-              // toast.success("Your Candidate is hired.");
-              // setCandidates(null);
             }
           });
       }
