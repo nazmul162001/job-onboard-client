@@ -3,13 +3,14 @@ import Loading from "../../../Components/Loading/Loading";
 import useCandidate from "../../../Hooks/useCandidate";
 import useTitle from "../../../Hooks/useTitle";
 import Candidate from "./Candidate";
-import './CandidateCss/Candidate.css'
+import "./CandidateCss/Candidate.css";
 import CandidatesMailModal from "./CandidatesMailModal";
+import TaskModal from "./TaskModal";
 const Candidates = () => {
   useTitle("Candidates");
   const [mail, setMail] = useState(null);
   const { getApplicants, isLoading } = useCandidate();
-
+  const [applicantData, setApplicantData] = useState(null);
   if (isLoading) {
     return <Loading />;
   }
@@ -70,6 +71,7 @@ const Candidates = () => {
                         index={index}
                         key={applicant._id}
                         setMail={setMail}
+                        setApplicantData={setApplicantData}
                       />
                     ))}
                   </tbody>
@@ -93,6 +95,8 @@ const Candidates = () => {
           </div>
         </>
       )}
+
+      {applicantData && <TaskModal applicantData={applicantData}  setApplicantData={setApplicantData}/>}
     </div>
   );
 };

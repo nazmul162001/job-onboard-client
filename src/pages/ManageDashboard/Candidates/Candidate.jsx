@@ -1,8 +1,7 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
-import TaskModal from "./TaskModal";
 
-const Candidate = ({ applicant, setMail, index }) => {
+const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
   const { displayName, email } = applicant;
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
@@ -46,8 +45,14 @@ const Candidate = ({ applicant, setMail, index }) => {
           <FaRegAddressBook size={25} />
         </a>
       </td>
-      <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
-        <TaskModal applicant={applicant} />
+      <td>
+        <label
+          onClick={() => setApplicantData(applicant)}
+          for="task-modal"
+          className="taskBtn cursor-pointer"
+        >
+          Task
+        </label>
       </td>
     </tr>
   );
