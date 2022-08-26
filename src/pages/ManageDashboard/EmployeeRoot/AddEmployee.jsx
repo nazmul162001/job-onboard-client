@@ -164,13 +164,25 @@ const AddEmployee = ({ refetch }) => {
                     })}
                   >
                     <option disabled selected>
-                      Front-End Developer
+                    Web Developer
                     </option>
-                    <option>Front-End Developer</option>
-                    <option>Back-End Developer</option>
-                    <option>Full-Stack Developer</option>
-                    <option>Javascript Developer</option>
-                    <option>React Developer</option>
+                    <option>Web Developer</option>
+                    <option>Front End Dev</option>
+                    <option>Backend Dev</option>
+                    <option>Full Stack Dev</option>
+                    <option>Blockchain Development</option>
+                    <option>Animator</option>
+                    <option>Cloud Computing</option>
+                    <option>Cyber Security</option>
+                    <option>Data Entry</option>
+                    <option>Flutter Development</option>
+                    <option>Game Development</option>
+                    <option>Graphic Design</option>
+                    <option>Social Media Marketing</option>
+                    <option>Mobile App Development</option>
+                    <option>PHP Development</option>
+                    <option>WordPress</option>
+                    <option>Other</option>
                   </select>
 
                   <p className="text-[13px] text-red-500 pl-3">

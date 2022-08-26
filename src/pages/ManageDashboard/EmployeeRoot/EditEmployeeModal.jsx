@@ -25,6 +25,9 @@ const EditEmployeeModal = ({
     age,
     gender,
   } = editEmployeDetails;
+
+  // console.log(editEmployeDetails)
+
   const {
     register,
     formState: { errors },
@@ -188,6 +191,20 @@ const EditEmployeeModal = ({
                     <option>Full-Stack Developer</option>
                     <option>Javascript Developer</option>
                     <option>React Developer</option>
+                    <option>Web Developer</option>
+                    <option>Blockchain Development</option>
+                    <option>Animator</option>
+                    <option>Cloud Computing</option>
+                    <option>Cyber Security</option>
+                    <option>Data Entry</option>
+                    <option>Flutter Development</option>
+                    <option>Game Development</option>
+                    <option>Graphic Design</option>
+                    <option>Social Media Marketing</option>
+                    <option>Mobile App Development</option>
+                    <option>PHP Development</option>
+                    <option>WordPress</option>
+                    <option>Other</option>
                   </select>
                   <p className="text-[13px] text-red-500 pl-3">
                     {errors.designation?.message}
