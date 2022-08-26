@@ -141,6 +141,7 @@ function App() {
               }
             />
             <Route path="candidates" element={<Candidates />} />
+            <Route path="candidates/:candidatesID" element={<Candidates />} />
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />
             <Route

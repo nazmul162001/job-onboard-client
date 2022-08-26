@@ -4,12 +4,12 @@ import useCandidate from "../../../Hooks/useCandidate";
 import useTitle from "../../../Hooks/useTitle";
 import Candidate from "./Candidate";
 import "./CandidateCss/Candidate.css";
-import CandidatesMailModal from "./CandidatesMailModal";
 import TaskModal from "./TaskModal";
+
+
 const Candidates = () => {
   useTitle("Candidates");
-  const [mail, setMail] = useState(null);
-  const { getApplicants, isLoading } = useCandidate();
+  const { getApplicants, isLoading, refetch } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
   if (isLoading) {
     return <Loading />;
@@ -18,52 +18,47 @@ const Candidates = () => {
   return (
     <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
-        <h3 className="text-lg md:text-2xl font-semibold">Manage Candidates</h3>
+        <h3 className="text-2xl font-semibold">Manage Candidates</h3>
         <span>
           You can manage all the Candidates which are applied your jobs
         </span>
       </div>
       {getApplicants?.length > 0 ? (
-        <div className="flex flex-col">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
-                <table className="min-w-full">
-                  <thead className="border-b bg-primary">
+        <div class="flex flex-col">
+          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div class="overflow-hidden">
+                <table class="min-w-full">
+                  <thead class="border-b bg-primary">
                     <tr>
+                      <th scope="col"></th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-white px-6 py-4 text-left"
-                      >
-                        No
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-sm font-medium text-white px-6 py-4 text-left"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Candidates
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-white px-6 py-4 text-left"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Applied For
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-white px-6 py-4 text-left"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Phone
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-white px-6 py-4 text-left"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Resume/Link
                       </th>
                       <th
                         scope="col"
-                        className="text-sm font-medium text-white px-6 py-4 text-left"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Task
                       </th>
@@ -75,7 +70,6 @@ const Candidates = () => {
                         applicant={applicant}
                         index={index}
                         key={applicant._id}
-                        setMail={setMail}
                         setApplicantData={setApplicantData}
                       />
                     ))}
@@ -84,8 +78,6 @@ const Candidates = () => {
               </div>
             </div>
           </div>
-
-          {mail && <CandidatesMailModal mail={mail}></CandidatesMailModal>}
         </div>
       ) : (
         <>
@@ -101,12 +93,7 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && (
-        <TaskModal
-          applicantData={applicantData}
-          setApplicantData={setApplicantData}
-        />
-      )}
+      {applicantData && <TaskModal applicantData={applicantData} refetch={refetch} setApplicantData={setApplicantData} />}
     </div>
   );
 };
