@@ -91,8 +91,6 @@ function App() {
               </RequireAuth>
             }
           >
-          
-
             <Route index element={<WelcomeDashboard />} />
             <Route
               path="job/addNew"

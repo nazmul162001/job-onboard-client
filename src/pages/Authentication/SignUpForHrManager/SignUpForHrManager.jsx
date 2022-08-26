@@ -63,6 +63,7 @@ const SignUpForHrManager = () => {
       companyName: data.companyName,
       displayName: data.firstName + " " + data.lastName,
       number: data.number,
+      profileUrl: auth?.currentUser?.photoURL,
     };
     axios.put(`${BASE_API}/login`, hrData);
     await updateProfile({ displayName: hrData.displayName });

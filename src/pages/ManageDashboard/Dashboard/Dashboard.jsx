@@ -86,12 +86,6 @@ const Dashboard = ({ children }) => {
       path: "/profile",
     },
     {
-      title: "Profile",
-      src: "ri-user-line",
-      tooltip: "Profile",
-      path: "/profile",
-    },
-    {
       title: "Applied Jobs",
       src: "ri-calendar-check-fill",
       tooltip: "Applied Jobs",
@@ -300,16 +294,9 @@ const Dashboard = ({ children }) => {
             open ? "w-80" : "w-20"
           } bg-[#081A51] h-screen p-5  pt-8 relative duration-500`}
         >
-          {/* <img
-            src="./sidebar/control.png"
-            alt="control"
-            className={`absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
-           border-2 rounded-full  ${!open && "rotate-180"}`}
-            onClick={() => setOpen(!open)}
-          /> */}
           <i
-            class={`bg-white flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
-           border-2 rounded-full  ${!open && "rotate-180"}`}
+            className={`bg-base-100 flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-8 h-8 border-[#081A51] 
+           border-2 rounded-full text-2xl ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
           ></i>
           <div
