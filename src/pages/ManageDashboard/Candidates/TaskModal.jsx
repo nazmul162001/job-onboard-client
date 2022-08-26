@@ -1,12 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
+import auth from "../../../Auth/Firebase/Firebase.init";
+import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 const TaskModal = ({ applicantData, setApplicantData }) => {
   const { displayName, email, hrEmail, companyName } = applicantData;
-  console.log(applicantData);
   const { theme } = useContext(InitializeContext);
   let today = new Date();
   let todaysTime = today.getHours() + ":" + today.getMinutes();
@@ -21,6 +24,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
       ...data,
       hrEmail,
       companyName,
+      done: "done",
     };
 
     fetch(`${BASE_API}/candidateTask`, {
@@ -51,6 +55,9 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
         }
       });
   };
+
+ 
+
   return (
     <div>
       <input type="checkbox" id="task-modal" class="modal-toggle" />

@@ -18,7 +18,7 @@ const JobTask = () => {
     return <Loading />;
   }
   const allTasks = data?.data;
-  console.log(allTasks);
+  
   return (
     <div>
       <div className="titleContainer flex flex-col text-center  py-5">
