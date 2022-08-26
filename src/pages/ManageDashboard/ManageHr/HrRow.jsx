@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import auth from "../../../Auth/Firebase/Firebase.init";
 
-const HrRow = ({ hr, index, refetch }) => {
-  const { _id, email, role, uid } = hr;
+const HrRow = ({ hrData, index, refetch }) => {
+const { _id, email, profileUrl, displayName, role, uid } = hrData;
 
   /* Handle Delete User */
   const handleUserDelete = (id) => {
@@ -58,7 +58,7 @@ const HrRow = ({ hr, index, refetch }) => {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-          body: JSON.stringify(hr),
+          body: JSON.stringify(hrData),
         })
           .then((res) => {
             if (res.status === 403) {
@@ -92,7 +92,7 @@ const HrRow = ({ hr, index, refetch }) => {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-          body: JSON.stringify(hr),
+          body: JSON.stringify(hrData),
         })
           .then((res) => {
             if (res.status === 403) {
@@ -113,8 +113,26 @@ const HrRow = ({ hr, index, refetch }) => {
   return (
     <tr>
       <th>{index + 1}</th>
+      <td>
+        {profileUrl ? (
+          <img
+            src={profileUrl}
+            alt=""
+            width={40}
+            className="mask mask-hexagon hover:mask-squircle duration-500 shadow-sm"
+          />
+        ) : (
+          <img
+            src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+            alt=""
+            width={40}
+            className="mask mask-hexagon hover:mask-squircle shadow-sm"
+          />
+        )}
+      </td>
       <td>{uid ? uid : "Not Available"}</td>
-      <td>{email}</td>
+      <td>{displayName ? displayName : "Not Available"}</td>
+      <td>{email ? email : 'null account'}</td>
       <td>
         {role === "admin" ? (
           ""
@@ -134,13 +152,9 @@ const HrRow = ({ hr, index, refetch }) => {
         )}
       </td>
       <td>
-        {role === "admin" ? (
-          <span className="badge bg-primary text-white border-primary">
-            Admin
-          </span>
-        ) : (
-          <span className="badge text-white">HR</span>
-        )}
+        <span className={`badge text-white ${role === "admin" ? "bg-primary border-primary" : role === "hr" ? "bg-secondary border-secondary" : "bg-neutral border-neutral"}`}>
+          {role === "admin" ? "Admin" : role === "hr" ? "HR Manager" : "Candidate"}
+        </span>
       </td>
       <td>
         <label

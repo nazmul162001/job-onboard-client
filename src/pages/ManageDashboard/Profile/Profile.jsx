@@ -97,7 +97,7 @@ const Profile = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-y-12 my-10 px-1 md:px-10">
-        <div className="shadow-xl border-l-4 border-primary rounded-lg relative p-4 order-1">
+        <div className="shadow-xl border-l-4 border-primary rounded-lg relative p-4 order-1 my-8 md:my-0">
           <h2 className="text-xl mb-4 px-4 font-bold">Your Information</h2>
           <label
             for="editProfile"
@@ -120,7 +120,7 @@ const Profile = () => {
           >
             <FiEdit className="text-white" />
           </label>
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Name</span>
 
             <span>
@@ -129,50 +129,50 @@ const Profile = () => {
           </div>
           <hr className="border-dashed" />
 
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Designation</span>
             <span className="badge bg-primary border-primary text-white">
               {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
             </span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Email</span>
 
             <span>{auth?.currentUser?.email}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Contact Number</span>
 
             <span>{number ? number : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Gender</span>
 
             <span>{gender ? gender : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Location</span>
 
             <span>{address ? address : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Date Of Birth</span>
 
             <span>{dateOfBirth ? dateOfBirth : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
 
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Blood Group</span>
 
             <span>{bloodGroup ? bloodGroup : "Not Available"}</span>
           </div>
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Resume/CV</span>
 
             <span>
@@ -236,8 +236,8 @@ const Profile = () => {
       {editProfile && (
         <>
           <input type="checkbox" id="editProfile" className="modal-toggle " />
-          <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box relative">
+          <div className="modal">
+            <div className="modal-box relative w-10/12 max-w-3xl">
               <label
                 for="editProfile"
                 className="btn btn-sm btn-circle absolute right-2 top-2"

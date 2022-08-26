@@ -160,6 +160,7 @@ const AddNewJob = () => {
               <option value="Mobile App Development">Mobile App Development</option>
               <option value="PHP Development">PHP Development</option>
               <option value="WordPress">WordPress</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 

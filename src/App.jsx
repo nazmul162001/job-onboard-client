@@ -91,8 +91,6 @@ function App() {
               </RequireAuth>
             }
           >
-          
-
             <Route index element={<WelcomeDashboard />} />
             <Route
               path="job/addNew"
@@ -146,7 +144,7 @@ function App() {
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />
             <Route
-              path="allHr"
+              path="allUsers"
               element={
                 <RequireAdmin>
                   <AllHr />
