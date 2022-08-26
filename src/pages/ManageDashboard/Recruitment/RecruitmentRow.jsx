@@ -4,12 +4,13 @@ import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 
 const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
+  console.log(applicant);
   const handleUpdateStatus = async (id) => {
     const candidates = {
       fullName: applicant?.displayName,
       employeId: "",
       employeEmail: applicant?.email,
-      designation: "",
+      designation: applicant?.job?.category,
       gender: "",
       age: "",
       joiningDate: "",
