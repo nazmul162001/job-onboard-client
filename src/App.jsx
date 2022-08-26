@@ -34,6 +34,7 @@ import ManageAllJobs from "./Pages/ManageDashboard/ManageAllJobs/ManageAllJobs";
 import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import Profile from "./Pages/ManageDashboard/Profile/Profile";
 import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
+import RecruitmentJobDetails from "./Pages/ManageDashboard/Recruitment/RecruitmentJobDetails";
 import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
 import JobTask from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/JobTask";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
@@ -136,10 +137,18 @@ function App() {
               }
             />
             <Route
-              path="recruitment/:candidatesID"
+              path="recruitment/mail/:candidatesID"
               element={
                 <RequireHr>
                   <SendMailCandidates />
+                </RequireHr>
+              }
+            />
+            <Route
+              path="recruitment/jobs/:jobId"
+              element={
+                <RequireHr>
+                  <RecruitmentJobDetails />
                 </RequireHr>
               }
             />

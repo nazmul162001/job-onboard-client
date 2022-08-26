@@ -11,7 +11,8 @@ import RecruitmentRow from "./RecruitmentRow";
 const RecruitmentCard = ({ job }) => {
   const navigate = useNavigate();
   const [candidates, setCandidates] = useState(null);
-  const { companyName, jobTitle, location, salary, jobType, jobPostId } = job;
+  const { companyName, jobTitle, location, salary, jobType, _id } = job;
+
   // const hrUserEmail = auth?.currentUser?.email;
 
   const { data, isLoading, refetch } = useQuery(
@@ -31,7 +32,11 @@ const RecruitmentCard = ({ job }) => {
   // console.log(data?.data)
 
   const singleCandidates = (id) => {
-    navigate(`${id}`);
+    navigate(`mail/${id}`);
+  };
+
+  const singleJobs = (id) => {
+    navigate(`jobs/${id}`);
   };
 
   if (isLoading) {
@@ -63,7 +68,7 @@ const RecruitmentCard = ({ job }) => {
         <div className=" pt-3 flex justify-between items-center">
           <button
             className="btn btn-sm btn-outline capitalize rounded-lg px-4 py-1 "
-            onClick={() => navigate(`/job/${jobPostId}`)}
+            onClick={() => singleJobs(_id)}
           >
             See Details
           </button>
