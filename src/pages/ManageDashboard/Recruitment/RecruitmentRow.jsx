@@ -62,7 +62,7 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
                       confirmButtonText: "Okay",
                     });
                     refetch();
-                    navigate('/dashboard/employee')
+                    navigate("/dashboard/employee");
                   }
                 });
             }
