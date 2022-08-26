@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { BsShieldPlus } from "react-icons/bs";
+import { IoIosSend } from "react-icons/io";
 import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
 import { BASE_API } from "../../../config";
-const TaskModal = ({ applicantData, refetch,setApplicantData }) => {
+const TaskModal = ({ applicantData, setApplicantData }) => {
   const { displayName, email, hrEmail } = applicantData;
 
   const { theme } = useContext(InitializeContext);
@@ -39,9 +39,8 @@ const TaskModal = ({ applicantData, refetch,setApplicantData }) => {
             icon: "success",
             confirmButtonText: "Okay",
           });
-          refetch();
           reset();
-          setApplicantData(null)
+          setApplicantData(null);
         } else {
           Swal.fire({
             text: `Opps!`,
@@ -231,7 +230,7 @@ const TaskModal = ({ applicantData, refetch,setApplicantData }) => {
               </div>
 
               <button className="rounded-lg text-lg py-1  font-bold  bg-primary w-full  flex items-center justify-center  text-white">
-                <BsShieldPlus /> Send
+                <IoIosSend /> Send
               </button>
             </form>
           </div>
