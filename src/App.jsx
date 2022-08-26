@@ -21,6 +21,7 @@ import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
+import SingleCandidates from "./Pages/ManageDashboard/Candidates/SingleCandidates";
 
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
@@ -143,7 +144,10 @@ function App() {
               }
             />
             <Route path="candidates" element={<Candidates />} />
-            <Route path="candidates/:candidatesID" element={<Candidates />} />
+            <Route
+              path="candidates/:candidatesID"
+              element={<SingleCandidates />}
+            />
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />
             <Route

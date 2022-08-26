@@ -16,7 +16,10 @@ const Candidate = ({ applicant, index, setApplicantData }) => {
         <div>
           <div class="font-normal">{displayName}</div>
           <div class="text-sm font-semibold">
-            <span onClick={() => navigate()} className="cursor-pointer">
+            <span
+              onClick={() => navigate(`${_id}`)}
+              className="cursor-pointer"
+            >
               {email}
             </span>
           </div>
