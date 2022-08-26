@@ -35,6 +35,7 @@ const Profile = () => {
 
   const saveProfileDataOnMongodb = async (data) => {
     const profileData = {
+      displayName: data?.displayName,
       address: data?.address,
       resume: data?.resume,
       number: data?.number,
@@ -67,8 +68,7 @@ const Profile = () => {
       });
   };
 
-  const {data,isLoading,refetch} = useCandidateInfo()
-  // console.log(data?.data?.result);
+  const { data, isLoading, refetch } = useCandidateInfo();
   if (isLoading)
     return (
       <div className="md:p-80">
@@ -77,6 +77,7 @@ const Profile = () => {
     );
 
   const {
+    displayName,
     address,
     resume,
     gender,
@@ -90,19 +91,20 @@ const Profile = () => {
   } = data?.data?.result;
 
   return (
-    <div>
+    <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
         <h2 className="text-center text-2xl font-semibold ">Profile</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-y-12 my-10 px-1 md:px-10">
-        <div className="shadow-xl border-l-4 border-primary rounded-lg relative p-4 order-1">
+        <div className="shadow-xl border-l-4 border-primary rounded-lg relative p-4 order-1 my-8 md:my-0">
           <h2 className="text-xl mb-4 px-4 font-bold">Your Information</h2>
           <label
             for="editProfile"
             className="btn btn-sm btn-circle absolute right-2 top-2"
             onClick={() =>
               setEditProfile({
+                displayName,
                 gender,
                 number,
                 dateOfBirth,
@@ -118,57 +120,59 @@ const Profile = () => {
           >
             <FiEdit className="text-white" />
           </label>
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Name</span>
 
-            <span>{auth?.currentUser?.displayName}</span>
+            <span>
+              {displayName ? displayName : auth?.currentUser?.displayName}
+            </span>
           </div>
           <hr className="border-dashed" />
 
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Designation</span>
             <span className="badge bg-primary border-primary text-white">
               {!admin && hr ? "HR" : admin && !hr ? "Admin" : "Candidate"}
             </span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Email</span>
 
             <span>{auth?.currentUser?.email}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Contact Number</span>
 
             <span>{number ? number : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Gender</span>
 
             <span>{gender ? gender : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Location</span>
 
             <span>{address ? address : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Date Of Birth</span>
 
             <span>{dateOfBirth ? dateOfBirth : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
 
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Blood Group</span>
 
             <span>{bloodGroup ? bloodGroup : "Not Available"}</span>
           </div>
-          <div className="flex justify-between items-center px-4 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
             <span>Resume/CV</span>
 
             <span>
@@ -203,28 +207,37 @@ const Profile = () => {
             )}
           </div>
         </div>
+
         <div className="text-center md:order-1">
           <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 shadow-xl">
             <div className=" w-60 rounded-xl">
-              {auth?.currentUser?.photoURL ? (
-                <img src={auth?.currentUser?.photoURL} alt="avatar" />
-              ) : (
+              {auth?.currentUser?.photoURL && !profileUrl ? (
+                <img src={auth?.currentUser?.photoURL} alt="profile" />
+              ) : !auth?.currentUser?.photoURL && profileUrl ? (
                 <img src={profileUrl} alt="profile" />
+              ) : (
+                <img src="https://i.ibb.co/xY0rfV4/avatar.jpg" alt="profile" />
               )}
             </div>
           </div>
 
-          <h2 className="mt-4 font-bold text-xl">
+          {/* <h2 className="mt-4 font-bold text-xl">
             {auth?.currentUser?.displayName}
           </h2>
-          <small className="mt-4 font-bold">{auth?.currentUser?.email}</small>
+          <small className="mt-4 font-bold">{auth?.currentUser?.email}</small> */}
+
+          <div className="mt-3">
+            <button className="btn btn-primary text-white">
+              Change Profile
+            </button>
+          </div>
         </div>
       </div>
       {editProfile && (
         <>
           <input type="checkbox" id="editProfile" className="modal-toggle " />
-          <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box relative">
+          <div className="modal">
+            <div className="modal-box relative w-10/12 max-w-3xl">
               <label
                 for="editProfile"
                 className="btn btn-sm btn-circle absolute right-2 top-2"
@@ -235,6 +248,19 @@ const Profile = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="another-info flex items-center justify-center flex-col gap-2 my-3"
               >
+                <div className="w-full">
+                  <label className="label">
+                    <span className="label-text-alt">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="input input-bordered w-full"
+                    required
+                    defaultValue={displayName || auth?.currentUser?.displayName}
+                    {...register("displayName", { required: true })}
+                  />
+                </div>
                 <div className="w-full">
                   <label className="label">
                     <span className="label-text-alt">Profile Image</span>

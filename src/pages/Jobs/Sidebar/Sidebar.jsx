@@ -2,9 +2,9 @@ import React from 'react';
 import { RiEqualizerLine } from 'react-icons/ri';
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FaSearchLocation } from "react-icons/fa";
-import { jobTypeList, salaryList } from '../../../data';
+import { jobTypeList } from '../../../data';
 
-const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, jobType, locationHandle, cat }) => {
+const Sidebar = ({ searchHandle, categoryHandle, jobTypeHandle, locationHandle, cat }) => {
 
   return (
     <div className='space-y-5'>

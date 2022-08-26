@@ -103,3 +103,55 @@ export const contactData = [
     availability: '(Mon-Fri) 9AM to 5PM CEST'
   },
 ]
+
+export const teamMemberData = [
+  {
+    id: 1111,
+    name: 'Emtiaz Hossain Emon',
+    photoUrl: 'https://i.ibb.co/kJ25qtZ/Emtiaz-Emon.jpg',
+    linkedinUrl: 'https://www.linkedin.com/in/emtiazhossaine2/',
+    githuburl: 'https://github.com/EmtiazHossainE2',
+    portfolioUrl: 'https://emtiaz-emon.netlify.app/'
+  },
+  {
+    id: 1112,
+    name: 'Arefin Khan',
+    photoUrl: 'https://i.ibb.co/jkKGmVG/Arefin.jpg',
+    linkedinUrl: 'https://www.linkedin.com/in/arefinkhan007/',
+    githuburl: 'https://github.com/TEMPLAR-007',
+    portfolioUrl: 'https://arefins-portfolio.netlify.app/'
+  },
+  {
+    id: 1113,
+    name: 'Toufiq Hasan Kiron',
+    photoUrl: 'https://i.ibb.co/pjjtpQW/Kiron.jpg',
+    linkedinUrl: 'https://www.linkedin.com/in/toufiq-hasan-kiron/',
+    githuburl: 'https://github.com/kiron0',
+    portfolioUrl: 'https://toufiqhasan.me'
+  },
+  {
+    id: 1114,
+    name: 'Shawon Mondal Gopal',
+    photoUrl: 'https://i.ibb.co/mydD3QS/Shawon.jpg',
+    linkedinUrl: 'https://www.linkedin.com/in/shawon-mondal-gopal-597904209/',
+    githuburl: 'https://github.com/shawon-MG',
+    portfolioUrl: 'https://shawon-web-developer-portfolio.netlify.app/#main-projects'
+  },
+  {
+    id: 1115,
+    name: 'Sajal Howlader',
+    photoUrl: 'https://i.ibb.co/WB1qTd1/Sajal.jpg',
+    linkedinUrl: 'https://www.linkedin.com/in/sajal-howlader-01911a241/',
+    githuburl: 'https://github.com/Sajalhowlader',
+    portfolioUrl: 'https://portfolio-231de.web.app/'
+  },
+  {
+    id: 1116,
+    name: 'NAZMUL HASSAN',
+    photoUrl: 'https://i.ibb.co/g64cgyV/Nazmul.png',
+    linkedinUrl: 'https://www.linkedin.com/in/nazmul-h',
+    githuburl: 'https://github.com/nazmul162001',
+    portfolioUrl: 'https://portfolio-c8ad1.web.app/'
+  },
+
+]

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { BsPersonPlusFill, BsShieldPlus } from "react-icons/bs";
 import Swal from "sweetalert2";
+import { InitializeContext } from "../../../App";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../config";
-
 const AddEmployee = ({ refetch }) => {
+  const { theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const hrUserEmail = user?.email;
   const {
@@ -19,7 +20,7 @@ const AddEmployee = ({ refetch }) => {
   const addEmployeDetails = (data) => {
     const employeeDetails = {
       ...data,
-      hrUserEmail
+      hrUserEmail,
     };
     fetch(`${BASE_API}/addEmployees`, {
       method: "POST",
@@ -52,20 +53,18 @@ const AddEmployee = ({ refetch }) => {
 
   return (
     <div>
-      <input
-        type="checkbox"
-        id="add-new-employee-modal"
-        className="modal-toggle "
-      />
-      <div className="modal ">
-        <div className="modal-box lg:w-10/12 lg:max-w-2xl modalContainer">
+      <input type="checkbox" id="add-new-employee-modal" class="modal-toggle" />
+      <label for="add-new-employee-modal" class="modal cursor-pointer">
+        <label
+          class="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
+          for=""
+        >
           <label
             for="add-new-employee-modal"
             class="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-
           <div>
             <form
               className="space-y-2"
@@ -80,7 +79,11 @@ const AddEmployee = ({ refetch }) => {
                   <input
                     type="text"
                     placeholder="Enter Full Name"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("fullName", {
                       required: {
                         value: true,
@@ -99,7 +102,11 @@ const AddEmployee = ({ refetch }) => {
                   <input
                     type="Number"
                     placeholder="Enter ID No"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("employeId", {
                       required: {
                         value: true,
@@ -122,7 +129,11 @@ const AddEmployee = ({ refetch }) => {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("employeEmail", {
                       required: {
                         value: true,
@@ -140,7 +151,11 @@ const AddEmployee = ({ refetch }) => {
                     Designation <span className="text-red-500">*</span>
                   </label>
                   <select
-                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("designation", {
                       required: {
                         value: true,
@@ -149,12 +164,25 @@ const AddEmployee = ({ refetch }) => {
                     })}
                   >
                     <option disabled selected>
-                      Front-End Developer
+                    Web Developer
                     </option>
-                    <option>Back-End Developer</option>
-                    <option>Full-Stack Developer</option>
-                    <option>Javascript Developer</option>
-                    <option>React Developer</option>
+                    <option>Web Developer</option>
+                    <option>Front End Dev</option>
+                    <option>Backend Dev</option>
+                    <option>Full Stack Dev</option>
+                    <option>Blockchain Development</option>
+                    <option>Animator</option>
+                    <option>Cloud Computing</option>
+                    <option>Cyber Security</option>
+                    <option>Data Entry</option>
+                    <option>Flutter Development</option>
+                    <option>Game Development</option>
+                    <option>Graphic Design</option>
+                    <option>Social Media Marketing</option>
+                    <option>Mobile App Development</option>
+                    <option>PHP Development</option>
+                    <option>WordPress</option>
+                    <option>Other</option>
                   </select>
 
                   <p className="text-[13px] text-red-500 pl-3">
@@ -170,7 +198,11 @@ const AddEmployee = ({ refetch }) => {
                     Gender<span className="text-red-500">*</span>
                   </label>
                   <select
-                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("gender", {
                       required: {
                         value: true,
@@ -179,6 +211,7 @@ const AddEmployee = ({ refetch }) => {
                     })}
                   >
                     <option selected>Male</option>
+                    <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
                   </select>
@@ -193,7 +226,11 @@ const AddEmployee = ({ refetch }) => {
                   <input
                     type="Number"
                     placeholder="Enter Age"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("age", {
                       required: {
                         value: true,
@@ -207,26 +244,30 @@ const AddEmployee = ({ refetch }) => {
                 </div>
               </div>
 
-              {/* Date of birth */}
+              {/* Joining Date */}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Date Of Birth<span className="text-red-500">*</span>
+                    Joining Date<span className="text-red-500">*</span>
                   </label>
                   <input
                     type="date"
-                    placeholder="Enter Date Of Birth"
-                    className="border rounded-lg py-1 text-lg pl-3 "
-                    {...register("dateOfBirth", {
+                    placeholder="Enter Joining Date"
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
+                    {...register("joiningDate", {
                       required: {
                         value: true,
-                        message: "Add Date Of Birth !",
+                        message: "Add Joining Date !",
                       },
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.dateOfBirth?.message}
+                    {errors.joiningDate?.message}
                   </p>
                 </div>
 
@@ -235,7 +276,11 @@ const AddEmployee = ({ refetch }) => {
                     Blood Group<span className="text-red-500">*</span>
                   </label>
                   <select
-                    className="border rounded-lg  py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("bloodGroup", {
                       required: {
                         value: true,
@@ -269,7 +314,11 @@ const AddEmployee = ({ refetch }) => {
                   <input
                     type="text"
                     placeholder="Enter Location"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("location", {
                       required: {
                         value: true,
@@ -288,7 +337,11 @@ const AddEmployee = ({ refetch }) => {
                   <input
                     type="Number"
                     placeholder="Enter Contact Number"
-                    className="border rounded-lg py-1 text-lg pl-3 "
+                    className={
+                      theme
+                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                        : "border rounded-lg py-1 text-lg pl-3 "
+                    }
                     {...register("phoneNumber", {
                       required: {
                         value: true,
@@ -310,7 +363,11 @@ const AddEmployee = ({ refetch }) => {
                 <input
                   type="text"
                   placeholder="Enter Images Link"
-                  className="border rounded-lg py-1 text-lg pl-3 "
+                  className={
+                    theme
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                      : "border rounded-lg py-1 text-lg pl-3 "
+                  }
                   {...register("photoLink", {
                     required: {
                       value: true,
@@ -329,7 +386,11 @@ const AddEmployee = ({ refetch }) => {
                   type="text"
                   rows={4}
                   placeholder="Additional Information"
-                  className="border rounded-lg py-1 text-xl pl-3 "
+                  className={
+                    theme
+                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
+                      : "border rounded-lg py-1 text-lg pl-3 "
+                  }
                   {...register("additionInfo")}
                 />
               </div>
@@ -339,10 +400,10 @@ const AddEmployee = ({ refetch }) => {
               </button>
             </form>
           </div>
-        </div>
-      </div>
+        </label>
+      </label>
 
-      <div className="modal-action">
+      <div className="">
         <label
           for="add-new-employee-modal"
           className="mr-5 flex items-center bg-base-300 py-2 px-3 rounded-md font-bold cursor-pointer"

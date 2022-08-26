@@ -4,7 +4,7 @@ import resumeTrack from '../../Assets/images/applicants-tracking/resume_tracking
 
 const ResumeScreening = () => {
   return (
-    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black my-16'>
+    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 my-16'>
       {/* openings  */}
       <div className="opening_main">
         <h2 className='my-2 text-4xl font-bold'>Resume Screening and Talent Pool</h2>

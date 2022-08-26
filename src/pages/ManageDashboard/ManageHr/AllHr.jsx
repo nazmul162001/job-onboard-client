@@ -21,14 +21,17 @@ const AllHr = () => {
   if (isLoading || !allHr || !allHr.length) {
     return <Loading />;
   }
+  
   return (
-    <div className="lg:px-10 py-10 bg-base-100 h-screen rounded-md">
+    <div className="lg:px-10 py-10 bg-base-100 rounded-md">
       <div className="overflow-x-auto shadow-lg border-l-4 border-primary rounded-2xl">
         <table className="table w-full">
           <thead className="bg-base-300">
             <tr>
               <th>No</th>
+              <th>Image</th>
               <th>Uid</th>
+              <th>Name</th>
               <th>Email</th>
               <th>Make Admin</th>
               <th>Remove Admin</th>
@@ -37,11 +40,11 @@ const AllHr = () => {
             </tr>
           </thead>
           <tbody>
-            {allHr?.map((hr, index) => (
+            {allHr?.map((hrData, index) => (
               <HrRow
                 index={index}
-                key={hr._id}
-                hr={hr}
+                key={hrData._id}
+                hrData={hrData}
                 refetch={refetch}
               ></HrRow>
             ))}

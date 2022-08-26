@@ -1,36 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import auth from '../../../Auth/Firebase/Firebase.init';
 import { BASE_API } from '../../../config';
 import Loading from '../../../Components/Loading/Loading';
 import useCandidateInfo from '../../../Hooks/useCandidateInfo';
+import { useNavigate } from 'react-router-dom';
 
 const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
-  
-  const {data,isLoading,refetch} = useCandidateInfo()
+  const { data, isLoading } = useCandidateInfo()
+  const navigate = useNavigate();
 
   const userInfo = data?.data?.result
-
   // console.log(userInfo);
+  const [profileUrl, setProfileUrl] = useState(null)
+  useEffect(() => {
+    if (userInfo?.profileUrl) {
+      setProfileUrl(userInfo?.profileUrl)
+    }
+    else if (!userInfo?.profileUrl) {
+      setProfileUrl('https://i.ibb.co/xY0rfV4/avatar.jpg')
+    }
+  }, [userInfo?.profileUrl])
 
-  if(isLoading){
-    return <Loading/>
+  // console.log(profileUrl);
+  if (isLoading) {
+    return <Loading />
   }
 
-  const displayName = auth?.currentUser?.displayName 
+  const displayName = auth?.currentUser?.displayName
   // console.log(displayName);
   const email = auth?.currentUser?.email
 
   // console.log(job);
   const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
+  const createdDate = job?.createdDate
+  var time = new Date().getTime();
+  var date = new Date(time);
+  var appliedDate = date
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId }
-    console.log(applicantData);
+    const applicantData = { ...data, displayName, email, category, companyName, hrEmail, hrName, jobTitle, jobPostId, createdDate, appliedDate , profileUrl , job , userInfo}
+    // console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
       headers: {
@@ -47,6 +60,7 @@ const ApplicantModal = ({ job }) => {
             confirmButtonText: 'Okay'
           })
           reset()
+          navigate('/dashboard/appliedJobs')
         }
         else {
           Swal.fire({
@@ -74,7 +88,7 @@ const ApplicantModal = ({ job }) => {
                   <input
                     type="text"
                     defaultValue={auth?.currentUser?.displayName}
-                    readOnly
+                    disabled
                     placeholder='Full Name'
                     className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   />
@@ -87,7 +101,6 @@ const ApplicantModal = ({ job }) => {
                 <input
                   type="email"
                   defaultValue={auth?.currentUser?.email}
-                  readOnly
                   disabled
                   className='border rounded-lg py-2 text-lg pl-3 '
                 />
@@ -99,7 +112,7 @@ const ApplicantModal = ({ job }) => {
                   type="number"
                   placeholder='Phone number'
                   defaultValue={userInfo?.number}
-                  className='border rounded-lg  py-1 text-lg pl-3 hover:border-primary duration-300'
+                  className='border rounded-lg text-black py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('number', {
                     required: {
                       value: true,
@@ -116,7 +129,7 @@ const ApplicantModal = ({ job }) => {
                   type="text"
                   placeholder='Hyperlink'
                   defaultValue={userInfo?.resume}
-                  className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                  className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                   {...register('resume', {
                     required: {
                       value: true,
@@ -136,7 +149,7 @@ const ApplicantModal = ({ job }) => {
                     type="text"
                     placeholder='portfolioUrl'
                     defaultValue={userInfo?.portfolioUrl}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('portfolioUrl', {
                       required: {
                         value: true,
@@ -152,7 +165,7 @@ const ApplicantModal = ({ job }) => {
                     type="text"
                     placeholder='Linkedin'
                     defaultValue={userInfo?.linkedinUrl}
-                    className='border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    className='text-[#4e4c4c] border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
                     {...register('linkedinUrl', {
                       required: {
                         value: true,
@@ -172,7 +185,7 @@ const ApplicantModal = ({ job }) => {
                   type="text"
                   rows={4}
                   placeholder='Add a cover letter'
-                  className='border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
+                  className='text-black border rounded-lg py-1 text-xl pl-3 hover:border-primary duration-300'
                   {...register('coverLetter', {
                     required: {
                       value: true,

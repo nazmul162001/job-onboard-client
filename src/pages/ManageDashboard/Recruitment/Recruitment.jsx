@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { BASE_API } from "../../../config";
+import React from "react";
 import useTitle from "../../../Hooks/useTitle";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import RecruitmentCard from "./RecruitmentCard";
+import useHrJob from "../../../Hooks/useHrJob";
 
 const Recruitment = () => {
   useTitle("Recruitment");
-  const [hrJobs, setGetJobs] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${BASE_API}/jobs/hrJobs?email=${auth?.currentUser?.email}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((res) => setGetJobs(res.data));
-  }, []);
+  const [hrJobs] = useHrJob()
 
   return (
-    <div className="p-5">
+    <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
-        <h3 className="text-2xl font-semibold">Manage Recruitment</h3>
+        <h3 className="text-2xl font-semibold">Manage Recruitment Jobs</h3>
         <span>You can manage all the jobs which are posted by you</span>
       </div>
       {hrJobs?.length > 0 ? (
@@ -38,7 +27,7 @@ const Recruitment = () => {
               alt="order-not-found"
             />
             <h2 className="text-2xl py-3 font-semibold text-center">
-              Not Posted Jobs yet.
+              Not Recruitment Jobs yet.
             </h2>
           </div>
         </>

@@ -1,12 +1,15 @@
-import React, { useRef } from "react";
-import { BiLogInCircle } from "react-icons/bi";
-import useTitle from "../../../Hooks/useTitle";
 import emailjs from "@emailjs/browser";
+import React, { useRef } from "react";
 import toast from "react-hot-toast";
+import { BiLogInCircle } from "react-icons/bi";
+import auth from "../../../Auth/Firebase/Firebase.init";
+import { BASE_API } from "../../../config";
+import useTitle from "../../../Hooks/useTitle";
 
 const CandidatesMailModal = ({ mail }) => {
-  const { firstName, lastName, email } = mail;
-
+  console.log(mail)
+  const { displayName, email, } = mail;
+  const hrEmail = auth.currentUser.email;
   useTitle("Mails");
   const form = useRef();
 
@@ -27,18 +30,50 @@ const CandidatesMailModal = ({ mail }) => {
           );
           document.getElementById("name").value = "";
           document.getElementById("email").value = "";
+          document.getElementById("subject").value = "";
           document.getElementById("message").value = "";
         },
         (error) => {
           console.log(error.text);
         }
       );
+
+    const candidateName = e.target.to_name.value;
+    const candidateMail = e.target.from_name.value;
+    const mailSubject = e.target.subject.value;
+    const mailMessage = e.target.message.value;
+
+    const candidateInfo = {
+      candidateName: candidateName,
+      candidateMail: candidateMail,
+      mailSubject: mailSubject,
+      mailMessage: mailMessage,
+
+      hrEmail: hrEmail,
+    };
+    fetch(`${BASE_API}/addCandidateInfo`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+
+      body: JSON.stringify(candidateInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Done");
+        } else {
+          toast.error("Something Wrong");
+        }
+      });
   };
   return (
     <div>
       <input type="checkbox" id="candidate-modal" className="modal-toggle " />
       <div className="modal ">
-        <div className="modal-box w-11/12 max-w-5xl">
+        <div className="modal-box w-7/12 max-w-3xl">
           <label
             htmlFor="candidate-modal"
             className="btn btn-sm btn-circle absolute right-2 top-2"
@@ -56,7 +91,7 @@ const CandidatesMailModal = ({ mail }) => {
                   type="text"
                   name="to_name"
                   placeholder="Input your name"
-                  value={firstName + " " + lastName}
+                  value={displayName}
                   readOnly
                   className="input input-bordered w-full hover:border-primary duration-300"
                 />
@@ -72,6 +107,18 @@ const CandidatesMailModal = ({ mail }) => {
                   placeholder="Input your email"
                   value={email}
                   readOnly
+                  className="input input-bordered w-full hover:border-primary duration-300"
+                />
+              </div>
+              <div className="my-2">
+                <label htmlFor="subject" className="my-2 font-semibold">
+                  Subject
+                </label>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="Input your subject"
                   className="input input-bordered w-full hover:border-primary duration-300"
                 />
               </div>

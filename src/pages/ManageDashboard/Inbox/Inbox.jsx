@@ -27,6 +27,7 @@ const Inbox = () => {
           );
           document.getElementById("name").value = "";
           document.getElementById("email").value = "";
+          document.getElementById("subject").value = "";
           document.getElementById("message").value = "";
         },
         (error) => {
@@ -63,6 +64,18 @@ const Inbox = () => {
             name="from_name"
             type="email"
             placeholder="Input your email"
+            className="input input-bordered w-full hover:border-primary duration-300"
+          />
+        </div>
+        <div className="my-2">
+          <label htmlFor="subject" className="my-2 font-semibold">
+            Subject
+          </label>
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            placeholder="Input your subject"
             className="input input-bordered w-full hover:border-primary duration-300"
           />
         </div>

@@ -11,11 +11,12 @@ const AllEmployees = ({
   setEditEmployeDetails,
   deleteEmployeeDetails,
 }) => {
-  const { _id, fullName, email, photoLink, location, designation } =
+  
+  const { _id, fullName, employeEmail, photoLink, location, designation } =
     singleDetails;
   const navigate = useNavigate();
-  const showRployeeDetail = (pId) => {
-    navigate(`${pId}`);
+  const showRployeeDetail = (employeeId) => {
+    navigate(`${employeeId}`);
   };
   return (
     <div>
@@ -48,7 +49,7 @@ const AllEmployees = ({
           <hr className="" />
           <p className="flex items-center text-sm py-2">
             <HiOutlineMail className="text-green-400 mr-1" />
-            {email}
+            {employeEmail}
           </p>
           <p className="flex items-center text-sm">
             <MdOutlineLocationOn className="text-green-400 mr-1" />

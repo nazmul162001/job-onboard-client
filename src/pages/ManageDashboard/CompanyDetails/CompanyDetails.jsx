@@ -86,7 +86,7 @@ const CompanyDetails = () => {
   } = result?.result;
 
   return (
-    <div>
+    <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
         <h2 className="text-center text-xl md:text-2xl font-semibold ">
           Company Information
@@ -113,26 +113,26 @@ const CompanyDetails = () => {
           >
             <FiEdit className="text-white" />
           </label>
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Company Name</span>
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
+            <strong>Company Name</strong>
 
             <span>{companyName ? companyName : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Email</span>
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
+            <strong>Email</strong>
 
             <span>{auth?.currentUser?.email}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Contact Number</span>
+          <div className="flex flex-col md:flex-row justify-between items-center px-4 mb-4">
+            <strong>Contact Number</strong>
 
             <span>{number ? number : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex justify-between items-center gap-24 px-4 mb-4">
-            <span>Additional Info</span>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-24 px-4 mb-4">
+            <strong>Additional Info</strong>
 
             <span>{additionalInfo ? additionalInfo : "Not Available"}</span>
           </div>
@@ -161,10 +161,10 @@ const CompanyDetails = () => {
         <div className="text-center md:order-1">
           <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 shadow-xl">
             <div className=" w-60 rounded-xl">
-              {auth?.currentUser?.photoURL ? (
-                <img src={auth?.currentUser?.photoURL} alt="avatar" />
+              {profileUrl ? (
+                <img src={profileUrl} alt="avatar" />
               ) : (
-                <img src={profileUrl} alt="profile" />
+                <img src="https://i.ibb.co/xY0rfV4/avatar.jpg" alt="profile" />
               )}
             </div>
           </div>
@@ -173,6 +173,12 @@ const CompanyDetails = () => {
             {auth?.currentUser?.displayName}
           </h2>
           <small className="mt-4 font-bold">{auth?.currentUser?.email}</small>
+
+          <div className="mt-3">
+            <button className="btn btn-primary text-white">
+              Change Profile
+            </button>
+          </div>
         </div>
       </div>
       {editCompanyInfo && (
@@ -182,8 +188,8 @@ const CompanyDetails = () => {
             id="editCompanyInfo"
             className="modal-toggle "
           />
-          <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box relative">
+          <div className="modal">
+            <div className="modal-box relative w-10/12 max-w-3xl">
               <label
                 for="editCompanyInfo"
                 className="btn btn-sm btn-circle absolute right-2 top-2"

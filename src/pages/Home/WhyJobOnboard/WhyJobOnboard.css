@@ -1,9 +1,9 @@
 .onBoardBtn {
   margin: 0 28px 0 0;
   border-style: solid;
-  border-color: black;
+  border-color: #8b5cf6;
   border-width: 1px 1px 1px 0px;
-  color: black;
+  /* color: #8b5cf6; */
   padding: 20px;
   font-weight: 500;
   text-align: start;
