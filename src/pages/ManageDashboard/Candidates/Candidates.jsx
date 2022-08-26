@@ -8,12 +8,12 @@ import useCandidate from "../../../Hooks/useCandidate";
 import useTitle from "../../../Hooks/useTitle";
 import Candidate from "./Candidate";
 import "./CandidateCss/Candidate.css";
-import CandidatesMailModal from "./CandidatesMailModal";
 import TaskModal from "./TaskModal";
+
+
 const Candidates = () => {
   useTitle("Candidates");
-  const [mail, setMail] = useState(null);
-  const { getApplicants, isLoading } = useCandidate();
+  const { getApplicants, isLoading, refetch } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
 
   const { data } = useQuery(["AllredyGiven"], () =>
@@ -85,7 +85,6 @@ const Candidates = () => {
                         applicant={applicant}
                         index={index}
                         key={applicant._id}
-                        setMail={setMail}
                         setApplicantData={setApplicantData}
                         allreadyGiven={allreadyGiven}
                       />
@@ -95,8 +94,6 @@ const Candidates = () => {
               </div>
             </div>
           </div>
-
-          {mail && <CandidatesMailModal mail={mail}></CandidatesMailModal>}
         </div>
       ) : (
         <>
@@ -112,13 +109,7 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && (
-        <TaskModal
-          applicantData={applicantData}
-          setApplicantData={setApplicantData}
-          
-        />
-      )}
+      {applicantData && <TaskModal applicantData={applicantData}  setApplicantData={setApplicantData}/>}
     </div>
   );
 };
