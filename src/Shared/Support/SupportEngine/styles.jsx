@@ -5,7 +5,7 @@ export const styles = {
         // Border
         borderRadius: '50%',
         // Background 
-        backgroundImage: `url(https://i.ibb.co/PwXZQHB/pngfind-com-customer-support-icon-png-4151771.png)`,
+        backgroundImage: `url(https://cdn-icons-png.flaticon.com/512/3698/3698075.png)`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '64px',
@@ -16,7 +16,7 @@ export const styles = {
     avatarHello: {
         // Position
         position: 'absolute',
-        left: 'calc(-100% - 44px - 28px)',
+        left: 'calc(-100% - 44px - 40px)',
         top: 'calc(50% - 24px)',
         // Layering
         zIndex: '10000',
