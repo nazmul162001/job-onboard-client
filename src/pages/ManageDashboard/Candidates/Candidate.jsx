@@ -1,8 +1,11 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
-  const { displayName, email } = applicant;
+const Candidate = ({ applicant, index, setApplicantData, status }) => {
+  const navigate = useNavigate();
+  const { _id, displayName, email } = applicant;
+
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -12,16 +15,7 @@ const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
       <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
         <div>
           <div class="font-normal">{displayName}</div>
-          <div class="text-sm font-semibold">
-            <label
-              htmlFor="candidate-modal"
-              title="Click to send mail"
-              onClick={() => setMail({ displayName, email })}
-              className="cursor-pointer"
-            >
-              {email}
-            </label>
-          </div>
+          <div class="text-sm font-semibold">{email}</div>
         </div>
       </td>
 
@@ -49,10 +43,15 @@ const Candidate = ({ applicant, setMail, index, setApplicantData }) => {
         <label
           onClick={() => setApplicantData(applicant)}
           for="task-modal"
-          className="taskBtn cursor-pointer"
+          className={`${status ? "hidden" : "taskBtn cursor-pointer"}`}
         >
           Task
         </label>
+      </td>
+      <td className="flex justify-center items-center mt-5">
+        <span onClick={() => navigate(`${_id}`)} className="cursor-pointer">
+          <button className="btn btn-sm text-white">See Details</button>
+        </span>
       </td>
     </tr>
   );

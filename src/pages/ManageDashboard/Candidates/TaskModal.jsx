@@ -1,11 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
+import auth from "../../../Auth/Firebase/Firebase.init";
+import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 const TaskModal = ({ applicantData, setApplicantData }) => {
-  const { displayName, email, hrEmail } = applicantData;
+  const { displayName, email, hrEmail, companyName, jobTitle } = applicantData;
 
   const { theme } = useContext(InitializeContext);
   let today = new Date();
@@ -20,6 +24,8 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
     const candidateInfo = {
       ...data,
       hrEmail,
+      companyName,
+      status: true,
     };
 
     fetch(`${BASE_API}/candidateTask`, {
@@ -29,7 +35,6 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(candidateInfo),
-      // const { id, name, location, email } = employe;
     })
       .then((res) => res.json())
       .then((data) => {
@@ -41,15 +46,12 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
           });
           reset();
           setApplicantData(null);
-        } else {
-          Swal.fire({
-            text: `Opps!`,
-            icon: "error",
-            confirmButtonText: "Plz Try Again",
-          });
         }
       });
   };
+
+ 
+
   return (
     <div>
       <input type="checkbox" id="task-modal" class="modal-toggle" />
@@ -108,6 +110,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
                 <input
                   type="text"
                   placeholder="Enter Task Name"
+                  value={jobTitle}
                   className={
                     theme
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "

@@ -21,6 +21,7 @@ import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
+import SingleCandidates from "./Pages/ManageDashboard/Candidates/SingleCandidates";
 
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
@@ -34,6 +35,7 @@ import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import Profile from "./Pages/ManageDashboard/Profile/Profile";
 import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
 import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
+import JobTask from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/JobTask";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
 import Team from "./Pages/Team/Team";
 import Navbar from "./Shared/Navbar/Navbar";
@@ -124,6 +126,7 @@ function App() {
 
             <Route path="appliedJobs" element={<AppliedJobs />} />
             <Route path="jobs" element={<ManageAllJobs />} />
+            <Route path="task" element={<JobTask />} />
             <Route
               path="recruitment"
               element={
@@ -141,6 +144,10 @@ function App() {
               }
             />
             <Route path="candidates" element={<Candidates />} />
+            <Route
+              path="candidates/:candidatesID"
+              element={<SingleCandidates />}
+            />
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />
             <Route

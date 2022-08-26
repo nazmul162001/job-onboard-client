@@ -1,16 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { useState } from "react";
+import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
+import { BASE_API } from "../../../config";
 import useCandidate from "../../../Hooks/useCandidate";
 import useTitle from "../../../Hooks/useTitle";
 import Candidate from "./Candidate";
 import "./CandidateCss/Candidate.css";
-import CandidatesMailModal from "./CandidatesMailModal";
 import TaskModal from "./TaskModal";
+
 const Candidates = () => {
   useTitle("Candidates");
-  const [mail, setMail] = useState(null);
-  const { getApplicants, isLoading } = useCandidate();
+  const { getApplicants, isLoading, refetch } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
+
+  const { data } = useQuery(["AllredyGiven"], () =>
+    axios.get(`${BASE_API}/AllredyGiven?email=${auth?.currentUser?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
+
+  const allreadyGiven = data?.data;
+
+  // console.log(allreadyGiven)
+
   if (isLoading) {
     return <Loading />;
   }
@@ -62,6 +78,12 @@ const Candidates = () => {
                       >
                         Task
                       </th>
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                      >
+                        See Details
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -70,8 +92,8 @@ const Candidates = () => {
                         applicant={applicant}
                         index={index}
                         key={applicant._id}
-                        setMail={setMail}
                         setApplicantData={setApplicantData}
+                        allreadyGiven={allreadyGiven}
                       />
                     ))}
                   </tbody>
@@ -79,8 +101,6 @@ const Candidates = () => {
               </div>
             </div>
           </div>
-
-          {mail && <CandidatesMailModal mail={mail}></CandidatesMailModal>}
         </div>
       ) : (
         <>
@@ -96,7 +116,12 @@ const Candidates = () => {
         </>
       )}
 
-      {applicantData && <TaskModal applicantData={applicantData}  setApplicantData={setApplicantData}/>}
+      {applicantData && (
+        <TaskModal
+          applicantData={applicantData}
+          setApplicantData={setApplicantData}
+        />
+      )}
     </div>
   );
 };
