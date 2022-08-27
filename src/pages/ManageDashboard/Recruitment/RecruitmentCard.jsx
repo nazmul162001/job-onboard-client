@@ -6,32 +6,27 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
+import useAppliedCandidates from "../../../Hooks/useAppliedCandidates";
 import RecruitmentRow from "./RecruitmentRow";
 
 const RecruitmentCard = ({ job }) => {
   const navigate = useNavigate();
   const [candidates, setCandidates] = useState(null);
-  const { companyName, jobTitle, location, salary, jobType, jobPostId } = job;
+  const { companyName, jobTitle, location, salary, jobType, _id } = job;
+
   // const hrUserEmail = auth?.currentUser?.email;
 
-  const { data, isLoading, refetch } = useQuery(
-    ["count", auth, job?.createdDate],
-    () =>
-      axios.get(
-        `${BASE_API}/applicants/appliedCandidate?email=${auth?.currentUser?.email}&createdDate=${job?.createdDate}`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
-  );
+  const { data, isLoading, refetch } = useAppliedCandidates(job)
 
   const countData = data?.data;
   // console.log(data?.data)
 
   const singleCandidates = (id) => {
-    navigate(`${id}`);
+    navigate(`mail/${id}`);
+  };
+
+  const singleJob = (id) => {
+    navigate(`job/${id}`);
   };
 
   if (isLoading) {
@@ -63,7 +58,7 @@ const RecruitmentCard = ({ job }) => {
         <div className=" pt-3 flex justify-between items-center">
           <button
             className="btn btn-sm btn-outline capitalize rounded-lg px-4 py-1 "
-            onClick={() => navigate(`/job/${jobPostId}`)}
+            onClick={() => singleJob(_id)}
           >
             See Details
           </button>
