@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAppliedCandidates from '../../../../Hooks/useAppliedCandidates';
 import useJob from '../../../../Hooks/useJob';
 import RecruitmentRow from '../RecruitmentRow';
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ImArrowLeft2 } from "react-icons/im";
+import * as FileSaver from "file-saver";
+import * as XLSX from "xlsx";
 
 const SingleJobCandidates = () => {
   const { jobId } = useParams();
@@ -15,6 +17,37 @@ const SingleJobCandidates = () => {
   const { data, refetch } = useAppliedCandidates(job)
   const countData = data?.data;
   // console.log(countData)
+
+  //  Candidate Info To Excel   
+  const [candidateData,setCandidateData] = useState([])
+  const fileName = job?.jobTitle; 
+  // console.log(fileName)
+
+  useEffect(() => {
+    // const customHeading = countData?.map((candidate) => 
+    const header = countData?.map((candidate,index) => ({
+      "CandidateId": index + 1,
+      "Candidate Name": candidate?.displayName,
+      "Candidate Email": candidate?.email,
+      "Candidate Phone": candidate?.number,
+    }))
+    setCandidateData(header)
+  }, [countData])
+
+  
+  const fileType =
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+  const fileExtension = ".xlsx";
+
+  const exportToCSV = (candidateData, fileName) => {
+    const ws = XLSX.utils.json_to_sheet(candidateData);
+    XLSX.utils.sheet_add_aoa(ws, [["Index", "DisplayName", "Email", "Number"]], { origin: "A1" });
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const data = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(data, fileName + fileExtension);
+  };
+
 
   const singleCandidates = (id) => {
     navigate(`/dashboard/recruitment/mail/${id}`);
@@ -71,9 +104,9 @@ const SingleJobCandidates = () => {
           </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
             <span className="lg:pt-4 font-semibold">Applied Candidates : {countData?.length}</span>
-            
+
             {/* Download All Candidates Info In Excel  */}
-            <div><button className='btn btn-sm btn-outline capitalize'>download excel</button></div>
+            <div><button className='btn btn-sm btn-outline capitalize' onClick={(e) => exportToCSV(candidateData, fileName)}>download excel</button></div>
           </div>
         </div>
       </div>
