@@ -10,11 +10,9 @@ const SingleJobCandidates = () => {
   const { jobId } = useParams();
   const [job] = useJob(jobId);
   const navigate = useNavigate()
-  
   const currentYear = new Date().getFullYear();
 
   const { data, refetch } = useAppliedCandidates(job)
-
   const countData = data?.data;
   // console.log(countData)
 
@@ -73,6 +71,8 @@ const SingleJobCandidates = () => {
           </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
             <span className="lg:pt-4 font-semibold">Applied Candidates : {countData?.length}</span>
+            
+            {/* Download All Candidates Info In Excel  */}
             <div><button className='btn btn-sm btn-outline capitalize'>download excel</button></div>
           </div>
         </div>
@@ -148,7 +148,7 @@ const SingleJobCandidates = () => {
 
       {/*Dashboard Footer  */}
       <div className='text-center mt-12 p-2 bg-base-300'>
-        <h3 className=' font-[500]'>Modern Hiring Platform By <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> | Copyright © {currentYear} </h3>
+        <h3 className=' font-[500] flex flex-col md:flex-row justify-center items-center gap-y-1 gap-x-2'>Modern Hiring Platform By <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> <span className='hidden md:block'>|</span> Copyright © {currentYear} </h3>
       </div>
 
 
