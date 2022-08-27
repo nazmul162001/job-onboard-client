@@ -53,6 +53,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="py-1 lg:py-0">
+        <NavLink className="uppercase" to="/pricing">
+          Pricing
+        </NavLink>
+      </li>
+      <li className="py-1 lg:py-0">
         <NavLink className="uppercase" to="/about">
           About
         </NavLink>
