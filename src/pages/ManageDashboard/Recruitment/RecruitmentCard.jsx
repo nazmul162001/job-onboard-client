@@ -68,97 +68,13 @@ const RecruitmentCard = ({ job }) => {
         <label
           for="candidatesModal"
           className="btn btn-sm btn-circle absolute right-2 top-2 text-white"
-          onClick={() => setCandidates(job)}
+          onClick={() => singleJob(_id)}
         >
           {countData?.length}
         </label>
       )}
 
-      {candidates && (
-        <>
-          <input
-            type="checkbox"
-            id="candidatesModal"
-            className="modal-toggle"
-          />
-          <div className="modal">
-            <div className="modal-box w-11/12 max-w-6xl relative overflow-x-hidden">
-              <label
-                for="candidatesModal"
-                className="btn btn-sm btn-circle absolute right-2 top-2"
-              >
-                ✕
-              </label>
-              <div className="flex flex-col">
-                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="overflow-hidden">
-                      <table className="min-w-full">
-                        <thead className="border-b bg-primary">
-                          <tr>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              No
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Candidates
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Applied For
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Phone
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Status
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Resume/Link
-                            </th>
-                            <th
-                              scope="col"
-                              className="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Send Mail
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {countData?.map((applicant, index) => (
-                            <RecruitmentRow
-                              applicant={applicant}
-                              index={index}
-                              refetch={refetch}
-                              singleCandidates={singleCandidates}
-                            />
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      
     </div>
   );
 };
