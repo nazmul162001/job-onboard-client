@@ -37,6 +37,7 @@ import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
 import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
 import SingleJobCandidates from "./Pages/ManageDashboard/Recruitment/SingleJobCandidates/SingleJobCandidates";
 import JobTask from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/JobTask";
+import TaskDetais from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/TaskDetais";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
 import Pricing from "./Pages/PaymentSystem/Pricing/Pricing";
 import Navbar from "./Shared/Navbar/Navbar";
@@ -128,6 +129,7 @@ function App() {
             <Route path="appliedJobs" element={<AppliedJobs />} />
             <Route path="jobs" element={<ManageAllJobs />} />
             <Route path="task" element={<JobTask />} />
+            <Route path="task/:taskId" element={<TaskDetais />} />
             <Route
               path="recruitment"
               element={

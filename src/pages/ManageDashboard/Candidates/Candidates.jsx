@@ -25,8 +25,6 @@ const Candidates = () => {
 
   const allreadyGiven = data?.data;
 
-  // console.log(allreadyGiven)
-
   if (isLoading) {
     return <Loading />;
   }
