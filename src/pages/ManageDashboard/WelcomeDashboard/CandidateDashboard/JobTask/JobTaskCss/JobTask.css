@@ -41,12 +41,21 @@
   transform: scale(0.95);
 }
 
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.1em);
-  }
-
-  to {
-    transform: translateY(-0.1em);
-  }
+.info {
+  border-radius: 10px 10px 0px 2px;
+}
+.submitTask {
+  background: #00998b;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+}
+.submitTask:hover svg {
+  transform: translateX(-2.2em) scale(1.1);
+}
+.submitTask:hover span {
+  transform: translateX(8em);
 }
