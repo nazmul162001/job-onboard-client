@@ -30,8 +30,8 @@ const SingleJobCandidates = () => {
     <div>
 
       {/* Job Description  */}
-      <div className="bg-[#222223] ">
-        <div className="shadow-md py-10 px-8 md:px-28 lg:px-12 space-y-5 container mx-auto text-white">
+      <div className="">
+        <div className="shadow-md py-10 space-y-5 px-5">
           <div className="space-y-2">
             <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-1 justify-between">
               <div className="flex lg:justify-center lg:items-center gap-2 pb-4 lg:pb-0">
@@ -51,28 +51,29 @@ const SingleJobCandidates = () => {
                   | Vacancy : {job?.openingPosition}
                 </h2>
               </div>
-              <p className="text-md md:text-xl lg:text-2xl md:font-bold text-white font-mono">
+              <p className="text-md md:text-xl lg:text-2xl md:font-bold  font-mono">
                 {job?.companyName}
               </p>
             </div>
             <div className="flex flex-col-reverse lg:flex-row space-y-2 gap-3 lg:gap-0  justify-between">
-              <p className="flex text-white ">
+              <p className="flex ">
                 {" "}
                 <span className="px-1 pt-1">
                   <HiOutlineLocationMarker />
                 </span>{" "}
                 {job?.location}{" "}
               </p>
-              <p className=" text-white text-[15px] ">
+              <p className=" text-[15px] ">
                 Company Employees : {job?.employees}
               </p>
             </div>
           </div>
-          <p className="text-white">
+          <p className="">
             Salary : ${job?.salary} <small>/ m</small>
           </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
-            <span className="lg:pt-4">Work Type : {job?.jobType}</span>
+            <span className="lg:pt-4 font-semibold">Applied Candidates : {countData?.length}</span>
+            <div><button className='btn btn-sm btn-outline capitalize'>download excel</button></div>
           </div>
         </div>
       </div>
@@ -147,7 +148,7 @@ const SingleJobCandidates = () => {
 
       {/*Dashboard Footer  */}
       <div className='text-center mt-12 p-2 bg-base-300'>
-        <h3 className='text-lg font-[500]'>Modern Hiring Platform By <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> | Copyright © {currentYear} </h3>
+        <h3 className=' font-[500]'>Modern Hiring Platform By <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> | Copyright © {currentYear} </h3>
       </div>
 
 
