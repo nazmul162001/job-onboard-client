@@ -38,7 +38,7 @@ import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCand
 import SingleJobCandidates from "./Pages/ManageDashboard/Recruitment/SingleJobCandidates/SingleJobCandidates";
 import JobTask from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/JobTask";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
-import Team from "./Pages/Team/Team";
+import Pricing from "./Pages/PaymentSystem/Pricing/Pricing";
 import Navbar from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
 import SupportAdmin from "./Shared/Support/SupportAdmin";
@@ -80,7 +80,7 @@ function App() {
           <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>
           <Route path="contact-us" element={<Contact />}></Route>
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/team" element={<Team />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpForHrManager />} />
