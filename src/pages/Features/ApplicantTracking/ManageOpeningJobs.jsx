@@ -50,7 +50,7 @@ const ManageOpeningJobs = () => {
           <p className='my-3'>Every job posting can be mapped to the hiring team that is working on it. The hiring team is the hiring manager and associated panel members.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className="">
           {/* Empty area  */}
       </div>
       {/* information */}
