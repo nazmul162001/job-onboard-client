@@ -24,7 +24,6 @@ const SingleJobCandidates = () => {
   // console.log(fileName)
 
   useEffect(() => {
-    // const customHeading = countData?.map((candidate) => 
     const header = countData?.map((candidate,index) => ({
       "CandidateId": index + 1,
       "Candidate Name": candidate?.displayName,

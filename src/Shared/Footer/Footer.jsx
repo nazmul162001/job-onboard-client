@@ -13,7 +13,7 @@ const Footer = () => {
             <h4 className="pt-5 pb-2">Contact with us </h4>
             <div className="flex justify-center items-center pt-5 gap-5">
               <a
-                href="/"
+                href="https://www.linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-4  hover:text-primary"
@@ -23,7 +23,7 @@ const Footer = () => {
                 </span>
               </a>
               <a
-                href="/"
+                href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-4   hover:text-primary"
@@ -33,7 +33,7 @@ const Footer = () => {
                 </span>
               </a>
               <a
-                href="/"
+                href="https://www.facebook.com/Code-Samurai-106635735510758"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-4  text-green-800 "
@@ -43,7 +43,7 @@ const Footer = () => {
                 </span>
               </a>
               <a
-                href="/"
+                href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-4  text-green-800 "
@@ -57,10 +57,18 @@ const Footer = () => {
           <div className="space-y-2 my-10 lg:my-2">
             <p>
               <Link
-                to="/carrer"
+                to="/blog"
                 className="link link-hover hover:text-primary text-lg"
               >
-                Carrer{" "}
+                Blog{" "}
+              </Link>
+            </p>
+            <p>
+              <Link
+                to="/jobs"
+                className="link link-hover hover:text-primary text-lg"
+              >
+                Find Jobs
               </Link>
             </p>
             <p>
@@ -69,14 +77,6 @@ const Footer = () => {
                 className="link link-hover hover:text-primary text-lg"
               >
                 Our Team
-              </Link>
-            </p>
-            <p>
-              <Link
-                to="/hr-resources"
-                className="link link-hover hover:text-primary text-lg"
-              >
-                HR Resources
               </Link>
             </p>
             <p>
