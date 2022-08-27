@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import { BsCheckCircleFill } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 import { BASE_API } from "../../../../../config";
+import SubmitTaskModal from "./SubmitTaskModal";
 const TaskDetais = () => {
   const { taskId } = useParams();
   const [singleTask, setSingleTask] = useState({});
@@ -27,17 +27,13 @@ const TaskDetais = () => {
   } = singleTask;
 
   return (
-    <section>
+    <section className="taskContainer ">
       <div className="info flex justify-between p-5 items-center bg-[#01022ee6] mt-4 text-white">
         <div className="task text-[20px] font-bold font-[monospace]">
-          <div className="flex">
           <h2>
             <span className="text-[#62ccd7]">Task For: </span>
             {taskName}
           </h2>
-          <h2 className="cName">{companyName}</h2>
-          </div>
-
           <h2>
             <span className="text-[#62ccd7]">Task Date: </span>
             {taskDate}
@@ -52,20 +48,17 @@ const TaskDetais = () => {
           </h2>
         </div>
         <div>
-         
-          <button className="taskSeeDetails submitTask">
-            <span>Submit</span>
-            <div class="svg-wrapper-1 ">
-              <div class="svg-wrapper">
-                <BsCheckCircleFill />
-              </div>
-            </div>
-          </button>
+          <h2 className="cName mb-[30px] text-2xl pr-5 font-bold">
+            {companyName}
+          </h2>
+
+          <SubmitTaskModal />
         </div>
       </div>
 
       <div>
-        <p>{taskDiscriptioin}</p>
+        <h2 className="text-center font-bold my-5">Task Discription</h2>
+        <p className="px-10">{taskDiscriptioin}</p>
       </div>
     </section>
   );
