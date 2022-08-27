@@ -146,7 +146,7 @@ const Dashboard = ({ children }) => {
 
   return (
     <div className="">
-      <div className={`drawer-content p-3 md:p-3 ${open ? "ml-80" : "ml-24"}`}>
+      <div className={`drawer-content  ${open ? "ml-80" : "ml-24"}`}>
         <div className="header z-50 sticky top-4 flex justify-between items-center bg-base-300 p-4 rounded-lg">
           <div className="hidden">{/* empty area */}</div>
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">

@@ -3,11 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useAppliedCandidates from '../../../../Hooks/useAppliedCandidates';
 import useJob from '../../../../Hooks/useJob';
 import RecruitmentRow from '../RecruitmentRow';
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { ImArrowLeft2 } from "react-icons/im";
 
 const SingleJobCandidates = () => {
   const { jobId } = useParams();
   const [job] = useJob(jobId);
   const navigate = useNavigate()
+  
+  const currentYear = new Date().getFullYear();
 
   const { data, refetch } = useAppliedCandidates(job)
 
@@ -18,10 +22,60 @@ const SingleJobCandidates = () => {
     navigate(`/dashboard/recruitment/mail/${id}`);
   };
 
+  const back = () => {
+    navigate(-1);
+  };
+
   return (
     <div>
-      <h1>Hello {jobId}</h1>
-      <h1>{job?.jobTitle} {countData?.length}</h1>
+
+      {/* Job Description  */}
+      <div className="bg-[#222223] ">
+        <div className="shadow-md py-10 px-8 md:px-28 lg:px-12 space-y-5 container mx-auto text-white">
+          <div className="space-y-2">
+            <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-1 justify-between">
+              <div className="flex lg:justify-center lg:items-center gap-2 pb-4 lg:pb-0">
+                <div
+                  onClick={back}
+                  className="flex justify-center items-center gap-x-2 cursor-pointer hover:text-primary"
+                >
+                  <span className="font-extrabold text-xl">
+                    <ImArrowLeft2 />
+                  </span>
+                  <h2 className="text-xl md:text-xl font-bold ">
+                    {job?.jobTitle}
+                  </h2>
+                </div>
+                <h2 className="text-xl md:text-lg lg:text-xl font-mono md:mt-1 lg:mt-0  font-bold  hidden md:block">
+                  {" "}
+                  | Vacancy : {job?.openingPosition}
+                </h2>
+              </div>
+              <p className="text-md md:text-xl lg:text-2xl md:font-bold text-white font-mono">
+                {job?.companyName}
+              </p>
+            </div>
+            <div className="flex flex-col-reverse lg:flex-row space-y-2 gap-3 lg:gap-0  justify-between">
+              <p className="flex text-white ">
+                {" "}
+                <span className="px-1 pt-1">
+                  <HiOutlineLocationMarker />
+                </span>{" "}
+                {job?.location}{" "}
+              </p>
+              <p className=" text-white text-[15px] ">
+                Company Employees : {job?.employees}
+              </p>
+            </div>
+          </div>
+          <p className="text-white">
+            Salary : ${job?.salary} <small>/ m</small>
+          </p>
+          <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
+            <span className="lg:pt-4">Work Type : {job?.jobType}</span>
+          </div>
+        </div>
+      </div>
 
       {/* Candidate Info  */}
       <div className="flex flex-col">
@@ -89,6 +143,11 @@ const SingleJobCandidates = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/*Dashboard Footer  */}
+      <div className='text-center mt-12 p-2 bg-base-300'>
+        <h3 className='text-lg font-[500]'>Modern Hiring Platform By <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> | Copyright © {currentYear} </h3>
       </div>
 
 
