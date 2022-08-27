@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
+import useAppliedCandidates from "../../../Hooks/useAppliedCandidates";
 import RecruitmentRow from "./RecruitmentRow";
 
 const RecruitmentCard = ({ job }) => {
@@ -15,18 +16,7 @@ const RecruitmentCard = ({ job }) => {
 
   // const hrUserEmail = auth?.currentUser?.email;
 
-  const { data, isLoading, refetch } = useQuery(
-    ["count", auth, job?.createdDate],
-    () =>
-      axios.get(
-        `${BASE_API}/applicants/appliedCandidate?email=${auth?.currentUser?.email}&createdDate=${job?.createdDate}`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
-  );
+  const { data, isLoading, refetch } = useAppliedCandidates(job)
 
   const countData = data?.data;
   // console.log(data?.data)
@@ -35,8 +25,8 @@ const RecruitmentCard = ({ job }) => {
     navigate(`mail/${id}`);
   };
 
-  const singleJobs = (id) => {
-    navigate(`jobs/${id}`);
+  const singleJob = (id) => {
+    navigate(`job/${id}`);
   };
 
   if (isLoading) {
@@ -68,7 +58,7 @@ const RecruitmentCard = ({ job }) => {
         <div className=" pt-3 flex justify-between items-center">
           <button
             className="btn btn-sm btn-outline capitalize rounded-lg px-4 py-1 "
-            onClick={() => singleJobs(_id)}
+            onClick={() => singleJob(_id)}
           >
             See Details
           </button>
