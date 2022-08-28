@@ -23,7 +23,7 @@ const CandidateDashboard = () => {
         <section className="h-full main_dashboard static z-10 ">
           {/* Dashboard Top  */}
           <div>
-            <div className="dashboard_route bg-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3">
+            <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3">
               <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
                 <div className="icon p-5">
                   <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
