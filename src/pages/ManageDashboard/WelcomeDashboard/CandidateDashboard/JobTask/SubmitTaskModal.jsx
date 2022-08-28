@@ -25,6 +25,7 @@ const SubmitTaskModal = ({ singleTask }) => {
     const submitedTaskInfo = {
       ...data,
       userEmail,
+      singleTask,
       hrEmail,
     };
     fetch(`${BASE_API}/submitCandidateTask`, {

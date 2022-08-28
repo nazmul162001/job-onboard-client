@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
@@ -18,6 +18,8 @@ const SingleCandidates = () => {
       },
     })
   );
+
+  
 
   const candidate = data?.data;
 
