@@ -18,7 +18,6 @@ const TaskDetais = () => {
 
   const {
     companyName,
-    hrEmail,
     taskDate,
     taskDiscriptioin,
     timeDuration,

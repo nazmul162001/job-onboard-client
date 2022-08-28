@@ -2,24 +2,30 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { InitializeContext } from "../../../../../App";
+import auth from "../../../../../Auth/Firebase/Firebase.init";
 const SubmitTaskModal = ({ singleTask }) => {
   const { theme } = useContext(InitializeContext);
   let today = new Date().toLocaleDateString();
   let times = new Date();
-
   let todaysTime =
     times.getHours() + ":" + times.getMinutes() + ":" + times.getSeconds();
-
+  const userEmail = auth?.currentUser?.email;
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
-  const { CandidateName, candidateEmail, timeDuration } = singleTask;
+  const { CandidateName, candidateEmail, timeDuration, taskName, hrEmail } =
+    singleTask;
 
   const submiteTask = (data) => {
-    console.log(data);
+    const submitedTaskInfo = {
+      ...data,
+      userEmail,
+      hrEmail,
+    };
+    console.log(submitedTaskInfo);
   };
 
   return (
@@ -56,8 +62,16 @@ const SubmitTaskModal = ({ singleTask }) => {
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
                       : "border rounded-lg py-1 text-lg pl-3"
                   }
-                  {...register("CandidateName")}
+                  {...register("submitedName", {
+                    required: {
+                      value: true,
+                      message: " Plz one click before Submit!",
+                    },
+                  })}
                 />
+                <p className="text-[13px] text-red-500 pl-3">
+                  {errors.submitedName?.message}
+                </p>
               </div>
               <div className="flex flex-col space-y-1 gap-y-1">
                 <label className="text-lg pl-2">
@@ -72,10 +86,15 @@ const SubmitTaskModal = ({ singleTask }) => {
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
                       : "border rounded-lg py-1 text-lg pl-3 "
                   }
-                  {...register("candidateEmail")}
+                  {...register("submitedEmail", {
+                    required: {
+                      value: true,
+                      message: " Plz one click before Submit!",
+                    },
+                  })}
                 />
                 <p className="text-[13px] text-red-500 pl-3">
-                  {errors.taskName?.message}
+                  {errors.submitedEmail?.message}
                 </p>
               </div>
               <div className="flex flex-col space-y-1 gap-y-1">
@@ -85,6 +104,8 @@ const SubmitTaskModal = ({ singleTask }) => {
                 <input
                   type="text"
                   placeholder="Enter Task Name"
+                  value={taskName}
+                  readOnly
                   className={
                     theme
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
@@ -93,7 +114,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                   {...register("taskName", {
                     required: {
                       value: true,
-                      message: "Add a task Name !",
+                      message: " Plz one click before Submit!",
                     },
                   })}
                 />
@@ -134,7 +155,6 @@ const SubmitTaskModal = ({ singleTask }) => {
                     Sumbit Date <span className="text-red-500">*</span>
                   </label>
                   <input
-                    // type="date"
                     readOnly
                     value={today}
                     className={
@@ -145,7 +165,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                     {...register("submitDate", {
                       required: {
                         value: true,
-                        message: "Add Sumbit Date !",
+                        message: " Plz one click before Submit!!",
                       },
                     })}
                   />
@@ -170,7 +190,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                     {...register("taskTime", {
                       required: {
                         value: true,
-                        message: "Add Task Time !",
+                        message: " Plz one click before Submit!!",
                       },
                     })}
                   />
@@ -191,8 +211,16 @@ const SubmitTaskModal = ({ singleTask }) => {
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("submitDuratioin", {})}
+                    {...register("submitedDuration", {
+                      required: {
+                        value: true,
+                        message: " Plz one click before Submit!",
+                      },
+                    })}
                   />
+                  <p className="text-[13px] text-red-500 pl-3">
+                    {errors.submitedDuration?.message}
+                  </p>
                 </div>
               </div>
 
