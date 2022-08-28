@@ -49,7 +49,7 @@ const Navbar = () => {
       </li>
       <li className="py-1 lg:py-0">
         <NavLink className="uppercase" to="/applicant-tracking">
-          Tracking System
+          Tracking
         </NavLink>
       </li>
       <li className="py-1 lg:py-0">
