@@ -180,7 +180,7 @@ const SingleJobCandidates = () => {
 
       {/*Dashboard Footer  */}
       <div className='text-center mt-12 p-2 bg-base-300'>
-        <h3 className=' font-[500] flex flex-col md:flex-row justify-center items-center gap-y-1 gap-x-2'>Modern Hiring Platform By <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> <span className='hidden md:block'>|</span> Copyright © {currentYear} </h3>
+        <h3 className=' font-[500] flex flex-col md:flex-row justify-center items-center gap-y-1 gap-x-2'>Modern Hiring Platform By <a href="https://www.facebook.com/TeamCodeSamurai" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> <span className='hidden md:block'>|</span> Copyright © {currentYear} </h3>
       </div>
 
 
