@@ -56,7 +56,7 @@ const Contact = () => {
                 <input
                   type="text"
                   placeholder='Enter your name'
-                  className='border border-primary rounded-lg py-2 text-lg pl-3 hover:border-primary duration-300'
+                  className='border rounded-lg py-2 text-lg pl-3 hover:border-primary duration-300'
                   {...register('guestName', {
                     required: {
                       value: true,

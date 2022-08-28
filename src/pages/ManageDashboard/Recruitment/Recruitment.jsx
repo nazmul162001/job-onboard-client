@@ -10,8 +10,8 @@ const Recruitment = () => {
   return (
     <div className="p-5 h-screen">
       <div className="title my-2 mb-6">
-        <h3 className="text-2xl font-semibold">Manage Recruitment Jobs</h3>
-        <span>You can manage all the jobs which are posted by you</span>
+        <h3 className="text-lg md:text-2xl font-semibold">Manage Recruitment Jobs</h3>
+        <span>You can see job details and applied canddiate which job post by you .</span>
       </div>
       {hrJobs?.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 my-8">
@@ -27,7 +27,7 @@ const Recruitment = () => {
               alt="order-not-found"
             />
             <h2 className="text-2xl py-3 font-semibold text-center">
-              Not Recruitment Jobs yet.
+              No Job Found.
             </h2>
           </div>
         </>

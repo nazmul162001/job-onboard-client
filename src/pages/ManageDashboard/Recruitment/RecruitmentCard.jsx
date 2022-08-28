@@ -1,35 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React from "react";
-import { useState } from "react";
-import { FaRegAddressBook } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
-import { BASE_API } from "../../../config";
+import useAppliedCandidates from "../../../Hooks/useAppliedCandidates";
 
 const RecruitmentCard = ({ job }) => {
   const navigate = useNavigate();
-  const [candidates, setCandidates] = useState(null);
-  const { companyName, jobTitle, location, salary, jobType } = job;
-  // console.log(job)
-
-  const { data, isLoading } = useQuery(["count", auth, job?.createdDate], () =>
-    axios.get(
-      `${BASE_API}/applicants/appliedCandidate?email=${auth?.currentUser?.email}&createdDate=${job?.createdDate}`,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    )
-  );
+  const { companyName, jobTitle, location, salary, jobType, _id } = job;
+  const { data, isLoading} = useAppliedCandidates(job)
 
   const countData = data?.data;
   // console.log(data?.data)
 
-  const singleCandidates = (id) => {
-    navigate(`${id}`);
+  const singleJob = (id) => {
+    navigate(`job/${id}`);
   };
 
   if (isLoading) {
@@ -48,154 +31,32 @@ const RecruitmentCard = ({ job }) => {
             </p>
           </div>
         </div>
-        <p className="flex ">{location} </p>
+        <p className="flex ">Location : {location} </p>
         <div className="flex flex-col  space-y-1">
           <span>
             Salary : ${salary}
             <small>/m</small>
           </span>
         </div>
+        <div className="flex flex-col  space-y-1">
+          <span>Job Type : {jobType}</span>
+        </div>
         <div className=" pt-3 flex justify-between items-center">
-          <span className="border rounded-xl px-4 py-1 bg-base-300">
-            {jobType}
-          </span>
+          <button
+            className="btn btn-sm btn-outline capitalize rounded-lg px-4 py-1 "
+            onClick={() => singleJob(_id)}
+          >
+            See Details
+          </button>
         </div>
       </div>
       {countData?.length > 0 && (
-        <label
-          for="candidatesModal"
+        <sapn
           className="btn btn-sm btn-circle absolute right-2 top-2 text-white"
-          onClick={() =>
-            setCandidates({
-              jobTitle,
-              jobType,
-            })
-          }
+          onClick={() => singleJob(_id)}
         >
           {countData?.length}
-        </label>
-      )}
-
-      {candidates && (
-        <>
-          <input
-            type="checkbox"
-            id="candidatesModal"
-            className="modal-toggle "
-          />
-          <div className="modal ">
-            <div className="modal-box w-11/12 max-w-5xl relative overflow-x-hidden">
-              <label
-                for="candidatesModal"
-                className="btn btn-sm btn-circle absolute right-2 top-2"
-              >
-                ✕
-              </label>
-              <div class="flex flex-col">
-                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                  <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="overflow-hidden">
-                      <table class="min-w-full">
-                        <thead class="border-b bg-primary">
-                          <tr>
-                            <th scope="col"></th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Candidates
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Applied For
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Phone
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Resume/Link
-                            </th>
-                            <th
-                              scope="col"
-                              class="text-sm font-medium text-white px-6 py-4 text-left"
-                            >
-                              Sending Mail
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {countData?.map((applicant, index) => (
-                            <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
-                              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                {index + 1}
-                              </td>
-
-                              <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                <div>
-                                  <div class="font-normal">
-                                    {applicant.displayName}
-                                  </div>
-                                  <div class="text-sm font-semibold">
-                                    {applicant.email}
-                                  </div>
-                                </div>
-                              </td>
-
-                              <td class="text-sm font-normal px-6 py-4 whitespace-nowrap">
-                                {applicant.jobTitle}
-                                <br />
-                                <span class="badge badge-ghost ">
-                                  {applicant.category}
-                                </span>
-                              </td>
-
-                              <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm font-semibold">
-                                  {applicant.number}
-                                </div>
-                              </td>
-
-                              <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
-                                <a
-                                  title="Resume/Link"
-                                  href={applicant.resume}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                >
-                                  <FaRegAddressBook size={25} />
-                                </a>
-                              </td>
-                              <td>
-                                <label
-                                  htmlFor="candidate-modal"
-                                  title="Click to send mail"
-                                  onClick={() =>
-                                    singleCandidates(applicant._id)
-                                  }
-                                  className="btn btn-sm text-white"
-                                >
-                                  Send Mail
-                                </label>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
+        </sapn>
       )}
     </div>
   );

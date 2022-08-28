@@ -6,6 +6,9 @@
   visibility: hidden;
   transition: 0.2s;
 }
+.darkInput:focus {
+  background: #01152e !important;
+}
 .modalContainer input:focus,
 textarea:focus,
 select:focus {

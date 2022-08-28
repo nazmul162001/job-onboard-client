@@ -1,0 +1,61 @@
+/* From uiverse.io by @adamgiebl */
+.seeTaskDetails {
+  font-family: inherit;
+  font-size: 15px;
+  background: #002142f7;
+  color: white;
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.seeTaskDetails span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.seeTaskDetails svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.seeTaskDetails:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.seeTaskDetails:hover svg {
+  transform: translateX(2.2em) scale(1.1);
+}
+
+.seeTaskDetails:hover span {
+  transform: translateX(5em);
+}
+
+.seeTaskDetails:active {
+  transform: scale(0.95);
+}
+
+.info {
+  border-radius: 10px 10px 0px 2px;
+}
+.submitTask {
+  background: #00998b;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+}
+.submitTask:hover svg {
+  transform: translateX(-2.2em) scale(1.1);
+}
+.submitTask:hover span {
+  transform: translateX(8em);
+}

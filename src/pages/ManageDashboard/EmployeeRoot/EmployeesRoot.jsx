@@ -51,12 +51,14 @@ const EmployeesRoot = () => {
   // }
 
   return (
-    <section>
-      <div className="flex justify-between items-center border-b-2 border-cyan-600 py-2">
-        <span></span>
-        <h2 className="text-center text-xl font-bold ">
-          <span className="text-5xl font-serif text-primary">E</span>mployees
-        </h2>
+    <section className="p-5 h-screen">
+      <div className="flex flex-col md:flex-row md:flex justify-between items-center border-b-2 border-cyan-600 py-3 mb-3">
+        <div className="title my-2 mb-6">
+          <h3 className="text-lg md:text-2xl font-semibold">
+            Manage All Employees
+          </h3>
+          <span>You can manage all the employees and see there details.</span>
+        </div>
         <AddEmployee refetch={refetch} />
       </div>
 

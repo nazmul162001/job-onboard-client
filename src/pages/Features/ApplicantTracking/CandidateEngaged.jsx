@@ -50,7 +50,7 @@ const CandidateEngaged = () => {
           <p className='my-3'>Want to send out a particular email but just not right away? Schedule emails to go out, whenever you think it’s most appropriate.</p>
       </div>
       {/* information */}
-      <div className="my-5">
+      <div className="">
           {/* Empty area  */}
       </div>
       {/* information */}

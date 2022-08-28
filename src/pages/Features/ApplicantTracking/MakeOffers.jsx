@@ -50,7 +50,7 @@ const MakeOffers = () => {
         <p className='my-3'>Don’t make decisions based on anyone’s gut feelings; use interview scorecards to rate candidates against established criteria.</p>
     </div>
     {/* information */}
-    <div className=" my-5">
+    <div className="">
         {/* Empty area  */}
     </div>
     {/* information */}

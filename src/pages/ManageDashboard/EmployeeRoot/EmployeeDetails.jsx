@@ -17,7 +17,7 @@ const EmployeeDetails = () => {
     employeId,
     employeEmail,
     designation,
-    dateOfBirth,
+    joiningDate,
     bloodGroup,
     location,
     phoneNumber,
@@ -26,6 +26,7 @@ const EmployeeDetails = () => {
     photoLink,
     additionInfo,
   } = singleDetails;
+
   return (
     <div>
       <div className=" border-b-2 border-cyan-600 py-3">
@@ -47,7 +48,7 @@ const EmployeeDetails = () => {
         <div className="text-center">
           <div class="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 ">
             <div class=" w-60 rounded-xl">
-              <img src={photoLink} alt="" />
+              <img className="max-w-full" src={photoLink} alt="" />
             </div>
           </div>
 
@@ -56,75 +57,74 @@ const EmployeeDetails = () => {
         </div>
         <div className="border border-slate-300 rounded-lg  p-4">
           <h2 className="text-xl mb-4 font-bold">Work Information</h2>
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Employe ID</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Employe ID</span>
 
             <span>{employeId}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Name</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Name</span>
 
             <span>{fullName}</span>
           </div>
           <hr />
 
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Designation</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Designation</span>
 
             <span>{designation}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Email</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Email</span>
 
             <span>{employeEmail}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Contact Number</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Contact Number</span>
 
             <span>{phoneNumber}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Age</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Age</span>
 
             <span>{age}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Gender</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Gender</span>
 
             <span>{gender}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Location</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Location</span>
 
             <span>{location}</span>
           </div>
           <hr />
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Date Of Birth</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Date Of Joining</span>
 
-            <span>{dateOfBirth}</span>
+            <span>{joiningDate}</span>
           </div>
           <hr />
 
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Blood Groub</span>
+          <div className="flex lg:flex-row md:flex-row gap-3 flex-col justify-between px-4 mb-4">
+            <span className="font-bold">Blood Groub</span>
 
             <span>{bloodGroup}</span>
           </div>
           <hr />
 
-          <div className="flex justify-between items-center px-4 mb-4">
-            <span>Additional Information</span>
+          <div className=" ">
+            <p className="font-bold text-center mb-4">Additional Information</p>
 
-            <span>{additionInfo}</span>
+            <p>{additionInfo}</p>
           </div>
-          <hr />
         </div>
       </div>
     </div>

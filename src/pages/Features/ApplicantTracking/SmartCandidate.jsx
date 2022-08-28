@@ -51,7 +51,7 @@ const SmartCandidate = () => {
           <p className='my-3'>Take your jobs to a wider base of talent by posting them to your favourite free job boards from Freshteam in a single click - Adzuna, LinkedIn, ZipRecruiter and Glassdoor.</p>
       </div>
       {/* information */}
-      <div className=" my-5">
+      <div className="">
           {/* Empty area  */}
       </div>
       {/* information */}

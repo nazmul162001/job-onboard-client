@@ -21,7 +21,8 @@ import AllJob from "./Pages/Jobs/AllJob/AllJob";
 import JobDescription from "./Pages/Jobs/JobDescription/JobDescription";
 import AppliedJobs from "./Pages/ManageDashboard/AppliedJobs/AppliedJobs";
 import Candidates from "./Pages/ManageDashboard/Candidates/Candidates";
-import CandidatesInbox from "./Pages/ManageDashboard/CandidatesInbox/CandidatesInbox";
+import SingleCandidates from "./Pages/ManageDashboard/Candidates/SingleCandidates";
+
 import CompanyDetails from "./Pages/ManageDashboard/CompanyDetails/CompanyDetails";
 import Dashboard from "./Pages/ManageDashboard/Dashboard/Dashboard";
 import EmployeeDetails from "./Pages/ManageDashboard/EmployeeRoot/EmployeeDetails";
@@ -34,8 +35,11 @@ import AllHr from "./Pages/ManageDashboard/ManageHr/AllHr";
 import Profile from "./Pages/ManageDashboard/Profile/Profile";
 import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
 import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
+import SingleJobCandidates from "./Pages/ManageDashboard/Recruitment/SingleJobCandidates/SingleJobCandidates";
+import JobTask from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/JobTask";
+import TaskDetais from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/TaskDetais";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
-import Team from "./Pages/Team/Team";
+import Pricing from "./Pages/PaymentSystem/Pricing/Pricing";
 import Navbar from "./Shared/Navbar/Navbar";
 import NotFound from "./Shared/NotFound/NotFound";
 import SupportAdmin from "./Shared/Support/SupportAdmin";
@@ -76,9 +80,8 @@ function App() {
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/blog/:blogId" element={<BlogsDetail />}></Route>
           <Route path="contact-us" element={<Contact />}></Route>
-
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/team" element={<Team />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUp/hr" element={<SignUpForHrManager />} />
@@ -101,14 +104,7 @@ function App() {
                 </RequireHr>
               }
             />
-            <Route
-              path="CandidateMail"
-              element={
-                <RequireAuth>
-                  <CandidatesInbox />
-                </RequireAuth>
-              }
-            />
+
             <Route
               path="hr-jobs"
               element={
@@ -132,6 +128,8 @@ function App() {
 
             <Route path="appliedJobs" element={<AppliedJobs />} />
             <Route path="jobs" element={<ManageAllJobs />} />
+            <Route path="task" element={<JobTask />} />
+            <Route path="task/:taskId" element={<TaskDetais />} />
             <Route
               path="recruitment"
               element={
@@ -141,18 +139,30 @@ function App() {
               }
             />
             <Route
-              path="recruitment/:candidatesID"
+              path="recruitment/mail/:candidatesID"
               element={
                 <RequireHr>
                   <SendMailCandidates />
                 </RequireHr>
               }
             />
+            <Route
+              path="recruitment/job/:jobId"
+              element={
+                <RequireHr>
+                  <SingleJobCandidates />
+                </RequireHr>
+              }
+            />
             <Route path="candidates" element={<Candidates />} />
+            <Route
+              path="candidates/:candidatesID"
+              element={<SingleCandidates />}
+            />
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />
             <Route
-              path="allHr"
+              path="allUsers"
               element={
                 <RequireAdmin>
                   <AllHr />

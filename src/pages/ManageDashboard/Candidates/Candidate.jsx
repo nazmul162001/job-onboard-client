@@ -1,8 +1,11 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Candidate = ({ applicant, setMail, index }) => {
-  const { displayName, email } = applicant;
+const Candidate = ({ applicant, index, setApplicantData, status }) => {
+  const navigate = useNavigate();
+  const { _id, displayName, email } = applicant;
+
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -11,19 +14,9 @@ const Candidate = ({ applicant, setMail, index }) => {
 
       <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
         <div>
-          <div class="font-normal">
-            {displayName}
-          </div>
-          <div class="text-sm font-semibold">
-            <label
-              htmlFor="candidate-modal"
-              title="Click to send mail"
-              onClick={() => setMail({ displayName, email })}
-              className="cursor-pointer"
-            >
-              {email}
-            </label>
-          </div>
+          <div class="font-normal">{displayName}</div>
+          <div class="text-sm font-semibold">{email}</div>
+          <span onClick={() => navigate(`${_id}`)} className="cursor-pointer"><button className="btn btn-outline btn-primary btn-xs mt-1">More  info...</button></span>
         </div>
       </td>
 
@@ -34,9 +27,7 @@ const Candidate = ({ applicant, setMail, index }) => {
       </td>
 
       <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div class="text-sm font-semibold">
-          {applicant.number}
-        </div>
+        <div class="text-sm font-semibold">{applicant.number}</div>
       </td>
 
       <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
@@ -49,6 +40,16 @@ const Candidate = ({ applicant, setMail, index }) => {
           <FaRegAddressBook size={25} />
         </a>
       </td>
+      <td>
+        <label
+          onClick={() => setApplicantData(applicant)}
+          for="task-modal"
+          className={`${status ? "hidden" : "taskBtn cursor-pointer"}`}
+        >
+          Task
+        </label>
+      </td>
+
     </tr>
   );
 };

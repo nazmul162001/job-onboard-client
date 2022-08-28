@@ -69,7 +69,9 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     const userData = {
-      displayName: data.displayName,
+      email: data.email,
+      displayName: data.fullName,
+      profileUrl: auth?.currentUser?.photoURL,
     };
     axios.put(`${BASE_API}/login`, userData);
     await updateProfile({ displayName: userData.displayName });
@@ -80,6 +82,7 @@ const SignUp = () => {
       }
     );
   };
+
   return (
     <section className="container mx-auto px-3 lg:px-10 py-3 lg:py-9">
       <div className="hero">
@@ -126,7 +129,7 @@ const SignUp = () => {
                           type="text"
                           placeholder="Your Name"
                           className="input input-bordered w-full max-w-md"
-                          {...register("displayName", {
+                          {...register("fullName", {
                             required: {
                               value: true,
                               message: "Name is Required",
@@ -134,9 +137,9 @@ const SignUp = () => {
                           })}
                         />
                         <label className="label">
-                          {errors.displayName?.type === "required" && (
+                          {errors.fullName?.type === "required" && (
                             <span className="label-text-alt text-red-500">
-                              {errors.displayName.message}
+                              {errors.fullName?.message}
                             </span>
                           )}
                         </label>

@@ -3,7 +3,7 @@ import { BASE_API } from "../config";
 import axios from "axios";
 import auth from "../Auth/Firebase/Firebase.init";
 
-const useJob = () => {
+const useImage = () => {
   const { data: image, isLoading } = useQuery(["imageUrl"], () =>
     axios.get(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
       headers: {
@@ -15,4 +15,4 @@ const useJob = () => {
   return [image?.data?.result?.profileUrl, isLoading];
 };
 
-export default useJob;
+export default useImage;

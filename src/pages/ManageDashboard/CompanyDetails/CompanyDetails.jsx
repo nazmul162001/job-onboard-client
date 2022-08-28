@@ -131,8 +131,8 @@ const CompanyDetails = () => {
             <span>{number ? number : "Not Available"}</span>
           </div>
           <hr className="border-dashed" />
-          <div className="flex flex-col md:flex-row justify-between items-center gap-1 md:gap-24 px-4 mb-4">
-            <strong>Additional Info</strong>
+          <div className="flex flex-col  justify-between items-center lg:items-start pt-4 gap-1  px-4 mb-4">
+            <strong>Additional Info : </strong>
 
             <span>{additionalInfo ? additionalInfo : "Not Available"}</span>
           </div>
@@ -188,8 +188,8 @@ const CompanyDetails = () => {
             id="editCompanyInfo"
             className="modal-toggle "
           />
-          <div className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box relative">
+          <div className="modal">
+            <div className="modal-box relative w-10/12 max-w-3xl">
               <label
                 for="editCompanyInfo"
                 className="btn btn-sm btn-circle absolute right-2 top-2"
