@@ -265,7 +265,7 @@ const Dashboard = ({ children }) => {
            border-2 rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
           /> */}
-          <i class={`bg-white flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
+          <i class={`bg-white flex justify-center items-center ri-arrow-left-s-line absolute cursor-pointer -right-3 top-9 w-7 border-[#081A51] 
            border-2 rounded-full  ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></i>
           <div
             className="flex items-center justify-center"

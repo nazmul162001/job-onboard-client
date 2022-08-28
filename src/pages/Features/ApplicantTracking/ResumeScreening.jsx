@@ -50,7 +50,7 @@ const ResumeScreening = () => {
           <p className='my-3'>Tag candidate profiles with keywords so that you can pull up similar candidates in a jiffy. These tags can be used to maintain and manage candidate lists.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className=" my-5">
           {/* Empty area  */}
       </div>
       {/* information */}
@@ -62,7 +62,7 @@ const ResumeScreening = () => {
           <p className='my-3'>Found a promising not-right-now candidate? Or a right-fit-wrong-job candidate? Archive them so their profiles can be surfaced at the right time.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className=" my-5">
         {/* Empty area  */}
       </div>
     </section>
