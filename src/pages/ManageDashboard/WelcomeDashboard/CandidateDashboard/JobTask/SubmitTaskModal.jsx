@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { InitializeContext } from "../../../../../App";
-const SubmitTaskModal = () => {
+const SubmitTaskModal = ({ singleTask }) => {
   const { theme } = useContext(InitializeContext);
+  let today = new Date().toLocaleDateString();
+  let times = new Date();
+
+  let todaysTime =
+    times.getHours() + ":" + times.getMinutes() + ":" + times.getSeconds();
 
   const {
     register,
@@ -11,6 +16,11 @@ const SubmitTaskModal = () => {
     handleSubmit,
     reset,
   } = useForm();
+  const { CandidateName, candidateEmail, timeDuration } = singleTask;
+
+  const submiteTask = (data) => {
+    console.log(data);
+  };
 
   return (
     <div>
@@ -28,15 +38,18 @@ const SubmitTaskModal = () => {
           </label>
           <div>
             <form
-              onSubmit={handleSubmit}
-              className={theme ? "text-primary space-y-2" : "space-y-2 text-black"}
+              onSubmit={handleSubmit(submiteTask)}
+              className={
+                theme ? "text-primary space-y-2" : "space-y-2 text-black"
+              }
             >
               <div className="flex flex-col space-y-1 gap-y-1">
                 <label className="text-lg pl-2">
-                  Candidate Name <span className="text-red-500">*</span>
+                  Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
+                  value={CandidateName}
                   readOnly
                   className={
                     theme
@@ -48,10 +61,11 @@ const SubmitTaskModal = () => {
               </div>
               <div className="flex flex-col space-y-1 gap-y-1">
                 <label className="text-lg pl-2">
-                  Candidate email <span className="text-red-500">*</span>
+                  Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
+                  value={candidateEmail}
                   readOnly
                   className={
                     theme
@@ -89,59 +103,65 @@ const SubmitTaskModal = () => {
               </div>
 
               <div className="flex flex-col space-y-1 gap-y-1 py-2">
-                <label className="pl-2 md:text-lg">Task Discription</label>
+                <label className="pl-2 md:text-lg">
+                  Submit Your Task Information{" "}
+                  <span className="text-red-500">*</span>
+                </label>
                 <textarea
                   type="text"
                   rows={4}
-                  placeholder="Add Task Discription"
+                  placeholder="Your Task Information"
                   className={
                     theme
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                       : "border rounded-lg py-1 text-lg pl-3 "
                   }
-                  {...register("taskDiscriptioin", {
+                  {...register("taskInformation", {
                     required: {
                       value: true,
-                      message: "Add a task Discription !",
+                      message: "Add Your Task Information!",
                     },
                   })}
                 />
                 <p className="text-[13px] text-red-500 pl-3">
-                  {errors.taskDiscriptioin?.message}
+                  {errors.taskInformation?.message}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Task Date <span className="text-red-500">*</span>
+                    Sumbit Date <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="date"
+                    // type="date"
+                    readOnly
+                    value={today}
                     className={
                       theme
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("taskDate", {
+                    {...register("submitDate", {
                       required: {
                         value: true,
-                        message: "Add Task Date !",
+                        message: "Add Sumbit Date !",
                       },
                     })}
                   />
 
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.taskDate?.message}
+                    {errors.submitDate?.message}
                   </p>
                 </div>
 
                 <div className="flex flex-col space-y-1 gap-y-1">
                   <label className="text-lg pl-2">
-                    Task Time<span className="text-red-500">*</span>
+                    Submit Time<span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="time"
+                    value={todaysTime}
+                    readOnly
                     className={
                       theme
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
@@ -155,7 +175,7 @@ const SubmitTaskModal = () => {
                     })}
                   />
                   <p className="text-[13px] text-red-500 pl-3">
-                    {errors.gender?.message}
+                    {errors.taskTime?.message}
                   </p>
                 </div>
 
@@ -163,36 +183,21 @@ const SubmitTaskModal = () => {
                   <label className="text-lg pl-2">
                     Time Duration<span className="text-red-500">*</span>
                   </label>
-                  <select
+                  <input
+                    value={timeDuration}
+                    readOnly
                     className={
                       theme
                         ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
                         : "border rounded-lg py-1 text-lg pl-3 "
                     }
-                    {...register("timeDuration", {
-                      required: {
-                        value: true,
-                        message: "Add Time Duration!",
-                      },
-                    })}
-                  >
-                    <option disabled selected>
-                      An Hour
-                    </option>
-                    <option>An Hours</option>
-                    <option>30 Minutes</option>
-                    <option>2 Hours</option>
-                    <option>3 Hours</option>
-                    <option>4 Hours</option>
-                    <option>5 Hours</option>
-                    <option>1 Days</option>
-                    <option>2 Days</option>
-                  </select>
+                    {...register("submitDuratioin", {})}
+                  />
                 </div>
               </div>
 
               <button className="rounded-lg text-lg py-1  font-bold  bg-primary w-full  flex items-center justify-center  text-white">
-                Send
+                Submit
               </button>
             </form>
           </div>
