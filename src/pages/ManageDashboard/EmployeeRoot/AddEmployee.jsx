@@ -29,7 +29,7 @@ const AddEmployee = ({ refetch }) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(employeeDetails),
-      // const { id, name, location, email } = employe;
+     
     })
       .then((res) => res.json())
       .then((data) => {

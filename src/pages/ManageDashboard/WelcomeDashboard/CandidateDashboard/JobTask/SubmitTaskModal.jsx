@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
+import Swal from "sweetalert2";
 import { InitializeContext } from "../../../../../App";
 import auth from "../../../../../Auth/Firebase/Firebase.init";
+import { BASE_API } from "../../../../../config";
 const SubmitTaskModal = ({ singleTask }) => {
   const { theme } = useContext(InitializeContext);
   let today = new Date().toLocaleDateString();
@@ -25,7 +27,32 @@ const SubmitTaskModal = ({ singleTask }) => {
       userEmail,
       hrEmail,
     };
-    console.log(submitedTaskInfo);
+    fetch(`${BASE_API}/submitCandidateTask`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(submitedTaskInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            text: "Submit Successfully",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+
+          reset();
+        } else {
+          Swal.fire({
+            text: `Opps!`,
+            icon: "error",
+            confirmButtonText: "Plz Try Again",
+          });
+        }
+      });
   };
 
   return (
@@ -231,7 +258,10 @@ const SubmitTaskModal = ({ singleTask }) => {
           </div>
         </label>
       </label>
-      <label for="submit_task_modal" className="seeTaskDetails submitTask">
+      <label
+        for="submit_task_modal"
+        className="seeTaskDetails submitTask cursor-pointer"
+      >
         <span>Submit</span>
         <div class="svg-wrapper-1 ">
           <div class="svg-wrapper">

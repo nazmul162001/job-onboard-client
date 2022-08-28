@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const Candidate = ({ applicant, index, setApplicantData, status }) => {
   const navigate = useNavigate();
   const { _id, displayName, email } = applicant;
-
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
       <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -48,6 +47,7 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
           Task
         </label>
       </td>
+      
       <td className="flex justify-center items-center mt-5">
         <span onClick={() => navigate(`${_id}`)} className="cursor-pointer">
           <button className="btn btn-sm text-white">See Details</button>
