@@ -21,6 +21,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
       ...data,
       hrEmail,
       companyName,
+      applicantData,
       status: true,
     };
 

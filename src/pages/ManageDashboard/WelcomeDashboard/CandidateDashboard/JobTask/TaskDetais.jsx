@@ -24,6 +24,7 @@ const TaskDetais = () => {
     taskName,
     taskTime,
   } = singleTask;
+  // console.log(singleTask)
 
   return (
     <section className="taskContainer px-4 mt-8">
