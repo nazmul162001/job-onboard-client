@@ -84,7 +84,7 @@ const SingleCandidates = () => {
               </div>
               <div className="text-start">
                 <h1 className="font-bold text-primary">Applied date</h1>
-                {candidate?.appliedDate}
+                {candidate?.appliedDate.slice(0, 10)}
               </div>
             </div>
             <div className="flex gap-3 px-10">
