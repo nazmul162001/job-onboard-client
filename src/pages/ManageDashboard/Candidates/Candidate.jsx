@@ -1,45 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Candidate = ({ applicant, setMail, index }) => {
-  const { displayName, email } = applicant;
+const Candidate = ({ applicant, index, setApplicantData, status }) => {
+  const navigate = useNavigate();
+  const { _id, displayName, email } = applicant;
+
+
+
+
   return (
-    <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+    <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
         {index + 1}
       </td>
 
-      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+      <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
         <div>
-          <div class="font-normal">
-            {displayName}
-          </div>
-          <div class="text-sm font-semibold">
-            <label
-              htmlFor="candidate-modal"
-              title="Click to send mail"
-              onClick={() => setMail({ displayName, email })}
-              className="cursor-pointer"
-            >
-              {email}
-            </label>
-          </div>
+          <div class="font-normal">{displayName}</div>
+          <div class="text-sm font-semibold">{email}</div>
+          <span onClick={() => navigate(`${_id}`)} className="cursor-pointer"><button className="btn btn-outline btn-primary btn-xs mt-1">More  info...</button></span>
         </div>
       </td>
 
-      <td class="text-sm text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+      <td class="text-sm font-normal px-6 py-4 whitespace-nowrap">
         {applicant.jobTitle}
         <br />
         <span class="badge badge-ghost ">{applicant.category}</span>
       </td>
 
-      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-        <div class="text-sm opacity-70 font-semibold">
-          {applicant.number}
-        </div>
+      <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
+        <div class="text-sm font-semibold">{applicant.number}</div>
       </td>
 
-      <td class="text-sm text-gray-900 font-light px-14 py-4 whitespace-nowrap">
+      <td class="text-sm font-light px-14 py-4 whitespace-nowrap">
         <a
           title="Resume/Link"
           href={applicant.resume}
@@ -48,6 +42,15 @@ const Candidate = ({ applicant, setMail, index }) => {
         >
           <FaRegAddressBook size={25} />
         </a>
+      </td>
+      <td>
+        <label
+          onClick={() => setApplicantData(applicant)}
+          for="task-modal"
+          className={`${status ? "hidden" : "taskBtn cursor-pointer"}`}
+        >
+          Task
+        </label>
       </td>
     </tr>
   );

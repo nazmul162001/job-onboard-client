@@ -4,7 +4,7 @@ import engaged from '../../Assets/images/applicants-tracking/engaged.svg'
 
 const CandidateEngaged = () => {
   return (
-    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black'>
+    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20'>
       {/* openings  */}
       <div className="opening_main">
         <h2 className='my-2 text-4xl font-bold'>Candidate engagement software</h2>
@@ -50,7 +50,7 @@ const CandidateEngaged = () => {
           <p className='my-3'>Want to send out a particular email but just not right away? Schedule emails to go out, whenever you think it’s most appropriate.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className="">
           {/* Empty area  */}
       </div>
       {/* information */}

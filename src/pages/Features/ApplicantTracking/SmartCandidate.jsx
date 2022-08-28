@@ -5,7 +5,7 @@ import candidate from '../../Assets/images/applicants-tracking/smart_candidate.s
 const SmartCandidate = () => {
   return (
     <>
-      <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black my-16'>
+      <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 my-16'>
       {/* openings  */}
       <div className="opening_main">
         <h2 className='my-2 text-4xl font-bold'>Smart Candidate Sourcing </h2>
@@ -51,7 +51,7 @@ const SmartCandidate = () => {
           <p className='my-3'>Take your jobs to a wider base of talent by posting them to your favourite free job boards from Freshteam in a single click - Adzuna, LinkedIn, ZipRecruiter and Glassdoor.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className="">
           {/* Empty area  */}
       </div>
       {/* information */}

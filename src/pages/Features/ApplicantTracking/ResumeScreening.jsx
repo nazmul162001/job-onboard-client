@@ -4,7 +4,7 @@ import resumeTrack from '../../Assets/images/applicants-tracking/resume_tracking
 
 const ResumeScreening = () => {
   return (
-    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black my-16'>
+    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 my-16'>
       {/* openings  */}
       <div className="opening_main">
         <h2 className='my-2 text-4xl font-bold'>Resume Screening and Talent Pool</h2>
@@ -50,7 +50,7 @@ const ResumeScreening = () => {
           <p className='my-3'>Tag candidate profiles with keywords so that you can pull up similar candidates in a jiffy. These tags can be used to maintain and manage candidate lists.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className="">
           {/* Empty area  */}
       </div>
       {/* information */}
@@ -62,7 +62,7 @@ const ResumeScreening = () => {
           <p className='my-3'>Found a promising not-right-now candidate? Or a right-fit-wrong-job candidate? Archive them so their profiles can be surfaced at the right time.</p>
       </div>
       {/* information */}
-      <div className="opening_positions my-5">
+      <div className="">
         {/* Empty area  */}
       </div>
     </section>

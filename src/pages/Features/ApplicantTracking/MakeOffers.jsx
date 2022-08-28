@@ -4,7 +4,7 @@ import offers from '../../Assets/images/applicants-tracking/makeOffer.svg'
 
 const MakeOffers = () => {
   return (
-    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20 text-black'>
+    <section className='manage_opening_jobs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-20'>
     {/* openings  */}
     <div className="opening_main">
       <h2 className='my-2 text-4xl font-bold'>Access And Make Offer</h2>
@@ -50,7 +50,7 @@ const MakeOffers = () => {
         <p className='my-3'>Don’t make decisions based on anyone’s gut feelings; use interview scorecards to rate candidates against established criteria.</p>
     </div>
     {/* information */}
-    <div className="opening_positions my-5">
+    <div className="">
         {/* Empty area  */}
     </div>
     {/* information */}

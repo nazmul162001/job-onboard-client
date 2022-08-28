@@ -1,17 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import auth from "../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../config";
+import useAdmin from "../../Hooks/useAdmin";
 import Footer from "../../Shared/Footer/Footer";
+import EditBlog from "./EditBlog";
 const BlogsDetail = () => {
   const [singleBlogs, setSingleBlog] = useState([]);
   const { blogId } = useParams();
-  useEffect(() => {
-    const url = `${BASE_API}/allBlogs/${blogId}`;
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 
-    fetch(url)
+
+  const { refetch } = useQuery(["singleId"], () =>
+    fetch(`${BASE_API}/allBlogs/${blogId}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
-      .then((data) => setSingleBlog(data));
-  }, [blogId]);
+      .then((data) => setSingleBlog(data))
+  );
 
   const { title, image, about } = singleBlogs;
 
@@ -28,6 +39,13 @@ const BlogsDetail = () => {
         </div>
 
         <div className="singleBlogDetails py-10">
+          {admin && (
+            <EditBlog
+              singleBlogs={singleBlogs}
+              setSingleBlog={setSingleBlog}
+              refetch={refetch}
+            />
+          )}
           <div className="titleAndImg grid items-center gap-5 ">
             <h2 className="text-4xl font-bold leading-[3rem] ">{title}</h2>
             <img

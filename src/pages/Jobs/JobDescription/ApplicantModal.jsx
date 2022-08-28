@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import auth from '../../../Auth/Firebase/Firebase.init';
@@ -9,21 +9,27 @@ import { useNavigate } from 'react-router-dom';
 
 const ApplicantModal = ({ job }) => {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
-  
-  const {data,isLoading,refetch} = useCandidateInfo()
+  const { data, isLoading } = useCandidateInfo()
   const navigate = useNavigate();
-  
 
   const userInfo = data?.data?.result
-
   // console.log(userInfo);
+  const [profileUrl, setProfileUrl] = useState(null)
+  useEffect(() => {
+    if (userInfo?.profileUrl) {
+      setProfileUrl(userInfo?.profileUrl)
+    }
+    else if (!userInfo?.profileUrl) {
+      setProfileUrl('https://i.ibb.co/xY0rfV4/avatar.jpg')
+    }
+  }, [userInfo?.profileUrl])
 
-  if(isLoading){
-    return <Loading/>
+  // console.log(profileUrl);
+  if (isLoading) {
+    return <Loading />
   }
 
-  const displayName = auth?.currentUser?.displayName 
+  const displayName = auth?.currentUser?.displayName
   // console.log(displayName);
   const email = auth?.currentUser?.email
 
@@ -31,10 +37,13 @@ const ApplicantModal = ({ job }) => {
   const { category, companyName, hrEmail, hrName, jobTitle } = job
   const jobPostId = job?._id
   const createdDate = job?.createdDate
+  var time = new Date().getTime();
+  var date = new Date(time);
+  var appliedDate = date
 
   const onSubmit = async (data) => {
-    const applicantData = { ...data, displayName,email, category, companyName, hrEmail, hrName, jobTitle, jobPostId,createdDate }
-    console.log(applicantData);
+    const applicantData = { ...data, displayName, email, category, companyName, hrEmail, hrName, jobTitle, jobPostId, createdDate, appliedDate , profileUrl , job , userInfo}
+    // console.log(applicantData);
     await fetch(`${BASE_API}/applicants`, {
       method: "POST",
       headers: {
