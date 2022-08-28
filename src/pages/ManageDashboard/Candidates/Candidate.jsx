@@ -15,6 +15,7 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
         <div>
           <div class="font-normal">{displayName}</div>
           <div class="text-sm font-semibold">{email}</div>
+          <span onClick={() => navigate(`${_id}`)} className="cursor-pointer"><button className="btn btn-outline btn-primary btn-xs mt-1">More  info...</button></span>
         </div>
       </td>
 
@@ -46,12 +47,6 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
         >
           Task
         </label>
-      </td>
-      
-      <td className="flex justify-center items-center mt-5">
-        <span onClick={() => navigate(`${_id}`)} className="cursor-pointer">
-          <button className="btn btn-sm text-white">See Details</button>
-        </span>
       </td>
     </tr>
   );

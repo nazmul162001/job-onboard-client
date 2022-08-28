@@ -25,7 +25,7 @@ const Dashboard = ({ children }) => {
   const [tooltip, showTooltip] = useState(true);
 
   // my dashboard sidebar
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const Menus = [
     {
       title: "Dashboard",

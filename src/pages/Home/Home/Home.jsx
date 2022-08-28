@@ -24,7 +24,7 @@ const Home = () => {
       <Review />
       <ContactUs />
       <Footer />
-      <div className="hidden md:block">
+      <div className="hidden 2xl:block">
         <SupportEngine />
       </div>
     </>

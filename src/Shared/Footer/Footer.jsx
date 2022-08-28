@@ -33,7 +33,7 @@ const Footer = () => {
                 </span>
               </a>
               <a
-                href="https://www.facebook.com/Code-Samurai-106635735510758"
+                href="https://www.facebook.com/TeamCodeSamurai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-4  text-green-800 "
