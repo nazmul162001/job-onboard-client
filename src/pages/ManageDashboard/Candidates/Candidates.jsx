@@ -78,12 +78,7 @@ const Candidates = () => {
                       >
                         Task
                       </th>
-                      <th
-                        scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
-                      >
-                        See Details
-                      </th>
+
                     </tr>
                   </thead>
                   <tbody>
