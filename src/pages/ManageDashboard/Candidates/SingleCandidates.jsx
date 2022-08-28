@@ -19,6 +19,8 @@ const SingleCandidates = () => {
     })
   );
 
+  
+
   const candidate = data?.data;
 
   if (isLoading) {

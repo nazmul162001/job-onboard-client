@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegAddressBook } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Candidate = ({ applicant, index, setApplicantData, status }) => {
   const navigate = useNavigate();
   const { _id, displayName, email } = applicant;
+
+
+
 
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
@@ -48,6 +51,7 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
           Task
         </label>
       </td>
+<<<<<<< HEAD
       <td>
         <span onClick={() => navigate(`${_id}`)}>
           <button className="btn btn-outline btn-primary btn-sm mt-1">
@@ -55,6 +59,8 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
           </button>
         </span>
       </td>
+=======
+>>>>>>> e6085e5ac50ef5d6b6a0615717cf8423446a2154
     </tr>
   );
 };

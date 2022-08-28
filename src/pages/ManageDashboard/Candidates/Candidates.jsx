@@ -22,7 +22,7 @@ const Candidates = () => {
       },
     })
   );
-
+// console.log(getApplicants)
   const allreadyGiven = data?.data;
 
   if (isLoading) {

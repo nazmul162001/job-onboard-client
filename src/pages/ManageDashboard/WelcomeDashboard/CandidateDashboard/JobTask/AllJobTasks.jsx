@@ -3,6 +3,7 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 const AllJobTasks = ({ task, index }) => {
   const { companyName, taskName, taskDate, taskTime, _id } = task;
+  // console.log(task)
   const navigate = useNavigate();
   const seeTaskDetails = (taskId) => {
     navigate(`${taskId}`);

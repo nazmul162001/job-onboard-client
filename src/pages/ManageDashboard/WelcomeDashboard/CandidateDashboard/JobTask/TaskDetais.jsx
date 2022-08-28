@@ -18,16 +18,16 @@ const TaskDetais = () => {
 
   const {
     companyName,
-    hrEmail,
     taskDate,
     taskDiscriptioin,
     timeDuration,
     taskName,
     taskTime,
   } = singleTask;
+  // console.log(singleTask)
 
   return (
-    <section className="taskContainer ">
+    <section className="taskContainer px-4 mt-8">
       <div className="info flex justify-between p-5 items-center bg-[#01022ee6] mt-4 text-white">
         <div className="task text-[20px] font-bold font-[monospace]">
           <h2>
@@ -52,12 +52,12 @@ const TaskDetais = () => {
             {companyName}
           </h2>
 
-          <SubmitTaskModal />
+          <SubmitTaskModal singleTask={singleTask}/>
         </div>
       </div>
 
       <div>
-        <h2 className="text-center font-bold my-5">Task Discription</h2>
+        <h2 className="text-center font-bold my-5 text-xl">Task Discription</h2>
         <p className="px-10">{taskDiscriptioin}</p>
       </div>
     </section>
