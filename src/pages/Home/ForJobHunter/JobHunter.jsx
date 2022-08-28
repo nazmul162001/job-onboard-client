@@ -50,7 +50,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">Easy To Apply Any Jobs</h4>
             <p>Easy apply and find your best jobs acording to to your skill</p>
           </div>
@@ -80,7 +80,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">Build Up Strong Network</h4>
             <p>Build Strong bonding many kinds of companies by your Skills.</p>
           </div>
@@ -110,7 +110,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">Easy Interview Process</h4>
             <p>Easy to get interview notification through mail</p>
           </div>
@@ -140,7 +140,7 @@ const JobHunter = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">
               Get Your Dreem Job Successfully
             </h4>

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegAddressBook } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Candidate = ({ applicant, index, setApplicantData, status }) => {
   const navigate = useNavigate();
   const { _id, displayName, email } = applicant;
+
+
+
 
   return (
     <tr class="bg-base-100 border-b transition duration-300 ease-in-out">
@@ -49,7 +52,6 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
           Task
         </label>
       </td>
-
     </tr>
   );
 };
