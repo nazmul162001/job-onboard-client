@@ -15,7 +15,11 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
         <div>
           <div class="font-normal">{displayName}</div>
           <div class="text-sm font-semibold">{email}</div>
-          <span onClick={() => navigate(`${_id}`)} className="cursor-pointer"><button className="btn btn-outline btn-primary btn-xs mt-1">More  info...</button></span>
+          <span onClick={() => navigate(`${_id}`)} className="cursor-pointer">
+            <button className="btn btn-outline btn-primary btn-xs mt-1">
+              More info...
+            </button>
+          </span>
         </div>
       </td>
 
@@ -47,6 +51,9 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
         >
           Task
         </label>
+      </td>
+      <td>
+        <label className="taskBtn seeTask">See Task</label>
       </td>
     </tr>
   );

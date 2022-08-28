@@ -22,7 +22,7 @@ const Candidates = () => {
       },
     })
   );
-console.log(getApplicants)
+  console.log(getApplicants);
   const allreadyGiven = data?.data;
 
   if (isLoading) {
@@ -76,7 +76,12 @@ console.log(getApplicants)
                       >
                         Task
                       </th>
-
+                      <th
+                        scope="col"
+                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                      >
+                        SeeTask
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
