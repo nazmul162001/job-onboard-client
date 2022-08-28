@@ -145,7 +145,7 @@ const Dashboard = ({ children }) => {
   }
 
   return (
-    <div className="">
+    <div>
       <div className={`drawer-content  ${open ? "ml-[21rem]" : "ml-20 md:ml-24"}`}>
         <div className="header z-50 sticky top-4 flex justify-between items-center bg-base-300 p-4 rounded-lg">
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
