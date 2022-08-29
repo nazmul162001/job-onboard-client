@@ -4,9 +4,28 @@ import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import auth from "../../../Auth/Firebase/Firebase.init";
 
 const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
   const navigate = useNavigate();
+
+
+  // console.log(applicant)
+
+  const { data, isLoading } = useQuery(["count", auth, applicant?._id], () => axios.get(`${BASE_API}/submittedTask?email=${auth?.currentUser?.email}&applicantId=${applicant?._id}`,
+    {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }
+  ));
+
+  console.log(data?.data);
+
+
+
   const handleUpdateStatus = async (id) => {
     const candidates = {
       fullName: applicant?.displayName,
@@ -72,6 +91,7 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
     });
   };
 
+  
   return (
     <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
