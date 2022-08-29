@@ -29,7 +29,7 @@ const HrDashboard = ({
               <div className="icon p-5">
                 <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
-              <div className="card_details text-black ">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl ">
                   {getApplicants ? getApplicants?.length : 0}
                 </h2>
