@@ -260,16 +260,15 @@ const SubmitTaskModal = ({ singleTask }) => {
           </div>
         </label>
       </label>
-      <label
-        for="submit_task_modal"
-        className="seeTaskDetails submitTask cursor-pointer"
-      >
-        <span>Submit</span>
-        <div class="svg-wrapper-1 ">
-          <div class="svg-wrapper">
-            <BsCheckCircleFill />
+      <label for="submit_task_modal">
+        <button className="seeTaskDetails submitBtan">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <BsCheckCircleFill />
+            </div>
           </div>
-        </div>
+          <span>Submit</span>
+        </button>
       </label>
     </div>
   );
