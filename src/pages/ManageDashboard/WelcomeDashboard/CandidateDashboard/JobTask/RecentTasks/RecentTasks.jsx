@@ -8,7 +8,7 @@ const RecentTasks = ({revTask}) => {
     <div className='shadow-lg p-5 text-center space-y-2 border rounded-lg '>
 
       <div class="avatar py-2 mx-auto relative">
-      <label class="absolute left-[-100px] top-0 text-[12px] border px-2  rounded-xl">Task</label>
+      <label class="absolute left-[-100px] top-0 text-[12px] border px-2 bg-primary text-white rounded-xl">Task</label>
         
       </div>
       <h3 className="text-[15px] ">{revTask?.companyName}</h3>

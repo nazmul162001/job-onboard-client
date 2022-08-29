@@ -67,9 +67,9 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
           {/* welcome dashbord */}
 
           {/* Recent Applicants */}
-          <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
+          <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Applicants</h2>
           {revGetApplicants?.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-4">
               {revGetApplicants.map((revApplicant, index) => (
                 <RecentApplicants
                   key={index}
@@ -84,7 +84,7 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
           )}
 
           {/* Recent Jobs  */}
-          <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Jobs</h2>
+          <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Jobs</h2>
           {revMyJob?.length > 0 ? (
             <div class="flex flex-col">
               <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
