@@ -60,7 +60,7 @@ function App() {
     window.localStorage.setItem("theme", !theme);
   };
   return (
-    <div data-theme={theme && "night"}>
+    <div data-theme={theme && "business"}>
       <InitializeContext.Provider
         value={{ handleThemeChange, theme, profileUrl }}
       >
