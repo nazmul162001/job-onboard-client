@@ -145,8 +145,10 @@ const Dashboard = ({ children }) => {
   }
 
   return (
-    <div>
-      <div className={`drawer-content  ${open ? "ml-[21rem]" : "ml-20 md:ml-24"}`}>
+    <div className="relative py-4">
+      <div
+        className={`drawer-content  ${open ? "ml-[21rem]" : "ml-20 md:ml-24"}`}
+      >
         <div className="header z-50 sticky top-4 flex justify-between items-center bg-base-300 p-4 rounded-lg">
           <span className="font-semibold text-xl hidden md:flex justify-center items-center gap-1">
             Welcome,{" "}
@@ -172,7 +174,7 @@ const Dashboard = ({ children }) => {
             to="/"
             className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
           >
-            <img src={Logo} alt="" className="w-24" />
+            {/* <img src={Logo} alt="" className="w-24" /> */}
           </Link>
           <div className="flex justify-center items-center gap-8">
             <li className="list-none hidden md:flex">
@@ -415,17 +417,6 @@ const Dashboard = ({ children }) => {
                     {open ? (
                       <i class={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
-                      // <img
-                      //   className="p-2"
-                      //   data-tip={Menu.tooltip}
-                      //   onMouseEnter={() => showTooltip(true)}
-                      //   onMouseLeave={() => {
-                      //     showTooltip(false);
-                      //     setTimeout(() => showTooltip(true), 10);
-                      //   }}
-                      //   src={`./sidebar/${Menu.src}.png`}
-                      //   alt="Side"
-                      // />
                       <i
                         class={`p-2 text-xl ${Menu.src}`}
                         data-tip={Menu.tooltip}

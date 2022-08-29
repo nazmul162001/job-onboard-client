@@ -4,9 +4,13 @@ import React from "react";
 import auth from "../../../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../../../Components/Loading/Loading";
 import { BASE_API } from "../../../../../config";
+import useTitle from "../../../../../Hooks/useTitle";
 import AllJobTasks from "./AllJobTasks";
 import "./JobTaskCss/JobTask.css";
+
+
 const JobTask = () => {
+  useTitle("Task")
   const { data, isLoading } = useQuery(["getHrTask"], () =>
     axios.get(`${BASE_API}/getHrTask?email=${auth?.currentUser?.email}`, {
       headers: {

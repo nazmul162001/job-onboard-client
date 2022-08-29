@@ -6,7 +6,7 @@ import useTitle from '../../../../Hooks/useTitle';
 import { useNavigate } from 'react-router-dom';
 
 const CandidateDashboard = () => {
-  useTitle("Candidate Dashboard");
+  useTitle("Dashboard");
   const { appliedJobs, isLoading } = useAppliedJobs()
   const navigate = useNavigate();
 
