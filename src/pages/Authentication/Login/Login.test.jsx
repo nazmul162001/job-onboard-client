@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen, fireEvent } from "@testing-library/react"
 
 import Login from "./Login"
 
@@ -25,3 +25,17 @@ test("error should be displayed", () => {
     const errorEl = screen.getByTestId("errors.email.message");
     expect(errorEl).toBeVisible()
 })
+
+test("require should not be needed when input exist", () => {
+    render(<Login />);
+    const submitEl = screen.getByText(/Login/i);
+    const emailEl = screen.getByPlaceholderText(/Your Email/i);
+    const PasswordEl = screen.getByPlaceholderText(/Password/i);
+
+    const testValue = "test";
+
+    fireEvent.change(emailEl, { target: { value: testValue } });
+    fireEvent.change(PasswordEl, { target: { value: testValue } });
+
+    expect(submitEl).not.toBeDisabled();
+});
