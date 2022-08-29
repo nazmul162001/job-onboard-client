@@ -19,12 +19,12 @@ const SingleJobCandidates = () => {
   // console.log(countData)
 
   //  Candidate Info To Excel   
-  const [candidateData,setCandidateData] = useState([])
-  const fileName = job?.jobTitle; 
+  const [candidateData, setCandidateData] = useState([])
+  const fileName = job?.jobTitle;
   // console.log(fileName)
 
   useEffect(() => {
-    const header = countData?.map((candidate,index) => ({
+    const header = countData?.map((candidate, index) => ({
       "CandidateId": index + 1,
       "Candidate Name": candidate?.displayName,
       "Candidate Email": candidate?.email,
@@ -33,7 +33,7 @@ const SingleJobCandidates = () => {
     setCandidateData(header)
   }, [countData])
 
-  
+
   const fileType =
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
   const fileExtension = ".xlsx";
@@ -93,14 +93,11 @@ const SingleJobCandidates = () => {
                 </span>{" "}
                 {job?.location}{" "}
               </p>
-              <p className=" text-[15px] ">
-                Company Employees : {job?.employees}
+              <p className="">
+                Salary : ${job?.salary}<small>/m</small>
               </p>
             </div>
           </div>
-          <p className="">
-            Salary : ${job?.salary} <small>/ m</small>
-          </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
             <span className="lg:pt-4 font-semibold">Applied Candidates : {countData?.length}</span>
 
