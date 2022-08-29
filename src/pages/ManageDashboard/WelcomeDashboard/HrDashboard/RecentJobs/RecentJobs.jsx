@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import { useQuery } from "@tanstack/react-query";
-import auth from '../../../../Auth/Firebase/Firebase.init';
 import axios from 'axios';
-import { BASE_API } from '../../../../config';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../../../../Auth/Firebase/Firebase.init';
+import { BASE_API } from '../../../../../config';
 
 const RecentJobs = ({ myJob, index }) => {
 
