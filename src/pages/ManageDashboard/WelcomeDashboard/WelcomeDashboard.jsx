@@ -28,6 +28,7 @@ const WelcomeDashboard = () => {
 
   const { getApplicants } = useCandidate();
   const revGetApplicants = [].concat(getApplicants).reverse().slice(0, 4);
+  const allRecentApplicants = [].concat(getApplicants).reverse();
   // console.log(revGetApplicants);
 
   if (adminLoading || hrLoading) {
@@ -38,16 +39,15 @@ const WelcomeDashboard = () => {
     <div className="bg-base-300 ">
       {/* Hr Dashboard  */}
       {hr && (
-        <div>
-          <HrDashboard 
-          getApplicants={getApplicants}
-          hrJobs={hrJobs}
-          hrLoading={hrLoading}
-          allEmployeDetails={allEmployeDetails}
-          revGetApplicants={revGetApplicants}
-          revMyJob={revMyJob}
-          />
-        </div>
+        <HrDashboard 
+        getApplicants={getApplicants}
+        hrJobs={hrJobs}
+        hrLoading={hrLoading}
+        allEmployeDetails={allEmployeDetails}
+        revGetApplicants={revGetApplicants}
+        revMyJob={revMyJob}
+        allRecentApplicants={allRecentApplicants}
+        />
       )}
 
       {/* Candidate Dashboard  */}
