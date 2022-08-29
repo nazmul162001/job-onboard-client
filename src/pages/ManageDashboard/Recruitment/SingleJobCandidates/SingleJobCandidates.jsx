@@ -59,7 +59,7 @@ const SingleJobCandidates = () => {
   };
 
   return (
-    <div>
+    <div className="h-screen">
       {/* Job Description  */}
       <div className="">
         <div className="shadow-md py-10 space-y-5 px-5">

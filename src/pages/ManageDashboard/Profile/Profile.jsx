@@ -91,7 +91,7 @@ const Profile = () => {
   } = data?.data?.result;
 
   return (
-    <div className="h-screen">
+    <div className="lg:h-screen">
       <div className=" border-b-2 border-primary py-3">
         <h2 className="text-center text-2xl font-semibold ">Profile</h2>
       </div>
