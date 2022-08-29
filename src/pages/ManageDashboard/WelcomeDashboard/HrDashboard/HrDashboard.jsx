@@ -43,7 +43,7 @@ const HrDashboard = ({
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
-              <div className="card_details text-black">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl">
                   {hrJobs ? hrJobs?.length : 0}
                 </h2>
@@ -54,7 +54,7 @@ const HrDashboard = ({
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
-              <div className="card_details text-black">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl">0</h2>
                 <p className="text-[14px]">Draft Jobs</p>
               </div>
@@ -66,7 +66,7 @@ const HrDashboard = ({
               <div className="icon p-5">
                 <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
               </div>
-              <div className="card_details text-black">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl">
                   {" "}
                   {hrLoading ? (
@@ -85,9 +85,9 @@ const HrDashboard = ({
 
           {/* Recent Applicants */}
           <div className="flex justify-between items-center">
-            <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
+            <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Applicants</h2>
             {allRecentApplicants?.length > 4 && (
-              <button className="btn btn-sm btn-outline text-[12px] text-secondary lg:mr-4" onClick={() =>
+              <button className="btn btn-sm btn-outline text-[12px] text-secondary mr-4" onClick={() =>
                 navigate(`/dashboard/allRecentApplicants`)
               }>
                 See All Applicants
@@ -95,7 +95,7 @@ const HrDashboard = ({
             )}
           </div>
           {revGetApplicants?.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-4">
               {revGetApplicants.map((revApplicant, index) => (
                 <RecentApplicants key={index} revApplicant={revApplicant} />
               ))}
@@ -107,7 +107,7 @@ const HrDashboard = ({
           )}
 
           {/* Recent Jobs  */}
-          <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Jobs</h2>
+          <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Jobs</h2>
           {revMyJob?.length > 0 ? (
             <div class="flex flex-col">
               <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
