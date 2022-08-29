@@ -4,11 +4,23 @@ import Loading from '../../../../Components/Loading/Loading';
 import useAppliedJobs from '../../../../Hooks/useAppliedJobs';
 import useTitle from '../../../../Hooks/useTitle';
 import { useNavigate } from 'react-router-dom';
+import useJobTasks from '../../../../Hooks/useJobTasks';
+import RecentTasks from './JobTask/RecentTasks/RecentTasks';
 
 const CandidateDashboard = () => {
-  useTitle("Candidate Dashboard");
+  useTitle("Dashboard");
   const { appliedJobs, isLoading } = useAppliedJobs()
   const navigate = useNavigate();
+
+  // Task 
+  const { data } = useJobTasks()
+  const allTasks = data?.data;
+  console.log(allTasks)
+  const revRecentTask = [].concat(allTasks).reverse().slice(0, 4)
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const revAppliedJobs = [].concat(appliedJobs).reverse().slice(0, 4)
   // console.log(revAppliedJobs);
@@ -24,31 +36,32 @@ const CandidateDashboard = () => {
           {/* Dashboard Top  */}
           <div>
             <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3">
-              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/appliedJobs`)}>
                 <div className="icon p-5">
                   <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                 </div>
-                <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/appliedJobs`)}>
+                <div className="card_details text-black">
                   <h2 className="font-bold text-xl ">{appliedJobs ? appliedJobs?.length : 0}</h2>
                   <p className="text-[14px]">Applied Job</p>
                 </div>
               </div>
-              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/task`)}>
+                <div className="icon p-5">
+                  <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
+                </div>
+                <div className="card_details text-black">
+                  <h2 className="font-bold text-xl">{allTasks ? allTasks?.length : 0}</h2>
+                  <p className="text-[14px]">All Task</p>
+                </div>
+              </div>
+
+              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/task`)}>
                 <div className="icon p-5">
                   <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
                 </div>
                 <div className="card_details text-black">
                   <h2 className="font-bold text-xl">0</h2>
-                  <p className="text-[14px]">Unfinish Task</p>
-                </div>
-              </div>
-              <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
-                <div className="icon p-5">
-                  <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
-                </div>
-                <div className="card_details text-black">
-                  <h2 className="font-bold text-xl">0</h2>
-                  <p className="text-[14px]">New Task</p>
+                  <p className="text-[14px]">Submited Task</p>
                 </div>
               </div>
             </div>
@@ -76,10 +89,21 @@ const CandidateDashboard = () => {
             )}
 
             {/* Recent Task  */}
-            <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Task</h2>
-            <div className="recent-application p-4 bg-base-200 shadow rounded ">
-              <p className='text-red-500'>No Task Found</p>
-            </div>
+            <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
+            {revRecentTask?.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-3">
+                {revRecentTask.map((revTask, index) => (
+                  <RecentTasks
+                    key={index}
+                    revTask={revTask}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="recent-application p-4 bg-base-200 shadow rounded ">
+                <p className="text-red-500">No Applicants Found</p>
+              </div>
+            )}
 
             {/* Unfinish Task  */}
             <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Unfinish Task</h2>

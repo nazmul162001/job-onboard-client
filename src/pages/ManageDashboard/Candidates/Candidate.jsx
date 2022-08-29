@@ -50,8 +50,8 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
       </td>
       <td>
         <span onClick={() => navigate(`${_id}`)}>
-          <button className="btn btn-outline btn-primary btn-sm mt-1">
-            More info...
+          <button className="btn btn-outline btn-sm mt-1 capitalize">
+            <span className="hidden md:block md:mr-1">See </span>Details
           </button>
         </span>
       </td>

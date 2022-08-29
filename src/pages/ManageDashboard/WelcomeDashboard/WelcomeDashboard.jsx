@@ -38,16 +38,14 @@ const WelcomeDashboard = () => {
     <div className="bg-base-300 ">
       {/* Hr Dashboard  */}
       {hr && (
-        <div>
-          <HrDashboard 
-          getApplicants={getApplicants}
-          hrJobs={hrJobs}
-          hrLoading={hrLoading}
-          allEmployeDetails={allEmployeDetails}
-          revGetApplicants={revGetApplicants}
-          revMyJob={revMyJob}
-          />
-        </div>
+        <HrDashboard 
+        getApplicants={getApplicants}
+        hrJobs={hrJobs}
+        hrLoading={hrLoading}
+        allEmployeDetails={allEmployeDetails}
+        revGetApplicants={revGetApplicants}
+        revMyJob={revMyJob}
+        />
       )}
 
       {/* Candidate Dashboard  */}

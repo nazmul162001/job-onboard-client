@@ -3,16 +3,18 @@ import Swal from "sweetalert2";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
+import useTitle from "../../../Hooks/useTitle";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
 import EditEmployeeModal from "./EditEmployeeModal";
 import "./EmployeeCss/Employee.css";
+
 const EmployeesRoot = () => {
+  useTitle("Employees");
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
+
   const { data, isLoading, refetch } = useEmployeeInfo();
-  if (isLoading) {
-    return <Loading />;
-  }
+
   const allEmployeDetails = data?.data;
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
@@ -49,6 +51,10 @@ const EmployeesRoot = () => {
   // const forModal =()=>{
   //   if(removeModal){}
   // }
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <section className="p-5 h-screen">

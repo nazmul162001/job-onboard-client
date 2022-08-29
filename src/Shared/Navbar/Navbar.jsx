@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { CgMenuLeftAlt } from "react-icons/cg";
+import { CgMenuCheese } from "react-icons/cg";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { toast } from "react-hot-toast";
@@ -49,7 +49,7 @@ const Navbar = () => {
       </li>
       <li className="py-1 lg:py-0">
         <NavLink className="uppercase" to="/applicant-tracking">
-          Tracking
+          Tracking System
         </NavLink>
       </li>
       <li className="py-1 lg:py-0">
@@ -75,13 +75,6 @@ const Navbar = () => {
           </Link>
         </li>
       )}
-      {user && (
-        <li className="py-1 lg:py-0">
-          <Link className="uppercase bg-secondary text-white" to="/dashboard">
-            Dashboard
-          </Link>
-        </li>
-      )}
     </>
   );
 
@@ -101,7 +94,7 @@ const Navbar = () => {
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex="0" className="btn btn-ghost lg:hidden">
-                <CgMenuLeftAlt className="text-3xl" />
+                <CgMenuCheese className="text-3xl" />
               </label>
               <ul
                 tabIndex="0"
@@ -151,11 +144,11 @@ const Navbar = () => {
                 onClick={handleThemeChange}
                 className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
               >
-                 {theme ? (
-                        <input type="checkbox" class="toggle" checked />
-                      ) : (
-                        <input type="checkbox" class="toggle" />
-                      )}
+                {theme ? (
+                  <input type="checkbox" class="toggle" checked />
+                ) : (
+                  <input type="checkbox" class="toggle" />
+                )}
               </button>
             </div>
             {!user && (
@@ -214,10 +207,10 @@ const Navbar = () => {
                     tabIndex="0"
                     className="mt-3 p-2 shadow-xl menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                   >
-                    <li className="py-2 block lg:hidden">
+                    <li className="py-2">
                       <Link to="/dashboard">Dashboard</Link>
                     </li>
-                    {!admin && hr && (
+                    {admin && hr && (
                       <li className="">
                         <Link to="/support">Support</Link>
                       </li>

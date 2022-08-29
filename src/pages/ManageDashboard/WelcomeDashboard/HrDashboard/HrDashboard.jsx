@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../../../Components/Loading/Loading';
 import HrChart from '../../HrChart/HrChart';
-import RecentApplicants from '../RecentApplicants/RecentApplicants'
-import RecentJobs from '../RecentJobs/RecentJobs';
+import RecentApplicants from './RecentApplicants/RecentApplicants';
+import RecentJobs from './RecentJobs/RecentJobs';
 
 const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApplicants,revMyJob}) => {
   const navigate = useNavigate()
