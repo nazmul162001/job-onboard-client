@@ -16,7 +16,7 @@ const CandidateDashboard = () => {
   const { data } = useJobTasks()
   const allTasks = data?.data;
   console.log(allTasks)
-  const revRecentTask = [].concat(allTasks).reverse().slice(0, 4)
+  const revRecentTask = [].concat(allTasks).reverse().slice(0, 3)
 
   if (isLoading) {
     return <Loading />;
@@ -40,7 +40,7 @@ const CandidateDashboard = () => {
                 <div className="icon p-5">
                   <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
                 </div>
-                <div className="card_details text-black">
+                <div className="card_details text-black flex flex-col justify-center text-start">
                   <h2 className="font-bold text-xl ">{appliedJobs ? appliedJobs?.length : 0}</h2>
                   <p className="text-[14px]">Applied Job</p>
                 </div>
@@ -49,7 +49,7 @@ const CandidateDashboard = () => {
                 <div className="icon p-5">
                   <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
                 </div>
-                <div className="card_details text-black">
+                <div className="card_details text-black flex flex-col justify-center text-start">
                   <h2 className="font-bold text-xl">{allTasks ? allTasks?.length : 0}</h2>
                   <p className="text-[14px]">All Task</p>
                 </div>
@@ -59,7 +59,7 @@ const CandidateDashboard = () => {
                 <div className="icon p-5">
                   <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
                 </div>
-                <div className="card_details text-black">
+                <div className="card_details text-black flex flex-col justify-center text-start">
                   <h2 className="font-bold text-xl">0</h2>
                   <p className="text-[14px]">Submited Task</p>
                 </div>
@@ -89,9 +89,9 @@ const CandidateDashboard = () => {
             )}
 
             {/* Recent Task  */}
-            <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
+            <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Task</h2>
             {revRecentTask?.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:px-3">
                 {revRecentTask.map((revTask, index) => (
                   <RecentTasks
                     key={index}

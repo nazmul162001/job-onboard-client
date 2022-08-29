@@ -14,12 +14,12 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
         {/* main dashboard  */}
         <div className="">
           <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center justify-center lg:gap-3 pt-3">
-            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/candidates`)}>
+            <div className="card_content my-5 flex  bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/candidates`)}>
               <div className="icon p-5">
                 <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
-              <div className="card_details text-black " >
-                <h2 className="font-bold text-xl ">
+              <div className="card_details text-black flex flex-col justify-center text-start" >
+                <h2 className="font-bold text-xl">
                   {getApplicants ? getApplicants?.length : 0}
                 </h2>
                 <p className="text-[14px]">Active Candidate</p>
@@ -29,7 +29,7 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
-              <div className="card_details text-black">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl">
                   {hrJobs ? hrJobs?.length : 0}
                 </h2>
@@ -40,7 +40,7 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
-              <div className="card_details text-black">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl">0</h2>
                 <p className="text-[14px]">Draft Jobs</p>
               </div>
@@ -49,7 +49,7 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
               <div className="icon p-5">
                 <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
               </div>
-              <div className="card_details text-black">
+              <div className="card_details text-black flex flex-col justify-center text-start">
                 <h2 className="font-bold text-xl">
                   {" "}
                   {hrLoading ? (
