@@ -12,7 +12,7 @@ import TaskModal from "./TaskModal";
 
 const Candidates = () => {
   useTitle("Candidates");
-  const { getApplicants, isLoading, refetch } = useCandidate();
+  const { getApplicants, isLoading } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
 
   const { data } = useQuery(["AllredyGiven"], () =>
@@ -79,8 +79,9 @@ const Candidates = () => {
                         scope="col"
                         class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
-                        SeeTask
+                        Details
                       </th>
+
                     </tr>
                   </thead>
                   <tbody>

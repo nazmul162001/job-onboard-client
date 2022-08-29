@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
@@ -86,7 +86,7 @@ const SingleCandidates = () => {
               </div>
               <div className="text-start">
                 <h1 className="font-bold text-primary">Applied date</h1>
-                {candidate?.appliedDate}
+                {candidate?.appliedDate.slice(0, 10)}
               </div>
             </div>
             <div className="flex gap-3 px-10">
