@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { InitializeContext } from "../../../../../App";
-import auth from "../../../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../../../config";
+
 const SubmitTaskModal = ({ singleTask }) => {
+
   const { theme } = useContext(InitializeContext);
   let today = new Date().toLocaleDateString();
   let times = new Date();
   let todaysTime =
     times.getHours() + ":" + times.getMinutes() + ":" + times.getSeconds();
-  const userEmail = auth?.currentUser?.email;
   const {
     register,
     formState: { errors },
@@ -20,12 +20,13 @@ const SubmitTaskModal = ({ singleTask }) => {
   } = useForm();
   const { CandidateName, candidateEmail, timeDuration, taskName, hrEmail } =
     singleTask;
+  const applicantId = singleTask?.applicantData?._id
+  // console.log(applicantNumber)
 
   const submiteTask = (data) => {
     const submitedTaskInfo = {
       ...data,
-      userEmail,
-      singleTask,
+      applicantId,
       hrEmail,
     };
     fetch(`${BASE_API}/submitCandidateTask`, {
@@ -90,7 +91,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
                       : "border rounded-lg py-1 text-lg pl-3"
                   }
-                  {...register("submitedName", {
+                  {...register("displayName", {
                     required: {
                       value: true,
                       message: " Plz one click before Submit!",
@@ -98,7 +99,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                   })}
                 />
                 <p className="text-[13px] text-red-500 pl-3">
-                  {errors.submitedName?.message}
+                  {errors.displayName?.message}
                 </p>
               </div>
               <div className="flex flex-col space-y-1 gap-y-1">
@@ -114,7 +115,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                       ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
                       : "border rounded-lg py-1 text-lg pl-3 "
                   }
-                  {...register("submitedEmail", {
+                  {...register("email", {
                     required: {
                       value: true,
                       message: " Plz one click before Submit!",
@@ -122,7 +123,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                   })}
                 />
                 <p className="text-[13px] text-red-500 pl-3">
-                  {errors.submitedEmail?.message}
+                  {errors.email?.message}
                 </p>
               </div>
               <div className="flex flex-col space-y-1 gap-y-1">
@@ -259,16 +260,15 @@ const SubmitTaskModal = ({ singleTask }) => {
           </div>
         </label>
       </label>
-      <label
-        for="submit_task_modal"
-        className="seeTaskDetails submitTask cursor-pointer"
-      >
-        <span>Submit</span>
-        <div class="svg-wrapper-1 ">
-          <div class="svg-wrapper">
-            <BsCheckCircleFill />
+      <label for="submit_task_modal">
+        <button className="seeTaskDetails submitBtan">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <BsCheckCircleFill />
+            </div>
           </div>
-        </div>
+          <span>Submit</span>
+        </button>
       </label>
     </div>
   );

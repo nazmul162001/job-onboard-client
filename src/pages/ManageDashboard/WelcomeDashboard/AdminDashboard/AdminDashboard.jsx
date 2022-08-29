@@ -4,7 +4,7 @@ import auth from "../../../../Auth/Firebase/Firebase.init";
 import useTitle from "../../../../Hooks/useTitle";
 
 const AdminDashboard = () => {
-  useTitle("Admin Dashboard");
+  useTitle("Dashboard");
   const [user] = useAuthState(auth);
   return (
     <div className="p-5 grid place-items-center min-h-[80vh] bg-base-100">

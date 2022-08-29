@@ -1,52 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import useAppliedCandidates from '../../../../Hooks/useAppliedCandidates';
-import useJob from '../../../../Hooks/useJob';
-import RecruitmentRow from '../RecruitmentRow';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import useAppliedCandidates from "../../../../Hooks/useAppliedCandidates";
+import useJob from "../../../../Hooks/useJob";
+import RecruitmentRow from "../RecruitmentRow";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ImArrowLeft2 } from "react-icons/im";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
+import DashboardFooter from "../../DashboardFooter/DashboardFooter";
 
 const SingleJobCandidates = () => {
   const { jobId } = useParams();
   const [job] = useJob(jobId);
-  const navigate = useNavigate()
-  const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
 
-  const { data, refetch } = useAppliedCandidates(job)
+  const { data, refetch } = useAppliedCandidates(job);
   const countData = data?.data;
   // console.log(countData)
 
   //  Candidate Info To Excel   
-  const [candidateData,setCandidateData] = useState([])
-  const fileName = job?.jobTitle; 
+  const [candidateData, setCandidateData] = useState([])
+  const fileName = job?.jobTitle;
   // console.log(fileName)
 
   useEffect(() => {
-    const header = countData?.map((candidate,index) => ({
+    const header = countData?.map((candidate, index) => ({
       "CandidateId": index + 1,
       "Candidate Name": candidate?.displayName,
       "Candidate Email": candidate?.email,
       "Candidate Phone": candidate?.number,
-    }))
-    setCandidateData(header)
-  }, [countData])
+    }));
+    setCandidateData(header);
+  }, [countData]);
 
-  
   const fileType =
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
   const fileExtension = ".xlsx";
 
   const exportToCSV = (candidateData, fileName) => {
     const ws = XLSX.utils.json_to_sheet(candidateData);
-    XLSX.utils.sheet_add_aoa(ws, [["Index", "DisplayName", "Email", "Number"]], { origin: "A1" });
+    XLSX.utils.sheet_add_aoa(
+      ws,
+      [["Index", "DisplayName", "Email", "Number"]],
+      { origin: "A1" }
+    );
     const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
     const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
     const data = new Blob([excelBuffer], { type: fileType });
     FileSaver.saveAs(data, fileName + fileExtension);
   };
-
 
   const singleCandidates = (id) => {
     navigate(`/dashboard/recruitment/mail/${id}`);
@@ -58,7 +60,6 @@ const SingleJobCandidates = () => {
 
   return (
     <div>
-
       {/* Job Description  */}
       <div className="">
         <div className="shadow-md py-10 space-y-5 px-5">
@@ -93,19 +94,25 @@ const SingleJobCandidates = () => {
                 </span>{" "}
                 {job?.location}{" "}
               </p>
-              <p className=" text-[15px] ">
-                Company Employees : {job?.employees}
+              <p className="">
+                Salary : ${job?.salary}<small>/m</small>
               </p>
             </div>
           </div>
-          <p className="">
-            Salary : ${job?.salary} <small>/ m</small>
-          </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
-            <span className="lg:pt-4 font-semibold">Applied Candidates : {countData?.length}</span>
+            <span className="lg:pt-4 font-semibold">
+              Applied Candidates : {countData?.length}
+            </span>
 
             {/* Download All Candidates Info In Excel  */}
-            <div><button className='btn btn-sm btn-outline capitalize' onClick={(e) => exportToCSV(candidateData, fileName)}>download excel</button></div>
+            <div>
+              <button
+                className="btn btn-sm btn-outline capitalize"
+                onClick={(e) => exportToCSV(candidateData, fileName)}
+              >
+                download excel
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -138,27 +145,27 @@ const SingleJobCandidates = () => {
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-white px-6 py-4 text-left"
+                      className="text-sm font-medium text-white px-6 py-4 "
                     >
-                      Phone
+                      Resume
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-white px-6 py-4 "
+                    >
+                      Send Task
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-white px-6 py-4 "
+                    >
+                    Applicant Assignment
                     </th>
                     <th
                       scope="col"
                       className="text-sm font-medium text-white px-6 py-4 text-left"
                     >
                       Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-white px-6 py-4 text-left"
-                    >
-                      Resume/Link
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-white px-6 py-4 text-left"
-                    >
-                      Send Mail
                     </th>
                   </tr>
                 </thead>
@@ -179,11 +186,7 @@ const SingleJobCandidates = () => {
       </div>
 
       {/*Dashboard Footer  */}
-      <div className='text-center mt-12 p-2 bg-base-300'>
-        <h3 className=' font-[500] flex flex-col md:flex-row justify-center items-center gap-y-1 gap-x-2'>Modern Hiring Platform By <a href="https://www.facebook.com/TeamCodeSamurai" target="_blank" rel="noopener noreferrer" className='text-[#3a47db]'>CodeSamurai</a> <span className='hidden md:block'>|</span> Copyright © {currentYear} </h3>
-      </div>
-
-
+      <DashboardFooter />
     </div>
   );
 };
