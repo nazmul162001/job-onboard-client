@@ -174,7 +174,7 @@ const Dashboard = ({ children }) => {
             to="/"
             className={`text-lg lg:text-2xl md:text-2xl font-semibold block md:hidden`}
           >
-            {/* <img src={Logo} alt="" className="w-24" /> */}
+            <img src={Logo} alt="" className="w-20" />
           </Link>
           <div className="flex justify-center items-center gap-8">
             <li className="list-none hidden md:flex">
@@ -193,10 +193,17 @@ const Dashboard = ({ children }) => {
               <Link to="/dashboard/job/addNew" className="text-md">
                 <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
                   {" "}
-                  <span>
+                  <span className="hidden md:block">
                     <AiOutlinePlus />
                   </span>{" "}
                   Post Job
+                </button>
+              </Link>
+            )}
+            {!admin && !hr && (
+              <Link to="/jobs" className="text-md">
+                <button className=" border border-primary rounded px-2 py-1">
+                  Find Job
                 </button>
               </Link>
             )}

@@ -145,27 +145,27 @@ const SingleJobCandidates = () => {
                     </th>
                     <th
                       scope="col"
-                      className="text-sm font-medium text-white px-6 py-4 text-left"
+                      className="text-sm font-medium text-white px-6 py-4 "
                     >
-                      Phone
+                      Resume
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-white px-6 py-4 "
+                    >
+                      Send Task
+                    </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-white px-6 py-4 "
+                    >
+                    Applicant Assignment
                     </th>
                     <th
                       scope="col"
                       className="text-sm font-medium text-white px-6 py-4 text-left"
                     >
                       Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-white px-6 py-4 text-left"
-                    >
-                      Resume/Link
-                    </th>
-                    <th
-                      scope="col"
-                      className="text-sm font-medium text-white px-6 py-4 text-left"
-                    >
-                      Send Mail
                     </th>
                   </tr>
                 </thead>
