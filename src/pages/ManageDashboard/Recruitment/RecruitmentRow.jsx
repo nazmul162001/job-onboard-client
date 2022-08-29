@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
@@ -77,9 +78,13 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
         {index + 1}
       </td>
       <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div>
+        <div className="space-y-1">
           <div className="font-normal">{applicant?.displayName}</div>
           <div className="text-sm font-semibold">{applicant?.email}</div>
+          <div className="text-sm font-semibold flex space-x-2 items-center">
+            <BsTelephoneForward />
+            <span>{applicant?.number}</span>
+          </div>
         </div>
       </td>
 
@@ -87,21 +92,6 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
         {applicant?.jobTitle}
         <br />
         <span className="badge badge-ghost ">{applicant?.category}</span>
-      </td>
-
-      <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-semibold">{applicant?.number}</div>
-      </td>
-      <td className="text-sm font-light px-6 py-4">
-        <div className="text-sm font-semibold flex gap-1">
-          <button
-            onClick={() => handleUpdateStatus(applicant?._id)}
-            disabled={applicant?.status && true}
-            className={`flex btn btn-xs text-white`}
-          >
-            {applicant?.status ? "Hired" : "Hire"}
-          </button>
-        </div>
       </td>
 
       <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
@@ -114,7 +104,8 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
           <FaRegAddressBook size={25} />
         </a>
       </td>
-      <td className="flex justify-center items-center mt-5">
+
+      {/* <td className="flex justify-center items-center mt-5">
         <label
           htmlFor="candidate-modal"
           title="Click to send mail"
@@ -123,6 +114,26 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
         >
           Send Mail
         </label>
+      </td> */}
+
+      <td className="text-sm font-normal px-6 py-4 text-center whitespace-nowrap">
+        <button className="btn btn-xs btn-outline capitalize">Send Task</button>
+      </td>
+
+      <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
+        <button className="btn btn-outline btn-xs capitalize">View Submission</button>
+      </td>
+
+      <td className="text-sm font-light px-6 py-4 ">
+        <div className="text-sm font-semibold flex gap-1">
+          <button
+            onClick={() => handleUpdateStatus(applicant?._id)}
+            disabled={applicant?.status && true}
+            className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
+          >
+            {applicant?.status ? "Hired" : "Hire "}
+          </button>
+        </div>
       </td>
     </tr>
   );
