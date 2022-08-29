@@ -97,8 +97,7 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
           <button
             onClick={() => handleUpdateStatus(applicant?._id)}
             disabled={applicant?.status && true}
-            className={`flex
-                                    btn btn-xs text-white`}
+            className={`flex btn btn-xs text-white`}
           >
             {applicant?.status ? "Hired" : "Hire"}
           </button>

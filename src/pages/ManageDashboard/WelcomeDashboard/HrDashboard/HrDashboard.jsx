@@ -13,23 +13,23 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
       <section className="h-full main_dashboard static z-10 ">
         {/* main dashboard  */}
         <div className="">
-          <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center justify-center gap-3">
-            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+          <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center justify-center lg:gap-3 pt-3">
+            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/candidates`)}>
               <div className="icon p-5">
                 <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
-              <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/candidates`)}>
+              <div className="card_details text-black " >
                 <h2 className="font-bold text-xl ">
                   {getApplicants ? getApplicants?.length : 0}
                 </h2>
                 <p className="text-[14px]">Active Candidate</p>
               </div>
             </div>
-            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/hr-jobs`)}>
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
-              <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/hr-jobs`)}>
+              <div className="card_details text-black">
                 <h2 className="font-bold text-xl">
                   {hrJobs ? hrJobs?.length : 0}
                 </h2>
@@ -45,14 +45,11 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
                 <p className="text-[14px]">Draft Jobs</p>
               </div>
             </div>
-            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer" onClick={() => navigate(`/dashboard/employee`)}>
               <div className="icon p-5">
                 <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
               </div>
-              <div className="card_details text-black cursor-pointer" onClick={() => navigate(`/dashboard/employee`)}>
-                {/* <h2 className="font-bold text-xl">{allEmployeDetails ? allEmployeDetails?.length : 0}</h2>
-                    { */}
-
+              <div className="card_details text-black">
                 <h2 className="font-bold text-xl">
                   {" "}
                   {hrLoading ? (
@@ -72,7 +69,7 @@ const HrDashboard = ({getApplicants,hrJobs,hrLoading,allEmployeDetails,revGetApp
           {/* Recent Applicants */}
           <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
           {revGetApplicants?.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-3">
               {revGetApplicants.map((revApplicant, index) => (
                 <RecentApplicants
                   key={index}
