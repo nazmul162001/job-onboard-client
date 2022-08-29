@@ -85,9 +85,9 @@ const HrDashboard = ({
 
           {/* Recent Applicants */}
           <div className="flex justify-between items-center">
-            <h2 className="mt-5 mb-3 lg:pl-4 font-bold">Recent Applicants</h2>
+            <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Applicants</h2>
             {allRecentApplicants?.length > 4 && (
-              <button className="btn btn-sm btn-outline text-[12px] text-secondary lg:mr-4" onClick={() =>
+              <button className="btn btn-sm btn-outline text-[12px] text-secondary mr-4" onClick={() =>
                 navigate(`/dashboard/allRecentApplicants`)
               }>
                 See All Applicants
