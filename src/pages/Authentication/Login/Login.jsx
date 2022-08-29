@@ -33,10 +33,10 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      if(!search){
+      if (!search) {
         navigate(from, { replace: true });
       }
-      else{
+      else {
         navigate(search)
       }
       toast.success(
@@ -126,7 +126,7 @@ const Login = () => {
                         />
                         <label className="label">
                           {errors.email?.type === "required" && (
-                            <span className="label-text-alt text-red-500">
+                            <span data-testId="error" className="label-text-alt text-red-500">
                               {errors.email.message}
                             </span>
                           )}
