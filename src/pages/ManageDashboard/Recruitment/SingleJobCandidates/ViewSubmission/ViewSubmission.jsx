@@ -7,7 +7,7 @@ import { BASE_API } from '../../../../../config';
 
 const ViewSubmission = () => {
   const {applicantId} = useParams()
-  const { data, isLoading } = useQuery(["candidates"], () =>
+  const { data, isLoading } = useQuery(["candidateSubmission"], () =>
     axios.get(`${BASE_API}/submittedTask/candidate/${applicantId}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
