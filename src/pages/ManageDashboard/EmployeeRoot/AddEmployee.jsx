@@ -52,7 +52,7 @@ const AddEmployee = ({ refetch }) => {
   };
 
   return (
-    <div>
+    <div className="bg-base-100">
       <input type="checkbox" id="add-new-employee-modal" class="modal-toggle" />
       <label for="add-new-employee-modal" class="modal cursor-pointer">
         <label

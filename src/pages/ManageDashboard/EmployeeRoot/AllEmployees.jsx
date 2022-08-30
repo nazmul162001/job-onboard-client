@@ -27,7 +27,7 @@ const AllEmployees = ({
           </div>
         </div>
         <div className="mt-3 nameTitle pb-5 ">
-          <h2 className="text-lg font-bold text-blue-900">{fullName}</h2>
+          <h2 className="text-lg font-bold">{fullName}</h2>
           <p>{designation}</p>
         </div>
         <div className="basicInfo absolute left-0 right-0 text-left text-white  -top-full font-medium h-full flex flex-col justify-center px-3">

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { InitializeContext } from "../../../../App";
 import Loading from "../../../../Components/Loading/Loading";
 import HrChart from "../../HrChart/HrChart";
 import RecentApplicants from "./RecentApplicants/RecentApplicants";
@@ -12,8 +13,9 @@ const HrDashboard = ({
   allEmployeDetails,
   revGetApplicants,
   revMyJob,
-  allRecentApplicants
+  allRecentApplicants,
 }) => {
+  const { theme } = useContext(InitializeContext);
   const navigate = useNavigate();
 
   return (
@@ -23,13 +25,19 @@ const HrDashboard = ({
         <div className="">
           <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center justify-center lg:gap-3 pt-3">
             <div
-              className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer"
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/candidates`)}
             >
               <div className="icon p-5">
                 <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
-              <div className="card_details text-black flex flex-col justify-center text-start">
+              <div
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
+              >
                 <h2 className="font-bold text-xl ">
                   {getApplicants ? getApplicants?.length : 0}
                 </h2>
@@ -37,36 +45,56 @@ const HrDashboard = ({
               </div>
             </div>
             <div
-              className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer"
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/hr-jobs`)}
             >
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
-              <div className="card_details text-black flex flex-col justify-center text-start">
+              <div
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
+              >
                 <h2 className="font-bold text-xl">
                   {hrJobs ? hrJobs?.length : 0}
                 </h2>
                 <p className="text-[14px]">Active Jobs</p>
               </div>
             </div>
-            <div className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded">
+            <div
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
+            >
               <div className="icon p-5">
                 <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
-              <div className="card_details text-black flex flex-col justify-center text-start">
+              <div
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
+              >
                 <h2 className="font-bold text-xl">0</h2>
                 <p className="text-[14px]">Draft Jobs</p>
               </div>
             </div>
             <div
-              className="card_content my-5 flex bg-orange-100 bg-opacity-60 py-2 rounded cursor-pointer"
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/employee`)}
             >
               <div className="icon p-5">
                 <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
               </div>
-              <div className="card_details text-black flex flex-col justify-center text-start">
+              <div
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
+              >
                 <h2 className="font-bold text-xl">
                   {" "}
                   {hrLoading ? (
@@ -87,9 +115,10 @@ const HrDashboard = ({
           <div className="flex justify-between items-center">
             <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Applicants</h2>
             {allRecentApplicants?.length > 4 && (
-              <button className="btn btn-sm btn-outline text-[12px] text-secondary mr-4" onClick={() =>
-                navigate(`/dashboard/allRecentApplicants`)
-              }>
+              <button
+                className="btn btn-sm btn-outline text-[12px] text-secondary mr-4"
+                onClick={() => navigate(`/dashboard/allRecentApplicants`)}
+              >
                 See All Applicants
               </button>
             )}

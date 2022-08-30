@@ -1,37 +1,49 @@
 import React from "react";
 import { BASE_API } from "../../../config";
 import Chart from "react-apexcharts";
-import { useQuery } from "@tanstack/react-query";
-import auth from "../../../Auth/Firebase/Firebase.init";
+// import { useQuery } from "@tanstack/react-query";
+// import auth from "../../../Auth/Firebase/Firebase.init";
 import Loading from "../../../Components/Loading/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import HrChartSlice, { fetchHrChart } from "../../../Features/HrChart/HrChartSlice";
 
 const HrChart = () => {
-  const { data, isLoading } = useQuery(["hrEmployees"], () => {
-    fetch(`${BASE_API}/userEmployees?email=${auth?.currentUser?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json());
-  });
+  // const { data, isLoading } = useQuery(["hrEmployees"], () => {
+  //   fetch(`${BASE_API}/userEmployees?email=${auth?.currentUser?.email}`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   }).then((res) => res.json());
+  // });
 
-  const employeeData = data?.data;
+  const {isLoading, charts, error}
+   = useSelector(state => state.charts)
 
-  const frontEnds = employeeData?.filter(
+  const dispatch = useDispatch();
+
+  useEffect(()=> {
+    dispatch(fetchHrChart())
+  },[dispatch])
+  
+  // const charts = data?.data;
+
+  const frontEnds = charts?.filter(
     (d) => d.designation === "Front-End Developer"
   );
 
-  const backends = employeeData?.filter(
+  const backends = charts?.filter(
     (d) => d.designation === "Back-End Developer"
   );
-  const fullStack = employeeData?.filter(
+  const fullStack = charts?.filter(
     (d) => d.designation === "Full-Stack Developer"
   );
 
-  const gendersM = employeeData?.filter((d) => d.gender === "Male");
-  const gendersF = employeeData?.filter((d) => d.gender === "Female");
-  const gendersO = employeeData?.filter((d) => d.gender === "Others");
+  const gendersM = charts?.filter((d) => d.gender === "Male");
+  const gendersF = charts?.filter((d) => d.gender === "Female");
+  const gendersO = charts?.filter((d) => d.gender === "Others");
 
-  const other = employeeData?.filter(
+  const other = charts?.filter(
     (d) =>
       d.designation !== "Front-End Developer" &&
       d.designation !== "Back-End Developer" &&

@@ -57,7 +57,7 @@ const EmployeesRoot = () => {
   }
 
   return (
-    <section className="p-5 h-screen">
+    <section className="p-5 lg:h-screen bg-base-100">
       <div className="flex flex-col md:flex-row md:flex justify-between items-center border-b-2 border-cyan-600 py-3 mb-3">
         <div className="title my-2 mb-6">
           <h3 className="text-lg md:text-2xl font-semibold">
