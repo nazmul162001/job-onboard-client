@@ -177,7 +177,7 @@ const Dashboard = ({ children }) => {
             <img src={Logo} alt="" className="w-20" />
           </Link>
           <div className="flex justify-center items-center gap-8">
-            <li className="list-none hidden md:flex">
+            {/* <li className="list-none hidden md:flex">
               <button
                 onClick={handleThemeChange}
                 className="rounded-full lg:mx-2 font-bold"
@@ -200,7 +200,7 @@ const Dashboard = ({ children }) => {
                   </svg>
                 )}
               </button>
-            </li>
+            </li> */}
             {!admin && hr && (
               <Link to="/dashboard/job/addNew" className="text-md">
                 <button className="flex justify-center items-center gap-1 border border-primary rounded px-2 py-1">
@@ -254,7 +254,7 @@ const Dashboard = ({ children }) => {
                     </Link>
                   </li>
                 )}
-                <li className="font-semibold md:hidden">
+                {/* <li className="font-semibold md:hidden">
                   <button
                     onClick={handleThemeChange}
                     className="rounded-full lg:mx-2 font-bold"
@@ -277,7 +277,7 @@ const Dashboard = ({ children }) => {
                       </svg>
                     )}
                   </button>
-                </li>
+                </li> */}
                 <li className="font-semibold py-2">
                   <button onClick={handleLogOut}>
                     <FiLogOut />

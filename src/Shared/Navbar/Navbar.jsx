@@ -101,7 +101,7 @@ const Navbar = () => {
                 className="menu menu-compact dropdown-content mt-4 p-2 shadow-xl bg-base-100 rounded-box w-72 border"
               >
                 {NavbarMenus}
-                {!user && (
+                {/* {!user && (
                   <li className="list-none md:hidden flex justify-start items-start text-start">
                     <button
                       onClick={handleThemeChange}
@@ -126,7 +126,7 @@ const Navbar = () => {
                       )}
                     </button>
                   </li>
-                )}
+                )} */}
               </ul>
             </div>
             <div className="flex justify-center items-center">
@@ -151,7 +151,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal p-0 gap-3">{NavbarMenus}</ul>
           </div>
           <div className="navbar-end gap-4">
-            <div className={`${user ? "block" : "hidden md:block"}`}>
+            {/* <div className={`${user ? "block" : "hidden md:block"}`}>
               <button
                 onClick={handleThemeChange}
                 className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -174,7 +174,7 @@ const Navbar = () => {
                   </svg>
                 )}
               </button>
-            </div>
+            </div> */}
             {!user && (
               <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-primary text-white">
