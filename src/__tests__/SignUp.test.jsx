@@ -33,7 +33,7 @@ test("error should be displayed", () => {
 
 test("require should not be needed when input exist", () => {
     render(<SignUp />);
-    const submitEl = screen.getByText(/Login/i);
+    const submitEl = screen.getByText(/Sign Up/i);
     const emailEl = screen.getByPlaceholderText(/Your Email/i);
     const PasswordEl = screen.getByPlaceholderText(/Password/i);
 
