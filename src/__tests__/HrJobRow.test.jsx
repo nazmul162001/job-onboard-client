@@ -11,3 +11,12 @@ test("editJobs button modal", () => {
 
     expect(divElement).toHaveTextContent("modal is open")
 });
+
+
+test("handle Update Now button", () => {
+    const onClick = jest.fn();
+    render(<HrJobRow onClick={onClick} title="Update Now" />);
+    const buttonElement = screen.getByText(/Update Now/i);
+    fireEvent.click(buttonElement);
+    expect(onClick).toHaveBeenCalledTimes(1)
+});
