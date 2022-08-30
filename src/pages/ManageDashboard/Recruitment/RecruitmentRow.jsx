@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaRegAddressBook } from "react-icons/fa";
 import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -6,25 +6,23 @@ import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import auth from "../../../Auth/Firebase/Firebase.init";
+import SubmissionModal from "./SingleJobCandidates/SubmissionModal/SubmissionModal";
 
-const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
-  const navigate = useNavigate();
-
-
+const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status }) => {
+  const navigate = useNavigate()
   // console.log(applicant)
+  const [singleSubmission, setSingleSubmission] = useState({})
+  // console.log(singleSubmission)
 
-  const { data, isLoading } = useQuery(["count", auth, applicant?._id], () => axios.get(`${BASE_API}/submittedTask?email=${auth?.currentUser?.email}&applicantId=${applicant?._id}`,
+  const { data } = useQuery(["count", applicant?._id], () => axios.get(`${BASE_API}/submittedTask?applicantId=${applicant?._id}`,
     {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }
-  ));
+    }));
 
-  console.log(data?.data);
-
-
+  const submission = data?.data
+  // console.log(submission);
 
   const handleUpdateStatus = async (id) => {
     const candidates = {
@@ -91,41 +89,48 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
     });
   };
 
-  
+  const openModal = () => {
+    const viewSubmission = submission.filter((sub) => sub.applicantId === applicant?._id)
+    // console.log(viewSubmission)
+    setSingleSubmission(viewSubmission)
+  }
+
+
   return (
-    <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-        {index + 1}
-      </td>
-      <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div className="space-y-1">
-          <div className="font-normal">{applicant?.displayName}</div>
-          <div className="text-sm font-semibold">{applicant?.email}</div>
-          <div className="text-sm font-semibold flex space-x-2 items-center">
-            <BsTelephoneForward />
-            <span>{applicant?.number}</span>
+    <>
+      <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          {index + 1}
+        </td>
+        <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
+          <div className="space-y-1">
+            <div className="font-normal">{applicant?.displayName}</div>
+            <div className="text-sm font-semibold">{applicant?.email}</div>
+            <div className="text-sm font-semibold flex space-x-2 items-center">
+              <BsTelephoneForward />
+              <span>{applicant?.number}</span>
+            </div>
           </div>
-        </div>
-      </td>
+        </td>
 
-      <td className="text-sm font-normal px-6 py-4 whitespace-nowrap">
-        {applicant?.jobTitle}
-        <br />
-        <span className="badge badge-ghost ">{applicant?.category}</span>
-      </td>
+        <td className="text-sm font-normal px-6 py-4 whitespace-nowrap">
+          {applicant?.jobTitle}
+          <br />
+          <span className="badge badge-ghost ">{applicant?.category}</span>
+        </td>
 
-      <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
-        <a
-          title="Resume/Link"
-          href={applicant?.resume}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FaRegAddressBook size={25} />
-        </a>
-      </td>
+        <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
+          <a
+            title="Resume/Link"
+            href={applicant?.resume}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaRegAddressBook size={25} />
+          </a>
+        </td>
 
-      {/* <td className="flex justify-center items-center mt-5">
+        {/* <td className="flex justify-center items-center mt-5">
         <label
           htmlFor="candidate-modal"
           title="Click to send mail"
@@ -136,26 +141,45 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
         </label>
       </td> */}
 
-      <td className="text-sm font-normal px-6 py-4 text-center whitespace-nowrap">
-        <button className="btn btn-xs btn-outline capitalize">Send Task</button>
-      </td>
-
-      <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
-        <button className="btn btn-outline btn-xs capitalize">View Submission</button>
-      </td>
-
-      <td className="text-sm font-light px-6 py-4 ">
-        <div className="text-sm font-semibold flex gap-1">
-          <button
-            onClick={() => handleUpdateStatus(applicant?._id)}
-            disabled={applicant?.status && true}
-            className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
+        <td className="text-sm font-normal px-6 py-4 text-center whitespace-nowrap">
+          <label
+            onClick={() => setApplicantData(applicant)}
+            for="task-modal"
+            className={`${status ? "hidden" : "btn btn-outline btn-xs cursor-pointer"}`}
           >
-            {applicant?.status ? "Hired" : "Hire "}
-          </button>
-        </div>
-      </td>
-    </tr>
+            Send Task
+          </label>
+        </td>
+
+        <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
+          <label
+            for="viewSubmissionModal"
+            className="btn btn-outline btn-xs capitalize "
+            onClick={openModal}
+          >
+            View Submission
+          </label>
+        </td>
+
+        <td className="text-sm font-light px-6 py-4 ">
+          <div className="text-sm font-semibold flex gap-1">
+            <button
+              onClick={() => handleUpdateStatus(applicant?._id)}
+              disabled={applicant?.status && true}
+              className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
+            >
+              {applicant?.status ? "Hired" : "Hire "}
+            </button>
+          </div>
+        </td>
+      </tr>
+
+      {/* Modal  */}
+      {singleSubmission[0] && (
+        <SubmissionModal singleSubmission={singleSubmission[0]} />
+      )}
+    </>
+
   );
 };
 
