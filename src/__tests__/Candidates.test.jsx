@@ -3,7 +3,7 @@ import useCandidate from "../Hooks/useCandidate"
 import Candidates from "../Pages/ManageDashboard/Candidates/Candidates"
 
 jest.mock("/useCandidate", () => {
-    useCandidate: jest.fn()
+    // useCandidate: jest.fn()
 })
 
 describe("Candidates data render", () => {
