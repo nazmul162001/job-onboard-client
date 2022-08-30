@@ -16,6 +16,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
     handleSubmit,
     reset,
   } = useForm();
+  console.log(applicantData);
   const taskInfo = (data) => {
     const candidateInfo = {
       ...data,

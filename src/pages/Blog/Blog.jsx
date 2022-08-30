@@ -1,32 +1,44 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import auth from "../../Auth/Firebase/Firebase.init";
 import Loading from "../../Components/Loading/Loading";
-import { BASE_API } from "../../config";
+import { fetchBlogs } from "../../Features/Blogs/BlogSlice";
 import useAdmin from "../../Hooks/useAdmin";
 import Footer from "../../Shared/Footer/Footer";
 import AddBlog from "./AddBlog";
 import "./BlogCss/Blog.css";
 
 const Blog = () => {
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const navigate = useNavigate();
 
-  const { refetch } = useQuery(["allBlogs"], () =>
-    fetch(`${BASE_API}/allBlogs`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-  );
+  const { isLoading, blogs, error } = useSelector((state) => state.blogs);
+  if (isLoading) {
+    <Loading />;
+  }
+  if (error) {
+    toast.error(error.message);
+  }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
+  // const { refetch } = useQuery(["allBlogs"], () =>
+  //   fetch(`${BASE_API}/allBlogs`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setBlogs(data))
+  // );
 
   const blogsDetails = (bdId) => {
     navigate(`${bdId}`);
@@ -42,7 +54,7 @@ const Blog = () => {
           <span className="text-5xl font-serif text-primary">W</span>elcome To
           Our Blog
         </h2>
-        <div>{admin && <AddBlog refetch={refetch} />}</div>
+        <div>{admin && <AddBlog />}</div>
       </div>
 
       {blogs.length === 0 ? (
