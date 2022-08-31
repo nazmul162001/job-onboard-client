@@ -46,8 +46,8 @@ const EmployeeDetails = () => {
 
       <div className="employeeAllDetails my-10 ">
         <div className="text-center">
-          <div class="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 ">
-            <div class=" w-60 rounded-xl">
+          <div className="avatar mx-auto border-4 border-primary p-3 rounded-xl bg-base-300 ">
+            <div className=" w-60 rounded-xl">
               <img className="max-w-full" src={photoLink} alt="" />
             </div>
           </div>

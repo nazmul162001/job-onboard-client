@@ -3,6 +3,9 @@ import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useEffect } from "react";
 
 const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status }) => {
   const navigate = useNavigate()
@@ -73,6 +76,22 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
     });
   };
 
+  // const { data } = useQuery(["candidateSubmission"], () =>
+  //   axios.get(`${BASE_API}/submittedTask`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  // );
+
+  // const submissionData = data?.data
+  // console.log(submissionData)
+
+  // useEffect(() => {
+  //   const viewSubmission = submissionData?.filter((sub) => sub.applicantId === applicant?._id)
+  //   console.log(viewSubmission)
+  //   // if()
+  // },[submissionData,applicant?._id])
 
 
   return (

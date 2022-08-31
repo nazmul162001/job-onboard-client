@@ -79,7 +79,7 @@ const EditEmployeeModal = ({
         <div className="modal-box lg:w-10/12 lg:max-w-2xl modalContainer">
           <label
             for="edit-employee-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>

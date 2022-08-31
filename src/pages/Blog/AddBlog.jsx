@@ -59,12 +59,12 @@ const AddBlog = ({ refetch }) => {
         </label>
       </div>
 
-      <input type="checkbox" id="add-blog-modal" class="modal-toggle" />
-      <label for="add-blog-modal" class="modal cursor-pointer modalContainer">
-        <label class="modal-box relative " for="">
+      <input type="checkbox" id="add-blog-modal" className="modal-toggle" />
+      <label for="add-blog-modal" className="modal cursor-pointer modalContainer">
+        <label className="modal-box relative " for="">
           <label
             for="add-blog-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>

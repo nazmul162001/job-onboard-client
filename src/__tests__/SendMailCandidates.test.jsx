@@ -60,4 +60,3 @@ test("require should not be needed when input exist", () => {
 
     expect(submitEl).not.toBeDisabled();
 });
-
