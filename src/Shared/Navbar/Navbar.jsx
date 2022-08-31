@@ -81,9 +81,8 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 w-full z-50">
       <div
-        className={`drawer-content flex flex-col backdrop-blur-[18px] bg-base-100 ${
-          scrollY < 300 && "bg-transparent shadow-md"
-        }`}
+        className={`drawer-content flex flex-col backdrop-blur-[18px] bg-base-100 ${scrollY < 300 && "bg-transparent shadow-md"
+          }`}
         style={
           pathname.includes("dashboard")
             ? { display: "none" }
@@ -176,14 +175,14 @@ const Navbar = () => {
               </button>
             </div> */}
             {!user && (
-              <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-primary text-white">
+              <div className="dropdown dropdown-end">
+                <label tabIndex="0" className="btn btn-primary text-white">
                   Get Started{" "}
                   <MdOutlineKeyboardArrowRight className="text-2xl" />
                 </label>
                 <ul
-                  tabindex="0"
-                  class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
+                  tabIndex="0"
+                  className="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
                 >
                   <li className="py-2">
                     <Link

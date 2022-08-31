@@ -341,10 +341,10 @@ const Dashboard = ({ children }) => {
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
+                      <i className={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
                       <i
-                        class={`p-2 text-xl my-2 ${Menu.src}`}
+                        className={`p-2 text-xl my-2 ${Menu.src}`}
                         data-tip={Menu.tooltip}
                         onMouseEnter={() => showTooltip(true)}
                         onMouseLeave={() => {
@@ -390,10 +390,10 @@ const Dashboard = ({ children }) => {
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
+                      <i className={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
                       <i
-                        class={`p-2 text-xl my-2 ${Menu.src}`}
+                        className={`p-2 text-xl my-2 ${Menu.src}`}
                         data-tip={Menu.tooltip}
                         onMouseEnter={() => showTooltip(true)}
                         onMouseLeave={() => {
@@ -422,7 +422,7 @@ const Dashboard = ({ children }) => {
                 "border-2 px-[5.8rem] py-1 transition-all hover:bg-white hover:text-black"
               }`}
             >
-              <i class="ri-arrow-go-back-line mr-3"></i>
+              <i className="ri-arrow-go-back-line mr-3"></i>
               <button className={`${!open && "hidden"}`}>Log Out</button>
             </div>
           </ul>
@@ -448,10 +448,10 @@ const Dashboard = ({ children }) => {
                     to={`/dashboard${Menu.path}`}
                   >
                     {open ? (
-                      <i class={`mr-2 text-xl ${Menu.src}`}></i>
+                      <i className={`mr-2 text-xl ${Menu.src}`}></i>
                     ) : (
                       <i
-                        class={`p-2 text-xl my-2 ${Menu.src}`}
+                        className={`p-2 text-xl my-2 ${Menu.src}`}
                         data-tip={Menu.tooltip}
                         onMouseEnter={() => showTooltip(true)}
                         onMouseLeave={() => {

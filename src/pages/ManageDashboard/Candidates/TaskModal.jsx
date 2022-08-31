@@ -21,8 +21,8 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
       ...data,
       hrEmail,
       displayName,
-      candidateEmail:email,
-      taskName:jobTitle,
+      candidateEmail: email,
+      taskName: jobTitle,
       taskDate: today,
       taskTime: todaysTime,
       companyName,
@@ -54,15 +54,15 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
 
   return (
     <div>
-      <input type="checkbox" id="task-modal" class="modal-toggle" />
-      <label for="task-modal" class="modal cursor-pointer">
+      <input type="checkbox" id="task-modal" className="modal-toggle" />
+      <label for="task-modal" className="modal cursor-pointer">
         <label
-          class="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
+          className="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
           for=""
         >
           <label
             for="task-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>

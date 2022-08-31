@@ -38,18 +38,16 @@ const CandidateDashboard = () => {
         <div className="bg-base-300">
           <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3">
             <div
-              className={`card_content my-5 flex ${
-                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
-              } py-2 rounded cursor-pointer`}
+              className={`card_content my-5 flex ${theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+                } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/appliedJobs`)}
             >
               <div className="icon p-5">
-                <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
+                <i className="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
               <div
-                className={`card_details ${
-                  theme ? "text-white" : "text-black"
-                } flex flex-col justify-center text-start`}
+                className={`card_details ${theme ? "text-white" : "text-black"
+                  } flex flex-col justify-center text-start`}
               >
                 <h2 className="font-bold text-xl ">
                   {appliedJobs ? appliedJobs?.length : 0}
@@ -58,18 +56,16 @@ const CandidateDashboard = () => {
               </div>
             </div>
             <div
-              className={`card_content my-5 flex ${
-                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
-              } py-2 rounded cursor-pointer`}
+              className={`card_content my-5 flex ${theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+                } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/task`)}
             >
               <div className="icon p-5">
-                <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
+                <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
               <div
-                className={`card_details ${
-                  theme ? "text-white" : "text-black"
-                } flex flex-col justify-center text-start`}
+                className={`card_details ${theme ? "text-white" : "text-black"
+                  } flex flex-col justify-center text-start`}
               >
                 <h2 className="font-bold text-xl">
                   {allTasks ? allTasks?.length : 0}
@@ -79,18 +75,16 @@ const CandidateDashboard = () => {
             </div>
 
             <div
-              className={`card_content my-5 flex ${
-                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
-              } py-2 rounded cursor-pointer`}
+              className={`card_content my-5 flex ${theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+                } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/task`)}
             >
               <div className="icon p-5">
-                <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
+                <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
               <div
-                className={`card_details ${
-                  theme ? "text-white" : "text-black"
-                } flex flex-col justify-center text-start`}
+                className={`card_details ${theme ? "text-white" : "text-black"
+                  } flex flex-col justify-center text-start`}
               >
                 <h2 className="font-bold text-xl">0</h2>
                 <p className="text-[14px]">Submited Task</p>
@@ -108,7 +102,7 @@ const CandidateDashboard = () => {
                     key={index}
                     className="shadow-lg hover:shadow-2xl p-5  space-y-4 border rounded-lg relative"
                   >
-                    <label class="absolute right-2 top-2 text-[11px] border px-2  rounded-xl">
+                    <label className="absolute right-2 top-2 text-[11px] border px-2  rounded-xl">
                       {moment(revApplicant?.createdDate).format("MMMM DD")}{" "}
                     </label>
                     <div className="text-center space-y-4 py-5">

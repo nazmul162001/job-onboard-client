@@ -25,7 +25,7 @@ const Recruitment = () => {
       {hrJobs?.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 my-8">
           {hrJobs?.map((job, index) => (
-            <RecruitmentCard job={job} index={index} />
+            <RecruitmentCard job={job} key={index} index={index} />
           ))}
         </div>
       ) : (

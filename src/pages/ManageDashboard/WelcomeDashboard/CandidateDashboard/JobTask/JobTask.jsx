@@ -25,8 +25,8 @@ const JobTask = () => {
         <span className="bg-[#895af6] w-24  h-1 mx-auto my-1"></span>
       </div>
 
-      <div class="overflow-x-auto">
-        <table class="table table-zebra w-full">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th>Task No</th>

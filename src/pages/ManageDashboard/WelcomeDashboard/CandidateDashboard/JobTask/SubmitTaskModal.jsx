@@ -64,15 +64,15 @@ const SubmitTaskModal = ({ singleTask }) => {
 
   return (
     <div>
-      <input type="checkbox" id="submit_task_modal" class="modal-toggle" />
-      <label for="submit_task_modal" class="modal cursor-pointer">
+      <input type="checkbox" id="submit_task_modal" className="modal-toggle" />
+      <label for="submit_task_modal" className="modal cursor-pointer">
         <label
-          class="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
+          className="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
           for=""
         >
           <label
             for="submit_task_modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
@@ -209,8 +209,8 @@ const SubmitTaskModal = ({ singleTask }) => {
       </label>
       <label for="submit_task_modal">
         <button className="seeTaskDetails submitBtan">
-          <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
+          <div className="svg-wrapper-1">
+            <div className="svg-wrapper">
               <BsCheckCircleFill />
             </div>
           </div>
