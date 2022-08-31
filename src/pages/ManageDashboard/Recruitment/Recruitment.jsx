@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useTitle from "../../../Hooks/useTitle";
 import RecruitmentCard from "./RecruitmentCard";
-import useHrJob from "../../../Hooks/useHrJob";
+// import useHrJob from "../../../Hooks/useHrJob";
 import Loading from "../../../Components/Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHrJobs } from "../../../Features/HrJobs/HrJobsSlice";
@@ -10,9 +10,7 @@ import { fetchHrJobs } from "../../../Features/HrJobs/HrJobsSlice";
 const Recruitment = () => {
   useTitle("Recruitment");
   // const [hrJobs, hrJobsLoading] = useHrJob();
-  const { isLoading, hrJobs, } = useSelector((state) => state.hrJobs);
-
-
+  const { isLoading, hrJobs } = useSelector((state) => state.hrJobs);
 
   const dispatch = useDispatch();
   useEffect(() => {
