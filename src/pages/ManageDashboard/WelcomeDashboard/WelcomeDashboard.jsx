@@ -11,7 +11,6 @@ import useTitle from "../../../Hooks/useTitle";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import CandidateDashboard from "./CandidateDashboard/CandidateDashboard";
 import HrDashboard from "./HrDashboard/HrDashboard";
-import { useDispatch, useSelector } from "react-redux";
 
 
 const WelcomeDashboard = () => {
@@ -21,7 +20,6 @@ const WelcomeDashboard = () => {
   const [hr, hrLoading] = useHrManager(user);
   // console.log(hr);
 
-  const testing = useSelector((state) => console.log(state));
 
 
   const { data } = useEmployeeInfo();
