@@ -149,7 +149,7 @@ const RecruitmentRow = ({
         <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
           <span
             className={`btn btn-outline btn-xs capitalize ${filtered?.map(
-              (stat) => (stat?.status === true ? "btn-disabled" : "")
+              (stat) => (stat?.status === true ? "" : "btn-disabled")
             )}`}
             onClick={() =>
               navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)
