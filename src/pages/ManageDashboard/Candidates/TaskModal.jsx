@@ -20,6 +20,9 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
     const candidateInfo = {
       ...data,
       hrEmail,
+      displayName,
+      candidateEmail:email,
+      taskName:jobTitle,
       taskDate: today,
       taskTime: todaysTime,
       companyName,
