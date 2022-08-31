@@ -19,7 +19,7 @@ const SingleCandidates = () => {
     })
   );
 
-  
+
 
   const candidate = data?.data;
 
