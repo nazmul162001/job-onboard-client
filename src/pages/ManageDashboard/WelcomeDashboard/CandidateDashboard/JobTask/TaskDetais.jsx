@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../../../Components/Loading/Loading";
@@ -7,6 +8,7 @@ import SubmitTaskModal from "./SubmitTaskModal";
 const TaskDetais = () => {
   const { taskId } = useParams();
   const [singleTask, setSingleTask] = useState({});
+  // const [singleSubmittedTask, setSingleSubmittedTask] = useState({});
   const { isLoading } = useQuery(["singleId"], () =>
     fetch(`${BASE_API}/singleTask/${taskId}`, {
       headers: {
@@ -17,6 +19,22 @@ const TaskDetais = () => {
       .then((data) => setSingleTask(data))
   );
 
+  const { data } = useQuery(["candidateSubmission"], () =>
+    axios.get(`${BASE_API}/submittedTask`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
+
+  const submissionData = data?.data;
+
+  // console.log(submissionData)
+
+  const filtered = submissionData?.filter((data) => {
+    return data?.email === singleTask?.candidateEmail;
+  });
+
   const {
     companyName,
     taskDate,
@@ -25,7 +43,7 @@ const TaskDetais = () => {
     taskName,
     taskTime,
   } = singleTask;
-  // console.log(singleTask)
+  // console.log(filtered)
 
   if (isLoading) {
     return <Loading />;
@@ -56,7 +74,13 @@ const TaskDetais = () => {
           <h2 className="cName mb-[30px] text-2xl pr-5 font-bold">
             {companyName}
           </h2>
-          <SubmitTaskModal singleTask={singleTask} />
+          {filtered?.map((stat) =>
+            stat?.status === true ? (
+              <SubmitTaskModal singleTask={singleTask} />
+            ) : (
+              <></>
+            )
+          )}
         </div>
       </div>
 
