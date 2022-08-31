@@ -24,11 +24,11 @@ const AllRecentApplicants = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-3">
           {allRecentApplicants?.map((revApplicant, index) => (
             <div className="shadow-lg hover:shadow-2xl p-5 text-center space-y-4 border rounded-lg ">
-              <div class="avatar py-2 mx-auto relative">
-                <label class="absolute left-[-60px] top-2 text-[12px] border px-2  rounded-xl">
+              <div className="avatar py-2 mx-auto relative">
+                <label className="absolute left-[-60px] top-2 text-[12px] border px-2  rounded-xl">
                   Applied{" "}
                 </label>
-                <div class="w-16 ring-2 rounded-full ">
+                <div className="w-16 ring-2 rounded-full ">
                   {revApplicant?.profileUrl ? (
                     <img src={revApplicant?.profileUrl} alt="candidate" />
                   ) : (

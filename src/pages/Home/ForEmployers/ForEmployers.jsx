@@ -28,9 +28,9 @@ const ForEmployers = () => {
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
         >
-          <div class="avatar hunterImg -mt-24">
+          <div className="avatar hunterImg -mt-24">
             <div
-              class={
+              className={
                 theme
                   ? "darkRoundedCircle w-48  rounded-full"
                   : "w-48  rounded-full roundedCircle"
@@ -57,9 +57,9 @@ const ForEmployers = () => {
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
         >
-          <div class="avatar hunterImg -mt-24">
+          <div className="avatar hunterImg -mt-24">
             <div
-              class={
+              className={
                 theme
                   ? "darkRoundedCircle w-48  rounded-full"
                   : "w-48  rounded-full roundedCircle"
@@ -84,9 +84,9 @@ const ForEmployers = () => {
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
         >
-          <div class="avatar hunterImg -mt-24">
+          <div className="avatar hunterImg -mt-24">
             <div
-              class={
+              className={
                 theme
                   ? "darkRoundedCircle w-48  rounded-full"
                   : "w-48  rounded-full roundedCircle"
@@ -113,9 +113,9 @@ const ForEmployers = () => {
               : "jobHunterInfoContainer  rounded-[10px] shadow-lg p-2 relative text-center "
           }
         >
-          <div class="avatar hunterImg -mt-24">
+          <div className="avatar hunterImg -mt-24">
             <div
-              class={
+              className={
                 theme
                   ? "darkRoundedCircle w-48  rounded-full"
                   : "w-48  rounded-full roundedCircle"

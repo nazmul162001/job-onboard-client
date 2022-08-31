@@ -81,9 +81,8 @@ const Navbar = () => {
   return (
     <div className="sticky top-0 w-full z-50">
       <div
-        className={`drawer-content flex flex-col backdrop-blur-[18px] bg-base-100 ${
-          scrollY < 300 && "bg-transparent shadow-md"
-        }`}
+        className={`drawer-content flex flex-col backdrop-blur-[18px] bg-base-100 ${scrollY < 300 && "bg-transparent shadow-md"
+          }`}
         style={
           pathname.includes("dashboard")
             ? { display: "none" }
@@ -101,7 +100,7 @@ const Navbar = () => {
                 className="menu menu-compact dropdown-content mt-4 p-2 shadow-xl bg-base-100 rounded-box w-72 border"
               >
                 {NavbarMenus}
-                {!user && (
+                {/* {!user && (
                   <li className="list-none md:hidden flex justify-start items-start text-start">
                     <button
                       onClick={handleThemeChange}
@@ -126,7 +125,7 @@ const Navbar = () => {
                       )}
                     </button>
                   </li>
-                )}
+                )} */}
               </ul>
             </div>
             <div className="flex justify-center items-center">
@@ -151,7 +150,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal p-0 gap-3">{NavbarMenus}</ul>
           </div>
           <div className="navbar-end gap-4">
-            <div className={`${user ? "block" : "hidden md:block"}`}>
+            {/* <div className={`${user ? "block" : "hidden md:block"}`}>
               <button
                 onClick={handleThemeChange}
                 className="rounded-full lg:mx-2 font-bold pt-2 ml-2"
@@ -174,16 +173,16 @@ const Navbar = () => {
                   </svg>
                 )}
               </button>
-            </div>
+            </div> */}
             {!user && (
-              <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-primary text-white">
+              <div className="dropdown dropdown-end">
+                <label tabIndex="0" className="btn btn-primary text-white">
                   Get Started{" "}
                   <MdOutlineKeyboardArrowRight className="text-2xl" />
                 </label>
                 <ul
-                  tabindex="0"
-                  class="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
+                  tabIndex="0"
+                  className="dropdown-content menu p-2 shadow-xl bg-base-100 rounded-box w-52"
                 >
                   <li className="py-2">
                     <Link

@@ -31,7 +31,7 @@ const HrDashboard = ({
               onClick={() => navigate(`/dashboard/candidates`)}
             >
               <div className="icon p-5">
-                <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
+                <i className="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
               <div
                 className={`card_details ${
@@ -51,7 +51,7 @@ const HrDashboard = ({
               onClick={() => navigate(`/dashboard/hr-jobs`)}
             >
               <div className="icon p-5">
-                <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
+                <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
               <div
                 className={`card_details ${
@@ -70,7 +70,7 @@ const HrDashboard = ({
               } py-2 rounded cursor-pointer`}
             >
               <div className="icon p-5">
-                <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
+                <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
               <div
                 className={`card_details ${
@@ -88,7 +88,7 @@ const HrDashboard = ({
               onClick={() => navigate(`/dashboard/employee`)}
             >
               <div className="icon p-5">
-                <i class="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
+                <i className="ri-team-line text-white text-2xl rounded p-5 bg-cyan-500 bg-opacity-70"></i>
               </div>
               <div
                 className={`card_details ${
@@ -138,52 +138,52 @@ const HrDashboard = ({
           {/* Recent Jobs  */}
           <h2 className="mt-5 mb-3 pl-4 font-bold">Recent Jobs</h2>
           {revMyJob?.length > 0 ? (
-            <div class="flex flex-col">
-              <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                  <div class="overflow-hidden">
-                    <table class="min-w-full">
-                      <thead class="border-b bg-primary ">
+            <div className="flex flex-col">
+              <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div className="overflow-hidden">
+                    <table className="min-w-full">
+                      <thead className="border-b bg-primary ">
                         <tr className="text-center">
                           <th
-                            class="text-sm font-medium text-white px-6 py-4 "
+                            className="text-sm font-medium text-white px-6 py-4 "
                             scope="col"
                           >
                             No
                           </th>
                           <th
                             scope="col"
-                            class="text-sm font-medium text-white px-6 py-4 "
+                            className="text-sm font-medium text-white px-6 py-4 "
                           >
                             Job Title
                           </th>
                           <th
                             scope="col"
-                            class="text-sm font-medium text-white px-6 py-4 "
+                            className="text-sm font-medium text-white px-6 py-4 "
                           >
                             Posted Date
                           </th>
                           <th
                             scope="col"
-                            class="text-sm font-medium text-white px-6 py-4 "
+                            className="text-sm font-medium text-white px-6 py-4 "
                           >
                             Salary
                           </th>
                           <th
                             scope="col"
-                            class="text-sm font-medium text-white px-6 py-4 "
+                            className="text-sm font-medium text-white px-6 py-4 "
                           >
                             Location
                           </th>
                           <th
                             scope="col"
-                            class="text-sm text-left font-medium text-white px-6 py-4 "
+                            className="text-sm text-left font-medium text-white px-6 py-4 "
                           >
                             Applicants
                           </th>
                           <th
                             scope="col"
-                            class="text-sm  font-medium text-white px-6 py-4 "
+                            className="text-sm  font-medium text-white px-6 py-4 "
                           >
                             Action
                           </th>
