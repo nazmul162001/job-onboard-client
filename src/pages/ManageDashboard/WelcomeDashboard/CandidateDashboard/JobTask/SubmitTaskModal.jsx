@@ -1,34 +1,40 @@
-import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { InitializeContext } from "../../../../../App";
+import auth from "../../../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../../../config";
 
 const SubmitTaskModal = ({ singleTask }) => {
 
-  const { theme } = useContext(InitializeContext);
+  const navigate = useNavigate()
   let today = new Date().toLocaleDateString();
   let times = new Date();
-  let todaysTime =
-    times.getHours() + ":" + times.getMinutes() + ":" + times.getSeconds();
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm();
-  const { CandidateName, candidateEmail, timeDuration, taskName, hrEmail } =
-    singleTask;
-  const applicantId = singleTask?.applicantData?._id
-  // console.log(applicantNumber)
+  let todaysTime = times.getHours() + ":" + times.getMinutes() + ":" + times.getSeconds();
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
-  const submiteTask = (data) => {
+  const { timeDuration, taskName, hrEmail, taskTime, } = singleTask;
+  const displayName = auth?.currentUser?.displayName
+  const email = auth?.currentUser?.email
+  const applicantId = singleTask?.applicantData?._id
+  const applicantResume = singleTask?.applicantData?.resume
+  const applicantNumber = singleTask?.applicantData?.number
+
+  const submitTask = (data) => {
     const submitedTaskInfo = {
       ...data,
+      displayName,
+      email,
+      taskName,
+      submitDate: today,
+      taskTime,
       applicantId,
+      applicantResume,
+      applicantNumber,
       hrEmail,
+      status: true,
     };
+    console.log(submitedTaskInfo)
     fetch(`${BASE_API}/submitCandidateTask`, {
       method: "POST",
       headers: {
@@ -45,13 +51,12 @@ const SubmitTaskModal = ({ singleTask }) => {
             icon: "success",
             confirmButtonText: "Okay",
           });
-
-          reset();
+          navigate('/dashboard/task')
         } else {
           Swal.fire({
-            text: `Opps!`,
+            text: `Opps! Please Try Again`,
             icon: "error",
-            confirmButtonText: "Plz Try Again",
+            confirmButtonText: "Okay",
           });
         }
       });
@@ -59,101 +64,57 @@ const SubmitTaskModal = ({ singleTask }) => {
 
   return (
     <div>
-      <input type="checkbox" id="submit_task_modal" class="modal-toggle" />
-      <label for="submit_task_modal" class="modal cursor-pointer">
+      <input type="checkbox" id="submit_task_modal" className="modal-toggle" />
+      <label for="submit_task_modal" className="modal cursor-pointer">
         <label
-          class="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
+          className="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
           for=""
         >
           <label
             for="submit_task_modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
           <div>
             <form
-              onSubmit={handleSubmit(submiteTask)}
-              className={
-                theme ? "text-primary space-y-2" : "space-y-2 text-black"
-              }
+              onSubmit={handleSubmit(submitTask)}
+              className="space-y-2 text-black"
             >
-              <div className="flex flex-col space-y-1 gap-y-1">
-                <label className="text-lg pl-2">
-                  Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  value={CandidateName}
-                  readOnly
-                  className={
-                    theme
-                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
-                      : "border rounded-lg py-1 text-lg pl-3"
-                  }
-                  {...register("displayName", {
-                    required: {
-                      value: true,
-                      message: " Plz one click before Submit!",
-                    },
-                  })}
-                />
-                <p className="text-[13px] text-red-500 pl-3">
-                  {errors.displayName?.message}
-                </p>
+              <div className='grid grid-cols-1 '>
+                <div className='flex flex-col space-y-1 gap-y-1'>
+                  <label className='text-[15px] pl-2'>Display Name <span className='text-red-500'>*</span></label>
+                  <input
+                    type="text"
+                    defaultValue={auth?.currentUser?.displayName}
+                    disabled
+                    className='border rounded-lg py-1 text-lg pl-3 cursor-not-allowed'
+                  />
+                </div>
               </div>
-              <div className="flex flex-col space-y-1 gap-y-1">
-                <label className="text-lg pl-2">
-                  Email <span className="text-red-500">*</span>
-                </label>
+
+              <div className='flex flex-col space-y-1 gap-y-1 py-2'>
+                <label className='text-[15px] pl-2'>Your email <span className='text-red-500'>*</span></label>
                 <input
                   type="email"
-                  value={candidateEmail}
-                  readOnly
-                  className={
-                    theme
-                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
-                      : "border rounded-lg py-1 text-lg pl-3 "
-                  }
-                  {...register("email", {
-                    required: {
-                      value: true,
-                      message: " Plz one click before Submit!",
-                    },
-                  })}
+                  defaultValue={auth?.currentUser?.email}
+                  disabled
+                  className='border rounded-lg py-2 text-lg pl-3 cursor-not-allowed'
                 />
-                <p className="text-[13px] text-red-500 pl-3">
-                  {errors.email?.message}
-                </p>
               </div>
-              <div className="flex flex-col space-y-1 gap-y-1">
-                <label className="text-lg pl-2">
-                  Task Name <span className="text-red-500">*</span>
-                </label>
+
+              <div className='flex flex-col space-y-1 gap-y-1 '>
+                <label className='text-[15px] pl-2'>Task Name <span className='text-red-500'>*</span></label>
                 <input
                   type="text"
-                  placeholder="Enter Task Name"
                   value={taskName}
-                  readOnly
-                  className={
-                    theme
-                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput "
-                      : "border rounded-lg py-1 text-lg pl-3 "
-                  }
-                  {...register("taskName", {
-                    required: {
-                      value: true,
-                      message: " Plz one click before Submit!",
-                    },
-                  })}
+                  disabled
+                  className="border rounded-lg py-1 text-lg pl-3 cursor-not-allowed"
                 />
-                <p className="text-[13px] text-red-500 pl-3">
-                  {errors.taskName?.message}
-                </p>
               </div>
 
               <div className="flex flex-col space-y-1 gap-y-1 py-2">
-                <label className="pl-2 md:text-lg">
+                <label className="pl-2 md:text-[15px]">
                   Submit Your Task Information{" "}
                   <span className="text-red-500">*</span>
                 </label>
@@ -161,11 +122,7 @@ const SubmitTaskModal = ({ singleTask }) => {
                   type="text"
                   rows={4}
                   placeholder="Your Task Information"
-                  className={
-                    theme
-                      ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
-                      : "border rounded-lg py-1 text-lg pl-3 "
-                  }
+                  className="border rounded-lg py-1 text-lg pl-3 "
                   {...register("taskInformation", {
                     required: {
                       value: true,
@@ -173,83 +130,73 @@ const SubmitTaskModal = ({ singleTask }) => {
                     },
                   })}
                 />
-                <p className="text-[13px] text-red-500 pl-3">
-                  {errors.taskInformation?.message}
-                </p>
+                <p className="text-[13px] text-red-500 pl-3">{errors.taskInformation?.message}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-                <div className="flex flex-col space-y-1 gap-y-1">
-                  <label className="text-lg pl-2">
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                <div className='flex flex-col space-y-1 gap-y-1'>
+                  <input
+                    type="text"
+                    placeholder='Live Link'
+                    className='text-black border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    {...register('submitLiveLink', {
+                      required: {
+                        value: true,
+                        message: 'This field is required'
+                      }
+                    })}
+                  />
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.submitLiveLink?.message}</p>
+                </div>
+
+                <div className='flex flex-col space-y-1 gap-y-1'>
+                  <input
+                    type="text"
+                    placeholder='Github Link'
+                    className='text-[#4e4c4c] border rounded-lg py-1 text-lg pl-3 hover:border-primary duration-300'
+                    {...register('sumitGithubLink', {
+                      required: {
+                        value: true,
+                        message: 'This field is required'
+                      }
+                    })}
+                  />
+                  <p className='text-[13px] text-red-500 pl-3'>{errors.sumitGithubLink?.message}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-5">
+                <div className="flex flex-col space-y-1 ">
+                  <label className="text-[15px] pl-2">
                     Sumbit Date <span className="text-red-500">*</span>
                   </label>
                   <input
-                    readOnly
+                    disabled
                     value={today}
-                    className={
-                      theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
-                        : "border rounded-lg py-1 text-lg pl-3 "
-                    }
-                    {...register("submitDate", {
-                      required: {
-                        value: true,
-                        message: " Plz one click before Submit!!",
-                      },
-                    })}
+                    className="border rounded-lg py-1 text-lg pl-3 cursor-not-allowed"
                   />
-
-                  <p className="text-[13px] text-red-500 pl-3">
-                    {errors.submitDate?.message}
-                  </p>
                 </div>
 
-                <div className="flex flex-col space-y-1 gap-y-1">
-                  <label className="text-lg pl-2">
+                <div className="flex flex-col space-y-1 ">
+                  <label className="text-[15px] pl-2">
                     Submit Time<span className="text-red-500">*</span>
                   </label>
                   <input
                     value={todaysTime}
-                    readOnly
-                    className={
-                      theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
-                        : "border rounded-lg py-1 text-lg pl-3 "
-                    }
-                    {...register("taskTime", {
-                      required: {
-                        value: true,
-                        message: " Plz one click before Submit!!",
-                      },
-                    })}
+                    disabled
+                    className="border rounded-lg py-1 text-lg pl-3 cursor-not-allowed"
                   />
-                  <p className="text-[13px] text-red-500 pl-3">
-                    {errors.taskTime?.message}
-                  </p>
                 </div>
 
-                <div className="flex flex-col space-y-1 gap-y-1 mb-8">
-                  <label className="text-lg pl-2">
+                <div className="flex flex-col space-y-1 ">
+                  <label className="text-[15px] pl-2">
                     Time Duration<span className="text-red-500">*</span>
                   </label>
                   <input
                     value={timeDuration}
-                    readOnly
-                    className={
-                      theme
-                        ? "border rounded-lg py-1 text-lg pl-3 bg-[#05142687] darkInput"
-                        : "border rounded-lg py-1 text-lg pl-3 "
-                    }
-                    {...register("submitedDuration", {
-                      required: {
-                        value: true,
-                        message: " Plz one click before Submit!",
-                      },
-                    })}
+                    disabled
+                    className="border rounded-lg py-1 text-lg pl-3 cursor-not-allowed"
                   />
-                  <p className="text-[13px] text-red-500 pl-3">
-                    {errors.submitedDuration?.message}
-                  </p>
                 </div>
               </div>
 
@@ -262,8 +209,8 @@ const SubmitTaskModal = ({ singleTask }) => {
       </label>
       <label for="submit_task_modal">
         <button className="seeTaskDetails submitBtan">
-          <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
+          <div className="svg-wrapper-1">
+            <div className="svg-wrapper">
               <BsCheckCircleFill />
             </div>
           </div>

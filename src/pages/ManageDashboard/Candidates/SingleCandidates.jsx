@@ -19,7 +19,7 @@ const SingleCandidates = () => {
     })
   );
 
-  
+
 
   const candidate = data?.data;
 
@@ -41,9 +41,9 @@ const SingleCandidates = () => {
         <div className="order-1">
           <div className='shadow-lg text-center p-5 space-y-4 rounded-lg'>
 
-            <div class="avatar py-2 mx-auto relative">
+            <div className="avatar py-2 mx-auto relative">
 
-              <div class="w-20 ring-2 rounded-full ">
+              <div className="w-20 ring-2 rounded-full ">
                 {candidate?.profileUrl ? (
                   <img src={candidate?.profileUrl} alt="candidate" />
                 ) : (

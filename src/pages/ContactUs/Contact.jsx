@@ -5,7 +5,7 @@ import './Contact.css'
 import { contactData, teamMemberData } from '../../data';
 import { BASE_API } from '../../config';
 import Swal from 'sweetalert2';
-import { FaLinkedin,FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { TbWorldDownload } from 'react-icons/tb';
 
 const Contact = () => {
@@ -47,8 +47,8 @@ const Contact = () => {
         <div className="bg-img-overlay pt-12 pb-20">
           <div className="text-center text-white py-12 space-y-2 ">
             <h2 className='text-3xl lg:text-4xl font-bold font-mono '>Contact Our Team</h2>
-            <h3 className=''>Have any questions ? <br className='lg:hidden'/>
-            We'd love to hear from you .</h3>
+            <h3 className=''>Have any questions ? <br className='lg:hidden' />
+              We'd love to hear from you .</h3>
           </div>
           <div className="flex flex-col justify-between lg:flex-row container mx-auto px-8 gap-6">
             <form onSubmit={handleSubmit(onSubmit)} className="lg:w-1/2 space-y-2 p-5 bg-base-100 rounded-lg">
@@ -166,16 +166,16 @@ const Contact = () => {
           {
             teamMemberData?.map((member) => {
               return <div className='shadow-lg hover:shadow-2xl p-5 text-center space-y-4 border rounded-lg'>
-                <div class="avatar py-2 mx-auto">
-                  <div class="w-36 ring-4  rounded-full ">
+                <div className="avatar py-2 mx-auto">
+                  <div className="w-36 ring-4  rounded-full ">
                     <img src={member?.photoUrl} alt="employees photos" />
                   </div>
                 </div>
                 <h2 className="text-lg font-bold">{member?.name}</h2>
                 <div className='flex justify-evenly pt-5'>
-                  <a className='text-2xl' href={member?.linkedinUrl} target="_blank" rel="noopener noreferrer"><FaLinkedin/></a>
-                  <a className='text-2xl' href={member?.githuburl} target="_blank" rel="noopener noreferrer"><FaGithub/></a>
-                  <a className='text-2xl' href={member?.portfolioUrl} target="_blank" rel="noopener noreferrer"><TbWorldDownload/></a>
+                  <a className='text-2xl' href={member?.linkedinUrl} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                  <a className='text-2xl' href={member?.githuburl} target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                  <a className='text-2xl' href={member?.portfolioUrl} target="_blank" rel="noopener noreferrer"><TbWorldDownload /></a>
                 </div>
               </div>
             })

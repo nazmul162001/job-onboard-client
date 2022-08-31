@@ -66,7 +66,7 @@ const Blog = () => {
               {blogs.slice(0, 1).map((blog) => (
                 <div
                   onClick={() => blogsDetails(blog._id)}
-                  class="card card-compact bg-base-100 shadow-xl cursor-pointer"
+                  className="card card-compact bg-base-100 shadow-xl cursor-pointer"
                 >
                   <span className="new absolute right-0 bg-indigo-900 px-4 py-1 text-white font-bold -top-1">
                     new
@@ -74,8 +74,8 @@ const Blog = () => {
                   <figure>
                     <img className="max-w-full" src={blog.image} alt="Shoes" />
                   </figure>
-                  <div class="card-body">
-                    <h2 class="card-title">{blog.title}</h2>
+                  <div className="card-body">
+                    <h2 className="card-title">{blog.title}</h2>
                     <p className="text-[17px]">
                       {blog.about.slice(0, 150) + " ...."}
                     </p>
@@ -115,12 +115,12 @@ const Blog = () => {
                 onClick={() => blogsDetails(blog._id)}
                 className="thirdInfo relative cursor-pointer"
               >
-                <div class="shadow-xl rounded-md overflow-hidden h-full">
+                <div className="shadow-xl rounded-md overflow-hidden h-full">
                   <figure>
                     <img className="max-w-full" src={blog.image} alt="Shoes" />
                   </figure>
-                  <div class="p-3">
-                    <h2 class="card-title text-sky-700">
+                  <div className="p-3">
+                    <h2 className="card-title text-sky-700">
                       {blog.title.slice(0, 50)}
                     </h2>
                     <p className="text-[17px]">

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { FaRegAddressBook } from "react-icons/fa";
 import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -6,23 +5,11 @@ import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import SubmissionModal from "./SingleJobCandidates/SubmissionModal/SubmissionModal";
+import { useEffect } from "react";
 
 const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status }) => {
   const navigate = useNavigate()
   // console.log(applicant)
-  const [singleSubmission, setSingleSubmission] = useState({})
-  // console.log(singleSubmission)
-
-  const { data } = useQuery(["count", applicant?._id], () => axios.get(`${BASE_API}/submittedTask?applicantId=${applicant?._id}`,
-    {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }));
-
-  const submission = data?.data
-  // console.log(submission);
 
   const handleUpdateStatus = async (id) => {
     const candidates = {
@@ -89,11 +76,22 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
     });
   };
 
-  const openModal = () => {
-    const viewSubmission = submission.filter((sub) => sub.applicantId === applicant?._id)
-    // console.log(viewSubmission)
-    setSingleSubmission(viewSubmission)
-  }
+  // const { data } = useQuery(["candidateSubmission"], () =>
+  //   axios.get(`${BASE_API}/submittedTask`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  // );
+
+  // const submissionData = data?.data
+  // console.log(submissionData)
+
+  // useEffect(() => {
+  //   const viewSubmission = submissionData?.filter((sub) => sub.applicantId === applicant?._id)
+  //   console.log(viewSubmission)
+  //   // if()
+  // },[submissionData,applicant?._id])
 
 
   return (
@@ -152,13 +150,12 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
         </td>
 
         <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
-          <label
-            for="viewSubmissionModal"
+          <span
             className="btn btn-outline btn-xs capitalize "
-            onClick={openModal}
+            onClick={() => navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)}
           >
             View Submission
-          </label>
+          </span>
         </td>
 
         <td className="text-sm font-light px-6 py-4 ">
@@ -173,11 +170,6 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
           </div>
         </td>
       </tr>
-
-      {/* Modal  */}
-      {singleSubmission[0] && (
-        <SubmissionModal singleSubmission={singleSubmission[0]} />
-      )}
     </>
 
   );

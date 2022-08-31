@@ -16,8 +16,8 @@ const AllJobTasks = ({ task, index }) => {
     <tr>
       <td>{index + 1}</td>
       <td>
-        <div class="avatar placeholder">
-          <div class="bg-primary font-bold text-xl text-white rounded-full w-12">
+        <div className="avatar placeholder">
+          <div className="bg-primary font-bold text-xl text-white rounded-full w-12">
             <span>{companyName.slice(0, 1)} </span>
           </div>
         </div>
@@ -28,8 +28,8 @@ const AllJobTasks = ({ task, index }) => {
       <td>{taskTime}</td>
       <td>
         <button onClick={() => seeTaskDetails(_id)} className="seeTaskDetails">
-          <div class="svg-wrapper-1">
-            <div class="svg-wrapper">
+          <div className="svg-wrapper-1">
+            <div className="svg-wrapper">
               <BsFillArrowRightCircleFill />
             </div>
           </div>

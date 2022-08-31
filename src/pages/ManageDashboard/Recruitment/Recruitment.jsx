@@ -13,7 +13,7 @@ const Recruitment = () => {
   }
 
   return (
-    <div className="p-5 h-screen">
+    <div data-testId="recuitment-1" className="p-5 h-screen">
       <div className="title my-2 mb-6">
         <h3 className="text-lg md:text-2xl font-semibold">
           Manage Recruitment Jobs
@@ -25,7 +25,7 @@ const Recruitment = () => {
       {hrJobs?.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 my-8">
           {hrJobs?.map((job, index) => (
-            <RecruitmentCard job={job} index={index} />
+            <RecruitmentCard job={job} key={index} index={index} />
           ))}
         </div>
       ) : (

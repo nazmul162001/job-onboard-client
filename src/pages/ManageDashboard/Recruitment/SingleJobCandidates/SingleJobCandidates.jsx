@@ -173,6 +173,7 @@ const SingleJobCandidates = () => {
                   {countData?.map((applicant, index) => (
                     <RecruitmentRow
                       applicant={applicant}
+                      key={index}
                       index={index}
                       refetch={refetch}
                       singleCandidates={singleCandidates}
