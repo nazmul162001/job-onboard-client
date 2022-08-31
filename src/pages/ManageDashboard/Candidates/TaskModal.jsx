@@ -1,12 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
-import auth from "../../../Auth/Firebase/Firebase.init";
-import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
 const TaskModal = ({ applicantData, setApplicantData }) => {
   const { displayName, email, hrEmail, companyName, jobTitle } = applicantData;
@@ -20,11 +16,13 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
     handleSubmit,
     reset,
   } = useForm();
+  console.log(applicantData);
   const taskInfo = (data) => {
     const candidateInfo = {
       ...data,
       hrEmail,
       companyName,
+      applicantData,
       status: true,
     };
 
@@ -49,8 +47,6 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
         }
       });
   };
-
- 
 
   return (
     <div>

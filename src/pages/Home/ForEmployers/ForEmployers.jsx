@@ -43,7 +43,7 @@ const ForEmployers = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">
               Post Job Your Company For Free
             </h4>
@@ -72,7 +72,7 @@ const ForEmployers = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">Browse Service and PortFolio</h4>
             <p>Choose people by their creativity and previous projects.</p>
           </div>
@@ -99,7 +99,7 @@ const ForEmployers = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">
               Find Best Match For Your Company
             </h4>
@@ -128,7 +128,7 @@ const ForEmployers = () => {
               />
             </div>
           </div>
-          <div className="hunterInfo mb-2">
+          <div className="hunterInfo mb-[1.8rem]">
             <h4 className="font-bold text-2xl">Strong Community BuildUp</h4>
             <p>Building strong rellationships with another companies.</p>
           </div>

@@ -29,7 +29,7 @@ const AddEmployee = ({ refetch }) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(employeeDetails),
-      // const { id, name, location, email } = employe;
+     
     })
       .then((res) => res.json())
       .then((data) => {
@@ -52,7 +52,7 @@ const AddEmployee = ({ refetch }) => {
   };
 
   return (
-    <div>
+    <div className="bg-base-100">
       <input type="checkbox" id="add-new-employee-modal" class="modal-toggle" />
       <label for="add-new-employee-modal" class="modal cursor-pointer">
         <label

@@ -12,7 +12,7 @@ import TaskModal from "./TaskModal";
 
 const Candidates = () => {
   useTitle("Candidates");
-  const { getApplicants, isLoading, refetch } = useCandidate();
+  const { getApplicants, isLoading } = useCandidate();
   const [applicantData, setApplicantData] = useState(null);
 
   const { data } = useQuery(["AllredyGiven"], () =>
@@ -22,17 +22,14 @@ const Candidates = () => {
       },
     })
   );
-
   const allreadyGiven = data?.data;
-
-  // console.log(allreadyGiven)
 
   if (isLoading) {
     return <Loading />;
   }
 
   return (
-    <div className="p-5 h-screen">
+    <div className="p-5 bg-base-100">
       <div className="title my-2 mb-6">
         <h3 className="text-2xl font-semibold">Manage Candidates</h3>
         <span>
@@ -82,8 +79,9 @@ const Candidates = () => {
                         scope="col"
                         class="text-sm font-medium text-white px-6 py-4 text-left"
                       >
-                        See Details
+                        Details
                       </th>
+
                     </tr>
                   </thead>
                   <tbody>

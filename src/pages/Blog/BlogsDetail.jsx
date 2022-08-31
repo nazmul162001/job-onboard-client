@@ -12,13 +12,7 @@ const BlogsDetail = () => {
   const { blogId } = useParams();
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
-  // useEffect(() => {
-  //   const url = `${BASE_API}/allBlogs/${blogId}`;
 
-  //   fetch(url)
-  //     .then((res) => res.json())
-  //     .then((data) => setSingleBlog(data));
-  // }, [blogId]);
 
   const { refetch } = useQuery(["singleId"], () =>
     fetch(`${BASE_API}/allBlogs/${blogId}`, {
@@ -29,14 +23,9 @@ const BlogsDetail = () => {
       .then((res) => res.json())
       .then((data) => setSingleBlog(data))
   );
-  // const { data, refetch, isLoading } = useQueries(
-  //   () => `${BASE_API}/allBlogs/${blogId}`,
-  //   (res) => res.json()
-  // );
 
   const { title, image, about } = singleBlogs;
 
-  // `${BASE_API}/allBlogs/${blogId}`
   return (
     <section className="bg-base-400">
       <div className="container mx-auto px-3 lg:px-10">

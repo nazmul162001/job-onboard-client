@@ -48,9 +48,11 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
           Task
         </label>
       </td>
-      <td className="flex justify-center items-center mt-5">
-        <span onClick={() => navigate(`${_id}`)} className="cursor-pointer">
-          <button className="btn btn-sm text-white">See Details</button>
+      <td>
+        <span onClick={() => navigate(`${_id}`)}>
+          <button className="btn btn-outline btn-sm mt-1 capitalize">
+            <span className="hidden md:block md:mr-1">See </span>Details
+          </button>
         </span>
       </td>
     </tr>

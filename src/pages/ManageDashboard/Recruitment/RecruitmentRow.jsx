@@ -1,11 +1,13 @@
-import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 
-const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
-  const navigate = useNavigate();
+const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status }) => {
+  const navigate = useNavigate()
+  // console.log(applicant)
+
   const handleUpdateStatus = async (id) => {
     const candidates = {
       fullName: applicant?.displayName,
@@ -71,51 +73,43 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
     });
   };
 
+
+
   return (
-    <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-        {index + 1}
-      </td>
-      <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div>
-          <div className="font-normal">{applicant?.displayName}</div>
-          <div className="text-sm font-semibold">{applicant?.email}</div>
-        </div>
-      </td>
+    <>
+      <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          {index + 1}
+        </td>
+        <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
+          <div className="space-y-1">
+            <div className="font-normal">{applicant?.displayName}</div>
+            <div className="text-sm font-semibold">{applicant?.email}</div>
+            <div className="text-sm font-semibold flex space-x-2 items-center">
+              <BsTelephoneForward />
+              <span>{applicant?.number}</span>
+            </div>
+          </div>
+        </td>
 
-      <td className="text-sm font-normal px-6 py-4 whitespace-nowrap">
-        {applicant?.jobTitle}
-        <br />
-        <span className="badge badge-ghost ">{applicant?.category}</span>
-      </td>
+        <td className="text-sm font-normal px-6 py-4 whitespace-nowrap">
+          {applicant?.jobTitle}
+          <br />
+          <span className="badge badge-ghost ">{applicant?.category}</span>
+        </td>
 
-      <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-semibold">{applicant?.number}</div>
-      </td>
-      <td className="text-sm font-light px-6 py-4">
-        <div className="text-sm font-semibold flex gap-1">
-          <button
-            onClick={() => handleUpdateStatus(applicant?._id)}
-            disabled={applicant?.status && true}
-            className={`flex
-                                    btn btn-xs text-white`}
+        <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
+          <a
+            title="Resume/Link"
+            href={applicant?.resume}
+            target="_blank"
+            rel="noreferrer"
           >
-            {applicant?.status ? "Hired" : "Hire"}
-          </button>
-        </div>
-      </td>
+            <FaRegAddressBook size={25} />
+          </a>
+        </td>
 
-      <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
-        <a
-          title="Resume/Link"
-          href={applicant?.resume}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FaRegAddressBook size={25} />
-        </a>
-      </td>
-      <td className="flex justify-center items-center mt-5">
+        {/* <td className="flex justify-center items-center mt-5">
         <label
           htmlFor="candidate-modal"
           title="Click to send mail"
@@ -124,8 +118,41 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
         >
           Send Mail
         </label>
-      </td>
-    </tr>
+      </td> */}
+
+        <td className="text-sm font-normal px-6 py-4 text-center whitespace-nowrap">
+          <label
+            onClick={() => setApplicantData(applicant)}
+            for="task-modal"
+            className={`${status ? "hidden" : "btn btn-outline btn-xs cursor-pointer"}`}
+          >
+            Send Task
+          </label>
+        </td>
+
+        <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
+          <span
+            className="btn btn-outline btn-xs capitalize "
+            onClick={() => navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)}
+          >
+            View Submission
+          </span>
+        </td>
+
+        <td className="text-sm font-light px-6 py-4 ">
+          <div className="text-sm font-semibold flex gap-1">
+            <button
+              onClick={() => handleUpdateStatus(applicant?._id)}
+              disabled={applicant?.status && true}
+              className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
+            >
+              {applicant?.status ? "Hired" : "Hire "}
+            </button>
+          </div>
+        </td>
+      </tr>
+    </>
+
   );
 };
 
