@@ -19,6 +19,11 @@ const hrJobslice = createSlice({
         hrJobs: [],
         error: null,
     },
+    extraReducers: (builder) => {
+        builder.addCase(fetchHrJobs.pending, (state) => {
+            state.isLoading = true;
+        });
 
+    },
 });
 export default hrJobslice.reducer
