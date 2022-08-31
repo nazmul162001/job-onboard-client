@@ -1,5 +1,6 @@
 import React from 'react';
 import pricingBg from '../../Assets/images/pricing/pattern.svg'
+import Footer from '../../../Shared/Footer/Footer'
 
 const Pricing = () => {
   return (
@@ -12,9 +13,9 @@ const Pricing = () => {
         </div>
       </div>
       <img className='h-28' src={pricingBg} alt="" />
-      <div className="pricing grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-16">
+      <div className="pricing grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-16 my-2">
         {/* Free Pricing */}
-      <div className="our_pricing p-3">
+      <div className="our_pricing p-3 border-2 border-gray rounded">
         <h2 className='text-3xl font-bold'>Free</h2>
         <div className="button flex justify-center items-center my-3">
       <button className='px-5 py-3 text-blue-500 rounded-full w-4/5 bg-[#E6ECFF]'> <span className='font-bold'>$0.00</span> <span className='text-black'>/Lifetime</span> </button>
@@ -83,6 +84,7 @@ const Pricing = () => {
         <button class="btn bg-[#895AF6] border-none w-full">Sign Up</button>
       </div>
       </div>
+      <Footer />
     </section>
   );
 };
