@@ -132,7 +132,7 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
         <label
           htmlFor="candidate-modal"
           title="Click to send mail"
-          onClick={() => singleCandidates(applicant?._id)}
+          onClick={() => setApplicantData(applicant?._id)}
           className="btn btn-sm text-white"
         >
           Send Mail
@@ -143,7 +143,7 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
           <label
             onClick={() => setApplicantData(applicant)}
             for="task-modal"
-            className={`${status ? "hidden" : "btn btn-outline btn-xs cursor-pointer"}`}
+            className={`${status ? "hidden" : "btn btn-outline btn-xs cursor-pointer capitalize"}`}
           >
             Send Task
           </label>

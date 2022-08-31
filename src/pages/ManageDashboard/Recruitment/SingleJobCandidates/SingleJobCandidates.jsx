@@ -8,8 +8,10 @@ import { ImArrowLeft2 } from "react-icons/im";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import DashboardFooter from "../../DashboardFooter/DashboardFooter";
+import TaskModal from "../../Candidates/TaskModal";
 
 const SingleJobCandidates = () => {
+  const [applicantData, setApplicantData] = useState(null);
   const { jobId } = useParams();
   const [job] = useJob(jobId);
   const navigate = useNavigate();
@@ -177,6 +179,7 @@ const SingleJobCandidates = () => {
                       index={index}
                       refetch={refetch}
                       singleCandidates={singleCandidates}
+                      setApplicantData={setApplicantData}
                     />
                   ))}
                 </tbody>
@@ -185,6 +188,13 @@ const SingleJobCandidates = () => {
           </div>
         </div>
       </div>
+
+      {applicantData && (
+        <TaskModal
+          applicantData={applicantData}
+          setApplicantData={setApplicantData}
+        />
+      )}
 
       {/*Dashboard Footer  */}
       {/* <DashboardFooter /> */}

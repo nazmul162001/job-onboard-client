@@ -141,7 +141,7 @@ function App() {
               }
             />
             <Route
-              path="recruitment/mail/:candidatesID"
+              path="candidates/mail/:candidatesID"
               element={
                 <RequireHr>
                   <SendMailCandidates />

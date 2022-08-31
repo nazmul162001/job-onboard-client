@@ -40,18 +40,16 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
         </a>
       </td>
       <td>
-        <label
-          onClick={() => setApplicantData(applicant)}
-          for="task-modal"
-          className={`${status ? "hidden" : "taskBtn cursor-pointer"}`}
-        >
-          Task
-        </label>
+      <span onClick={() => navigate(`mail/${_id}`)}>
+          <button className="btn btn-outline btn-xs mt-1 capitalize">
+            See Mail
+          </button>
+        </span>
       </td>
       <td>
         <span onClick={() => navigate(`${_id}`)}>
-          <button className="btn btn-outline btn-sm mt-1 capitalize">
-            <span className="hidden md:block md:mr-1">See </span>Details
+          <button className="btn btn-outline btn-xs mt-1 capitalize">
+            See Details
           </button>
         </span>
       </td>
