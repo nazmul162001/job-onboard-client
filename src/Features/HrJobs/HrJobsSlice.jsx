@@ -23,6 +23,11 @@ const hrJobslice = createSlice({
         builder.addCase(fetchHrJobs.pending, (state) => {
             state.isLoading = true;
         });
+        builder.addCase(fetchHrJobs.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.hrJobs = action.payload
+            state.error = null
+        });
 
     },
 });
