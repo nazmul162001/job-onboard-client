@@ -27,7 +27,7 @@ const TaskModal = ({ applicantData, setApplicantData }) => {
       taskTime: todaysTime,
       companyName,
       applicantData,
-      status: true,
+      status: false,
     };
     // console.log(candidateInfo)
     fetch(`${BASE_API}/candidateTask`, {

@@ -13,7 +13,6 @@ import TaskModal from "./TaskModal";
 const Candidates = () => {
   useTitle("Candidates");
   const { getApplicants, isLoading } = useCandidate();
-  const [applicantData, setApplicantData] = useState(null);
 
   const { data } = useQuery(["AllredyGiven"], () =>
     axios.get(`${BASE_API}/AllredyGiven?email=${auth?.currentUser?.email}`, {
@@ -90,7 +89,6 @@ const Candidates = () => {
                         applicant={applicant}
                         index={index}
                         key={applicant._id}
-                        setApplicantData={setApplicantData}
                         allreadyGiven={allreadyGiven}
                       />
                     ))}
@@ -112,13 +110,6 @@ const Candidates = () => {
             </h2>
           </div>
         </>
-      )}
-
-      {applicantData && (
-        <TaskModal
-          applicantData={applicantData}
-          setApplicantData={setApplicantData}
-        />
       )}
     </div>
   );

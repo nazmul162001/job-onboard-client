@@ -5,10 +5,15 @@ import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect } from "react";
 
-const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status }) => {
-  const navigate = useNavigate()
+const RecruitmentRow = ({
+  applicant,
+  index,
+  refetch,
+  setApplicantData,
+  status,
+}) => {
+  const navigate = useNavigate();
   // console.log(applicant)
 
   const handleUpdateStatus = async (id) => {
@@ -60,7 +65,7 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  if (data.insertedId) {
+                  if (data?.insertedId) {
                     Swal.fire({
                       text: "Your Candidate is Hired Successfully",
                       icon: "success",
@@ -76,23 +81,22 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
     });
   };
 
-  // const { data } = useQuery(["candidateSubmission"], () =>
-  //   axios.get(`${BASE_API}/submittedTask`, {
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //     },
-  //   })
-  // );
+  const { data } = useQuery(["candidateSubmission"], () =>
+    axios.get(`${BASE_API}/submittedTask`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
 
-  // const submissionData = data?.data
+  const submissionData = data?.data;
+
   // console.log(submissionData)
 
-  // useEffect(() => {
-  //   const viewSubmission = submissionData?.filter((sub) => sub.applicantId === applicant?._id)
-  //   console.log(viewSubmission)
-  //   // if()
-  // },[submissionData,applicant?._id])
-
+  const filtered = submissionData?.filter((data) => {
+    return data?.email === applicant?.email;
+  });
+  // console.log(filtered);
 
   return (
     <>
@@ -128,22 +132,15 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
           </a>
         </td>
 
-        {/* <td className="flex justify-center items-center mt-5">
-        <label
-          htmlFor="candidate-modal"
-          title="Click to send mail"
-          onClick={() => singleCandidates(applicant?._id)}
-          className="btn btn-sm text-white"
-        >
-          Send Mail
-        </label>
-      </td> */}
-
         <td className="text-sm font-normal px-6 py-4 text-center whitespace-nowrap">
           <label
             onClick={() => setApplicantData(applicant)}
             for="task-modal"
-            className={`${status ? "hidden" : "btn btn-outline btn-xs cursor-pointer"}`}
+            className={`${
+              status
+                ? "hidden"
+                : "btn btn-outline btn-xs cursor-pointer capitalize"
+            }`}
           >
             Send Task
           </label>
@@ -151,8 +148,12 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
 
         <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
           <span
-            className="btn btn-outline btn-xs capitalize "
-            onClick={() => navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)}
+            className={`btn btn-outline btn-xs capitalize ${filtered?.map(
+              (stat) => (stat?.status === true ? "" : "btn-disabled")
+            )}`}
+            onClick={() =>
+              navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)
+            }
           >
             View Submission
           </span>
@@ -162,16 +163,15 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
           <div className="text-sm font-semibold flex gap-1">
             <button
               onClick={() => handleUpdateStatus(applicant?._id)}
-              disabled={applicant?.status && true}
+              disabled={applicant?.status === true && true}
               className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
             >
-              {applicant?.status ? "Hired" : "Hire "}
+              {applicant?.status === true ? "Hired" : "Hire "}
             </button>
           </div>
         </td>
       </tr>
     </>
-
   );
 };
 

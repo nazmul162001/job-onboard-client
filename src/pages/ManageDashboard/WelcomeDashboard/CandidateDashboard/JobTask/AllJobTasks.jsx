@@ -15,16 +15,9 @@ const AllJobTasks = ({ task, index }) => {
   return (
     <tr>
       <td>{index + 1}</td>
-      <td>
-        <div className="avatar placeholder">
-          <div className="bg-primary font-bold text-xl text-white rounded-full w-12">
-            <span>{companyName.slice(0, 1)} </span>
-          </div>
-        </div>
-      </td>
       <td>{companyName}</td>
       <td>{taskName}</td>
-      <td>{taskDate}</td>
+      <td>{taskDate?.slice(0, 10)}</td>
       <td>{taskTime}</td>
       <td>
         <button onClick={() => seeTaskDetails(_id)} className="seeTaskDetails">

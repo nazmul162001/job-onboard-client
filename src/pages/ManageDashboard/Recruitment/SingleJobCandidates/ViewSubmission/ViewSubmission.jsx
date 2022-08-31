@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../../../../../Components/Loading/Loading';
 import { BASE_API } from '../../../../../config';
@@ -19,6 +19,15 @@ const ViewSubmission = () => {
   );
 
   const submissionData = data?.data
+  // console.log(submissionData)
+
+  // useEffect(() => {
+  //   const viewSubmission = submissionData?.filter(
+  //     (sub) => sub?.applicantId === applicantId
+  //   );
+  //   console.log(viewSubmission);
+  //   // if()
+  // }, [submissionData, applicantId]);
 
   if (isLoading) {
     return <Loading />
@@ -31,7 +40,6 @@ const ViewSubmission = () => {
           {submissionData?.displayName} Submission Info
         </h2>
       </div>
-
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-y-12 my-10 px-1 md:px-10">
 

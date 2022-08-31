@@ -26,11 +26,10 @@ const JobTask = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           <thead>
             <tr>
-              <th>Task No</th>
-              <th>Logo</th>
+              <th>No</th>
               <th>Company Name</th>
               <th>Task Name</th>
               <th>Task Date</th>

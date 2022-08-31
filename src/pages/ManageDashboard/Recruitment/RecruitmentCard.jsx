@@ -51,13 +51,13 @@ const RecruitmentCard = ({ job }) => {
         </div>
       </div>
       {countData?.length > 0 && (
-        <sapn
+        <span
           title="Applied Candidates"
           className="btn btn-sm btn-circle absolute right-2 top-2 text-white"
           onClick={() => singleJob(_id)}
         >
           {countData?.length}
-        </sapn>
+        </span>
       )}
     </div>
   );

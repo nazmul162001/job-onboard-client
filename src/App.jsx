@@ -61,7 +61,7 @@ function App() {
     window.localStorage.setItem("theme", !theme);
   };
   return (
-    <div data-theme={theme && "business"}>
+    <div data-theme={theme && "night"}>
       <InitializeContext.Provider
         value={{ handleThemeChange, theme, profileUrl }}
       >
@@ -141,7 +141,7 @@ function App() {
               }
             />
             <Route
-              path="recruitment/mail/:candidatesID"
+              path="candidates/mail/:candidatesID"
               element={
                 <RequireHr>
                   <SendMailCandidates />
