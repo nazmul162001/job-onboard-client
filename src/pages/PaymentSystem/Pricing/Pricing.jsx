@@ -1,19 +1,24 @@
 import React from 'react';
 import pricingBg from '../../Assets/images/pricing/pattern.svg'
 import Footer from '../../../Shared/Footer/Footer'
+import { CToast, CToastBody, CToastClose } from '@coreui/react';
 
 const Pricing = () => {
   return (
     <section className=''>
       <div className="Pricing_header w-full flex justify-center items-center">
-        <div className='pt-28 pb-5 text-center'>
-        <h1 className='text-5xl px-24 text-black font-bold '>Smart, affordable HR software. For every growing business.</h1>
-        <p className='py-5 text-xl font-medium'>Try Job Onboard for 21 days. No credit card required. </p>
+        <div className='pt-8 md:pt-28 pb-5 text-center'>
+        <h1 className='text-xl md:text-4xl lg:text-5xl px-12 md:px-16 lg:px-24 text-black font-bold '>Smart, affordable HR software. For every growing business.</h1>
+        <p className='py-3 md:py-5 text-sm md:text-xl font-medium'>Try Job Onboard for 21 days. No credit card required. </p>
         <button class="btn btn-wide text-white bg-[#895AF6] border-none">Start Free Trial</button>
         </div>
       </div>
       <img className='h-28' src={pricingBg} alt="" />
-      <div className="pricing grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-16 my-2">
+      {/* toast  */}
+
+
+      {/* pricing section  */}
+      <div className="pricing grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-8 md:px-14 lg:px-16 my-2">
         {/* Free Pricing */}
       <div className="our_pricing p-3 border-2 border-gray rounded">
         <h2 className='text-3xl font-bold'>Free</h2>
@@ -38,7 +43,7 @@ const Pricing = () => {
         <button class="btn bg-[#60CE83] border-none w-full">Sign Up</button>
       </div>
       {/* StartUp Lifetime  */}
-      <div className="our_pricing p-3">
+      <div className="our_pricing p-3 border-2 border-transparent">
         <h2 className='text-3xl font-bold'>Startup Lifetime</h2>
       <div className="button flex justify-center items-center my-3">
       <button className='px-5 py-3 text-blue-500 rounded-full w-4/5 bg-[#E6ECFF]'><span className='text-gray-500 line-through'>$499.99</span> <span className='font-bold'>$149.99</span> <span className='text-black'>/Lifetime</span> </button>
@@ -61,7 +66,7 @@ const Pricing = () => {
         <button class="btn bg-[#895AF6] border-none w-full">Sign Up</button>
       </div>    
       {/* Business Lifetime  */}
-      <div className="our_pricing p-3">
+      <div className="our_pricing p-3 border-2 border-transparent">
         <h2 className='text-3xl font-bold'>Business Lifetime</h2>
         <div className="button flex justify-center items-center my-3">
         <button className='px-5 py-3 text-blue-500 rounded-full w-4/5 bg-[#E6ECFF]'><span className='text-gray-500 line-through'>$999.99</span> <span className='font-bold'>$399.99</span> <span className='text-black'>/Lifetime</span> </button>
