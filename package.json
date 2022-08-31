@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@coreui/react": "^4.3.1",
     "@emailjs/browser": "^3.6.2",
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.5",
