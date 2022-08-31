@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../../../../../Components/Loading/Loading";
 import { BASE_API } from "../../../../../config";
 import SubmitTaskModal from "./SubmitTaskModal";
 const TaskDetais = () => {
   const { taskId } = useParams();
   const [singleTask, setSingleTask] = useState({});
-  const { refetch } = useQuery(["singleId"], () =>
+  const { isLoading } = useQuery(["singleId"], () =>
     fetch(`${BASE_API}/singleTask/${taskId}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,9 +27,13 @@ const TaskDetais = () => {
   } = singleTask;
   // console.log(singleTask)
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <section className="taskContainer px-4 mt-8">
-      <div className="info flex justify-between p-5 items-center bg-[#01022ee6] mt-4 text-white">
+      <div className="info flex flex-col-reverse md:flex-row justify-between p-5 items-center bg-[#01022ee6] mt-4 text-white">
         <div className="task text-[20px] font-bold font-[monospace]">
           <h2>
             <span className="text-[#62ccd7]">Task For: </span>
@@ -36,7 +41,7 @@ const TaskDetais = () => {
           </h2>
           <h2>
             <span className="text-[#62ccd7]">Task Date: </span>
-            {taskDate}
+            {taskDate?.slice(0, 10)}
           </h2>
           <h2>
             <span className="text-[#62ccd7]">Task Time: </span>
@@ -51,13 +56,12 @@ const TaskDetais = () => {
           <h2 className="cName mb-[30px] text-2xl pr-5 font-bold">
             {companyName}
           </h2>
-
-          <SubmitTaskModal singleTask={singleTask}/>
+          <SubmitTaskModal singleTask={singleTask} />
         </div>
       </div>
 
       <div>
-        <h2 className="text-center font-bold my-5 text-xl">Task Discription</h2>
+        <h2 className="text-center font-bold my-5 text-xl">Task Description</h2>
         <p className="px-10">{taskDiscriptioin}</p>
       </div>
     </section>

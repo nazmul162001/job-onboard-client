@@ -24,7 +24,7 @@ const AllJobTasks = ({ task, index }) => {
       </td>
       <td>{companyName}</td>
       <td>{taskName}</td>
-      <td>{taskDate}</td>
+      <td>{taskDate?.slice(0, 10)}</td>
       <td>{taskTime}</td>
       <td>
         <button onClick={() => seeTaskDetails(_id)} className="seeTaskDetails">

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const RecentTasks = ({ revTask }) => {
   const navigate = useNavigate()
-  console.log(revTask)
+  // console.log(revTask)
   return (
     <div className='shadow-lg p-5 text-center space-y-2 border rounded-lg '>
 

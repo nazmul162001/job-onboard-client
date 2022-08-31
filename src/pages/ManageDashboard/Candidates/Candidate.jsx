@@ -42,7 +42,7 @@ const Candidate = ({ applicant, index, setApplicantData, status }) => {
       <td>
       <span onClick={() => navigate(`mail/${_id}`)}>
           <button className="btn btn-outline btn-xs mt-1 capitalize">
-            See Mail
+            Send Mail
           </button>
         </span>
       </td>
