@@ -4,9 +4,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from '../../../../../Components/Loading/Loading';
 import { BASE_API } from '../../../../../config';
-import { CgProfile, CgMail, CgPhone, CgCalendar, CgCircleci } from 'react-icons/cg';
+import { FaGithub } from 'react-icons/fa';
 import { ImProfile } from 'react-icons/im';
-import { FaLinkedin, FaLink } from 'react-icons/fa';
+import { TbWorldDownload } from 'react-icons/tb';
 
 const ViewSubmission = () => {
   const { applicantId } = useParams()
@@ -19,127 +19,40 @@ const ViewSubmission = () => {
   );
 
   const submissionData = data?.data
-  console.log(submissionData)
-  const { displayName, email,submitDate,submitedDuration,taskInformation,taskName, } = submissionData
 
   if (isLoading) {
     return <Loading />
   }
 
-
   return (
     <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
         <h2 className="text-center text-xl md:text-2xl font-semibold ">
-          {displayName} Submission Info
+          {submissionData?.displayName} Submission Info
         </h2>
       </div>
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-y-12 my-10 px-1 md:px-10">
 
-        <div className="order-1 mt-10 text-center">
-          <h2 className="font-bold text-primary text-xl mb-2">Assignment Details</h2>
-          <p className=" w-full rounded pb-28  text-justify">{submissionData?.taskInformation}</p>
-
-          <div className="flex justify-center gap-5 mt-10">
-            <div className="grid justify-items-center">
-              <a
-                href={submissionData?.taskInformation}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ImProfile size={35} />
-              </a>
-              <h1 className="text-primary mt-2">Resume</h1>
-            </div>
-
-            <div className="grid justify-items-center">
-              <a
-                href={submissionData?.portfolioUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaLink size={35} />
-              </a>
-
-              <h1 className="text-primary mt-2">Portfolio</h1>
-            </div>
-
-            <div className="grid justify-items-center">
-              <a
-                href={submissionData?.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaLinkedin size={35} />
-              </a>
-
-              <h1 className="text-primary mt-2">Linkedin</h1>
-            </div>
+        <div className=''>
+          <h2 className="font-semibold font-mono text-xl mb-2 text-center">Assignment Submitted(<small>{submissionData?.submitDate}</small>)</h2>
+          <p className=" w-full my-5 border p-3 rounded-xl text-justify">{submissionData?.taskInformation}</p>
+          <div className='flex justify-evenly items-center flex-col lg:flex-row space-y-2'>
+            <a className='text-lg flex gap-x-2 items-center' href={submissionData?.sumitGithubLink} target="_blank" rel="noopener noreferrer"><FaGithub /> Source Code </a>
+            <a className='text-lg flex gap-x-2 items-center' href={submissionData?.submitLiveLink} target="_blank" rel="noopener noreferrer"><TbWorldDownload /> Live Link </a>
           </div>
         </div>
 
-        <div className="order-1">
-          <div className='shadow-lg text-center p-5 space-y-4 rounded-lg'>
-
-            <div class="avatar py-2 mx-auto relative">
-
-              <div class="w-20 ring-2 rounded-full ">
-                {submissionData?.profileUrl ? (
-                  <img src={submissionData?.profileUrl} alt="candidate" />
-                ) : (
-                  <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt="" />
-                )}
-              </div>
-            </div>
-
-
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgProfile size={40} />
-              </div>
-              <div className="text-start">
-                <h1 className="font-bold text-primary">Candidate Name</h1>
-                {/* {submissionData?.displayName} */}
-              </div>
-            </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgMail size={40} />
-              </div>
-              <div className="text-start">
-                <h1 className="font-bold text-primary">Candidate Email</h1>
-                {/* {submissionData?.email} */}
-              </div>
-            </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgPhone size={40} />
-              </div>
-              <div className="text-start">
-                <h1 className="font-bold text-primary">Candidate Number</h1>
-                {/* {submissionData?.number} */}
-              </div>
-            </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgCalendar size={40} />
-              </div>
-              <div className="text-start">
-                <h1 className="font-bold text-primary">Applied date</h1>
-                {/* {submissionData?.appliedDate.slice(0, 10)} */}
-              </div>
-            </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgCircleci size={40} />
-              </div>
-              <div className="text-start">
-                <h1 className="font-bold text-primary">Job-Title</h1>
-                {/* {submissionData?.jobTitle} */}
-              </div>
-            </div>
+        <div className='flex flex-col items-center space-y-3 shadow-md border p-2 rounded-xl'>
+          <h2 className="font-bold  text-xl mb-2 ">Personal Info</h2>
+          <div className='flex flex-col space-y-5 pb-3 '>
+            <h3>Name : {submissionData?.displayName}</h3>
+            <h3>Email : {submissionData?.email} </h3>
+            <h3>Phone : {submissionData?.applicantNumber}</h3>
+            <h3>Applied For : {submissionData?.taskName}</h3>
+            <a className=' flex gap-x-2 items-center' href={submissionData?.applicantResume} target="_blank" rel="noopener noreferrer">View : <ImProfile /> Resume </a>
+            <button className='btn btn-sm btn-outline capitalize py-1'>Hire Now </button>
           </div>
         </div>
 
