@@ -12,3 +12,13 @@ export const fetchHrJobs = createAsyncThunk("hrJobs/fetchHrJobs", async () => {
         })
     return res.data
 });
+const hrJobslice = createSlice({
+    name: "hrJobs",
+    initialState: {
+        isLoading: false,
+        hrJobs: [],
+        error: null,
+    },
+
+});
+export default hrJobslice.reducer
