@@ -28,7 +28,11 @@ const hrJobslice = createSlice({
             state.hrJobs = action.payload
             state.error = null
         });
-
+        builder.addCase(fetchHrJobs.rejected, (state, action) => {
+            state.isLoading = false;
+            state.hrJobs = []
+            state.error = action.error.message
+        });
     },
 });
 export default hrJobslice.reducer
