@@ -21,7 +21,7 @@ const WelcomeDashboard = () => {
   const [hr, hrLoading] = useHrManager(user);
   // console.log(hr);
 
-  const testing = useSelector((state) => state.hrJobs);
+  const testing = useSelector((state) => console.log(state));
 
 
   const { data } = useEmployeeInfo();
