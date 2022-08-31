@@ -186,7 +186,7 @@ const SingleJobCandidates = () => {
       </div>
 
       {/*Dashboard Footer  */}
-      <DashboardFooter />
+      {/* <DashboardFooter /> */}
     </div>
   );
 };

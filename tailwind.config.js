@@ -26,7 +26,7 @@ module.exports = {
           "base-400":"#fff8f89e"
         },
       },
-      "business"
+      "night"
     ],
   },
   plugins: [require("daisyui") , require('@tailwindcss/typography')] ,

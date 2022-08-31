@@ -73,7 +73,7 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  if (data.insertedId) {
+                  if (data?.insertedId) {
                     Swal.fire({
                       text: "Your Candidate is Hired Successfully",
                       icon: "success",
@@ -165,10 +165,10 @@ const RecruitmentRow = ({ applicant, index, refetch, setApplicantData, status })
           <div className="text-sm font-semibold flex gap-1">
             <button
               onClick={() => handleUpdateStatus(applicant?._id)}
-              disabled={applicant?.status && true}
+              disabled={applicant?.status === true && true}
               className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
             >
-              {applicant?.status ? "Hired" : "Hire "}
+              {applicant?.status === true ? "Hired" : "Hire "}
             </button>
           </div>
         </td>

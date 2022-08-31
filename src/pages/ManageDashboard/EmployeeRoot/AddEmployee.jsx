@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../config";
-const AddEmployee = ({ refetch }) => {
+const AddEmployee = ({ refetch, setEditEmployeDetails }) => {
   const { theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const hrUserEmail = user?.email;
@@ -40,7 +40,7 @@ const AddEmployee = ({ refetch }) => {
             confirmButtonText: "Okay",
           });
           refetch();
-          reset();
+          setEditEmployeDetails(false)
         } else {
           Swal.fire({
             text: `Opps!`,

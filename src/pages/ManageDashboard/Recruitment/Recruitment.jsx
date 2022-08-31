@@ -19,7 +19,7 @@ const Recruitment = () => {
           Manage Recruitment Jobs
         </h3>
         <span>
-          You can see job details and applied canddiate which job post by you .
+          You can see job details and applied candidate which job post by you .
         </span>
       </div>
       {hrJobs?.length > 0 ? (
