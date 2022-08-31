@@ -13,7 +13,7 @@ const Recruitment = () => {
   }
 
   return (
-    <div className="p-5 h-screen">
+    <div data-testId="recuitment-1" className="p-5 h-screen">
       <div className="title my-2 mb-6">
         <h3 className="text-lg md:text-2xl font-semibold">
           Manage Recruitment Jobs
