@@ -3,10 +3,13 @@ import useTitle from "../../../Hooks/useTitle";
 import RecruitmentCard from "./RecruitmentCard";
 import useHrJob from "../../../Hooks/useHrJob";
 import Loading from "../../../Components/Loading/Loading";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const Recruitment = () => {
   useTitle("Recruitment");
   const [hrJobs, hrJobsLoading] = useHrJob();
+  const checking = useSelector((state) => console.log(state));
 
   if (hrJobsLoading) {
     return <Loading />;
