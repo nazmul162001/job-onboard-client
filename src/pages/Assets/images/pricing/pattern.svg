@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="250" viewBox="0 0 1440 250">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" y1="0.198" x2="0.5" y2="1.264" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.611" stop-color="#e8e8e8"/>
+      <stop offset="1" stop-color="#d4d4d4"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1.051" y1="0.535" x2="0.563" y2="0.476" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#101624"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="1.051" y1="0.535" x2="0.563" y2="0.476" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#101624" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.924" y1="0.549" x2="0.612" y2="0.434" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c7c7c7" stop-opacity="0.149"/>
+      <stop offset="1" stop-color="#101624" stop-opacity="0.388"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="1.051" y1="0.625" x2="0.325" y2="0.593" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c7c7c7" stop-opacity="0.329"/>
+      <stop offset="1" stop-color="#646464"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-7" x1="0.989" y1="0.404" x2="0.151" y2="0.303" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c7c7c7" stop-opacity="0.071"/>
+      <stop offset="1" stop-color="#646464"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="1.04" y1="0.5" x2="-0.084" y2="-0.038" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c7c7c7" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#646464"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-9" x1="0.971" y1="0.104" x2="0.24" y2="0.441" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#101624" stop-opacity="0.051"/>
+      <stop offset="1" stop-color="#101624" stop-opacity="0.251"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-10" x1="0.979" y1="0.476" x2="0.749" y2="0.378" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.941"/>
+      <stop offset="1" stop-color="#646464" stop-opacity="0.361"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-11" x1="0.981" y1="0.135" x2="0.519" y2="0.443" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#101624" stop-opacity="0.18"/>
+    </linearGradient>
+    <clipPath id="clip-new">
+      <rect width="1440" height="250"/>
+    </clipPath>
+  </defs>
+  <g id="new" clip-path="url(#clip-new)">
+    <rect width="1440" height="250" fill="#fff"/>
+    <g id="Group_7107" data-name="Group 7107" transform="translate(-5101 16397)">
+      <rect id="Rectangle_1550" data-name="Rectangle 1550" width="1506" height="374" transform="translate(5089 -16397)" fill="url(#linear-gradient)"/>
+      <g id="cover-copy-3" transform="translate(6623.376 -15615.492) rotate(180)">
+        <g id="Group-7" transform="translate(0 34)">
+          <g id="Group">
+            <g id="Group_7113" data-name="Group 7113" transform="translate(0 0)">
+              <rect id="Rectangle-Copy" width="458.745" height="96.403" transform="translate(214.505 213.728) rotate(45)" opacity="0.15" fill="url(#linear-gradient-2)"/>
+              <rect id="Rectangle-Copy-3" width="459.696" height="93.5" transform="translate(66.114 232.15) rotate(45)" opacity="0.15" fill="url(#linear-gradient-3)"/>
+              <rect id="Rectangle-Copy-2" width="909.494" height="147.316" transform="translate(486.313 0) rotate(45)" opacity="0.07" fill="url(#linear-gradient-4)"/>
+              <rect id="Rectangle-Copy-4" width="574.093" height="43.49" transform="translate(252.672 169.141) rotate(45)" opacity="0.15" fill="url(#linear-gradient-2)"/>
+              <rect id="Rectangle-Copy-2-2" data-name="Rectangle-Copy" width="458.743" height="62.346" transform="translate(1354.788 285.014) rotate(135)" opacity="0.15" fill="url(#linear-gradient-6)"/>
+              <rect id="Rectangle-Copy-3-2" data-name="Rectangle-Copy-3" width="621.884" height="93.499" transform="translate(1581.142 286.07) rotate(135)" opacity="0.15" fill="url(#linear-gradient-7)"/>
+              <rect id="Rectangle-Copy-6" width="310.294" height="24.967" transform="translate(1507.758 434.084) rotate(135)" opacity="0.15" fill="url(#linear-gradient-8)"/>
+              <rect id="Rectangle-Copy-5" width="508.57" height="220.551" transform="translate(589.805 293.786) rotate(135)" opacity="0.15" fill="url(#linear-gradient-9)"/>
+              <rect id="Rectangle-Copy-5-2" data-name="Rectangle-Copy-5" width="724.854" height="171.552" transform="translate(1092.828 39.025) rotate(45)" opacity="0.15" fill="url(#linear-gradient-10)"/>
+              <rect id="Rectangle-Copy-4-2" data-name="Rectangle-Copy-4" width="642.907" height="210.801" transform="translate(1189.821 260.437) rotate(135)" opacity="0.15" fill="url(#linear-gradient-11)"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
