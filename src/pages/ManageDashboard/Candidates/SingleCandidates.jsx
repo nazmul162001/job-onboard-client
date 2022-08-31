@@ -31,7 +31,7 @@ const SingleCandidates = () => {
   return (
     <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
-        <h2 className="text-center text-xl md:text-2xl font-semibold ">
+        <h2 className="text-center text-xl md:text-2xl font-semibold pt-4">
           Candidate's Information
         </h2>
       </div>
@@ -40,7 +40,7 @@ const SingleCandidates = () => {
         <div className="order-1">
           <div className="shadow-lg text-center p-5 space-y-4 rounded-lg">
             <div className="avatar py-2 mx-auto flex-col justify-center items-center">
-              <div className="w-20 ring-2 rounded-full ">
+              <div className="w-24 ring-2 rounded-full ">
                 {candidate?.profileUrl ? (
                   <img src={candidate?.profileUrl} alt="candidate" />
                 ) : (
@@ -54,7 +54,7 @@ const SingleCandidates = () => {
               <h2 className="text-sm">{candidate?.jobTitle}</h2>
             </div>
 
-            <div className="flex justify-start items-center gap-3 px-10">
+            <div className="flex justify-start items-center gap-3 md:px-10">
               <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
                 <FaUser size={20} className="text-black" />
               </div>
@@ -64,7 +64,7 @@ const SingleCandidates = () => {
               </div>
             </div>
 
-            <div className="flex justify-start items-center gap-3 px-10">
+            <div className="flex justify-start items-center gap-3 md:px-10">
               <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
                 <BiMessageSquareDetail size={20} className="text-black" />
               </div>
@@ -73,7 +73,7 @@ const SingleCandidates = () => {
                 <span className="font-semibold">{candidate?.email}</span>
               </div>
             </div>
-            <div className="flex justify-start items-center gap-3 px-10">
+            <div className="flex justify-start items-center gap-3 md:px-10">
               <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
                 <MdCall size={20} className="text-black" />
               </div>
@@ -82,7 +82,7 @@ const SingleCandidates = () => {
                 <span className="font-semibold">{candidate?.number}</span>
               </div>
             </div>
-            <div className="flex justify-start items-center gap-3 px-10">
+            <div className="flex justify-start items-center gap-3 md:px-10">
               <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
                 <BsCalendarDate size={20} className="text-black" />
               </div>
@@ -93,7 +93,7 @@ const SingleCandidates = () => {
                 </span>
               </div>
             </div>
-            <div className="flex justify-start items-center gap-3 px-10">
+            <div className="flex justify-start items-center gap-3 md:px-10">
               <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
                 <HiBriefcase size={20} className="text-black" />
               </div>
@@ -105,8 +105,8 @@ const SingleCandidates = () => {
           </div>
         </div>
 
-        <div className="order-1 mt-10">
-          <div class="tabs">
+        <div className="order-1 mt-0">
+          <div class="tabs shadow-lg rounded-lg">
             <a href="/" class="tab tab-lg tab-bordered tab-active">
               Application
             </a>
@@ -117,8 +117,29 @@ const SingleCandidates = () => {
               Evaluation
             </a>
           </div>
-          <h2 className="font-bold text-xl mb-2">CoverLetter</h2>
-          <span className="">{candidate?.coverLetter}</span>
+          <div className="p-4 shadow-lg my-4 rounded-lg">
+            <h2 className="font-semibold text-xl mb-2">CoverLetter</h2>
+            <hr className="solid" />
+            <h2 className="pt-6">{candidate?.coverLetter}</h2>
+          </div>
+
+          <div className="p-4 shadow-lg my-4 rounded-lg">
+            <h2 className="font-semibold text-xl mb-2">Experience</h2>
+            <hr className="solid" />
+            <h2 className="py-6 mt-2 border px-2 rounded-lg bg-blue-200 opacity-30 text-black">
+              <li>No job experience</li>
+            </h2>
+          </div>
+
+          <div className="p-4 shadow-lg my-4 rounded-lg">
+            <h2 className="font-semibold text-xl mb-2">
+              Education Qualifications
+            </h2>
+            <hr className="solid" />
+            <h2 className="py-6 mt-2 border px-2 rounded-lg bg-blue-200 opacity-30 text-black">
+              <li>No education qualifications</li>
+            </h2>
+          </div>
 
           <div className="flex justify-center gap-5 mt-10">
             <div className="grid justify-items-center">
@@ -144,7 +165,6 @@ const SingleCandidates = () => {
               <a href={candidate?.linkedinUrl} target="_blank" rel="noreferrer">
                 <FaLinkedin size={20} />
               </a>
-
               <h1 className="text-primary mt-2">Linkedin</h1>
             </div>
           </div>
