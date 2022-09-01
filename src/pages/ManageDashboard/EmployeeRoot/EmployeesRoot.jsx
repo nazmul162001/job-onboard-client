@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
-import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
+import { fetchAllEmployeDetails } from "../../../Features/AllEmployeDetails/AllEmployeDetailsSlice";
 import useTitle from "../../../Hooks/useTitle";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
@@ -11,11 +12,16 @@ import "./EmployeeCss/Employee.css";
 
 const EmployeesRoot = () => {
   useTitle("Employees");
+  // const allEmployeDetails = data?.data;
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
-
-  const { data, isLoading, refetch } = useEmployeeInfo();
-
-  const allEmployeDetails = data?.data;
+  const { isLoading, allEmployeDetails } = useSelector(
+    (state) => state.allEmployeDetails
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllEmployeDetails());
+  }, [dispatch]);
+  // const { data, isLoading, refetch } = useEmployeeInfo();
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -47,7 +53,7 @@ const EmployeesRoot = () => {
                 .then((result) => {
                   if (result?.deletedCount) {
                     Swal.fire("Deleted!", "Delete Successfully.", "success");
-                    refetch();
+                    // refetch();
                   }
                 });
             }
@@ -73,7 +79,7 @@ const EmployeesRoot = () => {
           <span>You can manage all the employees and see there details.</span>
         </div>
         <AddEmployee
-          refetch={refetch}
+          // refetch={refetch}
           setEditEmployeDetails={setEditEmployeDetails}
         />
       </div>
@@ -109,7 +115,7 @@ const EmployeesRoot = () => {
         <EditEmployeeModal
           editEmployeDetails={editEmployeDetails}
           setEditEmployeDetails={setEditEmployeDetails}
-          refetch={refetch}
+          // refetch={refetch}
         />
       )}
     </section>

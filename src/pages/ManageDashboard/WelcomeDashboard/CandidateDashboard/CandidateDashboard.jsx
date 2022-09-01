@@ -1,23 +1,38 @@
 import moment from "moment";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { InitializeContext } from "../../../../App";
 import Loading from "../../../../Components/Loading/Loading";
-import useAppliedJobs from "../../../../Hooks/useAppliedJobs";
+import { fetchAllTasks } from "../../../../Features/AllTasks/AllTasksSlice";
+import { fetchAppliedJobs } from "../../../../Features/AppliedJobs/AppliedJobsSlice";
 import useTitle from "../../../../Hooks/useTitle";
-import { useNavigate } from "react-router-dom";
-import useJobTasks from "../../../../Hooks/useJobTasks";
 import RecentTasks from "./JobTask/RecentTasks/RecentTasks";
 
 const CandidateDashboard = () => {
   useTitle("Dashboard");
   const { theme } = useContext(InitializeContext);
-  const { appliedJobs, isLoading } = useAppliedJobs();
+  // const { appliedJobs } = useAppliedJobs();
   const navigate = useNavigate();
 
+  const { isLoading, appliedJobs } = useSelector((state) => state.appliedJobs);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAppliedJobs());
+  }, [dispatch]);
+
   // Task
-  const { data } = useJobTasks();
-  const allTasks = data?.data;
-  console.log(allTasks);
+  // const { data } = useJobTasks();
+  // const allTasks = data?.data;
+
+  const { allTasks, error } = useSelector((state) => state.allTasks);
+
+  useEffect(() => {
+    dispatch(fetchAllTasks());
+  }, [dispatch]);
+
+  console.log(appliedJobs);
   const revRecentTask = [].concat(allTasks).reverse().slice(0, 3);
 
   if (isLoading) {
@@ -38,16 +53,18 @@ const CandidateDashboard = () => {
         <div className="bg-base-300">
           <div className="dashboard_route bg-base-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3">
             <div
-              className={`card_content my-5 flex ${theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
-                } py-2 rounded cursor-pointer`}
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/appliedJobs`)}
             >
               <div className="icon p-5">
                 <i className="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
               <div
-                className={`card_details ${theme ? "text-white" : "text-black"
-                  } flex flex-col justify-center text-start`}
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
               >
                 <h2 className="font-bold text-xl ">
                   {appliedJobs ? appliedJobs?.length : 0}
@@ -56,16 +73,18 @@ const CandidateDashboard = () => {
               </div>
             </div>
             <div
-              className={`card_content my-5 flex ${theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
-                } py-2 rounded cursor-pointer`}
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/task`)}
             >
               <div className="icon p-5">
                 <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
               <div
-                className={`card_details ${theme ? "text-white" : "text-black"
-                  } flex flex-col justify-center text-start`}
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
               >
                 <h2 className="font-bold text-xl">
                   {allTasks ? allTasks?.length : 0}
@@ -75,16 +94,18 @@ const CandidateDashboard = () => {
             </div>
 
             <div
-              className={`card_content my-5 flex ${theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
-                } py-2 rounded cursor-pointer`}
+              className={`card_content my-5 flex ${
+                theme ? "bg-base-300" : "bg-orange-100 bg-opacity-60"
+              } py-2 rounded cursor-pointer`}
               onClick={() => navigate(`/dashboard/task`)}
             >
               <div className="icon p-5">
                 <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
               <div
-                className={`card_details ${theme ? "text-white" : "text-black"
-                  } flex flex-col justify-center text-start`}
+                className={`card_details ${
+                  theme ? "text-white" : "text-black"
+                } flex flex-col justify-center text-start`}
               >
                 <h2 className="font-bold text-xl">0</h2>
                 <p className="text-[14px]">Submited Task</p>

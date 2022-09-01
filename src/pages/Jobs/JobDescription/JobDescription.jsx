@@ -1,19 +1,17 @@
-import React from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import useJob from "../../../Hooks/useJob";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ImArrowLeft2 } from "react-icons/im";
-import ApplicantModal from "./ApplicantModal";
-import Footer from "../../../Shared/Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
-import { useAuthState } from "react-firebase-hooks/auth";
-import useAppliedJobs from "../../../Hooks/useAppliedJobs";
-import { useState } from "react";
-import { useEffect } from "react";
 import Loading from "../../../Components/Loading/Loading";
+import { fetchAppliedJobs } from "../../../Features/AppliedJobs/AppliedJobsSlice";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
-
+import useJob from "../../../Hooks/useJob";
+import Footer from "../../../Shared/Footer/Footer";
+import ApplicantModal from "./ApplicantModal";
 const JobDescription = () => {
   const { jobId } = useParams();
   const [job] = useJob(jobId);
@@ -22,13 +20,21 @@ const JobDescription = () => {
   const [admin] = useAdmin(user);
   const [hr] = useHrManager(user);
   const location = useLocation();
-  const { appliedJobs, isLoading } = useAppliedJobs([]);
+  // const { appliedJobs, isLoading } = useAppliedJobs([]);
   // console.log(appliedJobs)
-
   //Handle Modal Disable When Job Already Applied
+  const { isLoading, appliedJobs } = useSelector((state) => state.appliedJobs);
   const [alreadyApplied, setAlreadyApplied] = useState(false);
 
   // console.log(exists)
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAppliedJobs());
+  }, [dispatch]);
+
+  console.log(appliedJobs);
+
   useEffect(() => {
     if (user) {
       const applied = appliedJobs?.map((appliedJ) => appliedJ?.jobPostId);

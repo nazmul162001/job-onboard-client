@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../Components/Loading/Loading";
-import useJobTasks from "../../../../../Hooks/useJobTasks";
+import { fetchAllTasks } from "../../../../../Features/AllTasks/AllTasksSlice";
 import useTitle from "../../../../../Hooks/useTitle";
 import AllJobTasks from "./AllJobTasks";
 import "./JobTaskCss/JobTask.css";
 
-
 const JobTask = () => {
-  useTitle("Task")
-  const { data, isLoading } = useJobTasks()
+  useTitle("Task");
+  // const { data } = useJobTasks();
 
-  const allTasks = data?.data;
+  // const allTasks = data?.data;
+
+  const { isLoading, allTasks } = useSelector((state) => state.allTasks);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllTasks());
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loading />;
