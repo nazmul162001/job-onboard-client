@@ -22,7 +22,7 @@ const HrChart = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(()=> {
+  useEffect(()=> {  
     dispatch(fetchHrChart())
   },[dispatch])
   
