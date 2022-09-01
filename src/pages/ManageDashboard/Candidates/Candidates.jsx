@@ -13,7 +13,6 @@ import TaskModal from "./TaskModal";
 const Candidates = () => {
   useTitle("Candidates");
   const { getApplicants, isLoading } = useCandidate();
-  const [applicantData, setApplicantData] = useState(null);
 
   const { data } = useQuery(["AllredyGiven"], () =>
     axios.get(`${BASE_API}/AllredyGiven?email=${auth?.currentUser?.email}`, {
@@ -37,47 +36,47 @@ const Candidates = () => {
         </span>
       </div>
       {getApplicants?.length > 0 ? (
-        <div class="flex flex-col">
-          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div class="overflow-hidden">
-                <table class="min-w-full">
-                  <thead class="border-b bg-primary">
+        <div className="flex flex-col">
+          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full">
+                  <thead className="border-b bg-primary">
                     <tr>
                       <th scope="col"></th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                        className="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Candidates
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                        className="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Applied For
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                        className="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Phone
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                        className="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Resume/Link
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                        className="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Task
                       </th>
                       <th
                         scope="col"
-                        class="text-sm font-medium text-white px-6 py-4 text-left"
+                        className="text-sm font-medium text-white px-6 py-4 text-left"
                       >
                         Details
                       </th>
@@ -90,7 +89,6 @@ const Candidates = () => {
                         applicant={applicant}
                         index={index}
                         key={applicant._id}
-                        setApplicantData={setApplicantData}
                         allreadyGiven={allreadyGiven}
                       />
                     ))}
@@ -112,13 +110,6 @@ const Candidates = () => {
             </h2>
           </div>
         </>
-      )}
-
-      {applicantData && (
-        <TaskModal
-          applicantData={applicantData}
-          setApplicantData={setApplicantData}
-        />
       )}
     </div>
   );

@@ -8,24 +8,29 @@ import { ImArrowLeft2 } from "react-icons/im";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import DashboardFooter from "../../DashboardFooter/DashboardFooter";
+import TaskModal from "../../Candidates/TaskModal";
+import { useQuery } from "@tanstack/react-query";
+import { BASE_API } from "../../../../config";
+import auth from "../../../../Auth/Firebase/Firebase.init";
 
 const SingleJobCandidates = () => {
+  const [applicantData, setApplicantData] = useState(null);
   const { jobId } = useParams();
   const [job] = useJob(jobId);
   const navigate = useNavigate();
 
   const { data, refetch } = useAppliedCandidates(job);
   const countData = data?.data;
-  // console.log(countData)
+  // console.log(job);
 
-  //  Candidate Info To Excel   
-  const [candidateData, setCandidateData] = useState([])
+  //  Candidate Info To Excel
+  const [candidateData, setCandidateData] = useState([]);
   const fileName = job?.jobTitle;
-  // console.log(fileName)
+  // console.log(candidateData?.header)
 
   useEffect(() => {
     const header = countData?.map((candidate, index) => ({
-      "CandidateId": index + 1,
+      CandidateId: index + 1,
       "Candidate Name": candidate?.displayName,
       "Candidate Email": candidate?.email,
       "Candidate Phone": candidate?.number,
@@ -49,6 +54,16 @@ const SingleJobCandidates = () => {
     const data = new Blob([excelBuffer], { type: fileType });
     FileSaver.saveAs(data, fileName + fileExtension);
   };
+
+  // const { data: singleTask } = useQuery(["getJobTask"], () =>
+  //   fetch(`${BASE_API}/singleTask/${taskId}`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   }).then((res) => res.json())
+  // );
+
+  // console.log(singleTask);
 
   const singleCandidates = (id) => {
     navigate(`/dashboard/recruitment/mail/${id}`);
@@ -95,7 +110,8 @@ const SingleJobCandidates = () => {
                 {job?.location}{" "}
               </p>
               <p className="">
-                Salary : ${job?.salary}<small>/m</small>
+                Salary : ${job?.salary}
+                <small>/m</small>
               </p>
             </div>
           </div>
@@ -159,7 +175,7 @@ const SingleJobCandidates = () => {
                       scope="col"
                       className="text-sm font-medium text-white px-6 py-4 "
                     >
-                    Applicant Assignment
+                      Applicant Assignment
                     </th>
                     <th
                       scope="col"
@@ -173,9 +189,11 @@ const SingleJobCandidates = () => {
                   {countData?.map((applicant, index) => (
                     <RecruitmentRow
                       applicant={applicant}
+                      key={index}
                       index={index}
                       refetch={refetch}
                       singleCandidates={singleCandidates}
+                      setApplicantData={setApplicantData}
                     />
                   ))}
                 </tbody>
@@ -185,8 +203,15 @@ const SingleJobCandidates = () => {
         </div>
       </div>
 
+      {applicantData && (
+        <TaskModal
+          applicantData={applicantData}
+          setApplicantData={setApplicantData}
+        />
+      )}
+
       {/*Dashboard Footer  */}
-      <DashboardFooter />
+      {/* <DashboardFooter /> */}
     </div>
   );
 };

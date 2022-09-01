@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { InitializeContext } from "../../../App";
 import auth from "../../../Auth/Firebase/Firebase.init";
 import { BASE_API } from "../../../config";
-const AddEmployee = ({ refetch }) => {
+const AddEmployee = ({ refetch, setEditEmployeDetails }) => {
   const { theme } = useContext(InitializeContext);
   const [user] = useAuthState(auth);
   const hrUserEmail = user?.email;
@@ -29,7 +29,7 @@ const AddEmployee = ({ refetch }) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(employeeDetails),
-     
+
     })
       .then((res) => res.json())
       .then((data) => {
@@ -40,7 +40,7 @@ const AddEmployee = ({ refetch }) => {
             confirmButtonText: "Okay",
           });
           refetch();
-          reset();
+          setEditEmployeDetails(false)
         } else {
           Swal.fire({
             text: `Opps!`,
@@ -53,15 +53,15 @@ const AddEmployee = ({ refetch }) => {
 
   return (
     <div className="bg-base-100">
-      <input type="checkbox" id="add-new-employee-modal" class="modal-toggle" />
-      <label for="add-new-employee-modal" class="modal cursor-pointer">
+      <input type="checkbox" id="add-new-employee-modal" className="modal-toggle" />
+      <label for="add-new-employee-modal" className="modal cursor-pointer">
         <label
-          class="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
+          className="modal-box relative lg:w-10/12 lg:max-w-2xl modalContainer"
           for=""
         >
           <label
             for="add-new-employee-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
@@ -164,7 +164,7 @@ const AddEmployee = ({ refetch }) => {
                     })}
                   >
                     <option disabled selected>
-                    Web Developer
+                      Web Developer
                     </option>
                     <option>Web Developer</option>
                     <option>Front End Dev</option>

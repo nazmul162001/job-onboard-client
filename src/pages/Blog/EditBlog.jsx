@@ -57,12 +57,12 @@ const EditBlog = ({ singleBlogs, refetch }) => {
           <BiEdit />
         </label>
       </div>
-      <input type="checkbox" id="edit-blog-modal" class="modal-toggle" />
-      <label for="edit-blog-modal" class="modal cursor-pointer modalContainer">
-        <label class="modal-box relative lg:w-10/12 lg:max-w-2xl " for="">
+      <input type="checkbox" id="edit-blog-modal" className="modal-toggle" />
+      <label for="edit-blog-modal" className="modal cursor-pointer modalContainer">
+        <label className="modal-box relative lg:w-10/12 lg:max-w-2xl " for="">
           <label
             for="edit-blog-modal"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>

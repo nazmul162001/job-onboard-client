@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsFolderSymlink, BsLink45Deg } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import Loading from "../../../Components/Loading/Loading";
@@ -6,13 +6,19 @@ import useAppliedJobs from "../../../Hooks/useAppliedJobs";
 import useTitle from "../../../Hooks/useTitle";
 import moment from 'moment';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAppliedJobs } from "../../../Features/AppliedJobs/AppliedJobsSlice";
 
 const AppliedJobs = () => {
   useTitle("Applied Jobs");
-  const { appliedJobs, isLoading } = useAppliedJobs()
+  // const { appliedJobs, isLoading } = useAppliedJobs()
   const navigate = useNavigate();
   // console.log(appliedJobs)
-
+  const { isLoading, appliedJobs } = useSelector((state) => state.appliedJobs);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAppliedJobs());
+  }, [dispatch]);
   if (isLoading) {
     return <Loading />;
   }

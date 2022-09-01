@@ -1,34 +1,40 @@
-import React from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import useJob from "../../../Hooks/useJob";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { ImArrowLeft2 } from "react-icons/im";
-import ApplicantModal from "./ApplicantModal";
-import Footer from "../../../Shared/Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import auth from "../../../Auth/Firebase/Firebase.init";
-import { useAuthState } from "react-firebase-hooks/auth";
-import useAppliedJobs from "../../../Hooks/useAppliedJobs";
-import { useState } from "react";
-import { useEffect } from "react";
 import Loading from "../../../Components/Loading/Loading";
+import { fetchAppliedJobs } from "../../../Features/AppliedJobs/AppliedJobsSlice";
 import useAdmin from "../../../Hooks/useAdmin";
 import useHrManager from "../../../Hooks/useHrManager";
-
+import useJob from "../../../Hooks/useJob";
+import Footer from "../../../Shared/Footer/Footer";
+import ApplicantModal from "./ApplicantModal";
 const JobDescription = () => {
   const { jobId } = useParams();
   const [job] = useJob(jobId);
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
-  const [admin, adminLoading] = useAdmin(user);
-  const [hr, hrLoading] = useHrManager(user);
+  const [admin] = useAdmin(user);
+  const [hr] = useHrManager(user);
   const location = useLocation();
-  const { appliedJobs, isLoading } = useAppliedJobs();
+  // const { appliedJobs, isLoading } = useAppliedJobs([]);
   // console.log(appliedJobs)
-
   //Handle Modal Disable When Job Already Applied
+  const { isLoading, appliedJobs } = useSelector((state) => state.appliedJobs);
   const [alreadyApplied, setAlreadyApplied] = useState(false);
-  
+
   // console.log(exists)
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAppliedJobs());
+  }, [dispatch]);
+
+  console.log(appliedJobs);
+
   useEffect(() => {
     if (user) {
       const applied = appliedJobs?.map((appliedJ) => appliedJ?.jobPostId);
@@ -39,7 +45,7 @@ const JobDescription = () => {
         setAlreadyApplied(false);
       }
     }
-  }, [appliedJobs,jobId,user]);
+  }, [appliedJobs, jobId, user]);
   // console.log(alreadyApplied);
 
   // console.log(job)
@@ -58,7 +64,7 @@ const JobDescription = () => {
 
   return (
     <div className="">
-      {/* description top section  */}
+      {/* Description Top Section  */}
       <div className="bg-[#222223] ">
         <div className="shadow-md py-10 px-8 md:px-28 lg:px-12 space-y-5 container mx-auto text-white">
           <div className="space-y-2">
@@ -102,13 +108,13 @@ const JobDescription = () => {
           </p>
           <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-3 lg:space-y-1">
             <span className="lg:pt-4">Work Type : {job?.jobType}</span>
-            {hr || admin ? (
-              <></>
-            ) : (
-              <>
-                {user ? (
+            {user ? (
+              <div>
+                {hr || admin ? (
+                  <></>
+                ) : (
                   <>
-                    {alreadyApplied  ? (
+                    {alreadyApplied ? (
                       <button className="btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white">
                         Already Applied
                       </button>
@@ -121,14 +127,16 @@ const JobDescription = () => {
                       </label>
                     )}
                   </>
-                ) : (
-                  <label
-                    className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
-                    onClick={guestNavigate}
-                  >
-                    Apply Now
-                  </label>
                 )}
+              </div>
+            ) : (
+              <>
+                <label
+                  className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
+                  onClick={guestNavigate}
+                >
+                  Apply Now
+                </label>
               </>
             )}
           </div>
@@ -146,13 +154,13 @@ const JobDescription = () => {
 
         {/* Modal  */}
         <div className="flex justify-center items-center pt-5 md:mt-0 text-center md:py-8 ">
-          {hr || admin ? (
-            <></>
-          ) : (
-            <>
-              {user ? (
+          {user ? (
+            <div>
+              {hr || admin ? (
+                <></>
+              ) : (
                 <>
-                  {alreadyApplied === true ? (
+                  {alreadyApplied ? (
                     <button className="btn bg-gray-400 hover:bg-gray-400 border-none cursor-not-allowed text-white">
                       Already Applied
                     </button>
@@ -165,14 +173,16 @@ const JobDescription = () => {
                     </label>
                   )}
                 </>
-              ) : (
-                <label
-                  className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
-                  onClick={guestNavigate}
-                >
-                  Apply Now
-                </label>
               )}
+            </div>
+          ) : (
+            <>
+              <label
+                className="flex justify-center px-5 py-3 bg-primary duration-300 hover:bg-[#6f49c7] rounded-lg text-xl text-white cursor-pointer w-1/2 md:w-[10rem]"
+                onClick={guestNavigate}
+              >
+                Apply Now
+              </label>
             </>
           )}
         </div>

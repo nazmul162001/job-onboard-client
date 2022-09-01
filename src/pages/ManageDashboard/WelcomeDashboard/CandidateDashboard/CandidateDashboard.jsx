@@ -1,23 +1,38 @@
 import moment from "moment";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { InitializeContext } from "../../../../App";
 import Loading from "../../../../Components/Loading/Loading";
-import useAppliedJobs from "../../../../Hooks/useAppliedJobs";
+import { fetchAllTasks } from "../../../../Features/AllTasks/AllTasksSlice";
+import { fetchAppliedJobs } from "../../../../Features/AppliedJobs/AppliedJobsSlice";
 import useTitle from "../../../../Hooks/useTitle";
-import { useNavigate } from "react-router-dom";
-import useJobTasks from "../../../../Hooks/useJobTasks";
 import RecentTasks from "./JobTask/RecentTasks/RecentTasks";
 
 const CandidateDashboard = () => {
   useTitle("Dashboard");
   const { theme } = useContext(InitializeContext);
-  const { appliedJobs, isLoading } = useAppliedJobs();
+  // const { appliedJobs } = useAppliedJobs();
   const navigate = useNavigate();
 
+  const { isLoading, appliedJobs } = useSelector((state) => state.appliedJobs);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAppliedJobs());
+  }, [dispatch]);
+
   // Task
-  const { data } = useJobTasks();
-  const allTasks = data?.data;
-  console.log(allTasks);
+  // const { data } = useJobTasks();
+  // const allTasks = data?.data;
+
+  const { allTasks, error } = useSelector((state) => state.allTasks);
+
+  useEffect(() => {
+    dispatch(fetchAllTasks());
+  }, [dispatch]);
+
+  console.log(appliedJobs);
   const revRecentTask = [].concat(allTasks).reverse().slice(0, 3);
 
   if (isLoading) {
@@ -44,7 +59,7 @@ const CandidateDashboard = () => {
               onClick={() => navigate(`/dashboard/appliedJobs`)}
             >
               <div className="icon p-5">
-                <i class="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
+                <i className="ri-group-line text-white text-2xl rounded p-5 bg-rose-400"></i>
               </div>
               <div
                 className={`card_details ${
@@ -64,7 +79,7 @@ const CandidateDashboard = () => {
               onClick={() => navigate(`/dashboard/task`)}
             >
               <div className="icon p-5">
-                <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
+                <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-orange-400"></i>
               </div>
               <div
                 className={`card_details ${
@@ -85,7 +100,7 @@ const CandidateDashboard = () => {
               onClick={() => navigate(`/dashboard/task`)}
             >
               <div className="icon p-5">
-                <i class="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
+                <i className="ri-briefcase-line text-white text-2xl rounded p-5 bg-pink-500"></i>
               </div>
               <div
                 className={`card_details ${
@@ -108,7 +123,7 @@ const CandidateDashboard = () => {
                     key={index}
                     className="shadow-lg hover:shadow-2xl p-5  space-y-4 border rounded-lg relative"
                   >
-                    <label class="absolute right-2 top-2 text-[11px] border px-2  rounded-xl">
+                    <label className="absolute right-2 top-2 text-[11px] border px-2  rounded-xl">
                       {moment(revApplicant?.createdDate).format("MMMM DD")}{" "}
                     </label>
                     <div className="text-center space-y-4 py-5">
