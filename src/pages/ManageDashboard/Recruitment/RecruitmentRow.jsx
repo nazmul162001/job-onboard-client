@@ -81,21 +81,21 @@ const RecruitmentRow = ({
     });
   };
 
-  const { data } = useQuery(["candidateSubmission"], () =>
-    axios.get(`${BASE_API}/submittedTask`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-  );
+  // const { data } = useQuery(["candidateSubmission"], () =>
+  //   axios.get(`${BASE_API}/submittedTask`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  // );
 
-  const submissionData = data?.data;
+  // const submissionData = data?.data;
 
   // console.log(submissionData)
 
-  const filtered = submissionData?.filter((data) => {
-    return data?.email === applicant?.email;
-  });
+  // const filtered = submissionData?.filter((data) => {
+  //   return data?.email === applicant?.email;
+  // });
   // console.log(filtered);
 
   return (
@@ -147,13 +147,19 @@ const RecruitmentRow = ({
         </td>
 
         <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
-          <span
+          {/* <span
             className={`btn btn-outline btn-xs capitalize ${filtered?.map(
               (stat) => (stat?.status === true ? "" : "btn-disabled")
             )}`}
             onClick={() =>
               navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)
             }
+          >
+            View Submission
+          </span> */}
+          <span
+            className="btn btn-outline btn-xs capitalize "
+            onClick={() => navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)}
           >
             View Submission
           </span>
