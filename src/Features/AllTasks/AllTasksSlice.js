@@ -17,7 +17,7 @@ export const fetchAllTasks = createAsyncThunk(
     return res.data;
   }
 );
-const allTaskslice = createSlice({
+const allTaskSlice = createSlice({
   name: "allTasks",
   initialState: {
     isLoading: false,
@@ -40,4 +40,4 @@ const allTaskslice = createSlice({
     });
   },
 });
-export default allTaskslice.reducer;
+export default allTaskSlice.reducer;
