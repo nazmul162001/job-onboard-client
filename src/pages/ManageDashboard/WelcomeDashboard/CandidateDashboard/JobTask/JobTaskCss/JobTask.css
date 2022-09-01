@@ -44,18 +44,10 @@
 .info {
   border-radius: 10px 10px 0px 2px;
 }
-.submitTask {
-  background: #00998b;
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+submitBtan {
+  background: #87ffe9eb;
+  padding: 8px 15px;
+  color: #2a2a2a;
   text-transform: uppercase;
-}
-.submitTask:hover svg {
-  transform: translateX(-2.2em) scale(1.1);
-}
-.submitTask:hover span {
-  transform: translateX(8em);
 }

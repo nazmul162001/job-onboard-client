@@ -45,7 +45,7 @@ const Inbox = () => {
       >
         <div className="my-2">
           <label htmlFor="name" className="my-2 font-semibold">
-            Name
+            Your Name
           </label>
           <input
             id="name"
@@ -57,7 +57,7 @@ const Inbox = () => {
         </div>
         <div className="my-2">
           <label htmlFor="name" className="my-2 font-semibold">
-            Email
+            Your Email
           </label>
           <input
             id="email"
@@ -81,7 +81,7 @@ const Inbox = () => {
         </div>
         <div className="my-2">
           <label htmlFor="name" className="my-2 font-semibold">
-            Message
+            Your Message
           </label>
           <textarea
             name="message"

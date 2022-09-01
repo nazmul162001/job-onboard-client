@@ -1,10 +1,8 @@
 import React from 'react';
 import { useQuill } from 'react-quilljs';
-
 import 'quill/dist/quill.snow.css';
-import toast from 'react-hot-toast';
 
-const JobPostEditor = ({ value, setValue }) => {
+const JobPostEditor = ({setValue }) => {
 
   const modules = {
     toolbar: [
@@ -33,13 +31,6 @@ const JobPostEditor = ({ value, setValue }) => {
       quill.on('text-change', () => {
         console.log(quillRef.current.firstChild.innerHTML)
         setValue(quillRef.current.firstChild.innerHTML)
-        // if (quill.getLength() === 0) {
-        //   toast.error('Description is empty', { position: "top-center" });
-        //   return false
-        // }
-        // else {
-        //   setValue(quillRef.current.firstChild.innerHTML)
-        // }
       });
     }
   }, [quill, quillRef, setValue]);
@@ -54,7 +45,3 @@ const JobPostEditor = ({ value, setValue }) => {
 };
 
 export default JobPostEditor;
-
-
-//https://github.com/quilljs/quill/issues/163
-//https://stackoverflow.com/questions/61452368/how-to-show-character-counter-in-a-react-quill

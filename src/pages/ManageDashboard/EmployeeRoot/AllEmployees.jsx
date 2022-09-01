@@ -11,7 +11,7 @@ const AllEmployees = ({
   setEditEmployeDetails,
   deleteEmployeeDetails,
 }) => {
-  
+
   const { _id, fullName, employeEmail, photoLink, location, designation } =
     singleDetails;
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ const AllEmployees = ({
   };
   return (
     <div>
-      <div class="employeeContainer overflow-hidden border-l-2 border-primary shadow-md  p-2 text-center rounded-md relative">
-        <div class="avatar py-2 mx-auto">
-          <div class="w-36 ring-4  rounded-full ">
+      <div className="employeeContainer overflow-hidden border-l-2 border-primary shadow-md  p-2 text-center rounded-md relative">
+        <div className="avatar py-2 mx-auto">
+          <div className="w-36 ring-4  rounded-full ">
             <img src={photoLink} alt="employees photos" />
           </div>
         </div>
         <div className="mt-3 nameTitle pb-5 ">
-          <h2 className="text-lg font-bold text-blue-900">{fullName}</h2>
+          <h2 className="text-lg font-bold">{fullName}</h2>
           <p>{designation}</p>
         </div>
         <div className="basicInfo absolute left-0 right-0 text-left text-white  -top-full font-medium h-full flex flex-col justify-center px-3">

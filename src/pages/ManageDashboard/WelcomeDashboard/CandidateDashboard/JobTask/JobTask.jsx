@@ -1,21 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import React from "react";
-import auth from "../../../../../Auth/Firebase/Firebase.init";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../../Components/Loading/Loading";
-import { BASE_API } from "../../../../../config";
+import { fetchAllTasks } from "../../../../../Features/AllTasks/AllTasksSlice";
+import useTitle from "../../../../../Hooks/useTitle";
 import AllJobTasks from "./AllJobTasks";
 import "./JobTaskCss/JobTask.css";
-const JobTask = () => {
-  const { data, isLoading } = useQuery(["getHrTask"], () =>
-    axios.get(`${BASE_API}/getHrTask?email=${auth?.currentUser?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-  );
 
-  const allTasks = data?.data;
+const JobTask = () => {
+  useTitle("Task");
+  // const { data } = useJobTasks();
+
+  // const allTasks = data?.data;
+
+  const { isLoading, allTasks } = useSelector((state) => state.allTasks);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllTasks());
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loading />;
@@ -30,12 +31,11 @@ const JobTask = () => {
         <span className="bg-[#895af6] w-24  h-1 mx-auto my-1"></span>
       </div>
 
-      <div class="overflow-x-auto">
-        <table class="table table-zebra w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
-              <th>Task No</th>
-              <th>Logo</th>
+              <th>No</th>
               <th>Company Name</th>
               <th>Task Name</th>
               <th>Task Date</th>

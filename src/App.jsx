@@ -36,8 +36,10 @@ import Profile from "./Pages/ManageDashboard/Profile/Profile";
 import Recruitment from "./Pages/ManageDashboard/Recruitment/Recruitment";
 import SendMailCandidates from "./Pages/ManageDashboard/Recruitment/SendMailCandidates";
 import SingleJobCandidates from "./Pages/ManageDashboard/Recruitment/SingleJobCandidates/SingleJobCandidates";
+import ViewSubmission from "./Pages/ManageDashboard/Recruitment/SingleJobCandidates/ViewSubmission/ViewSubmission";
 import JobTask from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/JobTask";
 import TaskDetais from "./Pages/ManageDashboard/WelcomeDashboard/CandidateDashboard/JobTask/TaskDetais";
+import AllRecentApplicants from "./Pages/ManageDashboard/WelcomeDashboard/HrDashboard/AllRecentApplicants/AllRecentApplicants";
 import WelcomeDashboard from "./Pages/ManageDashboard/WelcomeDashboard/WelcomeDashboard";
 import Pricing from "./Pages/PaymentSystem/Pricing/Pricing";
 import Navbar from "./Shared/Navbar/Navbar";
@@ -139,7 +141,7 @@ function App() {
               }
             />
             <Route
-              path="recruitment/mail/:candidatesID"
+              path="candidates/mail/:candidatesID"
               element={
                 <RequireHr>
                   <SendMailCandidates />
@@ -154,10 +156,18 @@ function App() {
                 </RequireHr>
               }
             />
+            <Route
+              path="submittedTask/candidate/:applicantId"
+              element={<ViewSubmission />}
+            />
             <Route path="candidates" element={<Candidates />} />
             <Route
               path="candidates/:candidatesID"
               element={<SingleCandidates />}
+            />
+            <Route
+              path="allRecentApplicants"
+              element={<AllRecentApplicants />}
             />
             <Route path="mails" element={<Inbox />} />
             <Route path="company" element={<CompanyDetails />} />

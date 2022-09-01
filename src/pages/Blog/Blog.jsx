@@ -1,32 +1,44 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { BiRightArrowCircle } from "react-icons/bi";
 import { RiArrowRightSLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import auth from "../../Auth/Firebase/Firebase.init";
 import Loading from "../../Components/Loading/Loading";
-import { BASE_API } from "../../config";
+import { fetchBlogs } from "../../Features/Blogs/BlogSlice";
 import useAdmin from "../../Hooks/useAdmin";
 import Footer from "../../Shared/Footer/Footer";
 import AddBlog from "./AddBlog";
 import "./BlogCss/Blog.css";
 
 const Blog = () => {
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   const navigate = useNavigate();
 
-  const { refetch } = useQuery(["allBlogs"], () =>
-    fetch(`${BASE_API}/allBlogs`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-  );
+  const { isLoading, blogs, error } = useSelector((state) => state.blogs);
+  if (isLoading) {
+    <Loading />;
+  }
+  if (error) {
+    toast.error(error.message);
+  }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchBlogs());
+  }, [dispatch]);
+  // const { refetch } = useQuery(["allBlogs"], () =>
+  //   fetch(`${BASE_API}/allBlogs`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setBlogs(data))
+  // );
 
   const blogsDetails = (bdId) => {
     navigate(`${bdId}`);
@@ -42,7 +54,7 @@ const Blog = () => {
           <span className="text-5xl font-serif text-primary">W</span>elcome To
           Our Blog
         </h2>
-        <div>{admin && <AddBlog refetch={refetch} />}</div>
+        <div>{admin && <AddBlog />}</div>
       </div>
 
       {blogs.length === 0 ? (
@@ -54,7 +66,7 @@ const Blog = () => {
               {blogs.slice(0, 1).map((blog) => (
                 <div
                   onClick={() => blogsDetails(blog._id)}
-                  class="card card-compact bg-base-100 shadow-xl cursor-pointer"
+                  className="card card-compact bg-base-100 shadow-xl cursor-pointer"
                 >
                   <span className="new absolute right-0 bg-indigo-900 px-4 py-1 text-white font-bold -top-1">
                     new
@@ -62,8 +74,8 @@ const Blog = () => {
                   <figure>
                     <img className="max-w-full" src={blog.image} alt="Shoes" />
                   </figure>
-                  <div class="card-body">
-                    <h2 class="card-title">{blog.title}</h2>
+                  <div className="card-body">
+                    <h2 className="card-title">{blog.title}</h2>
                     <p className="text-[17px]">
                       {blog.about.slice(0, 150) + " ...."}
                     </p>
@@ -103,12 +115,12 @@ const Blog = () => {
                 onClick={() => blogsDetails(blog._id)}
                 className="thirdInfo relative cursor-pointer"
               >
-                <div class="shadow-xl rounded-md overflow-hidden h-full">
+                <div className="shadow-xl rounded-md overflow-hidden h-full">
                   <figure>
                     <img className="max-w-full" src={blog.image} alt="Shoes" />
                   </figure>
-                  <div class="p-3">
-                    <h2 class="card-title text-sky-700">
+                  <div className="p-3">
+                    <h2 className="card-title text-sky-700">
                       {blog.title.slice(0, 50)}
                     </h2>
                     <p className="text-[17px]">

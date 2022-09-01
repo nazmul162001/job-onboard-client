@@ -1,11 +1,21 @@
-import React from "react";
 import { FaRegAddressBook } from "react-icons/fa";
+import { BsTelephoneForward } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_API } from "../../../config";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
+const RecruitmentRow = ({
+  applicant,
+  index,
+  refetch,
+  setApplicantData,
+  status,
+}) => {
   const navigate = useNavigate();
+  // console.log(applicant)
+
   const handleUpdateStatus = async (id) => {
     const candidates = {
       fullName: applicant?.displayName,
@@ -55,7 +65,7 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  if (data.insertedId) {
+                  if (data?.insertedId) {
                     Swal.fire({
                       text: "Your Candidate is Hired Successfully",
                       icon: "success",
@@ -71,61 +81,103 @@ const RecruitmentRow = ({ applicant, index, singleCandidates, refetch }) => {
     });
   };
 
+  // const { data } = useQuery(["candidateSubmission"], () =>
+  //   axios.get(`${BASE_API}/submittedTask`, {
+  //     headers: {
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //   })
+  // );
+
+  // const submissionData = data?.data;
+
+  // console.log(submissionData)
+
+  // const filtered = submissionData?.filter((data) => {
+  //   return data?.email === applicant?.email;
+  // });
+  // console.log(filtered);
+
   return (
-    <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
-      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-        {index + 1}
-      </td>
-      <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div>
-          <div className="font-normal">{applicant?.displayName}</div>
-          <div className="text-sm font-semibold">{applicant?.email}</div>
-        </div>
-      </td>
+    <>
+      <tr className="bg-base-100 border-b transition duration-300 ease-in-out">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+          {index + 1}
+        </td>
+        <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
+          <div className="space-y-1">
+            <div className="font-normal">{applicant?.displayName}</div>
+            <div className="text-sm font-semibold">{applicant?.email}</div>
+            <div className="text-sm font-semibold flex space-x-2 items-center">
+              <BsTelephoneForward />
+              <span>{applicant?.number}</span>
+            </div>
+          </div>
+        </td>
 
-      <td className="text-sm font-normal px-6 py-4 whitespace-nowrap">
-        {applicant?.jobTitle}
-        <br />
-        <span className="badge badge-ghost ">{applicant?.category}</span>
-      </td>
+        <td className="text-sm font-normal px-6 py-4 whitespace-nowrap">
+          {applicant?.jobTitle}
+          <br />
+          <span className="badge badge-ghost ">{applicant?.category}</span>
+        </td>
 
-      <td className="text-sm font-light px-6 py-4 whitespace-nowrap">
-        <div className="text-sm font-semibold">{applicant?.number}</div>
-      </td>
-      <td className="text-sm font-light px-6 py-4">
-        <div className="text-sm font-semibold flex gap-1">
-          <button
-            onClick={() => handleUpdateStatus(applicant?._id)}
-            disabled={applicant?.status && true}
-            className={`flex
-                                    btn btn-xs text-white`}
+        <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
+          <a
+            title="Resume/Link"
+            href={applicant?.resume}
+            target="_blank"
+            rel="noreferrer"
           >
-            {applicant?.status ? "Hired" : "Hire"}
-          </button>
-        </div>
-      </td>
+            <FaRegAddressBook size={25} />
+          </a>
+        </td>
 
-      <td className="text-sm font-light px-14 py-4 whitespace-nowrap">
-        <a
-          title="Resume/Link"
-          href={applicant?.resume}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FaRegAddressBook size={25} />
-        </a>
-      </td>
-      <td className="flex justify-center items-center mt-5">
-        <label
-          htmlFor="candidate-modal"
-          title="Click to send mail"
-          onClick={() => singleCandidates(applicant?._id)}
-          className="btn btn-sm text-white"
-        >
-          Send Mail
-        </label>
-      </td>
-    </tr>
+        <td className="text-sm font-normal px-6 py-4 text-center whitespace-nowrap">
+          <label
+            onClick={() => setApplicantData(applicant)}
+            for="task-modal"
+            className={`${
+              status
+                ? "hidden"
+                : "btn btn-outline btn-xs cursor-pointer capitalize"
+            }`}
+          >
+            Send Task
+          </label>
+        </td>
+
+        <td className="text-sm font-normal px-6 py-4 whitespace-nowrap text-center">
+          {/* <span
+            className={`btn btn-outline btn-xs capitalize ${filtered?.map(
+              (stat) => (stat?.status === true ? "" : "btn-disabled")
+            )}`}
+            onClick={() =>
+              navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)
+            }
+          >
+            View Submission
+          </span> */}
+          <span
+            className="btn btn-outline btn-xs capitalize "
+            onClick={() => navigate(`/dashboard/submittedTask/candidate/${applicant?._id}`)}
+          >
+            View Submission
+          </span>
+        </td>
+
+        <td className="text-sm font-light px-6 py-4 ">
+          <div className="text-sm font-semibold flex gap-1">
+            <button
+              onClick={() => handleUpdateStatus(applicant?._id)}
+              disabled={applicant?.status === true && true}
+              className={`flex btn btn-xs bg-[#0d5bae] hover:bg-[#0d77e8] text-white`}
+            >
+              {applicant?.status === true ? "Hired" : "Hire "}
+            </button>
+          </div>
+        </td>
+      </tr>
+    </>
   );
 };
 

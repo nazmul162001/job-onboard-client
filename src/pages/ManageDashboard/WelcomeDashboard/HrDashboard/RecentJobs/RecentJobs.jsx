@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import { useQuery } from "@tanstack/react-query";
-import auth from '../../../../Auth/Firebase/Firebase.init';
 import axios from 'axios';
-import { BASE_API } from '../../../../config';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../../../../Auth/Firebase/Firebase.init';
+import { BASE_API } from '../../../../../config';
 
 const RecentJobs = ({ myJob, index }) => {
 
@@ -24,7 +24,7 @@ const RecentJobs = ({ myJob, index }) => {
   const navigate = useNavigate();
 
   return (
-    <tr class="bg-base-100 text-center border-b py-5">
+    <tr className="bg-base-100 text-center border-b py-5">
       <th className='py-3'>{index + 1}.</th>
       <td className='py-3'>{myJob.jobTitle}</td>
       <td className='py-3'>{moment(myJob?.createdDate).format("MMMM DD, YYYY")}</td>
@@ -33,9 +33,9 @@ const RecentJobs = ({ myJob, index }) => {
       </td>
       <td className='capitalize '>{myJob?.location}</td>
       <td className=''>
-        <div class="avatar-group -space-x-8 container ">
-          <div class="avatar">
-            <div class="w-12">
+        <div className="avatar-group -space-x-8 container ">
+          <div className="avatar">
+            <div className="w-12">
               {revApplicant[1]?.profileUrl ? (
                 <img src={revApplicant[1]?.profileUrl} alt="candidate" />
               ) : (
@@ -43,8 +43,8 @@ const RecentJobs = ({ myJob, index }) => {
               )}
             </div>
           </div>
-          <div class="avatar">
-            <div class="w-12">
+          <div className="avatar">
+            <div className="w-12">
               {revApplicant[0]?.profileUrl ? (
                 <img src={revApplicant[0]?.profileUrl} alt="candidate" />
               ) : (
@@ -52,8 +52,8 @@ const RecentJobs = ({ myJob, index }) => {
               )}
             </div>
           </div>
-          <div class="avatar placeholder">
-            <div class="w-12 bg-neutral-focus text-neutral-content">
+          <div className="avatar placeholder">
+            <div className="w-12 bg-neutral-focus text-neutral-content">
               <span>{countApplicant?.length ? countApplicant?.length : 0}</span>
             </div>
           </div>

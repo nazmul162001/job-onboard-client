@@ -6,7 +6,7 @@ import useAppliedCandidates from "../../../Hooks/useAppliedCandidates";
 const RecruitmentCard = ({ job }) => {
   const navigate = useNavigate();
   const { companyName, jobTitle, location, salary, jobType, _id } = job;
-  const { data, isLoading} = useAppliedCandidates(job)
+  const { data, isLoading } = useAppliedCandidates(job)
 
   const countData = data?.data;
   // console.log(data?.data)
@@ -44,19 +44,20 @@ const RecruitmentCard = ({ job }) => {
         <div className=" pt-3 flex justify-between items-center">
           <button
             className="btn btn-sm btn-outline capitalize rounded-lg px-4 py-1 "
-            onClick={() => singleJob(_id)}
+            onClick={() => navigate(`/job/${job?._id}`)}
           >
-            See Details
+            View Details
           </button>
         </div>
       </div>
       {countData?.length > 0 && (
-        <sapn
+        <span
+          title="Applied Candidates"
           className="btn btn-sm btn-circle absolute right-2 top-2 text-white"
           onClick={() => singleJob(_id)}
         >
           {countData?.length}
-        </sapn>
+        </span>
       )}
     </div>
   );

@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
-import useEmployeeInfo from "../../../Hooks/useEmployeeInfo";
+import { fetchAllEmployeDetails } from "../../../Features/AllEmployeDetails/AllEmployeDetailsSlice";
+import useTitle from "../../../Hooks/useTitle";
 import AddEmployee from "./AddEmployee";
 import AllEmployees from "./AllEmployees";
 import EditEmployeeModal from "./EditEmployeeModal";
 import "./EmployeeCss/Employee.css";
+
 const EmployeesRoot = () => {
+  useTitle("Employees");
+  // const allEmployeDetails = data?.data;
   const [editEmployeDetails, setEditEmployeDetails] = useState(null);
-  const { data, isLoading, refetch } = useEmployeeInfo();
-  if (isLoading) {
-    return <Loading />;
-  }
-  const allEmployeDetails = data?.data;
+  const { isLoading, allEmployeDetails } = useSelector(
+    (state) => state.allEmployeDetails
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllEmployeDetails());
+  }, [dispatch]);
+  // const { data, isLoading, refetch } = useEmployeeInfo();
   const deleteEmployeeDetails = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -25,22 +33,29 @@ const EmployeesRoot = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed && id) {
-        const url = `${BASE_API}/deleteEmployeDetails/${id}`;
-        fetch(url, {
+        fetch(`${BASE_API}/applicants/${id}`, {
           method: "DELETE",
           headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             "content-type": "application/json",
           },
         })
           .then((res) => res.json())
-          .then((data) => {
-            if (data) {
-              Swal.fire("Deleted!", "Delete Successfully.", "success");
-              const remaining = allEmployeDetails.filter(
-                (data) => data._id !== id
-              );
-              refetch();
-              allEmployeDetails(remaining);
+          .then((result) => {
+            if (result?.acknowledged) {
+              fetch(`${BASE_API}/deleteEmployeDetails/${id}`, {
+                method: "DELETE",
+                headers: {
+                  "content-type": "application/json",
+                },
+              })
+                .then((res) => res.json())
+                .then((result) => {
+                  if (result?.deletedCount) {
+                    Swal.fire("Deleted!", "Delete Successfully.", "success");
+                    // refetch();
+                  }
+                });
             }
           });
       }
@@ -50,8 +65,12 @@ const EmployeesRoot = () => {
   //   if(removeModal){}
   // }
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <section className="p-5 h-screen">
+    <section className="p-5 lg:h-screen bg-base-100">
       <div className="flex flex-col md:flex-row md:flex justify-between items-center border-b-2 border-cyan-600 py-3 mb-3">
         <div className="title my-2 mb-6">
           <h3 className="text-lg md:text-2xl font-semibold">
@@ -59,7 +78,10 @@ const EmployeesRoot = () => {
           </h3>
           <span>You can manage all the employees and see there details.</span>
         </div>
-        <AddEmployee refetch={refetch} />
+        <AddEmployee
+          // refetch={refetch}
+          setEditEmployeDetails={setEditEmployeDetails}
+        />
       </div>
 
       {allEmployeDetails.length === 0 ? (
@@ -93,7 +115,7 @@ const EmployeesRoot = () => {
         <EditEmployeeModal
           editEmployeDetails={editEmployeDetails}
           setEditEmployeDetails={setEditEmployeDetails}
-          refetch={refetch}
+          // refetch={refetch}
         />
       )}
     </section>

@@ -1,13 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../Components/Loading/Loading";
 import { BASE_API } from "../../../config";
-import { CgProfile, CgMail, CgPhone, CgCalendar, CgCircleci } from 'react-icons/cg';
-import { ImProfile } from 'react-icons/im';
-import { FaLinkedin, FaLink } from 'react-icons/fa';
-
+import { FaUser } from "react-icons/fa";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { BsCalendarDate } from "react-icons/bs";
+import { MdCall } from "react-icons/md";
+import { HiBriefcase } from "react-icons/hi";
+import { ImProfile } from "react-icons/im";
+import { FaLinkedin, FaLink } from "react-icons/fa";
 
 const SingleCandidates = () => {
   const { candidatesID } = useParams();
@@ -19,8 +22,6 @@ const SingleCandidates = () => {
     })
   );
 
-  
-
   const candidate = data?.data;
 
   if (isLoading) {
@@ -30,90 +31,120 @@ const SingleCandidates = () => {
   return (
     <div className="h-screen">
       <div className=" border-b-2 border-primary py-3">
-        <h2 className="text-center text-xl md:text-2xl font-semibold ">
+        <h2 className="text-center text-xl md:text-2xl font-semibold pt-4">
           Candidate's Information
         </h2>
       </div>
 
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-y-12 my-10 px-1 md:px-10">
-
         <div className="order-1">
-          <div className='shadow-lg text-center p-5 space-y-4 rounded-lg'>
-
-            <div class="avatar py-2 mx-auto relative">
-
-              <div class="w-20 ring-2 rounded-full ">
+          <div className="shadow-lg text-center p-5 space-y-4 rounded-lg">
+            <div className="avatar py-2 mx-auto flex-col justify-center items-center">
+              <div className="w-24 ring-2 rounded-full ">
                 {candidate?.profileUrl ? (
                   <img src={candidate?.profileUrl} alt="candidate" />
                 ) : (
-                  <img src='https://i.ibb.co/xY0rfV4/avatar.jpg' alt="demoCandidateImg" />
+                  <img
+                    src="https://i.ibb.co/xY0rfV4/avatar.jpg"
+                    alt="demoCandidateImg"
+                  />
                 )}
               </div>
+              <h2 className="pt-4 text-xl">{candidate?.displayName}</h2>
+              <h2 className="text-sm">{candidate?.jobTitle}</h2>
             </div>
 
+            <div className="flex justify-start items-center gap-3 md:px-10">
+              <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
+                <FaUser size={20} className="text-black" />
+              </div>
+              <div className="text-start">
+                <h1>Full Name</h1>
+                <span className="font-semibold">{candidate?.displayName}</span>
+              </div>
+            </div>
 
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgProfile size={40} />
+            <div className="flex justify-start items-center gap-3 md:px-10">
+              <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
+                <BiMessageSquareDetail size={20} className="text-black" />
               </div>
               <div className="text-start">
-                <h1 className="font-bold text-primary">Candidate Name</h1>
-                {candidate?.displayName}
+                <h1>Email Address</h1>
+                <span className="font-semibold">{candidate?.email}</span>
               </div>
             </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgMail size={40} />
+            <div className="flex justify-start items-center gap-3 md:px-10">
+              <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
+                <MdCall size={20} className="text-black" />
               </div>
               <div className="text-start">
-                <h1 className="font-bold text-primary">Candidate Email</h1>
-                {candidate?.email}
+                <h1>Phone Number</h1>
+                <span className="font-semibold">{candidate?.number}</span>
               </div>
             </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgPhone size={40} />
+            <div className="flex justify-start items-center gap-3 md:px-10">
+              <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
+                <BsCalendarDate size={20} className="text-black" />
               </div>
               <div className="text-start">
-                <h1 className="font-bold text-primary">Candidate Number</h1>
-                {candidate?.number}
+                <h1>Date of Application</h1>
+                <span className="font-semibold">
+                  {candidate?.appliedDate.slice(0, 10)}
+                </span>
               </div>
             </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgCalendar size={40} />
+            <div className="flex justify-start items-center gap-3 md:px-10">
+              <div className="bg-blue-200 opacity-50 text-white p-3 rounded-md">
+                <HiBriefcase size={20} className="text-black" />
               </div>
               <div className="text-start">
-                <h1 className="font-bold text-primary">Applied date</h1>
-                {candidate?.appliedDate}
-              </div>
-            </div>
-            <div className="flex gap-3 px-10">
-              <div>
-                <CgCircleci size={40} />
-              </div>
-              <div className="text-start">
-                <h1 className="font-bold text-primary">Job-Title</h1>
-                {candidate?.jobTitle}
+                <h1>Job Title</h1>
+                <span className="font-semibold">{candidate?.jobTitle}</span>
               </div>
             </div>
           </div>
         </div>
 
+        <div className="order-1 mt-0">
+          <div class="tabs shadow-lg rounded-lg">
+            <a href="/" class="tab tab-lg tab-bordered tab-active">
+              Application
+            </a>
+            <a href="/" class="tab tab-lg tab-bordered">
+              Resume
+            </a>
+            <a href="/" class="tab tab-lg tab-bordered">
+              Evaluation
+            </a>
+          </div>
+          <div className="p-4 shadow-lg my-4 rounded-lg">
+            <h2 className="font-semibold text-xl mb-2">CoverLetter</h2>
+            <hr className="solid" />
+            <h2 className="pt-6">{candidate?.coverLetter}</h2>
+          </div>
 
-        <div className="order-1 mt-10 text-center">
-          <h2 className="font-bold text-primary text-xl mb-2">CoverLetter</h2>
-          <textarea className="textarea textarea-bordered w-full rounded pb-28" disabled>{candidate?.coverLetter}</textarea>
+          <div className="p-4 shadow-lg my-4 rounded-lg">
+            <h2 className="font-semibold text-xl mb-2">Experience</h2>
+            <hr className="solid" />
+            <h2 className="py-6 mt-2 border px-2 rounded-lg bg-blue-200 opacity-30 text-black">
+              <li>No job experience</li>
+            </h2>
+          </div>
+
+          <div className="p-4 shadow-lg my-4 rounded-lg">
+            <h2 className="font-semibold text-xl mb-2">
+              Education Qualifications
+            </h2>
+            <hr className="solid" />
+            <h2 className="py-6 mt-2 border px-2 rounded-lg bg-blue-200 opacity-30 text-black">
+              <li>No education qualifications</li>
+            </h2>
+          </div>
 
           <div className="flex justify-center gap-5 mt-10">
             <div className="grid justify-items-center">
-              <a
-                href={candidate?.resume}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <ImProfile size={35} />
+              <a href={candidate?.resume} target="_blank" rel="noreferrer">
+                <ImProfile size={20} />
               </a>
               <h1 className="text-primary mt-2">Resume</h1>
             </div>
@@ -124,26 +155,20 @@ const SingleCandidates = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaLink size={35} />
+                <FaLink size={20} />
               </a>
 
               <h1 className="text-primary mt-2">Portfolio</h1>
             </div>
 
             <div className="grid justify-items-center">
-              <a
-                href={candidate?.linkedinUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaLinkedin size={35} />
+              <a href={candidate?.linkedinUrl} target="_blank" rel="noreferrer">
+                <FaLinkedin size={20} />
               </a>
-
               <h1 className="text-primary mt-2">Linkedin</h1>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
