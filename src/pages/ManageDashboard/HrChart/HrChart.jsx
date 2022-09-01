@@ -6,7 +6,7 @@ import Chart from "react-apexcharts";
 import Loading from "../../../Components/Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import HrChartSlice, { fetchHrChart } from "../../../Features/HrChart/HrChartSlice";
+import { fetchHrChart } from "../../../Features/HrChart/HrChartSlice";
 
 const HrChart = () => {
   // const { data, isLoading } = useQuery(["hrEmployees"], () => {
