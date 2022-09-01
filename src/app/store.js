@@ -4,14 +4,17 @@ import AllTasksReducer from "../Features/AllTasks/AllTasksSlice";
 import AppliedJobsReducer from "../Features/AppliedJobs/AppliedJobsSlice";
 import BlogReducer from "../Features/Blogs/BlogSlice";
 import HrChartReducer from "../Features/HrChart/HrChartSlice";
+import HrJobsReducer from "../Features/HrJobs/HrJobsSlice";
 
 const store = configureStore({
   reducer: {
     blogs: BlogReducer,
     charts: HrChartReducer,
+
     allTasks: AllTasksReducer,
     appliedJobs: AppliedJobsReducer,
-    allEmployeDetails:AllEmployeDetailsReducer
+    allEmployeDetails: AllEmployeDetailsReducer,
+    hrJobs: HrJobsReducer,
   },
 });
 

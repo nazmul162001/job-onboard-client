@@ -13,12 +13,14 @@ import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import CandidateDashboard from "./CandidateDashboard/CandidateDashboard";
 import HrDashboard from "./HrDashboard/HrDashboard";
 
+
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
   // console.log(hr);
+
 
   // const { data } = useEmployeeInfo();
   // const allEmployeDetails = data?.data;
@@ -27,6 +29,13 @@ const WelcomeDashboard = () => {
   useEffect(() => {
     dispatch(fetchAllEmployeDetails());
   }, [dispatch]);
+
+
+
+  // const { data } = useEmployeeInfo();
+  // const allEmployeDetails = data?.data;
+
+
   const [hrJobs] = useHrJob();
   let revMyJob = [].concat(hrJobs).reverse().slice(0, 3);
   // console.log(revMyJob);
