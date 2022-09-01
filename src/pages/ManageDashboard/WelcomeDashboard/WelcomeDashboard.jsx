@@ -12,12 +12,15 @@ import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import CandidateDashboard from "./CandidateDashboard/CandidateDashboard";
 import HrDashboard from "./HrDashboard/HrDashboard";
 
+
 const WelcomeDashboard = () => {
   useTitle("Dashboard");
   const [user] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const [hr, hrLoading] = useHrManager(user);
   // console.log(hr);
+
+
 
   const { data } = useEmployeeInfo();
   const allEmployeDetails = data?.data;
@@ -39,14 +42,14 @@ const WelcomeDashboard = () => {
     <div className="bg-base-300 ">
       {/* Hr Dashboard  */}
       {hr && (
-        <HrDashboard 
-        getApplicants={getApplicants}
-        hrJobs={hrJobs}
-        hrLoading={hrLoading}
-        allEmployeDetails={allEmployeDetails}
-        revGetApplicants={revGetApplicants}
-        revMyJob={revMyJob}
-        allRecentApplicants={allRecentApplicants}
+        <HrDashboard
+          getApplicants={getApplicants}
+          hrJobs={hrJobs}
+          hrLoading={hrLoading}
+          allEmployeDetails={allEmployeDetails}
+          revGetApplicants={revGetApplicants}
+          revMyJob={revMyJob}
+          allRecentApplicants={allRecentApplicants}
         />
       )}
 
