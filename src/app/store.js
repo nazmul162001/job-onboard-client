@@ -10,7 +10,6 @@ const store = configureStore({
   reducer: {
     blogs: BlogReducer,
     charts: HrChartReducer,
-
     allTasks: AllTasksReducer,
     appliedJobs: AppliedJobsReducer,
     allEmployeDetails: AllEmployeDetailsReducer,
