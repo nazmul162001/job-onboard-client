@@ -1,6 +1,6 @@
 # A Job Recruitment Website Built with React and Redux.
 
-## Developed by: <a target="_blank" href="https://github.com/EmtiazHossainE2">Imtiaz</a>, <a target="_blank" href="https://github.com/nazmul162001">Nazmul</a>, <a target="_blank" href="https://github.com/Sajalhowlader">Sajal</a>, <a target="_blank" href="https://github.com/kiron0">Kiron</a>, <a target="_blank" href="https://github.com/TEMPLAR-007">Arefin</a> and <a href="https://github.com/shawon-MG" target="_blank">Shawon</a>. <br> <br>
+## Developed by: <a href="https://github.com/EmtiazHossainE2" target="_blank">Imtiaz</a>, <a href="https://github.com/nazmul162001" target="_blank">Nazmul</a>, <a href="https://github.com/Sajalhowlader" target="_blank">Sajal</a>, <a href="https://github.com/kiron0" target="_blank">Kiron</a>, <a href="https://github.com/TEMPLAR-007" target="_blank">Arefin</a> and <a href="https://github.com/shawon-MG" target="_blank">Shawon</a>. <br> <br>
 
 ## Project URL – <a href="https://job-onboard.web.app" rel="noopener" target="_blank">Job OnBoard</a>
 
@@ -32,9 +32,10 @@
 
 #### Due to time constraints, we don't have any automated system in place to monitor bugs. We make sure to check the docker container logs constantly to notice any unexpected behavior. But that's about it. <br><br>
 
+---
+
 ## Challenges
 
 - Deployment. This was definitely one of the most challenging parts of this project as it involved lots of research, learning, understanding and experimentation.
 - React: We were just not used to the react way of doing things, and it took some time to get used to states, and other react concepts.
 
----
