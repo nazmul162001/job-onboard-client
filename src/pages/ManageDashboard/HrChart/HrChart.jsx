@@ -138,7 +138,7 @@ const HrChart = () => {
             series={genderSeries}
             type="donut"
             width="100%"
-            height={250}
+            height={300}
           />
         </div>
       </div>
