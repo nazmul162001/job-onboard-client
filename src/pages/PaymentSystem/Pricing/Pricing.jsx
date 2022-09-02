@@ -13,7 +13,9 @@ const Pricing = () => {
           <button className="btn btn-wide text-white bg-[#895AF6] border-none">Start Free Trial</button>
         </div>
       </div>
-      <img className='h-28' src={pricingBg} alt="" />
+      <div className='w-full h-28'>
+      <img className='' src={pricingBg} alt="" />
+      </div>
       {/* toast  */}
 
 
