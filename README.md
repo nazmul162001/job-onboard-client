@@ -1,6 +1,6 @@
 # A Job Recruitment Website Built with React and Redux. 
 
-## Created by: Imtiaz, Nazmul, Sajal, Kiron, Arefin, and Shawon. <br> <br>
+## Developed by: Imtiaz, Nazmul, Sajal, Kiron, Arefin, and Shawon. <br> <br>
 
 ## Project URL  –  [Job OnBoard](https://job-onboard.web.app)
 
