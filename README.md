@@ -30,3 +30,4 @@
 * Deployment. This was definitely one of the most challenging parts of this project as it involved lots of research, learning, understanding and experimentation.
 * React: We were just not used to the react way of doing things, and it took some time to get used to states, and other react concepts.
 
+---
