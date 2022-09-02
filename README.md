@@ -16,7 +16,7 @@
 
 
 ## Domain and HTTPS
-#### We use firebase hosting system  <br><br>
+#### We use firebase hosting system here.  <br><br>
  
 
 ## Maintenance
