@@ -6,7 +6,7 @@ import Chart from "react-apexcharts";
 import Loading from "../../../Components/Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import HrChartSlice, { fetchHrChart } from "../../../Features/HrChart/HrChartSlice";
+import { fetchHrChart } from "../../../Features/HrChart/HrChartSlice";
 
 const HrChart = () => {
   // const { data, isLoading } = useQuery(["hrEmployees"], () => {
@@ -22,7 +22,7 @@ const HrChart = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(()=> {
+  useEffect(()=> {  
     dispatch(fetchHrChart())
   },[dispatch])
   
@@ -138,7 +138,7 @@ const HrChart = () => {
             series={genderSeries}
             type="donut"
             width="100%"
-            height={250}
+            height={300}
           />
         </div>
       </div>
