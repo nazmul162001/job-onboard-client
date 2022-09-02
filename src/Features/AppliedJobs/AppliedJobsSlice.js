@@ -18,7 +18,7 @@ export const fetchAppliedJobs = createAsyncThunk(
     return res.data;
   }
 );
-const appliedJobslice = createSlice({
+const appliedJobSlice = createSlice({
   name: "appliedJobs",
   initialState: {
     isLoading: false,
@@ -41,4 +41,4 @@ const appliedJobslice = createSlice({
     });
   },
 });
-export default appliedJobslice.reducer;
+export default appliedJobSlice.reducer;
