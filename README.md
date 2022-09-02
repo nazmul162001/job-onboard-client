@@ -2,7 +2,7 @@
 
 ## Developed by: <a target="_blank" href="https://github.com/EmtiazHossainE2">Imtiaz</a>, <a target="_blank" href="https://github.com/nazmul162001">Nazmul</a>, <a target="_blank" href="https://github.com/Sajalhowlader">Sajal</a>, <a target="_blank" href="https://github.com/kiron0">Kiron</a>, <a target="_blank" href="https://github.com/TEMPLAR-007">Arefin</a> and <a target="_blank" href="https://github.com/shawon-MG">Shawon</a>. <br> <br>
 
-## Project URL – <a target="_blank" href="https://job-onboard.web.app">Job OnBoard</a>
+## Project URL – <a target="_blank" href="https://job-onboard.web.app" rel="noopener">Job OnBoard</a>
 
 ---
 
