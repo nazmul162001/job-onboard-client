@@ -1,7 +1,9 @@
 # A Job Recruitment Website Built with React and Redux. 
 ## Created by: Imtiaz, Nazmul, Sajal, Kiron, Arefin, and Shawon. <br> <br>
 
-# Project URL  –  [Job OnBoard](https://job-onboard.web.app)
+## Project URL  –  [Job OnBoard](https://job-onboard.web.app)
+
+---
 
 ## Project Description  
 #### Our motivation for this app was to make it easier for applicants to apply for jobs, and make it easier for recruiters to schedule interviews with applicants. Overall our application’s main features are to create jobs, see your job postings, see applicants to your jobs,  allow applicants to apply to jobs, and allow applicants to see their job applications. Below, we will explain the workflow of our application.
