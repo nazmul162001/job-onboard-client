@@ -300,7 +300,7 @@ const Dashboard = ({ children }) => {
           } h-screen p-5  pt-8 relative duration-500`}
         >
           <i
-            className={`bg-base-100 flex justify-center items-center ri-arrow-right-s-line absolute cursor-pointer -right-3 top-9 w-8 h-8 ${
+            className={`bg-base-100 flex justify-center items-center ri-arrow-left-s-line absolute cursor-pointer -right-3 top-9 w-8 h-8 ${
               theme ? "bg-base-300" : "border-[#081A51]"
             } 
            border-2 rounded-full text-2xl ${!open && "rotate-180"}`}
