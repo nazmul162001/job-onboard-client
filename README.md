@@ -1,6 +1,6 @@
 # A Job Recruitment Website Built with React and Redux.
 
-## Developed by: <a href="https://github.com/EmtiazHossainE2" target="_blank">Imtiaz</a>, <a href="https://github.com/nazmul162001" target="_blank">Nazmul</a>, <a href="https://github.com/Sajalhowlader" target="_blank">Sajal</a>, <a href="https://github.com/kiron0" target="_blank">Kiron</a>, <a href="https://github.com/TEMPLAR-007" target="_blank">Arefin</a> and <a href="https://github.com/shawon-MG" target="_blank">Shawon</a>. <br> <br>
+## Developed by: <a href="https://github.com/EmtiazHossainE2" target="_blank">Emtiaz</a>, <a href="https://github.com/nazmul162001" target="_blank">Nazmul</a>, <a href="https://github.com/Sajalhowlader" target="_blank">Sajal</a>, <a href="https://github.com/kiron0" target="_blank">Kiron</a>, <a href="https://github.com/TEMPLAR-007" target="_blank">Arefin</a> and <a href="https://github.com/shawon-MG" target="_blank">Shawon</a>. <br> <br>
 
 ## Project URL – <a href="https://job-onboard.web.app" rel="noopener" target="_blank">Job OnBoard</a>
 
