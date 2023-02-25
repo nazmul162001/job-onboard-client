@@ -26,6 +26,7 @@ const HrChart = () => {
     dispatch(fetchHrChart())
   },[dispatch])
   
+  // update code
   // const charts = data?.data;
 
   const frontEnds = charts?.filter(
