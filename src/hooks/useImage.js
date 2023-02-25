@@ -5,6 +5,7 @@ import auth from "../Auth/Firebase/Firebase.init";
 
 const useImage = () => {
   //change
+  //change2
   
   const { data: image, isLoading } = useQuery(["imageUrl"], () =>
     axios.get(`${BASE_API}/users?uid=${auth?.currentUser?.uid}`, {
