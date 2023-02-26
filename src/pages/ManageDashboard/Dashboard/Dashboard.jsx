@@ -24,7 +24,7 @@ const Dashboard = ({ children }) => {
   const [hr, hrLoading] = useHrManager(user);
   const [tooltip, showTooltip] = useState(true);
 
-  // my dashboard sidebar
+  // my dashboard sidebar menus
   const [open, setOpen] = useState(false);
   const Menus = [
     {
@@ -65,6 +65,7 @@ const Dashboard = ({ children }) => {
       gap: false,
     },
   ];
+  // menus for candidate 
   const MenusCandidate = [
     {
       title: "Dashboard",
@@ -92,6 +93,7 @@ const Dashboard = ({ children }) => {
       gap: false,
     },
   ];
+  // menus for admin 
   const MenusAdmin = [
     {
       title: "Dashboard",
